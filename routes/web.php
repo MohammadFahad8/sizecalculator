@@ -60,6 +60,7 @@ Route::get('/selected/products',[App\Http\Controllers\SizeController::class,'sel
 Route::post('/remove/product',[App\Http\Controllers\SizeController::class,'removeProductFromBox'])->name('products.remove');
 Route::get('/calculator',[App\Http\Controllers\Calculator::class,'index'])->name('calculator.start');
 Route::get('/script_tags',[App\Http\Controllers\ProductsController::class,'index']);
+Route::get('script_tags/delete',[App\Http\Controllers\ProductsController::class,'deleteTag']);
 });
 
 

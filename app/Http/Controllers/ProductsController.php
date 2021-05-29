@@ -25,9 +25,17 @@ class ProductsController extends Controller
         dd($products);
         
     }
-    public  function getProducts(){
+    public  function deleteTag(){
        
-       
+        
+        $shop = Auth::user();
+      
+        $scripttags = array("script_tag"=> [
+          "event"=> "onload",
+          "src"=> "https://8b7d7b07306e.ngrok.io/scripttags/index.js"
+        ]);
+          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/173127663800.json')['body'];
+          dd($products);
         
         // $curl = curl_init();
 
