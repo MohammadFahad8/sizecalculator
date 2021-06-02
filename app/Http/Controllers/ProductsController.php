@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
@@ -19,7 +20,7 @@ class ProductsController extends Controller
       
       $scripttags = array("script_tag"=> [
         "event"=> "onload",
-        "src"=> "https://8b7d7b07306e.ngrok.io/scripttags/index.js"
+        "src"=> "https://d4033ca7af0a.ngrok.io/scripttags/index.js"
       ]);
         $products = $shop->api()->rest('POST', '/admin/api/2021-01/script_tags.json',$scripttags)['body'];
         dd($products);
@@ -32,9 +33,9 @@ class ProductsController extends Controller
       
         $scripttags = array("script_tag"=> [
           "event"=> "onload",
-          "src"=> "https://8b7d7b07306e.ngrok.io/scripttags/index.js"
+          "src"=> "https://d4033ca7af0a.ngrok.io/scripttags/index.js"
         ]);
-          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/173127663800.json')['body'];
+          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/173250216120.json')['body'];
           dd($products);
         
         // $curl = curl_init();
@@ -65,6 +66,13 @@ class ProductsController extends Controller
     public function create()
     {
         //
+        
+        $shop = Auth::user();
+      
+       
+          $products = $shop->api()->rest('GET', '/admin/api/2021-01/script_tags.json')['body'];
+          dd($products);
+
     }
 
     /**
@@ -121,5 +129,10 @@ class ProductsController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function createSizeCalculation(Request $request)
+    {
+            Storage::put('productcalculate.txt', $request);
+            dd(1);
     }
 }

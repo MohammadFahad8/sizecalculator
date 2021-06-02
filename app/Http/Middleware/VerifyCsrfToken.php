@@ -13,6 +13,7 @@ class VerifyCsrfToken extends Middleware
      */
     protected $except = [
         //
-        '/script_tags'
+        '/script_tags',
+        'https://eb48564c30e3.ngrok.io/calculate/new-size'
     ];
 }
