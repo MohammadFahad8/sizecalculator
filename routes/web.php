@@ -64,6 +64,11 @@ Route::get('/script_tags',[App\Http\Controllers\ProductsController::class,'index
 Route::get('/script_tags_get',[App\Http\Controllers\ProductsController::class,'create']);
 Route::get('script_tags/delete',[App\Http\Controllers\ProductsController::class,'deleteTag']);
 Route::post('/calculate/new-size',[App\Http\Controllers\ProductsController::class,'createSizeCalculation'])->name('sizes.new_calculate');
+Route::get('/metatag/create',[App\Http\Controllers\ProductsController::class,'metacreate'])->name('sizes.meta.create');
+Route::get('/metatags',[App\Http\Controllers\ProductsController::class,'metatags'])->name('sizes.meta');
+Route::get('/delete/meta/tag',[App\Http\Controllers\ProductsController::class,'deletemeta']);
+Route::get('/update/script_tag',[App\Http\Controllers\ProductsController::class,'updateScriptTag']);
+
 });
 
 

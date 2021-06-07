@@ -35,7 +35,7 @@ class ProductsController extends Controller
           "event"=> "onload",
           "src"=> "https://d4033ca7af0a.ngrok.io/scripttags/index.js"
         ]);
-          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/173250216120.json')['body'];
+          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/173357760696.json')['body'];
           dd($products);
         
         // $curl = curl_init();
@@ -135,4 +135,70 @@ class ProductsController extends Controller
             Storage::put('productcalculate.txt', $request);
             dd(1);
     }
+    public function metacreate()
+    {
+      $shop = Auth::user();
+      
+      
+      $scripttags = array("metafield"=> [
+        "namespace"=> "inventory",
+        "key"=> "warehouse",
+        "value"=> 25,
+        "value_type"=> "integer"
+      ]);
+        $products = $shop->api()->rest('POST', '/admin/api/2021-01/metafields.json',$scripttags)['body'];
+        dd($products);
+    }
+    public function metatags()
+    {
+      
+      $shop = Auth::user();
+      
+  
+        $products = $shop->api()->rest('GET', '/admin/api/2021-01/metafields.json')['body'];
+        dd($products);
+    }
+    
+    public  function deletemeta(){
+       
+        
+      $shop = Auth::user();
+    
+     
+        $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/metafields/19385405767864.json')['body'];
+        dd($products);
+      
+      // $curl = curl_init();
+
+      // curl_setopt_array($curl, array(
+      //     CURLOPT_URL => 'https://wdtcv.myshopify.com/admin/api/2021-01/products.json',
+      //     CURLOPT_RETURNTRANSFER => true,
+      //     CURLOPT_ENCODING => "",
+      //     CURLOPT_MAXREDIRS => 10,
+      //     CURLOPT_TIMEOUT => 0,
+      //     CURLOPT_FOLLOWLOCATION => true,
+      //     CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+      //     CURLOPT_CUSTOMREQUEST => "GET",
+      //     //CURLOPT_HTTPHEADER => $header,
+      // ));
+
+      // $response = curl_exec($curl);
+
+      // curl_close($curl);
+      // return json_encode($response);
+  }
+  public function updateScriptTag()
+  {
+    
+  
+    $scripttags = array('script_tag' =>[
+      "id"=> 173289111736,
+      "src"=> "https://24bbe8b8d790.ngrok.io/scripttags/index.js"
+    ]  );
+    $shop = Auth::user();
+    $products = $shop->api()->rest('PUT', '/admin/api/2021-01/script_tags/173289111736.json',$scripttags)['body'];
+    dd($products);
+
+
+  }
 }
