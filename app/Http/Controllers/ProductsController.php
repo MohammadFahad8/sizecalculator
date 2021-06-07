@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use api;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
@@ -35,7 +36,7 @@ class ProductsController extends Controller
           "event"=> "onload",
           "src"=> "https://d4033ca7af0a.ngrok.io/scripttags/index.js"
         ]);
-          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/173357760696.json')['body'];
+          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/173604733112.json')['body'];
           dd($products);
         
         // $curl = curl_init();
@@ -201,4 +202,7 @@ class ProductsController extends Controller
 
 
   }
+  
+ 
+  
 }

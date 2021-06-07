@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use api;
+use App\Helpers\Helpers;
 use App\Models\Attribute;
 use Illuminate\Http\Request;
+use App\Http\Helpers\Apihooks;
 use App\Models\Attributetypes;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
 class AttributeController extends Controller
@@ -18,6 +22,9 @@ class AttributeController extends Controller
     {
         //
         
+        $helpers = new Helpers();
+        $helpers->ifScriptTag();
+        $helpers->updateAsset();
         
         $attr = Attribute::latest()->with('attributetype')->get();
         
@@ -25,7 +32,6 @@ class AttributeController extends Controller
         return view('attributes.index',[
             'attributes'=>$attr]);
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -133,4 +139,7 @@ class AttributeController extends Controller
             return $this->index();
 
     }
+
+    
+
 }

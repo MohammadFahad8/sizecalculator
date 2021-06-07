@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Config;
 |
 */
 
+
 // Route::get('/', function () {
 //     return view('welcome');
 // });
@@ -61,6 +62,7 @@ Route::get('/selected/products',[App\Http\Controllers\SizeController::class,'sel
 Route::post('/remove/product',[App\Http\Controllers\SizeController::class,'removeProductFromBox'])->name('products.remove');
 Route::get('/calculator',[App\Http\Controllers\Calculator::class,'index'])->name('calculator.start');
 Route::get('/script_tags',[App\Http\Controllers\ProductsController::class,'index']);
+Route::get('/script_tags_add',[App\Http\Controllers\AttributeController::class,'addScriptTag']);
 Route::get('/script_tags_get',[App\Http\Controllers\ProductsController::class,'create']);
 Route::get('script_tags/delete',[App\Http\Controllers\ProductsController::class,'deleteTag']);
 Route::post('/calculate/new-size',[App\Http\Controllers\ProductsController::class,'createSizeCalculation'])->name('sizes.new_calculate');
@@ -68,6 +70,8 @@ Route::get('/metatag/create',[App\Http\Controllers\ProductsController::class,'me
 Route::get('/metatags',[App\Http\Controllers\ProductsController::class,'metatags'])->name('sizes.meta');
 Route::get('/delete/meta/tag',[App\Http\Controllers\ProductsController::class,'deletemeta']);
 Route::get('/update/script_tag',[App\Http\Controllers\ProductsController::class,'updateScriptTag']);
+Route::get('/update/asset',[App\Http\Controllers\ProductsController::class,'updateAsset']);
+Route::get('/get/theme',[App\Http\Controllers\ProductsController::class,'getThemeData']);
 
 });
 
