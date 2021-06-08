@@ -61,7 +61,7 @@ class Helpers {
   }
    function updateAsset()
   {
-    
+     $shop = Auth::user();
   
     $scripttags = array('asset' =>[
       "key"=>"snippets/body_fit.liquid",
@@ -69,9 +69,14 @@ class Helpers {
     ]  );
     
    
-    $shop = Auth::user();
+   
     Config::set('constants.SHOPIFY_URL.THEME_ID',$this->getThemeData());
     $products = $shop->api()->rest('PUT', '/admin/api/2021-01/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',$scripttags)['body'];
+    $scripttagsasset = array('asset' =>[
+        "key"=>"sections/body_fit.liquid",
+        "value"=> "{% include 'body_fit'%}"
+      ]  );
+      $products = $shop->api()->rest('PUT', '/admin/api/2021-01/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',$scripttagsasset)['body'];
     
 
 
