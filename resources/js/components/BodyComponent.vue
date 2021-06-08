@@ -2,7 +2,14 @@
 
   <body >
      
-      <div class="box"><a class="button " id="popup-trigger" href="#popup1" style="left: 5px !important;border: none;">Find Fit</a></div><div id="popup1" class="overlay " ><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><a href="https://getwair.com/" target="_blank" rel="noopener noreferrer nofollow" class="predict__sc-1a4an9n-2 lnWGiW fit-advisor-logo" ><img class="predict__sc-1a4an9n-1 ctuMzF" src="https://widget-frontend-5e4fikalk-wair.vercel.app/images/favicon-black.png" alt="image" style="opacity: 1;"><span class="predict__sc-1a4an9n-3 OSFBL">Fit Advisor</span></a></div></div><div class="predict__sc-1a4an9n-8 dCmgSk"><div width="0" class="predict__sc-1a4an9n-9 eygAJd"></div></div></div><a class="close" href="#">&times;</a><hr class="fit-advisor-hr"><div class="content" style="margin-top:-155px !important; margin-bottom: -100px !important;"><form id="regForm" ><p class="fit-advisor-intro">Enter your <span><b>details</b></span> below <br> to begin a size recommendation</p><div class="tab custom-offset"><label class="adjust-label labels-tab1"  for="height_ft">Height</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="height_ft" placeholder="ft." class="fit-advisor-custom_input" name="height_ft"></p><p><input type="number" id="height_in" placeholder="in." class="fit-advisor-custom_input fit-advisor-inch"  name="height_in"></p></div><label class="adjust-label labels-tab1" for="weight">Weight</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="weight" placeholder="Weight" class="fit-advisor-custom_input" name="weight"></p><label for="age" class="fit-advisor-agelabel"><span class=" labels-tab1 fit-advisor-agelabel-span" >Age</span></label> <p><input type="number" id="age"  placeholder="age" class="fit-advisor-custom_input fit-advisor-age-input"  name="age"></p></div></div><button class="continue-btn" style="position: absolute;right: 45%;bottom: 50px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Continue</button><div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="nextPrev(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="nextPrev(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="chest3"  v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Broader</p></div></div></div></div></div><div class="tab"> <div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="stomach1" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="stomach2" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="stomach3" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div> <div class="tab"><div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="bottom1" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="bottom2"  v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="bottom3"  v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div><div class="tab"><div class=" fit-advisor-selected-product-grid"><div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div><div><div class=" fit-advisor-product-size-box"><div class=" fit-advisor-fit-grid"><div class=" krijnu"><p class=" eVQudH">Size</p><div class=" coSBSK"><p class=" dZzOUn" style="opacity: 1;">best fit<svg viewBox="0 0 16 16" height="14" width="14" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class=""><path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-3.97-3.03a.75.75 0 00-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 00-1.06 1.06L6.97 11.03a.75.75 0 001.079-.02l3.992-4.99a.75.75 0 00-.01-1.05z"></path></svg></p></div></div><div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"><div class=" selected-product-arrow-left"><span size="10" class=" jjnwUS  selected-product-arrow-left-pointer"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div><div id="fit-advisor-sizes-slider" font-size="40"  class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize">M</span></div><div class=" dfOagu"><span size="10" class=" jjnwUS  hjNiUI"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Our recommended size is based on how the designer intended this product to fit your body. <a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
+     
+      <div class="box"><a class="button " id="popup-trigger" href="#popup1" style="left: 5px !important;border: none;">Find Fit</a></div><div id="popup1" class="overlay " ><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
+    display: inline-block;
+    /* width: 59px; */
+"><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" points="328 112 184 256 328 400"></polyline></svg>
+<svg v-if="lastTab" v-on:click="restart" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M320 146s24.36-12-64-12a160 160 0 10160 160"></path><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" points="256 58 336 138 256 218"></polyline></svg>
+
+<a href="https://getwair.com/" target="_blank" rel="noopener noreferrer nofollow" class="predict__sc-1a4an9n-2 lnWGiW fit-advisor-logo" ><img class="predict__sc-1a4an9n-1 ctuMzF" src="https://widget-frontend-5e4fikalk-wair.vercel.app/images/favicon-black.png" alt="image" style="opacity: 1;"><span class="predict__sc-1a4an9n-3 OSFBL">Fit Advisor</span></a></div></div><div class="predict__sc-1a4an9n-8 dCmgSk"><div width="0" class="predict__sc-1a4an9n-9 eygAJd"></div></div></div><a class="close" href="#">&times;</a><hr class="fit-advisor-hr"><div class="content" style="margin-top:-155px !important; margin-bottom: -100px !important;"><form id="regForm" ><p class="fit-advisor-intro">Enter your <span><b>details</b></span> below <br> to begin a size recommendation</p><div class="tab custom-offset"><label class="adjust-label labels-tab1"  for="height_ft">Height</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="height_ft" placeholder="ft." class="fit-advisor-custom_input" v-model="form.heightfoot" name="heightfoot"></p><p><input type="number" id="height_in" placeholder="in." class="fit-advisor-custom_input fit-advisor-inch" v-model="form.heightinch"  name="heightinch"></p></div><label class="adjust-label labels-tab1" for="weight">Weight</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="weight" placeholder="Weight" class="fit-advisor-custom_input" v-model="form.weight" name="weight"></p><label for="age" class="fit-advisor-agelabel"><span class=" labels-tab1 fit-advisor-agelabel-span" >Age</span></label> <p><input type="number" id="age"  placeholder="age" class="fit-advisor-custom_input fit-advisor-age-input" v-model="form.age" name="age"></p></div></div><button class="continue-btn" style="position: absolute;right: 45%;bottom: 50px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Continue</button><div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="nextPrev(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="nextPrev(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="chest3"  v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Broader</p></div></div></div></div></div><div class="tab"> <div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="stomach1" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="stomach2" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="stomach3" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div> <div class="tab"><div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="bottom1" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="bottom2"  v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="bottom3"  v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div><div class="tab"><div class=" fit-advisor-selected-product-grid"><div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div><div><div class=" fit-advisor-product-size-box"><div class=" fit-advisor-fit-grid"><div class=" krijnu"><p class=" eVQudH">Size</p><div class=" coSBSK"><p class=" dZzOUn" style="opacity: 1;">best fit<svg viewBox="0 0 16 16" height="14" width="14" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class=""><path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-3.97-3.03a.75.75 0 00-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 00-1.06 1.06L6.97 11.03a.75.75 0 001.079-.02l3.992-4.99a.75.75 0 00-.01-1.05z"></path></svg></p></div></div><div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"><div class=" selected-product-arrow-left"><span size="10" class=" jjnwUS  selected-product-arrow-left-pointer"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div><div id="fit-advisor-sizes-slider" font-size="40"  class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize">M</span></div><div class=" dfOagu"><span size="10" class=" jjnwUS  hjNiUI"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Our recommended size is based on how the designer intended this product to fit your body. <a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
       
       
       </body>
@@ -16,11 +23,19 @@
     },
         data(){
             return{
+                form:{
+                    heightfoot:'',
+                    heightinch:'',
+                    weight:'',
+                    age:'',
+                },
                 currentTab : 0,
                  height_cm:0,
                  weightf:0,
                  weight_lbs:0,
                   measurew:0,
+                  firstTab:true,
+                  lastTab:false,
                 measureh:0,
                 message:"Jello",
                 chest:0,
@@ -29,12 +44,12 @@ bottom:0,
             }
         },
         methods:{
-            getProductDetails:function()
-            {
-                axios.get('https://24bbe8b8d790.ngrok.io/get/products/'+this.product.id).then((res)=>{
-                    alert('check console');
-                })
-            },
+            // getProductDetails:function()
+            // {
+            //     axios.get('https://24bbe8b8d790.ngrok.io/get/products/'+this.product.id).then((res)=>{
+            //         alert('check console');
+            //     })
+            // },
             showTab:function(n)
             {
 
@@ -45,17 +60,26 @@ bottom:0,
   x[n].style.display = "block";
   //... and fix the Previous/Next buttons:
   if (n == 0) {
+      
 
     document.getElementById("prevBtn").style.display = "none";
     document.getElementById("steps-mark").style.visibility = "hidden";
+    this.firstTab = false;
+    this.lastTab = false;
   } else {
     document.getElementById("steps-mark").style.visibility = "visible";
     document.getElementById("prevBtn").style.display = "inline";
+    this.firstTab = true;
+    this.lastTab = false;
+    
   }
   if(n==1){
     $('#popup1').css('overflow','scroll');
   }
   if ( n == 4) {
+      
+      this.firstTab = false;
+      this.lastTab = true;
     
     document.getElementById("nextBtn").style.display = "inline";
     document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
@@ -162,12 +186,13 @@ bottom:0,
             nextPrev:function(n)
             {
                 
+                
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
   if (n == 1 && !this.validateForm()) return false;
   // Hide the current tab:
-console.log(x)
+
   x[this.currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
   this.currentTab = this.currentTab + n;
@@ -249,9 +274,19 @@ if(  this.measurew == null){
             console.log(' !! Begin Your Experience with us !! ')
             window.localStorage.clear();
             },
+            restart:function()
+            {   $('#nextBtn').text('Continue');
+            this.form.heightfoot='';
+            this.form.heightinch='';
+            this.form.weight='';
+            this.form.age='';
+                this.dev_reset();
+                this.showTab(0);
+                this.nextPrev(-4)
+            },
         },
         mounted() {
-            this.getProductDetails();
+            // this.getProductDetails();
             this.dev_reset();
             console.log(this.product.featured_image);
             // Current tab is set to be the first tab (0)
