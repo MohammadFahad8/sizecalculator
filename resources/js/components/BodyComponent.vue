@@ -1009,7 +1009,7 @@ fieldset {
     line-height: 24px !important;}
   .custom-offset
   {
-    margin-left: 50px !Important;
+    margin-left: 75px !Important;
   }
   .labels-tab1 {
     text-transform: capitalize;
@@ -1028,8 +1028,15 @@ fieldset {
     margin-left: 44%;
   }
   .adjust-label{
-  margin-left:-2%!important;
+  margin-left:-5%!important;
   }
+  input::placeholder {
+  font-size:12px !important
+}
+textarea:focus, input:focus{
+    outline: none;
+    border-bottom: 1px solid rgb(138, 171, 255);
+}
   .fit-advisor-custom_previous_btn{
     visibility: visible;
     font-family: Lato;
@@ -1234,7 +1241,7 @@ margin-left: 73% !important;
   .fit-advisor-agelabel-span
     {
         
-       margin-left:-63px !important;
+       margin-left:-68px !important;
        margin-top:6px !important;
     
     }

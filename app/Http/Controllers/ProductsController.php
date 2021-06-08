@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductsController extends Controller
 {
+  
     /**
      * Display a listing of the resource.
      *
@@ -207,7 +208,7 @@ class ProductsController extends Controller
     
     $shop = Auth::user();
     $products = $shop->api()->rest('GET','/admin/api/2021-01/products/'.$id.'.json')['body']['container'];
-    dd($products);
+    return $products;
   }
   
  
