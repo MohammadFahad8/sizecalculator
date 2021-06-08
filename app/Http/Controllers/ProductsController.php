@@ -193,14 +193,21 @@ class ProductsController extends Controller
     
   
     $scripttags = array('script_tag' =>[
-      "id"=> 173289111736,
-      "src"=> "https://24bbe8b8d790.ngrok.io/scripttags/index.js"
+      "id"=> 173604798648,
+      "src"=> "https://24bbe8b8d790.ngrok.io/js/app.js"
     ]  );
     $shop = Auth::user();
-    $products = $shop->api()->rest('PUT', '/admin/api/2021-01/script_tags/173289111736.json',$scripttags)['body'];
+    $products = $shop->api()->rest('PUT', '/admin/api/2021-01/script_tags/173604798648.json',$scripttags)['body'];
     dd($products);
 
 
+  }
+  public function getProductDetails($id)
+  {
+    
+    $shop = Auth::user();
+    $products = $shop->api()->rest('GET','/admin/api/2021-01/products/'.$id.'.json')['body']['container'];
+    dd($products);
   }
   
  

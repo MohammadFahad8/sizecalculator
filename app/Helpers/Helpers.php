@@ -65,7 +65,7 @@ class Helpers {
   
     $scripttags = array('asset' =>[
       "key"=>"snippets/body_fit.liquid",
-      "value"=> '<div id="ScriptApp" data-product="{{ product | json | escape }}" data-handle="{{ product.handle }}"></div>'
+      "value"=> '<bodyfit-component :product="{{product | json | escape}}"></bodyfit-component>'
     ]  );
     
    

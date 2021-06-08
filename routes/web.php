@@ -72,7 +72,16 @@ Route::get('/delete/meta/tag',[App\Http\Controllers\ProductsController::class,'d
 Route::get('/update/script_tag',[App\Http\Controllers\ProductsController::class,'updateScriptTag']);
 Route::get('/update/asset',[App\Http\Controllers\ProductsController::class,'updateAsset']);
 Route::get('/get/theme',[App\Http\Controllers\ProductsController::class,'getThemeData']);
+Route::get('/get/products/{id}',[App\Http\Controllers\ProductsController::class,'getProductDetails']);
 
 });
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

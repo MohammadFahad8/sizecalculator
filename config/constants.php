@@ -15,7 +15,7 @@ return [
         'session'=>'xyz',
         'timestamp'=>'xyz',
         'APP_URL'=>'https://24bbe8b8d790.ngrok.io/',
-        'SCRIPT_TAG_APP'=>'https://24bbe8b8d790.ngrok.io/scripttags/index.js',
+        'SCRIPT_TAG_APP'=>'https://24bbe8b8d790.ngrok.io/js/app.js',
         'THEME_ID'=>'120343068856',
 
     ],
