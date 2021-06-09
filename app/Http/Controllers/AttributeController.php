@@ -81,9 +81,10 @@ class AttributeController extends Controller
      * @param  \App\Models\Attribute  $attribute
      * @return \Illuminate\Http\Response
      */
-    public function show(Attribute $attribute)
+    public function show()
     {
         //
+        echo '<script>console.log("Hitting controller")</script>';
     }
 
     /**
@@ -139,7 +140,103 @@ class AttributeController extends Controller
             return $this->index();
 
     }
+    
+  public function calculateSize(Request $request)
+  {
+      $data = $request->all();
+      
+      $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
+        
+    $size='';
+   
+   
+  if(($data['weight'] >= 103 && $data['weight']<=121) && ($height_cm  >=  134 && $height_cm <= 150)  )
+  {
+     //xxs
+     return $size='XXS';
 
+  }
+
+  else if(($data['weight'] > 121 && $data['weight']<=139) && ($height_cm  >  150 && $height_cm <= 165))
+  {
+   //xs
+   return $size='XS';
+  }
+  else  if(($data['weight'] > 139 && $data['weight']<=161) && ($height_cm  >=  165 && $height_cm <= 175))
+  {
+
+   //s
+   return $size='S';
+
+  }
+
+  else if(($data['weight'] > 155 && $data['weight']<=175) && ($height_cm  >=  173 && $height_cm <= 185 ))
+  {
+   //M
+   return $size='M';
+
+  }
+  else  if(($data['weight'] > 165 && $data['weight']<=198) && ($height_cm  >=  178 && $height_cm <= 190))
+  {
+
+   //ML
+   return $size='ML';
+
+  }
+  else if(($data['weight'] > 187 && $data['weight']<=214) && ($height_cm  >=  185 && $height_cm <= 195 ))
+  {
+
+   //L
+   return $size='L';
+
+  }
+  
+  else if(($data['weight'] > 207 && $data['weight']<=242) && ($height_cm  >=  190 && $height_cm <= 205 ))
+  {
+   //XL
+   return $size='XL';
+  }
+  else  if(($data['weight'] > 242) && ($height_cm  >  205 ))
+  {
+   //XXL
+   return $size='XXL';
+  }
+  else {
+    return $size='One peculiar person you are';
+    
+  }
+  }
+  public function measurements (){
+//   {
+      
+// if(this.form.chest == 1 && this.form.stomach == 1 && bottom == 1)
+// {
+// document.getElementById("fsize").innerHTML = 'XS';
+// }
+// else if((this.form.chest == 1 && this.form.stomach == 1) || (this.form.chest == 1 && this.form.stomach == 2) || (this.form.chest == 2 && this.form.stomach == 1))
+// {
+
+// document.getElementById("fsize").innerHTML = 'S';
+// }
+// else if ((this.form.chest == 2 && this.form.stomach == 2) && (this.form.chest == 2 && this.form.stomach == 3) && (this.form.chest == 3 && this.form.stomach == 2))
+// {
+// document.getElementById("fsize").innerHTML = 'M';
+
+// }
+// else if((this.form.chest == 3 && this.form.stomach == 3) )
+// {
+// console.log('l');
+// document.getElementById("fsize").innerHTML = 'L';
+
+// }
+// else if((this.form.chest == 3 && this.form.stomach == 3 && bottom == 3))
+// {
+// console.log('xl');
+// document.getElementById("fsize").innerHTML = 'XL';
+
+
+// }
+  }
     
 
 }

@@ -9,7 +9,102 @@
 "><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" points="328 112 184 256 328 400"></polyline></svg>
 <svg v-if="lastTab" v-on:click="restart" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M320 146s24.36-12-64-12a160 160 0 10160 160"></path><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" points="256 58 336 138 256 218"></polyline></svg>
 
-<a href="https://getwair.com/" target="_blank" rel="noopener noreferrer nofollow" class="predict__sc-1a4an9n-2 lnWGiW fit-advisor-logo" ><img class="predict__sc-1a4an9n-1 ctuMzF" src="https://widget-frontend-5e4fikalk-wair.vercel.app/images/favicon-black.png" alt="image" style="opacity: 1;"><span class="predict__sc-1a4an9n-3 OSFBL">Fit Advisor</span></a></div></div><div class="predict__sc-1a4an9n-8 dCmgSk"><div width="0" class="predict__sc-1a4an9n-9 eygAJd"></div></div></div><a class="close" href="#">&times;</a><hr class="fit-advisor-hr"><div class="content" style="margin-top:-155px !important; margin-bottom: -100px !important;"><form id="regForm" ><p class="fit-advisor-intro">Enter your <span><b>details</b></span> below <br> to begin a size recommendation</p><div class="tab custom-offset"><label class="adjust-label labels-tab1"  for="height_ft">Height</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="height_ft" placeholder="ft." class="fit-advisor-custom_input" v-model="form.heightfoot" name="heightfoot"></p><p><input type="number" id="height_in" placeholder="in." class="fit-advisor-custom_input fit-advisor-inch" v-model="form.heightinch"  name="heightinch"></p></div><label class="adjust-label labels-tab1" for="weight">Weight</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="weight" placeholder="Weight" class="fit-advisor-custom_input" v-model="form.weight" name="weight"></p><label for="age" class="fit-advisor-agelabel"><span class=" labels-tab1 fit-advisor-agelabel-span" >Age</span></label> <p><input type="number" id="age"  placeholder="age" class="fit-advisor-custom_input fit-advisor-age-input" v-model="form.age" name="age"></p></div></div><button class="continue-btn" style="position: absolute;right: 45%;bottom: 50px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Continue</button><div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="nextPrev(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="nextPrev(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="chest3"  v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Broader</p></div></div></div></div></div><div class="tab"> <div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="stomach1" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="stomach2" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="stomach3" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div> <div class="tab"><div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="bottom1" v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="bottom2"  v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;"><img id="bottom3"  v-on:click="nextPrev(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div><div class="tab"><div class=" fit-advisor-selected-product-grid"><div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div><div><div class=" fit-advisor-product-size-box"><div class=" fit-advisor-fit-grid"><div class=" krijnu"><p class=" eVQudH">Size</p><div class=" coSBSK"><p class=" dZzOUn" style="opacity: 1;">best fit<svg viewBox="0 0 16 16" height="14" width="14" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class=""><path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-3.97-3.03a.75.75 0 00-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 00-1.06 1.06L6.97 11.03a.75.75 0 001.079-.02l3.992-4.99a.75.75 0 00-.01-1.05z"></path></svg></p></div></div><div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"><div class=" selected-product-arrow-left"><span size="10" class=" jjnwUS  selected-product-arrow-left-pointer"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div><div id="fit-advisor-sizes-slider" font-size="40"  class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize">M</span></div><div class=" dfOagu"><span size="10" class=" jjnwUS  hjNiUI"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Our recommended size is based on how the designer intended this product to fit your body. <a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
+<a href="https://getwair.com/" target="_blank" rel="noopener noreferrer nofollow" class="predict__sc-1a4an9n-2 lnWGiW fit-advisor-logo" ><img class="predict__sc-1a4an9n-1 ctuMzF" src="https://widget-frontend-5e4fikalk-wair.vercel.app/images/favicon-black.png" alt="image" style="opacity: 1;"><span class="predict__sc-1a4an9n-3 OSFBL">Fit Advisor</span></a></div></div><div class="predict__sc-1a4an9n-8 dCmgSk"><div width="0" class="predict__sc-1a4an9n-9 eygAJd"></div></div></div><a class="close" href="#">&times;</a><hr class="fit-advisor-hr">
+<div class="content" style="margin-top:-155px !important; margin-bottom: -120px !important;"><form id="regForm" ><p class="fit-advisor-intro">Enter your <span><b>details</b></span> below <br> to begin a size recommendation</p><div class="tab custom-offset"><label class="adjust-label labels-tab1"  for="height_ft">Height</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="height_ft" placeholder="ft." class="fit-advisor-custom_input" v-model="form.heightfoot" name="heightfoot"></p><p><input type="number" id="height_in" placeholder="in." class="fit-advisor-custom_input fit-advisor-inch" v-model="form.heightinch"  name="heightinch"></p></div>
+<label class="adjust-label labels-tab1" for="weight">Weight</label>
+ <div class="fit-advisor-custom_row"> <p><input type="number" id="weight" placeholder="Lbs" class="fit-advisor-custom_input" v-model="form.weight" name="weight"></p><label for="age" class="fit-advisor-agelabel"><span class=" labels-tab1 fit-advisor-agelabel-span" >Age</span></label> <p><input type="number" id="age"  placeholder="age" class="fit-advisor-custom_input fit-advisor-age-input" v-model="form.age" name="age"></p></div></div>
+<div class="row" v-if="!onfirstTab" >
+    <input  v-on:change="countryval()" class="countrycheck no-gutters"  type="checkbox" name="countrycheck" v-model="countrycheck" />
+    
+    
+
+<svg class="img_country" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;" xml:space="preserve">
+<rect y="85.331" style="fill:#F0F0F0;" width="512" height="341.337"/>
+<g>
+	<rect y="127.994" style="fill:#D80027;" width="512" height="42.663"/>
+	<rect y="213.331" style="fill:#D80027;" width="512" height="42.663"/>
+	<rect y="298.657" style="fill:#D80027;" width="512" height="42.663"/>
+	<rect y="383.994" style="fill:#D80027;" width="512" height="42.663"/>
+</g>
+<rect y="85.331" style="fill:#2E52B2;" width="256" height="183.797"/>
+<g>
+	<polygon style="fill:#F0F0F0;" points="99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 
+		99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 	"/>
+	<polygon style="fill:#F0F0F0;" points="103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 
+		99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 	"/>
+	<polygon style="fill:#F0F0F0;" points="47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 
+		43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 	"/>
+	<polygon style="fill:#F0F0F0;" points="43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 
+		54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 	"/>
+	<polygon style="fill:#F0F0F0;" points="99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 
+		99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 	"/>
+	<polygon style="fill:#F0F0F0;" points="43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 
+		54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 	"/>
+	<polygon style="fill:#F0F0F0;" points="156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 
+		156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 	"/>
+	<polygon style="fill:#F0F0F0;" points="160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 
+		145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 	"/>
+	<polygon style="fill:#F0F0F0;" points="216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 
+		201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 	"/>
+	<polygon style="fill:#F0F0F0;" points="212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 
+		212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 	"/>
+	<polygon style="fill:#F0F0F0;" points="156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 
+		156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 	"/>
+	<polygon style="fill:#F0F0F0;" points="212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 
+		212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 	"/>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+<g>
+</g>
+</svg>
+
+</div>
+
+
+<button class="continue-btn" style="position: absolute;right: 32%;bottom: 50px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button><div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+    <img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+        <img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+            <img id="chest3"  v-on:click="chest(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Broader</p></div></div></div></div></div><div class="tab"> <div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+                <img id="stomach1" v-on:click="stomach(2)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+                    <img id="stomach2" v-on:click="stomach(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+                        <img id="stomach3" v-on:click="stomach(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div> <div class="tab"><div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+                            <img id="bottom1" v-on:click="bottom(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+                                <img id="bottom2"  v-on:click="bottom(2)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+                                    <img id="bottom3"  v-on:click="bottom(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div><div class="tab"><div class=" fit-advisor-selected-product-grid"><div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div><div><div class=" fit-advisor-product-size-box"><div class=" fit-advisor-fit-grid"><div class=" krijnu"><p class=" eVQudH">Size</p><div class=" coSBSK"><p class=" dZzOUn" style="opacity: 1;">best fit<svg viewBox="0 0 16 16" height="14" width="14" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class=""><path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-3.97-3.03a.75.75 0 00-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 00-1.06 1.06L6.97 11.03a.75.75 0 001.079-.02l3.992-4.99a.75.75 0 00-.01-1.05z"></path></svg></p></div></div>
+                                    <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"><div class=" selected-product-arrow-left"><span size="10" class=" jjnwUS  selected-product-arrow-left-pointer"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>
+                                    <div id="fit-advisor-sizes-slider" font-size="40"  class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize"> 
+<div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+  <span class="sr-only">Loading...</span>
+</div>{{recommended_size}}</span></div>
+<div class=" dfOagu"><span size="10" class=" jjnwUS  hjNiUI"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Our recommended size is based on how the designer intended this product to fit your body. <a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
       
       
       </body>
@@ -28,28 +123,99 @@
                     heightinch:'',
                     weight:'',
                     age:'',
+                    chest:0,
+                    stomach:0,
+                    bottom:0
+                    
+                    
                 },
+                countrycheck:'',
+                checked:false,
                 currentTab : 0,
                  height_cm:0,
                  weightf:0,
                  weight_lbs:0,
                   measurew:0,
                   firstTab:true,
+                  onfirstTab:true,
                   lastTab:false,
                 measureh:0,
                 message:"Jello",
-                chest:0,
-stomach:0,
-bottom:0,
+                recommended_size:'',
+                is_loading:false,
+                
+                image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
+                image_uk:'https://24bbe8b8d790.ngrok.io/images/uk.png',
+
             }
         },
         methods:{
-            // getProductDetails:function()
-            // {
-            //     axios.get('https://24bbe8b8d790.ngrok.io/get/products/'+this.product.id).then((res)=>{
-            //         alert('check console');
-            //     })
-            // },
+            getProductDetails:function(){
+                this.is_loading = true;
+               
+                axios.post('https://24bbe8b8d790.ngrok.io/api/size-recommend/',this.form)
+                .then((res)=>{
+                    
+                     this.recommended_size = res.data
+                     this.is_loading = false;
+                    
+                })
+            },
+            chest:function(n)
+            {
+                this.form.chest = n;
+                this.nextPrev(1)
+            },stomach:function(n)
+            {
+                this.form.stomach = n;
+                this.nextPrev(1)
+            },bottom:function(n)
+            {
+                this.form.bottom = n;
+                this.nextPrev(1)
+            },
+            countryval:function(){
+                
+                
+                if(this.countrycheck == false)
+                {
+                    
+                    $('input[name="weight"]').attr('placeholder','Lbs');
+                    $('input[name="countrycheck"]').attr('value',0);
+                    this.countrycheck == 0;
+                    
+                    this.weightconvert(this.form.weight,false);
+                    
+
+                }
+                else if(this.countrycheck == true)
+                {
+                    
+                     $('input[name="weight"]').attr('placeholder','Kg');
+                     $('input[name="countrycheck"]').attr('value',1);
+                        this.countrycheck == 1
+                     this.weightconvert(this.form.weight,true);
+                     
+
+                }
+                
+
+            },
+                    weightconvert:function(w,c)
+                    {
+                        if((c == true) && (w!='') )
+                        {
+                        this.form.weight = w/2.2 //pound to kg
+                        }
+                        else if((c == false) && (w!='') )
+                        {
+                            this.form.weight = w*2.2 //kg to pound
+                        }
+                        
+                        
+
+                    },
+
             showTab:function(n)
             {
 
@@ -65,11 +231,13 @@ bottom:0,
     document.getElementById("prevBtn").style.display = "none";
     document.getElementById("steps-mark").style.visibility = "hidden";
     this.firstTab = false;
+    this.onfirstTab = false;
     this.lastTab = false;
   } else {
     document.getElementById("steps-mark").style.visibility = "visible";
     document.getElementById("prevBtn").style.display = "inline";
     this.firstTab = true;
+    this.onfirstTab = true,
     this.lastTab = false;
     
   }
@@ -79,66 +247,19 @@ bottom:0,
   if ( n == 4) {
       
       this.firstTab = false;
+      this.onfirstTab = true,
       this.lastTab = true;
+     
     
     document.getElementById("nextBtn").style.display = "inline";
     document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
+    document.getElementById("steps-mark").style.visibility = "hidden";
     
     
     
 
-  if((this.measurew >= 130 && this.measurew<=150) && (this.measureh  >=  165.1 && this.measureh <= 175.26)  )
-  {
-     
-    this.measurements()
-
-  }
-
-  else if((this.measurew >= 150 && this.measurew<=160) && (this.measureh  >=  165.1 && this.measureh <= 177.8))
-  {
-    this.measurements()
-  }
-  else  if((this.measurew >= 160 && this.measurew<=170) && (this.measureh  >=  165.1 && this.measureh <= 180.34))
-  {
-
-    this.measurements()
-
-  }
-
-  else if((this.measurew >= 170 && this.measurew<=180) && (this.measureh  >=  167.64 && this.measureh <= 172.72 ))
-  {
-    this.measurements()
-
-  }
-  else  if((this.measurew >= 170 && this.measurew<=180) && (this.measureh  >=  175.26 && this.measureh <= 182.88 ))
-  {
-
-    this.measurements()
-
-  }
-  else if((this.measurew >= 180 && this.measurew<=190) && (this.measureh  >=  172.72 && this.measureh <= 187.96 ))
-  {
-
-    this.measurements()
-
-  }
-  
-  else if((this.measurew >= 190 && this.measurew<=200) && (this.measureh  >=  172.72 && this.measureh <= 175.26 ))
-  {
-    this.measurements()
-
-  }
-  else  if((this.measurew >= 190 && this.measurew<=200) && (this.measureh  >=  177.8  && this.measureh <= 187.96 ))
-  {
-    this.measurements()
-
-  }
-  else {
-
-    document.getElementById("fsize").innerHTML = 'No Match';
-  }
     document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
-
+ this.getProductDetails();
   }
    else {
     document.getElementById("nextBtn").style.display = "inline";
@@ -152,41 +273,11 @@ bottom:0,
   //... and run a function that will display the correct step indicator:
   this.fixStepIndicator(n)
             },
-            measurements:function()
-            {
-                
-  if(chest == 1 && stomach == 1 && bottom == 1)
-  {
-    document.getElementById("fsize").innerHTML = 'XS';
-  }
-  else if((chest == 1 && stomach == 1) || (chest == 1 && stomach == 2) || (chest == 2 && stomach == 1))
-    {
-
-    document.getElementById("fsize").innerHTML = 'S';
-    }
-    else if ((chest == 2 && stomach == 2) && (chest == 2 && stomach == 3) && (chest == 3 && stomach == 2))
-    {
-      document.getElementById("fsize").innerHTML = 'M';
-
-    }
-    else if((chest == 3 && stomach == 3) )
-    {
-      console.log('l')
-    document.getElementById("fsize").innerHTML = 'L';
-
-    }
-    else if((chest == 3 && stomach == 3 && bottom == 3))
-    {
-      console.log('xl')
-    document.getElementById("fsize").innerHTML = 'XL';
-
-
-    }
-            },
+         
             nextPrev:function(n)
             {
                 
-                
+             
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
@@ -280,15 +371,35 @@ if(  this.measurew == null){
             this.form.heightinch='';
             this.form.weight='';
             this.form.age='';
+            this.form.chest='';
+            this.form.stomach='';
+            this.form.bottom='';
                 this.dev_reset();
                 this.showTab(0);
                 this.nextPrev(-4)
             },
         },
         mounted() {
-            // this.getProductDetails();
+            
+            
             this.dev_reset();
             console.log(this.product.featured_image);
+            
+    $('input[name="countrycheck"]').click(function(){
+        var $radio = $(this);
+
+        // if this was previously checked
+        if ($radio.data('waschecked') == true)
+        {
+            $radio.prop('checked', false);
+            $radio.data('waschecked', false);
+        }
+        else
+            $radio.data('waschecked', true);
+
+        // remove was checked from other radios
+        
+    });
             // Current tab is set to be the first tab (0)
 this.showTab(this.currentTab);
 // $("#featured_image").attr("src",this.product.featured_image);
@@ -301,46 +412,6 @@ $('#popup-trigger').on('click',function(){
   $('#popup1').css('overflow','scroll');
 })
 
-
-//narrower
-$('#chest1').click(function(){
-
-  this.chest = 1;
-})
-//Average/
-$('#chest2').click(function(){
-
-  this.chest = 2;
-})
-//Broader
-$('#chest3').click(function(){
-
-  this.chest = 3;
-})
-$('#stomach1').click(function(){
-
-  this.stomach = 1;
-})
-$('#stomach2').click(function(){
-
-  this.stomach = 2;
-})
-$('#stomach3').click(function(){
-
-  this.stomach = 3;
-})
-$('#bottom1').click(function(){
-
-  this.bottom = 1;
-})
-$('#bottom2').click(function(){
-
-  this.bottom = 2;
-})
-$('#bottom3').click(function(){
-
-  this.bottom = 3;
-})
 
 //size decider happens
 //formula to caluclate height into centimeters
@@ -364,13 +435,57 @@ console.log("bottom:"+bottom);
 
 
 
-        }
+        },
+      
     }
 </script>
 <style>
+.fit-advisor-chest-tab-item:hover {
+    /* display: grid; */
+    /* justify-content: center; */
+    /* align-items: center; */
+    /* text-align: center; */
+    /* cursor: pointer; */
+    transform: scale(0.95) !important;
+    transition: transform 0.2s ease-in-out 0s;
+}
+input[type="checkbox"]:checked {
+    background: rgb(2, 2, 2);
+}
+.img_country
+{
+     width: 8% !important;
+    margin: 0 auto !important;
+    margin-left: -105px !important;
+}
+.countrycheck
+{
+     width:3% !important;
+    margin:0 auto !important
+}
+.no-gutters {
+  margin-right: 0;
+  margin-left: 0;
+}
+.row {
+      display: flex;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: 95px;
+    margin-top: 10px !important;
+}
 
-
-
+.col-xl,
+.col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,
+.col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,
+.col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,
+.col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,
+.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
 /* style for steps form */
 input::-webkit-outer-spin-button,
 
@@ -551,7 +666,32 @@ button:hover {
     user-select: none;
 }
   .continue-btn {
-    visibility: visible;
+      -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: auto;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: 8px 15px;
+    background-color: #000000;
+    color: var(--color-btn-primary-text);
+    /* font-family: lato !important; */
+    /* font-style: var(--font-style-header); */
+    /* font-weight: var(--font-weight-header); */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: normal;
+    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);
+    /* visibility: visible;
     
     font-size: 16px;
     font-weight: 400;
@@ -565,7 +705,7 @@ button:hover {
     cursor: pointer;
     transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;
     user-select: none;
-    opacity: 1;
+    opacity: 1; */
 }
   .fit-advisor-intro
   {
@@ -1109,7 +1249,7 @@ textarea:focus, input:focus{
     transition: transform 0.2s ease-in-out 0s;
 }
   .fit-advisor-options-img {
-    width: 222.667px;
+    width:  265.667px;
     height: 222.667px;
 }
   .fit-advisor-options-text {
@@ -1147,17 +1287,15 @@ textarea:focus, input:focus{
   .fit-advisor-fit-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    -webkit-box-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
     align-items: center;
     text-align: center;
     background: white;
-    border: 1px solid rgb(221, 221, 221);
+    /* border: 1px solid rgb(221, 221, 221); */
     border-radius: 2px;
     margin-bottom: 15px;
     padding: 10px 20px;
-    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;
+    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */
 }
   .fit-advisor-product-picture
   {
@@ -1244,7 +1382,32 @@ textarea:focus, input:focus{
     align-items: center;
 }
   .fit-advisor-product-btn-to-cart {
-    visibility: visible;
+      -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: auto;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: 8px 15px;
+    background-color: #000000;
+    color: var(--color-btn-primary-text);
+    /* font-family: lato !important; */
+    /* font-style: var(--font-style-header); */
+    /* font-weight: var(--font-weight-header); */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: normal;
+    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);
+    /* visibility: visible;
     font-family: Lato;
     font-size: 16px;
     font-weight: 400;
@@ -1259,7 +1422,7 @@ textarea:focus, input:focus{
   	left:41%!important;
     transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;
     user-select: none;
-    opacity: 1;
+    opacity: 1; */
 }
   .fit-advisor-inch
     {
@@ -1293,6 +1456,13 @@ margin-left: 73% !important;
     }
 /*   //responsiveness of modal */
   @media (min-width:320px) and (max-width:480px)  { /* smartphones, iPhone, portrait 480x320 phones */
+    .row {
+    display: flex;
+    flex-wrap: wrap;
+    margin-right: -60px;
+    margin-left: 3px;
+    margin-top: 10px !important;
+}
     .fit-advisor-popup-adjustments
   {
   width:100% !important;
@@ -1340,7 +1510,7 @@ margin-left: 73% !important;
     margin-left: 14.5rem !important;
     margin-top: -65px !important;}
     .custom-offset {
-    margin-left: 8%;
+    margin-left: 8% !important;
 }
     .fit-advisor-agelabel-span {
     margin-left: 0% !important;
@@ -1353,11 +1523,80 @@ margin-left: 73% !important;
     .continue-btn
     
     {
-      left: 25% !important;
+      -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: auto;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: 8px 15px;
+    background-color: #000000;
+    color: var(--color-btn-primary-text);
+    /* font-family: lato !important; */
+    /* font-style: var(--font-style-header); */
+    /* font-weight: var(--font-weight-header); */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: normal;
+    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);
     }
+    
+  .fit-advisor-product-btn-to-cart {
+      -moz-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    display: inline-block;
+    width: auto;
+    text-decoration: none;
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 2px;
+    padding: 8px 15px;
+    background-color: #000000;
+    color: var(--color-btn-primary-text);
+    /* font-family: lato !important; */
+    /* font-style: var(--font-style-header); */
+    /* font-weight: var(--font-weight-header); */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    white-space: normal;
+    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);
+    /* visibility: visible;
+    font-family: Lato;
+    font-size: 16px;
+    font-weight: 400;
+    display: inline-block;
+    padding: 10px 30px;
+    color: white;
+    background: black;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 35px;
+    box-shadow: none;
+    cursor: pointer;
+  	left:41%!important;
+    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;
+    user-select: none;
+    opacity: 1; */
+}
     .fit-advisor-chest-tab {
     display: block;
     gap: 5px;
+    margin-left: -65px !important;
     grid-template-columns: 1fr 1fr 1fr;
     padding: 0px 10px 40px;
 }
@@ -1403,6 +1642,63 @@ margin-left: 73% !important;
 /* /* @media (min-width:1281px) { /* hi-res laptops and desktops */
 /*   } / / */
 
+/* STYLE FOR LOADER */
+@-webkit-keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
 
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.spinner-border {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  vertical-align: text-bottom;
+  border: 0.25em solid currentColor;
+  border-right-color: transparent;
+  border-radius: 50%;
+  -webkit-animation: 0.75s linear infinite spinner-border;
+          animation: 0.75s linear infinite spinner-border;
+          border-width:2px !important;
+}
+
+.spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+  border-width: 0.2em;
+}
+@media (prefers-reduced-motion: reduce) {
+  .spinner-border,
+.spinner-grow {
+    -webkit-animation-duration: 1.5s;
+            animation-duration: 1.5s;
+  }
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.sr-only-focusable:active, .sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
 
 </style>

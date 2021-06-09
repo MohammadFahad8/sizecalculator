@@ -1863,6 +1863,101 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     product: Object
@@ -1873,29 +1968,71 @@ __webpack_require__.r(__webpack_exports__);
         heightfoot: '',
         heightinch: '',
         weight: '',
-        age: ''
+        age: '',
+        chest: 0,
+        stomach: 0,
+        bottom: 0
       },
+      countrycheck: '',
+      checked: false,
       currentTab: 0,
       height_cm: 0,
       weightf: 0,
       weight_lbs: 0,
       measurew: 0,
       firstTab: true,
+      onfirstTab: true,
       lastTab: false,
       measureh: 0,
       message: "Jello",
-      chest: 0,
-      stomach: 0,
-      bottom: 0
+      recommended_size: '',
+      is_loading: false,
+      image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
+      image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png'
     };
   },
   methods: {
-    // getProductDetails:function()
-    // {
-    //     axios.get('https://24bbe8b8d790.ngrok.io/get/products/'+this.product.id).then((res)=>{
-    //         alert('check console');
-    //     })
-    // },
+    getProductDetails: function getProductDetails() {
+      var _this = this;
+
+      this.is_loading = true;
+      axios.post('https://24bbe8b8d790.ngrok.io/api/size-recommend/', this.form).then(function (res) {
+        _this.recommended_size = res.data;
+        _this.is_loading = false;
+      });
+    },
+    chest: function chest(n) {
+      this.form.chest = n;
+      this.nextPrev(1);
+    },
+    stomach: function stomach(n) {
+      this.form.stomach = n;
+      this.nextPrev(1);
+    },
+    bottom: function bottom(n) {
+      this.form.bottom = n;
+      this.nextPrev(1);
+    },
+    countryval: function countryval() {
+      if (this.countrycheck == false) {
+        $('input[name="weight"]').attr('placeholder', 'Lbs');
+        $('input[name="countrycheck"]').attr('value', 0);
+        this.countrycheck == 0;
+        this.weightconvert(this.form.weight, false);
+      } else if (this.countrycheck == true) {
+        $('input[name="weight"]').attr('placeholder', 'Kg');
+        $('input[name="countrycheck"]').attr('value', 1);
+        this.countrycheck == 1;
+        this.weightconvert(this.form.weight, true);
+      }
+    },
+    weightconvert: function weightconvert(w, c) {
+      if (c == true && w != '') {
+        this.form.weight = w / 2.2; //pound to kg
+      } else if (c == false && w != '') {
+        this.form.weight = w * 2.2; //kg to pound
+      }
+    },
     showTab: function showTab(n) {
       //document.getElementById('tabnumber').innerHTML=n;
       // This function will display the specified tab of the form...
@@ -1906,12 +2043,13 @@ __webpack_require__.r(__webpack_exports__);
         document.getElementById("prevBtn").style.display = "none";
         document.getElementById("steps-mark").style.visibility = "hidden";
         this.firstTab = false;
+        this.onfirstTab = false;
         this.lastTab = false;
       } else {
         document.getElementById("steps-mark").style.visibility = "visible";
         document.getElementById("prevBtn").style.display = "inline";
         this.firstTab = true;
-        this.lastTab = false;
+        this.onfirstTab = true, this.lastTab = false;
       }
 
       if (n == 1) {
@@ -1920,31 +2058,12 @@ __webpack_require__.r(__webpack_exports__);
 
       if (n == 4) {
         this.firstTab = false;
-        this.lastTab = true;
+        this.onfirstTab = true, this.lastTab = true;
         document.getElementById("nextBtn").style.display = "inline";
         document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
-
-        if (this.measurew >= 130 && this.measurew <= 150 && this.measureh >= 165.1 && this.measureh <= 175.26) {
-          this.measurements();
-        } else if (this.measurew >= 150 && this.measurew <= 160 && this.measureh >= 165.1 && this.measureh <= 177.8) {
-          this.measurements();
-        } else if (this.measurew >= 160 && this.measurew <= 170 && this.measureh >= 165.1 && this.measureh <= 180.34) {
-          this.measurements();
-        } else if (this.measurew >= 170 && this.measurew <= 180 && this.measureh >= 167.64 && this.measureh <= 172.72) {
-          this.measurements();
-        } else if (this.measurew >= 170 && this.measurew <= 180 && this.measureh >= 175.26 && this.measureh <= 182.88) {
-          this.measurements();
-        } else if (this.measurew >= 180 && this.measurew <= 190 && this.measureh >= 172.72 && this.measureh <= 187.96) {
-          this.measurements();
-        } else if (this.measurew >= 190 && this.measurew <= 200 && this.measureh >= 172.72 && this.measureh <= 175.26) {
-          this.measurements();
-        } else if (this.measurew >= 190 && this.measurew <= 200 && this.measureh >= 177.8 && this.measureh <= 187.96) {
-          this.measurements();
-        } else {
-          document.getElementById("fsize").innerHTML = 'No Match';
-        }
-
+        document.getElementById("steps-mark").style.visibility = "hidden";
         document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
+        this.getProductDetails();
       } else {
         document.getElementById("nextBtn").style.display = "inline";
       }
@@ -1955,21 +2074,6 @@ __webpack_require__.r(__webpack_exports__);
 
 
       this.fixStepIndicator(n);
-    },
-    measurements: function measurements() {
-      if (chest == 1 && stomach == 1 && bottom == 1) {
-        document.getElementById("fsize").innerHTML = 'XS';
-      } else if (chest == 1 && stomach == 1 || chest == 1 && stomach == 2 || chest == 2 && stomach == 1) {
-        document.getElementById("fsize").innerHTML = 'S';
-      } else if (chest == 2 && stomach == 2 && chest == 2 && stomach == 3 && chest == 3 && stomach == 2) {
-        document.getElementById("fsize").innerHTML = 'M';
-      } else if (chest == 3 && stomach == 3) {
-        console.log('l');
-        document.getElementById("fsize").innerHTML = 'L';
-      } else if (chest == 3 && stomach == 3 && bottom == 3) {
-        console.log('xl');
-        document.getElementById("fsize").innerHTML = 'XL';
-      }
     },
     nextPrev: function nextPrev(n) {
       // This function will figure out which tab to display
@@ -2056,15 +2160,26 @@ __webpack_require__.r(__webpack_exports__);
       this.form.heightinch = '';
       this.form.weight = '';
       this.form.age = '';
+      this.form.chest = '';
+      this.form.stomach = '';
+      this.form.bottom = '';
       this.dev_reset();
       this.showTab(0);
       this.nextPrev(-4);
     }
   },
   mounted: function mounted() {
-    // this.getProductDetails();
     this.dev_reset();
-    console.log(this.product.featured_image); // Current tab is set to be the first tab (0)
+    console.log(this.product.featured_image);
+    $('input[name="countrycheck"]').click(function () {
+      var $radio = $(this); // if this was previously checked
+
+      if ($radio.data('waschecked') == true) {
+        $radio.prop('checked', false);
+        $radio.data('waschecked', false);
+      } else $radio.data('waschecked', true); // remove was checked from other radios
+
+    }); // Current tab is set to be the first tab (0)
 
     this.showTab(this.currentTab); // $("#featured_image").attr("src",this.product.featured_image);
 
@@ -2072,36 +2187,6 @@ __webpack_require__.r(__webpack_exports__);
       $('.product-card').css('z-index', '-1'); //$('body').css('overflow','hidden');
 
       $('#popup1').css('overflow', 'scroll');
-    }); //narrower
-
-    $('#chest1').click(function () {
-      this.chest = 1;
-    }); //Average/
-
-    $('#chest2').click(function () {
-      this.chest = 2;
-    }); //Broader
-
-    $('#chest3').click(function () {
-      this.chest = 3;
-    });
-    $('#stomach1').click(function () {
-      this.stomach = 1;
-    });
-    $('#stomach2').click(function () {
-      this.stomach = 2;
-    });
-    $('#stomach3').click(function () {
-      this.stomach = 3;
-    });
-    $('#bottom1').click(function () {
-      this.bottom = 1;
-    });
-    $('#bottom2').click(function () {
-      this.bottom = 2;
-    });
-    $('#bottom3').click(function () {
-      this.bottom = 3;
     }); //size decider happens
     //formula to caluclate height into centimeters
 
@@ -6700,7 +6785,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\r\n\r\n\r\n\r\n/* style for steps form */\ninput::-webkit-outer-spin-button,\r\n\r\n  input::-webkit-inner-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\n}\n* {\r\n  box-sizing: border-box;\n}\n.size-position\r\n{\r\n    margin-left:-80px !important;\n}\nbody {\r\n  background-color: #f1f1f1;\n}\n#regForm {\r\n  background-color: #ffffff;\r\n  margin: 100px auto;\r\n  font-family: Raleway;\r\n  padding: 40px;\r\n  width: 70%;\r\n  min-width: 300px;\n}\nh1 {\r\n  text-align: center;\n}\ninput {\r\n  padding: 10px;\r\n  width: 100%;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  border: 1px solid #aaaaaa;\n}\r\n\r\n/* Mark input boxes that gets an error on validation: */\ninput.invalid {\r\n  background-color: #ffdddd;\n}\r\n\r\n/* Hide all steps by default: */\n.tab {\r\n  display: none;\n}\nbutton {\r\n  background-color: #04AA6D;\r\n  color: #ffffff;\r\n  border: none;\r\n  padding: 10px 20px;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  cursor: pointer;\n}\nbutton:hover {\r\n  opacity: 0.8;\n}\n#prevBtn {\r\n  background-color: #bbbbbb;\n}\r\n\r\n/* Make circles that indicate the steps of the form: */\n.step {\r\n  height: 15px;\r\n  width: 15px;\r\n  margin: 0 2px;\r\n  background-color: #bbbbbb;\r\n  border: none;  \r\n  border-radius: 50%;\r\n  display: inline-block;\r\n  opacity: 0.5;\n}\n.step.active {\r\n  opacity: 1;\n}\r\n\r\n/* Mark the steps that are finished and valid: */\n.step.finish {\r\n  background-color: #04AA6D;\n}\r\n  /*   END STYLE FOR STEPS FORM */\r\n\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\n.overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  transition: opacity 500ms;\r\n  visibility: hidden;\r\n  opacity: 0;\n}\n.overlay:target {\r\n  visibility: visible;\r\n  opacity: 1;\n}\n.popup {\r\n  margin: 70px auto;\r\n  padding: 20px;\r\n  background: #fff;\r\n  border-radius: 5px;\r\n  width: 30%;\r\n  position: relative;\r\n  transition: all 5s ease-in-out;\n}\n.popup h2 {\r\n  margin-top: 0;\r\n  color: #333;\r\n  font-family: Tahoma, Arial, sans-serif;\n}\n.popup .close {\r\n  position: absolute;\r\n  top: 20px;\r\n  right: 30px;\r\n  transition: all 200ms;\r\n  font-size: 30px;\r\n  font-weight: bold;\r\n  text-decoration: none;\r\n  color: #333;\n}\n.popup .close:hover {\r\n  color: #06D85F;\n}\n.popup .content {\r\n  max-height: 30%;\r\n      overflow-x: hidden;\n}\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\n}\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\n}\n.continue-btn {\r\n    visibility: visible;\r\n    \r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n    opacity: 1;\n}\n.fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(101, 101, 101);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\n}\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\n}\n.lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\n}\r\n/* code for form */\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n  font-family: 'Roboto', sans-serif;\r\n  box-sizing: border-box;\n}\nbody::after, body::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n  box-sizing: border-box;\n}\nh1 {\r\n  font-size: 2rem;\r\n  text-align: center;\r\n  margin: 0 0 2em;\n}\n.container {\r\n  position: relative;\r\n  max-width: 40rem;\r\n  margin: 5rem auto;\r\n  background: #fff;\r\n  width: 100%;\r\n  padding: 3rem 5rem 0;\r\n  border-radius: 1px;\n}\n.container::before {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n  transform: scale(0.98);\r\n  transition: transform 0.28s ease-in-out;\r\n  z-index: -1;\n}\n.container:hover::before {\r\n  transform: scale(1);\n}\n.button-container {\r\n  text-align: center;\n}\nfieldset {\r\n  margin: 0 0 3rem;\r\n  padding: 0;\r\n  border: none;\n}\n.form-radio,\r\n.form-group {\r\n  position: relative;\r\n  margin-top: 2.25rem;\r\n  margin-bottom: 2.25rem;\n}\n.form-inline > .form-group,\r\n.form-inline > .btn {\r\n  display: inline-block;\r\n  margin-bottom: 0;\n}\n.form-help {\r\n  margin-top: 0.125rem;\r\n  margin-left: 0.125rem;\r\n  color: #b3b3b3;\r\n  font-size: 0.8rem;\n}\n.checkbox .form-help, .form-radio .form-help, .form-group .form-help {\r\n  position: absolute;\r\n  width: 100%;\n}\n.checkbox .form-help {\r\n  position: relative;\r\n  margin-bottom: 1rem;\n}\n.form-radio .form-help {\r\n  padding-top: 0.25rem;\r\n  margin-top: -1rem;\n}\n.form-group input {\r\n  height: 1.9rem;\n}\n.form-group textarea {\r\n  resize: none;\n}\n.form-group select {\r\n  width: 100%;\r\n  font-size: 1rem;\r\n  height: 1.6rem;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  background: none;\r\n  border: none;\r\n  line-height: 1.6;\r\n  box-shadow: none;\n}\n.form-group .control-label {\r\n  position: absolute;\r\n  top: 0.25rem;\r\n  pointer-events: none;\r\n  padding-left: 0.125rem;\r\n  z-index: 1;\r\n  color: #b3b3b3;\r\n  font-size: 1rem;\r\n  font-weight: normal;\r\n  transition: all 0.28s ease;\n}\n.form-group .bar {\r\n  position: relative;\r\n  border-bottom: 0.0625rem solid #999;\r\n  display: block;\n}\n.form-group .bar::before {\r\n  content: '';\r\n  height: 0.125rem;\r\n  width: 0;\r\n  left: 50%;\r\n  bottom: -0.0625rem;\r\n  position: absolute;\r\n  background: #337ab7;\r\n  transition: left 0.28s ease, width 0.28s ease;\r\n  z-index: 2;\n}\n.form-group input,\r\n.form-group textarea {\r\n  display: block;\r\n  background: none;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  font-size: 1rem;\r\n  border-width: 0;\r\n  border-color: transparent;\r\n  line-height: 1.9;\r\n  width: 100%;\r\n  color: transparent;\r\n  transition: all 0.28s ease;\r\n  box-shadow: none;\n}\n.form-group input[type=\"file\"] {\r\n  line-height: 1;\n}\n.form-group input[type=\"file\"] ~ .bar {\r\n  display: none;\n}\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n  color: #333;\n}\n.form-group select ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group input:valid ~ .control-label,\r\n.form-group input.form-file ~ .control-label,\r\n.form-group input.has-value ~ .control-label,\r\n.form-group textarea:focus ~ .control-label,\r\n.form-group textarea:valid ~ .control-label,\r\n.form-group textarea.form-file ~ .control-label,\r\n.form-group textarea.has-value ~ .control-label {\r\n  font-size: 0.8rem;\r\n  color: gray;\r\n  top: -1rem;\r\n  left: 0;\n}\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n  outline: none;\n}\n.form-group select:focus ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group textarea:focus ~ .control-label {\r\n  color: #337ab7;\n}\n.form-group select:focus ~ .bar::before,\r\n.form-group input:focus ~ .bar::before,\r\n.form-group textarea:focus ~ .bar::before {\r\n  width: 100%;\r\n  left: 0;\n}\n.checkbox label,\r\n.form-radio label {\r\n  position: relative;\r\n  cursor: pointer;\r\n  padding-left: 2rem;\r\n  text-align: left;\r\n  color: #333;\r\n  display: block;\n}\n.checkbox input,\r\n.form-radio input {\r\n  width: auto;\r\n  opacity: 0.00000001;\r\n  position: absolute;\r\n  left: 0;\n}\n.radio {\r\n  margin-bottom: 1rem;\n}\n.radio .helper {\r\n  position: absolute;\r\n  top: -0.25rem;\r\n  left: -0.25rem;\r\n  cursor: pointer;\r\n  display: block;\r\n  font-size: 1rem;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n  color: #999;\n}\n.radio .helper::before, .radio .helper::after {\r\n  content: '';\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  margin: 0.25rem;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  transition: transform 0.28s ease;\r\n  border-radius: 50%;\r\n  border: 0.125rem solid currentColor;\n}\n.radio .helper::after {\r\n  transform: scale(0);\r\n  background-color: #337ab7;\r\n  border-color: #337ab7;\n}\n.radio label:hover .helper {\r\n  color: #337ab7;\n}\n.radio input:checked ~ .helper::after {\r\n  transform: scale(0.5);\n}\n.radio input:checked ~ .helper::before {\r\n  color: #337ab7;\n}\n.checkbox {\r\n  margin-top: 3rem;\r\n  margin-bottom: 1rem;\n}\n.checkbox .helper {\r\n  color: #999;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  z-index: 0;\r\n  border: 0.125rem solid currentColor;\r\n  border-radius: 0.0625rem;\r\n  transition: border-color 0.28s ease;\n}\n.checkbox .helper::before, .checkbox .helper::after {\r\n  position: absolute;\r\n  height: 0;\r\n  width: 0.2rem;\r\n  background-color: #337ab7;\r\n  display: block;\r\n  transform-origin: left top;\r\n  border-radius: 0.25rem;\r\n  content: '';\r\n  transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n  opacity: 0;\n}\n.checkbox .helper::before {\r\n  top: 0.65rem;\r\n  left: 0.38rem;\r\n  transform: rotate(-135deg);\r\n  box-shadow: 0 0 0 0.0625rem #fff;\n}\n.checkbox .helper::after {\r\n  top: 0.3rem;\r\n  left: 0;\r\n  transform: rotate(-45deg);\n}\n.checkbox label:hover .helper {\r\n  color: #337ab7;\n}\n.checkbox input:checked ~ .helper {\r\n  color: #337ab7;\n}\n.checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before {\r\n  opacity: 1;\r\n  transition: height 0.28s ease;\n}\n.checkbox input:checked ~ .helper::after {\r\n  height: 0.5rem;\n}\n.checkbox input:checked ~ .helper::before {\r\n  height: 1.2rem;\r\n  transition-delay: 0.28s;\n}\n.radio + .radio,\r\n.checkbox + .checkbox {\r\n  margin-top: 1rem;\n}\n.has-error .legend.legend, .has-error.form-group .control-label.control-label {\r\n  color: #d9534f;\n}\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper, .has-error.checkbox .form-help,\r\n.has-error.checkbox .helper, .has-error.radio .form-help,\r\n.has-error.radio .helper, .has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n  color: #d9534f;\n}\n.has-error .bar::before {\r\n  background: #d9534f;\r\n  left: 0;\r\n  width: 100%;\n}\n.button {\r\n  position: relative;\r\n  \r\n  border: 1px solid currentColor;\r\n  font-size: 1.1rem;\r\n  color: #000;\r\n  margin: 3rem 0;\r\n  padding: 0.75rem 3rem;\r\n  cursor: pointer;\r\n  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n  overflow: hidden;\r\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n}\n.button span {\r\n  color: #fff;\r\n  position: relative;\r\n  z-index: 1;\n}\n.button::before {\r\n  content: '';\r\n  position: absolute;\r\n  background: #071017;\r\n  border: 50vh solid #1d4567;\r\n  width: 30vh;\r\n  height: 30vh;\r\n  border-radius: 50%;\r\n  display: block;\r\n  top: 50%;\r\n  left: 50%;\r\n  z-index: 0;\r\n  opacity: 1;\r\n  transform: translate(-50%, -50%) scale(0);\n}\n.button:hover {\r\n  color: #337ab7;\r\n  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\n}\n.button:active::before, .button:focus::before {\r\n  transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n  transform: translate(-50%, -50%) scale(1);\r\n  opacity: 0;\n}\n.button:focus {\r\n  outline: none;\n}\n.fit-advisor-hr\r\n{\r\n    margin-top:-15px !important;\n}\r\n\r\n/* input field design */\n.fit-advisor-custom_row {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin-right: -15px;\r\n  margin-left: -15px;\n}\n.fit-advisor-custom_input{\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    -o-border-image: initial;\r\n       border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(221, 221, 221);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\n.custom-offset\r\n  {\r\n    margin-left: 75px !Important;\n}\n.labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: Lato !important;\r\n        font-size: 12px !important;\r\n    line-height: 18px !important;\r\n    font-weight: 400 !important;\n}\n.custom-offset-lg\r\n  {\r\n    margin-left: 44%;\n}\n.adjust-label{\r\n  margin-left:-5%!important;\n}\ninput::-moz-placeholder {\r\n  font-size:12px !important\n}\ninput:-ms-input-placeholder {\r\n  font-size:12px !important\n}\ninput::placeholder {\r\n  font-size:12px !important\n}\ntextarea:focus, input:focus{\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255);\n}\n.fit-advisor-custom_previous_btn{\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n    opacity: 0.5;\n}\n.fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\n}\n.fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\n}\n.fit-advisor-options-img {\r\n    width: 222.667px;\r\n    height: 222.667px;\n}\n.fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\n}\n.product-card\r\n  {\r\n        position: relative;\r\n    z-index: -1;\n}\n.fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    justify-content: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\n}\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\n}\n.fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    padding: 10px 20px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\n}\n.fit-advisor-product-picture\r\n  {\r\n      margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\n}\n.fit-advisor-popup-adjustments\r\n  {\r\n  width:50% !important;\r\n  overflow:none;\n}\n.gIdEkK p {\r\n    margin: unset;\n}\n.learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\n}\n.fit-advisor-header-desc {\r\n    padding: 10px;\r\n    text-align: center;\r\n    color: rgb(101, 101, 101);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\n}\n.gIdEkK p {\r\n    margin: unset;\n}\n.jjnwUS {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\n}\n.fit-advisor-product-size-box {\r\n    padding: 0px;\n}.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\n}\n.fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 120px 1fr;\r\n    justify-self: flex-end;\n}\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\n}\n.selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\n}\n.fit-advisor-selected-size-container {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\n}\n.fit-advisor-product-btn-to-cart {\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n    opacity: 1;\n}\n.fit-advisor-inch\r\n    {\r\nmargin-left: 73% !important;\r\n    margin-top: -27% !important;\n}\n.fit-advisor-agelabel\r\n    {\r\n        margin-top: -26px !important;\n}\n.fit-advisor-agelabel-span\r\n    {\r\n        \r\n       margin-left:-68px !important;\r\n       margin-top:6px !important;\n}\n.fit-advisor-age-input\r\n    {\r\n        margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\n}\n.fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 43% !important;\n}\r\n/*   //responsiveness of modal */\n@media (min-width:320px) and (max-width:480px)  { /* smartphones, iPhone, portrait 480x320 phones */\n.fit-advisor-popup-adjustments\r\n  {\r\n  width:100% !important;\r\n    overflow:none;\n}\n.fit-advisor-custom_input{\r\n    display: block;\r\n    width: 50%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    -o-border-image: initial;\r\n       border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(221, 221, 221);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\n.row-feet-inch {\r\n    display: grid;\r\n    gap: 30px;\r\n    grid-template-columns: 1fr 1fr;\n}\n.fit-advisor-inch\r\n    {\r\n    margin-left: 143px !important;\r\n    margin-top: -64px!important;\n}\n.fit-advisor-agelabel\r\n    {\r\n        margin-top: -83px !important;\r\n    margin-left: 148px;\n}\n.fit-advisor-age-input\r\n    {\r\n    margin-left: 14.5rem !important;\r\n    margin-top: -65px !important;}\n.custom-offset {\r\n    margin-left: 8%;\n}\n.fit-advisor-agelabel-span {\r\n    margin-left: 0% !important;\n}\n.fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 30% !important;\n}\n.continue-btn\r\n    \r\n    {\r\n      left: 25% !important;\n}\n.fit-advisor-chest-tab {\r\n    display: block;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\n}\n.fit-advisor-selected-product-grid {\r\n    /* display: block; */\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    justify-content: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n          margin-left: 50px !important;\r\n    /* display: none; */\n}\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n    display: none;\n}\n.fit-advisor-fit-grid {\r\n    display:block;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border:none;\r\n    margin-bottom: 15px;\r\n    padding: 10px 20px;\r\n      box-shadow:none;\n}\n}\n@media (min-width:481px)  and (max-width:640px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */\n}\n@media (min-width:641px) and (max-width:960px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */\n}\n@media (min-width:961px) and (max-width:1024px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */\n}\n@media (min-width:1025px) and (max-width:1280px) { /* big landscape tablets, laptops, and desktops */\n}\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n/*   } / / */\r\n\r\n\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\n.fit-advisor-chest-tab-item:hover {\r\n    /* display: grid; */\r\n    /* justify-content: center; */\r\n    /* align-items: center; */\r\n    /* text-align: center; */\r\n    /* cursor: pointer; */\r\n    transform: scale(0.95) !important;\r\n    transition: transform 0.2s ease-in-out 0s;\n}\ninput[type=\"checkbox\"]:checked {\r\n    background: rgb(2, 2, 2);\n}\n.img_country\r\n{\r\n     width: 8% !important;\r\n    margin: 0 auto !important;\r\n    margin-left: -105px !important;\n}\n.countrycheck\r\n{\r\n     width:3% !important;\r\n    margin:0 auto !important\n}\n.no-gutters {\r\n  margin-right: 0;\r\n  margin-left: 0;\n}\n.row {\r\n      display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -15px;\r\n    margin-left: 95px;\r\n    margin-top: 10px !important;\n}\n.col-xl,\r\n.col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,\r\n.col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,\r\n.col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,\r\n.col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,\r\n.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {\r\n  position: relative;\r\n  width: 100%;\r\n  padding-right: 15px;\r\n  padding-left: 15px;\n}\r\n/* style for steps form */\ninput::-webkit-outer-spin-button,\r\n\r\n  input::-webkit-inner-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\n}\n* {\r\n  box-sizing: border-box;\n}\n.size-position\r\n{\r\n    margin-left:-80px !important;\n}\nbody {\r\n  background-color: #f1f1f1;\n}\n#regForm {\r\n  background-color: #ffffff;\r\n  margin: 100px auto;\r\n  font-family: Raleway;\r\n  padding: 40px;\r\n  width: 70%;\r\n  min-width: 300px;\n}\nh1 {\r\n  text-align: center;\n}\ninput {\r\n  padding: 10px;\r\n  width: 100%;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  border: 1px solid #aaaaaa;\n}\r\n\r\n/* Mark input boxes that gets an error on validation: */\ninput.invalid {\r\n  background-color: #ffdddd;\n}\r\n\r\n/* Hide all steps by default: */\n.tab {\r\n  display: none;\n}\nbutton {\r\n  background-color: #04AA6D;\r\n  color: #ffffff;\r\n  border: none;\r\n  padding: 10px 20px;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  cursor: pointer;\n}\nbutton:hover {\r\n  opacity: 0.8;\n}\n#prevBtn {\r\n  background-color: #bbbbbb;\n}\r\n\r\n/* Make circles that indicate the steps of the form: */\n.step {\r\n  height: 15px;\r\n  width: 15px;\r\n  margin: 0 2px;\r\n  background-color: #bbbbbb;\r\n  border: none;  \r\n  border-radius: 50%;\r\n  display: inline-block;\r\n  opacity: 0.5;\n}\n.step.active {\r\n  opacity: 1;\n}\r\n\r\n/* Mark the steps that are finished and valid: */\n.step.finish {\r\n  background-color: #04AA6D;\n}\r\n  /*   END STYLE FOR STEPS FORM */\r\n\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\n.overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  transition: opacity 500ms;\r\n  visibility: hidden;\r\n  opacity: 0;\n}\n.overlay:target {\r\n  visibility: visible;\r\n  opacity: 1;\n}\n.popup {\r\n  margin: 70px auto;\r\n  padding: 20px;\r\n  background: #fff;\r\n  border-radius: 5px;\r\n  width: 30%;\r\n  position: relative;\r\n  transition: all 5s ease-in-out;\n}\n.popup h2 {\r\n  margin-top: 0;\r\n  color: #333;\r\n  font-family: Tahoma, Arial, sans-serif;\n}\n.popup .close {\r\n  position: absolute;\r\n  top: 20px;\r\n  right: 30px;\r\n  transition: all 200ms;\r\n  font-size: 30px;\r\n  font-weight: bold;\r\n  text-decoration: none;\r\n  color: #333;\n}\n.popup .close:hover {\r\n  color: #06D85F;\n}\n.popup .content {\r\n  max-height: 30%;\r\n      overflow-x: hidden;\n}\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\n}\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\n}\n.continue-btn {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    \r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\n}\n.fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(101, 101, 101);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\n}\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\n}\n.lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\n}\r\n/* code for form */\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n  font-family: 'Roboto', sans-serif;\r\n  box-sizing: border-box;\n}\nbody::after, body::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n  box-sizing: border-box;\n}\nh1 {\r\n  font-size: 2rem;\r\n  text-align: center;\r\n  margin: 0 0 2em;\n}\n.container {\r\n  position: relative;\r\n  max-width: 40rem;\r\n  margin: 5rem auto;\r\n  background: #fff;\r\n  width: 100%;\r\n  padding: 3rem 5rem 0;\r\n  border-radius: 1px;\n}\n.container::before {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n  transform: scale(0.98);\r\n  transition: transform 0.28s ease-in-out;\r\n  z-index: -1;\n}\n.container:hover::before {\r\n  transform: scale(1);\n}\n.button-container {\r\n  text-align: center;\n}\nfieldset {\r\n  margin: 0 0 3rem;\r\n  padding: 0;\r\n  border: none;\n}\n.form-radio,\r\n.form-group {\r\n  position: relative;\r\n  margin-top: 2.25rem;\r\n  margin-bottom: 2.25rem;\n}\n.form-inline > .form-group,\r\n.form-inline > .btn {\r\n  display: inline-block;\r\n  margin-bottom: 0;\n}\n.form-help {\r\n  margin-top: 0.125rem;\r\n  margin-left: 0.125rem;\r\n  color: #b3b3b3;\r\n  font-size: 0.8rem;\n}\n.checkbox .form-help, .form-radio .form-help, .form-group .form-help {\r\n  position: absolute;\r\n  width: 100%;\n}\n.checkbox .form-help {\r\n  position: relative;\r\n  margin-bottom: 1rem;\n}\n.form-radio .form-help {\r\n  padding-top: 0.25rem;\r\n  margin-top: -1rem;\n}\n.form-group input {\r\n  height: 1.9rem;\n}\n.form-group textarea {\r\n  resize: none;\n}\n.form-group select {\r\n  width: 100%;\r\n  font-size: 1rem;\r\n  height: 1.6rem;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  background: none;\r\n  border: none;\r\n  line-height: 1.6;\r\n  box-shadow: none;\n}\n.form-group .control-label {\r\n  position: absolute;\r\n  top: 0.25rem;\r\n  pointer-events: none;\r\n  padding-left: 0.125rem;\r\n  z-index: 1;\r\n  color: #b3b3b3;\r\n  font-size: 1rem;\r\n  font-weight: normal;\r\n  transition: all 0.28s ease;\n}\n.form-group .bar {\r\n  position: relative;\r\n  border-bottom: 0.0625rem solid #999;\r\n  display: block;\n}\n.form-group .bar::before {\r\n  content: '';\r\n  height: 0.125rem;\r\n  width: 0;\r\n  left: 50%;\r\n  bottom: -0.0625rem;\r\n  position: absolute;\r\n  background: #337ab7;\r\n  transition: left 0.28s ease, width 0.28s ease;\r\n  z-index: 2;\n}\n.form-group input,\r\n.form-group textarea {\r\n  display: block;\r\n  background: none;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  font-size: 1rem;\r\n  border-width: 0;\r\n  border-color: transparent;\r\n  line-height: 1.9;\r\n  width: 100%;\r\n  color: transparent;\r\n  transition: all 0.28s ease;\r\n  box-shadow: none;\n}\n.form-group input[type=\"file\"] {\r\n  line-height: 1;\n}\n.form-group input[type=\"file\"] ~ .bar {\r\n  display: none;\n}\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n  color: #333;\n}\n.form-group select ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group input:valid ~ .control-label,\r\n.form-group input.form-file ~ .control-label,\r\n.form-group input.has-value ~ .control-label,\r\n.form-group textarea:focus ~ .control-label,\r\n.form-group textarea:valid ~ .control-label,\r\n.form-group textarea.form-file ~ .control-label,\r\n.form-group textarea.has-value ~ .control-label {\r\n  font-size: 0.8rem;\r\n  color: gray;\r\n  top: -1rem;\r\n  left: 0;\n}\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n  outline: none;\n}\n.form-group select:focus ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group textarea:focus ~ .control-label {\r\n  color: #337ab7;\n}\n.form-group select:focus ~ .bar::before,\r\n.form-group input:focus ~ .bar::before,\r\n.form-group textarea:focus ~ .bar::before {\r\n  width: 100%;\r\n  left: 0;\n}\n.checkbox label,\r\n.form-radio label {\r\n  position: relative;\r\n  cursor: pointer;\r\n  padding-left: 2rem;\r\n  text-align: left;\r\n  color: #333;\r\n  display: block;\n}\n.checkbox input,\r\n.form-radio input {\r\n  width: auto;\r\n  opacity: 0.00000001;\r\n  position: absolute;\r\n  left: 0;\n}\n.radio {\r\n  margin-bottom: 1rem;\n}\n.radio .helper {\r\n  position: absolute;\r\n  top: -0.25rem;\r\n  left: -0.25rem;\r\n  cursor: pointer;\r\n  display: block;\r\n  font-size: 1rem;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n  color: #999;\n}\n.radio .helper::before, .radio .helper::after {\r\n  content: '';\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  margin: 0.25rem;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  transition: transform 0.28s ease;\r\n  border-radius: 50%;\r\n  border: 0.125rem solid currentColor;\n}\n.radio .helper::after {\r\n  transform: scale(0);\r\n  background-color: #337ab7;\r\n  border-color: #337ab7;\n}\n.radio label:hover .helper {\r\n  color: #337ab7;\n}\n.radio input:checked ~ .helper::after {\r\n  transform: scale(0.5);\n}\n.radio input:checked ~ .helper::before {\r\n  color: #337ab7;\n}\n.checkbox {\r\n  margin-top: 3rem;\r\n  margin-bottom: 1rem;\n}\n.checkbox .helper {\r\n  color: #999;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  z-index: 0;\r\n  border: 0.125rem solid currentColor;\r\n  border-radius: 0.0625rem;\r\n  transition: border-color 0.28s ease;\n}\n.checkbox .helper::before, .checkbox .helper::after {\r\n  position: absolute;\r\n  height: 0;\r\n  width: 0.2rem;\r\n  background-color: #337ab7;\r\n  display: block;\r\n  transform-origin: left top;\r\n  border-radius: 0.25rem;\r\n  content: '';\r\n  transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n  opacity: 0;\n}\n.checkbox .helper::before {\r\n  top: 0.65rem;\r\n  left: 0.38rem;\r\n  transform: rotate(-135deg);\r\n  box-shadow: 0 0 0 0.0625rem #fff;\n}\n.checkbox .helper::after {\r\n  top: 0.3rem;\r\n  left: 0;\r\n  transform: rotate(-45deg);\n}\n.checkbox label:hover .helper {\r\n  color: #337ab7;\n}\n.checkbox input:checked ~ .helper {\r\n  color: #337ab7;\n}\n.checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before {\r\n  opacity: 1;\r\n  transition: height 0.28s ease;\n}\n.checkbox input:checked ~ .helper::after {\r\n  height: 0.5rem;\n}\n.checkbox input:checked ~ .helper::before {\r\n  height: 1.2rem;\r\n  transition-delay: 0.28s;\n}\n.radio + .radio,\r\n.checkbox + .checkbox {\r\n  margin-top: 1rem;\n}\n.has-error .legend.legend, .has-error.form-group .control-label.control-label {\r\n  color: #d9534f;\n}\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper, .has-error.checkbox .form-help,\r\n.has-error.checkbox .helper, .has-error.radio .form-help,\r\n.has-error.radio .helper, .has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n  color: #d9534f;\n}\n.has-error .bar::before {\r\n  background: #d9534f;\r\n  left: 0;\r\n  width: 100%;\n}\n.button {\r\n  position: relative;\r\n  \r\n  border: 1px solid currentColor;\r\n  font-size: 1.1rem;\r\n  color: #000;\r\n  margin: 3rem 0;\r\n  padding: 0.75rem 3rem;\r\n  cursor: pointer;\r\n  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n  overflow: hidden;\r\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n}\n.button span {\r\n  color: #fff;\r\n  position: relative;\r\n  z-index: 1;\n}\n.button::before {\r\n  content: '';\r\n  position: absolute;\r\n  background: #071017;\r\n  border: 50vh solid #1d4567;\r\n  width: 30vh;\r\n  height: 30vh;\r\n  border-radius: 50%;\r\n  display: block;\r\n  top: 50%;\r\n  left: 50%;\r\n  z-index: 0;\r\n  opacity: 1;\r\n  transform: translate(-50%, -50%) scale(0);\n}\n.button:hover {\r\n  color: #337ab7;\r\n  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\n}\n.button:active::before, .button:focus::before {\r\n  transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n  transform: translate(-50%, -50%) scale(1);\r\n  opacity: 0;\n}\n.button:focus {\r\n  outline: none;\n}\n.fit-advisor-hr\r\n{\r\n    margin-top:-15px !important;\n}\r\n\r\n/* input field design */\n.fit-advisor-custom_row {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin-right: -15px;\r\n  margin-left: -15px;\n}\n.fit-advisor-custom_input{\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    -o-border-image: initial;\r\n       border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(221, 221, 221);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\n.custom-offset\r\n  {\r\n    margin-left: 75px !Important;\n}\n.labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: Lato !important;\r\n        font-size: 12px !important;\r\n    line-height: 18px !important;\r\n    font-weight: 400 !important;\n}\n.custom-offset-lg\r\n  {\r\n    margin-left: 44%;\n}\n.adjust-label{\r\n  margin-left:-5%!important;\n}\ninput::-moz-placeholder {\r\n  font-size:12px !important\n}\ninput:-ms-input-placeholder {\r\n  font-size:12px !important\n}\ninput::placeholder {\r\n  font-size:12px !important\n}\ntextarea:focus, input:focus{\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255);\n}\n.fit-advisor-custom_previous_btn{\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n    opacity: 0.5;\n}\n.fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\n}\n.fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\n}\n.fit-advisor-options-img {\r\n    width:  265.667px;\r\n    height: 222.667px;\n}\n.fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\n}\n.product-card\r\n  {\r\n        position: relative;\r\n    z-index: -1;\n}\n.fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    justify-content: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\n}\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\n}\n.fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\n}\n.fit-advisor-product-picture\r\n  {\r\n      margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\n}\n.fit-advisor-popup-adjustments\r\n  {\r\n  width:50% !important;\r\n  overflow:none;\n}\n.gIdEkK p {\r\n    margin: unset;\n}\n.learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\n}\n.fit-advisor-header-desc {\r\n    padding: 10px;\r\n    text-align: center;\r\n    color: rgb(101, 101, 101);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\n}\n.gIdEkK p {\r\n    margin: unset;\n}\n.jjnwUS {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\n}\n.fit-advisor-product-size-box {\r\n    padding: 0px;\n}.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\n}\n.fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 120px 1fr;\r\n    justify-self: flex-end;\n}\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\n}\n.selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\n}\n.fit-advisor-selected-size-container {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\n}\n.fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\n}\n.fit-advisor-inch\r\n    {\r\nmargin-left: 73% !important;\r\n    margin-top: -27% !important;\n}\n.fit-advisor-agelabel\r\n    {\r\n        margin-top: -26px !important;\n}\n.fit-advisor-agelabel-span\r\n    {\r\n        \r\n       margin-left:-68px !important;\r\n       margin-top:6px !important;\n}\n.fit-advisor-age-input\r\n    {\r\n        margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\n}\n.fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 43% !important;\n}\r\n/*   //responsiveness of modal */\n@media (min-width:320px) and (max-width:480px)  { /* smartphones, iPhone, portrait 480x320 phones */\n.row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -60px;\r\n    margin-left: 3px;\r\n    margin-top: 10px !important;\n}\n.fit-advisor-popup-adjustments\r\n  {\r\n  width:100% !important;\r\n    overflow:none;\n}\n.fit-advisor-custom_input{\r\n    display: block;\r\n    width: 50%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    -o-border-image: initial;\r\n       border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(221, 221, 221);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\n.row-feet-inch {\r\n    display: grid;\r\n    gap: 30px;\r\n    grid-template-columns: 1fr 1fr;\n}\n.fit-advisor-inch\r\n    {\r\n    margin-left: 143px !important;\r\n    margin-top: -64px!important;\n}\n.fit-advisor-agelabel\r\n    {\r\n        margin-top: -83px !important;\r\n    margin-left: 148px;\n}\n.fit-advisor-age-input\r\n    {\r\n    margin-left: 14.5rem !important;\r\n    margin-top: -65px !important;}\n.custom-offset {\r\n    margin-left: 8% !important;\n}\n.fit-advisor-agelabel-span {\r\n    margin-left: 0% !important;\n}\n.fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 30% !important;\n}\n.continue-btn\r\n    \r\n    {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\n}\n.fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\n}\n.fit-advisor-chest-tab {\r\n    display: block;\r\n    gap: 5px;\r\n    margin-left: -65px !important;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\n}\n.fit-advisor-selected-product-grid {\r\n    /* display: block; */\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    justify-content: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n          margin-left: 50px !important;\r\n    /* display: none; */\n}\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n    display: none;\n}\n.fit-advisor-fit-grid {\r\n    display:block;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border:none;\r\n    margin-bottom: 15px;\r\n    padding: 10px 20px;\r\n      box-shadow:none;\n}\n}\n@media (min-width:481px)  and (max-width:640px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */\n}\n@media (min-width:641px) and (max-width:960px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */\n}\n@media (min-width:961px) and (max-width:1024px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */\n}\n@media (min-width:1025px) and (max-width:1280px) { /* big landscape tablets, laptops, and desktops */\n}\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n/*   } / / */\r\n\r\n/* STYLE FOR LOADER */\n@-webkit-keyframes spinner-border {\nto {\r\n    transform: rotate(360deg);\n}\n}\n@keyframes spinner-border {\nto {\r\n    transform: rotate(360deg);\n}\n}\n.spinner-border {\r\n  display: inline-block;\r\n  width: 2rem;\r\n  height: 2rem;\r\n  vertical-align: text-bottom;\r\n  border: 0.25em solid currentColor;\r\n  border-right-color: transparent;\r\n  border-radius: 50%;\r\n  -webkit-animation: 0.75s linear infinite spinner-border;\r\n          animation: 0.75s linear infinite spinner-border;\r\n          border-width:2px !important;\n}\n.spinner-border-sm {\r\n  width: 1rem;\r\n  height: 1rem;\r\n  border-width: 0.2em;\n}\n@media (prefers-reduced-motion: reduce) {\n.spinner-border,\r\n.spinner-grow {\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\n}\n}\n.sr-only {\r\n  position: absolute;\r\n  width: 1px;\r\n  height: 1px;\r\n  padding: 0;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  clip: rect(0, 0, 0, 0);\r\n  white-space: nowrap;\r\n  border: 0;\n}\n.sr-only-focusable:active, .sr-only-focusable:focus {\r\n  position: static;\r\n  width: auto;\r\n  height: auto;\r\n  overflow: visible;\r\n  clip: auto;\r\n  white-space: normal;\n}\r\n\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -38009,13 +38094,14 @@ var render = function() {
         ),
         _c("a", { staticClass: "close", attrs: { href: "#" } }, [_vm._v("×")]),
         _c("hr", { staticClass: "fit-advisor-hr" }),
+        _vm._v(" "),
         _c(
           "div",
           {
             staticClass: "content",
             staticStyle: {
               "margin-top": "-155px !important",
-              "margin-bottom": "-100px !important"
+              "margin-bottom": "-120px !important"
             }
           },
           [
@@ -38089,6 +38175,7 @@ var render = function() {
                     })
                   ])
                 ]),
+                _vm._v(" "),
                 _c(
                   "label",
                   {
@@ -38113,7 +38200,7 @@ var render = function() {
                       attrs: {
                         type: "number",
                         id: "weight",
-                        placeholder: "Weight",
+                        placeholder: "Lbs",
                         name: "weight"
                       },
                       domProps: { value: _vm.form.weight },
@@ -38160,13 +38247,266 @@ var render = function() {
                   ])
                 ])
               ]),
+              _vm._v(" "),
+              !_vm.onfirstTab
+                ? _c("div", { staticClass: "row" }, [
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.countrycheck,
+                          expression: "countrycheck"
+                        }
+                      ],
+                      staticClass: "countrycheck no-gutters",
+                      attrs: { type: "checkbox", name: "countrycheck" },
+                      domProps: {
+                        checked: Array.isArray(_vm.countrycheck)
+                          ? _vm._i(_vm.countrycheck, null) > -1
+                          : _vm.countrycheck
+                      },
+                      on: {
+                        change: [
+                          function($event) {
+                            var $$a = _vm.countrycheck,
+                              $$el = $event.target,
+                              $$c = $$el.checked ? true : false
+                            if (Array.isArray($$a)) {
+                              var $$v = null,
+                                $$i = _vm._i($$a, $$v)
+                              if ($$el.checked) {
+                                $$i < 0 &&
+                                  (_vm.countrycheck = $$a.concat([$$v]))
+                              } else {
+                                $$i > -1 &&
+                                  (_vm.countrycheck = $$a
+                                    .slice(0, $$i)
+                                    .concat($$a.slice($$i + 1)))
+                              }
+                            } else {
+                              _vm.countrycheck = $$c
+                            }
+                          },
+                          function($event) {
+                            return _vm.countryval()
+                          }
+                        ]
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "svg",
+                      {
+                        staticClass: "img_country",
+                        staticStyle: { "enable-background": "new 0 0 512 512" },
+                        attrs: {
+                          version: "1.1",
+                          id: "Capa_1",
+                          xmlns: "http://www.w3.org/2000/svg",
+                          "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                          x: "0px",
+                          y: "0px",
+                          viewBox: "0 0 512 512",
+                          "xml:space": "preserve"
+                        }
+                      },
+                      [
+                        _c("rect", {
+                          staticStyle: { fill: "#F0F0F0" },
+                          attrs: {
+                            y: "85.331",
+                            width: "512",
+                            height: "341.337"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("g", [
+                          _c("rect", {
+                            staticStyle: { fill: "#D80027" },
+                            attrs: {
+                              y: "127.994",
+                              width: "512",
+                              height: "42.663"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("rect", {
+                            staticStyle: { fill: "#D80027" },
+                            attrs: {
+                              y: "213.331",
+                              width: "512",
+                              height: "42.663"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("rect", {
+                            staticStyle: { fill: "#D80027" },
+                            attrs: {
+                              y: "298.657",
+                              width: "512",
+                              height: "42.663"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("rect", {
+                            staticStyle: { fill: "#D80027" },
+                            attrs: {
+                              y: "383.994",
+                              width: "512",
+                              height: "42.663"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("rect", {
+                          staticStyle: { fill: "#2E52B2" },
+                          attrs: {
+                            y: "85.331",
+                            width: "256",
+                            height: "183.797"
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c("g", [
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \n\t\t99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \n\t\t99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \n\t\t43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \n\t\t54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \n\t\t99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \n\t\t54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \n\t\t156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \n\t\t145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \n\t\t201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \n\t\t212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \n\t\t156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
+                            }
+                          }),
+                          _vm._v(" "),
+                          _c("polygon", {
+                            staticStyle: { fill: "#F0F0F0" },
+                            attrs: {
+                              points:
+                                "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \n\t\t212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g"),
+                        _vm._v(" "),
+                        _c("g")
+                      ]
+                    )
+                  ])
+                : _vm._e(),
+              _vm._v(" "),
               _c(
                 "button",
                 {
                   staticClass: "continue-btn",
                   staticStyle: {
                     position: "absolute",
-                    right: "45%",
+                    right: "32%",
                     bottom: "50px"
                   },
                   attrs: { type: "button", id: "nextBtn" },
@@ -38176,7 +38516,7 @@ var render = function() {
                     }
                   }
                 },
-                [_vm._v("Continue")]
+                [_vm._v("Get Started")]
               ),
               _c("div", { staticClass: "tab" }, [
                 _c("div", [
@@ -38203,7 +38543,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.nextPrev(1)
+                                    return _vm.chest(1)
                                   }
                                 }
                               }),
@@ -38235,7 +38575,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.nextPrev(1)
+                                    return _vm.chest(1)
                                   }
                                 }
                               }),
@@ -38267,7 +38607,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.nextPrev(1)
+                                    return _vm.chest(1)
                                   }
                                 }
                               }),
@@ -38309,7 +38649,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.nextPrev(1)
+                                    return _vm.stomach(2)
                                   }
                                 }
                               }),
@@ -38341,7 +38681,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.nextPrev(1)
+                                    return _vm.stomach(3)
                                   }
                                 }
                               }),
@@ -38373,7 +38713,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.nextPrev(1)
+                                    return _vm.stomach(1)
                                   }
                                 }
                               }),
@@ -38416,7 +38756,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.nextPrev(1)
+                                    return _vm.bottom(1)
                                   }
                                 }
                               }),
@@ -38448,7 +38788,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.nextPrev(1)
+                                    return _vm.bottom(2)
                                   }
                                 }
                               }),
@@ -38480,7 +38820,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.nextPrev(1)
+                                    return _vm.bottom(3)
                                   }
                                 }
                               }),
@@ -38563,6 +38903,7 @@ var render = function() {
                                 )
                               ])
                             ]),
+                            _vm._v(" "),
                             _c(
                               "div",
                               {
@@ -38614,7 +38955,44 @@ var render = function() {
                                     )
                                   ]
                                 ),
-                                _vm._m(5),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: " fit-advisor-selected-size",
+                                    staticStyle: { opacity: "1" },
+                                    attrs: {
+                                      id: "fit-advisor-sizes-slider",
+                                      "font-size": "40"
+                                    }
+                                  },
+                                  [
+                                    _c("span", { attrs: { id: "fsize" } }, [
+                                      _vm.is_loading
+                                        ? _c(
+                                            "div",
+                                            {
+                                              staticClass: "spinner-border",
+                                              staticStyle: {
+                                                width: "3rem",
+                                                height: "3rem"
+                                              },
+                                              attrs: { role: "status" }
+                                            },
+                                            [
+                                              _c(
+                                                "span",
+                                                { staticClass: "sr-only" },
+                                                [_vm._v("Loading...")]
+                                              )
+                                            ]
+                                          )
+                                        : _vm._e(),
+                                      _vm._v(_vm._s(_vm.recommended_size))
+                                    ])
+                                  ]
+                                ),
+                                _vm._v(" "),
                                 _c("div", { staticClass: " dfOagu" }, [
                                   _c(
                                     "span",
@@ -38656,7 +39034,7 @@ var render = function() {
                           ])
                         ]
                       ),
-                      _vm._m(6)
+                      _vm._m(5)
                     ])
                   ]
                 )
@@ -38689,7 +39067,7 @@ var render = function() {
                 )
               ]),
               _c("p"),
-              _vm._m(7)
+              _vm._m(6)
             ])
           ]
         )
@@ -38779,20 +39157,6 @@ var staticRenderFns = [
           _vm._v("Age")
         ])
       ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass: " fit-advisor-selected-size",
-        staticStyle: { opacity: "1" },
-        attrs: { id: "fit-advisor-sizes-slider", "font-size": "40" }
-      },
-      [_c("span", { attrs: { id: "fsize" } }, [_vm._v("M")])]
     )
   },
   function() {

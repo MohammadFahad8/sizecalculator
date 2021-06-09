@@ -203,13 +203,6 @@ class ProductsController extends Controller
 
 
   }
-  public function getProductDetails($id)
-  {
-    
-    $shop = Auth::user();
-    $products = $shop->api()->rest('GET','/admin/api/2021-01/products/'.$id.'.json')['body']['container'];
-    return $products;
-  }
   
  
   
