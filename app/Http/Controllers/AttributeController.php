@@ -147,13 +147,15 @@ class AttributeController extends Controller
       
       $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
         
-    $size='';
+    
    
    
   if(($data['weight'] >= 103 && $data['weight']<=121) && ($height_cm  >=  134 && $height_cm <= 150)  )
   {
      //xxs
-     return $size='XXS';
+   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+     
+
 
   }
 
@@ -166,76 +168,83 @@ class AttributeController extends Controller
   {
 
    //s
-   return $size='S';
+   return $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+   
 
   }
 
   else if(($data['weight'] > 155 && $data['weight']<=175) && ($height_cm  >=  173 && $height_cm <= 185 ))
   {
    //M
-   return $size='M';
+   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
 
   }
   else  if(($data['weight'] > 165 && $data['weight']<=198) && ($height_cm  >=  178 && $height_cm <= 190))
   {
 
    //ML
-   return $size='ML';
+   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
 
   }
   else if(($data['weight'] > 187 && $data['weight']<=214) && ($height_cm  >=  185 && $height_cm <= 195 ))
   {
 
    //L
-   return $size='L';
+   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
 
   }
   
   else if(($data['weight'] > 207 && $data['weight']<=242) && ($height_cm  >=  190 && $height_cm <= 205 ))
   {
    //XL
-   return $size='XL';
+   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
   }
   else  if(($data['weight'] > 242) && ($height_cm  >  205 ))
   {
    //XXL
-   return $size='XXL';
+   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
   }
   else {
-    return $size='One peculiar person you are';
+    return $size='No Recommendations';
     
   }
   }
-  public function measurements (){
-//   {
+  public function measurements ($c,$s,$b){
+$sum = $c + $s +$b;
+$size='';
+      switch($sum)
+      {
+
+        case 3:
+           return $size='S';
+            break;
+        case 4:
+           return $size='M';
+            break;
+        case 5:
+            return $size='L';
+            break;
+        case 6:
+            return   $size='L';
+            break;
+        case 7:
+            return   $size='L';
+            break;
+        case 8:
+            return  $size='Xl';
+            break; 
+        case 9:
+            return $size='XL';
+                    break;
+        default:
+        return  $size = 'Not in wardrobe';
+            
+      }
+
       
-// if(this.form.chest == 1 && this.form.stomach == 1 && bottom == 1)
-// {
-// document.getElementById("fsize").innerHTML = 'XS';
-// }
-// else if((this.form.chest == 1 && this.form.stomach == 1) || (this.form.chest == 1 && this.form.stomach == 2) || (this.form.chest == 2 && this.form.stomach == 1))
-// {
-
-// document.getElementById("fsize").innerHTML = 'S';
-// }
-// else if ((this.form.chest == 2 && this.form.stomach == 2) && (this.form.chest == 2 && this.form.stomach == 3) && (this.form.chest == 3 && this.form.stomach == 2))
-// {
-// document.getElementById("fsize").innerHTML = 'M';
-
-// }
-// else if((this.form.chest == 3 && this.form.stomach == 3) )
-// {
-// console.log('l');
-// document.getElementById("fsize").innerHTML = 'L';
-
-// }
-// else if((this.form.chest == 3 && this.form.stomach == 3 && bottom == 3))
-// {
-// console.log('xl');
-// document.getElementById("fsize").innerHTML = 'XL';
 
 
-// }
+
   }
     
 
