@@ -109,13 +109,27 @@
                         <img id="stomach3" v-on:click="stomach(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div> <div class="tab"><div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
                             <img id="bottom1" v-on:click="bottom(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
                                 <img id="bottom2"  v-on:click="bottom(2)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
-                                    <img id="bottom3"  v-on:click="bottom(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div><div class="tab"><div class=" fit-advisor-selected-product-grid"><div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div><div><div class=" fit-advisor-product-size-box"><div class=" fit-advisor-fit-grid"><div class=" krijnu"><p class=" eVQudH">Size</p><div class=" coSBSK"><p class=" dZzOUn" style="opacity: 1;">best fit<svg viewBox="0 0 16 16" height="14" width="14" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class=""><path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-3.97-3.03a.75.75 0 00-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 00-1.06 1.06L6.97 11.03a.75.75 0 001.079-.02l3.992-4.99a.75.75 0 00-.01-1.05z"></path></svg></p></div></div>
-                                    <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"><div class=" selected-product-arrow-left"><span size="10" class=" jjnwUS  selected-product-arrow-left-pointer"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>
+                                    <img id="bottom3"  v-on:click="bottom(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div><div class="tab"><div class=" fit-advisor-selected-product-grid">
+                                        <!-- <div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div> -->
+                                    <div><div class=" fit-advisor-product-size-box"><div class=" fit-advisor-fit-grid">
+                                  
+                                    
+                                        <!-- <div class=" krijnu">
+                                            <p class=" eVQudH">Size</p>
+                                            <div class=" coSBSK">
+                                                <p class=" dZzOUn" style="opacity: 1;">best fit
+                                                    <svg viewBox="0 0 16 16" height="14" width="14" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="">
+                                                    <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-3.97-3.03a.75.75 0 00-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 00-1.06 1.06L6.97 11.03a.75.75 0 001.079-.02l3.992-4.99a.75.75 0 00-.01-1.05z"></path>
+                                                    </svg>
+                                                    </p>
+                                                    </div>
+                                                    </div> -->
+                                    <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"><div class=" selected-product-arrow-left"><span size="10" class=" jjnwUS  selected-product-arrow-left-pointer"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>  
                                     <div id="fit-advisor-sizes-slider" font-size="40"  class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize"> 
 <div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
   <span class="sr-only">Loading...</span>
-</div>{{recommended_size}}</span></div>
-<div class=" dfOagu"><span size="10" class=" jjnwUS  hjNiUI"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Our recommended size is based on how the designer intended this product to fit your body. <a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
+</div><h4 class="result-size">{{recommended_size}}</h4></span></div>
+<div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Relaxed</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
       
       
       </body>
@@ -237,7 +251,7 @@
                 {
                     $('#intro1').css('display', 'block');
                     $('.switch').removeClass('introfirst');
-                    $('.switch').addClass('fint-fit-header');
+                    $('.switch').addClass('find-fit-header');
                     
              $('#intro2').css('display', 'none');
                $('#intro3').css('display', 'none');
@@ -321,9 +335,9 @@
       this.lastTab = true;
      
     
-    document.getElementById("nextBtn").style.display = "inline";
+    document.getElementById("nextBtn").style.display = "none";
     document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
-    document.getElementById("steps-mark").style.visibility = "hidden";
+    document.getElementById("steps-mark").style.visibility = "inline";
     
     
     
@@ -508,11 +522,27 @@ $('.bvHnuU').on('click',function(){
     }
 </script>
 <style>
+.fit-advisor-header-desc-mt
+{
+    
+    margin-top: 40px !important;
+}
+. dfOagu
+{
+    margin-left:50px ;
+}
+.result-size
+{
+    width:100%;
+    font-family:karla;
+    font-weight:900;
+    font-size:133px;
+}
 .introfirst
 {
     font-family: 'Montserrat';
     font-size: 19px;
-    font-weight: 400;
+    font-weight: 600;
     text-align: center !important;
     margin: 0 auto;
     display: block;
@@ -547,7 +577,7 @@ $('.bvHnuU').on('click',function(){
 {
        font-family: 'Montserrat';
     font-size: 19px;
-    font-weight: 400;
+    font-weight: 600;
     text-align: center !important;
     margin: 0 auto;
     display: block;
@@ -1403,6 +1433,7 @@ textarea:focus, input:focus{
     -webkit-box-align: center;
     align-items: center;
     padding: 0px 50px;
+    margin-left:35px !important;
 }
   .fit-advisor-selected-product-image {
     padding: 0px;
@@ -1418,6 +1449,7 @@ textarea:focus, input:focus{
     /* border: 1px solid rgb(221, 221, 221); */
     border-radius: 2px;
     margin-bottom: 15px;
+        margin-left: -30px;
     padding: 10px 20px;
     /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */
 }
@@ -1444,14 +1476,15 @@ textarea:focus, input:focus{
     color: rgb(0, 0, 0) !important;
 }
   .fit-advisor-header-desc {
-    padding: 10px;
+   padding: 10px;
     text-align: center;
-    color: rgb(101, 101, 101);
+    color: rgb(0 0 0);
     font-style: normal !important;
     font-weight: normal !important;
     font-size: 14px !important;
     line-height: 20px !important;
     letter-spacing: 0.04em !important;
+    font-family:karla !important;
 }
   .gIdEkK p {
     margin: unset;
@@ -1472,6 +1505,7 @@ textarea:focus, input:focus{
     width: 22px;
     height: 22px;
     transition: opacity 0.2s ease-in-out 0s;
+    margin-left: 50px;
 }
 .fit-advisor-product-size-box {
     padding: 0px;
@@ -1482,6 +1516,8 @@ textarea:focus, input:focus{
     line-height: 1.2em;
     background: rgba(255, 255, 255, 0.5);
     z-index: 30;
+    margin:0 auto ;
+    display:block;
 }
   .fit-advisor-selected-size-arrow-box {
     position: relative;
@@ -1493,6 +1529,7 @@ textarea:focus, input:focus{
   .selected-product-arrow-left {
     background: rgba(255, 255, 255, 0.5);
     z-index: 30;
+    margin-right:50px !important;
 }
   .selected-product-arrow-left-pointer {
     opacity: 1;
@@ -1755,6 +1792,7 @@ margin-left: 73% !important;
     background: white;
     border:none;
     margin-bottom: 15px;
+        margin-left: -30px;
     padding: 10px 20px;
       box-shadow:none;
     

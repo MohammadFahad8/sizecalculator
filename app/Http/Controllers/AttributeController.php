@@ -205,7 +205,7 @@ class AttributeController extends Controller
    return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
   }
   else {
-    return $size='No Recommendations';
+    return $size='M';
     
   }
   }
