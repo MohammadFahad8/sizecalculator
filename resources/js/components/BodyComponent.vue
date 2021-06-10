@@ -1,6 +1,8 @@
 <template>
 
   <body >
+      <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
      
      
       <div class="box"><a class="button " id="popup-trigger" href="#popup1" style="left: 5px !important;border: none;">Find Fit</a></div><div id="popup1" class="overlay " ><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
@@ -9,10 +11,19 @@
 "><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" points="328 112 184 256 328 400"></polyline></svg>
 <svg v-if="lastTab" v-on:click="restart" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M320 146s24.36-12-64-12a160 160 0 10160 160"></path><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" points="256 58 336 138 256 218"></polyline></svg>
 
-<a href="https://getwair.com/" target="_blank" rel="noopener noreferrer nofollow" class="predict__sc-1a4an9n-2 lnWGiW fit-advisor-logo" ><img class="predict__sc-1a4an9n-1 ctuMzF" src="https://widget-frontend-5e4fikalk-wair.vercel.app/images/favicon-black.png" alt="image" style="opacity: 1;"><span class="predict__sc-1a4an9n-3 OSFBL">Fit Advisor</span></a></div></div><div class="predict__sc-1a4an9n-8 dCmgSk"><div width="0" class="predict__sc-1a4an9n-9 eygAJd"></div></div></div><a class="close" href="#">&times;</a><hr class="fit-advisor-hr">
-<div class="content" style="margin-top:-155px !important; margin-bottom: -120px !important;"><form id="regForm" ><p class="fit-advisor-intro">Enter your <span><b>details</b></span> below <br> to begin a size recommendation</p><div class="tab custom-offset"><label class="adjust-label labels-tab1"  for="height_ft">Height</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="height_ft" placeholder="ft." class="fit-advisor-custom_input" v-model="form.heightfoot" name="heightfoot"></p><p><input type="number" id="height_in" placeholder="in." class="fit-advisor-custom_input fit-advisor-inch" v-model="form.heightinch"  name="heightinch"></p></div>
+
+<span class="predict__sc-1a4an9n-3 OSFBL switch find-fit-header">FIND YOUR FIT</span></div></div><div class="predict__sc-1a4an9n-8 dCmgSk"><div width="0" class="predict__sc-1a4an9n-9 eygAJd"></div></div></div>
+<!-- close modal btn -->
+<a class="close" href="#">&times;</a>
+<div class="content" style="margin-top:-155px !important; margin-bottom: -120px !important;"><form id="regForm" ><p class="fit-advisor-intro" id="intro1"><span id="mark1">To get a size recommendation,</span>  <br><span id="mark2">fill out the form below</span></p>
+<p class="fit-advisor-intro" id="intro2"><span id="mark1">Choose the option that best</span>  <br><span id="mark2">describes your chest</span></p>
+<p class="fit-advisor-intro" id="intro3"><span id="mark1">Choose the option that best</span>  <br><span id="mark2">describes your stomach</span></p>
+<p class="fit-advisor-intro" id="intro4"><span id="mark1">Choose the option that best</span>  <br><span id="mark2">describes your bottom</span></p>
+<p class="fit-advisor-intro" id="intro5"><span id="mark1">Drop-cut:LUX</span>  <br><span id="mark2"></span></p>
+
+<div class="tab custom-offset"><label class="adjust-label labels-tab1"  for="height_ft">Height</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="height_ft" placeholder="Feet" class="fit-advisor-custom_input" v-model="form.heightfoot" name="heightfoot"></p><p><input type="number" id="height_in" placeholder="Inches" class="fit-advisor-custom_input fit-advisor-inch" v-model="form.heightinch"  name="heightinch"></p></div>
 <label class="adjust-label labels-tab1" for="weight">Weight</label>
- <div class="fit-advisor-custom_row"> <p><input type="number" id="weight" placeholder="Lbs" class="fit-advisor-custom_input" v-model="form.weight" name="weight"></p><label for="age" class="fit-advisor-agelabel"><span class=" labels-tab1 fit-advisor-agelabel-span" >Age</span></label> <p><input type="number" id="age"  placeholder="age" class="fit-advisor-custom_input fit-advisor-age-input" v-model="form.age" name="age"></p></div></div>
+ <div class="fit-advisor-custom_row"> <p><input type="number" id="weight" placeholder="Lbs" class="fit-advisor-custom_input" v-model="form.weight" name="weight"></p><label for="age" class="fit-advisor-agelabel"><span class=" labels-tab1 fit-advisor-agelabel-span" >Age</span></label> <p><input type="number" id="age"  placeholder="age" class="fit-advisor-custom_input fit-advisor-age-input" v-model="form.age" name="Age"></p></div></div>
 <div class="row" v-if="!onfirstTab" >
     <input  v-on:change="countryval()" class="countrycheck no-gutters"  type="checkbox" name="countrycheck" v-model="countrycheck" />
     
@@ -89,7 +100,7 @@
 </div>
 
 
-<button class="continue-btn" style="position: absolute;right: 32%;bottom: 50px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button><div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+<button class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: 90px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button><div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
     <img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
         <img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
             <img id="chest3"  v-on:click="chest(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Broader</p></div></div></div></div></div><div class="tab"> <div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
@@ -150,14 +161,18 @@
             }
         },
         methods:{
+            check:function(){
+                alert('Unchecked');
+            },
             getProductDetails:function(){
                 this.is_loading = true;
+                
                
                 axios.post('https://24bbe8b8d790.ngrok.io/api/size-recommend/',this.form)
                 .then((res)=>{
-                    
+                    this.is_loading = false;
                      this.recommended_size = res.data
-                     this.is_loading = false;
+                     
                     
                 })
             },
@@ -218,7 +233,61 @@
 
             showTab:function(n)
             {
+                if(n==0)
+                {
+                    $('#intro1').css('display', 'block');
+                    $('.switch').removeClass('introfirst');
+                    $('.switch').addClass('fint-fit-header');
+                    
+             $('#intro2').css('display', 'none');
+               $('#intro3').css('display', 'none');
+                $('#intro4').css('display', 'none');
+                $('#intro5').css('display', 'none');
+                }
+                if(n==1)
+                {
+                    
+             $('#intro1').css('display', 'none');
+             $('#intro2').css('display', 'block');
+             $('#intro3').css('display', 'none');
+             $('#intro4').css('display', 'none');
+             $('#intro5').css('display', 'none');
+             $('.switch').addClass('introfirst');
+             $('.switch').removeClass('find-fit-header');
+            
+                }
+                if(n==2)
+                {
+                     $('#intro1').css('display', 'none');
+                    $('#intro2').css('display', 'none');
+                    $('#intro3').css('display', 'block');
+                    $('#intro4').css('display', 'none');
+                    $('#intro5').css('display', 'none');
+                    $('.switch').addClass('introfirst');
+                    $('.switch').removeClass('find-fit-header');
+                }
+                if(n==3)
+                {
+                      $('#intro1').css('display', 'none');
+                        $('#intro2').css('display', 'none');
+                        $('#intro3').css('display', 'none');
+                        $('#intro4').css('display', 'block');
+                        $('#intro5').css('display', 'none');
+                         $('.switch').addClass('introfirst');
+                    $('.switch').removeClass('find-fit-header');
 
+                }
+                if(n==4)
+                {
+                       $('#intro1').css('display', 'none');
+             $('#intro2').css('display', 'none');
+               $('#intro3').css('display', 'none');
+                $('#intro4').css('display', 'none');
+                $('#intro5').css('display', 'block');
+                 $('.switch').addClass('introfirst');
+                    $('.switch').removeClass('find-fit-header');
+             
+                }
   //document.getElementById('tabnumber').innerHTML=n;
 
   // This function will display the specified tab of the form...
@@ -236,6 +305,7 @@
   } else {
     document.getElementById("steps-mark").style.visibility = "visible";
     document.getElementById("prevBtn").style.display = "inline";
+    //$('.fit-advisor-intro').text('Find Your Fit');
     this.firstTab = true;
     this.onfirstTab = true,
     this.lastTab = false;
@@ -270,6 +340,8 @@
     document.getElementById("nextBtn").style.display = "none";
 
   }
+ 
+
   //... and run a function that will display the correct step indicator:
   this.fixStepIndicator(n)
             },
@@ -277,7 +349,7 @@
             nextPrev:function(n)
             {
                 
-             
+         
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
@@ -383,7 +455,7 @@ if(  this.measurew == null){
             
             
             this.dev_reset();
-            console.log(this.product.featured_image);
+        
             
     $('input[name="countrycheck"]').click(function(){
         var $radio = $(this);
@@ -425,11 +497,7 @@ $('.bvHnuU').on('click',function(){
 
   
   
-console.log("weight:"+measurew);
- console.log("Height:"+measureh);
-console.log("chest:"+chest);
-console.log("stomach:"+stomach);
-console.log("bottom:"+bottom);
+
 })
 
 
@@ -440,6 +508,53 @@ console.log("bottom:"+bottom);
     }
 </script>
 <style>
+.introfirst
+{
+    font-family: 'Montserrat';
+    font-size: 19px;
+    font-weight: 400;
+    text-align: center !important;
+    margin: 0 auto;
+    display: block;
+    margin-top: 15px !important;
+    word-spacing: 5px !important;
+}
+#intro1
+{
+    display: block ;
+}
+#intro2
+{
+    display:none ;
+    margin-top: 20px;
+}
+#intro3
+{
+    display:none ;
+     margin-top: 20px;
+}
+#intro4
+{
+    display:none ;
+     margin-top: 20px;
+}
+#intro5
+{
+       display:none ;
+        margin-top: 20px;
+}
+.find-fit-header
+{
+       font-family: 'Montserrat';
+    font-size: 19px;
+    font-weight: 400;
+    text-align: center !important;
+    margin: 0 auto;
+    display: block;
+    margin-top: 40px !important;
+    word-spacing:5px !important;
+}
+
 .fit-advisor-chest-tab-item:hover {
     /* display: grid; */
     /* justify-content: center; */
@@ -468,10 +583,10 @@ input[type="checkbox"]:checked {
   margin-left: 0;
 }
 .row {
-      display: flex;
+          display: flex;
     flex-wrap: wrap;
-    margin-right: -15px;
-    margin-left: 95px;
+    margin-right: 10px;
+    margin-left: 57px;
     margin-top: 10px !important;
 }
 
@@ -500,18 +615,20 @@ input::-webkit-outer-spin-button,
 .size-position
 {
     margin-left:-80px !important;
+    margin-top: -44px !important;
 }
 body {
   background-color: #f1f1f1;
 }
 
 #regForm {
-  background-color: #ffffff;
-  margin: 100px auto;
-  font-family: Raleway;
-  padding: 40px;
-  width: 70%;
-  min-width: 300px;
+        background-color: #ffffff;
+    margin: 100px auto;
+    font-family: Raleway;
+    padding: 40px;
+    width: 70%;
+    min-width: 300px;
+    margin-top: 135px !important;
 }
 
 h1 {
@@ -556,14 +673,15 @@ button:hover {
 
 /* Make circles that indicate the steps of the form: */
 .step {
-  height: 15px;
-  width: 15px;
-  margin: 0 2px;
-  background-color: #bbbbbb;
-  border: none;  
-  border-radius: 50%;
-  display: inline-block;
-  opacity: 0.5;
+  
+    height: 10px;
+    width: 10px;
+    margin: 0px 7px;
+    background-color: #000000;
+    border: none;
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0.5;
 }
 
 .step.active {
@@ -572,7 +690,7 @@ button:hover {
 
 /* Mark the steps that are finished and valid: */
 .step.finish {
-  background-color: #04AA6D;
+    background-color: #000000;
 }
   /*   END STYLE FOR STEPS FORM */
 
@@ -625,9 +743,9 @@ button:hover {
   right: 30px;
   transition: all 200ms;
   font-size: 30px;
-  font-weight: bold;
+  font-weight: normal;
   text-decoration: none;
-  color: #333;
+  color: rgb(127,127,127);
 }
 .popup .close:hover {
   color: #06D85F;
@@ -690,29 +808,15 @@ button:hover {
     text-transform: uppercase;
     letter-spacing: 0.08em;
     white-space: normal;
-    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);
-    /* visibility: visible;
-    
-    font-size: 16px;
-    font-weight: 400;
-    display: inline-block;
-    padding: 10px 30px;
-    color: black;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgb(170, 170, 170);
-    border-radius: 35px;
-    box-shadow: none;
-    cursor: pointer;
-    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;
-    user-select: none;
-    opacity: 1; */
+    font-size: 15px !important;
+    font-family: 'Karla';
 }
   .fit-advisor-intro
   {
   text-align: center;
     margin-bottom: 50px !important;
     letter-spacing: 0.04em;
-    color: rgb(101, 101, 101);
+    color: rgb(0, 0, 0);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -722,6 +826,7 @@ button:hover {
     font-size: 15px !important;
     line-height: 26px !important;
     margin-top: -22px;
+    font-family:karla !important;
 
   }
 .fit-advisor-header-box {
@@ -1153,7 +1258,26 @@ fieldset {
 }
 
 /* input field design */
-  
+  ::-webkit-input-placeholder {
+  font-family:karla !important; 
+  font-weight:normal !important;
+  font-size: 19px !important;
+}
+::-moz-placeholder {
+  font-family:karla !important;
+  font-weight:normal !important;
+  font-size: 19px !important;
+}
+:-ms-input-placeholder {
+  font-family:karla !important;
+  font-weight:normal !important;
+  font-size: 19px !important;
+}
+::placeholder {
+  font-family:karla !important;
+  font-weight:normal !important;
+  font-size: 19px !important;
+}
 
 .fit-advisor-custom_row {
   display: flex;
@@ -1177,14 +1301,14 @@ fieldset {
     border-left-color: initial;
     border-image: initial;
     border-bottom-style: solid;
-    border-bottom-color: rgb(221, 221, 221);
+    border-bottom-color: rgb(175, 175, 175);
     transition: border 0.2s ease-in-out 0s;
     font-family: Lato !important;
     font-size: 20px !important;
     line-height: 24px !important;}
   .custom-offset
   {
-    margin-left: 75px !Important;
+    margin-left: 43px !important;
   }
   .labels-tab1 {
     text-transform: capitalize;
@@ -1193,10 +1317,10 @@ fieldset {
     color: rgba(0, 0, 0, 0.9);
     letter-spacing: 0.04em;
     margin: 0px;
-    font-family: Lato !important;
-        font-size: 12px !important;
+    font-family: karla !important;
     line-height: 18px !important;
     font-weight: 400 !important;
+    font-style: normal;
 }
   .custom-offset-lg
   {
@@ -1457,10 +1581,10 @@ margin-left: 73% !important;
 /*   //responsiveness of modal */
   @media (min-width:320px) and (max-width:480px)  { /* smartphones, iPhone, portrait 480x320 phones */
     .row {
-    display: flex;
+      display: flex;
     flex-wrap: wrap;
-    margin-right: -60px;
-    margin-left: 3px;
+    margin-right: 10px;
+    margin-left: 57px;
     margin-top: 10px !important;
 }
     .fit-advisor-popup-adjustments
@@ -1485,7 +1609,7 @@ margin-left: 73% !important;
     border-left-color: initial;
     border-image: initial;
     border-bottom-style: solid;
-    border-bottom-color: rgb(221, 221, 221);
+    border-bottom-color: rgb(175, 175, 175);
     transition: border 0.2s ease-in-out 0s;
     font-family: Lato !important;
     font-size: 20px !important;
@@ -1523,7 +1647,8 @@ margin-left: 73% !important;
     .continue-btn
     
     {
-      -moz-user-select: none;
+     
+    -moz-user-select: none;
     -ms-user-select: none;
     -webkit-user-select: none;
     user-select: none;
@@ -1547,7 +1672,9 @@ margin-left: 73% !important;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     white-space: normal;
-    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);
+    font-size: 15px !important;
+    font-family: 'Karla';
+
     }
     
   .fit-advisor-product-btn-to-cart {
