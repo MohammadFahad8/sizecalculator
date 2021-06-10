@@ -129,7 +129,7 @@
 <div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
   <span class="sr-only">Loading...</span>
 </div><h4 class="result-size">{{recommended_size}}</h4></span></div>
-<div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Relaxed</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
+<div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Recommended</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
       
       
       </body>
@@ -452,7 +452,7 @@ if(  this.measurew == null){
             window.localStorage.clear();
             },
             restart:function()
-            {   $('#nextBtn').text('Continue');
+            {   $('#nextBtn').text('GET STARTED');
             this.form.heightfoot='';
             this.form.heightinch='';
             this.form.weight='';
@@ -460,6 +460,7 @@ if(  this.measurew == null){
             this.form.chest='';
             this.form.stomach='';
             this.form.bottom='';
+            this.recommended_size='',
                 this.dev_reset();
                 this.showTab(0);
                 this.nextPrev(-4)
@@ -1618,12 +1619,34 @@ margin-left: 73% !important;
 /*   //responsiveness of modal */
   @media (min-width:320px) and (max-width:480px)  { /* smartphones, iPhone, portrait 480x320 phones */
     .row {
-      display: flex;
+    display: flex;
     flex-wrap: wrap;
-    margin-right: 10px;
-    margin-left: 57px;
+    margin-right: -27px;
+    margin-left: -32px;
     margin-top: 10px !important;
+        margin-bottom: 50px;
 }
+.adjust-label {
+    margin-left: 10%!important;
+}
+.fit-advisor-intro
+  {
+  text-align: center;
+    margin-bottom: 50px !important;
+    letter-spacing: 0.04em;
+    color: rgb(0, 0, 0);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-style: normal !important;
+    font-weight: normal !important;
+    font-size: 14px !important;
+    line-height: 26px !important;
+    margin-top: -22px;
+    font-family:karla !important;
+
+  }
     .fit-advisor-popup-adjustments
   {
   width:100% !important;
@@ -1669,12 +1692,43 @@ margin-left: 73% !important;
     .fit-advisor-age-input
     {
     margin-left: 14.5rem !important;
-    margin-top: -65px !important;}
+    margin-top: -65px !important;
+        width: 50% !important;
+        }
+      input {
+  text-align: center;
+}  
+::-webkit-input-placeholder {
+  text-align: center;
+}
+.jjnwUS {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    background: white;
+    color: black;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius: 50%;
+    cursor: pointer;
+    width: 22px;
+    height: 22px;
+    transition: opacity 0.2s ease-in-out 0s;
+    margin-left: 30px;
+}
+.selected-product-arrow-left {
+    background: rgba(255, 255, 255, 0.5);
+    z-index: 30;
+    margin-right: 30px !important;
+}
+:-moz-placeholder {
+  text-align: center;
+}
     .custom-offset {
-    margin-left: 8% !important;
+        margin-left: -8% !important;
 }
     .fit-advisor-agelabel-span {
-    margin-left: 0% !important;
+    margin-left: 52px !important;
+    margin-top: 0px !important;
 }
     .fit-advisor-logo
     
@@ -1711,6 +1765,8 @@ margin-left: 73% !important;
     white-space: normal;
     font-size: 15px !important;
     font-family: 'Karla';
+        right: 25% !important;
+    width: 50% !important;
 
     }
     
