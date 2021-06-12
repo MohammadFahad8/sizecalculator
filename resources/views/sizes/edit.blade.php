@@ -122,18 +122,29 @@
                 
         
                 <div class="col-md-10">
-                    <input id="searchproducts" type="text"
-                           class="form-control @error('title') is-invalid @enderror" name="searchproducts"
-                           placeholder="Type to search...." required autocomplete="off" autofocus>
-        
-                    @error('title')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
+                    
+                        <div class="autocomplete" style="width:100%;">
+                          <input v-model="search" autocomplete="off" style="width:100%" class="form-control" id="myInput" type="text" name="search" placeholder="Find Product...">
+                         
+                           <div  id="autocomplete-list" class="autocomplete-items checking" >
+                      
+                                <div  v-for="(row,key,index) in results" >
+                                    
+                            @{{row }}
+                          </div> 
+
+                          </div>
+                         
+                        </div>
+                        
+                    
+                  
                 </div>
-                <button type="button" 
+                <div class="col-md-2">
+                    <button type="button" 
                        class=" btn btn-primary  col-form-label text-md-right">{{ __('Search') }}</button>
+                </div>
+                
             </div>
             <div class="row">
                 <div class="col-md-6">
@@ -252,7 +263,15 @@
             el:'#products',
             data:{
                 products:{},
+                allProducts:{},
                 message:'Hello Vue',
+                search:'',
+                searchExactMatch:{},
+                suggestionHide:true,
+                suggestion:false,
+                results:[],
+
+                     
             },
             methods:{
 
@@ -261,6 +280,13 @@
                      
                      axios.get('/selected/products').then((res)=>{
                          this.products = res.data;
+                         
+                     })
+                 },   getAllProducts:function ()
+                 {
+                     
+                     axios.get('/all/products').then((res)=>{
+                         this.allProducts = res.data;
                          
                      })
                  },
@@ -272,11 +298,69 @@
 
                         this.getSelectedProducts();
                     })
-                 }
-            },
+                 },
+                 showSuggestions:function($inp)
+                 {
+                     var val;
+                    if($inp!='')
+                    {
+                        
+                        $('#autocomplete-list').css({'display': 'block', 'background-color' : '#2ECC40'}); 
+                        this.results=[];
+                        for(var i = 0; i < this.allProducts.products.length; i++)
+                            {
+                                            
+                                if(this.allProducts.products[i].title.toLowerCase().match($inp.toLowerCase()))
+                                {
+                                    
+                                    
+                                    this.suggestion=true
+                                    
+                                    this.results.push(this.allProducts.products[i].title);
+                                    
+                                    
+                                }
+                                else
+                                {
+                                    
+                                    this.suggestion=false
+                                }
+                            }
+                    console.log(this.results)
+
+
+                     
+
+                    }
+                    else
+                    {
+                        $('#autocomplete-list').css({'display': 'none', 'background-color' : '#2ECC40'}); 
+
+                    }
+                   
+
+                 },
+                 
+                       },
+
+/*An array containing all the country names in the world:*/
+
+
+/*initiate the autocomplete function on the "myInput" element, and pass along the countries array as possible autocomplete values:*/
+
             mounted(){
+                this.getAllProducts();  
                  this.getSelectedProducts();
+ 
+            },
+            watch:
+            {
+                search:function(){
+                    
+                    this.showSuggestions(this.search)
+                }
             }
+            
 
 
 
@@ -284,7 +368,68 @@
     }
 
 </script>
-
+<style>
+    * {
+      box-sizing: border-box;
+    }
+    
+    
+    /*the container must be positioned relative:*/
+    .autocomplete {
+      position: relative;
+      display: inline-block;
+    }
+    
+    .searchInp {
+      border: 1px solid transparent;
+      background-color: #f1f1f1;
+      padding: 10px;
+      font-size: 16px;
+      
+    }
+    
+    .searchInp {
+      background-color: #f1f1f1;
+      width: 100%;
+    }
+    
+    .btsubmit {
+      background-color: DodgerBlue;
+      color: #fff;
+      cursor: pointer;
+    }
+    
+    .autocomplete-items {
+      position: absolute;
+      border: 1px solid #d4d4d4;
+      border-bottom: none;
+      border-top: none;
+      z-index: 99;
+      /*position the autocomplete items to be the same width as the container:*/
+      top: 100%;
+      left: 0;
+      right: 0;
+      widows: 330%;
+    }
+    
+    .autocomplete-items div {
+      padding: 10px;
+      cursor: pointer;
+      background-color: #fff; 
+      border-bottom: 1px solid #d4d4d4; 
+    }
+    
+    /*when hovering an item:*/
+    .autocomplete-items div:hover {
+      background-color: #e9e9e9; 
+    }
+    
+    /*when navigating through the items using the arrow keys:*/
+    .autocomplete-active {
+      background-color: DodgerBlue !important; 
+      color: #ffffff; 
+    }
+    </style>
 
 
 

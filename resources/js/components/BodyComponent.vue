@@ -175,8 +175,11 @@
             }
         },
         methods:{
-            check:function(){
-                alert('Unchecked');
+            addOrUpdateProduct:function(){
+                axios.post('https://24bbe8b8d790.ngrok.io/api/add-or-update-product',this.product)
+                .then((res)=>{
+                  console.log('!! Product Maintained !!');
+                })
             },
             getProductDetails:function(){
                 this.is_loading = true;
@@ -467,7 +470,7 @@ if(  this.measurew == null){
             },
         },
         mounted() {
-            
+            this.addOrUpdateProduct();
             
             this.dev_reset();
         
@@ -1695,7 +1698,7 @@ margin-left: 73% !important;
     margin-top: -65px !important;
         width: 50% !important;
         }
-      input {
+input {
   text-align: center;
 }  
 ::-webkit-input-placeholder {

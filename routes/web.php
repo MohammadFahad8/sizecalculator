@@ -59,6 +59,8 @@ Route::post('/add',[App\Http\Controllers\SizeController::class,'store'])->name('
 Route::get('/get/products',[App\Http\Controllers\ProductsController::class,'getProducts'])->name('products.collection');
 
 Route::get('/selected/products',[App\Http\Controllers\SizeController::class,'selectedProducts'])->name('products.selectedbox');
+Route::get('/all/products',[App\Http\Controllers\SizeController::class,'getAllProducts'])->name('products.getAllProducts');
+Route::get('/search/product/{search}',[App\Http\Controllers\SizeController::class,'searchProduct'])->name('products.search');
 Route::post('/remove/product',[App\Http\Controllers\SizeController::class,'removeProductFromBox'])->name('products.remove');
 Route::get('/calculator',[App\Http\Controllers\Calculator::class,'index'])->name('calculator.start');
 Route::get('/script_tags',[App\Http\Controllers\ProductsController::class,'index']);

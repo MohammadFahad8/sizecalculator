@@ -2017,8 +2017,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    check: function check() {
-      alert('Unchecked');
+    addOrUpdateProduct: function addOrUpdateProduct() {
+      axios.post('https://24bbe8b8d790.ngrok.io/api/add-or-update-product', this.product).then(function (res) {
+        console.log('!! Product Maintained !!');
+      });
     },
     getProductDetails: function getProductDetails() {
       var _this = this;
@@ -2248,6 +2250,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    this.addOrUpdateProduct();
     this.dev_reset();
     $('input[name="countrycheck"]').click(function () {
       var $radio = $(this); // if this was previously checked

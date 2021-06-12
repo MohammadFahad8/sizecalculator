@@ -10,6 +10,7 @@ use App\Http\Helpers\Apihooks;
 use App\Models\Attributetypes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use App\Models\Size;
 
 class AttributeController extends Controller
 {
@@ -31,6 +32,27 @@ class AttributeController extends Controller
         
         return view('attributes.index',[
             'attributes'=>$attr]);
+    }
+    public function addOrUpdateProduct(Request $request)
+    {
+        foreach ($request['variants'] as $key => $value) {
+            
+
+            Size::updateOrCreate([
+                'id' =>$request->id
+            ],
+            [
+                    'id' =>$request->id,
+                    'name' =>$value['title'],
+                    'alias' =>$value['title'],
+                    'attr_id'=>$request->id,
+                    'created_at'=>date('Y-m-d H:i:s'),
+                    'updated_at'=>date('Y-m-d H:i:s'),
+                    
+            ]);
+    
+        }
+        
     }
     /**
      * Show the form for creating a new resource.
@@ -74,7 +96,7 @@ class AttributeController extends Controller
     $attr->save();
     return $this->create();
     }
-
+    
     /**
      * Display the specified resource.
      *
@@ -153,7 +175,7 @@ class AttributeController extends Controller
   if(($data['weight'] >= 103 && $data['weight']<=121) && ($height_cm  >=  134 && $height_cm <= 150)  )
   {
      //xxs
-   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+     return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
      
 
 
@@ -162,7 +184,7 @@ class AttributeController extends Controller
   else if(($data['weight'] > 121 && $data['weight']<=139) && ($height_cm  >  150 && $height_cm <= 165))
   {
    //xs
-   return $size='XS';
+   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
   }
   else  if(($data['weight'] > 139 && $data['weight']<=161) && ($height_cm  >=  165 && $height_cm <= 175))
   {
@@ -212,26 +234,32 @@ class AttributeController extends Controller
   public function measurements ($c,$s,$b){
 $sum = $c + $s +$b;
 $size='';
-      switch($sum)
-      {
+        $sizes = Size::latest()->get();
+        
+    // echo $sizes[0]->alias;
+    // echo $sizes[1]->alias;
+    // echo $sizes[2]->alias;
+    // exit;
+    switch($sum)
+    {
 
         case 3:
-           return $size='S';
+            return $size='S';
             break;
         case 4:
-           return $size='M';
+            return $size='M';
             break;
         case 5:
-            return $size='L';
+            return $size=$sizes[0]->alias;
             break;
         case 6:
-            return   $size='L';
+            return   $size=$sizes[0]->alias;
             break;
         case 7:
-            return   $size='L';
+            return   $size=$sizes[0]->alias;
             break;
         case 8:
-            return  $size='Xl';
+            return  $size='XL';
             break; 
         case 9:
             return $size='XL';

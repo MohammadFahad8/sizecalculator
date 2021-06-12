@@ -20,5 +20,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/size-recommend',[App\Http\Controllers\AttributeController::class,'calculateSize']);
+Route::post('/add-or-update-product',[App\Http\Controllers\AttributeController::class,'addOrUpdateProduct']);
 
 

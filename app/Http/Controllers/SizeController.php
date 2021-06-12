@@ -45,6 +45,13 @@ class SizeController extends Controller
         ]);
     }
 
+    public function searchProduct($query)
+    {
+        $shop = Auth::user();
+        $product = $shop->api()->rest('GET','/admin/products.json?title='.$query)['body'];
+        dd( $product);
+
+    }
     /**
      * Store a newly created resource in storage.
      *
@@ -109,6 +116,13 @@ class SizeController extends Controller
 
 
         ]);
+    }
+    public function getAllProducts()
+    {
+        $shop = Auth::user();
+        
+        $products = $shop->api()->rest('GET', '/admin/api/2021-01/products.json')['body']['container'];
+      return $products;
     }
 
     /**
