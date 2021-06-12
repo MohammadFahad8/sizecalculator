@@ -48,8 +48,9 @@ class SizeController extends Controller
     public function searchProduct($query)
     {
         $shop = Auth::user();
-        $product = $shop->api()->rest('GET','/admin/products.json?title='.$query)['body'];
-        dd( $product);
+        
+        $product = $shop->api()->rest('GET','/admin/api/2021-01/products/'.$query.'.json')['body'];
+       return $product;
 
     }
     /**

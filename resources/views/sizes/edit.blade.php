@@ -109,7 +109,7 @@
                         
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterTitle">Add Condition</h5>
@@ -123,15 +123,18 @@
         
                 <div class="col-md-10">
                     
-                        <div class="autocomplete" style="width:100%;">
+                        <div class="autocomplete" style="width:120%;">
                           <input v-model="search" autocomplete="off" style="width:100%" class="form-control" id="myInput" type="text" name="search" placeholder="Find Product...">
                          
-                           <div  id="autocomplete-list" class="autocomplete-items checking" >
+                           <div v-if="check" id="autocomplete-list" class="autocomplete-items checking" >
                       
-                                <div  v-for="(row,key,index) in results" >
+                                <div   v-for="(row,key,index) in results" >
                                     
-                            @{{row }}
+                            @{{row.title }}
+                              <span class=" float-right">  <i class="fa fa-plus plus-custom" @click="selectedFromSearch(row)" ></i></span>
+                            
                           </div> 
+                         
 
                           </div>
                          
@@ -140,49 +143,51 @@
                     
                   
                 </div>
-                <div class="col-md-2">
+                {{-- <div class="col-md-2">
                     <button type="button" 
                        class=" btn btn-primary  col-form-label text-md-right">{{ __('Search') }}</button>
-                </div>
+                </div> --}}
                 
             </div>
-            <div class="row">
+            <div class="row" >
                 <div class="col-md-6">
             <div class="card ">
                 <div class="card-header">Select your products</div>
                 <div class="card-body">
                      
-<table class="table table-bordered  " style="width:100% !important;">
+<table v-if="is_selected" class="table table-bordered  " style="width:100% !important;">
     <thead>
 <tr>
-    <th>Sr. #</th>
-    <th>Product</th>
+    <th>Variant Id</th>
+    <th scope="row">Product</th>
     
     
-    <th  > <span class="offset-5">Action</span></th>
+    <th colspan="3"  ><span class="offset-4">Variants</span> </th>
 </tr>
     </thead>
        <tbody>
            
-    @forelse($products as $key=> $size)
+    
     
         
             
-            @forelse($size as $key=>$row)
+           
             <tr>
-            <td>{{ $key + 1 }}</td>
-            <td>{{ $row['title'] }}</td>           
-            <td><a href="{{ route('sizes.selectproduct', ['id'=>$row['id']??'n/a','name'=>$row['title']]) }}" @click="getSelectedProducts()" class="btn btn-info">Select</a></td>
+            
+            <td>@{{ singleProduct.product.id }}</td>
+            <td >@{{ singleProduct.product.title }}</td>           
+           <td v-for="(row,key,index) in singleProduct.product.variants " >
+                @{{ row.option1 }} </td>
+
+            {{-- <td><a href="{{ route('sizes.selectproduct', ['id'=>$row['id']??'n/a','name'=>$row['title']]) }}" @click="getSelectedProducts()" class="btn btn-info">Select</a></td> --}}
            
-            @empty
-            <p>Nothing to show*</p>
+            
+            
         </tr>
-            @endforelse
+            
            
 
 
-    @empty
-    @endforelse
  
 
     </tbody>
@@ -190,7 +195,7 @@
                 </div>
             </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" >
 
                                                 {{-- Selected Products Card --}}
 
@@ -198,7 +203,7 @@
                                                     <div class="card-header">Select your products</div>
                                                     <div class="card-body">
                                                          
-                                    <table class="table table-bordered  " style="width:100% !important;">
+                                    <table  v-if="is_selected" class="table table-bordered  " style="width:100% !important;">
                                         <thead>
                                     <tr>
                                         <th>Sr. #</th>
@@ -267,9 +272,10 @@
                 message:'Hello Vue',
                 search:'',
                 searchExactMatch:{},
-                suggestionHide:true,
-                suggestion:false,
+                check:false,
+                is_selected:false,
                 results:[],
+                singleProduct:'',
 
                      
             },
@@ -304,42 +310,50 @@
                      var val;
                     if($inp!='')
                     {
-                        
-                        $('#autocomplete-list').css({'display': 'block', 'background-color' : '#2ECC40'}); 
+                        this.check = true;
+                     
                         this.results=[];
                         for(var i = 0; i < this.allProducts.products.length; i++)
                             {
                                             
                                 if(this.allProducts.products[i].title.toLowerCase().match($inp.toLowerCase()))
                                 {
-                                    
-                                    
-                                    this.suggestion=true
-                                    
-                                    this.results.push(this.allProducts.products[i].title);
+                                    var ob = {
+                                        'id':this.allProducts.products[i].id,
+                                        'title':this.allProducts.products[i].title
+                                    }
+                                    this.results.push(ob);
                                     
                                     
                                 }
-                                else
-                                {
-                                    
-                                    this.suggestion=false
-                                }
+                               
                             }
-                    console.log(this.results)
-
-
-                     
-
+                            
                     }
                     else
                     {
-                        $('#autocomplete-list').css({'display': 'none', 'background-color' : '#2ECC40'}); 
+                        this.check = false;
+                     
 
                     }
                    
 
                  },
+                 selectedFromSearch:function(val)
+                 {
+                     
+                    this.search= val.title;
+                    
+                    $('.checking').css('display', 'none');
+                    axios.get('/search/product/'+val.id).then((res)=>{
+                        this.is_selected = true;
+                        this.singleProduct = res.data;
+                        console.log(this.singleProduct.product);
+
+                    })
+                    
+
+                 }
                  
                        },
 
@@ -351,6 +365,8 @@
             mounted(){
                 this.getAllProducts();  
                  this.getSelectedProducts();
+                 
+               
  
             },
             watch:
@@ -369,6 +385,11 @@
 
 </script>
 <style>
+    .plus-custom:hover
+    {
+        color:#0069D9;
+        transition:0.5s ease-in-out;
+    }
     * {
       box-sizing: border-box;
     }
