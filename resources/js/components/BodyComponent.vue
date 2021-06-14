@@ -139,36 +139,15 @@
 <div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
   <span class="sr-only">Loading...</span>
 </div>
-<!-- ORIGINAL <h4 class="result-size"  >{{recommended_size}}</h4> -->
 
-<!-- <h4 class="result-size"  >{{recommended_size}}</h4> -->
 <h4 class="result-size">
   
-<span v-if="showrecommended" class="recommendedbyus"  >{{recommended_size.toUpperCase().charAt(0)}}</span>
+<span v-if="showrecommended" class="recommendedbyus"  >{{recommended_size}}</span>
 <span v-if="!showrecommended" >{{row.title.toUpperCase().charAt(0)}}</span>
 </h4>
 </span>
 </div>
 </div>
-                                                    <!-- LIST OF ALL VARIANTS END -->
-
-
-       <!-- <div class="recommendationfit"  >
-         
-  <div  id="fit-advisor-sizes-slider" font-size="40"    class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize"> 
-<div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
-  <span class="sr-only">Loading...</span>
-</div>
-
-
-<h4 class="result-size"  >{{recommended_size.toUpperCase().charAt(0)}}</h4>
-
-</span></div>
-</div>        -->
-
-                                          <!-- IF RESULT FROM BACKEND -->
-
-                                                        <!-- END RESULT FROM BACKEND  -->
 
 <div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI arrow-next next"  @click="changesize()" ><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Recommended</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
       
@@ -231,14 +210,19 @@
                 axios.post('https://24bbe8b8d790.ngrok.io/api/size-recommend/',this.form)
                 .then((res)=>{
                     this.is_loading = false;
-                     this.recommended_size = res.data
-                     
-                     
-                    
+                     if((res.data == 'XL') || (res.data == 'XS' ))
+                     {
+                       this.recommended_size = res.data.toUpperCase().substr(0, 2)
+                       $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
+                       $('.dfOagu').addClass('dfOagu-second');
+                      
 
+                     }
+                     else
+                     {
+                       this.recommended_size = res.data.toUpperCase().charAt(0)
+                     }
                      
-                     
-                    
                 })
             },
            changesize:function()
@@ -246,6 +230,19 @@
              if(this.showrecommended==true)
              {
                this.showrecommended = false;
+               $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
+               $('.dfOagu').removeClass('dfOagu-second');
+
+             }
+             
+
+
+           },
+            changesizetorecommended:function()
+           {
+             if(this.showrecommended==false)
+             {
+               this.showrecommended = true;
 
              }
              
@@ -514,7 +511,9 @@ if(  this.measurew == null){
             window.localStorage.clear();
             },
             restart:function()
-            {   $('#nextBtn').text('GET STARTED');
+            {   
+            $('#nextBtn').text('GET STARTED');
+            this.changesizetorecommended()
             this.form.heightfoot='';
             this.form.heightinch='';
             this.form.weight='';
@@ -624,6 +623,12 @@ $('.bvHnuU').on('click',function(){
     }
 </script>
 <style>
+.bigsize{
+  
+    grid-template-columns: 1fr 190px 1fr !important;
+    
+}
+
 .fit-advisor-header-desc-mt
 {
     
@@ -632,7 +637,11 @@ $('.bvHnuU').on('click',function(){
 .dfOagu
 {
     margin-left:50px ;
-    margin-top: -15px !important;
+    margin-top: -5px !important;
+}
+.dfOagu-second {
+    margin-left: 10px;
+    margin-top: -5px !important;
 }
 .result-size
 {

@@ -175,7 +175,7 @@ class AttributeController extends Controller
   if(($data['weight'] >= 103 && $data['weight']<=121) && ($height_cm  >=  134 && $height_cm <= 150)  )
   {
      //xxs
-     return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+     return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
      
 
 
@@ -184,13 +184,13 @@ class AttributeController extends Controller
   else if(($data['weight'] > 121 && $data['weight']<=139) && ($height_cm  >  150 && $height_cm <= 165))
   {
    //xs
-   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+   return  $this->measurements($xs='xs',$data['chest'],$data['stomach'],$data['bottom'],null);
   }
   else  if(($data['weight'] > 139 && $data['weight']<=161) && ($height_cm  >=  165 && $height_cm <= 175))
   {
 
    //s
-   return $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+   return $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
    
 
   }
@@ -198,76 +198,215 @@ class AttributeController extends Controller
   else if(($data['weight'] > 155 && $data['weight']<=175) && ($height_cm  >=  173 && $height_cm <= 185 ))
   {
    //M
-   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+   return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
 
   }
   else  if(($data['weight'] > 165 && $data['weight']<=198) && ($height_cm  >=  178 && $height_cm <= 190))
   {
 
    //ML
-   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+   return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
 
   }
   else if(($data['weight'] > 187 && $data['weight']<=214) && ($height_cm  >=  185 && $height_cm <= 195 ))
   {
 
    //L
-   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+   return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
 
   }
   
   else if(($data['weight'] > 207 && $data['weight']<=242) && ($height_cm  >=  190 && $height_cm <= 205 ))
   {
    //XL
-   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+   return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],$xl='xl');
   }
   else  if(($data['weight'] > 242) && ($height_cm  >  205 ))
   {
    //XXL
-   return  $this->measurements($data['chest'],$data['stomach'],$data['bottom']);
+   return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],$xl='xxl');
   }
   else {
     return $size='M';
     
   }
   }
-  public function measurements ($c,$s,$b){
+  public function measurements ($xs=null,$c,$s,$b,$xl=null){
 $sum = $c + $s +$b;
 $size='';
         $sizes = Size::latest()->get();
         
-    // echo $sizes[0]->alias;
-    // echo $sizes[1]->alias;
-    // echo $sizes[2]->alias;
-    // exit;
-    switch($sum)
-    {
+    
 
-        case 3:
-            return $size='Small';
-            break;
-        case 4:
-            return $size='Medium';
-            break;
-        case 5:
-            return $size ="Large";
-            break;
-        case 6:
+        if($c==1 && $s  == 1 && $b==1 )
+        {
+            if(isset($xs) && $xs =='xs')
+            {
+                return $size = 'XS';
+            }
+            return $size = 'Small';
+
+
+        }
+        else if($c==2 && $s  == 2 && $b==2)
+        {
+            //medium
+            return $size = 'Medium';
+        }
+        else if($c==3 && $s==3 && $b==3)
+        {
+            //large
             return $size = 'Large';
-            break;
-        case 7:
-            return   $size ='Large';
-            break;
-        case 8:
-            return  $size='Large';
-            break; 
-        case 9:
-            return $size='Large';
-                    break;
-        default:
-        return  $size = 'Not in wardrobe';
+
+        }
+        else if($c==3 && $s==3 && $b==3)
+        {
+            if(isset($xl) && $xl =='xl')
+            {
+                return $size = 'XL';
+            }
+            return $size = 'Large';
+
+        }
+         else if($c==3 && $s==3 && $b==3)
+        {
+            if(isset($xl) && $xl =='xxl')
+            {
+                return $size = 'XXL';
+            }
+            return $size = 'Large';
+
+        } 
+        //wide chest
+        else if($c==3 && $s==1 && $b==1)
+        {
             
-      }
+            return $size = 'Large';
+
+        }
+        else if($c==3 && $s==2 && $b==1)
+        {
+            
+            return $size = 'Xl';
+
+        }
+         else if($c==3 && $s==2 && $b==2)
+        {
+            
+            return $size = 'XXl';
+
+        }
+         else if($c==3 && $s==2 && $b==3)
+        {
+            
+            return $size = 'XL';
+
+        }
+         else if($c==3 && $s==1 && $b==2)
+        {
+            
+            return $size = 'L';
+
+        }
+        else if($c==1 && $s==2 && $b==3)
+        {
+            
+            return $size = 'L';
+
+        }
+        else if($c==1 && $s==3 && $b==3)
+        {
+            
+            return $size = 'XL';
+
+        }
+        else if($c==1 && $s==1 && $b==2)
+        {
+            
+            return $size = 'M';
+
+        }
+        else if($c==1 && $s==1 && $b==3)
+        {
+            
+            return $size = 'ML';
+
+        }
+        
+        else if($c==2 && $s==1 && $b==1)
+        {
+            
+            return $size = 'M';
+
+        }
+         
+         else if($c==2 && $s==1 && $b==2)
+         {
+             
+             return $size = 'ML';
+ 
+         }
+         else if($c==2 && $s==1 && $b==3)
+         {
+             
+             return $size = 'L';
+ 
+         }
+          
+        else if($c==2 && $s==2 && $b==1)
+        {
+            
+            return $size = 'M';
+
+        }
+         
+         else if($c==2 && $s==2 && $b==3)
+         {
+             
+             return $size = 'L';
+ 
+         }
+          
+        else if($c==2 && $s==3 && $b==1)
+        {
+            
+            return $size = 'L';
+
+        }
+         
+         else if($c==2 && $s==3 && $b==2)
+         {
+             
+             return $size = 'L';
+ 
+         }
+          
+        else if($c==2 && $s==3 && $b==3)
+        {
+            
+            return $size = 'XL';
+
+        }
+        else {
+            return $size = 'M';
+        }
+        
+         
+        
+         
+        
+         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+            
+      
 
       
 
