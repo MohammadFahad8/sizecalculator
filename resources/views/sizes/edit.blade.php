@@ -155,7 +155,7 @@
                 <div class="card-header">Select your products</div>
                 <div class="card-body">
                      
-<table v-if="is_selected" class="table table-bordered  " style="width:100% !important;">
+<table v-if="is_selected" class="table table-bordered  " style="width:97% !important;">
     <thead>
 <tr>
     <th>Variant Id</th>
@@ -163,6 +163,7 @@
     
     
     <th colspan="3"  ><span class="offset-4">Variants</span> </th>
+    <th>Action</th>
 </tr>
     </thead>
        <tbody>
@@ -174,16 +175,17 @@
            
             <tr>
             
-            <td>@{{ singleProduct.product.id }}</td>
-            <td >@{{ singleProduct.product.title }}</td>           
-           <td v-for="(row,key,index) in singleProduct.product.variants " >
+            <td class="id-product">@{{ singleProduct.product.id }}</td>
+            <td class="title-product">@{{ singleProduct.product.title }}</td>           
+           <td class="option-product" v-for="(row,key,index) in singleProduct.product.variants " >
                 @{{ row.option1 }} </td>
 
             {{-- <td><a href="{{ route('sizes.selectproduct', ['id'=>$row['id']??'n/a','name'=>$row['title']]) }}" @click="getSelectedProducts()" class="btn btn-info">Select</a></td> --}}
            
             
-            
+            <td><button class="btn btn-submit add-product" @click="addProduct(singleProduct.product)">Add</button></td>
         </tr>
+       
             
            
 
@@ -209,8 +211,8 @@
                                         <th>Sr. #</th>
                                         <th>Product</th>
                                         
-                                        
-                                        <th  > <span class="offset-5">Action</span></th>
+                                    
+                                        <th> <span class="offset-5">Action</span></th>
                                     </tr>
                                         </thead>
                                            <tbody>
@@ -276,6 +278,7 @@
                 is_selected:false,
                 results:[],
                 singleProduct:'',
+                
 
                      
             },
@@ -353,6 +356,10 @@
                     })
                     
 
+                 },
+                 addProduct:function(product)
+                 {
+                     console.log(product)
                  }
                  
                        },
@@ -365,6 +372,17 @@
             mounted(){
                 this.getAllProducts();  
                  this.getSelectedProducts();
+                 $(".add-product").on('click',function() {
+    var $row = $(this).closest("tr");    // Find the row
+    var $id = $row.find(".id-product").text(); // Find the text
+    var $title = $row.find(".title-product").text(); // Find the text
+    var $option = $row.find(".option-product").text(); // Find the text
+    
+    // Let's test it out
+    console.log($id)
+    console.log($title)
+    console.log($option)
+});
                  
                
  

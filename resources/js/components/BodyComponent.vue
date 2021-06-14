@@ -1,6 +1,7 @@
 <template>
 
   <body >
+    
       <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
      
@@ -124,12 +125,42 @@
                                                     </p>
                                                     </div>
                                                     </div> -->
-                                    <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"><div class=" selected-product-arrow-left"><span size="10" class=" jjnwUS  selected-product-arrow-left-pointer"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>  
-                                    <div id="fit-advisor-sizes-slider" font-size="40"  class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize"> 
+                                    <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box">
+                                      <div class=" selected-product-arrow-left"><span size="10" class=" jjnwUS  selected-product-arrow-left-pointer next"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>  
+                                                        
+                                                        
+                                                        
+                                                        <!-- LIST OF ALL VARIANTS -->
+<div v-if="showlist">
+
+      <div   id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id"  class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize"> 
 <div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
   <span class="sr-only">Loading...</span>
-</div><h4 class="result-size">{{recommended_size}}</h4></span></div>
-<div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Recommended</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
+</div>
+<!-- ORIGINAL <h4 class="result-size"  >{{recommended_size}}</h4> -->
+
+<!-- <h4 class="result-size"  >{{recommended_size}}</h4> -->
+<h4 class="result-size"   >{{row.title.toUpperCase().charAt(0)}}</h4>
+</span></div>
+</div>
+                                                    <!-- LIST OF ALL VARIANTS END -->
+
+
+       <div v-else >
+  <div  id="fit-advisor-sizes-slider" font-size="40"    class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize"> 
+<div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+<!-- ORIGINAL <h4 class="result-size"  >{{recommended_size}}</h4> -->
+
+<h4 class="result-size"  >{{recommended_size}}</h4>
+
+</span></div>
+</div>                                                 <!-- IF RESULT FROM BACKEND -->
+
+                                                        <!-- END RESULT FROM BACKEND  -->
+
+<div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI arrow-next next"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Recommended</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
       
       
       </body>
@@ -168,6 +199,7 @@
                 message:"Jello",
                 recommended_size:'',
                 is_loading:false,
+                showlist:true,
                 
                 image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
                 image_uk:'https://24bbe8b8d790.ngrok.io/images/uk.png',
@@ -189,6 +221,8 @@
                 .then((res)=>{
                     this.is_loading = false;
                      this.recommended_size = res.data
+
+                     
                      
                     
                 })
@@ -470,6 +504,37 @@ if(  this.measurew == null){
             },
         },
         mounted() {
+          
+          //slides size
+          $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
+
+var $allSlides = $('div.fit-advisor-selected-size'), 
+    traverseDefault = "first", //set the defaults
+    actionDefault ="next";
+
+$('.next,.prev').click(function(){
+  this.showlist= false;
+    var traverse = traverseDefault,
+        action = actionDefault;
+
+    if($(this).is('.prev')){ //if action is prev
+        traverse = "last"; //set traverse to last in case nothing is available
+        action = "prev"; //set action to prev
+    }
+
+    var $curr = $allSlides.filter(':visible'), //get the visible slide
+        $nxtTarget =  $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
+
+    $curr.stop(true, true).fadeIn(1000).hide(); //hide current one
+
+    if (!$nxtTarget.length){ //if no next
+        $nxtTarget = $allSlides[traverse](); //based on traverse pick the next one
+    }
+
+    $nxtTarget.stop(true, true).fadeIn(1000); //show the target
+
+});
+          //slides size end
             this.addOrUpdateProduct();
             
             this.dev_reset();
@@ -531,7 +596,7 @@ $('.bvHnuU').on('click',function(){
     
     margin-top: 40px !important;
 }
-. dfOagu
+.dfOagu
 {
     margin-left:50px ;
 }
@@ -1521,6 +1586,7 @@ textarea:focus, input:focus{
     background: rgba(255, 255, 255, 0.5);
     z-index: 30;
     margin:0 auto ;
+    margin-left:50px;
     display:block;
 }
   .fit-advisor-selected-size-arrow-box {
