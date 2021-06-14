@@ -244,25 +244,25 @@ $size='';
     {
 
         case 3:
-            return $size='S';
+            return $size='Small';
             break;
         case 4:
-            return $size='M';
+            return $size='Medium';
             break;
         case 5:
-            return $size=$sizes[0]->alias;
+            return $size ="Large";
             break;
         case 6:
-            return   $size=$sizes[0]->alias;
+            return $size = 'Large';
             break;
         case 7:
-            return   $size=$sizes[0]->alias;
+            return   $size ='Large';
             break;
         case 8:
-            return  $size='XL';
+            return  $size='Large';
             break; 
         case 9:
-            return $size='XL';
+            return $size='Large';
                     break;
         default:
         return  $size = 'Not in wardrobe';
