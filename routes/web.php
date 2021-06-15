@@ -77,6 +77,7 @@ Route::get('/addWidget',[App\Http\Controllers\ProductsController::class,'addWidg
 Route::get('/getpage',[App\Http\Controllers\ProductsController::class,'getProductPage']);
 Route::get('/get/theme',[App\Http\Controllers\ProductsController::class,'getThemeData']);
 Route::get('/get/products/{id}',[App\Http\Controllers\ProductsController::class,'getProductDetails']);
+Route::post('add/product-from-selection',[App\Http\Controllers\AttributeCOntroller::class,'addProductFromSelection']);
 
 });
 

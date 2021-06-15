@@ -76,6 +76,46 @@ class Helpers {
 
 
   }
+  
+
+
+function addWidget()
+{
+
+
+$scripttags = array('asset' =>[
+  "key"=>"sections/product-template.liquid",
+  "value"=> $this->getProductPage(),
+]  );
+
+
+$shop = Auth::user();
+Config::set('constants.SHOPIFY_URL.THEME_ID',$this->getThemeData());
+$products = $shop->api()->rest('PUT', '/admin/api/2021-01/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',$scripttags)['body'];
+
+
+
+
+
+}
+function getProductPage()
+{
+
+$page = session()->get('page');
+unset($page);
+$shop = Auth::user();
+Config::set('constants.SHOPIFY_URL.THEME_ID',$this->getThemeData());
+$productpage = $shop->api()->rest('GET', '/admin/api/2021-01/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',['asset[key]'=>'sections/product-template.liquid'])['body']['container'];
+session()->put('page',$productpage);
+$page  = session()->get('page');
+
+$pos = strpos($page['asset']['value'],"{% form 'product', product, class:form_classes, novalidate: 'novalidate', data-product-form: '' %}");
+
+return substr_replace($page['asset']['value'],"<!-- Body Fit auto installation start -->  <div id='app'>{%render 'body_fit'%}</div> <!-- Body Fit  auto installation end -->",10743,0);
+
+
+
+}
  
 
 }

@@ -227,6 +227,7 @@ class ProductsController extends Controller
     
 
 
+
   }
   public function getProductPage()
   {
@@ -240,8 +241,8 @@ class ProductsController extends Controller
     $page  = session()->get('page');
     
     $pos = strpos($page['asset']['value'],"{% form 'product', product, class:form_classes, novalidate: 'novalidate', data-product-form: '' %}");
-    
-    return substr_replace($page['asset']['value'],"<div id='app'>{%render 'body_fit'%}</div>",10743,0);
+   
+    return substr_replace($page['asset']['value'],"<!-- Body Fit auto installation start -->  <div id='app'>{%render 'body_fit'%}</div> <!-- Body Fit  auto installation end -->",10743,0);
     
 
 

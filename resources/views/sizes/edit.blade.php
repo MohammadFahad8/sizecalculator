@@ -75,7 +75,7 @@
                 
                 
                                 <option value="{{ $type['id'] }}"
-                                        @if($type['id'] == $sizes->attr_id) selected @endif > {{ $type->name }}</option>
+                                    @if($type['id'] == $sizes->attr_id) selected @endif > {{ $type->name }}</option>
                             @endforeach
                         </select>
                 
@@ -155,7 +155,7 @@
                 <div class="card-header">Select your products</div>
                 <div class="card-body">
                      
-<table v-if="is_selected" class="table table-bordered  " style="width:97% !important;">
+<table v-if="is_selected" class="table table-bordered table-responsive  " id="style-8">
     <thead>
 <tr>
     <th>Variant Id</th>
@@ -167,13 +167,12 @@
 </tr>
     </thead>
        <tbody>
-           
-    
-    
-        
-            
-           
+     
             <tr>
+                <div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;margin: 0 auto;
+                display: block;" role="status">
+                    <span class="sr-only">Loading...</span>
+                  </div>
             
             <td class="id-product">@{{ singleProduct.product.id }}</td>
             <td class="title-product">@{{ singleProduct.product.title }}</td>           
@@ -183,15 +182,9 @@
             {{-- <td><a href="{{ route('sizes.selectproduct', ['id'=>$row['id']??'n/a','name'=>$row['title']]) }}" @click="getSelectedProducts()" class="btn btn-info">Select</a></td> --}}
            
             
-            <td><button class="btn btn-submit add-product" @click="addProduct(singleProduct.product)">Add</button></td>
+            <td><div class="badge badge-success add-product" @click="addProduct(singleProduct.product)">Add</div></td>
         </tr>
-       
-            
-           
-
-
- 
-
+  
     </tbody>
 </table>
                 </div>
@@ -205,7 +198,7 @@
                                                     <div class="card-header">Select your products</div>
                                                     <div class="card-body">
                                                          
-                                    <table  v-if="is_selected" class="table table-bordered  " style="width:100% !important;">
+                                    <table  v-if="is_selected" class="table table-bordered" style="width:100% !important;">
                                         <thead>
                                     <tr>
                                         <th>Sr. #</th>
@@ -222,13 +215,11 @@
                                             {{-- <td>{{ $key+1 }}</td> --}}
                                                 <td>@{{ index + 1 }}</td>           
                                                 <td>@{{ row.name }}</td>           
-                                                <td><a @click="removeProduct(row.id)" class="btn btn-danger">Delete</a></td>
+                                                <td><a @click="removeProduct(row.id)" class="btn btn-danger ">Delete</a></td>
                                                
                                     
                                         </tr>
-                                        
-                                     
-                                    
+                                                                        
                                         </tbody>
                                     </table>
                                                     </div>
@@ -278,6 +269,7 @@
                 is_selected:false,
                 results:[],
                 singleProduct:'',
+                is_loading:false,
                 
 
                      
@@ -346,9 +338,12 @@
                  {
                      
                     this.search= val.title;
+                    this.is_loading=true,
+                    
                     
                     $('.checking').css('display', 'none');
                     axios.get('/search/product/'+val.id).then((res)=>{
+                        this.is_loading=false,
                         this.is_selected = true;
                         this.singleProduct = res.data;
                         console.log(this.singleProduct.product);
@@ -359,7 +354,12 @@
                  },
                  addProduct:function(product)
                  {
+                     
                      console.log(product)
+                     axios.post('/add/product-from-selection',product)
+                     .then((res)=>function(){
+                         console.log('!! Added  to backend !!')
+                     })
                  }
                  
                        },
@@ -468,6 +468,32 @@
       background-color: DodgerBlue !important; 
       color: #ffffff; 
     }
+    
+::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	background-color: #F5F5F5;
+	border-radius: 10px;
+}
+
+::-webkit-scrollbar
+{
+	width: 6px;
+	background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	background-image: -webkit-gradient(linear,
+									   left bottom,
+									   left top,
+									   color-stop(0.44, rgb(122,153,217)),
+									   color-stop(0.72, rgb(73,125,189)),
+									   color-stop(0.86, rgb(28,58,148)));
+}
+
+
     </style>
 
 

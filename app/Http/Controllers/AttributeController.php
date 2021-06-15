@@ -231,7 +231,8 @@ class AttributeController extends Controller
     
   }
   }
-  public function measurements ($xs=null,$c,$s,$b,$xl=null){
+  public function measurements ($xs=null,$c,$s,$b,$xl=null)
+  {
 $sum = $c + $s +$b;
 $size='';
         $sizes = Size::latest()->get();
@@ -393,6 +394,16 @@ $size='';
         
        
 
+
+  }
+  public function  addProductFromSelection(Request $request)
+  {
+      $data = $request->all();
+      foreach($data['variants'] as $row)
+      {
+          echo $row['title'];
+          exit;
+      }
 
   }
   
