@@ -73,6 +73,8 @@ Route::get('/metatags',[App\Http\Controllers\ProductsController::class,'metatags
 Route::get('/delete/meta/tag',[App\Http\Controllers\ProductsController::class,'deletemeta']);
 Route::get('/update/script_tag',[App\Http\Controllers\ProductsController::class,'updateScriptTag']);
 Route::get('/update/asset',[App\Http\Controllers\ProductsController::class,'updateAsset']);
+Route::get('/addWidget',[App\Http\Controllers\ProductsController::class,'addWidget']);
+Route::get('/getpage',[App\Http\Controllers\ProductsController::class,'getProductPage']);
 Route::get('/get/theme',[App\Http\Controllers\ProductsController::class,'getThemeData']);
 Route::get('/get/products/{id}',[App\Http\Controllers\ProductsController::class,'getProductDetails']);
 
