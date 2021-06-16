@@ -154,7 +154,10 @@
             <div class="card ">
                 <div class="card-header">Select your products</div>
                 <div class="card-body">
-                     
+                    <div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;margin: 0 auto;
+                    display: block;" role="status">
+                        <span class="sr-only">Loading...</span>
+                      </div>
 <table v-if="is_selected" class="table table-bordered table-responsive  " id="style-8">
     <thead>
 <tr>
@@ -168,12 +171,10 @@
 </tr>
     </thead>
        <tbody>
+        
      
             <tr>
-                <div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;margin: 0 auto;
-                display: block;" role="status">
-                    <span class="sr-only">Loading...</span>
-                  </div>
+                
             
             <td class="id-product">@{{ singleProduct.product.id }}</td>
             <td class="title-product">@{{ singleProduct.product.title }}</td>           
@@ -350,6 +351,7 @@
                  {
                      
                     this.search= val.title;
+                    this.is_selected=false;
                     this.is_loading=true,
                     
                     
@@ -442,7 +444,7 @@
 <style>
     #variant-images:hover{
         transform: scale(1.5);
-        transition:ease-in-out 1s;
+        transition:ease-in-out 0.4s;
     }
     .plus-custom:hover
     {

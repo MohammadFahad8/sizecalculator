@@ -170,8 +170,8 @@
                     age:'',
                     chest:0,
                     stomach:0,
-                    bottom:0
-                    
+                    bottom:0,
+                    tags:[]
                     
                 },
                 countrycheck:'',
@@ -259,6 +259,7 @@
             },bottom:function(n)
             {
                 this.form.bottom = n;
+                this.form.tags= this.product.tags
                 this.nextPrev(1)
             },
             countryval:function(){
@@ -528,7 +529,7 @@ if(  this.measurew == null){
         },
         mounted() {
           
-          
+          console.log(this.product)
           //slides size
           $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
 
@@ -622,6 +623,7 @@ $('.bvHnuU').on('click',function(){
     }
 </script>
 <style>
+
 .bigsize{
   
     grid-template-columns: 1fr 190px 1fr !important;
@@ -889,7 +891,7 @@ button:hover {
   color: rgb(127,127,127);
 }
 .popup .close:hover {
-  color: #06D85F;
+  color: #020202;
 }
 .popup .content {
   max-height: 30%;

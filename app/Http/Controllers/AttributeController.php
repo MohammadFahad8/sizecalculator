@@ -170,8 +170,12 @@ class AttributeController extends Controller
       $data = $request->all();
       
       $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
-        
-    
+      $tags = array_map('strtolower',$data['tags']);
+      if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags) )
+      {
+      
+     
+    //Man  Adult
    
    
   if(($data['weight'] >= 103 && $data['weight']<=121) && ($height_cm  >=  134 && $height_cm <= 150)  )
@@ -232,11 +236,73 @@ class AttributeController extends Controller
     return $size='M';
     
   }
+}
+else
+  {
+  $this->calculateSizeFemale($data,$height_cm);
+  }
+  //end man adult
+  }
+  public function calculateSizeFemale($data,$height_cm)
+  {
+      //Female  Adult
+   echo 'in female'.'Weight'.$data['weight'].'Height'.$height_cm;
+   
+  if(($data['weight'] <= 100  ) && ($height_cm  >=  137 && $height_cm <= 145)  )
+  {
+     //xxs
+     return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
+     
+
+
+  }
+
+  else if(($data['weight'] > 100 && $data['weight']<=115) && ($height_cm  >  145 && $height_cm <= 155))
+  {
+   //xs
+   return  $this->measurements($xs='xs',$data['chest'],$data['stomach'],$data['bottom'],null);
+  }
+  else  if(($data['weight'] > 110 && $data['weight']<=125) && ($height_cm  >=  155 && $height_cm <= 165))
+  {
+
+   //s
+   return $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
+   
+
+  }
+
+  else if(($data['weight'] > 120 && $data['weight']<=145) && ($height_cm  >=  165 && $height_cm <= 175 ))
+  {
+   //M
+   return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
+
+  }
+  else  if(($data['weight'] > 140 && $data['weight']<=165) && ($height_cm  >=  173 && $height_cm <= 185))
+  {
+
+   //L
+   return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
+
+  }
+  else if(($data['weight'] > 165) && ($height_cm  >  185 ))
+  {
+
+   //XL
+   return  $this->measurements(null,$data['chest'],$data['stomach'],$data['bottom'],null);
+
+  }
+  else {
+    return $size='M';
+    
+  }
+  //end female adult
+      
+
   }
   public function measurements ($xs=null,$c,$s,$b,$xl=null)
   {
-$sum = $c + $s +$b;
-$size='';
+        $sum = $c + $s +$b;
+        $size='';
         $sizes = Size::latest()->get();
         
     
