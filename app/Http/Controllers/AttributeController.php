@@ -3,14 +3,16 @@
 namespace App\Http\Controllers;
 
 use api;
+use App\Models\Size;
 use App\Helpers\Helpers;
+use App\Models\Variants;
 use App\Models\Attribute;
+use App\Models\Selectedsize;
 use Illuminate\Http\Request;
 use App\Http\Helpers\Apihooks;
 use App\Models\Attributetypes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
-use App\Models\Size;
 
 class AttributeController extends Controller
 {
@@ -398,12 +400,57 @@ $size='';
   }
   public function  addProductFromSelection(Request $request)
   {
+      $message = array();
       $data = $request->all();
+      
+          
+             
       foreach($data['variants'] as $row)
-      {
-          echo $row['title'];
-          exit;
+      {  $variants_count =  Variants::where('variant_id','=',$row['id'])->count();
+        $variant = new Variants();
+        if($variants_count==0)
+        {
+        
+          $variant->variant_id= $row['id'];
+          $variant->size= $row['option1'];
+          $variant->price= $row['price'];
+          $variant->product_id= $row['product_id'];
+          
+      }else {
+        $message['message'] = 'Variant Duplicate';
+        $message['status'] = 0;
+        return $message;
       }
+      $variant->save();
+      }
+      
+      
+   
+      
+      $product =  Selectedsize::where('id','=',$data['id'])->count();
+      if($product==0)
+      {
+          $product = new Selectedsize();
+           $product->title = $data['title'];
+      $product->product_id = $data['id'];
+      $product->image_link = $data['image']['src'];
+      $product->vendor = $data['vendor'];
+      $product->admin_graphql_api_id = $data['admin_graphql_api_id'];
+      $product->save();
+
+       $message['message'] = 'Product Stored For Comparison';
+       $message['status'] = 1;
+       return $message;
+      }
+      else
+      {
+        $message['message'] = 'Size Duplicate';
+        $message['status'] = 0;
+        return $message;
+
+      }
+
+     
 
   }
   

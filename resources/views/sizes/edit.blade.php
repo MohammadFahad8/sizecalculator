@@ -163,6 +163,7 @@
     
     
     <th colspan="3"  ><span class="offset-4">Variants</span> </th>
+    <th colspan="4"  ><span class="offset-4">Images</span> </th>
     <th>Action</th>
 </tr>
     </thead>
@@ -176,8 +177,16 @@
             
             <td class="id-product">@{{ singleProduct.product.id }}</td>
             <td class="title-product">@{{ singleProduct.product.title }}</td>           
-           <td class="option-product" v-for="(row,key,index) in singleProduct.product.variants " >
+           <td class="option-product" v-for="(row,key,index) in singleProduct.product.variants " v-if="row.option1!==null" >
                 @{{ row.option1 }} </td>
+                
+            
+                <td class="option-product" v-else >N/A </td>
+                <td v-for="(images,key,index) in singleProduct.product.images ">
+                    <img :src="images.src" width="50px" height="50px" class="img-responsive rounded"></td>
+                    
+                    
+                
 
             {{-- <td><a href="{{ route('sizes.selectproduct', ['id'=>$row['id']??'n/a','name'=>$row['title']]) }}" @click="getSelectedProducts()" class="btn btn-info">Select</a></td> --}}
            
@@ -251,6 +260,7 @@
 
 </div>
 @endsection
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -346,7 +356,7 @@
                         this.is_loading=false,
                         this.is_selected = true;
                         this.singleProduct = res.data;
-                        console.log(this.singleProduct.product);
+                        // console.log(this.singleProduct.product);
 
                     })
                     
@@ -355,10 +365,31 @@
                  addProduct:function(product)
                  {
                      
-                     console.log(product)
+                     console.log(product);
+                     return;
                      axios.post('/add/product-from-selection',product)
-                     .then((res)=>function(){
-                         console.log('!! Added  to backend !!')
+                     .then((res)=>{
+                         if(res.data.status == 1)
+                         {
+                              Swal.fire({
+                                    icon: 'success',
+                                    title: 'Completed...',
+                                    text: res.data.message,
+                                   
+                                    })
+                         }
+                         else
+                         {
+                            Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: res.data.message,
+                                   
+                                    })
+                             
+                         }
+                       
+                         
                      })
                  }
                  
