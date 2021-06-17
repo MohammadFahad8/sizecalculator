@@ -28,6 +28,7 @@ Vue.component('bodyfit-component', require('./components/BodyComponent.vue').def
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+
 const app = new Vue({
     el: '#app',
 });

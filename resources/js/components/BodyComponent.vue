@@ -16,7 +16,9 @@
 <span class="predict__sc-1a4an9n-3 OSFBL switch find-fit-header">FIND YOUR FIT</span></div></div><div class="predict__sc-1a4an9n-8 dCmgSk"><div width="0" class="predict__sc-1a4an9n-9 eygAJd"></div></div></div>
 <!-- close modal btn -->
 <a class="close" href="#">&times;</a>
-<div class="content" style="margin-top:-155px !important; margin-bottom: -120px !important;"><form id="regForm" ><p class="fit-advisor-intro" id="intro1"><span id="mark1">To get a size recommendation,</span>  <br><span id="mark2">fill out the form below</span></p>
+<div class="content" style="margin-top:-155px !important; margin-bottom: -120px !important;">
+  <form id="regForm" ><p class="fit-advisor-intro" id="intro1">
+    <span id="mark1">To get a size recommendation,</span>  <br><span id="mark2">fill out the form below</span></p>
 <p class="fit-advisor-intro" id="intro2"><span id="mark1">Choose the option that best</span>  <br><span id="mark2">describes your chest</span></p>
 <p class="fit-advisor-intro" id="intro3"><span id="mark1">Choose the option that best</span>  <br><span id="mark2">describes your stomach</span></p>
 <p class="fit-advisor-intro" id="intro4"><span id="mark1">Choose the option that best</span>  <br><span id="mark2">describes your bottom</span></p>
@@ -102,7 +104,7 @@
 
 
 <button v-if="showContinueBtn" class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: 90px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button>
-<button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: 90px;display:block !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button>
+<button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 32%;width: 33%;bottom: 90px;display:block !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button>
 <div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
     <img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
         <img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="chest(2)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
@@ -151,13 +153,14 @@
 </div>
 </div>
 
-<div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI arrow-next next"  @click="changesize()" ><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Recommended</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div></form></div></div></div></div>
+<div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI arrow-next next"  @click="changesize()" ><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Recommended</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
+</form></div></div></div></div>
       
       
       </body>
 
 </template>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <script>
     export default {
@@ -200,11 +203,12 @@
 
             }
         },
+      
         methods:{
             addOrUpdateProduct:function(){
                 axios.post('https://24bbe8b8d790.ngrok.io/api/add-or-update-product',this.product)
                 .then((res)=>{
-                  console.log('!! Product Maintained !!');
+                  
                 })
             },
             getProductDetails:function(){
@@ -275,16 +279,16 @@
                           body: JSON.stringify(formData)
                           })
                           .then(response => {
-                          //   if(confirm("Do you want to add this size to cart?"))
-                          // {
+                            if(confirm("Do you want to add this size to cart?"))
+                          {
                            window.location.reload();
-                          //}
+                          }
                             return response.json();
                           })
                           .catch((error) => {
                             console.error('Error:', error);
                           });
-                          //window.location.reload();
+                          
                           
                          
 
@@ -384,13 +388,11 @@
                 {   
                     $('#intro1').css('display', 'block');
                     $('.switch').removeClass('introfirst');
-                    $('.switch').addClass('find-fit-header');
-                    
-                    
-             $('#intro2').css('display', 'none');
-               $('#intro3').css('display', 'none');
-                $('#intro4').css('display', 'none');
-                $('#intro5').css('display', 'none');
+                    $('.switch').addClass('find-fit-header');                   
+                    $('#intro2').css('display', 'none');
+                    $('#intro3').css('display', 'none');
+                    $('#intro4').css('display', 'none');
+                    $('#intro5').css('display', 'none');
                 }
                 if(n==1)
                 {
@@ -406,7 +408,7 @@
                 }
                 if(n==2)
                 {
-                     $('#intro1').css('display', 'none');
+                    $('#intro1').css('display', 'none');
                     $('#intro2').css('display', 'none');
                     $('#intro3').css('display', 'block');
                     $('#intro4').css('display', 'none');
@@ -416,25 +418,25 @@
                 }
                 if(n==3)
                 {
-                      $('#intro1').css('display', 'none');
+                        $('#intro1').css('display', 'none');
                         $('#intro2').css('display', 'none');
                         $('#intro3').css('display', 'none');
                         $('#intro4').css('display', 'block');
                         $('#intro5').css('display', 'none');
-                         $('.switch').addClass('introfirst');
-                    $('.switch').removeClass('find-fit-header');
+                        $('.switch').addClass('introfirst');
+                        $('.switch').removeClass('find-fit-header');
 
                 }
                 if(n==4)
                 {
-                   $('.fit-advisor-selected-product-grid').css('display', 'inline');
-                       $('#intro1').css('display', 'none');
-             $('#intro2').css('display', 'none');
-               $('#intro3').css('display', 'none');
-                $('#intro4').css('display', 'none');
-                $('#intro5').css('display', 'block');
-                 $('.switch').addClass('introfirst');
-                    $('.switch').removeClass('find-fit-header');
+                      $('.fit-advisor-selected-product-grid').css('display', 'inline');
+                      $('#intro1').css('display', 'none');
+                      $('#intro2').css('display', 'none');
+                      $('#intro3').css('display', 'none');
+                      $('#intro4').css('display', 'none');
+                      $('#intro5').css('display', 'block');
+                      $('.switch').addClass('introfirst');
+                      $('.switch').removeClass('find-fit-header');
              
                 }
   //document.getElementById('tabnumber').innerHTML=n;
@@ -588,7 +590,7 @@ if(  this.measurew == null){
             },
             dev_reset:function()
             {
-            console.log(' !! Begin Your Experience with us !! ')
+            
             window.localStorage.clear();
             },
             restart:function()
@@ -616,7 +618,7 @@ if(  this.measurew == null){
         },
         mounted() {
           
-         
+  
           //slides size
           $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
 

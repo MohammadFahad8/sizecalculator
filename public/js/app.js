@@ -2006,6 +2006,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     product: Object
@@ -2045,9 +2048,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addOrUpdateProduct: function addOrUpdateProduct() {
-      axios.post('https://24bbe8b8d790.ngrok.io/api/add-or-update-product', this.product).then(function (res) {
-        console.log('!! Product Maintained !!');
-      });
+      axios.post('https://24bbe8b8d790.ngrok.io/api/add-or-update-product', this.product).then(function (res) {});
     },
     getProductDetails: function getProductDetails() {
       var _this = this;
@@ -2098,14 +2099,14 @@ __webpack_require__.r(__webpack_exports__);
             },
             body: JSON.stringify(formData)
           }).then(function (response) {
-            //   if(confirm("Do you want to add this size to cart?"))
-            // {
-            window.location.reload(); //}
+            if (confirm("Do you want to add this size to cart?")) {
+              window.location.reload();
+            }
 
             return response.json();
           })["catch"](function (error) {
             console.error('Error:', error);
-          }); //window.location.reload();
+          });
         }
       }
     },
@@ -2324,7 +2325,6 @@ __webpack_require__.r(__webpack_exports__);
       x[n].className += " active";
     },
     dev_reset: function dev_reset() {
-      console.log(' !! Begin Your Experience with us !! ');
       window.localStorage.clear();
     },
     restart: function restart() {
@@ -38763,7 +38763,7 @@ var render = function() {
                       staticClass: "continue-btn",
                       staticStyle: {
                         position: "absolute",
-                        right: "30%",
+                        right: "32%",
                         width: "33%",
                         bottom: "90px",
                         display: "block !important"

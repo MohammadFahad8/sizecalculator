@@ -165,7 +165,7 @@
     <th scope="row">Product</th>
     
     
-    <th colspan="3"  ><span class="offset-4">Variants</span> </th>
+    <th :colspan="variant_count"  ><span class="offset-4">Variants</span> </th>
     <th :colspan= "image_count" ><span class="offset-4">Images</span> </th>
     <th>Action</th>
 </tr>
@@ -283,6 +283,7 @@
                 singleProduct:'',
                 is_loading:false,
                 image_count:'',
+                variant_count:'',
                 
 
                      
@@ -340,8 +341,7 @@
                     }
                     else
                     {
-                        this.check = false;
-                     
+                        this.check = false;  
 
                     }
                    
@@ -352,9 +352,7 @@
                      
                     this.search= val.title;
                     this.is_selected=false;
-                    this.is_loading=true,
-                    
-                    
+                    this.is_loading=true;                                    
                     $('.checking').css('display', 'none');
                     axios.get('/search/product/'+val.id).then((res)=>{
                         this.is_loading=false,
@@ -363,10 +361,14 @@
                         if(this.singleProduct.product.images.length)
                         {
                             this.image_count = this.singleProduct.product.images.length
-
+                        }
+                        
+                         if(this.singleProduct.product.variants.length)
+                        {
+                            this.variant_count = this.singleProduct.product.variants.length
                         }
                 
-                        // console.log(this.singleProduct.product);
+                        
 
                     })
                     
@@ -375,8 +377,7 @@
                  addProduct:function(product)
                  {
                      
-                    //  console.log(product);
-                    //  return;
+                   
                      axios.post('/add/product-from-selection',product)
                      .then((res)=>{
                          if(res.data.status == 1)
@@ -449,7 +450,7 @@
     .plus-custom:hover
     {
         color:#0069D9;
-        transition:0.5s ease-in-out;
+        transition:0.2s ease-in-out;
     }
     * {
       box-sizing: border-box;
