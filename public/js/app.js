@@ -2003,6 +2003,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     product: Object
@@ -2056,10 +2057,50 @@ __webpack_require__.r(__webpack_exports__);
           _this.recommended_size = res.data.toUpperCase().substr(0, 2);
           $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
           $('.dfOagu').addClass('dfOagu-second');
+
+          _this.addToCart();
         } else {
           _this.recommended_size = res.data.toUpperCase().charAt(0);
+
+          _this.addToCart();
         }
       });
+    },
+    addToCart: function addToCart() {
+      var formData = '';
+      var pickCharacter = 0;
+
+      for (var i = 0; i <= this.product.variants.length; i++) {
+        if (this.recommended_size.toLowerCase() == 'xl' || this.recommended_size.toLowerCase() == 'xs') {
+          pickCharacter = 1;
+        } else {
+          pickCharacter = 0;
+        }
+
+        if (this.product.variants[i].title.toLowerCase().charAt(pickCharacter) == this.recommended_size.toLowerCase().charAt(0)) {
+          formData = {
+            'items': [{
+              'id': this.product.variants[i].id,
+              'quantity': 1
+            }]
+          };
+          fetch('/cart/add.js', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(formData)
+          }).then(function (response) {
+            if (confirm("Do you want to add this size to cart?")) {
+              window.location.reload();
+            }
+
+            return response.json();
+          })["catch"](function (error) {
+            console.error('Error:', error);
+          }); //window.location.reload();
+        }
+      }
     },
     changesize: function changesize() {
       if (this.showrecommended == true) {
@@ -38761,7 +38802,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.chest(1)
+                                    return _vm.chest(2)
                                   }
                                 }
                               }),
@@ -38793,7 +38834,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.chest(1)
+                                    return _vm.chest(3)
                                   }
                                 }
                               }),
@@ -38835,7 +38876,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.stomach(2)
+                                    return _vm.stomach(1)
                                   }
                                 }
                               }),
@@ -38867,7 +38908,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.stomach(3)
+                                    return _vm.stomach(2)
                                   }
                                 }
                               }),
@@ -38899,7 +38940,7 @@ var render = function() {
                                 },
                                 on: {
                                   click: function($event) {
-                                    return _vm.stomach(1)
+                                    return _vm.stomach(3)
                                   }
                                 }
                               }),

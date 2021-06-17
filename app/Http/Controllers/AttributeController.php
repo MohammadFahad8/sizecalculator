@@ -302,6 +302,7 @@ else
   public function measurements ($xs=null,$c,$s,$b,$xl=null)
   {
         $sum = $c + $s +$b;
+        
         $size='';
         $sizes = Size::latest()->get();
         
@@ -322,14 +323,9 @@ else
             //medium
             return $size = 'Medium';
         }
+        
         else if($c==3 && $s==3 && $b==3)
-        {
-            //large
-            return $size = 'Large';
-
-        }
-        else if($c==3 && $s==3 && $b==3)
-        {
+        { 
             if(isset($xl) && $xl =='xl')
             {
                 return $size = 'XL';
@@ -339,6 +335,7 @@ else
         }
          else if($c==3 && $s==3 && $b==3)
         {
+            
             if(isset($xl) && $xl =='xxl')
             {
                 return $size = 'XXL';

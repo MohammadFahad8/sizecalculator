@@ -103,11 +103,11 @@
 
 <button class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: 90px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button><div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
     <img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
-        <img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
-            <img id="chest3"  v-on:click="chest(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Broader</p></div></div></div></div></div><div class="tab"> <div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
-                <img id="stomach1" v-on:click="stomach(2)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
-                    <img id="stomach2" v-on:click="stomach(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
-                        <img id="stomach3" v-on:click="stomach(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div> <div class="tab"><div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+        <img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="chest(2)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+            <img id="chest3"  v-on:click="chest(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Broader</p></div></div></div></div></div><div class="tab"> <div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+                <img id="stomach1" v-on:click="stomach(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+                    <img id="stomach2" v-on:click="stomach(2)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+                        <img id="stomach3" v-on:click="stomach(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div> <div class="tab"><div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
                             <img id="bottom1" v-on:click="bottom(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
                                 <img id="bottom2"  v-on:click="bottom(2)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
                                     <img id="bottom3"  v-on:click="bottom(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div><div class="tab"><div class=" fit-advisor-selected-product-grid">
@@ -155,6 +155,7 @@
       </body>
 
 </template>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
     export default {
@@ -214,15 +215,72 @@
                        this.recommended_size = res.data.toUpperCase().substr(0, 2)
                        $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
                        $('.dfOagu').addClass('dfOagu-second');
-                      
-
+                       this.addToCart();
+                     
                      }
                      else
                      {
                        this.recommended_size = res.data.toUpperCase().charAt(0)
+                       this.addToCart();
                      }
                      
                 })
+            },
+            addToCart:function()
+            {
+              var formData='';
+              var pickCharacter = 0;
+              for(var i=0;i<=this.product.variants.length;i++)
+              {
+                   if((this.recommended_size.toLowerCase() == 'xl') || (this.recommended_size.toLowerCase() == 'xs' ))
+                     {
+                       pickCharacter = 1;
+
+                     }
+                     else
+                     {
+                       pickCharacter = 0;
+
+                     }
+                if(this.product.variants[i].title.toLowerCase().charAt(pickCharacter)==this.recommended_size.toLowerCase().charAt(0))
+                {
+                  
+                     formData = {
+                          'items': [{
+                            'id': this.product.variants[i].id,
+                            'quantity':1,
+                            
+                            }]
+                          };
+                          
+                                fetch('/cart/add.js', {
+                            method: 'POST',
+                            headers: {
+                              'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify(formData)
+                          })
+                          .then(response => {
+                            if(confirm("Do you want to add this size to cart?"))
+                          {
+                           window.location.reload();
+                          }
+                            return response.json();
+                          })
+                          .catch((error) => {
+                            console.error('Error:', error);
+                          });
+                          //window.location.reload();
+                          
+                         
+
+                }  
+                
+              }
+         
+
+                          
+
             },
            changesize:function()
            {
@@ -261,6 +319,8 @@
                 this.form.bottom = n;
                 this.form.tags= this.product.tags
                 this.nextPrev(1)
+              
+                
             },
             countryval:function(){
                 
