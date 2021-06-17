@@ -108,7 +108,7 @@ class AttributeController extends Controller
     public function show()
     {
         //
-        echo '<script>console.log("Hitting controller")</script>';
+        return '<script>console.log("Hitting controller")</script>';
     }
 
     /**
@@ -239,7 +239,7 @@ class AttributeController extends Controller
 }
 else
   {
-  $this->calculateSizeFemale($data,$height_cm);
+ return  $this->calculateSizeFemale($data,$height_cm);
   }
   //end man adult
   }
@@ -314,25 +314,25 @@ else
             
             if(isset($xs) && $xs =='xs')
             {
-                echo  $size = 'XS';
+                return  $size = 'XS';
             }
-             echo $size = "Small";
+             return $size = "Small";
 
 
         }
         else if($c==2 && $s  == 2 && $b==2)
         {
             //medium
-            echo $size = 'Medium';
+            return $size = 'Medium';
         }
         
         else if($c==3 && $s==3 && $b==3)
         { 
             if(isset($xl) && $xl =='xl')
             {
-                echo $size = 'XL';
+                return $size = 'XL';
             }
-            echo $size = 'Large';
+            return $size = 'Large';
 
         }
          else if($c==3 && $s==3 && $b==3)
@@ -340,123 +340,123 @@ else
             
             if(isset($xl) && $xl =='xxl')
             {
-                echo $size = 'XXL';
+                return $size = 'XXL';
             }
-            echo $size = 'Large';
+            return $size = 'Large';
 
         } 
         //wide chest
         else if($c==3 && $s==1 && $b==1)
         {
             
-            echo $size = 'Large';
+            return $size = 'Large';
 
         }
         else if($c==3 && $s==2 && $b==1)
         {
             
-            echo $size = 'Xl';
+            return $size = 'Xl';
 
         }
          else if($c==3 && $s==2 && $b==2)
         {
             
-            echo $size = 'XXl';
+            return $size = 'XXl';
 
         }
          else if($c==3 && $s==2 && $b==3)
         {
             
-            echo $size = 'XL';
+            return $size = 'XL';
 
         }
          else if($c==3 && $s==1 && $b==2)
         {
             
-            echo $size = 'L';
+            return $size = 'L';
 
         }
         else if($c==1 && $s==2 && $b==3)
         {
             
-            echo $size = 'L';
+            return $size = 'L';
 
         }
         else if($c==1 && $s==3 && $b==3)
         {
             
-            echo $size = 'XL';
+            return $size = 'XL';
 
         }
         else if($c==1 && $s==1 && $b==2)
         {
             
-            echo $size = 'M';
+            return $size = 'M';
 
         }
         else if($c==1 && $s==1 && $b==3)
         {
             
-            echo $size = 'ML';
+            return $size = 'ML';
 
         }
         
         else if($c==2 && $s==1 && $b==1)
         {
             
-            echo $size = 'M';
+            return $size = 'M';
 
         }
          
          else if($c==2 && $s==1 && $b==2)
          {
              
-             echo $size = 'ML';
+             return $size = 'ML';
  
          }
          else if($c==2 && $s==1 && $b==3)
          {
              
-             echo $size = 'L';
+             return $size = 'L';
  
          }
           
         else if($c==2 && $s==2 && $b==1)
         {
             
-            echo $size = 'M';
+            return $size = 'M';
 
         }
          
          else if($c==2 && $s==2 && $b==3)
          {
              
-             echo $size = 'L';
+             return $size = 'L';
  
          }
           
         else if($c==2 && $s==3 && $b==1)
         {
             
-            echo $size = 'L';
+            return $size = 'L';
 
         }
          
          else if($c==2 && $s==3 && $b==2)
          {
              
-             echo $size = 'L';
+             return $size = 'L';
  
          }
           
         else if($c==2 && $s==3 && $b==3)
         {
             
-            echo $size = 'XL';
+            return $size = 'XL';
 
         }
         else {
-            echo $size = 'M';
+            return $size = 'M';
         }
         
        
