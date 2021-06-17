@@ -209,7 +209,9 @@
                
                 axios.post('https://24bbe8b8d790.ngrok.io/api/size-recommend/',this.form)
                 .then((res)=>{
+                  
                     this.is_loading = false;
+                    
                      if((res.data == 'XL') || (res.data == 'XS' ))
                      {
                        this.recommended_size = res.data.toUpperCase().substr(0, 2)
