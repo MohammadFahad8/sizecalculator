@@ -101,7 +101,9 @@
 </div>
 
 
-<button class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: 90px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button><div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
+<button v-if="showContinueBtn" class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: 90px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button>
+<button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: 90px;display:block !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button>
+<div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
     <img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
         <img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="chest(2)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
             <img id="chest3"  v-on:click="chest(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Broader</p></div></div></div></div></div><div class="tab"> <div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
@@ -190,7 +192,9 @@
                 recommended_size:'',
                 is_loading:false,
                 showlist:false,
+                showContinueBtn:true,
                 showrecommended:true,
+                
                 image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
                 image_uk:'https://24bbe8b8d790.ngrok.io/images/uk.png',
 
@@ -217,13 +221,21 @@
                        this.recommended_size = res.data.toUpperCase().substr(0, 2)
                        $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
                        $('.dfOagu').addClass('dfOagu-second');
-                       this.addToCart();
+                      if(this.showContinueBtn==true)
+                      {
+                        this.showContinueBtn = false;
+                      }
+                      
                      
                      }
                      else
                      {
                        this.recommended_size = res.data.toUpperCase().charAt(0)
-                       this.addToCart();
+                        if(this.showContinueBtn==true)
+                      {
+                        this.showContinueBtn = false;
+                      }
+                      
                      }
                      
                 })
@@ -255,18 +267,18 @@
                             }]
                           };
                           
-                                fetch('/cart/add.js', {
-                            method: 'POST',
-                            headers: {
+                          fetch('/cart/add.js', {
+                          method: 'POST',
+                          headers: {
                               'Content-Type': 'application/json'
                             },
-                            body: JSON.stringify(formData)
+                          body: JSON.stringify(formData)
                           })
                           .then(response => {
-                            if(confirm("Do you want to add this size to cart?"))
-                          {
+                          //   if(confirm("Do you want to add this size to cart?"))
+                          // {
                            window.location.reload();
-                          }
+                          //}
                             return response.json();
                           })
                           .catch((error) => {
@@ -369,10 +381,11 @@
             showTab:function(n)
             {
                 if(n==0)
-                {
+                {   
                     $('#intro1').css('display', 'block');
                     $('.switch').removeClass('introfirst');
                     $('.switch').addClass('find-fit-header');
+                    
                     
              $('#intro2').css('display', 'none');
                $('#intro3').css('display', 'none');
@@ -414,6 +427,7 @@
                 }
                 if(n==4)
                 {
+                   $('.fit-advisor-selected-product-grid').css('display', 'inline');
                        $('#intro1').css('display', 'none');
              $('#intro2').css('display', 'none');
                $('#intro3').css('display', 'none');
@@ -437,6 +451,7 @@
     this.firstTab = false;
     this.onfirstTab = false;
     this.lastTab = false;
+    
   } else {
     document.getElementById("steps-mark").style.visibility = "visible";
     document.getElementById("prevBtn").style.display = "inline";
@@ -454,16 +469,20 @@
       this.firstTab = false;
       this.onfirstTab = true,
       this.lastTab = true;
+    
+   
+     
+      this.showContinueBtn = false;
      
     
-    document.getElementById("nextBtn").style.display = "none";
-    document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
+    //document.getElementById("nextBtn").style.display = "none";
+   // document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
     document.getElementById("steps-mark").style.visibility = "inline";
     
     
     
 
-    document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
+    //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
  this.getProductDetails();
   }
    else {
@@ -523,11 +542,11 @@ if(  this.measurew == null){
 
  
   // if you have reached the end of the form...
-  if (this.currentTab >= x.length) {
+ // if (this.currentTab >= x.length) {
     // ... the form gets submitted:
-    document.getElementById("regForm").submit();
-    return false;
-  }
+    //document.getElementById("regForm").submit();
+    //return false;
+  //}
   // Otherwise, display the correct tab:
   this.showTab(this.currentTab);
 
@@ -574,7 +593,7 @@ if(  this.measurew == null){
             },
             restart:function()
             {   
-            $('#nextBtn').text('GET STARTED');
+            
             this.changesizetorecommended()
             this.form.heightfoot='';
             this.form.heightinch='';
@@ -584,14 +603,20 @@ if(  this.measurew == null){
             this.form.stomach='';
             this.form.bottom='';
             this.recommended_size='',
+            
+            this.currentTab = 0;
+            this.showContinueBtn=true,
+            
+            $('.fit-advisor-selected-product-grid').css('display', 'none');
                 this.dev_reset();
-                this.showTab(0);
+                this.showTab(this.currentTab);
                 this.nextPrev(-4)
+                
             },
         },
         mounted() {
           
-          console.log(this.product)
+         
           //slides size
           $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
 
@@ -602,11 +627,6 @@ var $allSlides = $('div.fit-advisor-selected-size'),
 $('.next,.prev').click(function(){
 
  this.showrecommended = false;
- 
- 
- 
- 
-  
   
     var traverse = traverseDefault,
         action = actionDefault;

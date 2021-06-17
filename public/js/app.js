@@ -2004,6 +2004,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     product: Object
@@ -2035,6 +2037,7 @@ __webpack_require__.r(__webpack_exports__);
       recommended_size: '',
       is_loading: false,
       showlist: false,
+      showContinueBtn: true,
       showrecommended: true,
       image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
       image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png'
@@ -2058,11 +2061,15 @@ __webpack_require__.r(__webpack_exports__);
           $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
           $('.dfOagu').addClass('dfOagu-second');
 
-          _this.addToCart();
+          if (_this.showContinueBtn == true) {
+            _this.showContinueBtn = false;
+          }
         } else {
           _this.recommended_size = res.data.toUpperCase().charAt(0);
 
-          _this.addToCart();
+          if (_this.showContinueBtn == true) {
+            _this.showContinueBtn = false;
+          }
         }
       });
     },
@@ -2091,9 +2098,9 @@ __webpack_require__.r(__webpack_exports__);
             },
             body: JSON.stringify(formData)
           }).then(function (response) {
-            if (confirm("Do you want to add this size to cart?")) {
-              window.location.reload();
-            }
+            //   if(confirm("Do you want to add this size to cart?"))
+            // {
+            window.location.reload(); //}
 
             return response.json();
           })["catch"](function (error) {
@@ -2189,6 +2196,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       if (n == 4) {
+        $('.fit-advisor-selected-product-grid').css('display', 'inline');
         $('#intro1').css('display', 'none');
         $('#intro2').css('display', 'none');
         $('#intro3').css('display', 'none');
@@ -2224,10 +2232,11 @@ __webpack_require__.r(__webpack_exports__);
       if (n == 4) {
         this.firstTab = false;
         this.onfirstTab = true, this.lastTab = true;
-        document.getElementById("nextBtn").style.display = "none";
-        document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
-        document.getElementById("steps-mark").style.visibility = "inline";
-        document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
+        this.showContinueBtn = false; //document.getElementById("nextBtn").style.display = "none";
+        // document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
+
+        document.getElementById("steps-mark").style.visibility = "inline"; //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
+
         this.getProductDetails();
       } else {
         document.getElementById("nextBtn").style.display = "inline";
@@ -2266,13 +2275,12 @@ __webpack_require__.r(__webpack_exports__);
       if (this.measureh == null) {
         localStorage.setItem("height", height_cm);
       } // if you have reached the end of the form...
-
-
-      if (this.currentTab >= x.length) {
-        // ... the form gets submitted:
-        document.getElementById("regForm").submit();
-        return false;
-      } // Otherwise, display the correct tab:
+      // if (this.currentTab >= x.length) {
+      // ... the form gets submitted:
+      //document.getElementById("regForm").submit();
+      //return false;
+      //}
+      // Otherwise, display the correct tab:
 
 
       this.showTab(this.currentTab);
@@ -2320,7 +2328,6 @@ __webpack_require__.r(__webpack_exports__);
       window.localStorage.clear();
     },
     restart: function restart() {
-      $('#nextBtn').text('GET STARTED');
       this.changesizetorecommended();
       this.form.heightfoot = '';
       this.form.heightinch = '';
@@ -2329,14 +2336,15 @@ __webpack_require__.r(__webpack_exports__);
       this.form.chest = '';
       this.form.stomach = '';
       this.form.bottom = '';
-      this.recommended_size = '', this.dev_reset();
-      this.showTab(0);
+      this.recommended_size = '', this.currentTab = 0;
+      this.showContinueBtn = true, $('.fit-advisor-selected-product-grid').css('display', 'none');
+      this.dev_reset();
+      this.showTab(this.currentTab);
       this.nextPrev(-4);
     }
   },
   mounted: function mounted() {
-    console.log(this.product); //slides size
-
+    //slides size
     $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
 
     var $allSlides = $('div.fit-advisor-selected-size'),
@@ -38726,25 +38734,51 @@ var render = function() {
                   ])
                 : _vm._e(),
               _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "continue-btn",
-                  staticStyle: {
-                    position: "absolute",
-                    right: "30%",
-                    width: "33%",
-                    bottom: "90px"
-                  },
-                  attrs: { type: "button", id: "nextBtn" },
-                  on: {
-                    click: function($event) {
-                      return _vm.nextPrev(1)
-                    }
-                  }
-                },
-                [_vm._v("Get Started")]
-              ),
+              _vm.showContinueBtn
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "continue-btn",
+                      staticStyle: {
+                        position: "absolute",
+                        right: "30%",
+                        width: "33%",
+                        bottom: "90px"
+                      },
+                      attrs: { type: "button", id: "nextBtn" },
+                      on: {
+                        click: function($event) {
+                          return _vm.nextPrev(1)
+                        }
+                      }
+                    },
+                    [_vm._v("Get Started")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              !_vm.showContinueBtn
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "continue-btn",
+                      staticStyle: {
+                        position: "absolute",
+                        right: "30%",
+                        width: "33%",
+                        bottom: "90px",
+                        display: "block !important"
+                      },
+                      attrs: { type: "button", id: "cartBtn" },
+                      on: {
+                        click: function($event) {
+                          return _vm.addToCart()
+                        }
+                      }
+                    },
+                    [_vm._v("Add Size to Cart")]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
               _c("div", { staticClass: "tab" }, [
                 _c("div", [
                   _c(
