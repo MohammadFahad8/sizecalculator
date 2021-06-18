@@ -192,7 +192,8 @@
             {{-- <td><a href="{{ route('sizes.selectproduct', ['id'=>$row['id']??'n/a','name'=>$row['title']]) }}" @click="getSelectedProducts()" class="btn btn-info">Select</a></td> --}}
            
             
-            <td><div class="badge badge-success add-product" @click="addProduct(singleProduct.product)">Add</div></td>
+             <td>{{--<div class="badge badge-success add-product" @click="addProduct(singleProduct.product)">Add</div>--}}  <i class="fa fa-plus plus-custom plus-table" @click="addProduct(singleProduct.product)"></i></td> 
+
         </tr>
   
     </tbody>
@@ -443,6 +444,12 @@
 
 </script>
 <style>
+    .plus-table {
+        margin: 0 auto !important;
+    display: block !important;
+    margin-top: 10px !important;
+    text-align: center;
+    }
     #variant-images:hover{
         transform: scale(1.5);
         transition:ease-in-out 0.4s;

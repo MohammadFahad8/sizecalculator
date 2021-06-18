@@ -118,24 +118,14 @@
                                         <!-- <div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div> -->
                                     <div><div class=" fit-advisor-product-size-box"><div class=" fit-advisor-fit-grid">
                                   
-                                    
-                                        <!-- <div class=" krijnu">
-                                            <p class=" eVQudH">Size</p>
-                                            <div class=" coSBSK">
-                                                 <p class=" dZzOUn" style="opacity: 1;">best fit
-                                                    <svg viewBox="0 0 16 16" height="14" width="14" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="">
-                                                    <path fill-rule="evenodd" d="M16 8A8 8 0 110 8a8 8 0 0116 0zm-3.97-3.03a.75.75 0 00-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 00-1.06 1.06L6.97 11.03a.75.75 0 001.079-.02l3.992-4.99a.75.75 0 00-.01-1.05z"></path>
-                                                    </svg>
-                                                    </p>
-                                                    </div>
-                                                    </div> -->
+                                  
                                     <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box">
                                       <div class=" selected-product-arrow-left">
-                                        <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer next" @click="changesize()"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>  
+                                        <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer next" @click="changesize();"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>  
                                                         
                                                         
                                                         
-                                                        <!-- LIST OF ALL VARIANTS -->
+                                                    <!-- LIST OF ALL VARIANTS -->
 <div class="listfit" >
  
 
@@ -144,17 +134,22 @@
   <span class="sr-only">Loading...</span>
 </div>
 
-<h4 class="result-size">
+<h4 class="result-size" >
+  
   
 <span v-if="showrecommended" class="recommendedbyus"  >{{recommended_size}}</span>
-<span v-if="!showrecommended" >{{row.title.toUpperCase().charAt(0)}}</span>
+<span v-if="!showrecommended "   >{{row.title.toUpperCase().charAt(0)}}</span>
 </h4>
 </span>
 </div>
 </div>
 
 <div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI arrow-next next"  @click="changesize()" ><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Recommended</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
-</form></div></div></div></div>
+</form>
+</div>
+</div>
+</div>
+</div>
       
       
       </body>
@@ -178,18 +173,18 @@
                     stomach:0,
                     bottom:0,
                     tags:[]
-                    
+            
                 },
                 countrycheck:'',
                 checked:false,
                 currentTab : 0,
-                 height_cm:0,
-                 weightf:0,
-                 weight_lbs:0,
-                  measurew:0,
-                  firstTab:true,
-                  onfirstTab:true,
-                  lastTab:false,
+                height_cm:0,
+                weightf:0,
+                weight_lbs:0,
+                measurew:0,
+                firstTab:true,
+                onfirstTab:true,
+                lastTab:false,
                 measureh:0,
                 message:"Jello",
                 recommended_size:'',
@@ -197,7 +192,7 @@
                 showlist:false,
                 showContinueBtn:true,
                 showrecommended:true,
-                
+                variantselected:0,
                 image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
                 image_uk:'https://24bbe8b8d790.ngrok.io/images/uk.png',
 
@@ -248,7 +243,43 @@
             {
               var formData='';
               var pickCharacter = 0;
+              
               for(var i=0;i<=this.product.variants.length;i++)
+              {
+                if(!this.showrecommended)
+              {
+                console.log(this.variantselected)
+                 if(confirm("Do you want to add this size to cart?"))
+                          {
+                     formData = {
+                          'items': [{
+                            'id': this.product.variants[i].id,
+                            'quantity':1,
+                            
+                            }]
+                          };
+                          
+                          fetch('/cart/add.js', {
+                          method: 'POST',
+                          headers: {
+                              'Content-Type': 'application/json'
+                            },
+                          body: JSON.stringify(formData)
+                          })
+                          .then(response => {
+                            
+                           
+                          
+                            return response.json();
+                          })
+                          .catch((error) => {
+                            console.error('Error:', error);
+                          });
+                         
+                            window.location.reload();
+                          }
+                
+              }else
               {
                    if((this.recommended_size.toLowerCase() == 'xl') || (this.recommended_size.toLowerCase() == 'xs' ))
                      {
@@ -289,6 +320,7 @@
                             console.error('Error:', error);
                           });
                           
+                }
                           
                          
 
@@ -298,6 +330,14 @@
          
 
                           
+
+            },
+            setSize:function(id)
+            {
+              this.variantselected=id
+              console.log(this.variantselected);
+              
+
 
             },
            changesize:function()
@@ -1646,7 +1686,7 @@ textarea:focus, input:focus{
     /* border: 1px solid rgb(221, 221, 221); */
     border-radius: 2px;
     margin-bottom: 15px;
-        margin-left: -30px;
+        margin-left: -54px;
     padding: 10px 20px;
     /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */
 }

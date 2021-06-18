@@ -14,8 +14,8 @@ return [
         'new_design_language'=>'xyz',
         'session'=>'xyz',
         'timestamp'=>'xyz',
-        'APP_URL'=>'https://24bbe8b8d790.ngrok.io/',
-        'SCRIPT_TAG_APP'=>'https://24bbe8b8d790.ngrok.io/js/app.js',
+        'APP_URL'=>'https://5cad6da6369e.ngrok.io/',
+        'SCRIPT_TAG_APP'=>'https://5cad6da6369e.ngrok.io/js/app.js',
         'THEME_ID'=>'120343068856',
 
     ],
