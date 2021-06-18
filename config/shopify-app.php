@@ -1,5 +1,7 @@
 <?php
 
+
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -332,6 +334,8 @@ return [
             ],
             ...
         */
+        
+
     ],
 
     /*
@@ -391,7 +395,7 @@ return [
     'scripttags' => [
       
         [
-            'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', env('APP_URL') . '/scripttags/index.js'),
+            'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', env('APP_URL') . '/js/app.js'),
             'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
             'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
         ]

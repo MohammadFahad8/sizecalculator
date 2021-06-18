@@ -201,7 +201,7 @@
       
         methods:{
             addOrUpdateProduct:function(){
-                axios.post('https://24bbe8b8d790.ngrok.io/api/add-or-update-product',this.product)
+                axios.post(this.$appUrl+'/api/add-or-update-product',this.product)
                 .then((res)=>{
                   
                 })
@@ -210,7 +210,7 @@
                 this.is_loading = true;
                 
                
-                axios.post('https://24bbe8b8d790.ngrok.io/api/size-recommend/',this.form)
+                axios.post(this.$appUrl+'/api/size-recommend/',this.form)
                 .then((res)=>{
                   
                     this.is_loading = false;
@@ -595,6 +595,8 @@ if(  this.measurew == null){
             },
             validateForm:function()
             {
+              
+             
                 
   // This function deals with validation of the form fields
   var x, y, i, valid = true;
@@ -610,6 +612,29 @@ if(  this.measurew == null){
       valid = false;
     }
   }
+   if(this.form.heightfoot >10)
+              { console.log('height limit is 10');
+                valid= false;
+                
+              }
+              else if(this.form.heightinch >11)
+              {
+                console.log('Height in inches is  limited  to 11');
+                valid= false;
+
+              }
+              else if(this.form.weight > 500)
+              {
+                console.log('Weight  in Lbs is  limited  to 11');
+                valid= false;
+
+              }
+              else if(this.form.age >100)
+              {
+                console.log('Age   limited  to 100*');
+                valid= false;
+
+              }
   // If the valid status is true, mark the step as finished and valid:
   if (valid) {
     document.getElementsByClassName("step")[this.currentTab].className += " finish";
@@ -657,7 +682,7 @@ if(  this.measurew == null){
             },
         },
         mounted() {
-          
+           
   
           //slides size
           $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
@@ -680,7 +705,7 @@ $('.next,.prev').click(function(){
 
     var $curr = $allSlides.filter(':visible'), //get the visible slide
         $nxtTarget =  $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
-
+        $curr.addClass('active')
     $curr.stop(true, true).fadeIn(1000).hide(); //hide current one
 
     if (!$nxtTarget.length){ //if no next

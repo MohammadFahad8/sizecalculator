@@ -2044,13 +2044,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addOrUpdateProduct: function addOrUpdateProduct() {
-      axios.post('https://24bbe8b8d790.ngrok.io/api/add-or-update-product', this.product).then(function (res) {});
+      axios.post(this.$appUrl + '/api/add-or-update-product', this.product).then(function (res) {});
     },
     getProductDetails: function getProductDetails() {
       var _this = this;
 
       this.is_loading = true;
-      axios.post('https://24bbe8b8d790.ngrok.io/api/size-recommend/', this.form).then(function (res) {
+      axios.post(this.$appUrl + '/api/size-recommend/', this.form).then(function (res) {
         _this.is_loading = false;
 
         if (res.data == 'XL' || res.data == 'XS') {
@@ -2328,6 +2328,20 @@ __webpack_require__.r(__webpack_exports__);
 
           valid = false;
         }
+      }
+
+      if (this.form.heightfoot > 10) {
+        console.log('height limit is 10');
+        valid = false;
+      } else if (this.form.heightinch > 11) {
+        console.log('Height in inches is  limited  to 11');
+        valid = false;
+      } else if (this.form.weight > 500) {
+        console.log('Weight  in Lbs is  limited  to 11');
+        valid = false;
+      } else if (this.form.age > 100) {
+        console.log('Age   limited  to 100*');
+        valid = false;
       } // If the valid status is true, mark the step as finished and valid:
 
 
@@ -2392,6 +2406,7 @@ __webpack_require__.r(__webpack_exports__);
           //get the visible slide
       $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
 
+      $curr.addClass('active');
       $curr.stop(true, true).fadeIn(1000).hide(); //hide current one
 
       if (!$nxtTarget.length) {
@@ -2486,6 +2501,7 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
+Vue.prototype.$appUrl = 'https://5cad6da6369e.ngrok.io';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
