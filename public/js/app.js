@@ -2004,6 +2004,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     product: Object
@@ -2011,456 +2012,168 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       form: {
-        heightfoot: '',
-        heightinch: '',
-        weight: '',
-        age: '',
+        heightfoot: "",
+        heightinch: "",
+        weight: "",
+        age: "",
         chest: 0,
         stomach: 0,
         bottom: 0,
         tags: []
       },
-      countrycheck: '',
-      checked: false,
+      countrycheck: "",
+      checked: !1,
       currentTab: 0,
       height_cm: 0,
       weightf: 0,
       weight_lbs: 0,
       measurew: 0,
-      firstTab: true,
-      onfirstTab: true,
-      lastTab: false,
+      firstTab: !0,
+      onfirstTab: !0,
+      lastTab: !1,
       measureh: 0,
       message: "Jello",
-      recommended_size: '',
-      is_loading: false,
-      showlist: false,
-      showContinueBtn: true,
-      showrecommended: true,
+      recommended_size: "",
+      is_loading: !1,
+      showlist: !1,
+      showContinueBtn: !0,
+      showrecommended: !0,
       variantselected: 0,
-      image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
-      image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png'
+      image_us: "https://24bbe8b8d790.ngrok.io/images/us.png",
+      image_uk: "https://24bbe8b8d790.ngrok.io/images/uk.png"
     };
   },
   methods: {
     addOrUpdateProduct: function addOrUpdateProduct() {
-      axios.post(this.$appUrl + '/api/add-or-update-product', this.product).then(function (res) {});
+      axios.post(this.$appUrl + "/api/add-or-update-product", this.product).then(function (t) {});
     },
     getProductDetails: function getProductDetails() {
       var _this = this;
 
-      this.is_loading = true;
-      axios.post(this.$appUrl + '/api/size-recommend/', this.form).then(function (res) {
-        _this.is_loading = false;
-
-        if (res.data == 'XL' || res.data == 'XS') {
-          _this.recommended_size = res.data.toUpperCase().substr(0, 2);
-          $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
-          $('.dfOagu').addClass('dfOagu-second');
-
-          if (_this.showContinueBtn == true) {
-            _this.showContinueBtn = false;
-          }
-        } else {
-          _this.recommended_size = res.data.toUpperCase().charAt(0);
-
-          if (_this.showContinueBtn == true) {
-            _this.showContinueBtn = false;
-          }
-        }
+      this.is_loading = !0, axios.post(this.$appUrl + "/api/size-recommend/", this.form).then(function (t) {
+        _this.is_loading = !1, "XL" == t.data || "XS" == t.data ? (_this.recommended_size = t.data.toUpperCase().substr(0, 2), $(".fit-advisor-selected-size-arrow-box").addClass("bigsize"), $(".dfOagu").addClass("dfOagu-second"), 1 == _this.showContinueBtn && (_this.showContinueBtn = !1)) : (_this.recommended_size = t.data.toUpperCase().charAt(0), 1 == _this.showContinueBtn && (_this.showContinueBtn = !1));
       });
     },
     addToCart: function addToCart() {
-      var pickCharacter = 0;
-
-      if (!this.showrecommended) {
-        var var_id = $('.active > span> h4 > span').attr('data-variant');
-        this.cartRequest(var_id);
+      var t = 0;
+      if (this.showrecommended) for (var e = 0; e <= this.product.variants.length; e++) {
+        t = "xl" == this.recommended_size.toLowerCase() || "xs" == this.recommended_size.toLowerCase() ? 1 : 0, this.product.variants[e].title.toLowerCase().charAt(t) == this.recommended_size.toLowerCase().charAt(0) && this.cartRequest(this.product.variants[e].id);
       } else {
-        for (var i = 0; i <= this.product.variants.length; i++) {
-          if (this.recommended_size.toLowerCase() == 'xl' || this.recommended_size.toLowerCase() == 'xs') {
-            pickCharacter = 1;
-          } else {
-            pickCharacter = 0;
-          }
-
-          if (this.product.variants[i].title.toLowerCase().charAt(pickCharacter) == this.recommended_size.toLowerCase().charAt(0)) {
-            this.cartRequest(this.product.variants[i].id);
-          }
-        }
+        var s = $(".active > span> h4 > span").attr("data-variant");
+        this.cartRequest(s);
       }
     },
-    cartRequest: function cartRequest(id) {
-      var formData = '';
-      formData = {
-        'items': [{
-          'id': id,
-          'quantity': 1
+    cartRequest: function cartRequest(t) {
+      var e;
+      e = {
+        items: [{
+          id: t,
+          quantity: 1
         }]
-      };
-      fetch('/cart/add.js', {
-        method: 'POST',
+      }, fetch("/cart/add.js", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json'
+          "Content-Type": "application/json"
         },
-        body: JSON.stringify(formData)
-      }).then(function (response) {
-        if (confirm("Do you want to add this size to cart?")) {
-          window.location.reload();
-        }
-
-        return response.json();
-      })["catch"](function (error) {
-        console.error('Error:', error);
+        body: JSON.stringify(e)
+      }).then(function (t) {
+        return confirm("Do you want to add this size to cart?") && window.location.reload(), t.json();
+      })["catch"](function (t) {
+        console.error("Error:", t);
       });
     },
-    setSize: function setSize(id) {
-      this.variantselected = id;
-      console.log(this.variantselected);
+    setSize: function setSize(t) {
+      this.variantselected = t, console.log(this.variantselected);
     },
     changesize: function changesize() {
-      if (this.showrecommended == true) {
-        this.showrecommended = false;
-        $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
-        $('.dfOagu').removeClass('dfOagu-second');
-      }
+      1 == this.showrecommended && (this.showrecommended = !1, $(".fit-advisor-selected-size-arrow-box").removeClass("bigsize"), $(".dfOagu").removeClass("dfOagu-second"));
     },
     changesizetorecommended: function changesizetorecommended() {
-      if (this.showrecommended == false) {
-        this.showrecommended = true;
-      }
+      0 == this.showrecommended && (this.showrecommended = !0);
     },
-    chest: function chest(n) {
-      this.form.chest = n;
-      this.nextPrev(1);
+    chest: function chest(t) {
+      this.form.chest = t, this.nextPrev(1);
     },
-    stomach: function stomach(n) {
-      this.form.stomach = n;
-      this.nextPrev(1);
+    stomach: function stomach(t) {
+      this.form.stomach = t, this.nextPrev(1);
     },
-    bottom: function bottom(n) {
-      this.form.bottom = n;
-      this.form.tags = this.product.tags;
-      this.nextPrev(1);
+    bottom: function bottom(t) {
+      this.form.bottom = t, this.form.tags = this.product.tags, this.nextPrev(1);
     },
     countryval: function countryval() {
-      if (this.countrycheck == false) {
-        $('input[name="weight"]').attr('placeholder', 'Lbs');
-        $('input[name="countrycheck"]').attr('value', 0);
-        this.countrycheck == 0;
-        this.weightconvert(this.form.weight, false);
-      } else if (this.countrycheck == true) {
-        $('input[name="weight"]').attr('placeholder', 'Kg');
-        $('input[name="countrycheck"]').attr('value', 1);
-        this.countrycheck == 1;
-        this.weightconvert(this.form.weight, true);
-      }
+      0 == this.countrycheck ? ($('input[name="weight"]').attr("placeholder", "Lbs"), $('input[name="countrycheck"]').attr("value", 0), this.countrycheck, this.weightconvert(this.form.weight, !1)) : 1 == this.countrycheck && ($('input[name="weight"]').attr("placeholder", "Kg"), $('input[name="countrycheck"]').attr("value", 1), this.countrycheck, this.weightconvert(this.form.weight, !0));
     },
-    weightconvert: function weightconvert(w, c) {
-      if (c == true && w != '') {
-        this.form.weight = w / 2.2; //pound to kg
-      } else if (c == false && w != '') {
-        this.form.weight = w * 2.2; //kg to pound
-      }
+    weightconvert: function weightconvert(t, e) {
+      1 == e && "" != t ? this.form.weight = t / 2.2 : 0 == e && "" != t && (this.form.weight = 2.2 * t);
     },
-    showTab: function showTab(n) {
-      if (n == 0) {
-        $('#intro1').css('display', 'block');
-        $('.switch').removeClass('introfirst');
-        $('.switch').addClass('find-fit-header');
-        $('#intro2').css('display', 'none');
-        $('#intro3').css('display', 'none');
-        $('#intro4').css('display', 'none');
-        $('#intro5').css('display', 'none');
-      }
-
-      if (n == 1) {
-        $('#intro1').css('display', 'none');
-        $('#intro2').css('display', 'block');
-        $('#intro3').css('display', 'none');
-        $('#intro4').css('display', 'none');
-        $('#intro5').css('display', 'none');
-        $('.switch').addClass('introfirst');
-        $('.switch').removeClass('find-fit-header');
-      }
-
-      if (n == 2) {
-        $('#intro1').css('display', 'none');
-        $('#intro2').css('display', 'none');
-        $('#intro3').css('display', 'block');
-        $('#intro4').css('display', 'none');
-        $('#intro5').css('display', 'none');
-        $('.switch').addClass('introfirst');
-        $('.switch').removeClass('find-fit-header');
-      }
-
-      if (n == 3) {
-        $('#intro1').css('display', 'none');
-        $('#intro2').css('display', 'none');
-        $('#intro3').css('display', 'none');
-        $('#intro4').css('display', 'block');
-        $('#intro5').css('display', 'none');
-        $('.switch').addClass('introfirst');
-        $('.switch').removeClass('find-fit-header');
-      }
-
-      if (n == 4) {
-        $('.fit-advisor-selected-product-grid').css('display', 'inline');
-        $('#intro1').css('display', 'none');
-        $('#intro2').css('display', 'none');
-        $('#intro3').css('display', 'none');
-        $('#intro4').css('display', 'none');
-        $('#intro5').css('display', 'block');
-        $('.switch').addClass('introfirst');
-        $('.switch').removeClass('find-fit-header');
-      } //document.getElementById('tabnumber').innerHTML=n;
-      // This function will display the specified tab of the form...
-
-
-      var x = document.getElementsByClassName("tab");
-      x[n].style.display = "block"; //... and fix the Previous/Next buttons:
-
-      if (n == 0) {
-        document.getElementById("prevBtn").style.display = "none";
-        document.getElementById("steps-mark").style.visibility = "hidden";
-        this.firstTab = false;
-        this.onfirstTab = false;
-        this.lastTab = false;
-      } else {
-        document.getElementById("steps-mark").style.visibility = "visible";
-        document.getElementById("prevBtn").style.display = "inline"; //$('.fit-advisor-intro').text('Find Your Fit');
-
-        this.firstTab = true;
-        this.onfirstTab = true, this.lastTab = false;
-      }
-
-      if (n == 1) {
-        $('#popup1').css('overflow', 'scroll');
-      }
-
-      if (n == 4) {
-        this.firstTab = false;
-        this.onfirstTab = true, this.lastTab = true;
-        this.showContinueBtn = false; //document.getElementById("nextBtn").style.display = "none";
-        // document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
-
-        document.getElementById("steps-mark").style.visibility = "inline"; //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
-
-        this.getProductDetails();
-      } else {
-        document.getElementById("nextBtn").style.display = "inline";
-      }
-
-      if (n >= 1 && n < 4) {
-        document.getElementById("nextBtn").style.display = "none";
-      } //... and run a function that will display the correct step indicator:
-
-
-      this.fixStepIndicator(n);
+    showTab: function showTab(t) {
+      0 == t && ($("#intro1").css("display", "block"), $(".switch").removeClass("introfirst"), $(".switch").addClass("find-fit-header"), $("#intro2").css("display", "none"), $("#intro3").css("display", "none"), $("#intro4").css("display", "none"), $("#intro5").css("display", "none")), 1 == t && ($("#intro1").css("display", "none"), $("#intro2").css("display", "block"), $("#intro3").css("display", "none"), $("#intro4").css("display", "none"), $("#intro5").css("display", "none"), $(".switch").addClass("introfirst"), $(".switch").removeClass("find-fit-header")), 2 == t && ($("#intro1").css("display", "none"), $("#intro2").css("display", "none"), $("#intro3").css("display", "block"), $("#intro4").css("display", "none"), $("#intro5").css("display", "none"), $(".switch").addClass("introfirst"), $(".switch").removeClass("find-fit-header")), 3 == t && ($("#intro1").css("display", "none"), $("#intro2").css("display", "none"), $("#intro3").css("display", "none"), $("#intro4").css("display", "block"), $("#intro5").css("display", "none"), $(".switch").addClass("introfirst"), $(".switch").removeClass("find-fit-header")), 4 == t && ($(".fit-advisor-selected-product-grid").css("display", "inline"), $("#intro1").css("display", "none"), $("#intro2").css("display", "none"), $("#intro3").css("display", "none"), $("#intro4").css("display", "none"), $("#intro5").css("display", "block"), $(".switch").addClass("introfirst"), $(".switch").removeClass("find-fit-header")), document.getElementsByClassName("tab")[t].style.display = "block", 0 == t ? (document.getElementById("prevBtn").style.display = "none", document.getElementById("steps-mark").style.visibility = "hidden", this.firstTab = !1, this.onfirstTab = !1, this.lastTab = !1) : (document.getElementById("steps-mark").style.visibility = "visible", document.getElementById("prevBtn").style.display = "inline", this.firstTab = !0, this.onfirstTab = !0, this.lastTab = !1), 1 == t && $("#popup1").css("overflow", "scroll"), 4 == t ? (this.firstTab = !1, this.onfirstTab = !0, this.lastTab = !0, this.showContinueBtn = !1, document.getElementById("steps-mark").style.visibility = "inline", this.getProductDetails()) : document.getElementById("nextBtn").style.display = "inline", t >= 1 && t < 4 && (document.getElementById("nextBtn").style.display = "none"), this.fixStepIndicator(t);
     },
-    nextPrev: function nextPrev(n) {
-      // This function will figure out which tab to display
-      var x = document.getElementsByClassName("tab"); // Exit the function if any field in the current tab is invalid:
-
-      if (n == 1 && !this.validateForm()) return false; // Hide the current tab:
-
-      x[this.currentTab].style.display = "none"; // Increase or decrease the current tab by 1:
-
-      this.currentTab = this.currentTab + n;
-      var ft = $('#height_ft').val();
-      var inch = $('#height_in').val();
-      var weightf = $('#weight').val();
-      var weight_lbs = parseInt(weightf) * 2.205;
-      var heightf = ft * 12;
-      var heighti = heightf + parseInt(inch);
-      var height_cm = heighti * 2.54;
-      this.measureh = localStorage.getItem('height');
-      this.measurew = localStorage.getItem('weight');
-
-      if (this.measurew == null) {
-        localStorage.setItem("weight", weight_lbs);
-      }
-
-      if (this.measureh == null) {
-        localStorage.setItem("height", height_cm);
-      } // if you have reached the end of the form...
-      // if (this.currentTab >= x.length) {
-      // ... the form gets submitted:
-      //document.getElementById("regForm").submit();
-      //return false;
-      //}
-      // Otherwise, display the correct tab:
-
-
-      this.showTab(this.currentTab);
+    nextPrev: function nextPrev(t) {
+      var e = document.getElementsByClassName("tab");
+      if (1 == t && !this.validateForm()) return !1;
+      e[this.currentTab].style.display = "none", this.currentTab = this.currentTab + t;
+      var s = $("#height_ft").val(),
+          i = $("#height_in").val(),
+          n = $("#weight").val(),
+          o = 2.205 * parseInt(n),
+          a = 2.54 * (12 * s + parseInt(i));
+      this.measureh = localStorage.getItem("height"), this.measurew = localStorage.getItem("weight"), null == this.measurew && localStorage.setItem("weight", o), null == this.measureh && localStorage.setItem("height", a), this.showTab(this.currentTab);
     },
     validateForm: function validateForm() {
-      // This function deals with validation of the form fields
-      var x,
-          y,
-          i,
-          valid = true;
-      x = document.getElementsByClassName("tab");
-      y = x[this.currentTab].getElementsByTagName("input"); // A loop that checks every input field in the current tab:
+      var t,
+          e,
+          s = !0;
 
-      for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value == "") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid"; // and set the current valid status to false
-
-          valid = false;
-        }
+      for (t = document.getElementsByClassName("tab")[this.currentTab].getElementsByTagName("input"), e = 0; e < t.length; e++) {
+        "" == t[e].value && (t[e].className += " invalid", s = !1);
       }
 
-      if (this.form.heightfoot > 10) {
-        alert('height limit is 10');
-        valid = false;
-      } else if (this.form.heightinch > 11) {
-        alert('Height in inches is  limited  to 11');
-        valid = false;
-      } else if (this.form.weight > 500) {
-        alert('Weight  in Lbs is  limited  to 250');
-        valid = false;
-      } else if (this.form.age > 100) {
-        alert('Age   limited  to 100*');
-        valid = false;
-      } // If the valid status is true, mark the step as finished and valid:
-
-
-      if (valid) {
-        document.getElementsByClassName("step")[this.currentTab].className += " finish";
-      }
-
-      return valid; // return the valid status
+      return this.form.heightfoot > 10 ? (alert("height limit is 10"), s = !1) : this.form.heightinch > 11 ? (alert("Height in inches is  limited  to 11"), s = !1) : this.form.weight > 500 ? (alert("Weight  in Lbs is  limited  to 250"), s = !1) : this.form.age > 100 && (alert("Age   limited  to 100*"), s = !1), s && (document.getElementsByClassName("step")[this.currentTab].className += " finish"), s;
     },
-    fixStepIndicator: function fixStepIndicator(n) {
-      // This function removes the "active" class of all steps...
-      var i,
-          x = document.getElementsByClassName("step");
+    fixStepIndicator: function fixStepIndicator(t) {
+      var e,
+          s = document.getElementsByClassName("step");
 
-      for (i = 0; i < x.length; i++) {
-        x[i].className = x[i].className.replace(" active", "");
-      } //... and adds the "active" class on the current step:
+      for (e = 0; e < s.length; e++) {
+        s[e].className = s[e].className.replace(" active", "");
+      }
 
-
-      x[n].className += " active";
+      s[t].className += " active";
     },
     dev_reset: function dev_reset() {
       window.localStorage.clear();
     },
     restart: function restart() {
-      this.changesizetorecommended();
-      this.form.heightfoot = '';
-      this.form.heightinch = '';
-      this.form.weight = '';
-      this.form.age = '';
-      this.form.chest = '';
-      this.form.stomach = '';
-      this.form.bottom = '';
-      this.recommended_size = '', this.currentTab = 0;
-      this.showContinueBtn = true, $('.fit-advisor-selected-product-grid').css('display', 'none');
-      this.dev_reset();
-      this.showTab(this.currentTab);
-      this.nextPrev(-4);
+      this.changesizetorecommended(), this.form.heightfoot = "", this.form.heightinch = "", this.form.weight = "", this.form.age = "", this.form.chest = "", this.form.stomach = "", this.form.bottom = "", this.recommended_size = "", this.currentTab = 0, this.showContinueBtn = !0, $(".fit-advisor-selected-product-grid").css("display", "none"), this.dev_reset(), this.showTab(this.currentTab), this.nextPrev(-4);
     }
   },
   mounted: function mounted() {
-    //input check if age exceeds
-    $('#height_ft').on('keyup keydown change', function (e) {
-      $(this).removeClass('invalid');
-
-      if ($(this).val() > 10 && e.keyCode !== 46 && e.keyCode !== 8) {
-        e.preventDefault();
-        $(this).val(10);
-      }
-    }); //inches
-
-    $('#height_in').on('keyup keydown change', function (e) {
-      $(this).removeClass('invalid');
-
-      if ($(this).val() > 11 && e.keyCode !== 46 && e.keyCode !== 8) {
-        e.preventDefault();
-        $(this).val(11);
-      }
-    }); //weight
-
-    $('#weight').on('keyup keydown change', function (e) {
-      $(this).removeClass('invalid');
-
-      if ($(this).val() > 250 && e.keyCode !== 46 && e.keyCode !== 8) {
-        e.preventDefault();
-        $(this).val(250);
-      }
-    }); //age
-
-    $('#age').on('keyup keydown change', function (e) {
-      $(this).removeClass('invalid');
-
-      if ($(this).val() > 100 && e.keyCode !== 46 && e.keyCode !== 8) {
-        e.preventDefault();
-        $(this).val(100);
-      }
-    }); //endinput check if age exceeds
-    //slides size
-
-    $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
-
-    var $allSlides = $('div.fit-advisor-selected-size'),
-        traverseDefault = "first",
-        //set the defaults
-    actionDefault = "next";
-    $('.next,.prev').click(function () {
-      this.showrecommended = false;
-      var traverse = traverseDefault,
-          action = actionDefault;
-
-      if ($(this).is('.prev')) {
-        //if action is prev
-        traverse = "last"; //set traverse to last in case nothing is available
-
-        action = "prev"; //set action to prev
-      }
-
-      var $curr = $allSlides.filter(':visible'),
-          //get the visible slide
-      $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
-
-      $nxtTarget.addClass('active');
-      $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
-
-      if (!$nxtTarget.length) {
-        //if no next
-        $nxtTarget = $allSlides[traverse](); //based on traverse pick the next one
-      }
-
-      $nxtTarget.stop(true, true).fadeIn(1000); //show the target
-    }); //slides size end
-    //this.addOrUpdateProduct();
-
-    this.dev_reset();
-    $('input[name="countrycheck"]').click(function () {
-      var $radio = $(this); // if this was previously checked
-
-      if ($radio.data('waschecked') == true) {
-        $radio.prop('checked', false);
-        $radio.data('waschecked', false);
-      } else $radio.data('waschecked', true); // remove was checked from other radios
-
-    }); // Current tab is set to be the first tab (0)
-
-    this.showTab(this.currentTab); // $("#featured_image").attr("src",this.product.featured_image);
-
-    $('#popup-trigger').on('click', function () {
-      $('.product-card').css('z-index', '-1'); //$('body').css('overflow','hidden');
-
-      $('#popup1').css('overflow', 'scroll');
-    }); //size decider happens
-    //formula to caluclate height into centimeters
-
-    $('.bvHnuU').on('click', function () {
-      var measureh = localStorage.getItem('height');
-      var measurew = localStorage.getItem('weight');
+    $("#height_ft").on("keyup keydown change", function (t) {
+      $(this).removeClass("invalid"), $(this).val() > 10 && 46 !== t.keyCode && 8 !== t.keyCode && (t.preventDefault(), $(this).val(10));
+    }), $("#height_in").on("keyup keydown change", function (t) {
+      $(this).removeClass("invalid"), $(this).val() > 11 && 46 !== t.keyCode && 8 !== t.keyCode && (t.preventDefault(), $(this).val(11));
+    }), $("#weight").on("keyup keydown change", function (t) {
+      $(this).removeClass("invalid"), $(this).val() > 250 && 46 !== t.keyCode && 8 !== t.keyCode && (t.preventDefault(), $(this).val(250));
+    }), $("#age").on("keyup keydown change", function (t) {
+      $(this).removeClass("invalid"), $(this).val() > 100 && 46 !== t.keyCode && 8 !== t.keyCode && (t.preventDefault(), $(this).val(100));
+    }), $("div.fit-advisor-selected-size:gt(0)").hide();
+    var t = $("div.fit-advisor-selected-size");
+    $(".next,.prev").click(function () {
+      this.showrecommended = !1;
+      var e = "first",
+          s = "next";
+      $(this).is(".prev") && (e = "last", s = "prev");
+      var i = t.filter(":visible"),
+          n = i[s](".fit-advisor-selected-size");
+      n.addClass("active"), i.stop(!0, !0).fadeIn(1e3).removeClass("active").hide(), n.length || (n = t[e]()), n.stop(!0, !0).fadeIn(1e3);
+    }), this.dev_reset(), $('input[name="countrycheck"]').click(function () {
+      var t = $(this);
+      1 == t.data("waschecked") ? (t.prop("checked", !1), t.data("waschecked", !1)) : t.data("waschecked", !0);
+    }), this.showTab(this.currentTab), $("#popup-trigger").on("click", function () {
+      $(".product-card").css("z-index", "-1"), $("#popup1").css("overflow", "scroll");
+    }), $(".bvHnuU").on("click", function () {
+      localStorage.getItem("height"), localStorage.getItem("weight");
     });
   }
 });
@@ -7044,12 +6757,39 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
 /* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_assets_styles_body_fit_css__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! -!../../../node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!../assets/styles/body-fit.css */ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./resources/js/assets/styles/body-fit.css");
+// Imports
+
+
+var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
+___CSS_LOADER_EXPORT___.i(_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_assets_styles_body_fit_css__WEBPACK_IMPORTED_MODULE_1__.default);
+// Module
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n", ""]);
+// Exports
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
+
+
+/***/ }),
+
+/***/ "./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./resources/js/assets/styles/body-fit.css":
+/*!***************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader/dist/cjs.js??clonedRuleSet-9[0].rules[0].use[1]!./resources/js/assets/styles/body-fit.css ***!
+  \***************************************************************************************************************************/
+/***/ ((module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../node_modules/css-loader/dist/runtime/api.js */ "./node_modules/css-loader/dist/runtime/api.js");
+/* harmony import */ var _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0__);
 // Imports
 
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\n.bigsize{\r\n  \r\n    grid-template-columns: 1fr 190px 1fr !important;\n}\n.fit-advisor-header-desc-mt\r\n{\r\n    \r\n    margin-top: 40px !important;\n}\n.dfOagu\r\n{\r\n    margin-left:50px ;\r\n    margin-top: -5px !important;\n}\n.dfOagu-second {\r\n    margin-left: 10px;\r\n    margin-top: -5px !important;\n}\n.result-size\r\n{\r\n    width:100%;\r\n    font-family:karla;\r\n    font-weight:900;\r\n    font-size:133px;\n}\n.introfirst\r\n{\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 15px !important;\r\n    word-spacing: 5px !important;\n}\n#intro1\r\n{\r\n    display: block ;\n}\n#intro2\r\n{\r\n    display:none ;\r\n    margin-top: 20px;\n}\n#intro3\r\n{\r\n    display:none ;\r\n     margin-top: 20px;\n}\n#intro4\r\n{\r\n    display:none ;\r\n     margin-top: 20px;\n}\n#intro5\r\n{\r\n       display:none ;\r\n        margin-top: 20px;\n}\n.find-fit-header\r\n{\r\n       font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 40px !important;\r\n    word-spacing:5px !important;\n}\n.fit-advisor-chest-tab-item:hover {\r\n    /* display: grid; */\r\n    /* justify-content: center; */\r\n    /* align-items: center; */\r\n    /* text-align: center; */\r\n    /* cursor: pointer; */\r\n    transform: scale(0.95) !important;\r\n    transition: transform 0.2s ease-in-out 0s;\n}\ninput[type=\"checkbox\"]:checked {\r\n    background: rgb(2, 2, 2);\n}\n.img_country\r\n{\r\n     width: 8% !important;\r\n    margin: 0 auto !important;\r\n    margin-left: -105px !important;\n}\n.countrycheck\r\n{\r\n     width:3% !important;\r\n    margin:0 auto !important\n}\n.no-gutters {\r\n  margin-right: 0;\r\n  margin-left: 0;\n}\n.row {\r\n          display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: 10px;\r\n    margin-left: 57px;\r\n    margin-top: 10px !important;\n}\n.col-xl,\r\n.col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,\r\n.col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,\r\n.col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,\r\n.col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,\r\n.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {\r\n  position: relative;\r\n  width: 100%;\r\n  padding-right: 15px;\r\n  padding-left: 15px;\n}\r\n/* style for steps form */\ninput::-webkit-outer-spin-button,\r\n\r\n  input::-webkit-inner-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\n}\n* {\r\n  box-sizing: border-box;\n}\n.size-position\r\n{\r\n    margin-left:-80px !important;\r\n    margin-top: -44px !important;\n}\nbody {\r\n  background-color: #f1f1f1;\n}\n#regForm {\r\n        background-color: #ffffff;\r\n    margin: 100px auto;\r\n    font-family: Raleway;\r\n    padding: 40px;\r\n    width: 70%;\r\n    min-width: 300px;\r\n    margin-top: 135px !important;\n}\nh1 {\r\n  text-align: center;\n}\ninput {\r\n  padding: 10px;\r\n  width: 100%;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  border: 1px solid #aaaaaa;\n}\r\n\r\n/* Mark input boxes that gets an error on validation: */\ninput.invalid {\r\n  background-color: #ffdddd;\n}\r\n\r\n/* Hide all steps by default: */\n.tab {\r\n  display: none;\n}\nbutton {\r\n  background-color: #04AA6D;\r\n  color: #ffffff;\r\n  border: none;\r\n  padding: 10px 20px;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  cursor: pointer;\n}\nbutton:hover {\r\n  opacity: 0.8;\n}\n#prevBtn {\r\n  background-color: #bbbbbb;\n}\r\n\r\n/* Make circles that indicate the steps of the form: */\n.step {\r\n  \r\n    height: 10px;\r\n    width: 10px;\r\n    margin: 0px 7px;\r\n    background-color: #000000;\r\n    border: none;\r\n    border-radius: 50%;\r\n    display: inline-block;\r\n    opacity: 0.5;\n}\n.step.active {\r\n  opacity: 1;\n}\r\n\r\n/* Mark the steps that are finished and valid: */\n.step.finish {\r\n    background-color: #000000;\n}\r\n  /*   END STYLE FOR STEPS FORM */\r\n\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\n.overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  transition: opacity 500ms;\r\n  visibility: hidden;\r\n  opacity: 0;\n}\n.overlay:target {\r\n  visibility: visible;\r\n  opacity: 1;\n}\n.popup {\r\n  margin: 70px auto;\r\n  padding: 20px;\r\n  background: #fff;\r\n  border-radius: 5px;\r\n  width: 30%;\r\n  position: relative;\r\n  transition: all 5s ease-in-out;\n}\n.popup h2 {\r\n  margin-top: 0;\r\n  color: #333;\r\n  font-family: Tahoma, Arial, sans-serif;\n}\n.popup .close {\r\n  position: absolute;\r\n  top: 20px;\r\n  right: 30px;\r\n  transition: all 200ms;\r\n  font-size: 30px;\r\n  font-weight: normal;\r\n  text-decoration: none;\r\n  color: rgb(127,127,127);\n}\n.popup .close:hover {\r\n  color: #020202;\n}\n.popup .content {\r\n  max-height: 30%;\r\n      overflow-x: hidden;\n}\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\n}\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    align-items: center;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\n}\n.continue-btn {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\n}\n.fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\r\n    font-family:karla !important;\n}\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\n}\n.lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\n}\r\n/* code for form */\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n  font-family: 'Roboto', sans-serif;\r\n  box-sizing: border-box;\n}\nbody::after, body::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n  box-sizing: border-box;\n}\nh1 {\r\n  font-size: 2rem;\r\n  text-align: center;\r\n  margin: 0 0 2em;\n}\n.container {\r\n  position: relative;\r\n  max-width: 40rem;\r\n  margin: 5rem auto;\r\n  background: #fff;\r\n  width: 100%;\r\n  padding: 3rem 5rem 0;\r\n  border-radius: 1px;\n}\n.container::before {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n  transform: scale(0.98);\r\n  transition: transform 0.28s ease-in-out;\r\n  z-index: -1;\n}\n.container:hover::before {\r\n  transform: scale(1);\n}\n.button-container {\r\n  text-align: center;\n}\nfieldset {\r\n  margin: 0 0 3rem;\r\n  padding: 0;\r\n  border: none;\n}\n.form-radio,\r\n.form-group {\r\n  position: relative;\r\n  margin-top: 2.25rem;\r\n  margin-bottom: 2.25rem;\n}\n.form-inline > .form-group,\r\n.form-inline > .btn {\r\n  display: inline-block;\r\n  margin-bottom: 0;\n}\n.form-help {\r\n  margin-top: 0.125rem;\r\n  margin-left: 0.125rem;\r\n  color: #b3b3b3;\r\n  font-size: 0.8rem;\n}\n.checkbox .form-help, .form-radio .form-help, .form-group .form-help {\r\n  position: absolute;\r\n  width: 100%;\n}\n.checkbox .form-help {\r\n  position: relative;\r\n  margin-bottom: 1rem;\n}\n.form-radio .form-help {\r\n  padding-top: 0.25rem;\r\n  margin-top: -1rem;\n}\n.form-group input {\r\n  height: 1.9rem;\n}\n.form-group textarea {\r\n  resize: none;\n}\n.form-group select {\r\n  width: 100%;\r\n  font-size: 1rem;\r\n  height: 1.6rem;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  background: none;\r\n  border: none;\r\n  line-height: 1.6;\r\n  box-shadow: none;\n}\n.form-group .control-label {\r\n  position: absolute;\r\n  top: 0.25rem;\r\n  pointer-events: none;\r\n  padding-left: 0.125rem;\r\n  z-index: 1;\r\n  color: #b3b3b3;\r\n  font-size: 1rem;\r\n  font-weight: normal;\r\n  transition: all 0.28s ease;\n}\n.form-group .bar {\r\n  position: relative;\r\n  border-bottom: 0.0625rem solid #999;\r\n  display: block;\n}\n.form-group .bar::before {\r\n  content: '';\r\n  height: 0.125rem;\r\n  width: 0;\r\n  left: 50%;\r\n  bottom: -0.0625rem;\r\n  position: absolute;\r\n  background: #337ab7;\r\n  transition: left 0.28s ease, width 0.28s ease;\r\n  z-index: 2;\n}\n.form-group input,\r\n.form-group textarea {\r\n  display: block;\r\n  background: none;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  font-size: 1rem;\r\n  border-width: 0;\r\n  border-color: transparent;\r\n  line-height: 1.9;\r\n  width: 100%;\r\n  color: transparent;\r\n  transition: all 0.28s ease;\r\n  box-shadow: none;\n}\n.form-group input[type=\"file\"] {\r\n  line-height: 1;\n}\n.form-group input[type=\"file\"] ~ .bar {\r\n  display: none;\n}\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n  color: #333;\n}\n.form-group select ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group input:valid ~ .control-label,\r\n.form-group input.form-file ~ .control-label,\r\n.form-group input.has-value ~ .control-label,\r\n.form-group textarea:focus ~ .control-label,\r\n.form-group textarea:valid ~ .control-label,\r\n.form-group textarea.form-file ~ .control-label,\r\n.form-group textarea.has-value ~ .control-label {\r\n  font-size: 0.8rem;\r\n  color: gray;\r\n  top: -1rem;\r\n  left: 0;\n}\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n  outline: none;\n}\n.form-group select:focus ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group textarea:focus ~ .control-label {\r\n  color: #337ab7;\n}\n.form-group select:focus ~ .bar::before,\r\n.form-group input:focus ~ .bar::before,\r\n.form-group textarea:focus ~ .bar::before {\r\n  width: 100%;\r\n  left: 0;\n}\n.checkbox label,\r\n.form-radio label {\r\n  position: relative;\r\n  cursor: pointer;\r\n  padding-left: 2rem;\r\n  text-align: left;\r\n  color: #333;\r\n  display: block;\n}\n.checkbox input,\r\n.form-radio input {\r\n  width: auto;\r\n  opacity: 0.00000001;\r\n  position: absolute;\r\n  left: 0;\n}\n.radio {\r\n  margin-bottom: 1rem;\n}\n.radio .helper {\r\n  position: absolute;\r\n  top: -0.25rem;\r\n  left: -0.25rem;\r\n  cursor: pointer;\r\n  display: block;\r\n  font-size: 1rem;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n  color: #999;\n}\n.radio .helper::before, .radio .helper::after {\r\n  content: '';\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  margin: 0.25rem;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  transition: transform 0.28s ease;\r\n  border-radius: 50%;\r\n  border: 0.125rem solid currentColor;\n}\n.radio .helper::after {\r\n  transform: scale(0);\r\n  background-color: #337ab7;\r\n  border-color: #337ab7;\n}\n.radio label:hover .helper {\r\n  color: #337ab7;\n}\n.radio input:checked ~ .helper::after {\r\n  transform: scale(0.5);\n}\n.radio input:checked ~ .helper::before {\r\n  color: #337ab7;\n}\n.checkbox {\r\n  margin-top: 3rem;\r\n  margin-bottom: 1rem;\n}\n.checkbox .helper {\r\n  color: #999;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  z-index: 0;\r\n  border: 0.125rem solid currentColor;\r\n  border-radius: 0.0625rem;\r\n  transition: border-color 0.28s ease;\n}\n.checkbox .helper::before, .checkbox .helper::after {\r\n  position: absolute;\r\n  height: 0;\r\n  width: 0.2rem;\r\n  background-color: #337ab7;\r\n  display: block;\r\n  transform-origin: left top;\r\n  border-radius: 0.25rem;\r\n  content: '';\r\n  transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n  opacity: 0;\n}\n.checkbox .helper::before {\r\n  top: 0.65rem;\r\n  left: 0.38rem;\r\n  transform: rotate(-135deg);\r\n  box-shadow: 0 0 0 0.0625rem #fff;\n}\n.checkbox .helper::after {\r\n  top: 0.3rem;\r\n  left: 0;\r\n  transform: rotate(-45deg);\n}\n.checkbox label:hover .helper {\r\n  color: #337ab7;\n}\n.checkbox input:checked ~ .helper {\r\n  color: #337ab7;\n}\n.checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before {\r\n  opacity: 1;\r\n  transition: height 0.28s ease;\n}\n.checkbox input:checked ~ .helper::after {\r\n  height: 0.5rem;\n}\n.checkbox input:checked ~ .helper::before {\r\n  height: 1.2rem;\r\n  transition-delay: 0.28s;\n}\n.radio + .radio,\r\n.checkbox + .checkbox {\r\n  margin-top: 1rem;\n}\n.has-error .legend.legend, .has-error.form-group .control-label.control-label {\r\n  color: #d9534f;\n}\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper, .has-error.checkbox .form-help,\r\n.has-error.checkbox .helper, .has-error.radio .form-help,\r\n.has-error.radio .helper, .has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n  color: #d9534f;\n}\n.has-error .bar::before {\r\n  background: #d9534f;\r\n  left: 0;\r\n  width: 100%;\n}\n.button {\r\n  position: relative;\r\n  \r\n  border: 1px solid currentColor;\r\n  font-size: 1.1rem;\r\n  color: #000;\r\n  margin: 3rem 0;\r\n  padding: 0.75rem 3rem;\r\n  cursor: pointer;\r\n  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n  overflow: hidden;\r\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\n}\n.button span {\r\n  color: #fff;\r\n  position: relative;\r\n  z-index: 1;\n}\n.button::before {\r\n  content: '';\r\n  position: absolute;\r\n  background: #071017;\r\n  border: 50vh solid #1d4567;\r\n  width: 30vh;\r\n  height: 30vh;\r\n  border-radius: 50%;\r\n  display: block;\r\n  top: 50%;\r\n  left: 50%;\r\n  z-index: 0;\r\n  opacity: 1;\r\n  transform: translate(-50%, -50%) scale(0);\n}\n.button:hover {\r\n  color: #337ab7;\r\n  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\n}\n.button:active::before, .button:focus::before {\r\n  transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n  transform: translate(-50%, -50%) scale(1);\r\n  opacity: 0;\n}\n.button:focus {\r\n  outline: none;\n}\n.fit-advisor-hr\r\n{\r\n    margin-top:-15px !important;\n}\r\n\r\n/* input field design */\n::-moz-placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\n}\n:-ms-input-placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\n}\n::placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\n}\n.fit-advisor-custom_row {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin-right: -15px;\r\n  margin-left: -15px;\n}\n.fit-advisor-custom_input{\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    -o-border-image: initial;\r\n       border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\n.custom-offset\r\n  {\r\n    margin-left: 43px !important;\n}\n.labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: karla !important;\r\n    line-height: 18px !important;\r\n    font-weight: 400 !important;\r\n    font-style: normal;\n}\n.custom-offset-lg\r\n  {\r\n    margin-left: 44%;\n}\n.adjust-label{\r\n  margin-left:-5%!important;\n}\ninput::-moz-placeholder {\r\n  font-size:12px !important\n}\ninput:-ms-input-placeholder {\r\n  font-size:12px !important\n}\ninput::placeholder {\r\n  font-size:12px !important\n}\ntextarea:focus, input:focus{\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255);\n}\n.fit-advisor-custom_previous_btn{\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    -webkit-user-select: none;\r\n       -moz-user-select: none;\r\n        -ms-user-select: none;\r\n            user-select: none;\r\n    opacity: 0.5;\n}\n.fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\n}\n.fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\n}\n.fit-advisor-options-img {\r\n    width:  265.667px;\r\n    height: 222.667px;\n}\n.fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\n}\n.product-card\r\n  {\r\n        position: relative;\r\n    z-index: -1;\n}\n.fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    justify-content: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n    margin-left:35px !important;\n}\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\n}\n.fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n        margin-left: -54px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\n}\n.next\r\n{\r\n  margin-top: -10px !important;\n}\n.fit-advisor-product-picture\r\n  {\r\n      margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\n}\n.fit-advisor-popup-adjustments\r\n  {\r\n  width:50% !important;\r\n  overflow:none;\n}\n.gIdEkK p {\r\n    margin: unset;\n}\n.learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\n}\n.fit-advisor-header-desc {\r\n   padding: 10px;\r\n    text-align: center;\r\n    color: rgb(0 0 0);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\r\n    font-family:karla !important;\n}\n.gIdEkK p {\r\n    margin: unset;\n}\n.jjnwUS {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 50px;\n}\n.fit-advisor-product-size-box {\r\n    padding: 0px;\n}.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin:0 auto ;\r\n    margin-left:35px;\r\n    display:block;\n}\n.fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 120px 1fr;\r\n    justify-self: flex-end;\n}\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right:50px !important;\n}\n.selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\n}\n.fit-advisor-selected-size-container {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\n}\n.fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\n}\n.fit-advisor-inch\r\n    {\r\nmargin-left: 73% !important;\r\n    margin-top: -27% !important;\n}\n.fit-advisor-agelabel\r\n    {\r\n        margin-top: -26px !important;\n}\n.fit-advisor-agelabel-span\r\n    {\r\n        \r\n       margin-left:-68px !important;\r\n       margin-top:6px !important;\n}\n.fit-advisor-age-input\r\n    {\r\n        margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\n}\n.fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 43% !important;\n}\r\n/*   //responsiveness of modal */\n@media (min-width:320px) and (max-width:480px)  { /* smartphones, iPhone, portrait 480x320 phones */\n.row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -27px;\r\n    margin-left: -32px;\r\n    margin-top: 10px !important;\r\n        margin-bottom: 50px;\n}\n.adjust-label {\r\n    margin-left: 10%!important;\n}\n.fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\r\n    font-family:karla !important;\n}\n.fit-advisor-popup-adjustments\r\n  {\r\n  width:100% !important;\r\n    overflow:none;\n}\n.fit-advisor-custom_input{\r\n    display: block;\r\n    width: 50%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    -o-border-image: initial;\r\n       border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\n.row-feet-inch {\r\n    display: grid;\r\n    gap: 30px;\r\n    grid-template-columns: 1fr 1fr;\n}\n.fit-advisor-inch\r\n    {\r\n    margin-left: 143px !important;\r\n    margin-top: -64px!important;\n}\n.fit-advisor-agelabel\r\n    {\r\n        margin-top: -83px !important;\r\n    margin-left: 148px;\n}\n.fit-advisor-age-input\r\n    {\r\n    margin-left: 14.5rem !important;\r\n    margin-top: -65px !important;\r\n        width: 50% !important;\n}\ninput {\r\n  text-align: center;\n}\n::-webkit-input-placeholder {\r\n  text-align: center;\n}\n.jjnwUS {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 30px;\n}\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right: 30px !important;\n}\n:-moz-placeholder {\r\n  text-align: center;\n}\n.custom-offset {\r\n        margin-left: -8% !important;\n}\n.fit-advisor-agelabel-span {\r\n    margin-left: 52px !important;\r\n    margin-top: 0px !important;\n}\n.fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 30% !important;\n}\n.continue-btn\r\n    \r\n    {\r\n     \r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n        right: 25% !important;\r\n    width: 50% !important;\n}\n.fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\n}\n.fit-advisor-chest-tab {\r\n    display: block;\r\n    gap: 5px;\r\n    margin-left: -65px !important;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\n}\n.fit-advisor-selected-product-grid {\r\n    /* display: block; */\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    justify-content: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n          margin-left: 50px !important;\r\n    /* display: none; */\n}\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n    display: none;\n}\n.fit-advisor-fit-grid {\r\n    display:block;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border:none;\r\n    margin-bottom: 15px;\r\n        margin-left: -50px;\r\n    padding: 10px 20px;\r\n      box-shadow:none;\n}\n}\n@media (min-width:481px)  and (max-width:640px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */\n}\n@media (min-width:641px) and (max-width:960px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */\n}\n@media (min-width:961px) and (max-width:1024px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */\n}\n@media (min-width:1025px) and (max-width:1280px) { /* big landscape tablets, laptops, and desktops */\n}\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n/*   } / / */\r\n\r\n/* STYLE FOR LOADER */\n@-webkit-keyframes spinner-border {\nto {\r\n    transform: rotate(360deg);\n}\n}\n@keyframes spinner-border {\nto {\r\n    transform: rotate(360deg);\n}\n}\n.spinner-border {\r\n  display: inline-block;\r\n  width: 2rem;\r\n  height: 2rem;\r\n  vertical-align: text-bottom;\r\n  border: 0.25em solid currentColor;\r\n  border-right-color: transparent;\r\n  border-radius: 50%;\r\n  -webkit-animation: 0.75s linear infinite spinner-border;\r\n          animation: 0.75s linear infinite spinner-border;\r\n          border-width:2px !important;\n}\n.spinner-border-sm {\r\n  width: 1rem;\r\n  height: 1rem;\r\n  border-width: 0.2em;\n}\n@media (prefers-reduced-motion: reduce) {\n.spinner-border,\r\n.spinner-grow {\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\n}\n}\n.sr-only {\r\n  position: absolute;\r\n  width: 1px;\r\n  height: 1px;\r\n  padding: 0;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  clip: rect(0, 0, 0, 0);\r\n  white-space: nowrap;\r\n  border: 0;\n}\n.sr-only-focusable:active, .sr-only-focusable:focus {\r\n  position: static;\r\n  width: auto;\r\n  height: auto;\r\n  overflow: visible;\r\n  clip: auto;\r\n  white-space: normal;\n}\r\n\r\n", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n.bigsize{\r\n  \r\n    grid-template-columns: 1fr 190px 1fr !important;\r\n    \r\n}\r\n\r\n.fit-advisor-header-desc-mt\r\n{\r\n    \r\n    margin-top: 40px !important;\r\n}\r\n.dfOagu\r\n{\r\n    margin-left:50px ;\r\n    margin-top: -5px !important;\r\n}\r\n.dfOagu-second {\r\n    margin-left: 10px;\r\n    margin-top: -5px !important;\r\n}\r\n.result-size\r\n{\r\n    width:100%;\r\n    font-family:karla;\r\n    font-weight:900;\r\n    font-size:133px;\r\n}\r\n.introfirst\r\n{\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 15px !important;\r\n    word-spacing: 5px !important;\r\n}\r\n#intro1\r\n{\r\n    display: block ;\r\n}\r\n#intro2\r\n{\r\n    display:none ;\r\n    margin-top: 20px;\r\n}\r\n#intro3\r\n{\r\n    display:none ;\r\n     margin-top: 20px;\r\n}\r\n#intro4\r\n{\r\n    display:none ;\r\n     margin-top: 20px;\r\n}\r\n#intro5\r\n{\r\n       display:none ;\r\n        margin-top: 20px;\r\n}\r\n.find-fit-header\r\n{\r\n       font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 40px !important;\r\n    word-spacing:5px !important;\r\n}\r\n\r\n.fit-advisor-chest-tab-item:hover {\r\n    /* display: grid; */\r\n    /* justify-content: center; */\r\n    /* align-items: center; */\r\n    /* text-align: center; */\r\n    /* cursor: pointer; */\r\n    transform: scale(0.95) !important;\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\ninput[type=\"checkbox\"]:checked {\r\n    background: rgb(2, 2, 2);\r\n}\r\n.img_country\r\n{\r\n     width: 8% !important;\r\n    margin: 0 auto !important;\r\n    margin-left: -105px !important;\r\n}\r\n.countrycheck\r\n{\r\n     width:3% !important;\r\n    margin:0 auto !important\r\n}\r\n.no-gutters {\r\n  margin-right: 0;\r\n  margin-left: 0;\r\n}\r\n.row {\r\n          display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: 10px;\r\n    margin-left: 57px;\r\n    margin-top: 10px !important;\r\n}\r\n\r\n.col-xl,\r\n.col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,\r\n.col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,\r\n.col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,\r\n.col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,\r\n.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {\r\n  position: relative;\r\n  width: 100%;\r\n  padding-right: 15px;\r\n  padding-left: 15px;\r\n}\r\n/* style for steps form */\r\ninput::-webkit-outer-spin-button,\r\n\r\n  input::-webkit-inner-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n\r\n  }\r\n* {\r\n  box-sizing: border-box;\r\n}\r\n.size-position\r\n{\r\n    margin-left:-80px !important;\r\n    margin-top: -44px !important;\r\n}\r\nbody {\r\n  background-color: #f1f1f1;\r\n}\r\n\r\n#regForm {\r\n        background-color: #ffffff;\r\n    margin: 100px auto;\r\n    font-family: Raleway;\r\n    padding: 40px;\r\n    width: 70%;\r\n    min-width: 300px;\r\n    margin-top: 135px !important;\r\n}\r\n\r\nh1 {\r\n  text-align: center;  \r\n}\r\n\r\ninput {\r\n  padding: 10px;\r\n  width: 100%;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  border: 1px solid #aaaaaa;\r\n}\r\n\r\n/* Mark input boxes that gets an error on validation: */\r\ninput.invalid {\r\n  background-color: #ffdddd;\r\n}\r\n\r\n/* Hide all steps by default: */\r\n.tab {\r\n  display: none;\r\n}\r\n\r\nbutton {\r\n  background-color: #04AA6D;\r\n  color: #ffffff;\r\n  border: none;\r\n  padding: 10px 20px;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n  opacity: 0.8;\r\n}\r\n\r\n#prevBtn {\r\n  background-color: #bbbbbb;\r\n}\r\n\r\n/* Make circles that indicate the steps of the form: */\r\n.step {\r\n  \r\n    height: 10px;\r\n    width: 10px;\r\n    margin: 0px 7px;\r\n    background-color: #000000;\r\n    border: none;\r\n    border-radius: 50%;\r\n    display: inline-block;\r\n    opacity: 0.5;\r\n}\r\n\r\n.step.active {\r\n  opacity: 1;\r\n}\r\n\r\n/* Mark the steps that are finished and valid: */\r\n.step.finish {\r\n    background-color: #000000;\r\n}\r\n  /*   END STYLE FOR STEPS FORM */\r\n\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\r\n\r\n.overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  transition: opacity 500ms;\r\n  visibility: hidden;\r\n  opacity: 0;\r\n}\r\n.overlay:target {\r\n  visibility: visible;\r\n  opacity: 1;\r\n}\r\n\r\n.popup {\r\n  margin: 70px auto;\r\n  padding: 20px;\r\n  background: #fff;\r\n  border-radius: 5px;\r\n  width: 30%;\r\n  position: relative;\r\n  transition: all 5s ease-in-out;\r\n}\r\n\r\n.popup h2 {\r\n  margin-top: 0;\r\n  color: #333;\r\n  font-family: Tahoma, Arial, sans-serif;\r\n}\r\n.popup .close {\r\n  position: absolute;\r\n  top: 20px;\r\n  right: 30px;\r\n  transition: all 200ms;\r\n  font-size: 30px;\r\n  font-weight: normal;\r\n  text-decoration: none;\r\n  color: rgb(127,127,127);\r\n}\r\n.popup .close:hover {\r\n  color: #020202;\r\n}\r\n.popup .content {\r\n  max-height: 30%;\r\n      overflow-x: hidden;\r\n}\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\r\n\r\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\r\n}\r\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    user-select: none;\r\n}\r\n  .continue-btn {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n}\r\n  .fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\r\n    font-family:karla !important;\r\n\r\n  }\r\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\r\n}\r\n  .lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n/* code for form */\r\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n  font-family: 'Roboto', sans-serif;\r\n  box-sizing: border-box;\r\n}\r\nbody::after, body::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n  box-sizing: border-box;\r\n}\r\n\r\n\r\n\r\nh1 {\r\n  font-size: 2rem;\r\n  text-align: center;\r\n  margin: 0 0 2em;\r\n}\r\n\r\n.container {\r\n  position: relative;\r\n  max-width: 40rem;\r\n  margin: 5rem auto;\r\n  background: #fff;\r\n  width: 100%;\r\n  padding: 3rem 5rem 0;\r\n  border-radius: 1px;\r\n}\r\n.container::before {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n  -webkit-transform: scale(0.98);\r\n          transform: scale(0.98);\r\n  -webkit-transition: -webkit-transform 0.28s ease-in-out;\r\n  transition: -webkit-transform 0.28s ease-in-out;\r\n  transition: transform 0.28s ease-in-out;\r\n  transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;\r\n  z-index: -1;\r\n}\r\n.container:hover::before {\r\n  -webkit-transform: scale(1);\r\n          transform: scale(1);\r\n}\r\n\r\n.button-container {\r\n  text-align: center;\r\n}\r\n\r\nfieldset {\r\n  margin: 0 0 3rem;\r\n  padding: 0;\r\n  border: none;\r\n}\r\n\r\n.form-radio,\r\n.form-group {\r\n  position: relative;\r\n  margin-top: 2.25rem;\r\n  margin-bottom: 2.25rem;\r\n}\r\n\r\n.form-inline > .form-group,\r\n.form-inline > .btn {\r\n  display: inline-block;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.form-help {\r\n  margin-top: 0.125rem;\r\n  margin-left: 0.125rem;\r\n  color: #b3b3b3;\r\n  font-size: 0.8rem;\r\n}\r\n.checkbox .form-help, .form-radio .form-help, .form-group .form-help {\r\n  position: absolute;\r\n  width: 100%;\r\n}\r\n.checkbox .form-help {\r\n  position: relative;\r\n  margin-bottom: 1rem;\r\n}\r\n.form-radio .form-help {\r\n  padding-top: 0.25rem;\r\n  margin-top: -1rem;\r\n}\r\n\r\n.form-group input {\r\n  height: 1.9rem;\r\n}\r\n.form-group textarea {\r\n  resize: none;\r\n}\r\n.form-group select {\r\n  width: 100%;\r\n  font-size: 1rem;\r\n  height: 1.6rem;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  background: none;\r\n  border: none;\r\n  line-height: 1.6;\r\n  box-shadow: none;\r\n}\r\n.form-group .control-label {\r\n  position: absolute;\r\n  top: 0.25rem;\r\n  pointer-events: none;\r\n  padding-left: 0.125rem;\r\n  z-index: 1;\r\n  color: #b3b3b3;\r\n  font-size: 1rem;\r\n  font-weight: normal;\r\n  -webkit-transition: all 0.28s ease;\r\n  transition: all 0.28s ease;\r\n}\r\n.form-group .bar {\r\n  position: relative;\r\n  border-bottom: 0.0625rem solid #999;\r\n  display: block;\r\n}\r\n.form-group .bar::before {\r\n  content: '';\r\n  height: 0.125rem;\r\n  width: 0;\r\n  left: 50%;\r\n  bottom: -0.0625rem;\r\n  position: absolute;\r\n  background: #337ab7;\r\n  -webkit-transition: left 0.28s ease, width 0.28s ease;\r\n  transition: left 0.28s ease, width 0.28s ease;\r\n  z-index: 2;\r\n}\r\n.form-group input,\r\n.form-group textarea {\r\n  display: block;\r\n  background: none;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  font-size: 1rem;\r\n  border-width: 0;\r\n  border-color: transparent;\r\n  line-height: 1.9;\r\n  width: 100%;\r\n  color: transparent;\r\n  -webkit-transition: all 0.28s ease;\r\n  transition: all 0.28s ease;\r\n  box-shadow: none;\r\n}\r\n.form-group input[type=\"file\"] {\r\n  line-height: 1;\r\n}\r\n.form-group input[type=\"file\"] ~ .bar {\r\n  display: none;\r\n}\r\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n  color: #333;\r\n}\r\n.form-group select ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group input:valid ~ .control-label,\r\n.form-group input.form-file ~ .control-label,\r\n.form-group input.has-value ~ .control-label,\r\n.form-group textarea:focus ~ .control-label,\r\n.form-group textarea:valid ~ .control-label,\r\n.form-group textarea.form-file ~ .control-label,\r\n.form-group textarea.has-value ~ .control-label {\r\n  font-size: 0.8rem;\r\n  color: gray;\r\n  top: -1rem;\r\n  left: 0;\r\n}\r\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n  outline: none;\r\n}\r\n.form-group select:focus ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group textarea:focus ~ .control-label {\r\n  color: #337ab7;\r\n}\r\n.form-group select:focus ~ .bar::before,\r\n.form-group input:focus ~ .bar::before,\r\n.form-group textarea:focus ~ .bar::before {\r\n  width: 100%;\r\n  left: 0;\r\n}\r\n\r\n.checkbox label,\r\n.form-radio label {\r\n  position: relative;\r\n  cursor: pointer;\r\n  padding-left: 2rem;\r\n  text-align: left;\r\n  color: #333;\r\n  display: block;\r\n}\r\n.checkbox input,\r\n.form-radio input {\r\n  width: auto;\r\n  opacity: 0.00000001;\r\n  position: absolute;\r\n  left: 0;\r\n}\r\n\r\n.radio {\r\n  margin-bottom: 1rem;\r\n}\r\n.radio .helper {\r\n  position: absolute;\r\n  top: -0.25rem;\r\n  left: -0.25rem;\r\n  cursor: pointer;\r\n  display: block;\r\n  font-size: 1rem;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n  color: #999;\r\n}\r\n.radio .helper::before, .radio .helper::after {\r\n  content: '';\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  margin: 0.25rem;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  -webkit-transition: -webkit-transform 0.28s ease;\r\n  transition: -webkit-transform 0.28s ease;\r\n  transition: transform 0.28s ease;\r\n  transition: transform 0.28s ease, -webkit-transform 0.28s ease;\r\n  border-radius: 50%;\r\n  border: 0.125rem solid currentColor;\r\n}\r\n.radio .helper::after {\r\n  -webkit-transform: scale(0);\r\n          transform: scale(0);\r\n  background-color: #337ab7;\r\n  border-color: #337ab7;\r\n}\r\n.radio label:hover .helper {\r\n  color: #337ab7;\r\n}\r\n.radio input:checked ~ .helper::after {\r\n  -webkit-transform: scale(0.5);\r\n          transform: scale(0.5);\r\n}\r\n.radio input:checked ~ .helper::before {\r\n  color: #337ab7;\r\n}\r\n\r\n.checkbox {\r\n  margin-top: 3rem;\r\n  margin-bottom: 1rem;\r\n}\r\n.checkbox .helper {\r\n  color: #999;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  z-index: 0;\r\n  border: 0.125rem solid currentColor;\r\n  border-radius: 0.0625rem;\r\n  -webkit-transition: border-color 0.28s ease;\r\n  transition: border-color 0.28s ease;\r\n}\r\n.checkbox .helper::before, .checkbox .helper::after {\r\n  position: absolute;\r\n  height: 0;\r\n  width: 0.2rem;\r\n  background-color: #337ab7;\r\n  display: block;\r\n  -webkit-transform-origin: left top;\r\n          transform-origin: left top;\r\n  border-radius: 0.25rem;\r\n  content: '';\r\n  -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n  transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n  opacity: 0;\r\n}\r\n.checkbox .helper::before {\r\n  top: 0.65rem;\r\n  left: 0.38rem;\r\n  -webkit-transform: rotate(-135deg);\r\n          transform: rotate(-135deg);\r\n  box-shadow: 0 0 0 0.0625rem #fff;\r\n}\r\n.checkbox .helper::after {\r\n  top: 0.3rem;\r\n  left: 0;\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\r\n}\r\n.checkbox label:hover .helper {\r\n  color: #337ab7;\r\n}\r\n.checkbox input:checked ~ .helper {\r\n  color: #337ab7;\r\n}\r\n.checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before {\r\n  opacity: 1;\r\n  -webkit-transition: height 0.28s ease;\r\n  transition: height 0.28s ease;\r\n}\r\n.checkbox input:checked ~ .helper::after {\r\n  height: 0.5rem;\r\n}\r\n.checkbox input:checked ~ .helper::before {\r\n  height: 1.2rem;\r\n  -webkit-transition-delay: 0.28s;\r\n          transition-delay: 0.28s;\r\n}\r\n\r\n.radio + .radio,\r\n.checkbox + .checkbox {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.has-error .legend.legend, .has-error.form-group .control-label.control-label {\r\n  color: #d9534f;\r\n}\r\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper, .has-error.checkbox .form-help,\r\n.has-error.checkbox .helper, .has-error.radio .form-help,\r\n.has-error.radio .helper, .has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n  color: #d9534f;\r\n}\r\n.has-error .bar::before {\r\n  background: #d9534f;\r\n  left: 0;\r\n  width: 100%;\r\n}\r\n\r\n.button {\r\n  position: relative;\r\n  \r\n  border: 1px solid currentColor;\r\n  font-size: 1.1rem;\r\n  color: #000;\r\n  margin: 3rem 0;\r\n  padding: 0.75rem 3rem;\r\n  cursor: pointer;\r\n  -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n  overflow: hidden;\r\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\r\n}\r\n.button span {\r\n  color: #fff;\r\n  position: relative;\r\n  z-index: 1;\r\n}\r\n.button::before {\r\n  content: '';\r\n  position: absolute;\r\n  background: #071017;\r\n  border: 50vh solid #1d4567;\r\n  width: 30vh;\r\n  height: 30vh;\r\n  border-radius: 50%;\r\n  display: block;\r\n  top: 50%;\r\n  left: 50%;\r\n  z-index: 0;\r\n  opacity: 1;\r\n  -webkit-transform: translate(-50%, -50%) scale(0);\r\n          transform: translate(-50%, -50%) scale(0);\r\n}\r\n.button:hover {\r\n  color: #337ab7;\r\n  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\r\n}\r\n.button:active::before, .button:focus::before {\r\n  -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n  transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n  transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n  transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n  -webkit-transform: translate(-50%, -50%) scale(1);\r\n          transform: translate(-50%, -50%) scale(1);\r\n  opacity: 0;\r\n}\r\n.button:focus {\r\n  outline: none;\r\n}\r\n\r\n.fit-advisor-hr\r\n{\r\n    margin-top:-15px !important;\r\n}\r\n\r\n/* input field design */\r\n  ::-webkit-input-placeholder {\r\n  font-family:karla !important; \r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n::-moz-placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n:-ms-input-placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n::placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n\r\n.fit-advisor-custom_row {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin-right: -15px;\r\n  margin-left: -15px;\r\n}\r\n  .fit-advisor-custom_input{\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\r\n  .custom-offset\r\n  {\r\n    margin-left: 43px !important;\r\n  }\r\n  .labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: karla !important;\r\n    line-height: 18px !important;\r\n    font-weight: 400 !important;\r\n    font-style: normal;\r\n}\r\n  .custom-offset-lg\r\n  {\r\n    margin-left: 44%;\r\n  }\r\n  .adjust-label{\r\n  margin-left:-5%!important;\r\n  }\r\n  input::placeholder {\r\n  font-size:12px !important\r\n}\r\ntextarea:focus, input:focus{\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255);\r\n}\r\n  .fit-advisor-custom_previous_btn{\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 0.5;\r\n}\r\n  .fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\r\n}\r\n  .fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n  .fit-advisor-options-img {\r\n    width:  265.667px;\r\n    height: 222.667px;\r\n}\r\n  .fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\r\n}\r\n  .product-card\r\n  {\r\n        position: relative;\r\n    z-index: -1;\r\n  }\r\n  .fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n    margin-left:35px !important;\r\n}\r\n  .fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n}\r\n  .fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n        margin-left: -54px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n.next\r\n{\r\n  margin-top: -10px !important;\r\n}\r\n  .fit-advisor-product-picture\r\n  {\r\n      margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\r\n  }\r\n  .fit-advisor-popup-adjustments\r\n  {\r\n  width:50% !important;\r\n  overflow:none;\r\n  }\r\n  .gIdEkK p {\r\n    margin: unset;\r\n}\r\n  .learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n  .fit-advisor-header-desc {\r\n   padding: 10px;\r\n    text-align: center;\r\n    color: rgb(0 0 0);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\r\n    font-family:karla !important;\r\n}\r\n  .gIdEkK p {\r\n    margin: unset;\r\n}\r\n \r\n\r\n.jjnwUS {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 50px;\r\n}\r\n.fit-advisor-product-size-box {\r\n    padding: 0px;\r\n}.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin:0 auto ;\r\n    margin-left:35px;\r\n    display:block;\r\n}\r\n  .fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 120px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n  .selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right:50px !important;\r\n}\r\n  .selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n  .fit-advisor-selected-size-container {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n  .fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n  .fit-advisor-inch\r\n    {\r\nmargin-left: 73% !important;\r\n    margin-top: -27% !important;\r\n    \r\n    }\r\n  .fit-advisor-agelabel\r\n    {\r\n        margin-top: -26px !important;\r\n       \r\n    \r\n    }\r\n  .fit-advisor-agelabel-span\r\n    {\r\n        \r\n       margin-left:-68px !important;\r\n       margin-top:6px !important;\r\n    \r\n    }\r\n   .fit-advisor-age-input\r\n    {\r\n        margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\r\n    }\r\n  .fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 43% !important;\r\n    }\r\n/*   //responsiveness of modal */\r\n  @media (min-width:320px) and (max-width:480px)  { /* smartphones, iPhone, portrait 480x320 phones */\r\n    .row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -27px;\r\n    margin-left: -32px;\r\n    margin-top: 10px !important;\r\n        margin-bottom: 50px;\r\n}\r\n.adjust-label {\r\n    margin-left: 10%!important;\r\n}\r\n.fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\r\n    font-family:karla !important;\r\n\r\n  }\r\n    .fit-advisor-popup-adjustments\r\n  {\r\n  width:100% !important;\r\n    overflow:none;\r\n  }\r\n    \r\n    .fit-advisor-custom_input{\r\n    display: block;\r\n    width: 50%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\r\n    .row-feet-inch {\r\n    display: grid;\r\n    gap: 30px;\r\n    grid-template-columns: 1fr 1fr;\r\n}\r\n    .fit-advisor-inch\r\n    {\r\n    margin-left: 143px !important;\r\n    margin-top: -64px!important;\r\n    }\r\n    .fit-advisor-agelabel\r\n    {\r\n        margin-top: -83px !important;\r\n    margin-left: 148px;\r\n    }\r\n    .fit-advisor-age-input\r\n    {\r\n    margin-left: 14.5rem !important;\r\n    margin-top: -65px !important;\r\n        width: 50% !important;\r\n        }\r\ninput {\r\n  text-align: center;\r\n}  \r\n::-webkit-input-placeholder {\r\n  text-align: center;\r\n}\r\n.jjnwUS {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 30px;\r\n}\r\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right: 30px !important;\r\n}\r\n:-moz-placeholder {\r\n  text-align: center;\r\n}\r\n    .custom-offset {\r\n        margin-left: -8% !important;\r\n}\r\n    .fit-advisor-agelabel-span {\r\n    margin-left: 52px !important;\r\n    margin-top: 0px !important;\r\n}\r\n    .fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 30% !important;\r\n    }\r\n    .continue-btn\r\n    \r\n    {\r\n     \r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n        right: 25% !important;\r\n    width: 50% !important;\r\n\r\n    }\r\n    \r\n  .fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n    .fit-advisor-chest-tab {\r\n    display: block;\r\n    gap: 5px;\r\n    margin-left: -65px !important;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\r\n}\r\n    .fit-advisor-selected-product-grid {\r\n    /* display: block; */\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n          margin-left: 50px !important;\r\n    /* display: none; */\r\n}\r\n    .fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n    display: none;\r\n}\r\n    .fit-advisor-fit-grid {\r\n    display:block;\r\n    grid-template-columns: 1fr 1fr;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border:none;\r\n    margin-bottom: 15px;\r\n        margin-left: -50px;\r\n    padding: 10px 20px;\r\n      box-shadow:none;\r\n    \r\n}\r\n  \r\n  }\r\n  \r\n@media (min-width:481px)  and (max-width:640px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }\r\n@media (min-width:641px) and (max-width:960px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }\r\n@media (min-width:961px) and (max-width:1024px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }\r\n@media (min-width:1025px) and (max-width:1280px) { /* big landscape tablets, laptops, and desktops */ }\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n/*   } / / */\r\n\r\n/* STYLE FOR LOADER */\r\n@-webkit-keyframes spinner-border {\r\n  to {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n@keyframes spinner-border {\r\n  to {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n.spinner-border {\r\n  display: inline-block;\r\n  width: 2rem;\r\n  height: 2rem;\r\n  vertical-align: text-bottom;\r\n  border: 0.25em solid currentColor;\r\n  border-right-color: transparent;\r\n  border-radius: 50%;\r\n  -webkit-animation: 0.75s linear infinite spinner-border;\r\n          animation: 0.75s linear infinite spinner-border;\r\n          border-width:2px !important;\r\n}\r\n\r\n.spinner-border-sm {\r\n  width: 1rem;\r\n  height: 1rem;\r\n  border-width: 0.2em;\r\n}\r\n@media (prefers-reduced-motion: reduce) {\r\n  .spinner-border,\r\n.spinner-grow {\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n  }\r\n}\r\n\r\n.sr-only {\r\n  position: absolute;\r\n  width: 1px;\r\n  height: 1px;\r\n  padding: 0;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  clip: rect(0, 0, 0, 0);\r\n  white-space: nowrap;\r\n  border: 0;\r\n}\r\n.sr-only-focusable:active, .sr-only-focusable:focus {\r\n  position: static;\r\n  width: auto;\r\n  height: auto;\r\n  overflow: visible;\r\n  clip: auto;\r\n  white-space: normal;\r\n}\r\n", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
