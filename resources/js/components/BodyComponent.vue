@@ -592,25 +592,26 @@ if(  this.measurew == null){
     }
   }
    if(this.form.heightfoot >10)
-              { console.log('height limit is 10');
+              { alert('height limit is 10');
+              
                 valid= false;
                 
               }
               else if(this.form.heightinch >11)
               {
-                console.log('Height in inches is  limited  to 11');
+                alert('Height in inches is  limited  to 11');
                 valid= false;
 
               }
               else if(this.form.weight > 500)
               {
-                console.log('Weight  in Lbs is  limited  to 11');
+                alert('Weight  in Lbs is  limited  to 250');
                 valid= false;
 
               }
               else if(this.form.age >100)
               {
-                console.log('Age   limited  to 100*');
+                alert('Age   limited  to 100*');
                 valid= false;
 
               }
@@ -661,7 +662,56 @@ if(  this.measurew == null){
             },
         },
         mounted() {
-           
+           //input check if age exceeds
+           $('#height_ft').on('keyup keydown change', function(e){
+        $(this).removeClass('invalid');
+    
+        if ($(this).val() > 10 
+            && e.keyCode !== 46
+            && e.keyCode !== 8
+           ) {
+           e.preventDefault();     
+           $(this).val(10);
+        }
+    });
+    //inches
+     $('#height_in').on('keyup keydown change', function(e){
+       $(this).removeClass('invalid');
+    
+        if ($(this).val() > 11 
+            && e.keyCode !== 46
+            && e.keyCode !== 8
+           ) {
+           e.preventDefault();     
+           $(this).val(11);
+        }
+    });
+    //weight
+     $('#weight').on('keyup keydown change', function(e){
+       $(this).removeClass('invalid');
+    
+        if ($(this).val() > 250
+            && e.keyCode !== 46
+            && e.keyCode !== 8
+           ) {
+           e.preventDefault();     
+           $(this).val(250);
+        }
+    });
+    //age
+      $('#age').on('keyup keydown change', function(e){
+        $(this).removeClass('invalid');
+    
+        if ($(this).val() > 100
+            && e.keyCode !== 46
+            && e.keyCode !== 8
+           ) {
+           e.preventDefault();     
+           $(this).val(100);
+        }
+    });
+    
+           //endinput check if age exceeds
   
           //slides size
           $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
