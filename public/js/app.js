@@ -2071,34 +2071,13 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     addToCart: function addToCart() {
-      var formData = '';
       var pickCharacter = 0;
 
-      for (var i = 0; i <= this.product.variants.length; i++) {
-        if (!this.showrecommended) {
-          console.log(this.variantselected);
-
-          if (confirm("Do you want to add this size to cart?")) {
-            formData = {
-              'items': [{
-                'id': this.product.variants[i].id,
-                'quantity': 1
-              }]
-            };
-            fetch('/cart/add.js', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(formData)
-            }).then(function (response) {
-              return response.json();
-            })["catch"](function (error) {
-              console.error('Error:', error);
-            });
-            window.location.reload();
-          }
-        } else {
+      if (!this.showrecommended) {
+        var var_id = $('.active > span> h4 > span').attr('data-variant');
+        this.cartRequest(var_id);
+      } else {
+        for (var i = 0; i <= this.product.variants.length; i++) {
           if (this.recommended_size.toLowerCase() == 'xl' || this.recommended_size.toLowerCase() == 'xs') {
             pickCharacter = 1;
           } else {
@@ -2106,30 +2085,34 @@ __webpack_require__.r(__webpack_exports__);
           }
 
           if (this.product.variants[i].title.toLowerCase().charAt(pickCharacter) == this.recommended_size.toLowerCase().charAt(0)) {
-            formData = {
-              'items': [{
-                'id': this.product.variants[i].id,
-                'quantity': 1
-              }]
-            };
-            fetch('/cart/add.js', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json'
-              },
-              body: JSON.stringify(formData)
-            }).then(function (response) {
-              if (confirm("Do you want to add this size to cart?")) {
-                window.location.reload();
-              }
-
-              return response.json();
-            })["catch"](function (error) {
-              console.error('Error:', error);
-            });
+            this.cartRequest(this.product.variants[i].id);
           }
         }
       }
+    },
+    cartRequest: function cartRequest(id) {
+      var formData = '';
+      formData = {
+        'items': [{
+          'id': id,
+          'quantity': 1
+        }]
+      };
+      fetch('/cart/add.js', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      }).then(function (response) {
+        if (confirm("Do you want to add this size to cart?")) {
+          window.location.reload();
+        }
+
+        return response.json();
+      })["catch"](function (error) {
+        console.error('Error:', error);
+      });
     },
     setSize: function setSize(id) {
       this.variantselected = id;
@@ -2406,8 +2389,8 @@ __webpack_require__.r(__webpack_exports__);
           //get the visible slide
       $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
 
-      $curr.addClass('active');
-      $curr.stop(true, true).fadeIn(1000).hide(); //hide current one
+      $nxtTarget.addClass('active');
+      $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
 
       if (!$nxtTarget.length) {
         //if no next
@@ -39272,15 +39255,25 @@ var render = function() {
                                                 : _vm._e(),
                                               _vm._v(" "),
                                               !_vm.showrecommended
-                                                ? _c("span", [
-                                                    _vm._v(
-                                                      _vm._s(
-                                                        row.title
-                                                          .toUpperCase()
-                                                          .charAt(0)
+                                                ? _c(
+                                                    "span",
+                                                    {
+                                                      staticClass:
+                                                        "variant_title",
+                                                      attrs: {
+                                                        "data-variant": row.id
+                                                      }
+                                                    },
+                                                    [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          row.title
+                                                            .toUpperCase()
+                                                            .charAt(0)
+                                                        )
                                                       )
-                                                    )
-                                                  ])
+                                                    ]
+                                                  )
                                                 : _vm._e()
                                             ]
                                           )

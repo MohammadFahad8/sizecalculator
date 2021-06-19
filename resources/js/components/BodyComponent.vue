@@ -138,7 +138,7 @@
   
   
 <span v-if="showrecommended" class="recommendedbyus"  >{{recommended_size}}</span>
-<span v-if="!showrecommended "   >{{row.title.toUpperCase().charAt(0)}}</span>
+<span v-if="!showrecommended " class="variant_title" :data-variant=" row.id ">{{row.title.toUpperCase().charAt(0)}}</span>
 </h4>
 </span>
 </div>
@@ -241,45 +241,20 @@
             },
             addToCart:function()
             {
-              var formData='';
+
+              
               var pickCharacter = 0;
               
-              for(var i=0;i<=this.product.variants.length;i++)
-              {
                 if(!this.showrecommended)
               {
-                console.log(this.variantselected)
-                 if(confirm("Do you want to add this size to cart?"))
-                          {
-                     formData = {
-                          'items': [{
-                            'id': this.product.variants[i].id,
-                            'quantity':1,
-                            
-                            }]
-                          };
-                          
-                          fetch('/cart/add.js', {
-                          method: 'POST',
-                          headers: {
-                              'Content-Type': 'application/json'
-                            },
-                          body: JSON.stringify(formData)
-                          })
-                          .then(response => {
-                            
-                           
-                          
-                            return response.json();
-                          })
-                          .catch((error) => {
-                            console.error('Error:', error);
-                          });
-                         
-                            window.location.reload();
-                          }
+               var var_id =  $('.active > span> h4 > span').attr('data-variant')
+               this.cartRequest(var_id);
+
+
+                }else
+              {
                 
-              }else
+              for(var i=0;i<=this.product.variants.length;i++)
               {
                    if((this.recommended_size.toLowerCase() == 'xl') || (this.recommended_size.toLowerCase() == 'xs' ))
                      {
@@ -293,10 +268,26 @@
                      }
                 if(this.product.variants[i].title.toLowerCase().charAt(pickCharacter)==this.recommended_size.toLowerCase().charAt(0))
                 {
-                  
+                  this.cartRequest(this.product.variants[i].id)
+                          
+                }
+                          
+                         
+
+                }  
+                
+              }
+         
+
+                          
+
+            },
+            cartRequest:function(id){
+              
+                  var formData='';
                      formData = {
                           'items': [{
-                            'id': this.product.variants[i].id,
+                            'id': id,
                             'quantity':1,
                             
                             }]
@@ -319,18 +310,6 @@
                           .catch((error) => {
                             console.error('Error:', error);
                           });
-                          
-                }
-                          
-                         
-
-                }  
-                
-              }
-         
-
-                          
-
             },
             setSize:function(id)
             {
@@ -705,11 +684,13 @@ $('.next,.prev').click(function(){
 
     var $curr = $allSlides.filter(':visible'), //get the visible slide
         $nxtTarget =  $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
-        $curr.addClass('active')
-    $curr.stop(true, true).fadeIn(1000).hide(); //hide current one
+        $nxtTarget.addClass('active');
+        
+    $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
 
     if (!$nxtTarget.length){ //if no next
         $nxtTarget = $allSlides[traverse](); //based on traverse pick the next one
+        
     }
 
     $nxtTarget.stop(true, true).fadeIn(1000); //show the target
