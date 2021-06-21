@@ -28,6 +28,7 @@ class AttributeController extends Controller
         $helpers = new Helpers();
         $helpers->ifScriptTag();
         $helpers->updateAsset();
+        $helpers->addWidget();
         
         $attr = Attribute::latest()->with('attributetype')->get();
         
