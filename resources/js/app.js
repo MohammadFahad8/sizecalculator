@@ -7,7 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
-Vue.prototype.$appUrl = 'https://5cad6da6369e.ngrok.io'
+// Vue.prototype.$appUrl = '{{ env('APP_URL') }}';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

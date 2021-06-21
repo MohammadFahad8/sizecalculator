@@ -168,6 +168,7 @@ class AttributeController extends Controller
     
   public function calculateSize(Request $request)
   {
+      
       $data = $request->all();
       
       $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
