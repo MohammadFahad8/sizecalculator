@@ -1413,3 +1413,9 @@ input {
   clip: auto;
   white-space: normal;
 }
+.warning-place::-webkit-input-placeholder {
+  color: #fc0000;
+  font-weight: bold;
+  font-family: karla;
+  transition: ease-in-out 1s;
+}
