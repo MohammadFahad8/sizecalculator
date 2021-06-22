@@ -203,7 +203,7 @@
       
         methods:{
             addOrUpdateProduct:function(){
-                axios.post(process.env.MIX_APP_URL+'/api/add-or-update-product',this.product)
+                axios.post(this.$appUrl+'/api/add-or-update-product',this.product)
                 .then((res)=>{
                   
                 })
@@ -212,7 +212,7 @@
                 this.is_loading = true;
                 
                
-                axios.post(process.env.MIX_APP_URL+'/api/size-recommend/',this.form)
+                axios.post(this.$appUrl+'/api/size-recommend/',this.form)
                 .then((res)=>{
                   
                     this.is_loading = false;

@@ -1,6 +1,7 @@
 @extends('shopify-app::layouts.default')
 @section('content')
-<a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a>
+
+{{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
 <div class="row mt-5  " style="margin-left:10px !important">
 @include('partials_attributes.sidebar')
 <div class="col-md-8" >

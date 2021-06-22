@@ -1,5 +1,6 @@
 @extends('shopify-app::layouts.default')
 @section('content')
+
 <div class="row mt-5 p-5">
     @include('partials_sizes.sidebar')
     <div class="col-md-9">

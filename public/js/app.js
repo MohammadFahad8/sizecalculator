@@ -2045,13 +2045,13 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     addOrUpdateProduct: function addOrUpdateProduct() {
-      axios.post("https://4be5ec332f18.ngrok.io" + '/api/add-or-update-product', this.product).then(function (res) {});
+      axios.post(this.$appUrl + '/api/add-or-update-product', this.product).then(function (res) {});
     },
     getProductDetails: function getProductDetails() {
       var _this = this;
 
       this.is_loading = true;
-      axios.post("https://4be5ec332f18.ngrok.io" + '/api/size-recommend/', this.form).then(function (res) {
+      axios.post(this.$appUrl + '/api/size-recommend/', this.form).then(function (res) {
         _this.is_loading = false;
 
         if (res.data == 'XL' || res.data == 'XS') {
@@ -2593,8 +2593,8 @@ __webpack_require__.r(__webpack_exports__);
  */
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
-window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default; // Vue.prototype.$appUrl = '{{ env('APP_URL') }}';
-
+window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
+Vue.prototype.$appUrl = 'https://314f374687cc.ngrok.io';
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
