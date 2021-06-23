@@ -5,8 +5,9 @@
       <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
      
-     
-      <div class="box"><a class="button " id="popup-trigger" href="#popup1" style="left: 5px !important;border: none;">Find Fit</a></div><div id="popup1" class="overlay " ><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
+    
+      <div class="box"><span id="finalsize" v-if="finalsize !=''" style="font-family: 'Karla';font-weight: 900;font-size: x-large;margin-left:10px">{{finalsize}}</span>
+	  <a class=" btn btn-success" id="popup-trigger" href="#popup1"  style="margin-left: 10%  !important;border: none;">Find Fit</a></div><div id="popup1" class="overlay " ><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
     display: inline-block;
     /* width: 59px; */
 "><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" points="328 112 184 256 328 400"></polyline></svg>
@@ -195,6 +196,8 @@
                 showContinueBtn:true,
                 showrecommended:true,
                 variantselected:0,
+				finalsize:'',
+
                 image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
                 image_uk:'https://24bbe8b8d790.ngrok.io/images/uk.png',
 
@@ -202,15 +205,29 @@
         },
       
         methods:{
+		
             addOrUpdateProduct:function(){
                 axios.post(this.$appUrl+'/api/add-or-update-product',this.product)
                 .then((res)=>{
                   
                 })
             },
+			getLocalData:function(){
+				  
+			 if(localStorage.getItem('recommended_size')!=null)
+		{
+			this.finalsize = localStorage.getItem('recommended_size');
+		}
+		else
+		{
+			this.finalsize = 'null';
+
+		}
+	  console.log('YOUR STORAGE:' +localStorage.getItem('recommended_size'));
+			},
             getProductDetails:function(){
                 this.is_loading = true;
-                
+                var a ='';
                
                 axios.post(this.$appUrl+'/api/size-recommend/',this.form)
                 .then((res)=>{
@@ -220,6 +237,7 @@
                      if((res.data == 'XL') || (res.data == 'XS' ))
                      {
                        this.recommended_size = res.data.toUpperCase().substr(0, 2)
+					   a=this.recommended_size;
                        $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
                        $('.dfOagu').addClass('dfOagu-second');
                       if(this.showContinueBtn==true)
@@ -232,12 +250,24 @@
                      else
                      {
                        this.recommended_size = res.data.toUpperCase().charAt(0)
+					   a=this.recommended_size;
                         if(this.showContinueBtn==true)
                       {
                         this.showContinueBtn = false;
                       }
                       
                      }
+					// this.checkCookie();
+					// if(localStorage.getItem('recommended_size')===null)
+					// {
+						localStorage.setItem('recommended_size',a)
+					// }
+					
+
+					this.finalsize = localStorage.getItem('recommended_size');
+					
+					 
+
                      
                 })
             },
@@ -405,6 +435,10 @@
 
             showTab:function(n)
             {
+				if(localStorage.getItem('recommended_size')!=null)
+				{
+					n=4
+				}
                 if(n==0)
                 {   
                     $('#intro1').css('display', 'block');
@@ -716,6 +750,15 @@ if(  this.measurew == null){
             },
         },
         mounted() {
+		
+		this.getLocalData();
+			
+// 			  $('#btnAuckland').click(function(){ 
+// 	//$('#SingleOptionSelector-0').trigger('change');
+//     $('#SingleOptionSelector-0').val($(this).data('val')).attr('selected','selected').trigger('change');
+// 	//window.history.replaceState("", "", '/products/test-new-product?variant=39648526401720');
+// })
+			
     //        //input check if age exceeds
     //        $('#height_ft').on('keyup keydown change', function(e){
     //     $(this).removeClass('invalid');
@@ -827,7 +870,7 @@ $('.next,.prev').click(function(){
           //slides size end
             //this.addOrUpdateProduct();
             
-            this.dev_reset();
+           // this.dev_reset();
         
             
     $('input[name="countrycheck"]').click(function(){
@@ -898,7 +941,7 @@ $('.bvHnuU').on('click',function(){
 	}
     }
 	
-// export default{props:{product:Object},data:()=>({form:{heightfoot:"",heightinch:"",weight:"",age:"",chest:0,stomach:0,bottom:0,tags:[]},countrycheck:"",checked:!1,currentTab:0,height_cm:0,weightf:0,weight_lbs:0,measurew:0,firstTab:!0,onfirstTab:!0,lastTab:!1,measureh:0,message:"Jello",recommended_size:"",is_loading:!1,showlist:!1,showContinueBtn:!0,showrecommended:!0,variantselected:0,image_us:"https://24bbe8b8d790.ngrok.io/images/us.png",image_uk:"https://24bbe8b8d790.ngrok.io/images/uk.png"}),methods:{addOrUpdateProduct:function(){axios.post(process.env.MIX_APP_URL+"/api/add-or-update-product",this.product).then(t=>{})},getProductDetails:function(){this.is_loading=!0,axios.post(process.env.MIX_APP_URL+"/api/size-recommend/",this.form).then(t=>{this.is_loading=!1,"XL"==t.data||"XS"==t.data?(this.recommended_size=t.data.toUpperCase().substr(0,2),$(".fit-advisor-selected-size-arrow-box").addClass("bigsize"),$(".dfOagu").addClass("dfOagu-second"),1==this.showContinueBtn&&(this.showContinueBtn=!1)):(this.recommended_size=t.data.toUpperCase().charAt(0),1==this.showContinueBtn&&(this.showContinueBtn=!1))})},addToCart:function(){var t=0;if(this.showrecommended)for(var e=0;e<=this.product.variants.length;e++)t="xl"==this.recommended_size.toLowerCase()||"xs"==this.recommended_size.toLowerCase()?1:0,this.product.variants[e].title.toLowerCase().charAt(t)==this.recommended_size.toLowerCase().charAt(0)&&this.cartRequest(this.product.variants[e].id);else{var s=$(".active > span> h4 > span").attr("data-variant");this.cartRequest(s)}},cartRequest:function(t){var e;e={items:[{id:t,quantity:1}]},fetch("/cart/add.js",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(e)}).then(t=>(confirm("Do you want to add this size to cart?")&&window.location.reload(),t.json())).catch(t=>{console.error("Error:",t)})},setSize:function(t){this.variantselected=t,console.log(this.variantselected)},changesize:function(){1==this.showrecommended&&(this.showrecommended=!1,$(".fit-advisor-selected-size-arrow-box").removeClass("bigsize"),$(".dfOagu").removeClass("dfOagu-second"))},changesizetorecommended:function(){0==this.showrecommended&&(this.showrecommended=!0)},chest:function(t){this.form.chest=t,this.nextPrev(1)},stomach:function(t){this.form.stomach=t,this.nextPrev(1)},bottom:function(t){this.form.bottom=t,this.form.tags=this.product.tags,this.nextPrev(1)},countryval:function(){0==this.countrycheck?($('input[name="weight"]').attr("placeholder","Lbs"),$('input[name="countrycheck"]').attr("value",0),this.countrycheck,this.weightconvert(this.form.weight,!1)):1==this.countrycheck&&($('input[name="weight"]').attr("placeholder","Kg"),$('input[name="countrycheck"]').attr("value",1),this.countrycheck,this.weightconvert(this.form.weight,!0))},weightconvert:function(t,e){1==e&&""!=t?this.form.weight=t/2.2:0==e&&""!=t&&(this.form.weight=2.2*t)},showTab:function(t){0==t&&($("#intro1").css("display","block"),$(".switch").removeClass("introfirst"),$(".switch").addClass("find-fit-header"),$("#intro2").css("display","none"),$("#intro3").css("display","none"),$("#intro4").css("display","none"),$("#intro5").css("display","none")),1==t&&($("#intro1").css("display","none"),$("#intro2").css("display","block"),$("#intro3").css("display","none"),$("#intro4").css("display","none"),$("#intro5").css("display","none"),$(".switch").addClass("introfirst"),$(".switch").removeClass("find-fit-header")),2==t&&($("#intro1").css("display","none"),$("#intro2").css("display","none"),$("#intro3").css("display","block"),$("#intro4").css("display","none"),$("#intro5").css("display","none"),$(".switch").addClass("introfirst"),$(".switch").removeClass("find-fit-header")),3==t&&($("#intro1").css("display","none"),$("#intro2").css("display","none"),$("#intro3").css("display","none"),$("#intro4").css("display","block"),$("#intro5").css("display","none"),$(".switch").addClass("introfirst"),$(".switch").removeClass("find-fit-header")),4==t&&($(".fit-advisor-selected-product-grid").css("display","inline"),$("#intro1").css("display","none"),$("#intro2").css("display","none"),$("#intro3").css("display","none"),$("#intro4").css("display","none"),$("#intro5").css("display","block"),$(".switch").addClass("introfirst"),$(".switch").removeClass("find-fit-header")),document.getElementsByClassName("tab")[t].style.display="block",0==t?(document.getElementById("prevBtn").style.display="none",document.getElementById("steps-mark").style.visibility="hidden",this.firstTab=!1,this.onfirstTab=!1,this.lastTab=!1):(document.getElementById("steps-mark").style.visibility="visible",document.getElementById("prevBtn").style.display="inline",this.firstTab=!0,this.onfirstTab=!0,this.lastTab=!1),1==t&&$("#popup1").css("overflow","scroll"),4==t?(this.firstTab=!1,this.onfirstTab=!0,this.lastTab=!0,this.showContinueBtn=!1,document.getElementById("steps-mark").style.visibility="inline",this.getProductDetails()):document.getElementById("nextBtn").style.display="inline",t>=1&&t<4&&(document.getElementById("nextBtn").style.display="none"),this.fixStepIndicator(t)},nextPrev:function(t){var e=document.getElementsByClassName("tab");if(1==t&&!this.validateForm())return!1;e[this.currentTab].style.display="none",this.currentTab=this.currentTab+t;var s=$("#height_ft").val(),i=$("#height_in").val(),n=$("#weight").val(),o=2.205*parseInt(n),a=2.54*(12*s+parseInt(i));this.measureh=localStorage.getItem("height"),this.measurew=localStorage.getItem("weight"),null==this.measurew&&localStorage.setItem("weight",o),null==this.measureh&&localStorage.setItem("height",a),this.showTab(this.currentTab)},validateForm:function(){var t,e,s=!0;for(t=document.getElementsByClassName("tab")[this.currentTab].getElementsByTagName("input"),e=0;e<t.length;e++)""==t[e].value&&(t[e].className+=" invalid",s=!1);return this.form.heightfoot>10?(alert("height limit is 10"),s=!1):this.form.heightinch>11?(alert("Height in inches is  limited  to 11"),s=!1):this.form.weight>500?(alert("Weight  in Lbs is  limited  to 250"),s=!1):this.form.age>100&&(alert("Age   limited  to 100*"),s=!1),s&&(document.getElementsByClassName("step")[this.currentTab].className+=" finish"),s},fixStepIndicator:function(t){var e,s=document.getElementsByClassName("step");for(e=0;e<s.length;e++)s[e].className=s[e].className.replace(" active","");s[t].className+=" active"},dev_reset:function(){window.localStorage.clear()},restart:function(){this.changesizetorecommended(),this.form.heightfoot="",this.form.heightinch="",this.form.weight="",this.form.age="",this.form.chest="",this.form.stomach="",this.form.bottom="",this.recommended_size="",this.currentTab=0,this.showContinueBtn=!0,$(".fit-advisor-selected-product-grid").css("display","none"),this.dev_reset(),this.showTab(this.currentTab),this.nextPrev(-4)}},mounted(){$("#height_ft").on("keyup keydown change",function(t){$(this).removeClass("invalid"),$(this).val()>10&&46!==t.keyCode&&8!==t.keyCode&&(t.preventDefault(),$(this).val(10))}),$("#height_in").on("keyup keydown change",function(t){$(this).removeClass("invalid"),$(this).val()>11&&46!==t.keyCode&&8!==t.keyCode&&(t.preventDefault(),$(this).val(11))}),$("#weight").on("keyup keydown change",function(t){$(this).removeClass("invalid"),$(this).val()>250&&46!==t.keyCode&&8!==t.keyCode&&(t.preventDefault(),$(this).val(250))}),$("#age").on("keyup keydown change",function(t){$(this).removeClass("invalid"),$(this).val()>100&&46!==t.keyCode&&8!==t.keyCode&&(t.preventDefault(),$(this).val(100))}),$("div.fit-advisor-selected-size:gt(0)").hide();var t=$("div.fit-advisor-selected-size");$(".next,.prev").click(function(){this.showrecommended=!1;var e="first",s="next";$(this).is(".prev")&&(e="last",s="prev");var i=t.filter(":visible"),n=i[s](".fit-advisor-selected-size");n.addClass("active"),i.stop(!0,!0).fadeIn(1e3).removeClass("active").hide(),n.length||(n=t[e]()),n.stop(!0,!0).fadeIn(1e3)}),this.dev_reset(),$('input[name="countrycheck"]').click(function(){var t=$(this);1==t.data("waschecked")?(t.prop("checked",!1),t.data("waschecked",!1)):t.data("waschecked",!0)}),this.showTab(this.currentTab),$("#popup-trigger").on("click",function(){$(".product-card").css("z-index","-1"),$("#popup1").css("overflow","scroll")}),$(".bvHnuU").on("click",function(){localStorage.getItem("height"),localStorage.getItem("weight")})}};
+
 </script>
 <style>
 @import '../assets/styles/body-fit.css';

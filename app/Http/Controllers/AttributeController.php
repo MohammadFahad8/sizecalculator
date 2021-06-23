@@ -171,6 +171,7 @@ class AttributeController extends Controller
       
       $data = $request->all();
       
+      
       $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
       $tags = array_map('strtolower',$data['tags']);
       if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags) )
