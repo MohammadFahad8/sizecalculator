@@ -956,7 +956,7 @@ textarea:focus, input:focus{
     /* border: 1px solid rgb(221, 221, 221); */
     border-radius: 2px;
     margin-bottom: 15px;
-        margin-left: -54px;
+    margin-left: -40px;
     padding: 10px 20px;
     /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */
 }

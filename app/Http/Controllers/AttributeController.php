@@ -194,7 +194,7 @@ class AttributeController extends Controller
                 [ 'name' => $row['title']  ]
             );
          }
-        $products = Products::latest()->get();
+        $products = Products::latest()->paginate(5);
         return view('products.index',[
             'products'=>$products
         ]);
