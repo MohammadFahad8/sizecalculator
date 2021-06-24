@@ -136,7 +136,7 @@ input::-webkit-outer-spin-button,
     margin-top: -44px !important;
 }
 body {
-  background-color: #f1f1f1;
+  background-color: #f1f1f1 !important;
 }
 
 #regForm {

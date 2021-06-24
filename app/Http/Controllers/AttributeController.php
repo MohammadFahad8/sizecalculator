@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use api;
 use App\Models\Size;
 use App\Helpers\Helpers;
+use App\Models\Products;
 use App\Models\Variants;
 use App\Models\Attribute;
 use App\Models\Selectedsize;
@@ -131,6 +132,16 @@ class AttributeController extends Controller
 
         ]);
     }
+     public function editProduct(Request $request)
+    {
+        //
+        
+        $product = Products::find($request['id']);
+        $product->status = $request['status'];
+        $product->save();
+        return $product;
+        
+    }
 
     /**
      * Update the specified resource in storage.
@@ -163,6 +174,44 @@ class AttributeController extends Controller
             $attr = Attribute::find($id);
             $attr->delete();
             return $this->index();
+
+    }
+    public function getAllProducts()
+    {
+        
+        $shop = Auth::user();
+        
+        $productsall = $shop->api()->rest('GET','/admin/api/2021-04/products.json')['body']['container'];
+        $prod=$productsall['products'];
+     
+        
+        foreach($prod as $row)
+        {
+            
+            Products::updateOrCreate(
+                ['product_id' => $row['id']  ],
+                
+                [ 'name' => $row['title']  ]
+            );
+         }
+        $products = Products::latest()->get();
+        return view('products.index',[
+            'products'=>$products
+        ]);
+        
+        
+    }
+    public function permissionToShowBodyFit(Request $request)
+    {
+        
+        $products = Products::where('product_id','=',$request['id'])->first();
+        if($products->status == 1)
+        {
+            return true;
+        }
+        else {
+        return false;
+        }
 
     }
     

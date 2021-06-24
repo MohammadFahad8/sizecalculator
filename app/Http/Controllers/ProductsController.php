@@ -195,7 +195,7 @@ class ProductsController extends Controller
   
     $scripttags = array('script_tag' =>[
       "id"=> 173604798648,
-      "src"=> "https://24bbe8b8d790.ngrok.io/js/app.js"
+      "src"=> Config::get('constants.SHOPIFY_URL.SCRIPT_TAG_APP', 'default')
     ]  );
     $shop = Auth::user();
     $products = $shop->api()->rest('PUT', '/admin/api/2021-01/script_tags/173604798648.json',$scripttags)['body'];

@@ -14,7 +14,10 @@
               <li>
                 <a href="{{ route('sizes.home') }}"> {{ __('Sizes') }} </a>
             </li>
-         
+             <li>
+                <a href="{{ route('attributes.products') }}"> {{ __('Products') }} </a>
+            </li>
+           
         {{-- <li>
                 <a href=""> {{ __('Attribute List') }} </a>
             </li> --}}

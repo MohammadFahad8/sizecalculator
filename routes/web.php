@@ -43,6 +43,8 @@ Route::get('/delete/{id}/',[App\Http\Controllers\AttributeController::class,'des
 Route::get('/edit/{id}',[App\Http\Controllers\AttributeController::class,'edit'])->name('attributes.edit');
 Route::post('/update',[App\Http\Controllers\AttributeController::class,'update'])->name('attributes.update');
 Route::get('/add/type',[App\Http\Controllers\AttributeController::class,'create'])->name('attributes.create');
+Route::get('/get/all-products',[App\Http\Controllers\AttributeController::class,'getAllProducts'])->name('attributes.products');
+Route::get('/product/edit/',[App\Http\Controllers\AttributeController::class,'editProduct'])->name('products.edit');
 //Route::get('/add/type?hmac='.Config::get('constants.SHOPIFY_URL.hmac', 'default').'&host='.Config::get('constants.SHOPIFY_URL.hmac', 'default').'&new_design_language='.Config::get('constants.SHOPIFY_URL.new_design_language', 'default').'&session='.Config::get('constants.SHOPIFY_URL.session','default').'&shop='.Config::get('constants.SHOPIFY_URL.shop','default').'&timestamp='.Config::get('constants.SHOPIFY_URL.timestamp','default'),[App\Http\Controllers\AttributeController::class,'create'])->name('attributes.create');
 
 Route::post('/add',[App\Http\Controllers\AttributeController::class,'store'])->name('attributes.add');

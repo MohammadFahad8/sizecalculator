@@ -1,12 +1,12 @@
 <template>
 
-  <body >
+  <div >
     
       <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
      
     
-      <div class="box"><span id="finalsize" v-if="finalsize !=''" style="font-family: 'Karla';font-weight: 900;font-size: x-large;margin-left:10px">{{finalsize}}</span>
+      <div v-if="showBodyFitApp" class="box"><span id="finalsize" v-if="finalsize !=''" style="font-family: 'Karla';font-weight: 900;font-size: x-large;margin-left:10px">{{finalsize}}</span>
 	  <a class=" btn btn-success" id="popup-trigger" href="#popup1"  style="margin-left: 10%  !important;border: none;">Find Fit</a></div><div id="popup1" class="overlay " ><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
     display: inline-block;
     /* width: 59px; */
@@ -154,7 +154,7 @@
 <!-- </div> -->
       
       
-      </body>
+      </div>
 
 </template>
 
@@ -197,6 +197,7 @@
                 showrecommended:true,
                 variantselected:0,
 				finalsize:'',
+				showBodyFitApp:false,
 
                 image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
                 image_uk:'https://24bbe8b8d790.ngrok.io/images/uk.png',
@@ -205,6 +206,22 @@
         },
       
         methods:{
+			showBodyFit:function(){
+				var id = new FormData();
+				id.append('id',this.product.id);
+				axios.post(this.$appUrl+'/api/permission-to-show',id).then((res)=>{
+					if(res.data == 1)
+					{
+						this.showBodyFitApp = true;
+					}
+					else
+					{
+						this.showBodyFitApp = false;
+
+					}
+
+				})
+			},
 		
             addOrUpdateProduct:function(){
                 axios.post(this.$appUrl+'/api/add-or-update-product',this.product)
@@ -223,7 +240,7 @@
 			this.finalsize = 'null';
 
 		}
-	  console.log('YOUR STORAGE:' +localStorage.getItem('recommended_size'));
+	  
 			},
             getProductDetails:function(){
                 this.is_loading = true;
@@ -752,87 +769,9 @@ if(  this.measurew == null){
         mounted() {
 		
 		this.getLocalData();
+		this.showBodyFit();
 			
-// 			  $('#btnAuckland').click(function(){ 
-// 	//$('#SingleOptionSelector-0').trigger('change');
-//     $('#SingleOptionSelector-0').val($(this).data('val')).attr('selected','selected').trigger('change');
-// 	//window.history.replaceState("", "", '/products/test-new-product?variant=39648526401720');
-// })
-			
-    //        //input check if age exceeds
-    //        $('#height_ft').on('keyup keydown change', function(e){
-    //     $(this).removeClass('invalid');
-    
-    //     if (this.form.heightfoot > 10 
-    //         && e.keyCode !== 46
-    //         && e.keyCode !== 8
-    //        ) {
-    //        e.preventDefault();     
-    //        this.form.heightfoot=9;
-    //     }
-	// 	   if (this.form.heightfoot < 0
-    //         && e.keyCode !== 46
-    //         && e.keyCode !== 8
-    //        ) {
-    //        e.preventDefault();     
-    //        this.form.heightfoot=1;
-    //     }
-    // });
-    // //inches
-    //  $('#height_in').on('keyup keydown change', function(e){
-    //    $(this).removeClass('invalid');
-    
-    //     if (this.form.heightinch > 11 
-    //         && e.keyCode !== 46
-    //         && e.keyCode !== 8
-    //        ) {
-    //        e.preventDefault();     
-    //        this.form.heightinch=11
-    //     }
-	// 	if (this.form.heightinch < 0 
-           
-    //        ) {
-    //        e.preventDefault();     
-    //        this.form.heightinch=0
-    //     }
-    // });
-    // //weight
-    //  $('#weight').on('keyup keydown change', function(e){
-    //    $('#weight').removeClass('invalid');
-    
-    //     if (this.form.weight > 250
-    //         && e.keyCode !== 46
-    //         && e.keyCode !== 8
-    //        ) {
-    //        e.preventDefault();     
-    //        this.form.weight=250
-    //     }
-	// 	if (this.form.weight < 0 
-           
-    //        ) {
-    //        e.preventDefault();     
-    //        this.form.weight=1
-    //     }
-    // });
-    // //age
-    //   $('#age').on('keyup keydown change', function(e){
-    //     $('#age').removeClass('invalid');
-    
-    //     if (this.form.age > 100
-    //          && e.keyCode !== 46
-    //         && e.keyCode !== 8
-    //        ) {
-    //        e.preventDefault();     
-    //        this.form.age=100
-		  
-    //     }
-	// 	 if (this.form.age < 0) {
-    //        e.preventDefault();     
-    //        this.form.age=15;
-    //     }
-    // });
-    
-           //endinput check if age exceeds
+
   
           //slides size
           $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
