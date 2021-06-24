@@ -6,8 +6,11 @@
       <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
      
     
-      <div v-if="showBodyFitApp" class="box"><span id="finalsize" v-if="finalsize !=''" style="font-family: 'Karla';font-weight: 900;font-size: x-large;margin-left:10px">{{finalsize}}</span>
-	  <a class=" btn btn-success" id="popup-trigger" href="#popup1"  style="margin-left: 10%  !important;border: none;">Find Fit</a></div><div id="popup1" class="overlay " ><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
+      <div v-if="showBodyFitApp" class="box">
+	<a class=" btn btn-outline-success" id="popup-trigger" href="#popup1"  style="margin-left: 1%  !important;border: none;">Find Fit</a>
+		<span id="finalsize" v-if="finalsize !=''"  class="final-size-heading">  <span  class="final-size-label">Your Fit Size : </span> {{finalsize}}</span>
+	  
+	  </div><div id="popup1" class="overlay " ><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
     display: inline-block;
     /* width: 59px; */
 "><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" points="328 112 184 256 328 400"></polyline></svg>
@@ -237,7 +240,7 @@
 		}
 		else
 		{
-			this.finalsize = 'null';
+			this.finalsize = '';
 
 		}
 	  
@@ -454,7 +457,7 @@
             {
 				if(localStorage.getItem('recommended_size')!=null)
 				{
-					n=4
+					n=4;
 				}
                 if(n==0)
                 {   

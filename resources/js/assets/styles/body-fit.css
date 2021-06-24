@@ -4,6 +4,21 @@
     grid-template-columns: 1fr 190px 1fr !important;
     
 }
+.final-size-label
+{
+  font-family: Karla;
+  font-weight: 600;
+  font-size: small !important;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+.final-size-heading
+{
+  font-family: 'Montserrat';
+  font-weight: 900;
+  font-size: x-large;
+  margin-left: 10px;
+}
 
 .fit-advisor-header-desc-mt
 {
@@ -136,7 +151,7 @@ input::-webkit-outer-spin-button,
     margin-top: -44px !important;
 }
 body {
-  background-color: #f1f1f1 !important;
+  background-color: #ffffff !important;
 }
 
 #regForm {
@@ -212,6 +227,10 @@ button:hover {
 }
   /*   END STYLE FOR STEPS FORM */
 
+  .box
+  {
+    background-color: #ffffff;
+  }
 /* .box {
   width: 40%;
   margin: 0 auto;
@@ -1109,7 +1128,24 @@ margin-left: 73% !important;
     margin-left: 43% !important;
     }
 /*   //responsiveness of modal */
-  @media (min-width:320px) and (max-width:480px)  { /* smartphones, iPhone, portrait 480x320 phones */
+  @media (min-width:320px) and (max-width:480px)  {
+     /* smartphones, iPhone, portrait 480x320 phones */
+
+     .final-size-label
+{
+  font-family: Karla;
+  font-weight: 600;
+  font-size: small !important;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+.final-size-heading
+{
+  font-family: 'Montserrat';
+  font-weight: 900;
+  font-size: x-large;
+  margin-left: 10px;
+}
     .row {
     display: flex;
     flex-wrap: wrap;

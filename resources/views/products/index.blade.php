@@ -17,7 +17,7 @@
 <tr>
     <th>Sr #</th>
     <th>Name</th>
-    <th>Permission</th>
+    
     <th colspan="2" > <span class="offset-5">Action</span></th>
 </tr>
     </thead>
@@ -27,7 +27,7 @@
             
             <td>{{ $key+1 }}</td>
             <td>{{ $row->name }}</td>
-            <td id="{{ $row->id }}">{{ $row->status }}</td>
+            
             
             <td>
                 <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="danger" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}>
@@ -63,7 +63,7 @@
               data: {'status': status, 'id': product_id},
               success: function(data){
                   
-                $('#'+data.id+'').text(data.status);
+               // $('#'+data.id+'').text(data.status);
               }
           });
       })
