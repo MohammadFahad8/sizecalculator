@@ -178,7 +178,7 @@ class AttributeController extends Controller
     }
     public function getAllProducts()
     {
-        
+      
         $shop = Auth::user();
         
         $productsall = $shop->api()->rest('GET','/admin/api/2021-04/products.json')['body']['container'];
@@ -188,13 +188,16 @@ class AttributeController extends Controller
         foreach($prod as $row)
         {
             
+            
             Products::updateOrCreate(
                 ['product_id' => $row['id']  ],
                 
-                [ 'name' => $row['title']  ]
+        [ 'name' => $row['title'], 
+         'image_link' => ($row['image']==null)?null:$row['image']['src']  ]
             );
          }
         $products = Products::latest()->paginate(5);
+        
         return view('products.index',[
             'products'=>$products
         ]);

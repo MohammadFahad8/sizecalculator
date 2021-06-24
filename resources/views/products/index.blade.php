@@ -18,7 +18,7 @@
 <table class="table table-bordered  " style="width:100% !important;">
     <thead>
 <tr>
-    <th>Sr #</th>
+    {{-- <th>Sr #</th> --}}
     <th>Name</th>
     
     <th colspan="2" > <span class="offset-5">Action</span></th>
@@ -28,8 +28,8 @@
     @forelse($products as $key=> $row)
     <tr>
             
-            <td>{{ $key+1 }}</td>
-            <td>{{ $row->name }}</td>
+            {{-- <td>{{ $key+1 }}</td> --}}
+            <td><div class="row"><div class="col-md-2"><img src="{{ ($row->image_link == null) ? 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png' : $row->image_link}}" class="img-thumbnail" width="50"></div><div class="col-md-10">{{ $row->name }}</div></div></td>
             <td>
             <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}>
              </td>

@@ -17,6 +17,7 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->bigInteger('product_id')->default(12)->unique();
             $table->text('name')->default('nothing');
+            $table->text('image_link')->nullable();
             $table->boolean('status')->default(0);
             
             $table->timestamps();
