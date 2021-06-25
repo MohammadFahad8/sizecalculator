@@ -1,9 +1,6 @@
 @extends('shopify-app::layouts.default')
 @section('content')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" ></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"  />
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
@@ -12,7 +9,8 @@
 <div class="col-md-8" >
 <div class="card">
     <div class="card-header ">
-        <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Products') }}</span><span class="float-right" >@include('snippets.refresh_products')</span> </div>
+        <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Products') }}</span><span class="float-right" >@include('snippets.refresh_products')</span> 
+    </div>
     <div class="card-body">
         
 <table class="table table-bordered  " style="width:100% !important;">
@@ -25,13 +23,18 @@
 </tr>
     </thead>
        <tbody>
-    @forelse($products as $key=> $row)
+        
+    @forelse($other as $key=> $row)
     <tr>
             
             {{-- <td>{{ $key+1 }}</td> --}}
             <td><div class="row"><div class="col-md-2"><img src="{{ ($row->image_link == null) ? 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png' : $row->image_link}}" class="img-thumbnail" width="50"></div><div class="col-md-10">{{ $row->name }}</div></div></td>
             <td>
-            <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}>
+            {{-- <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}> --}}
+            <label class="switch">
+                <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}>
+                <span class="slider round"></span>
+              </label>
              </td>
             
                 
@@ -42,21 +45,40 @@
     Delete</a></td> --}}
 
     </tr>
+    
     @empty
+    
+    <tr><td colspan="2">
+    <div class="d-flex justify-content-center">
+        'Nothing here'
+    </div>
+</td>
+</tr>
+
     @endforelse
     
  
 
     </tbody>
 </table>
-{{ $products->render() }}
+    <div class="d-flex justify-content-center row">
+        {{ $other->links('vendor.pagination.custom') }}
     </div>
+
+    </div>
+
 </div>
 </div>
 </div>
+
 <script>
-    
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+   
     $(function() {
+        
+        
         $('#Capa_1').on('click',function(){
             window.location.reload();
         })

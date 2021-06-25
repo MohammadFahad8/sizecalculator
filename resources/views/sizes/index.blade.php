@@ -37,6 +37,7 @@
 
     </tbody>
 </table>
+{{-- {{ $sizes->render() }} --}}
 
     </div>
 </div>

@@ -19,7 +19,7 @@ class SizeController extends Controller
     public function index()
     {
         //
-        $sizes = Size::latest()->with('attribute')->get();
+        $sizes = Size::latest()->with('attribute')->paginate(5);
         
         return view('sizes.index',
         [

@@ -196,10 +196,10 @@ class AttributeController extends Controller
          'image_link' => ($row['image']==null)?null:$row['image']['src']  ]
             );
          }
-        $products = Products::latest()->paginate(5);
+        $products = Products::paginate(5);
         
         return view('products.index',[
-            'products'=>$products
+            'other'=>$products
         ]);
         
         
