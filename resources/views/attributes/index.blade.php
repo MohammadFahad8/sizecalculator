@@ -6,10 +6,17 @@
 @include('partials_attributes.sidebar')
 <div class="col-md-8" >
 <div class="card">
-    <div class="card-header "><span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Attributes') }}</span> <a
+    {{-- <div class="card-header "><span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Attributes') }}</span> <a
         href="{{ route('attributes.create') }}" class="btn btn-info btn-md button-add border border-light offset-10 ">
         <i class="fas fa-plus"></i>Attribute
-    </a></div>
+    </a></div> --}}
+    <div class="card-header ">
+        <div class="row">
+            <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Attributes') }}</span> </div>
+            <div class="col-md-9"><a
+                href="{{ route('attributes.create') }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute</span></a></div>
+        </div>
+       </div>
     <div class="card-body">
         
 <table class="table table-bordered  " style="width:100% !important;">
