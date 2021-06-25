@@ -37,7 +37,9 @@ class ProductsController extends Controller
           "event"=> "onload",
           "src"=> "https://d4033ca7af0a.ngrok.io/scripttags/index.js"
         ]);
-          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/174337130680.json')['body'];
+        
+        //174544322744
+          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/174544322744.json')['body'];
           dd($products);
         
         // $curl = curl_init();

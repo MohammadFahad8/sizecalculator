@@ -11,33 +11,45 @@ class Helpers {
   function ifScriptTag()
   {
       $shop = Auth::user();
+      
       $scripttags = $shop->api()->rest('GET','/admin/api/2021-01/script_tags.json')['body']['container'];
+      
       
       foreach($scripttags as $row)
       {
           if(!$row)
           {
+            
               $this->addScriptTag();
               echo '<script>console.log(" !! New  Body Fit Application !! ")</script>';
                   
   
               
+          }else {
+            foreach($row as $r)
+            
+           
+            
+            $this->updateFrontScriptTag($r['id']);
+            echo '<script>console.log(" !! Welcome Body Fit Application !! ")</script>';
+          
+            
           }
-          foreach($row as $r)
-          {
-              
-              if($r['src'] == Config::get('constants.SHOPIFY_URL.SCRIPT_TAG_APP', 'default') )
-              {
+          // foreach($row as $r)
+          // {
+          //     echo json_encode($r['src']);
+          //     if($r['src'] == Config::get('constants.SHOPIFY_URL.SCRIPT_TAG_APP', 'default') )
+          //     {
+          //       $this->updateFrontScriptTag();
+          //         echo '<script>console.log(" !! Welcome Body Fit Application !! ")</script>';
   
-                  echo '<script>console.log(" !! Welcome Body Fit Application !! ")</script>';
-  
-              }
-              else {
+          //     }
+          //     else {
                   
-                  $this->addScriptTag();
-                  echo '<script>console.log(" !! New  Body Fit Application !! ")</script>';
-              }
-          }
+          //         $this->addScriptTag();
+          //         echo '<script>console.log(" !! New  Body Fit Application !! ")</script>';
+          //     }
+          // }
       }
   }
     function addScriptTag()
@@ -49,6 +61,18 @@ class Helpers {
       "src"=>  Config::get('constants.SHOPIFY_URL.SCRIPT_TAG_APP', 'default')
     ]);
       $products = $shop->api()->rest('POST', '/admin/api/2021-01/script_tags.json',$scripttags)['body'];
+      
+      
+  }
+   function updateFrontScriptTag($id)
+  {
+      $shop = Auth::user();
+    
+    $scripttags = array("script_tag"=> [
+      "id"=> $id,
+      "src"=>  Config::get('constants.SHOPIFY_URL.SCRIPT_TAG_APP', 'default')
+    ]);
+      $products = $shop->api()->rest('PUT', '/admin/api/2021-01/script_tags/'.$id.'.json',$scripttags)['body'];
       
       
   }

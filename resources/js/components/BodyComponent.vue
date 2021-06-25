@@ -7,8 +7,8 @@
      
     
       <div v-if="showBodyFitApp" class="box">
-	<a class=" btn btn-outline-success" id="popup-trigger" href="#popup1"  style="margin-left: 1%  !important;border: none;">Find Fit</a>
-		<span id="finalsize" v-if="finalsize !=''"  class="final-size-heading">  <span  class="final-size-label">Your Fit Size : </span> {{finalsize}}</span>
+	<a class=" btn btn-outline-success" id="popup-trigger" href="#popup1"  style="margin-left: 1%  !important;margin-bottom: 20px  !important;border: none;">Find Fit</a>
+		        <span id="finalsize" v-if="finalsize !=''"  class="final-size-heading">  <span  class="final-size-label">Your Fit Size : </span> {{finalsize}}</span>
 	  
 	  </div><div id="popup1" class="overlay " ><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
     display: inline-block;
@@ -133,7 +133,8 @@
 <div class="listfit" >
  
 
-      <div   id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id"  class=" fit-advisor-selected-size" style="opacity: 1;" ><span id="fsize"> 
+      <div   id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id"  class=" fit-advisor-selected-size" style="opacity: 1;" >
+        <span id="fsize"> 
 <div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;" role="status"> 
   <span class="sr-only">Loading...</span>
 </div>
@@ -142,14 +143,14 @@
   
   
 <span v-if="showrecommended" class="recommendedbyus"  >{{recommended_size}}</span>
-<span v-if="!showrecommended " class="variant_title" :data-variant=" row.id "><span v-if="row.title.toUpperCase()=='XL' || row.title.toUpperCase()=='XS'">{{row.title.toUpperCase().substr(0,2)}}</span><span v-if="row.title.toUpperCase()!='XS' || row.title.toUpperCase()!='XL' ">{{row.title.toUpperCase().charAt(0)}}</span></span>
+<span v-if="!showrecommended " class="variant_title" :data-variant=" row.id " :data-title=" row.title "><span v-if="row.title.toUpperCase()=='XL' || row.title.toUpperCase()=='XS'">{{row.title.toUpperCase().substr(0,2)}}</span><span v-if="row.title.toUpperCase()!='XS' || row.title.toUpperCase()!='XL' ">{{row.title.toUpperCase().charAt(0)}}</span></span>
 </h4>
 </span>
 </div>
 </div>
 
 <div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI arrow-next next"  @click="changesize()" >
-  <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong>Recommended</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
+  <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong v-if="showrecommended">Recommended</strong><strong id ="allSizeTextHeading" v-else>{{this.allSizeText}}</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
 </form>
 </div>
 </div>
@@ -199,8 +200,9 @@
                 showContinueBtn:true,
                 showrecommended:true,
                 variantselected:0,
-				finalsize:'',
-				showBodyFitApp:false,
+				        finalsize:'',
+        				showBodyFitApp:false,
+                allSizeText:'',
 
                 image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
                 image_uk:'https://24bbe8b8d790.ngrok.io/images/uk.png',
@@ -300,6 +302,7 @@
                 if(!this.showrecommended)
               {
                var var_id =  $('.active > span> h4 > span').attr('data-variant')
+              
                this.cartRequest(var_id);
 
 
@@ -798,7 +801,13 @@ $('.next,.prev').click(function(){
     var $curr = $allSlides.filter(':visible'), //get the visible slide
         $nxtTarget =  $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
         $nxtTarget.addClass('active');
+        var var_title =  $('.active > span> h4 > span').attr('data-title')
+         console.log(var_title)
         
+          this.allSizeText = 'uncomfortable';
+        
+                   
+                
     $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
 
     if (!$nxtTarget.length){ //if no next
@@ -806,9 +815,10 @@ $('.next,.prev').click(function(){
         
     }
 
-    $nxtTarget.stop(true, true).fadeIn(1000); //show the target
+    $nxtTarget.stop(true, true).fadeIn(1000).addClass('active'); //show the target
 
 });
+
           //slides size end
             //this.addOrUpdateProduct();
             

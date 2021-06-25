@@ -8,7 +8,7 @@ require('./bootstrap');
 
 window.Vue = require('vue').default;
 
-Vue.prototype.$appUrl = 'https://314f374687cc.ngrok.io';
+Vue.prototype.$appUrl = 'https://f0f463b4229f.ngrok.io';
 
 
 /**

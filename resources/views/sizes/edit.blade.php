@@ -17,7 +17,7 @@
     <div class="card-header">@include('snippets.buttonback')Edit Sizes</div>
     <div class="card-body">
         <ul class="nav nav-tabs mb-5">
-            <li class="active"><a data-toggle="pill" class="btn btn-default bg-white" id="hometab" href="#home">Edit
+            <li class="active" ><a data-toggle="pill"  class="btn btn-default bg-white" id="hometab" href="#home">Edit
                     Size</a></li>
             <li class="ml-1"><a  data-toggle="pill" class="btn btn-default bg-white" href="#menu1">Add
                     Condition</a></li>
