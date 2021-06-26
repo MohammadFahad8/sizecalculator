@@ -226,10 +226,11 @@ class AttributeController extends Controller
       
       $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
       $tags = array_map('strtolower',$data['tags']);
+      
       if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags) )
       {
       
-     
+        
     //Man  Adult
    
    
@@ -294,6 +295,7 @@ class AttributeController extends Controller
 }
 else
   {
+    
  return  $this->calculateSizeFemale($data,$height_cm);
   }
   //end man adult
@@ -301,7 +303,7 @@ else
   public function calculateSizeFemale($data,$height_cm)
   {
       //Female  Adult
-   
+      
    
   if(($data['weight'] <= 100  ) && ($height_cm  >=  137 && $height_cm <= 145)  )
   {

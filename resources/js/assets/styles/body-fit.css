@@ -1,8 +1,16 @@
 
 .bigsize{
   
-    grid-template-columns: 1fr 190px 1fr !important;
+    grid-template-columns: 1fr 213px 1fr !important;
     
+}
+.big-size-margin
+{
+  margin-left: 35px !important;
+}
+.big-size-margin-recommend-size
+{
+  margin-left: 50px !important;
 }
 .final-size-label
 {
@@ -1029,14 +1037,14 @@ textarea:focus, input:focus{
     background: rgba(255, 255, 255, 0.5);
     z-index: 30;
     margin:0 auto ;
-    margin-left:35px;
+    /* margin-left:50px; */
     display:block;
 }
   .fit-advisor-selected-size-arrow-box {
     position: relative;
     z-index: 40;
     padding: 5px 0px;
-    grid-template-columns: 1fr 120px 1fr;
+    grid-template-columns: 1fr 160px 1fr;
     justify-self: flex-end;
 }
   .selected-product-arrow-left {
@@ -1131,9 +1139,15 @@ margin-left: 73% !important;
 /*   //responsiveness of modal */
   @media (min-width:320px) and (max-width:480px)  {
      /* smartphones, iPhone, portrait 480x320 phones */
-
-     .final-size-label
+     .bigsize {
+      grid-template-columns: 1fr 198px 1fr !important;
+  }
+  .big-size-margin
 {
+  margin-left: 35px !important;
+}
+     
+  .final-size-label{
   font-family: Karla;
   font-weight: 600;
   font-size: small !important;
@@ -1242,7 +1256,7 @@ input {
     width: 22px;
     height: 22px;
     transition: opacity 0.2s ease-in-out 0s;
-    margin-left: 30px;
+    margin-left: 15px;
 }
 .selected-product-arrow-left {
     background: rgba(255, 255, 255, 0.5);
@@ -1377,7 +1391,7 @@ input {
     background: white;
     border:none;
     margin-bottom: 15px;
-        margin-left: -50px;
+        margin-left: -15px;
     padding: 10px 20px;
       box-shadow:none;
     
@@ -1455,4 +1469,26 @@ input {
   font-weight: bold;
   font-family: karla;
   transition: ease-in-out 1s;
+}
+
+.on-excel-size-two {
+  position: relative;
+  z-index: 40;
+  padding: 5px 0px;
+  grid-template-columns: 1fr 190px 1fr;
+  justify-self: flex-end;
+}
+.on-excel-size{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background: white;
+  /* border: 1px solid rgb(221, 221, 221); */
+  border-radius: 2px;
+  margin-bottom: 15px;
+  margin-left: -10px;
+  padding: 10px 20px;
+  /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */
 }

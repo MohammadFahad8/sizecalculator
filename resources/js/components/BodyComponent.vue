@@ -142,15 +142,17 @@
 <h4 class="result-size" >
   
   
-<span v-if="showrecommended" class="recommendedbyus"  >{{recommended_size}}</span>
-<span v-if="!showrecommended " class="variant_title" :data-variant=" row.id " :data-title=" row.title "><span v-if="row.title.toUpperCase()=='XL' || row.title.toUpperCase()=='XS'">{{row.title.toUpperCase().substr(0,2)}}</span><span v-if="row.title.toUpperCase()!='XS' || row.title.toUpperCase()!='XL' ">{{row.title.toUpperCase().charAt(0)}}</span></span>
+<span v-if="showrecommended" class="recommendedbyus big-size-margin-recommend-size"  >{{recommended_size}}</span>
+
+<span v-if="!showrecommended " class="variant_title" :data-variant=" row.id " :data-title=" row.title "><span v-if="row.title.toUpperCase().substring(0, 2)=='XL' || row.title.toUpperCase().substring(0, 2)=='XS'"><span class="big-size-margin">{{row.title.toUpperCase()}}</span></span><span v-if="row.title.toUpperCase()!='XS' && row.title.toUpperCase()!='XL' ">{{row.title.toUpperCase().charAt(0)}}</span></span>   
 </h4>
 </span>
 </div>
 </div>
 
-<div class=" dfOagu" style="z-index:30"><span size="10" class=" jjnwUS  hjNiUI arrow-next next"  @click="changesize()" >
-  <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong v-if="showrecommended">Recommended</strong><strong id ="allSizeTextHeading" v-else>{{this.allSizeText}}</strong></p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
+<div class=" dfOagu" style="z-index:30">
+  <span size="10" class=" jjnwUS  hjNiUI arrow-next next"  @click="changesize()" >
+  <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong v-if="showrecommended">Recommended</strong><strong id ="allSizeTextHeading" v-else>{{this.allSizeText}}</strong> <strong v-if="this.otherSize">{{this.otherSize}}</strong>  </p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
 </form>
 </div>
 </div>
@@ -172,14 +174,14 @@
         data(){
             return{
                 form:{
-                    heightfoot:'',
-                    heightinch:'',
-                    weight:'',
-                    age:'',
-                    chest:0,
-                    stomach:0,
-                    bottom:0,
-                    tags:[]
+                    heightfoot:localStorage.getItem('foot'),
+                    heightinch:localStorage.getItem('inch'),
+                    weight:localStorage.getItem('weight'),
+                    age:localStorage.getItem('age'),
+                    chest:localStorage.getItem('chest'),
+                    stomach:localStorage.getItem('stomach'),
+                    bottom:localStorage.getItem('bottom'),
+                    tags:JSON.parse(localStorage.getItem('tags')),
             
                 },
                 countrycheck:'',
@@ -202,7 +204,12 @@
                 variantselected:0,
 				        finalsize:'',
         				showBodyFitApp:false,
-                allSizeText:'',
+                allSizeText:'Snug',
+                $allSlides:'',
+                traverseDefault:'',
+                actionDefault:'',
+                otherSize:'',
+
 
                 image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
                 image_uk:'https://24bbe8b8d790.ngrok.io/images/uk.png',
@@ -247,10 +254,18 @@
 		}
 	  
 			},
+      setSlides:function(){
+          $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
+
+        this.$allSlides = $('div.fit-advisor-selected-size'), 
+            this.traverseDefault = "first", //set the defaults
+            this.actionDefault ="next";
+      },
             getProductDetails:function(){
                 this.is_loading = true;
                 var a ='';
-               
+                      
+              this.setSlides();
                 axios.post(this.$appUrl+'/api/size-recommend/',this.form)
                 .then((res)=>{
                   
@@ -259,7 +274,7 @@
                      if((res.data == 'XL') || (res.data == 'XS' ))
                      {
                        this.recommended_size = res.data.toUpperCase().substr(0, 2)
-					   a=this.recommended_size;
+					               a=this.recommended_size;
                        $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
                        $('.dfOagu').addClass('dfOagu-second');
                       if(this.showContinueBtn==true)
@@ -272,7 +287,7 @@
                      else
                      {
                        this.recommended_size = res.data.toUpperCase().charAt(0)
-					   a=this.recommended_size;
+					             a=this.recommended_size;
                         if(this.showContinueBtn==true)
                       {
                         this.showContinueBtn = false;
@@ -282,7 +297,8 @@
 					// this.checkCookie();
 					// if(localStorage.getItem('recommended_size')===null)
 					// {
-						localStorage.setItem('recommended_size',a)
+            
+						localStorage.setItem('recommended_size',this.recommended_size)
 					// }
 					
 
@@ -379,10 +395,49 @@
              if(this.showrecommended==true)
              {
                this.showrecommended = false;
-               $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
-               $('.dfOagu').removeClass('dfOagu-second');
+//    orignial           $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
+              //original $('.dfOagu').removeClass('dfOagu-second');
+                 $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
+                  $('.dfOagu').addClass('dfOagu-second');
 
              }
+             
+  
+          //slides size
+   
+        //
+
+
+ this.showrecommended = false;
+  
+    var traverse =this.traverseDefault,
+        action = this.actionDefault;
+
+    if($(this).is('.prev')){ //if action is prev
+        traverse = "last"; //set traverse to last in case nothing is available
+        action = "prev"; //set action to prev
+    }
+
+    var $curr = this.$allSlides.filter(':visible'), //get the visible slide
+        $nxtTarget =  $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
+        $nxtTarget.addClass('active');
+       
+          
+        
+                   
+                
+    $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
+
+    if (!$nxtTarget.length){ //if no next
+        $nxtTarget = this.$allSlides[traverse](); //based on traverse pick the next one
+        
+    }
+
+    $nxtTarget.stop(true, true).fadeIn(1000).addClass('active'); //show the target
+
+
+
+          //slides size end
              
 
 
@@ -401,15 +456,20 @@
             chest:function(n)
             {
                 this.form.chest = n;
+                localStorage.setItem('chest',n)
                 this.nextPrev(1)
             },stomach:function(n)
             {
                 this.form.stomach = n;
+                localStorage.setItem('stomach',n)
                 this.nextPrev(1)
             },bottom:function(n)
             {
                 this.form.bottom = n;
+                localStorage.setItem('bottom',n)
+                
                 this.form.tags= this.product.tags
+                localStorage.setItem('tags',JSON.stringify(this.product.tags))
                 this.nextPrev(1)
               
                 
@@ -563,6 +623,7 @@
     
 
     //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
+    console.log(this.form)
  this.getProductDetails();
   }
    else {
@@ -603,22 +664,22 @@ var heightf = ft*12;
 var heighti = heightf+ parseInt(inch);
 var height_cm  = heighti* 2.54;
 
- this.measureh = localStorage.getItem('height');
-this.measurew = localStorage.getItem('weight');
-if(  this.measurew == null){
+//  this.measureh = localStorage.getItem('height');
+// this.measurew = localStorage.getItem('weight');
+// if(  this.measurew == null){
   
    
-  localStorage.setItem("weight", weight_lbs);
+//   localStorage.setItem("weight", weight_lbs);
   
 
- }
+//  }
 
- if( this.measureh == null){
+//  if( this.measureh == null){
    
-  localStorage.setItem("height", height_cm);
+//   localStorage.setItem("height", height_cm);
   
 
- }
+//  }
 
  
   // if you have reached the end of the form...
@@ -677,6 +738,10 @@ if(  this.measurew == null){
                 
 
 			  }
+        else
+        {
+          localStorage.setItem('foot',this.form.heightfoot)
+        }
 
 			},
 			validateInches: function()
@@ -696,6 +761,10 @@ if(  this.measurew == null){
 					this.form.heightinch='';
                 	
 			  }
+        else
+        {
+          localStorage.setItem('inch',this.form.heightinch)
+        }
 			},
 			validateWeight: function(){
 				$('#weight').removeClass('invalid')
@@ -715,6 +784,10 @@ if(  this.measurew == null){
                 
 
               }
+              else
+        {
+          localStorage.setItem('weight',this.form.weight)
+        }
 			},
 			validateAge:function(){
 				$('#age').removeClass('invalid')
@@ -732,6 +805,10 @@ if(  this.measurew == null){
                 
 
               }
+              else
+        {
+          localStorage.setItem('age',this.form.age)
+        }
 			},
             fixStepIndicator:function(n)
             {
@@ -771,55 +848,18 @@ if(  this.measurew == null){
                 this.nextPrev(-4)
                 
             },
+            nextprevslide:function()
+            {
+              
+
+            }
         },
         mounted() {
-		
+		 
 		this.getLocalData();
 		this.showBodyFit();
 			
 
-  
-          //slides size
-          $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
-
-var $allSlides = $('div.fit-advisor-selected-size'), 
-    traverseDefault = "first", //set the defaults
-    actionDefault ="next";
-
-$('.next,.prev').click(function(){
-
- this.showrecommended = false;
-  
-    var traverse = traverseDefault,
-        action = actionDefault;
-
-    if($(this).is('.prev')){ //if action is prev
-        traverse = "last"; //set traverse to last in case nothing is available
-        action = "prev"; //set action to prev
-    }
-
-    var $curr = $allSlides.filter(':visible'), //get the visible slide
-        $nxtTarget =  $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
-        $nxtTarget.addClass('active');
-        var var_title =  $('.active > span> h4 > span').attr('data-title')
-         console.log(var_title)
-        
-          this.allSizeText = 'uncomfortable';
-        
-                   
-                
-    $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
-
-    if (!$nxtTarget.length){ //if no next
-        $nxtTarget = $allSlides[traverse](); //based on traverse pick the next one
-        
-    }
-
-    $nxtTarget.stop(true, true).fadeIn(1000).addClass('active'); //show the target
-
-});
-
-          //slides size end
             //this.addOrUpdateProduct();
             
            // this.dev_reset();
