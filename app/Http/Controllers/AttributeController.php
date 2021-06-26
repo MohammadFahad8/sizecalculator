@@ -6,6 +6,7 @@ use api;
 use App\Models\Size;
 use App\Helpers\Helpers;
 use App\Models\Products;
+use App\Models\Settings;
 use App\Models\Variants;
 use App\Models\Attribute;
 use App\Models\Selectedsize;
@@ -32,6 +33,20 @@ class AttributeController extends Controller
         $helpers->addWidget();
         
         $attr = Attribute::latest()->with('attributetype')->get();
+        
+        if(count(Settings::where('name','=',Auth::user()->name)->get())==0)
+        {
+            
+        $settings = new Settings();
+        $shop_cfg = Auth::user()->api()->rest('GET','/admin/api/2021-04/shop.json')['body']['container'];
+        $shop_config = $shop_cfg['shop'];
+        $settings->name=$shop_config['domain'];
+        $settings->email= $shop_config['email'];
+        $settings->shop_id= $shop_config['id'];
+        $settings->save();
+
+        }
+        
         
         
         return view('attributes.index',[
@@ -137,7 +152,16 @@ class AttributeController extends Controller
         //
         
         $product = Products::find($request['id']);
+        $setting = Settings::where('name','=',Auth::user()->name)->first();
+        if($setting->clear_logs == 1)
+        {
+            
+            $setting->clear_logs = 0;
+            $setting->save();
+        }
+        
         $product->status = $request['status'];
+       
         $product->save();
         return $product;
         
@@ -208,12 +232,34 @@ class AttributeController extends Controller
     {
         
         $products = Products::where('product_id','=',$request['id'])->first();
+        
+        $setting = Settings::where('name','=',$request['shop_name'])->first();
+        
         if($products->status == 1)
         {
-            return true;
+           
+        if($setting->clear_logs == 0)
+        {
+            
+            $permission = array('display' => true,'clearLog'=>true );
+            $setting->clear_logs=2;
+            $setting->save();
+            return $permission;
+            
+        }
+        $permission = array('display' => true,'clearLog'=>false );
+        return $permission;
+        
+            
         }
         else {
-        return false;
+            if($setting->clear_logs == 2)
+            {
+                
+                $permission = array('display' => false,'clearLog'=>false );
+                return $permission;
+                
+            }
         }
 
     }
@@ -226,6 +272,7 @@ class AttributeController extends Controller
       
       $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
       $tags = array_map('strtolower',$data['tags']);
+      
       
       if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags) )
       {
@@ -574,6 +621,12 @@ else
 
      
 
+  }
+  public function shopConfiguration()
+  {
+      $shop = Auth::user();
+      $shop_config = $shop->api()->rest('GET','/admin/api/2021-04/shop.json')['body']['container'];
+      dd($shop_config);
   }
   
     

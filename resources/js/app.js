@@ -7,9 +7,11 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.prototype.$appUrl = 'https://f0f463b4229f.ngrok.io';
-
+Vue.use(VueSweetalert2)
 
 /**
  * The following block of code may be used to automatically register your

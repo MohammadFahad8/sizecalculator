@@ -133,7 +133,7 @@
 <div class="listfit" >
  
 
-      <div   id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id"  class=" fit-advisor-selected-size" style="opacity: 1;" >
+<div   id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id"  class=" fit-advisor-selected-size" style="opacity: 1;" >
         <span id="fsize"> 
 <div v-if="is_loading"  class="spinner-border" style="width: 3rem; height: 3rem;" role="status"> 
   <span class="sr-only">Loading...</span>
@@ -144,7 +144,10 @@
   
 <span v-if="showrecommended" class="recommendedbyus big-size-margin-recommend-size"  >{{recommended_size}}</span>
 
-<span v-if="!showrecommended " class="variant_title" :data-variant=" row.id " :data-title=" row.title "><span v-if="row.title.toUpperCase().substring(0, 2)=='XL' || row.title.toUpperCase().substring(0, 2)=='XS'"><span class="big-size-margin">{{row.title.toUpperCase()}}</span></span><span v-if="row.title.toUpperCase()!='XS' && row.title.toUpperCase()!='XL' ">{{row.title.toUpperCase().charAt(0)}}</span></span>   
+<span v-if="!showrecommended " class="variant_title" :data-variant=" row.id " :data-title=" row.title ">
+  <span v-if="row.title.toUpperCase().substring(0, 2)=='XL' || row.title.toUpperCase().substring(0, 2)=='XS'">
+    <span class="big-size-margin">{{row.title.toUpperCase()}}</span></span>
+    <span v-if="row.title.toUpperCase()!='XS' && row.title.toUpperCase()!='XL' ">{{row.title.toUpperCase().charAt(0)}}</span></span>   
 </h4>
 </span>
 </div>
@@ -164,13 +167,14 @@
 
 </template>
 
-
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
     export default {
          props: {
-      product:Object
-    },
+      product:Object,
+      
+    }, 
         data(){
             return{
                 form:{
@@ -204,7 +208,7 @@
                 variantselected:0,
 				        finalsize:'',
         				showBodyFitApp:false,
-                allSizeText:'Snug',
+                allSizeText:'Recommended',
                 $allSlides:'',
                 traverseDefault:'',
                 actionDefault:'',
@@ -213,6 +217,7 @@
 
                 image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
                 image_uk:'https://24bbe8b8d790.ngrok.io/images/uk.png',
+                
 
             }
         },
@@ -220,14 +225,27 @@
         methods:{
 			showBodyFit:function(){
 				var id = new FormData();
+        var shop_name = window.location.hostname;
 				id.append('id',this.product.id);
+				id.append('shop_name',shop_name);
+        
 				axios.post(this.$appUrl+'/api/permission-to-show',id).then((res)=>{
-					if(res.data == 1)
+          console.log(res.data)
+					if(res.data.display == true)
 					{
+            if(res.data.clearLog==true)
+            {
+              this.dev_reset();
+            }
+            
 						this.showBodyFitApp = true;
 					}
 					else
 					{
+             if(res.data.clearLog==true)
+            {
+              this.dev_reset();
+            }
 						this.showBodyFitApp = false;
 
 					}
@@ -241,7 +259,7 @@
                   
                 })
             },
-			getLocalData:function(){
+            getLocalData:function(){
 				  
 			 if(localStorage.getItem('recommended_size')!=null)
 		{
@@ -253,14 +271,14 @@
 
 		}
 	  
-			},
-      setSlides:function(){
+            },
+            setSlides:function(){
           $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
 
         this.$allSlides = $('div.fit-advisor-selected-size'), 
             this.traverseDefault = "first", //set the defaults
             this.actionDefault ="next";
-      },
+            },
             getProductDetails:function(){
                 this.is_loading = true;
                 var a ='';
@@ -280,6 +298,7 @@
                       if(this.showContinueBtn==true)
                       {
                         this.showContinueBtn = false;
+                        
                       }
                       
                      
@@ -294,12 +313,10 @@
                       }
                       
                      }
-					// this.checkCookie();
-					// if(localStorage.getItem('recommended_size')===null)
-					// {
+				
             
 						localStorage.setItem('recommended_size',this.recommended_size)
-					// }
+					
 					
 
 					this.finalsize = localStorage.getItem('recommended_size');
@@ -501,7 +518,7 @@
                 
 
             },
-                    weightconvert:function(w,c)
+            weightconvert:function(w,c)
                     {
                         if((c == true) && (w!='') )
                         {
@@ -514,7 +531,7 @@
                         
                         
 
-                    },
+              },
 
             showTab:function(n)
             {
@@ -623,7 +640,7 @@
     
 
     //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
-    console.log(this.form)
+    
  this.getProductDetails();
   }
    else {
@@ -720,96 +737,96 @@ var height_cm  = heighti* 2.54;
   return valid; // return the valid status
 
             },
-			validateHeight:function(event)
-			{
-				$('#height_ft').removeClass('invalid')
-				
-				 if(this.form.heightfoot >9)
-              { 
-				  $("#height_ft").attr("placeholder", "Must be less than 9");
-				  $("#height_ft").addClass("warning-place");
-              this.form.heightfoot='';
-                
-                
-              }
-			  else if(this.form.heightfoot<= 0)
-			  {
-				  this.form.heightfoot='';
-                
-
-			  }
-        else
-        {
-          localStorage.setItem('foot',this.form.heightfoot)
-        }
-
-			},
-			validateInches: function()
-			{
-				$('#height_in').removeClass('invalid')
-				
-               if(this.form.heightinch >11)
+            validateHeight:function(event)
+            {
+              $('#height_ft').removeClass('invalid')
+              
+              if(this.form.heightfoot >9)
+                    { 
+                $("#height_ft").attr("placeholder", "Must be less than 9");
+                $("#height_ft").addClass("warning-place");
+                    this.form.heightfoot='';
+                      
+                      
+                    }
+              else if(this.form.heightfoot<= 0)
               {
-				   $("#height_in").attr("placeholder", "Must be less than 11");
-				  $("#height_in").addClass("warning-place");
+                this.form.heightfoot='';
+                      
+
+              }
+              else
+              {
+                localStorage.setItem('foot',this.form.heightfoot)
+              }
+
+            },
+            validateInches: function()
+            {
+              $('#height_in').removeClass('invalid')
+              
+                    if(this.form.heightinch >11)
+                    {
+                $("#height_in").attr("placeholder", "Must be less than 11");
+                $("#height_in").addClass("warning-place");
+                      this.form.heightinch='';
+                      
+
+                    }
+              else if(this.form.heightinch <= 0)
+              {
                 this.form.heightinch='';
-                
-
-              }
-			  else if(this.form.heightinch <= 0)
-			  {
-					this.form.heightinch='';
-                	
-			  }
-        else
-        {
-          localStorage.setItem('inch',this.form.heightinch)
-        }
-			},
-			validateWeight: function(){
-				$('#weight').removeClass('invalid')
-               if(this.form.weight > 500)
-              {
-				   $("#weight").attr("placeholder", "Limit is 500 Lbs");
-				  $("#weight").addClass("warning-place");
-				  this.form.weight= ''
-                
-                
-
-              }
-			  else if(this.form.weight <= 0)
-              {
-				  
-                this.form.weight =  ''
-                
-
+                        
               }
               else
-        {
-          localStorage.setItem('weight',this.form.weight)
-        }
-			},
-			validateAge:function(){
-				$('#age').removeClass('invalid')
-				if(this.form.age >100)
               {
-				     $("#age").attr("placeholder", "Limit for Age is 100");
-				  $("#age").addClass("warning-place");
-                this.form.age=''
-                
-
+                localStorage.setItem('inch',this.form.heightinch)
               }
-			   else if(this.form.age <= 0)
+            },
+            validateWeight: function(){
+              $('#weight').removeClass('invalid')
+                    if(this.form.weight > 500)
+                    {
+                $("#weight").attr("placeholder", "Limit is 500 Lbs");
+                $("#weight").addClass("warning-place");
+                this.form.weight= ''
+                      
+                      
+
+                    }
+              else if(this.form.weight <= 0)
+                    {
+                
+                      this.form.weight =  ''
+                      
+
+                    }
+                    else
               {
-                this.form.age = ''
-                
-
+                localStorage.setItem('weight',this.form.weight)
               }
-              else
-        {
-          localStorage.setItem('age',this.form.age)
-        }
-			},
+            },
+            validateAge:function(){
+              $('#age').removeClass('invalid')
+              if(this.form.age >100)
+                    {
+                  $("#age").attr("placeholder", "Limit for Age is 100");
+                $("#age").addClass("warning-place");
+                      this.form.age=''
+                      
+
+                    }
+              else if(this.form.age <= 0)
+                    {
+                      this.form.age = ''
+                      
+
+                    }
+                    else
+              {
+                localStorage.setItem('age',this.form.age)
+              }
+            },
             fixStepIndicator:function(n)
             {
                 
@@ -856,8 +873,10 @@ var height_cm  = heighti* 2.54;
         },
         mounted() {
 		 
-		this.getLocalData();
+	  console.log(this.shop)
+    this.getLocalData();
 		this.showBodyFit();
+
 			
 
             //this.addOrUpdateProduct();
@@ -900,11 +919,6 @@ $('#popup-trigger').on('click',function(){
 $('.bvHnuU').on('click',function(){
   var measureh = localStorage.getItem('height');
   var measurew = localStorage.getItem('weight');
-
-
-
-  
-  
 
 })
 

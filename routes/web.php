@@ -81,6 +81,9 @@ Route::get('/get/theme',[App\Http\Controllers\ProductsController::class,'getThem
 Route::get('/get/products/{id}',[App\Http\Controllers\ProductsController::class,'getProductDetails']);
 Route::post('add/product-from-selection',[App\Http\Controllers\AttributeCOntroller::class,'addProductFromSelection']);
 
+
+                                            //check shop config
+Route::get('/shop_config',[App\Http\Controllers\AttributeController::class,'shopConfiguration']);
 });
 
 
