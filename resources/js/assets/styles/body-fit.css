@@ -1492,3 +1492,48 @@ input {
   padding: 10px 20px;
   /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */
 }
+#chest1:hover
+{
+  transform: scale(1.1) !important;
+  transition:ease-in-out 1s !important;
+}
+#chest2:hover
+{
+  transform: scale(1.1) !important;
+  transition:ease-in-out 1s !important;
+}
+#chest3:hover
+{
+  transform: scale(1.1) !important;
+  transition:ease-in-out 1s !important;
+}
+#stomach1:hover
+{
+  transform: scale(1.1) !important;
+  transition:ease-in-out 1s !important;
+}
+#stomach2:hover
+{
+  transform: scale(1.1) !important;
+  transition:ease-in-out 1s !important;
+}
+#stomach3:hover
+{
+  transform: scale(1.1) !important;
+  transition:ease-in-out 1s !important;
+}
+#bottom1:hover
+{
+  transform: scale(1.1) !important;
+  transition:ease-in-out 1s !important;
+}
+#bottom2:hover
+{
+  transform: scale(1.1) !important;
+  transition:ease-in-out 1s !important;
+}
+#bottom3:hover
+{
+  transform: scale(1.1) !important;
+  transition:ease-in-out 1s !important;
+}
