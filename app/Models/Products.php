@@ -13,6 +13,7 @@ class Products extends Model
     'name',
     'status',
     'image_link',
+    'website_name',
 ];
 }
 

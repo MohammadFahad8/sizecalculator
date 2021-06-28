@@ -10,7 +10,7 @@
 	<a class=" btn btn-outline-success" id="popup-trigger" href="#popup1"  style="margin-left: 1%  !important;margin-bottom: 20px  !important;border: none;">Find Fit</a>
 		        <span id="finalsize" v-if="finalsize !=''"  class="final-size-heading">  <span  class="final-size-label">Your Fit Size : </span> {{finalsize}}</span>
 	  
-	  </div><div id="popup1" class="overlay"><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
+	  </div><div id="popup1" class="overlay" style="z-index:999 !important"><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
     display: inline-block;
     /* width: 59px; */
 "><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" points="328 112 184 256 328 400"></polyline></svg>
@@ -28,9 +28,31 @@
 <p class="fit-advisor-intro" id="intro4"><span id="mark1">Choose the option that best</span>  <br><span id="mark2">describes your bottom</span></p>
 <p class="fit-advisor-intro" id="intro5"><span id="mark1">Drop-cut:LUX</span>  <br><span id="mark2"></span></p>
 
-<div class="tab custom-offset"><label class="adjust-label labels-tab1"  for="height_ft">Height</label> <div class="fit-advisor-custom_row"> <p><input type="number" id="height_ft" placeholder="Feet" class="fit-advisor-custom_input" v-model="form.heightfoot" name="heightfoot"></p><p><input type="number" id="height_in" placeholder="Inches" class="fit-advisor-custom_input fit-advisor-inch" v-model="form.heightinch"  name="heightinch"></p></div>
-<label class="adjust-label labels-tab1" for="weight">Weight</label>
- <div class="fit-advisor-custom_row"> <p><input type="number" id="weight" placeholder="Lbs" class="fit-advisor-custom_input" v-model="form.weight" name="weight"></p><label for="age" class="fit-advisor-agelabel"><span class=" labels-tab1 fit-advisor-agelabel-span" >Age</span></label> <p><input type="number" id="age"  placeholder="age" class="fit-advisor-custom_input fit-advisor-age-input" v-model="form.age" name="Age"></p></div></div>
+
+ <div class="tab fit-advisor-custom_row form-group offset-1"> 
+   <div class="fit-advisor-custom_row">
+     <div class="col-md-6"><label class="adjust-label labels-tab1"   for="height_ft">Height</label>
+  <input type="number" id="height_ft" placeholder="Feet" class="form-control w-75 input-border" v-model="form.heightfoot" name="heightfoot">
+  </div>
+  <div class="col-md-6">
+  <input type="number" id="height_in" placeholder="Inches" class="form-control mt-3  w-75 input-border" v-model="form.heightinch"  name="heightinch">
+  </div>
+  
+  </div>
+  
+
+ <div class="fit-advisor-custom_row mtf-5"> 
+   <div class="col-md-6">
+   <label class="adjust-label labels-tab1" for="weight">Weight</label>
+   <input type="number" id="weight" placeholder="Lbs" class="form-control  w-75 input-border" v-model="form.weight" name="weight">
+   </div>
+   <div class="col-md-6">
+   <label for="age"><span class="adjust-label-age labels-tab1 " >Age</span></label>
+    <input type="number" id="age"  placeholder="age" class="form-control  w-75 input-border mt-n1" v-model="form.age" name="Age">
+    </div>
+    
+    </div>
+    </div>
 <div class="row" v-if="!onfirstTab" >
     <input  v-on:change="countryval()" class="countrycheck no-gutters"  type="checkbox" name="countrycheck" v-model="countrycheck" />
     
@@ -125,7 +147,7 @@
                                   
                                     <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box">
                                       <div class=" selected-product-arrow-left">
-                                        <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer next" @click="changesize();"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>  
+                                             <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer next" @click="changesize();"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>  
                                                         
                                                         
                                                         

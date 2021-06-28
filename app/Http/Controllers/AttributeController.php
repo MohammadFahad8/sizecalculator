@@ -217,10 +217,12 @@ class AttributeController extends Controller
                 ['product_id' => $row['id']  ],
                 
         [ 'name' => $row['title'], 
-         'image_link' => ($row['image']==null)?null:$row['image']['src']  ]
+         'image_link' => ($row['image']==null)?null:$row['image']['src']  ,
+         'website_name'=>Auth::user()->name,
+         ]
             );
          }
-        $products = Products::paginate(5);
+        $products = Products::where('website_name','=',Auth::user()->name)->paginate(5);
         
         return view('products.index',[
             'other'=>$products
