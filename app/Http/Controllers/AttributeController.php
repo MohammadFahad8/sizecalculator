@@ -205,9 +205,11 @@ class AttributeController extends Controller
       
         $shop = Auth::user();
         
+        
         $productsall = $shop->api()->rest('GET','/admin/api/2021-04/products.json')['body']['container'];
-        $prod=$productsall['products'];
-     
+        $prod = $productsall['products'];
+        $shop_cfg = Auth::user()->api()->rest('GET','/admin/api/2021-04/shop.json')['body']['container'];
+        $shop_config = $shop_cfg['shop'];
         
         foreach($prod as $row)
         {
@@ -218,11 +220,11 @@ class AttributeController extends Controller
                 
         [ 'name' => $row['title'], 
          'image_link' => ($row['image']==null)?null:$row['image']['src']  ,
-         'website_name'=>Auth::user()->name,
+         'website_name'=>$shop_config['id'],
          ]
             );
          }
-        $products = Products::where('website_name','=',Auth::user()->name)->paginate(5);
+        $products = Products::where('website_name','=',$shop_config['id'])->paginate(5);
         
         return view('products.index',[
             'other'=>$products

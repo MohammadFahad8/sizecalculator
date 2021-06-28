@@ -41,14 +41,14 @@
   </div>
   
 
- <div class="fit-advisor-custom_row mtf-5"> 
+ <div class="fit-advisor-custom_row mtf-5">   
    <div class="col-md-6">
    <label class="adjust-label labels-tab1" for="weight">Weight</label>
    <input type="number" id="weight" placeholder="Lbs" class="form-control  w-75 input-border" v-model="form.weight" name="weight">
    </div>
    <div class="col-md-6">
    <label for="age"><span class="adjust-label-age labels-tab1 " >Age</span></label>
-    <input type="number" id="age"  placeholder="age" class="form-control  w-75 input-border mt-n1" v-model="form.age" name="Age">
+    <input type="number" id="age"  placeholder="Years" class="form-control  w-75 input-border mt-n1" v-model="form.age" name="Age">
     </div>
     
     </div>

@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->text('name')->default('nothing');
             $table->text('image_link')->nullable();
             $table->boolean('status')->default(0);
-            $table->string('website_name')->default('bodyfit');
+            $table->bigInteger('website_name')->default('123321');
             
             $table->timestamps();
         });
