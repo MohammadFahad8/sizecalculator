@@ -463,13 +463,13 @@ else
         else if($c==3 && $s==2 && $b==1)
         {
             
-            return $size = 'Xl';
+            return $size = 'XL';
 
         }
          else if($c==3 && $s==2 && $b==2)
         {
             
-            return $size = 'XXl';
+            return $size = 'XXL';
 
         }
          else if($c==3 && $s==2 && $b==3)

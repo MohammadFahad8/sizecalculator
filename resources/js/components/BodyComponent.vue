@@ -10,7 +10,7 @@
 	<a class=" btn btn-outline-success" id="popup-trigger" href="#popup1"  style="margin-left: 1%  !important;margin-bottom: 20px  !important;border: none;">Find Fit</a>
 		        <span id="finalsize" v-if="finalsize !=''"  class="final-size-heading">  <span  class="final-size-label">Your Fit Size : </span> {{finalsize}}</span>
 	  
-	  </div><div id="popup1" class="overlay" style="z-index:999 !important"><div class="popup fit-advisor-popup-adjustments" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
+	  </div><div id="popup1" class="overlay" style="z-index:999 !important"><div class="popup fit-advisor-popup-adjustments" style="margin-top: 20px;" ><div class="predict__sc-1a4an9n-7 fit-advisor-header-box"><div class="predict__sc-1a4an9n-0 fot-advisor-header"><div></div><div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
     display: inline-block;
     /* width: 59px; */
 "><polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" points="328 112 184 256 328 400"></polyline></svg>
@@ -130,7 +130,7 @@
 
 
 <button v-if="showContinueBtn" class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: 90px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button>
-<button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 32%;width: 33%;bottom: 90px;display:block !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button>
+<button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 32%;width: 33%;bottom: 90px;display:none !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button>
 <div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
     <img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
         <img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="chest(2)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
@@ -166,7 +166,7 @@
   
 <span v-if="showrecommended" class="recommendedbyus big-size-margin-recommend-size"  >{{recommended_size}}</span>
 
-<span v-if="!showrecommended " class="variant_title" :data-variant=" row.id " :data-title=" row.title ">
+<span v-if="!showrecommended " class="variant_title" :data-variant=" row.id " >
   <span v-if="row.title.toUpperCase().substring(0, 2)=='XL' || row.title.toUpperCase().substring(0, 2)=='XS'">
     <span class="big-size-margin">{{row.title.toUpperCase()}}</span></span>
     <span v-if="row.title.toUpperCase()!='XS' && row.title.toUpperCase()!='XL' ">{{row.title.toUpperCase().charAt(0)}}</span></span>   
@@ -177,7 +177,7 @@
 
 <div class=" dfOagu" style="z-index:30">
   <span size="10" class=" jjnwUS  hjNiUI arrow-next next"  @click="changesize()" >
-  <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong v-if="showrecommended">Recommended</strong><strong id ="allSizeTextHeading" v-else>{{this.allSizeText}}</strong> <strong v-if="this.otherSize">{{this.otherSize}}</strong>  </p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
+  <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path></svg></span></div></div></div></div><p class=" fit-advisor-header-desc">Fit Size:<strong v-if="showrecommended">Recommended</strong><strong id ="allSizeTextHeading" v-else>{{this.allSizeText}}</strong> <strong v-if="this.otherSize">{{this.otherSize}}</strong>  </p><p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we  intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p></div></div></div><div style="overflow:auto;"><div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div></div></p><div id="steps-mark" style="text-align:center;margin-top:100px;" class="m-result"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
 </form>
 </div>
 </div>
@@ -310,8 +310,8 @@
                 .then((res)=>{
                   
                     this.is_loading = false;
-                    
-                     if((res.data == 'XL') || (res.data == 'XS' ))
+                    console.log(res.data);
+                     if(((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs') ))
                      {
                        this.recommended_size = res.data.toUpperCase().substr(0, 2)
 					               a=this.recommended_size;
@@ -557,12 +557,17 @@
 
             showTab:function(n)
             {
+              
+             
 				if(localStorage.getItem('recommended_size')!=null)
 				{
 					n=4;
+          
 				}
+        
                 if(n==0)
                 {   
+                  
                     $('#intro1').css('display', 'block');
                     $('.switch').removeClass('introfirst');
                     $('.switch').addClass('find-fit-header');                   
@@ -606,6 +611,7 @@
                 }
                 if(n==4)
                 {
+                  
                       $('.fit-advisor-selected-product-grid').css('display', 'inline');
                       $('#intro1').css('display', 'none');
                       $('#intro2').css('display', 'none');
@@ -614,12 +620,14 @@
                       $('#intro5').css('display', 'block');
                       $('.switch').addClass('introfirst');
                       $('.switch').removeClass('find-fit-header');
+                      $('#fields').css('display','none');
              
                 }
   //document.getElementById('tabnumber').innerHTML=n;
 
   // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
+  
   x[n].style.display = "block";
   //... and fix the Previous/Next buttons:
   if (n == 0) {
@@ -728,6 +736,7 @@ var height_cm  = heighti* 2.54;
     //return false;
   //}
   // Otherwise, display the correct tab:
+  
   this.showTab(this.currentTab);
 
             },
@@ -900,10 +909,15 @@ $(document).ready(function($) {
     var ww = document.body.clientWidth;
    if(ww == 320)
    {
-     
-  $('.form-control').addClass('ml-n4');
-        $('.form-control').removeClass('ml-n5');
-        $('.form-control').addClass('w-100');
+     $('#intro5').removeClass('ml-n4');
+     $('.fit-advisor-header-desc').addClass('float-left');
+     $('.fit-advisor-header-desc-mt').addClass('ml-n5');
+     $('.fit-advisor-header-desc-mt').removeClass('fit-advisor-header-desc-mt');
+     $('#intro5').addClass('ml-n6');
+     $('.fit-advisor-product-size-box').addClass('ml-n6');
+     $('.form-control').addClass('ml-n4');
+      $('.form-control').removeClass('ml-n5');
+      $('.form-control').addClass('w-100');
        // $('.form-control').addClass('w-75');
         $('#fields').removeClass('offset-1');
         $('#fields').removeClass('ml-n5');
@@ -915,32 +929,41 @@ $(document).ready(function($) {
         $('#age-label-5s').removeClass('adjust-label-age');
         $('#age-label-5s').addClass('adjust-label-age-5s');
         $('#intro1').addClass('ml-n6');
+        $('.fit-advisor-selected-product-grid > div').removeClass('mr-3')
+        $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
 
         
    }
   else if(ww == 411) {
     
-    alert(ww)
+    $('.fit-advisor-selected-product-grid > div').removeClass('mr-3')
      $('#intro1').removeClass('ml-n6');
-      
+      $('.fit-advisor-product-size-box').removeClass('ml-n6');
        $('#fields').removeClass('ml-n5');
        $('#fields').removeClass('offset-1');
         
           $('.form-control').removeClass('w-75');
         $('.form-control').addClass('w-100');
+        $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
         
     }
+   
     else if ((ww >= 412 && ww <= 480) || (ww >= 321 && ww < 411 ) ) {
-      
+      $('.fit-advisor-product-size-box').removeClass('ml-n6');
       $('#intro1').removeClass('ml-n6');
       $('#fields').addClass('ml-n5');
         $('#fields').removeClass('offset-1');
         $('.form-control').removeClass('w-75');
         $('.form-control').addClass('w-100');
+        $('.fit-advisor-selected-product-grid > div').addClass('mr-3')
+        $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
         if(ww==360)
-        {
+        {$('.fit-advisor-product-size-box').removeClass('ml-n6');
+          $('#intro5').addClass('ml-n4');
           $('#fields').removeClass('ml-n4');
           $('#fields').addClass('ml-n5');
+          $('.fit-advisor-selected-product-grid > div').removeClass('mr-3')
+          $('.fit-advisor-fit-grid').addClass('fit-advisor-fit-grid-s5');
 
         }
     } 
@@ -951,6 +974,7 @@ $(document).ready(function($) {
         $('#fields').addClass('offset-1');
          $('.form-control').removeClass('w-100');
         $('.form-control').addClass('w-75');
+        $('.fit-advisor-selected-product-grid > div').removeClass('mr-3')
     };
   };
   $(window).resize(function(){
@@ -965,7 +989,7 @@ $(document).ready(function($) {
         mounted() {
 
 this.responsiveness();
-	  console.log(this.shop)
+	  
     this.getLocalData();
 		this.showBodyFit();
 
@@ -993,7 +1017,16 @@ this.responsiveness();
         
     });
             // Current tab is set to be the first tab (0)
-this.showTab(this.currentTab);
+
+            if(localStorage.getItem('recommended_size')!=null)
+            {
+              var n=4;
+              this.showTab(n);
+            }else
+            {
+              this.showTab(this.currentTab);
+            }
+
 // $("#featured_image").attr("src",this.product.featured_image);
 
 $('#popup-trigger').on('click',function(){

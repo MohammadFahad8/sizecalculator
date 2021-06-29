@@ -2132,8 +2132,9 @@ __webpack_require__.r(__webpack_exports__);
       this.setSlides();
       axios.post(this.$appUrl + '/api/size-recommend/', this.form).then(function (res) {
         _this2.is_loading = false;
+        console.log(res.data);
 
-        if (res.data == 'XL' || res.data == 'XS') {
+        if (res.data == 'XL' || res.data == 'xl' || res.data == 'XS' || res.data == 'xs') {
           _this2.recommended_size = res.data.toUpperCase().substr(0, 2);
           a = _this2.recommended_size;
           $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
@@ -2335,6 +2336,7 @@ __webpack_require__.r(__webpack_exports__);
         $('#intro5').css('display', 'block');
         $('.switch').addClass('introfirst');
         $('.switch').removeClass('find-fit-header');
+        $('#fields').css('display', 'none');
       } //document.getElementById('tabnumber').innerHTML=n;
       // This function will display the specified tab of the form...
 
@@ -2528,6 +2530,12 @@ __webpack_require__.r(__webpack_exports__);
           var ww = document.body.clientWidth;
 
           if (ww == 320) {
+            $('#intro5').removeClass('ml-n4');
+            $('.fit-advisor-header-desc').addClass('float-left');
+            $('.fit-advisor-header-desc-mt').addClass('ml-n5');
+            $('.fit-advisor-header-desc-mt').removeClass('fit-advisor-header-desc-mt');
+            $('#intro5').addClass('ml-n6');
+            $('.fit-advisor-product-size-box').addClass('ml-n6');
             $('.form-control').addClass('ml-n4');
             $('.form-control').removeClass('ml-n5');
             $('.form-control').addClass('w-100'); // $('.form-control').addClass('w-75');
@@ -2542,23 +2550,34 @@ __webpack_require__.r(__webpack_exports__);
             $('#age-label-5s').removeClass('adjust-label-age');
             $('#age-label-5s').addClass('adjust-label-age-5s');
             $('#intro1').addClass('ml-n6');
+            $('.fit-advisor-selected-product-grid > div').removeClass('mr-3');
+            $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
           } else if (ww == 411) {
-            alert(ww);
+            $('.fit-advisor-selected-product-grid > div').removeClass('mr-3');
             $('#intro1').removeClass('ml-n6');
+            $('.fit-advisor-product-size-box').removeClass('ml-n6');
             $('#fields').removeClass('ml-n5');
             $('#fields').removeClass('offset-1');
             $('.form-control').removeClass('w-75');
             $('.form-control').addClass('w-100');
+            $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
           } else if (ww >= 412 && ww <= 480 || ww >= 321 && ww < 411) {
+            $('.fit-advisor-product-size-box').removeClass('ml-n6');
             $('#intro1').removeClass('ml-n6');
             $('#fields').addClass('ml-n5');
             $('#fields').removeClass('offset-1');
             $('.form-control').removeClass('w-75');
             $('.form-control').addClass('w-100');
+            $('.fit-advisor-selected-product-grid > div').addClass('mr-3');
+            $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
 
             if (ww == 360) {
+              $('.fit-advisor-product-size-box').removeClass('ml-n6');
+              $('#intro5').addClass('ml-n4');
               $('#fields').removeClass('ml-n4');
               $('#fields').addClass('ml-n5');
+              $('.fit-advisor-selected-product-grid > div').removeClass('mr-3');
+              $('.fit-advisor-fit-grid').addClass('fit-advisor-fit-grid-s5');
             }
           } else {
             $('#intro1').removeClass('ml-n6');
@@ -2566,6 +2585,7 @@ __webpack_require__.r(__webpack_exports__);
             $('#fields').addClass('offset-1');
             $('.form-control').removeClass('w-100');
             $('.form-control').addClass('w-75');
+            $('.fit-advisor-selected-product-grid > div').removeClass('mr-3');
           }
 
           ;
@@ -2581,7 +2601,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   mounted: function mounted() {
     this.responsiveness();
-    console.log(this.shop);
     this.getLocalData();
     this.showBodyFit(); //this.addOrUpdateProduct();
     // this.dev_reset();
@@ -2596,7 +2615,13 @@ __webpack_require__.r(__webpack_exports__);
 
     }); // Current tab is set to be the first tab (0)
 
-    this.showTab(this.currentTab); // $("#featured_image").attr("src",this.product.featured_image);
+    if (localStorage.getItem('recommended_size') != null) {
+      var n = 4;
+      this.showTab(n);
+    } else {
+      this.showTab(this.currentTab);
+    } // $("#featured_image").attr("src",this.product.featured_image);
+
 
     $('#popup-trigger').on('click', function () {
       $('.product-card').css('z-index', '-1'); //$('body').css('overflow','hidden');
@@ -7269,7 +7294,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, "\r\n.bigsize{\r\n  \r\n    grid-template-columns: 1fr 213px 1fr !important;\r\n    \r\n}\r\n.big-size-margin\r\n{\r\n  margin-left: 35px !important;\r\n}\r\n.big-size-margin-recommend-size\r\n{\r\n  margin-left: 50px !important;\r\n}\r\n.final-size-label\r\n{\r\n  font-family: Karla;\r\n  font-weight: 600;\r\n  font-size: small !important;\r\n  margin-left: 10px;\r\n  text-decoration: underline;\r\n}\r\n.final-size-heading\r\n{\r\n  font-family: 'Montserrat';\r\n  font-weight: 900;\r\n  font-size: small;\r\n  margin-left: 10px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.fit-advisor-header-desc-mt\r\n{\r\n    \r\n    margin-top: 40px !important;\r\n}\r\n.dfOagu\r\n{\r\n    margin-left:50px ;\r\n    margin-top: -5px !important;\r\n}\r\n.dfOagu-second {\r\n    margin-left: 10px;\r\n    margin-top: -5px !important;\r\n}\r\n.result-size\r\n{\r\n    width:100%;\r\n    font-family:karla;\r\n    font-weight:900;\r\n    font-size:133px;\r\n}\r\n.introfirst\r\n{\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 15px !important;\r\n    word-spacing: 5px !important;\r\n}\r\n#intro1\r\n{\r\n    display: block ;\r\n}\r\n#intro2\r\n{\r\n    display:none ;\r\n    margin-top: 20px;\r\n}\r\n#intro3\r\n{\r\n    display:none ;\r\n     margin-top: 20px;\r\n}\r\n#intro4\r\n{\r\n    display:none ;\r\n     margin-top: 20px;\r\n}\r\n#intro5\r\n{\r\n       display:none ;\r\n        margin-top: 20px;\r\n}\r\n.find-fit-header\r\n{\r\n       font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 40px !important;\r\n    word-spacing:5px !important;\r\n}\r\n\r\n.fit-advisor-chest-tab-item:hover {\r\n    /* display: grid; */\r\n    /* justify-content: center; */\r\n    /* align-items: center; */\r\n    /* text-align: center; */\r\n    /* cursor: pointer; */\r\n    transform: scale(0.95) !important;\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\ninput[type=\"checkbox\"]:checked {\r\n    background: rgb(2, 2, 2);\r\n}\r\n.img_country\r\n{\r\n     width: 8% !important;\r\n    margin: 0 auto !important;\r\n    margin-left: -105px !important;\r\n}\r\n.countrycheck\r\n{\r\n     width:3% !important;\r\n    margin:0 auto !important\r\n}\r\n.no-gutters {\r\n  margin-right: 0;\r\n  margin-left: 0;\r\n}\r\n.row {\r\n          display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: 10px;\r\n    margin-left: 35px;\r\n    margin-top: 10px !important;\r\n}\r\n\r\n.col-xl,\r\n.col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,\r\n.col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,\r\n.col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,\r\n.col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,\r\n.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {\r\n  position: relative;\r\n  width: 100%;\r\n  padding-right: 15px;\r\n  padding-left: 15px;\r\n}\r\n/* style for steps form */\r\ninput::-webkit-outer-spin-button,\r\n\r\n  input::-webkit-inner-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n\r\n  }\r\n* {\r\n  box-sizing: border-box;\r\n}\r\n.size-position\r\n{\r\n    margin-left:-80px !important;\r\n    margin-top: -44px !important;\r\n}\r\nbody {\r\n  background-color: #ffffff !important;\r\n}\r\n\r\n#regForm {\r\n        background-color: #ffffff;\r\n    margin: 100px auto;\r\n    font-family: Raleway;\r\n    padding: 40px;\r\n    width: 70%;\r\n    min-width: 300px;\r\n    margin-top: 135px !important;\r\n}\r\n\r\nh1 {\r\n  text-align: center;  \r\n}\r\n\r\ninput {\r\n  padding: 10px;\r\n  width: 100%;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  border: 1px solid #aaaaaa;\r\n}\r\n\r\n/* Mark input boxes that gets an error on validation: */\r\ninput.invalid {\r\n  background-color: #ffdddd;\r\n}\r\n\r\n/* Hide all steps by default: */\r\n.tab {\r\n  display: none;\r\n}\r\n\r\nbutton {\r\n  background-color: #04AA6D;\r\n  color: #ffffff;\r\n  border: none;\r\n  padding: 10px 20px;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n  opacity: 0.8;\r\n}\r\n\r\n#prevBtn {\r\n  background-color: #bbbbbb;\r\n}\r\n\r\n/* Make circles that indicate the steps of the form: */\r\n.step {\r\n  \r\n    height: 10px;\r\n    width: 10px;\r\n    margin: 0px 7px;\r\n    background-color: #000000;\r\n    border: none;\r\n    border-radius: 50%;\r\n    display: inline-block;\r\n    opacity: 0.5;\r\n}\r\n\r\n.step.active {\r\n  opacity: 1;\r\n}\r\n\r\n/* Mark the steps that are finished and valid: */\r\n.step.finish {\r\n    background-color: #000000;\r\n}\r\n  /*   END STYLE FOR STEPS FORM */\r\n\r\n  .box\r\n  {\r\n    background-color: #ffffff;\r\n  }\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\r\n\r\n.overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  transition: opacity 500ms;\r\n  visibility: hidden;\r\n  opacity: 0;\r\n}\r\n.overlay:target {\r\n  visibility: visible;\r\n  opacity: 1;\r\n}\r\n\r\n.popup {\r\n  margin: 70px auto;\r\n  padding: 20px;\r\n  background: #fff;\r\n  border-radius: 5px;\r\n  width: 30%;\r\n  position: relative;\r\n  transition: all 5s ease-in-out;\r\n}\r\n\r\n.popup h2 {\r\n  margin-top: 0;\r\n  color: #333;\r\n  font-family: Tahoma, Arial, sans-serif;\r\n}\r\n.popup .close {\r\n  position: absolute;\r\n  top: 20px;\r\n  right: 30px;\r\n  transition: all 200ms;\r\n  font-size: 30px;\r\n  font-weight: normal;\r\n  text-decoration: none;\r\n  color: rgb(127,127,127);\r\n}\r\n.popup .close:hover {\r\n  color: #020202;\r\n}\r\n.popup .content {\r\n  max-height: 30%;\r\n      overflow-x: hidden;\r\n}\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\r\n\r\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\r\n}\r\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    user-select: none;\r\n}\r\n  .continue-btn {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n}\r\n  .fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\r\n    font-family:karla !important;\r\n\r\n  }\r\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\r\n}\r\n  .lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n/* code for form */\r\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n  font-family: 'Roboto', sans-serif;\r\n  box-sizing: border-box;\r\n}\r\nbody::after, body::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n  box-sizing: border-box;\r\n}\r\n\r\n\r\n\r\nh1 {\r\n  font-size: 2rem;\r\n  text-align: center;\r\n  margin: 0 0 2em;\r\n}\r\n\r\n.container {\r\n  position: relative;\r\n  max-width: 40rem;\r\n  margin: 5rem auto;\r\n  background: #fff;\r\n  width: 100%;\r\n  padding: 3rem 5rem 0;\r\n  border-radius: 1px;\r\n}\r\n.container::before {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n  -webkit-transform: scale(0.98);\r\n          transform: scale(0.98);\r\n  -webkit-transition: -webkit-transform 0.28s ease-in-out;\r\n  transition: -webkit-transform 0.28s ease-in-out;\r\n  transition: transform 0.28s ease-in-out;\r\n  transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;\r\n  z-index: -1;\r\n}\r\n.container:hover::before {\r\n  -webkit-transform: scale(1);\r\n          transform: scale(1);\r\n}\r\n\r\n.button-container {\r\n  text-align: center;\r\n}\r\n\r\nfieldset {\r\n  margin: 0 0 3rem;\r\n  padding: 0;\r\n  border: none;\r\n}\r\n\r\n.form-radio,\r\n.form-group {\r\n  position: relative;\r\n  margin-top: 2.25rem;\r\n  margin-bottom: 2.25rem;\r\n}\r\n\r\n.form-inline > .form-group,\r\n.form-inline > .btn {\r\n  display: inline-block;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.form-help {\r\n  margin-top: 0.125rem;\r\n  margin-left: 0.125rem;\r\n  color: #b3b3b3;\r\n  font-size: 0.8rem;\r\n}\r\n.checkbox .form-help, .form-radio .form-help, .form-group .form-help {\r\n  position: absolute;\r\n  width: 100%;\r\n}\r\n.checkbox .form-help {\r\n  position: relative;\r\n  margin-bottom: 1rem;\r\n}\r\n.form-radio .form-help {\r\n  padding-top: 0.25rem;\r\n  margin-top: -1rem;\r\n}\r\n\r\n.form-group input {\r\n  height: 1.9rem;\r\n}\r\n.form-group textarea {\r\n  resize: none;\r\n}\r\n.form-group select {\r\n  width: 100%;\r\n  font-size: 1rem;\r\n  height: 1.6rem;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  background: none;\r\n  border: none;\r\n  line-height: 1.6;\r\n  box-shadow: none;\r\n}\r\n.form-group .control-label {\r\n  position: absolute;\r\n  top: 0.25rem;\r\n  pointer-events: none;\r\n  padding-left: 0.125rem;\r\n  z-index: 1;\r\n  color: #b3b3b3;\r\n  font-size: 1rem;\r\n  font-weight: normal;\r\n  -webkit-transition: all 0.28s ease;\r\n  transition: all 0.28s ease;\r\n}\r\n.form-group .bar {\r\n  position: relative;\r\n  border-bottom: 0.0625rem solid #999;\r\n  display: block;\r\n}\r\n.form-group .bar::before {\r\n  content: '';\r\n  height: 0.125rem;\r\n  width: 0;\r\n  left: 50%;\r\n  bottom: -0.0625rem;\r\n  position: absolute;\r\n  background: #337ab7;\r\n  -webkit-transition: left 0.28s ease, width 0.28s ease;\r\n  transition: left 0.28s ease, width 0.28s ease;\r\n  z-index: 2;\r\n}\r\n.form-group input,\r\n.form-group textarea {\r\n  display: block;\r\n  background: none;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  font-size: 1rem;\r\n  border-width: 0;\r\n  border-color: transparent;\r\n  line-height: 1.9;\r\n  width: 100%;\r\n  color: transparent;\r\n  -webkit-transition: all 0.28s ease;\r\n  transition: all 0.28s ease;\r\n  box-shadow: none;\r\n}\r\n.form-group input[type=\"file\"] {\r\n  line-height: 1;\r\n}\r\n.form-group input[type=\"file\"] ~ .bar {\r\n  display: none;\r\n}\r\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n  color: #333;\r\n}\r\n.form-group select ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group input:valid ~ .control-label,\r\n.form-group input.form-file ~ .control-label,\r\n.form-group input.has-value ~ .control-label,\r\n.form-group textarea:focus ~ .control-label,\r\n.form-group textarea:valid ~ .control-label,\r\n.form-group textarea.form-file ~ .control-label,\r\n.form-group textarea.has-value ~ .control-label {\r\n  font-size: 0.8rem;\r\n  color: gray;\r\n  top: -1rem;\r\n  left: 0;\r\n}\r\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n  outline: none;\r\n}\r\n.form-group select:focus ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group textarea:focus ~ .control-label {\r\n  color: #337ab7;\r\n}\r\n.form-group select:focus ~ .bar::before,\r\n.form-group input:focus ~ .bar::before,\r\n.form-group textarea:focus ~ .bar::before {\r\n  width: 100%;\r\n  left: 0;\r\n}\r\n\r\n.checkbox label,\r\n.form-radio label {\r\n  position: relative;\r\n  cursor: pointer;\r\n  padding-left: 2rem;\r\n  text-align: left;\r\n  color: #333;\r\n  display: block;\r\n}\r\n.checkbox input,\r\n.form-radio input {\r\n  width: auto;\r\n  opacity: 0.00000001;\r\n  position: absolute;\r\n  left: 0;\r\n}\r\n\r\n.radio {\r\n  margin-bottom: 1rem;\r\n}\r\n.radio .helper {\r\n  position: absolute;\r\n  top: -0.25rem;\r\n  left: -0.25rem;\r\n  cursor: pointer;\r\n  display: block;\r\n  font-size: 1rem;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n  color: #999;\r\n}\r\n.radio .helper::before, .radio .helper::after {\r\n  content: '';\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  margin: 0.25rem;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  -webkit-transition: -webkit-transform 0.28s ease;\r\n  transition: -webkit-transform 0.28s ease;\r\n  transition: transform 0.28s ease;\r\n  transition: transform 0.28s ease, -webkit-transform 0.28s ease;\r\n  border-radius: 50%;\r\n  border: 0.125rem solid currentColor;\r\n}\r\n.radio .helper::after {\r\n  -webkit-transform: scale(0);\r\n          transform: scale(0);\r\n  background-color: #337ab7;\r\n  border-color: #337ab7;\r\n}\r\n.radio label:hover .helper {\r\n  color: #337ab7;\r\n}\r\n.radio input:checked ~ .helper::after {\r\n  -webkit-transform: scale(0.5);\r\n          transform: scale(0.5);\r\n}\r\n.radio input:checked ~ .helper::before {\r\n  color: #337ab7;\r\n}\r\n\r\n.checkbox {\r\n  margin-top: 3rem;\r\n  margin-bottom: 1rem;\r\n}\r\n.checkbox .helper {\r\n  color: #999;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  z-index: 0;\r\n  border: 0.125rem solid currentColor;\r\n  border-radius: 0.0625rem;\r\n  -webkit-transition: border-color 0.28s ease;\r\n  transition: border-color 0.28s ease;\r\n}\r\n.checkbox .helper::before, .checkbox .helper::after {\r\n  position: absolute;\r\n  height: 0;\r\n  width: 0.2rem;\r\n  background-color: #337ab7;\r\n  display: block;\r\n  -webkit-transform-origin: left top;\r\n          transform-origin: left top;\r\n  border-radius: 0.25rem;\r\n  content: '';\r\n  -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n  transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n  opacity: 0;\r\n}\r\n.checkbox .helper::before {\r\n  top: 0.65rem;\r\n  left: 0.38rem;\r\n  -webkit-transform: rotate(-135deg);\r\n          transform: rotate(-135deg);\r\n  box-shadow: 0 0 0 0.0625rem #fff;\r\n}\r\n.checkbox .helper::after {\r\n  top: 0.3rem;\r\n  left: 0;\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\r\n}\r\n.checkbox label:hover .helper {\r\n  color: #337ab7;\r\n}\r\n.checkbox input:checked ~ .helper {\r\n  color: #337ab7;\r\n}\r\n.checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before {\r\n  opacity: 1;\r\n  -webkit-transition: height 0.28s ease;\r\n  transition: height 0.28s ease;\r\n}\r\n.checkbox input:checked ~ .helper::after {\r\n  height: 0.5rem;\r\n}\r\n.checkbox input:checked ~ .helper::before {\r\n  height: 1.2rem;\r\n  -webkit-transition-delay: 0.28s;\r\n          transition-delay: 0.28s;\r\n}\r\n\r\n.radio + .radio,\r\n.checkbox + .checkbox {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.has-error .legend.legend, .has-error.form-group .control-label.control-label {\r\n  color: #d9534f;\r\n}\r\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper, .has-error.checkbox .form-help,\r\n.has-error.checkbox .helper, .has-error.radio .form-help,\r\n.has-error.radio .helper, .has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n  color: #d9534f;\r\n}\r\n.has-error .bar::before {\r\n  background: #d9534f;\r\n  left: 0;\r\n  width: 100%;\r\n}\r\n\r\n.button {\r\n  position: relative;\r\n  \r\n  border: 1px solid currentColor;\r\n  font-size: 1.1rem;\r\n  color: #000;\r\n  margin: 3rem 0;\r\n  padding: 0.75rem 3rem;\r\n  cursor: pointer;\r\n  -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n  overflow: hidden;\r\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\r\n}\r\n.button span {\r\n  color: #fff;\r\n  position: relative;\r\n  z-index: 1;\r\n}\r\n.button::before {\r\n  content: '';\r\n  position: absolute;\r\n  background: #071017;\r\n  border: 50vh solid #1d4567;\r\n  width: 30vh;\r\n  height: 30vh;\r\n  border-radius: 50%;\r\n  display: block;\r\n  top: 50%;\r\n  left: 50%;\r\n  z-index: 0;\r\n  opacity: 1;\r\n  -webkit-transform: translate(-50%, -50%) scale(0);\r\n          transform: translate(-50%, -50%) scale(0);\r\n}\r\n.button:hover {\r\n  color: #337ab7;\r\n  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\r\n}\r\n.button:active::before, .button:focus::before {\r\n  -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n  transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n  transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n  transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n  -webkit-transform: translate(-50%, -50%) scale(1);\r\n          transform: translate(-50%, -50%) scale(1);\r\n  opacity: 0;\r\n}\r\n.button:focus {\r\n  outline: none;\r\n}\r\n\r\n.fit-advisor-hr\r\n{\r\n    margin-top:-15px !important;\r\n}\r\n\r\n/* input field design */\r\n  ::-webkit-input-placeholder {\r\n  font-family:karla !important; \r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n::-moz-placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n:-ms-input-placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n::placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n\r\n.fit-advisor-custom_row {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin-right: -15px;\r\n  margin-left: -15px;\r\n}\r\n  .fit-advisor-custom_input{\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\r\n  .custom-offset\r\n  {\r\n    margin-left: 43px !important;\r\n  }\r\n  .labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: karla !important;\r\n    line-height: 18px !important;\r\n    font-weight: 400 !important;\r\n    font-style: normal;\r\n}\r\n  .custom-offset-lg\r\n  {\r\n    margin-left: 44%;\r\n  }\r\n  .adjust-label{\r\n  margin-left:0%!important;\r\n  }\r\n  .adjust-label-age{\r\n    margin-left:0%!important;\r\n    }\r\n  input::placeholder {\r\n  font-size:12px !important\r\n}\r\ntextarea:focus, input:focus{\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255) !important;\r\n}\r\n  .fit-advisor-custom_previous_btn{\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 0.5;\r\n}\r\n  .fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\r\n}\r\n  .fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n  .fit-advisor-options-img {\r\n    width:  265.667px;\r\n    height: 222.667px;\r\n}\r\n  .fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\r\n}\r\n  .product-card\r\n  {\r\n        position: relative;\r\n    z-index: -1;\r\n  }\r\n  .fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n    margin-left:35px !important;\r\n}\r\n  .fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n}\r\n  .fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -40px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n.next\r\n{\r\n  margin-top: -10px !important;\r\n}\r\n  .fit-advisor-product-picture\r\n  {\r\n      margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\r\n  }\r\n  .fit-advisor-popup-adjustments\r\n  {\r\n  width:50% !important;\r\n  overflow:none;\r\n  }\r\n  .gIdEkK p {\r\n    margin: unset;\r\n}\r\n  .learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n  .fit-advisor-header-desc {\r\n   padding: 10px;\r\n    text-align: center;\r\n    color: rgb(0 0 0);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\r\n    font-family:karla !important;\r\n}\r\n  .gIdEkK p {\r\n    margin: unset;\r\n}\r\n \r\n\r\n.jjnwUS {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 50px;\r\n}\r\n.fit-advisor-product-size-box {\r\n    padding: 0px;\r\n}.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin:0 auto ;\r\n    /* margin-left:50px; */\r\n    display:block;\r\n}\r\n  .fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 160px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n  .selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right:50px !important;\r\n}\r\n  .selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n  .fit-advisor-selected-size-container {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n  .fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n  .fit-advisor-inch\r\n    {\r\nmargin-left: 73% !important;\r\n    margin-top: -27% !important;\r\n    \r\n    }\r\n  .fit-advisor-agelabel\r\n    {\r\n        margin-top: -26px !important;\r\n       \r\n    \r\n    }\r\n  .fit-advisor-agelabel-span\r\n    {\r\n        \r\n       margin-left:-68px !important;\r\n       margin-top:6px !important;\r\n    \r\n    }\r\n   .fit-advisor-age-input\r\n    {\r\n        margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\r\n    }\r\n  .fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 43% !important;\r\n    }\r\n/*   //responsiveness of modal */\r\n  @media (min-width:320px) and (max-width:480px)  {\r\n     /* smartphones, iPhone, portrait 480x320 phones */\r\n     .bigsize {\r\n      grid-template-columns: 1fr 198px 1fr !important;\r\n  }\r\n  .big-size-margin\r\n{\r\n  margin-left: 35px !important;\r\n}\r\n     \r\n  .final-size-label{\r\n  font-family: Karla;\r\n  font-weight: 600;\r\n  font-size: small !important;\r\n  margin-left: 10px;\r\n  text-decoration: underline;\r\n}\r\n.final-size-heading\r\n{\r\n  font-family: 'Montserrat';\r\n  font-weight: 900;\r\n  font-size: x-large;\r\n  margin-left: 10px;\r\n}\r\n    .row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -27px;\r\n    margin-left: -32px;\r\n    margin-top: 10px !important;\r\n        margin-bottom: 50px;\r\n}\r\n.adjust-label {\r\n  margin-left: 35%!important;\r\n}\r\n.adjust-label-5s{\r\n  margin-left: 10%!important;\r\n}\r\n.adjust-label-age {\r\n  margin-left: 40%!important;\r\n}.adjust-label-age-5s {\r\n  margin-left: 15%!important;\r\n}\r\n.fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\r\n    font-family:karla !important;\r\n\r\n  }\r\n    .fit-advisor-popup-adjustments\r\n  {\r\n    width: 85% !important;\r\n    overflow:none;\r\n  }\r\n    \r\n    .fit-advisor-custom_input{\r\n    display: block;\r\n    width: 50%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\r\n    .row-feet-inch {\r\n    display: grid;\r\n    gap: 30px;\r\n    grid-template-columns: 1fr 1fr;\r\n}\r\n    .fit-advisor-inch\r\n    {\r\n    margin-left: 143px !important;\r\n    margin-top: -64px!important;\r\n    }\r\n    .fit-advisor-agelabel\r\n    {\r\n       \r\n    }\r\n    .fit-advisor-age-input\r\n    {\r\n    margin-left: 14.5rem !important;\r\n    margin-top: -65px !important;\r\n        width: 50% !important;\r\n        }\r\ninput {\r\n  text-align: center;\r\n}  \r\n::-webkit-input-placeholder {\r\n  text-align: center;\r\n}\r\n.jjnwUS {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 15px;\r\n}\r\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right: 30px !important;\r\n}\r\n:-moz-placeholder {\r\n  text-align: center;\r\n}\r\n    .custom-offset {\r\n        margin-left: -8% !important;\r\n}\r\n    .fit-advisor-agelabel-span {\r\n    margin-left: 52px !important;\r\n    margin-top: 0px !important;\r\n}\r\n    .fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 30% !important;\r\n    }\r\n    .continue-btn\r\n    \r\n    {\r\n     \r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n        right: 25% !important;\r\n    width: 50% !important;\r\n\r\n    }\r\n    \r\n  .fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n    .fit-advisor-chest-tab {\r\n    display: block;\r\n    gap: 5px;\r\n    margin-left: -65px !important;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\r\n}\r\n    .fit-advisor-selected-product-grid {\r\n    /* display: block; */\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n          margin-left: 50px !important;\r\n    /* display: none; */\r\n}\r\n    .fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n    display: none;\r\n}\r\n    .fit-advisor-fit-grid {\r\n    display:block;\r\n    grid-template-columns: 1fr 1fr;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border:none;\r\n    margin-bottom: 15px;\r\n        margin-left: -15px;\r\n    padding: 10px 20px;\r\n      box-shadow:none;\r\n    \r\n}\r\n  \r\n  }\r\n  \r\n@media (min-width:481px)  and (max-width:640px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }\r\n@media (min-width:641px) and (max-width:960px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }\r\n@media (min-width:961px) and (max-width:1024px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }\r\n@media (min-width:1025px) and (max-width:1280px) { /* big landscape tablets, laptops, and desktops */ }\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n/*   } / / */\r\n\r\n/* STYLE FOR LOADER */\r\n@-webkit-keyframes spinner-border {\r\n  to {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n@keyframes spinner-border {\r\n  to {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n.spinner-border {\r\n  display: inline-block;\r\n  width: 2rem;\r\n  height: 2rem;\r\n  vertical-align: text-bottom;\r\n  border: 0.25em solid currentColor;\r\n  border-right-color: transparent;\r\n  border-radius: 50%;\r\n  -webkit-animation: 0.75s linear infinite spinner-border;\r\n          animation: 0.75s linear infinite spinner-border;\r\n          border-width:2px !important;\r\n}\r\n\r\n.spinner-border-sm {\r\n  width: 1rem;\r\n  height: 1rem;\r\n  border-width: 0.2em;\r\n}\r\n@media (prefers-reduced-motion: reduce) {\r\n  .spinner-border,\r\n.spinner-grow {\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n  }\r\n}\r\n\r\n.sr-only {\r\n  position: absolute;\r\n  width: 1px;\r\n  height: 1px;\r\n  padding: 0;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  clip: rect(0, 0, 0, 0);\r\n  white-space: nowrap;\r\n  border: 0;\r\n}\r\n.sr-only-focusable:active, .sr-only-focusable:focus {\r\n  position: static;\r\n  width: auto;\r\n  height: auto;\r\n  overflow: visible;\r\n  clip: auto;\r\n  white-space: normal;\r\n}\r\n.warning-place::-webkit-input-placeholder {\r\n  color: #fc0000;\r\n  font-weight: bold;\r\n  font-family: karla;\r\n  transition: ease-in-out 1s;\r\n}\r\n\r\n.on-excel-size-two {\r\n  position: relative;\r\n  z-index: 40;\r\n  padding: 5px 0px;\r\n  grid-template-columns: 1fr 190px 1fr;\r\n  justify-self: flex-end;\r\n}\r\n.on-excel-size{\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  justify-content: center;\r\n  align-items: center;\r\n  text-align: center;\r\n  background: white;\r\n  /* border: 1px solid rgb(221, 221, 221); */\r\n  border-radius: 2px;\r\n  margin-bottom: 15px;\r\n  margin-left: -10px;\r\n  padding: 10px 20px;\r\n  /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n#chest1:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#chest2:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#chest3:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#stomach1:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#stomach2:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#stomach3:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#bottom1:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#bottom2:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#bottom3:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n.col-xl,\r\n.col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,\r\n.col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,\r\n.col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,\r\n.col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,\r\n.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {\r\n  position: relative;\r\n  width: 100%;\r\n  padding-right: 15px;\r\n  padding-left: 15px;\r\n}\r\n.col {\r\n  flex-basis: 0;\r\n  flex-grow: 1;\r\n  max-width: 100%;\r\n}\r\n\r\n\r\n.col-md-auto {\r\n  flex: 0 0 auto;\r\n  width: auto;\r\n  max-width: 100%;\r\n}\r\n\r\n.col-md-1 {\r\n  flex: 0 0 8.3333333333%;\r\n  max-width: 8.3333333333%;\r\n}\r\n\r\n.col-md-2 {\r\n  flex: 0 0 16.6666666667%;\r\n  max-width: 16.6666666667%;\r\n}\r\n\r\n.col-md-3 {\r\n  flex: 0 0 25%;\r\n  max-width: 25%;\r\n}\r\n\r\n.col-md-4 {\r\n  flex: 0 0 33.3333333333%;\r\n  max-width: 33.3333333333%;\r\n}\r\n\r\n.col-md-5 {\r\n  flex: 0 0 41.6666666667%;\r\n  max-width: 41.6666666667%;\r\n}\r\n\r\n.col-md-6 {\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.col-md-7 {\r\n  flex: 0 0 58.3333333333%;\r\n  max-width: 58.3333333333%;\r\n}\r\n\r\n.col-md-8 {\r\n  flex: 0 0 66.6666666667%;\r\n  max-width: 66.6666666667%;\r\n}\r\n\r\n.col-md-9 {\r\n  flex: 0 0 75%;\r\n  max-width: 75%;\r\n}\r\n\r\n.col-md-10 {\r\n  flex: 0 0 83.3333333333%;\r\n  max-width: 83.3333333333%;\r\n}\r\n\r\n.col-md-11 {\r\n  flex: 0 0 91.6666666667%;\r\n  max-width: 91.6666666667%;\r\n}\r\n\r\n.col-md-12 {\r\n  flex: 0 0 100%;\r\n  max-width: 100%;\r\n}\r\n\r\n.mt-0,\r\n.my-0 {\r\n  margin-top: 0 !important;\r\n}\r\n\r\n.mr-0,\r\n.mx-0 {\r\n  margin-right: 0 !important;\r\n}\r\n\r\n.mb-0,\r\n.my-0 {\r\n  margin-bottom: 0 !important;\r\n}\r\n\r\n.ml-0,\r\n.mx-0 {\r\n  margin-left: 0 !important;\r\n}\r\n\r\n.m-1 {\r\n  margin: 0.25rem !important;\r\n}\r\n\r\n.mt-1,\r\n.my-1 {\r\n  margin-top: 0.25rem !important;\r\n}\r\n\r\n.mr-1,\r\n.mx-1 {\r\n  margin-right: 0.25rem !important;\r\n}\r\n\r\n.mb-1,\r\n.my-1 {\r\n  margin-bottom: 0.25rem !important;\r\n}\r\n\r\n.ml-1,\r\n.mx-1 {\r\n  margin-left: 0.25rem !important;\r\n}\r\n\r\n.m-2 {\r\n  margin: 0.5rem !important;\r\n}\r\n\r\n.mt-2,\r\n.my-2 {\r\n  margin-top: 0.5rem !important;\r\n}\r\n\r\n.mr-2,\r\n.mx-2 {\r\n  margin-right: 0.5rem !important;\r\n}\r\n\r\n.mb-2,\r\n.my-2 {\r\n  margin-bottom: 0.5rem !important;\r\n}\r\n\r\n.ml-2,\r\n.mx-2 {\r\n  margin-left: 0.5rem !important;\r\n}\r\n\r\n.m-3 {\r\n  margin: 1rem !important;\r\n}\r\n\r\n.mt-3,\r\n.my-3 {\r\n  margin-top: 1rem !important;\r\n}\r\n\r\n.mr-3,\r\n.mx-3 {\r\n  margin-right: 1rem !important;\r\n}\r\n\r\n.mb-3,\r\n.my-3 {\r\n  margin-bottom: 1rem !important;\r\n}\r\n\r\n.ml-3,\r\n.mx-3 {\r\n  margin-left: 1rem !important;\r\n}\r\n\r\n.m-4 {\r\n  margin: 1.5rem !important;\r\n}\r\n\r\n.mt-4,\r\n.my-4 {\r\n  margin-top: 1.5rem !important;\r\n}\r\n.mtf-4,\r\n.myf-4 {\r\n  margin-top: 1.3rem !important;\r\n}\r\n.mr-4,\r\n.mx-4 {\r\n  margin-right: 1.5rem !important;\r\n}\r\n\r\n.mb-4,\r\n.my-4 {\r\n  margin-bottom: 1.5rem !important;\r\n}\r\n\r\n.ml-4,\r\n.mx-4 {\r\n  margin-left: 1.5rem !important;\r\n}\r\n\r\n\r\n.m-5 {\r\n  margin: 3rem !important;\r\n}\r\n\r\n.mt-5,\r\n.my-5 {\r\n  margin-top: 3rem !important;\r\n}.mtf-5,\r\n.myf-5 {\r\n  margin-top: 2rem !important;\r\n}\r\n\r\n.mr-5,\r\n.mx-5 {\r\n  margin-right: 3rem !important;\r\n}\r\n\r\n.mb-5,\r\n.my-5 {\r\n  margin-bottom: 3rem !important;\r\n}\r\n\r\n.ml-5,\r\n.mx-5 {\r\n  margin-left: 3rem !important;\r\n}\r\n\r\n.m-n1 {\r\n  margin: -0.25rem !important;\r\n}\r\n\r\n.mt-n1,\r\n.my-n1 {\r\n  margin-top: -0.25rem !important;\r\n}\r\n\r\n.mr-n1,\r\n.mx-n1 {\r\n  margin-right: -0.25rem !important;\r\n}\r\n\r\n.mb-n1,\r\n.my-n1 {\r\n  margin-bottom: -0.25rem !important;\r\n}\r\n\r\n.ml-n1,\r\n.mx-n1 {\r\n  margin-left: -0.25rem !important;\r\n}\r\n\r\n.m-n2 {\r\n  margin: -0.5rem !important;\r\n}\r\n\r\n.mt-n2,\r\n.my-n2 {\r\n  margin-top: -0.5rem !important;\r\n}\r\n\r\n.mr-n2,\r\n.mx-n2 {\r\n  margin-right: -0.5rem !important;\r\n}\r\n\r\n.mb-n2,\r\n.my-n2 {\r\n  margin-bottom: -0.5rem !important;\r\n}\r\n\r\n.ml-n2,\r\n.mx-n2 {\r\n  margin-left: -0.5rem !important;\r\n}\r\n\r\n.m-n3 {\r\n  margin: -1rem !important;\r\n}\r\n\r\n.mt-n3,\r\n.my-n3 {\r\n  margin-top: -1rem !important;\r\n}\r\n\r\n.mr-n3,\r\n.mx-n3 {\r\n  margin-right: -1rem !important;\r\n}\r\n\r\n.mb-n3,\r\n.my-n3 {\r\n  margin-bottom: -1rem !important;\r\n}\r\n\r\n.ml-n3,\r\n.mx-n3 {\r\n  margin-left: -1rem !important;\r\n}\r\n\r\n.m-n4 {\r\n  margin: -1.5rem !important;\r\n}\r\n\r\n.mt-n4,\r\n.my-n4 {\r\n  margin-top: -1.5rem !important;\r\n}\r\n\r\n.mr-n4,\r\n.mx-n4 {\r\n  margin-right: -1.5rem !important;\r\n}\r\n\r\n.mb-n4,\r\n.my-n4 {\r\n  margin-bottom: -1.5rem !important;\r\n}\r\n\r\n.ml-n4,\r\n.mx-n4 {\r\n  margin-left: -1.5rem !important;\r\n}\r\n\r\n.m-n5 {\r\n  margin: -3rem !important;\r\n}\r\n\r\n.mt-n5,\r\n.my-n5 {\r\n  margin-top: -3rem !important;\r\n}\r\n\r\n.mr-n5,\r\n.mx-n5 {\r\n  margin-right: -3rem !important;\r\n}\r\n\r\n.mb-n5,\r\n.my-n5 {\r\n  margin-bottom: -3rem !important;\r\n}\r\n\r\n.ml-n5,\r\n.mx-n5 {\r\n  margin-left: -3rem !important;\r\n}\r\n\r\n\r\n.offset-1 {\r\n  margin-left: 8.3333333333%;\r\n}\r\n\r\n.offset-2 {\r\n  margin-left: 16.6666666667%;\r\n}\r\n\r\n.offset-3 {\r\n  margin-left: 25%;\r\n}\r\n\r\n.offset-4 {\r\n  margin-left: 33.3333333333%;\r\n}\r\n\r\n.offset-5 {\r\n  margin-left: 41.6666666667%;\r\n}\r\n\r\n.offset-6 {\r\n  margin-left: 50%;\r\n}\r\n\r\n.offset-7 {\r\n  margin-left: 58.3333333333%;\r\n}\r\n\r\n.offset-8 {\r\n  margin-left: 66.6666666667%;\r\n}\r\n\r\n.offset-9 {\r\n  margin-left: 75%;\r\n}\r\n\r\n.offset-10 {\r\n  margin-left: 83.3333333333%;\r\n}\r\n\r\n.offset-11 {\r\n  margin-left: 91.6666666667%;\r\n}\r\n.form-control {\r\n  display: block;\r\n  width: 100%;\r\n  height: calc(1.6em + 0.75rem + 2px);\r\n  padding: 0.375rem 0.75rem;\r\n  font-size: 0.9rem;\r\n  font-weight: 400;\r\n  line-height: 1.6;\r\n  color: #495057;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid #ced4da;\r\n  border-radius: 0.25rem;\r\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n}\r\n.form-control-lg {\r\n  height: calc(1.5em + 1rem + 2px);\r\n  padding: 0.5rem 1rem;\r\n  font-size: 1.125rem;\r\n  line-height: 1.5;\r\n  border-radius: 0.3rem;\r\n}\r\n\r\n\r\n\r\n.w-25 {\r\n  width: 25% !important;\r\n}\r\n\r\n.w-50 {\r\n  width: 50% !important;\r\n}\r\n\r\n.w-75 {\r\n  width: 75% !important;\r\n}\r\n\r\n.w-100 {\r\n  width: 100% !important;\r\n}\r\n\r\n.w-auto {\r\n  width: auto !important;\r\n}\r\n\r\n.h-25 {\r\n  height: 25% !important;\r\n}\r\n\r\n.h-50 {\r\n  height: 50% !important;\r\n}\r\n\r\n.h-75 {\r\n  height: 75% !important;\r\n}\r\n\r\n.h-100 {\r\n  height: 100% !important;\r\n}\r\n.input-border{\r\n  border-bottom: 1px solid lightgrey !important;\r\n\r\n  border-radius: 0 !important;\r\n}\r\n.justify-content-center {\r\n  justify-content: center !important;\r\n}\r\n.d-flex {\r\n  display: flex !important;\r\n}\r\n.ml-n6\r\n{\r\n  margin-left: -4rem !important;\r\n}\r\n.adjust-label-more {\r\n  margin-left: 35%!important;\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, "\r\n.bigsize{\r\n  \r\n    grid-template-columns: 1fr 213px 1fr !important;\r\n    \r\n}\r\n.big-size-margin\r\n{\r\n  margin-left: 35px !important;\r\n}\r\n.big-size-margin-recommend-size\r\n{\r\n  margin-left: 50px !important;\r\n}\r\n.final-size-label\r\n{\r\n  font-family: Karla;\r\n  font-weight: 600;\r\n  font-size: small !important;\r\n  margin-left: 10px;\r\n  text-decoration: underline;\r\n}\r\n.final-size-heading\r\n{\r\n  font-family: 'Montserrat';\r\n  font-weight: 900;\r\n  font-size: small;\r\n  margin-left: 10px;\r\n  margin-top: 20px;\r\n}\r\n\r\n.fit-advisor-header-desc-mt\r\n{\r\n    \r\n    margin-top: 40px !important;\r\n}\r\n.dfOagu\r\n{\r\n    margin-left:50px ;\r\n    margin-top: -5px !important;\r\n}\r\n.dfOagu-second {\r\n    margin-left: 10px;\r\n    margin-top: -5px !important;\r\n}\r\n.result-size\r\n{\r\n    width:100%;\r\n    font-family:karla;\r\n    font-weight:900;\r\n    font-size:133px;\r\n}\r\n.introfirst\r\n{\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 15px !important;\r\n    word-spacing: 5px !important;\r\n}\r\n#intro1\r\n{\r\n    display: block ;\r\n}\r\n#intro2\r\n{\r\n    display:none ;\r\n    margin-top: 20px;\r\n}\r\n#intro3\r\n{\r\n    display:none ;\r\n     margin-top: 20px;\r\n}\r\n#intro4\r\n{\r\n    display:none ;\r\n     margin-top: 20px;\r\n}\r\n#intro5\r\n{\r\n       display:none ;\r\n        margin-top: 20px;\r\n}\r\n.find-fit-header\r\n{\r\n       font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 40px !important;\r\n    word-spacing:5px !important;\r\n}\r\n\r\n.fit-advisor-chest-tab-item:hover {\r\n    /* display: grid; */\r\n    /* justify-content: center; */\r\n    /* align-items: center; */\r\n    /* text-align: center; */\r\n    /* cursor: pointer; */\r\n    transform: scale(0.95) !important;\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\ninput[type=\"checkbox\"]:checked {\r\n    background: rgb(2, 2, 2);\r\n}\r\n.img_country\r\n{\r\n     width: 8% !important;\r\n    margin: 0 auto !important;\r\n    margin-left: -105px !important;\r\n}\r\n.countrycheck\r\n{\r\n     width:3% !important;\r\n    margin:0 auto !important\r\n}\r\n.no-gutters {\r\n  margin-right: 0;\r\n  margin-left: 0;\r\n}\r\n.row {\r\n          display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: 10px;\r\n    margin-left: 35px;\r\n    margin-top: 10px !important;\r\n}\r\n\r\n.col-xl,\r\n.col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,\r\n.col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,\r\n.col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,\r\n.col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,\r\n.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {\r\n  position: relative;\r\n  width: 100%;\r\n  padding-right: 15px;\r\n  padding-left: 15px;\r\n}\r\n/* style for steps form */\r\ninput::-webkit-outer-spin-button,\r\n\r\n  input::-webkit-inner-spin-button {\r\n  -webkit-appearance: none;\r\n  margin: 0;\r\n\r\n  }\r\n* {\r\n  box-sizing: border-box;\r\n}\r\n.size-position\r\n{\r\n    margin-left:-80px !important;\r\n    margin-top: -44px !important;\r\n}\r\nbody {\r\n  background-color: #ffffff !important;\r\n}\r\n\r\n#regForm {\r\n        background-color: #ffffff;\r\n    margin: 100px auto;\r\n    font-family: Raleway;\r\n    padding: 40px;\r\n    width: 70%;\r\n    min-width: 300px;\r\n    margin-top: 135px !important;\r\n}\r\n\r\nh1 {\r\n  text-align: center;  \r\n}\r\n\r\ninput {\r\n  padding: 10px;\r\n  width: 100%;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  border: 1px solid #aaaaaa;\r\n}\r\n\r\n/* Mark input boxes that gets an error on validation: */\r\ninput.invalid {\r\n  background-color: #ffdddd;\r\n}\r\n\r\n/* Hide all steps by default: */\r\n.tab {\r\n  display: none;\r\n}\r\n\r\nbutton {\r\n  background-color: #04AA6D;\r\n  color: #ffffff;\r\n  border: none;\r\n  padding: 10px 20px;\r\n  font-size: 17px;\r\n  font-family: Raleway;\r\n  cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n  opacity: 0.8;\r\n}\r\n\r\n#prevBtn {\r\n  background-color: #bbbbbb;\r\n}\r\n\r\n/* Make circles that indicate the steps of the form: */\r\n.step {\r\n  \r\n    height: 10px;\r\n    width: 10px;\r\n    margin: 0px 7px;\r\n    background-color: #000000;\r\n    border: none;\r\n    border-radius: 50%;\r\n    display: inline-block;\r\n    opacity: 0.5;\r\n}\r\n\r\n.step.active {\r\n  opacity: 1;\r\n}\r\n\r\n/* Mark the steps that are finished and valid: */\r\n.step.finish {\r\n    background-color: #000000;\r\n}\r\n  /*   END STYLE FOR STEPS FORM */\r\n\r\n  .box\r\n  {\r\n    background-color: #ffffff;\r\n  }\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\r\n\r\n.overlay {\r\n  position: fixed;\r\n  top: 0;\r\n  bottom: 0;\r\n  left: 0;\r\n  right: 0;\r\n  background: rgba(0, 0, 0, 0.7);\r\n  transition: opacity 500ms;\r\n  visibility: hidden;\r\n  opacity: 0;\r\n}\r\n.overlay:target {\r\n  visibility: visible;\r\n  opacity: 1;\r\n}\r\n\r\n.popup {\r\n  margin: 70px auto;\r\n  padding: 20px;\r\n  background: #fff;\r\n  border-radius: 5px;\r\n  width: 30%;\r\n  position: relative;\r\n  transition: all 5s ease-in-out;\r\n}\r\n\r\n.popup h2 {\r\n  margin-top: 0;\r\n  color: #333;\r\n  font-family: Tahoma, Arial, sans-serif;\r\n}\r\n.popup .close {\r\n  position: absolute;\r\n  top: 20px;\r\n  right: 30px;\r\n  transition: all 200ms;\r\n  font-size: 30px;\r\n  font-weight: normal;\r\n  text-decoration: none;\r\n  color: rgb(127,127,127);\r\n}\r\n.popup .close:hover {\r\n  color: #020202;\r\n}\r\n.popup .content {\r\n  max-height: 30%;\r\n      overflow-x: hidden;\r\n}\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\r\n\r\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\r\n}\r\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    user-select: none;\r\n}\r\n  .continue-btn {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n}\r\n  .fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\r\n    font-family:karla !important;\r\n\r\n  }\r\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\r\n}\r\n  .lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n/* code for form */\r\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n  font-family: 'Roboto', sans-serif;\r\n  box-sizing: border-box;\r\n}\r\nbody::after, body::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n  box-sizing: border-box;\r\n}\r\n\r\n\r\n\r\nh1 {\r\n  font-size: 2rem;\r\n  text-align: center;\r\n  margin: 0 0 2em;\r\n}\r\n\r\n.container {\r\n  position: relative;\r\n  max-width: 40rem;\r\n  margin: 5rem auto;\r\n  background: #fff;\r\n  width: 100%;\r\n  padding: 3rem 5rem 0;\r\n  border-radius: 1px;\r\n}\r\n.container::before {\r\n  content: '';\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  right: 0;\r\n  bottom: 0;\r\n  box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n  -webkit-transform: scale(0.98);\r\n          transform: scale(0.98);\r\n  -webkit-transition: -webkit-transform 0.28s ease-in-out;\r\n  transition: -webkit-transform 0.28s ease-in-out;\r\n  transition: transform 0.28s ease-in-out;\r\n  transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;\r\n  z-index: -1;\r\n}\r\n.container:hover::before {\r\n  -webkit-transform: scale(1);\r\n          transform: scale(1);\r\n}\r\n\r\n.button-container {\r\n  text-align: center;\r\n}\r\n\r\nfieldset {\r\n  margin: 0 0 3rem;\r\n  padding: 0;\r\n  border: none;\r\n}\r\n\r\n.form-radio,\r\n.form-group {\r\n  position: relative;\r\n  margin-top: 2.25rem;\r\n  margin-bottom: 2.25rem;\r\n}\r\n\r\n.form-inline > .form-group,\r\n.form-inline > .btn {\r\n  display: inline-block;\r\n  margin-bottom: 0;\r\n}\r\n\r\n.form-help {\r\n  margin-top: 0.125rem;\r\n  margin-left: 0.125rem;\r\n  color: #b3b3b3;\r\n  font-size: 0.8rem;\r\n}\r\n.checkbox .form-help, .form-radio .form-help, .form-group .form-help {\r\n  position: absolute;\r\n  width: 100%;\r\n}\r\n.checkbox .form-help {\r\n  position: relative;\r\n  margin-bottom: 1rem;\r\n}\r\n.form-radio .form-help {\r\n  padding-top: 0.25rem;\r\n  margin-top: -1rem;\r\n}\r\n\r\n.form-group input {\r\n  height: 1.9rem;\r\n}\r\n.form-group textarea {\r\n  resize: none;\r\n}\r\n.form-group select {\r\n  width: 100%;\r\n  font-size: 1rem;\r\n  height: 1.6rem;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  background: none;\r\n  border: none;\r\n  line-height: 1.6;\r\n  box-shadow: none;\r\n}\r\n.form-group .control-label {\r\n  position: absolute;\r\n  top: 0.25rem;\r\n  pointer-events: none;\r\n  padding-left: 0.125rem;\r\n  z-index: 1;\r\n  color: #b3b3b3;\r\n  font-size: 1rem;\r\n  font-weight: normal;\r\n  -webkit-transition: all 0.28s ease;\r\n  transition: all 0.28s ease;\r\n}\r\n.form-group .bar {\r\n  position: relative;\r\n  border-bottom: 0.0625rem solid #999;\r\n  display: block;\r\n}\r\n.form-group .bar::before {\r\n  content: '';\r\n  height: 0.125rem;\r\n  width: 0;\r\n  left: 50%;\r\n  bottom: -0.0625rem;\r\n  position: absolute;\r\n  background: #337ab7;\r\n  -webkit-transition: left 0.28s ease, width 0.28s ease;\r\n  transition: left 0.28s ease, width 0.28s ease;\r\n  z-index: 2;\r\n}\r\n.form-group input,\r\n.form-group textarea {\r\n  display: block;\r\n  background: none;\r\n  padding: 0.125rem 0.125rem 0.0625rem;\r\n  font-size: 1rem;\r\n  border-width: 0;\r\n  border-color: transparent;\r\n  line-height: 1.9;\r\n  width: 100%;\r\n  color: transparent;\r\n  -webkit-transition: all 0.28s ease;\r\n  transition: all 0.28s ease;\r\n  box-shadow: none;\r\n}\r\n.form-group input[type=\"file\"] {\r\n  line-height: 1;\r\n}\r\n.form-group input[type=\"file\"] ~ .bar {\r\n  display: none;\r\n}\r\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n  color: #333;\r\n}\r\n.form-group select ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group input:valid ~ .control-label,\r\n.form-group input.form-file ~ .control-label,\r\n.form-group input.has-value ~ .control-label,\r\n.form-group textarea:focus ~ .control-label,\r\n.form-group textarea:valid ~ .control-label,\r\n.form-group textarea.form-file ~ .control-label,\r\n.form-group textarea.has-value ~ .control-label {\r\n  font-size: 0.8rem;\r\n  color: gray;\r\n  top: -1rem;\r\n  left: 0;\r\n}\r\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n  outline: none;\r\n}\r\n.form-group select:focus ~ .control-label,\r\n.form-group input:focus ~ .control-label,\r\n.form-group textarea:focus ~ .control-label {\r\n  color: #337ab7;\r\n}\r\n.form-group select:focus ~ .bar::before,\r\n.form-group input:focus ~ .bar::before,\r\n.form-group textarea:focus ~ .bar::before {\r\n  width: 100%;\r\n  left: 0;\r\n}\r\n\r\n.checkbox label,\r\n.form-radio label {\r\n  position: relative;\r\n  cursor: pointer;\r\n  padding-left: 2rem;\r\n  text-align: left;\r\n  color: #333;\r\n  display: block;\r\n}\r\n.checkbox input,\r\n.form-radio input {\r\n  width: auto;\r\n  opacity: 0.00000001;\r\n  position: absolute;\r\n  left: 0;\r\n}\r\n\r\n.radio {\r\n  margin-bottom: 1rem;\r\n}\r\n.radio .helper {\r\n  position: absolute;\r\n  top: -0.25rem;\r\n  left: -0.25rem;\r\n  cursor: pointer;\r\n  display: block;\r\n  font-size: 1rem;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n  color: #999;\r\n}\r\n.radio .helper::before, .radio .helper::after {\r\n  content: '';\r\n  position: absolute;\r\n  left: 0;\r\n  top: 0;\r\n  margin: 0.25rem;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  -webkit-transition: -webkit-transform 0.28s ease;\r\n  transition: -webkit-transform 0.28s ease;\r\n  transition: transform 0.28s ease;\r\n  transition: transform 0.28s ease, -webkit-transform 0.28s ease;\r\n  border-radius: 50%;\r\n  border: 0.125rem solid currentColor;\r\n}\r\n.radio .helper::after {\r\n  -webkit-transform: scale(0);\r\n          transform: scale(0);\r\n  background-color: #337ab7;\r\n  border-color: #337ab7;\r\n}\r\n.radio label:hover .helper {\r\n  color: #337ab7;\r\n}\r\n.radio input:checked ~ .helper::after {\r\n  -webkit-transform: scale(0.5);\r\n          transform: scale(0.5);\r\n}\r\n.radio input:checked ~ .helper::before {\r\n  color: #337ab7;\r\n}\r\n\r\n.checkbox {\r\n  margin-top: 3rem;\r\n  margin-bottom: 1rem;\r\n}\r\n.checkbox .helper {\r\n  color: #999;\r\n  position: absolute;\r\n  top: 0;\r\n  left: 0;\r\n  width: 1rem;\r\n  height: 1rem;\r\n  z-index: 0;\r\n  border: 0.125rem solid currentColor;\r\n  border-radius: 0.0625rem;\r\n  -webkit-transition: border-color 0.28s ease;\r\n  transition: border-color 0.28s ease;\r\n}\r\n.checkbox .helper::before, .checkbox .helper::after {\r\n  position: absolute;\r\n  height: 0;\r\n  width: 0.2rem;\r\n  background-color: #337ab7;\r\n  display: block;\r\n  -webkit-transform-origin: left top;\r\n          transform-origin: left top;\r\n  border-radius: 0.25rem;\r\n  content: '';\r\n  -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n  transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n  opacity: 0;\r\n}\r\n.checkbox .helper::before {\r\n  top: 0.65rem;\r\n  left: 0.38rem;\r\n  -webkit-transform: rotate(-135deg);\r\n          transform: rotate(-135deg);\r\n  box-shadow: 0 0 0 0.0625rem #fff;\r\n}\r\n.checkbox .helper::after {\r\n  top: 0.3rem;\r\n  left: 0;\r\n  -webkit-transform: rotate(-45deg);\r\n          transform: rotate(-45deg);\r\n}\r\n.checkbox label:hover .helper {\r\n  color: #337ab7;\r\n}\r\n.checkbox input:checked ~ .helper {\r\n  color: #337ab7;\r\n}\r\n.checkbox input:checked ~ .helper::after, .checkbox input:checked ~ .helper::before {\r\n  opacity: 1;\r\n  -webkit-transition: height 0.28s ease;\r\n  transition: height 0.28s ease;\r\n}\r\n.checkbox input:checked ~ .helper::after {\r\n  height: 0.5rem;\r\n}\r\n.checkbox input:checked ~ .helper::before {\r\n  height: 1.2rem;\r\n  -webkit-transition-delay: 0.28s;\r\n          transition-delay: 0.28s;\r\n}\r\n\r\n.radio + .radio,\r\n.checkbox + .checkbox {\r\n  margin-top: 1rem;\r\n}\r\n\r\n.has-error .legend.legend, .has-error.form-group .control-label.control-label {\r\n  color: #d9534f;\r\n}\r\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper, .has-error.checkbox .form-help,\r\n.has-error.checkbox .helper, .has-error.radio .form-help,\r\n.has-error.radio .helper, .has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n  color: #d9534f;\r\n}\r\n.has-error .bar::before {\r\n  background: #d9534f;\r\n  left: 0;\r\n  width: 100%;\r\n}\r\n\r\n.button {\r\n  position: relative;\r\n  \r\n  border: 1px solid currentColor;\r\n  font-size: 1.1rem;\r\n  color: #000;\r\n  margin: 3rem 0;\r\n  padding: 0.75rem 3rem;\r\n  cursor: pointer;\r\n  -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n  overflow: hidden;\r\n  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\r\n}\r\n.button span {\r\n  color: #fff;\r\n  position: relative;\r\n  z-index: 1;\r\n}\r\n.button::before {\r\n  content: '';\r\n  position: absolute;\r\n  background: #071017;\r\n  border: 50vh solid #1d4567;\r\n  width: 30vh;\r\n  height: 30vh;\r\n  border-radius: 50%;\r\n  display: block;\r\n  top: 50%;\r\n  left: 50%;\r\n  z-index: 0;\r\n  opacity: 1;\r\n  -webkit-transform: translate(-50%, -50%) scale(0);\r\n          transform: translate(-50%, -50%) scale(0);\r\n}\r\n.button:hover {\r\n  color: #337ab7;\r\n  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\r\n}\r\n.button:active::before, .button:focus::before {\r\n  -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n  transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n  transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n  transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n  -webkit-transform: translate(-50%, -50%) scale(1);\r\n          transform: translate(-50%, -50%) scale(1);\r\n  opacity: 0;\r\n}\r\n.button:focus {\r\n  outline: none;\r\n}\r\n\r\n.fit-advisor-hr\r\n{\r\n    margin-top:-15px !important;\r\n}\r\n\r\n/* input field design */\r\n  ::-webkit-input-placeholder {\r\n  font-family:karla !important; \r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n::-moz-placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n:-ms-input-placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n::placeholder {\r\n  font-family:karla !important;\r\n  font-weight:normal !important;\r\n  font-size: 19px !important;\r\n}\r\n\r\n.fit-advisor-custom_row {\r\n  display: flex;\r\n  flex-wrap: wrap;\r\n  margin-right: -15px;\r\n  margin-left: -15px;\r\n}\r\n  .fit-advisor-custom_input{\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\r\n  .custom-offset\r\n  {\r\n    margin-left: 43px !important;\r\n  }\r\n  .labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: karla !important;\r\n    line-height: 18px !important;\r\n    font-weight: 400 !important;\r\n    font-style: normal;\r\n}\r\n  .custom-offset-lg\r\n  {\r\n    margin-left: 44%;\r\n  }\r\n  .adjust-label{\r\n  margin-left:0%!important;\r\n  }\r\n  .adjust-label-age{\r\n    margin-left:0%!important;\r\n    }\r\n  input::placeholder {\r\n  font-size:12px !important\r\n}\r\ntextarea:focus, input:focus{\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255) !important;\r\n}\r\n  .fit-advisor-custom_previous_btn{\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 0.5;\r\n}\r\n  .fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\r\n}\r\n  .fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n  .fit-advisor-options-img {\r\n    width:  265.667px;\r\n    height: 222.667px;\r\n}\r\n  .fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\r\n}\r\n  .product-card\r\n  {\r\n        position: relative;\r\n    z-index: -1;\r\n  }\r\n  .fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n    margin-left:35px !important;\r\n}\r\n  .fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n}\r\n  .fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -40px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n.next\r\n{\r\n  margin-top: -10px !important;\r\n}\r\n  .fit-advisor-product-picture\r\n  {\r\n      margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\r\n  }\r\n  .fit-advisor-popup-adjustments\r\n  {\r\n  width:50% !important;\r\n  overflow: scroll !important;\r\n  }\r\n  .gIdEkK p {\r\n    margin: unset;\r\n}\r\n  .learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n  .fit-advisor-header-desc {\r\n   padding: 10px;\r\n    text-align: center;\r\n    color: rgb(0 0 0);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\r\n    font-family:karla !important;\r\n}\r\n  .gIdEkK p {\r\n    margin: unset;\r\n}\r\n \r\n\r\n.jjnwUS {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 50px;\r\n}\r\n.fit-advisor-product-size-box {\r\n    padding: 0px;\r\n}.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin:0 auto ;\r\n    /* margin-left:50px; */\r\n    display:block;\r\n}\r\n  .fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 160px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n  .selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right:50px !important;\r\n}\r\n  .selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n  .fit-advisor-selected-size-container {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n  .fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n  .fit-advisor-inch\r\n    {\r\nmargin-left: 73% !important;\r\n    margin-top: -27% !important;\r\n    \r\n    }\r\n  .fit-advisor-agelabel\r\n    {\r\n        margin-top: -26px !important;\r\n       \r\n    \r\n    }\r\n  .fit-advisor-agelabel-span\r\n    {\r\n        \r\n       margin-left:-68px !important;\r\n       margin-top:6px !important;\r\n    \r\n    }\r\n   .fit-advisor-age-input\r\n    {\r\n        margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\r\n    }\r\n  .fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 43% !important;\r\n    }\r\n/*   //responsiveness of modal */\r\n  @media (min-width:320px) and (max-width:480px)  {\r\n     /* smartphones, iPhone, portrait 480x320 phones */\r\n     .result-size\r\n{\r\n    width:100%;\r\n    font-family:karla;\r\n    font-weight:900;\r\n    font-size:1.4em;\r\n}\r\n.m-result{\r\n  text-align: center !important;\r\n  margin-top: 0px !important;\r\n  visibility: visible !important;\r\n  margin-bottom: 4.5em !important;\r\n  margin-right: 0px !important;\r\n\r\n}\r\n     .fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 70px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n     .bigsize {\r\n      grid-template-columns:1fr 150px 1fr !important;\r\n  }\r\n  .big-size-margin-recommend-size {\r\n    margin-left: 15px !important;\r\n}\r\n  .big-size-margin\r\n{\r\n  margin-left: 35px !important;\r\n}\r\n     \r\n  .final-size-label{\r\n  font-family: Karla;\r\n  font-weight: 600;\r\n  font-size: small !important;\r\n  margin-left: 10px;\r\n  text-decoration: underline;\r\n}\r\n.final-size-heading\r\n{\r\n  font-family: 'Montserrat';\r\n  font-weight: 900;\r\n  font-size: x-large;\r\n  margin-left: 10px;\r\n}\r\n    .row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -27px;\r\n    margin-left: -32px;\r\n    margin-top: 10px !important;\r\n        margin-bottom: 50px;\r\n}\r\n.adjust-label {\r\n  margin-left: 35%!important;\r\n}\r\n.adjust-label-5s{\r\n  margin-left: 10%!important;\r\n}\r\n.adjust-label-age {\r\n  margin-left: 40%!important;\r\n}.adjust-label-age-5s {\r\n  margin-left: 15%!important;\r\n}\r\n.fit-advisor-intro\r\n  {\r\n  text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\r\n    font-family:karla !important;\r\n\r\n  }\r\n    .fit-advisor-popup-adjustments\r\n  {\r\n    width: 85% !important;\r\n    overflow:none;\r\n  }\r\n    \r\n    .fit-advisor-custom_input{\r\n    display: block;\r\n    width: 50%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;}\r\n    .row-feet-inch {\r\n    display: grid;\r\n    gap: 30px;\r\n    grid-template-columns: 1fr 1fr;\r\n}\r\n    .fit-advisor-inch\r\n    {\r\n    margin-left: 143px !important;\r\n    margin-top: -64px!important;\r\n    }\r\n    .fit-advisor-agelabel\r\n    {\r\n       \r\n    }\r\n    .fit-advisor-age-input\r\n    {\r\n    margin-left: 14.5rem !important;\r\n    margin-top: -65px !important;\r\n        width: 50% !important;\r\n        }\r\ninput {\r\n  text-align: center;\r\n}  \r\n::-webkit-input-placeholder {\r\n  text-align: center;\r\n}\r\n.jjnwUS {\r\n    display: grid;\r\n    justify-content: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 15px;\r\n}\r\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right: 30px !important;\r\n}\r\n:-moz-placeholder {\r\n  text-align: center;\r\n}\r\n    .custom-offset {\r\n        margin-left: -8% !important;\r\n}\r\n    .fit-advisor-agelabel-span {\r\n    margin-left: 52px !important;\r\n    margin-top: 0px !important;\r\n}\r\n    .fit-advisor-logo\r\n    \r\n    {\r\n    margin-left: 30% !important;\r\n    }\r\n    .continue-btn\r\n    \r\n    {\r\n     \r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n        right: 25% !important;\r\n    width: 50% !important;\r\n\r\n    }\r\n    \r\n  .fit-advisor-product-btn-to-cart {\r\n      -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n    .fit-advisor-chest-tab {\r\n    display: block;\r\n    gap: 5px;\r\n    margin-left: -65px !important;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\r\n}\r\n    .fit-advisor-selected-product-grid {\r\n    /* display: block; */\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n          margin-left: 50px !important;\r\n    /* display: none; */\r\n}\r\n    .fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n    display: none;\r\n}\r\n    .fit-advisor-fit-grid {\r\n    display:block;\r\n    grid-template-columns: 1fr 1fr;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border:none;\r\n    margin-bottom: 15px;\r\n        margin-left: -15px;\r\n    padding: 10px 20px;\r\n      box-shadow:none;\r\n    \r\n}\r\n  \r\n  }\r\n  \r\n@media (min-width:481px)  and (max-width:640px)  { /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */ }\r\n@media (min-width:641px) and (max-width:960px)  { /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */ }\r\n@media (min-width:961px) and (max-width:1024px)  { /* tablet, landscape iPad, lo-res laptops ands desktops */ }\r\n@media (min-width:1025px) and (max-width:1280px) { /* big landscape tablets, laptops, and desktops */ }\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n/*   } / / */\r\n\r\n/* STYLE FOR LOADER */\r\n@-webkit-keyframes spinner-border {\r\n  to {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n@keyframes spinner-border {\r\n  to {\r\n    transform: rotate(360deg);\r\n  }\r\n}\r\n\r\n.spinner-border {\r\n  display: inline-block;\r\n  width: 2rem;\r\n  height: 2rem;\r\n  vertical-align: text-bottom;\r\n  border: 0.25em solid currentColor;\r\n  border-right-color: transparent;\r\n  border-radius: 50%;\r\n  -webkit-animation: 0.75s linear infinite spinner-border;\r\n          animation: 0.75s linear infinite spinner-border;\r\n          border-width:2px !important;\r\n}\r\n\r\n.spinner-border-sm {\r\n  width: 1rem;\r\n  height: 1rem;\r\n  border-width: 0.2em;\r\n}\r\n@media (prefers-reduced-motion: reduce) {\r\n  .spinner-border,\r\n.spinner-grow {\r\n    -webkit-animation-duration: 1.5s;\r\n            animation-duration: 1.5s;\r\n  }\r\n}\r\n\r\n.sr-only {\r\n  position: absolute;\r\n  width: 1px;\r\n  height: 1px;\r\n  padding: 0;\r\n  margin: -1px;\r\n  overflow: hidden;\r\n  clip: rect(0, 0, 0, 0);\r\n  white-space: nowrap;\r\n  border: 0;\r\n}\r\n.sr-only-focusable:active, .sr-only-focusable:focus {\r\n  position: static;\r\n  width: auto;\r\n  height: auto;\r\n  overflow: visible;\r\n  clip: auto;\r\n  white-space: normal;\r\n}\r\n.warning-place::-webkit-input-placeholder {\r\n  color: #fc0000;\r\n  font-weight: bold;\r\n  font-family: karla;\r\n  transition: ease-in-out 1s;\r\n}\r\n\r\n.on-excel-size-two {\r\n  position: relative;\r\n  z-index: 40;\r\n  padding: 5px 0px;\r\n  grid-template-columns: 1fr 190px 1fr;\r\n  justify-self: flex-end;\r\n}\r\n.on-excel-size{\r\n  display: grid;\r\n  grid-template-columns: 1fr 1fr;\r\n  justify-content: center;\r\n  align-items: center;\r\n  text-align: center;\r\n  background: white;\r\n  /* border: 1px solid rgb(221, 221, 221); */\r\n  border-radius: 2px;\r\n  margin-bottom: 15px;\r\n  margin-left: -10px;\r\n  padding: 10px 20px;\r\n  /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n#chest1:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#chest2:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#chest3:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#stomach1:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#stomach2:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#stomach3:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#bottom1:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#bottom2:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n#bottom3:hover\r\n{\r\n  transform: scale(1.1) !important;\r\n  transition:ease-in-out 0.4s !important;\r\n}\r\n.col-xl,\r\n.col-xl-auto, .col-xl-12, .col-xl-11, .col-xl-10, .col-xl-9, .col-xl-8, .col-xl-7, .col-xl-6, .col-xl-5, .col-xl-4, .col-xl-3, .col-xl-2, .col-xl-1, .col-lg,\r\n.col-lg-auto, .col-lg-12, .col-lg-11, .col-lg-10, .col-lg-9, .col-lg-8, .col-lg-7, .col-lg-6, .col-lg-5, .col-lg-4, .col-lg-3, .col-lg-2, .col-lg-1, .col-md,\r\n.col-md-auto, .col-md-12, .col-md-11, .col-md-10, .col-md-9, .col-md-8, .col-md-7, .col-md-6, .col-md-5, .col-md-4, .col-md-3, .col-md-2, .col-md-1, .col-sm,\r\n.col-sm-auto, .col-sm-12, .col-sm-11, .col-sm-10, .col-sm-9, .col-sm-8, .col-sm-7, .col-sm-6, .col-sm-5, .col-sm-4, .col-sm-3, .col-sm-2, .col-sm-1, .col,\r\n.col-auto, .col-12, .col-11, .col-10, .col-9, .col-8, .col-7, .col-6, .col-5, .col-4, .col-3, .col-2, .col-1 {\r\n  position: relative;\r\n  width: 100%;\r\n  padding-right: 15px;\r\n  padding-left: 15px;\r\n}\r\n.col {\r\n  flex-basis: 0;\r\n  flex-grow: 1;\r\n  max-width: 100%;\r\n}\r\n\r\n\r\n.col-md-auto {\r\n  flex: 0 0 auto;\r\n  width: auto;\r\n  max-width: 100%;\r\n}\r\n\r\n.col-md-1 {\r\n  flex: 0 0 8.3333333333%;\r\n  max-width: 8.3333333333%;\r\n}\r\n\r\n.col-md-2 {\r\n  flex: 0 0 16.6666666667%;\r\n  max-width: 16.6666666667%;\r\n}\r\n\r\n.col-md-3 {\r\n  flex: 0 0 25%;\r\n  max-width: 25%;\r\n}\r\n\r\n.col-md-4 {\r\n  flex: 0 0 33.3333333333%;\r\n  max-width: 33.3333333333%;\r\n}\r\n\r\n.col-md-5 {\r\n  flex: 0 0 41.6666666667%;\r\n  max-width: 41.6666666667%;\r\n}\r\n\r\n.col-md-6 {\r\n  flex: 0 0 50%;\r\n  max-width: 50%;\r\n}\r\n\r\n.col-md-7 {\r\n  flex: 0 0 58.3333333333%;\r\n  max-width: 58.3333333333%;\r\n}\r\n\r\n.col-md-8 {\r\n  flex: 0 0 66.6666666667%;\r\n  max-width: 66.6666666667%;\r\n}\r\n\r\n.col-md-9 {\r\n  flex: 0 0 75%;\r\n  max-width: 75%;\r\n}\r\n\r\n.col-md-10 {\r\n  flex: 0 0 83.3333333333%;\r\n  max-width: 83.3333333333%;\r\n}\r\n\r\n.col-md-11 {\r\n  flex: 0 0 91.6666666667%;\r\n  max-width: 91.6666666667%;\r\n}\r\n\r\n.col-md-12 {\r\n  flex: 0 0 100%;\r\n  max-width: 100%;\r\n}\r\n\r\n.mt-0,\r\n.my-0 {\r\n  margin-top: 0 !important;\r\n}\r\n\r\n.mr-0,\r\n.mx-0 {\r\n  margin-right: 0 !important;\r\n}\r\n\r\n.mb-0,\r\n.my-0 {\r\n  margin-bottom: 0 !important;\r\n}\r\n\r\n.ml-0,\r\n.mx-0 {\r\n  margin-left: 0 !important;\r\n}\r\n\r\n.m-1 {\r\n  margin: 0.25rem !important;\r\n}\r\n\r\n.mt-1,\r\n.my-1 {\r\n  margin-top: 0.25rem !important;\r\n}\r\n\r\n.mr-1,\r\n.mx-1 {\r\n  margin-right: 0.25rem !important;\r\n}\r\n\r\n.mb-1,\r\n.my-1 {\r\n  margin-bottom: 0.25rem !important;\r\n}\r\n\r\n.ml-1,\r\n.mx-1 {\r\n  margin-left: 0.25rem !important;\r\n}\r\n\r\n.m-2 {\r\n  margin: 0.5rem !important;\r\n}\r\n\r\n.mt-2,\r\n.my-2 {\r\n  margin-top: 0.5rem !important;\r\n}\r\n\r\n.mr-2,\r\n.mx-2 {\r\n  margin-right: 0.5rem !important;\r\n}\r\n\r\n.mb-2,\r\n.my-2 {\r\n  margin-bottom: 0.5rem !important;\r\n}\r\n\r\n.ml-2,\r\n.mx-2 {\r\n  margin-left: 0.5rem !important;\r\n}\r\n\r\n.m-3 {\r\n  margin: 1rem !important;\r\n}\r\n\r\n.mt-3,\r\n.my-3 {\r\n  margin-top: 1rem !important;\r\n}\r\n\r\n.mr-3,\r\n.mx-3 {\r\n  margin-right: 1rem !important;\r\n}\r\n\r\n.mb-3,\r\n.my-3 {\r\n  margin-bottom: 1rem !important;\r\n}\r\n\r\n.ml-3,\r\n.mx-3 {\r\n  margin-left: 1rem !important;\r\n}\r\n\r\n.m-4 {\r\n  margin: 1.5rem !important;\r\n}\r\n\r\n.mt-4,\r\n.my-4 {\r\n  margin-top: 1.5rem !important;\r\n}\r\n.mtf-4,\r\n.myf-4 {\r\n  margin-top: 1.3rem !important;\r\n}\r\n.mr-4,\r\n.mx-4 {\r\n  margin-right: 1.5rem !important;\r\n}\r\n\r\n.mb-4,\r\n.my-4 {\r\n  margin-bottom: 1.5rem !important;\r\n}\r\n\r\n.ml-4,\r\n.mx-4 {\r\n  margin-left: 1.5rem !important;\r\n}\r\n\r\n\r\n.m-5 {\r\n  margin: 3rem !important;\r\n}\r\n\r\n.mt-5,\r\n.my-5 {\r\n  margin-top: 3rem !important;\r\n}.mtf-5,\r\n.myf-5 {\r\n  margin-top: 2rem !important;\r\n}\r\n\r\n.mr-5,\r\n.mx-5 {\r\n  margin-right: 3rem !important;\r\n}\r\n\r\n.mb-5,\r\n.my-5 {\r\n  margin-bottom: 3rem !important;\r\n}\r\n\r\n.ml-5,\r\n.mx-5 {\r\n  margin-left: 3rem !important;\r\n}\r\n\r\n.m-n1 {\r\n  margin: -0.25rem !important;\r\n}\r\n\r\n.mt-n1,\r\n.my-n1 {\r\n  margin-top: -0.25rem !important;\r\n}\r\n\r\n.mr-n1,\r\n.mx-n1 {\r\n  margin-right: -0.25rem !important;\r\n}\r\n\r\n.mb-n1,\r\n.my-n1 {\r\n  margin-bottom: -0.25rem !important;\r\n}\r\n\r\n.ml-n1,\r\n.mx-n1 {\r\n  margin-left: -0.25rem !important;\r\n}\r\n\r\n.m-n2 {\r\n  margin: -0.5rem !important;\r\n}\r\n\r\n.mt-n2,\r\n.my-n2 {\r\n  margin-top: -0.5rem !important;\r\n}\r\n\r\n.mr-n2,\r\n.mx-n2 {\r\n  margin-right: -0.5rem !important;\r\n}\r\n\r\n.mb-n2,\r\n.my-n2 {\r\n  margin-bottom: -0.5rem !important;\r\n}\r\n\r\n.ml-n2,\r\n.mx-n2 {\r\n  margin-left: -0.5rem !important;\r\n}\r\n\r\n.m-n3 {\r\n  margin: -1rem !important;\r\n}\r\n\r\n.mt-n3,\r\n.my-n3 {\r\n  margin-top: -1rem !important;\r\n}\r\n\r\n.mr-n3,\r\n.mx-n3 {\r\n  margin-right: -1rem !important;\r\n}\r\n\r\n.mb-n3,\r\n.my-n3 {\r\n  margin-bottom: -1rem !important;\r\n}\r\n\r\n.ml-n3,\r\n.mx-n3 {\r\n  margin-left: -1rem !important;\r\n}\r\n\r\n.m-n4 {\r\n  margin: -1.5rem !important;\r\n}\r\n\r\n.mt-n4,\r\n.my-n4 {\r\n  margin-top: -1.5rem !important;\r\n}\r\n\r\n.mr-n4,\r\n.mx-n4 {\r\n  margin-right: -1.5rem !important;\r\n}\r\n\r\n.mb-n4,\r\n.my-n4 {\r\n  margin-bottom: -1.5rem !important;\r\n}\r\n\r\n.ml-n4,\r\n.mx-n4 {\r\n  margin-left: -1.5rem !important;\r\n}\r\n\r\n.m-n5 {\r\n  margin: -3rem !important;\r\n}\r\n\r\n.mt-n5,\r\n.my-n5 {\r\n  margin-top: -3rem !important;\r\n}\r\n\r\n.mr-n5,\r\n.mx-n5 {\r\n  margin-right: -3rem !important;\r\n}\r\n\r\n.mb-n5,\r\n.my-n5 {\r\n  margin-bottom: -3rem !important;\r\n}\r\n\r\n.ml-n5,\r\n.mx-n5 {\r\n  margin-left: -3rem !important;\r\n}\r\n\r\n\r\n.offset-1 {\r\n  margin-left: 8.3333333333%;\r\n}\r\n\r\n.offset-2 {\r\n  margin-left: 16.6666666667%;\r\n}\r\n\r\n.offset-3 {\r\n  margin-left: 25%;\r\n}\r\n\r\n.offset-4 {\r\n  margin-left: 33.3333333333%;\r\n}\r\n\r\n.offset-5 {\r\n  margin-left: 41.6666666667%;\r\n}\r\n\r\n.offset-6 {\r\n  margin-left: 50%;\r\n}\r\n\r\n.offset-7 {\r\n  margin-left: 58.3333333333%;\r\n}\r\n\r\n.offset-8 {\r\n  margin-left: 66.6666666667%;\r\n}\r\n\r\n.offset-9 {\r\n  margin-left: 75%;\r\n}\r\n\r\n.offset-10 {\r\n  margin-left: 83.3333333333%;\r\n}\r\n\r\n.offset-11 {\r\n  margin-left: 91.6666666667%;\r\n}\r\n.form-control {\r\n  display: block;\r\n  width: 100%;\r\n  height: calc(1.6em + 0.75rem + 2px);\r\n  padding: 0.375rem 0.75rem;\r\n  font-size: 0.9rem;\r\n  font-weight: 400;\r\n  line-height: 1.6;\r\n  color: #495057;\r\n  background-color: #fff;\r\n  background-clip: padding-box;\r\n  border: 1px solid #ced4da;\r\n  border-radius: 0.25rem;\r\n  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n}\r\n.form-control-lg {\r\n  height: calc(1.5em + 1rem + 2px);\r\n  padding: 0.5rem 1rem;\r\n  font-size: 1.125rem;\r\n  line-height: 1.5;\r\n  border-radius: 0.3rem;\r\n}\r\n\r\n\r\n\r\n.w-25 {\r\n  width: 25% !important;\r\n}\r\n\r\n.w-50 {\r\n  width: 50% !important;\r\n}\r\n\r\n.w-75 {\r\n  width: 75% !important;\r\n}\r\n\r\n.w-100 {\r\n  width: 100% !important;\r\n}\r\n\r\n.w-auto {\r\n  width: auto !important;\r\n}\r\n\r\n.h-25 {\r\n  height: 25% !important;\r\n}\r\n\r\n.h-50 {\r\n  height: 50% !important;\r\n}\r\n\r\n.h-75 {\r\n  height: 75% !important;\r\n}\r\n\r\n.h-100 {\r\n  height: 100% !important;\r\n}\r\n.input-border{\r\n  border-bottom: 1px solid lightgrey !important;\r\n\r\n  border-radius: 0 !important;\r\n}\r\n.justify-content-center {\r\n  justify-content: center !important;\r\n}\r\n.d-flex {\r\n  display: flex !important;\r\n}\r\n.ml-n6\r\n{\r\n  margin-left: -4rem !important;\r\n}\r\n.adjust-label-more {\r\n  margin-left: 35%!important;\r\n}\r\n.scrollbar-hidden::-webkit-scrollbar {\r\n  display: none;\r\n}\r\n\r\n/* Hide scrollbar for IE, Edge add Firefox */\r\n.scrollbar-hidden {\r\n  -ms-overflow-style: none;\r\n  scrollbar-width: none; /* Firefox */\r\n}\r\n.m-result{\r\n  text-align: center ;\r\n  margin-top: 0px ;\r\n  visibility: visible ;\r\n  margin-bottom: -8.5em ;\r\n  margin-right: 50px ;\r\n\r\n}\r\n@media only screen and (max-width: 320px) and (min-width: 320px) {\r\n\r\n  .m-result{\r\n    text-align: center !important;\r\n    margin-top: 0px !important;\r\n    visibility: visible !important;\r\n    margin-bottom: -8.5em !important;\r\n    margin-right: 50px !important;\r\n\r\n  }\r\n  .dfOagu {\r\n    margin-left: 25px;\r\n    margin-top: -5px !important;\r\n    margin-right: 40px !important;\r\n}\r\n.fit-advisor-selected-size-arrow-box {\r\n  position: relative;\r\n  z-index: 40;\r\n  padding: 5px 0px;\r\n  grid-template-columns: 1fr 106px 1fr !important;\r\n  justify-self: flex-end;\r\n}\r\n.selected-product-arrow-left {\r\n  background: rgba(255, 255, 255, 0.5);\r\n  z-index: 30;\r\n  /* margin-right: -26px !important; */\r\n  margin-left: 38px;\r\n  margin-right: 28px !important;\r\n}\r\n.result-size {\r\n  width: 100%;\r\n  font-family: karla;\r\n  font-weight: 900;\r\n  font-size: 1.4em;\r\n}\r\n}\r\n.float-left {\r\n  float: left !important;\r\n}\r\n\r\n.float-right {\r\n  float: right !important;\r\n}\r\n\r\n.float-none {\r\n  float: none !important;\r\n}\r\n.fit-advisor-fit-grid-s5 {\r\n  display:block;\r\n  grid-template-columns: 1fr 1fr;\r\n  -webkit-box-pack: center;\r\n  justify-content: center;\r\n  -webkit-box-align: center;\r\n  align-items: center;\r\n  text-align: center;\r\n  background: white;\r\n  border:none;\r\n  margin-bottom: 15px;\r\n      margin-left: -43px;\r\n  padding: 10px 20px;\r\n    box-shadow:none;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -42176,1247 +42201,1311 @@ var render = function() {
         attrs: { id: "popup1" }
       },
       [
-        _c("div", { staticClass: "popup fit-advisor-popup-adjustments" }, [
-          _c(
-            "div",
-            { staticClass: "predict__sc-1a4an9n-7 fit-advisor-header-box" },
-            [
-              _c(
-                "div",
-                { staticClass: "predict__sc-1a4an9n-0 fot-advisor-header" },
-                [
-                  _c("div"),
-                  _c("div", [
-                    _vm.firstTab
-                      ? _c(
+        _c(
+          "div",
+          {
+            staticClass: "popup fit-advisor-popup-adjustments",
+            staticStyle: { "margin-top": "20px" }
+          },
+          [
+            _c(
+              "div",
+              { staticClass: "predict__sc-1a4an9n-7 fit-advisor-header-box" },
+              [
+                _c(
+                  "div",
+                  { staticClass: "predict__sc-1a4an9n-0 fot-advisor-header" },
+                  [
+                    _c("div"),
+                    _c("div", [
+                      _vm.firstTab
+                        ? _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN",
+                              staticStyle: {
+                                display: "inline-block",
+                                "/* width": "59px"
+                              },
+                              attrs: {
+                                viewBox: "0 0 512 512",
+                                height: "24",
+                                width: "24",
+                                "aria-hidden": "true",
+                                focusable: "false",
+                                fill: "currentColor",
+                                xmlns: "http://www.w3.org/2000/svg"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.nextPrev(-1)
+                                }
+                              }
+                            },
+                            [
+                              _c("polyline", {
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "currentColor",
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "stroke-width": "48",
+                                  points: "328 112 184 256 328 400"
+                                }
+                              })
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.lastTab
+                        ? _c(
+                            "svg",
+                            {
+                              staticClass:
+                                "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi",
+                              attrs: {
+                                viewBox: "0 0 512 512",
+                                height: "24",
+                                width: "24",
+                                "aria-hidden": "true",
+                                focusable: "false",
+                                fill: "currentColor",
+                                xmlns: "http://www.w3.org/2000/svg"
+                              },
+                              on: { click: _vm.restart }
+                            },
+                            [
+                              _c("path", {
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "currentColor",
+                                  "stroke-linecap": "round",
+                                  "stroke-miterlimit": "10",
+                                  "stroke-width": "32",
+                                  d:
+                                    "M320 146s24.36-12-64-12a160 160 0 10160 160"
+                                }
+                              }),
+                              _c("polyline", {
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "currentColor",
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "stroke-width": "32",
+                                  points: "256 58 336 138 256 218"
+                                }
+                              })
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "span",
+                        {
+                          staticClass:
+                            "predict__sc-1a4an9n-3 OSFBL switch find-fit-header"
+                        },
+                        [_vm._v("FIND YOUR FIT")]
+                      )
+                    ])
+                  ]
+                ),
+                _vm._m(0)
+              ]
+            ),
+            _vm._v(" "),
+            _c("a", { staticClass: "close", attrs: { href: "#" } }, [
+              _vm._v("×")
+            ]),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "content",
+                staticStyle: {
+                  "margin-top": "-155px !important",
+                  "margin-bottom": "-120px !important"
+                }
+              },
+              [
+                _c("form", { attrs: { id: "regForm" } }, [
+                  _vm._m(1),
+                  _vm._v(" "),
+                  _vm._m(2),
+                  _vm._v(" "),
+                  _vm._m(3),
+                  _vm._v(" "),
+                  _vm._m(4),
+                  _vm._v(" "),
+                  _vm._m(5),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      staticClass:
+                        "tab fit-advisor-custom_row form-group offset-1",
+                      attrs: { id: "fields" }
+                    },
+                    [
+                      _c("div", { staticClass: "fit-advisor-custom_row" }, [
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "adjust-label labels-tab1 height_weight",
+                              attrs: { for: "height_ft" }
+                            },
+                            [_vm._v("Height")]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.heightfoot,
+                                expression: "form.heightfoot"
+                              }
+                            ],
+                            staticClass: "form-control w-75 input-border",
+                            attrs: {
+                              type: "number",
+                              id: "height_ft",
+                              placeholder: "Feet",
+                              name: "heightfoot"
+                            },
+                            domProps: { value: _vm.form.heightfoot },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "heightfoot",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.form.heightinch,
+                                expression: "form.heightinch"
+                              }
+                            ],
+                            staticClass: "form-control mt-3  w-75 input-border",
+                            attrs: {
+                              type: "number",
+                              id: "height_in",
+                              placeholder: "Inches",
+                              name: "heightinch"
+                            },
+                            domProps: { value: _vm.form.heightinch },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.form,
+                                  "heightinch",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ])
+                      ]),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "fit-advisor-custom_row mtf-5" },
+                        [
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _c(
+                              "label",
+                              {
+                                staticClass:
+                                  "adjust-label labels-tab1 height_weight",
+                                attrs: { for: "weight" }
+                              },
+                              [_vm._v("Weight")]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.weight,
+                                  expression: "form.weight"
+                                }
+                              ],
+                              staticClass: "form-control  w-75 input-border",
+                              attrs: {
+                                type: "number",
+                                id: "weight",
+                                placeholder: "Lbs",
+                                name: "weight"
+                              },
+                              domProps: { value: _vm.form.weight },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "weight",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            })
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-6" }, [
+                            _vm._m(6),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.age,
+                                  expression: "form.age"
+                                }
+                              ],
+                              staticClass:
+                                "form-control  w-75 input-border mt-n1",
+                              attrs: {
+                                type: "number",
+                                id: "age",
+                                placeholder: "Years",
+                                name: "Age"
+                              },
+                              domProps: { value: _vm.form.age },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(_vm.form, "age", $event.target.value)
+                                }
+                              }
+                            })
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  !_vm.onfirstTab
+                    ? _c("div", { staticClass: "row" }, [
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.countrycheck,
+                              expression: "countrycheck"
+                            }
+                          ],
+                          staticClass: "countrycheck no-gutters",
+                          attrs: { type: "checkbox", name: "countrycheck" },
+                          domProps: {
+                            checked: Array.isArray(_vm.countrycheck)
+                              ? _vm._i(_vm.countrycheck, null) > -1
+                              : _vm.countrycheck
+                          },
+                          on: {
+                            change: [
+                              function($event) {
+                                var $$a = _vm.countrycheck,
+                                  $$el = $event.target,
+                                  $$c = $$el.checked ? true : false
+                                if (Array.isArray($$a)) {
+                                  var $$v = null,
+                                    $$i = _vm._i($$a, $$v)
+                                  if ($$el.checked) {
+                                    $$i < 0 &&
+                                      (_vm.countrycheck = $$a.concat([$$v]))
+                                  } else {
+                                    $$i > -1 &&
+                                      (_vm.countrycheck = $$a
+                                        .slice(0, $$i)
+                                        .concat($$a.slice($$i + 1)))
+                                  }
+                                } else {
+                                  _vm.countrycheck = $$c
+                                }
+                              },
+                              function($event) {
+                                return _vm.countryval()
+                              }
+                            ]
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
                           "svg",
                           {
-                            staticClass:
-                              "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN",
+                            staticClass: "img_country",
                             staticStyle: {
-                              display: "inline-block",
-                              "/* width": "59px"
+                              "enable-background": "new 0 0 512 512"
                             },
                             attrs: {
+                              version: "1.1",
+                              id: "Capa_1",
+                              xmlns: "http://www.w3.org/2000/svg",
+                              "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                              x: "0px",
+                              y: "0px",
                               viewBox: "0 0 512 512",
-                              height: "24",
-                              width: "24",
-                              "aria-hidden": "true",
-                              focusable: "false",
-                              fill: "currentColor",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            },
+                              "xml:space": "preserve"
+                            }
+                          },
+                          [
+                            _c("rect", {
+                              staticStyle: { fill: "#F0F0F0" },
+                              attrs: {
+                                y: "85.331",
+                                width: "512",
+                                height: "341.337"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("g", [
+                              _c("rect", {
+                                staticStyle: { fill: "#D80027" },
+                                attrs: {
+                                  y: "127.994",
+                                  width: "512",
+                                  height: "42.663"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticStyle: { fill: "#D80027" },
+                                attrs: {
+                                  y: "213.331",
+                                  width: "512",
+                                  height: "42.663"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticStyle: { fill: "#D80027" },
+                                attrs: {
+                                  y: "298.657",
+                                  width: "512",
+                                  height: "42.663"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("rect", {
+                                staticStyle: { fill: "#D80027" },
+                                attrs: {
+                                  y: "383.994",
+                                  width: "512",
+                                  height: "42.663"
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("rect", {
+                              staticStyle: { fill: "#2E52B2" },
+                              attrs: {
+                                y: "85.331",
+                                width: "256",
+                                height: "183.797"
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("g", [
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \n\t\t99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \n\t\t99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \n\t\t43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \n\t\t54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \n\t\t99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \n\t\t54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \n\t\t156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \n\t\t145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \n\t\t201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \n\t\t212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \n\t\t156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
+                                }
+                              }),
+                              _vm._v(" "),
+                              _c("polygon", {
+                                staticStyle: { fill: "#F0F0F0" },
+                                attrs: {
+                                  points:
+                                    "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \n\t\t212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
+                                }
+                              })
+                            ]),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g"),
+                            _vm._v(" "),
+                            _c("g")
+                          ]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.showContinueBtn
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "continue-btn",
+                          staticStyle: {
+                            position: "absolute",
+                            right: "30%",
+                            width: "33%",
+                            bottom: "90px"
+                          },
+                          attrs: { type: "button", id: "nextBtn" },
+                          on: {
+                            click: function($event) {
+                              return _vm.nextPrev(1)
+                            }
+                          }
+                        },
+                        [_vm._v("Get Started")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  !_vm.showContinueBtn
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "continue-btn",
+                          staticStyle: {
+                            position: "absolute",
+                            right: "32%",
+                            width: "33%",
+                            bottom: "90px",
+                            display: "none !important"
+                          },
+                          attrs: { type: "button", id: "cartBtn" },
+                          on: {
+                            click: function($event) {
+                              return _vm.addToCart()
+                            }
+                          }
+                        },
+                        [_vm._v("Add Size to Cart")]
+                      )
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "tab" }, [
+                    _c("div", [
+                      _c(
+                        "div",
+                        { staticClass: " fit-advisor-chest-tab size-position" },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-chest-tab-item" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    opacity: "1",
+                                    transform: "none"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: " fit-advisor-options-img",
+                                    attrs: {
+                                      id: "chest1",
+                                      src:
+                                        "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.chest(1)
+                                      }
+                                    }
+                                  }),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: " fit-advisor-options-text"
+                                    },
+                                    [_vm._v("Narrower")]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-chest-tab-item" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    opacity: "1",
+                                    transform: "none"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: " fit-advisor-options-img",
+                                    attrs: {
+                                      id: "chest2",
+                                      src:
+                                        "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.chest(2)
+                                      }
+                                    }
+                                  }),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: " fit-advisor-options-text"
+                                    },
+                                    [_vm._v("Average")]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-chest-tab-item" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    opacity: "1",
+                                    transform: "none"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: " fit-advisor-options-img",
+                                    attrs: {
+                                      id: "chest3",
+                                      src:
+                                        "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.chest(3)
+                                      }
+                                    }
+                                  }),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: " fit-advisor-options-text"
+                                    },
+                                    [_vm._v("Broader")]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _c("div", { staticClass: "tab" }, [
+                    _c("div", [
+                      _c(
+                        "div",
+                        { staticClass: " fit-advisor-chest-tab size-position" },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-chest-tab-item" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    opacity: "1",
+                                    transform: "none"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: " fit-advisor-options-img",
+                                    attrs: {
+                                      id: "stomach1",
+                                      src:
+                                        "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.stomach(1)
+                                      }
+                                    }
+                                  }),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: " fit-advisor-options-text"
+                                    },
+                                    [_vm._v("Flatter")]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-chest-tab-item" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    opacity: "1",
+                                    transform: "none"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: " fit-advisor-options-img",
+                                    attrs: {
+                                      id: "stomach2",
+                                      src:
+                                        "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.stomach(2)
+                                      }
+                                    }
+                                  }),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: " fit-advisor-options-text"
+                                    },
+                                    [_vm._v("Average")]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-chest-tab-item" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    opacity: "1",
+                                    transform: "none"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: " fit-advisor-options-img",
+                                    attrs: {
+                                      id: "stomach3",
+                                      src:
+                                        "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.stomach(3)
+                                      }
+                                    }
+                                  }),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: " fit-advisor-options-text"
+                                    },
+                                    [_vm._v("Rounder")]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "tab" }, [
+                    _c("div", [
+                      _c(
+                        "div",
+                        { staticClass: " fit-advisor-chest-tab size-position" },
+                        [
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-chest-tab-item" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    opacity: "1",
+                                    transform: "none"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: " fit-advisor-options-img",
+                                    attrs: {
+                                      id: "bottom1",
+                                      src:
+                                        "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.bottom(1)
+                                      }
+                                    }
+                                  }),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: " fit-advisor-options-text"
+                                    },
+                                    [_vm._v("Flatter")]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-chest-tab-item" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    opacity: "1",
+                                    transform: "none"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: " fit-advisor-options-img",
+                                    attrs: {
+                                      id: "bottom2",
+                                      src:
+                                        "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.bottom(2)
+                                      }
+                                    }
+                                  }),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: " fit-advisor-options-text"
+                                    },
+                                    [_vm._v("Average")]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-chest-tab-item" },
+                            [
+                              _c(
+                                "div",
+                                {
+                                  staticStyle: {
+                                    opacity: "1",
+                                    transform: "none"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: " fit-advisor-options-img",
+                                    attrs: {
+                                      id: "bottom3",
+                                      src:
+                                        "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg"
+                                    },
+                                    on: {
+                                      click: function($event) {
+                                        return _vm.bottom(3)
+                                      }
+                                    }
+                                  }),
+                                  _c(
+                                    "p",
+                                    {
+                                      staticClass: " fit-advisor-options-text"
+                                    },
+                                    [_vm._v("Rounder")]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        ]
+                      )
+                    ])
+                  ]),
+                  _c("div", { staticClass: "tab" }, [
+                    _c(
+                      "div",
+                      { staticClass: " fit-advisor-selected-product-grid" },
+                      [
+                        _c("div", [
+                          _c(
+                            "div",
+                            { staticClass: " fit-advisor-product-size-box" },
+                            [
+                              _c(
+                                "div",
+                                { staticClass: " fit-advisor-fit-grid" },
+                                [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        " fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"
+                                    },
+                                    [
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass:
+                                            " selected-product-arrow-left"
+                                        },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                " jjnwUS  selected-product-arrow-left-pointer next",
+                                              attrs: { size: "10" },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.changesize()
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "svg",
+                                                {
+                                                  staticClass:
+                                                    "StyledIconBase-ea9ulj-0 jZGNBW",
+                                                  attrs: {
+                                                    viewBox: "0 0 16 16",
+                                                    height: "10",
+                                                    width: "10",
+                                                    "aria-hidden": "true",
+                                                    focusable: "false",
+                                                    fill: "currentColor",
+                                                    xmlns:
+                                                      "http://www.w3.org/2000/svg"
+                                                  }
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      "fill-rule": "evenodd",
+                                                      d:
+                                                        "M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "listfit" },
+                                        _vm._l(_vm.product.variants, function(
+                                          row,
+                                          key,
+                                          index
+                                        ) {
+                                          return _c(
+                                            "div",
+                                            {
+                                              key: row.id,
+                                              staticClass:
+                                                " fit-advisor-selected-size",
+                                              staticStyle: { opacity: "1" },
+                                              attrs: {
+                                                id: "fit-advisor-sizes-slider",
+                                                "font-size": "40"
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "span",
+                                                { attrs: { id: "fsize" } },
+                                                [
+                                                  _vm.is_loading
+                                                    ? _c(
+                                                        "div",
+                                                        {
+                                                          staticClass:
+                                                            "spinner-border",
+                                                          staticStyle: {
+                                                            width: "3rem",
+                                                            height: "3rem",
+                                                            "margin-top":
+                                                              "70px !important"
+                                                          },
+                                                          attrs: {
+                                                            role: "status"
+                                                          }
+                                                        },
+                                                        [
+                                                          _c(
+                                                            "span",
+                                                            {
+                                                              staticClass:
+                                                                "sr-only"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                "Loading..."
+                                                              )
+                                                            ]
+                                                          )
+                                                        ]
+                                                      )
+                                                    : _vm._e(),
+                                                  _vm._v(" "),
+                                                  _c(
+                                                    "h4",
+                                                    {
+                                                      staticClass: "result-size"
+                                                    },
+                                                    [
+                                                      _vm.showrecommended
+                                                        ? _c(
+                                                            "span",
+                                                            {
+                                                              staticClass:
+                                                                "recommendedbyus big-size-margin-recommend-size"
+                                                            },
+                                                            [
+                                                              _vm._v(
+                                                                _vm._s(
+                                                                  _vm.recommended_size
+                                                                )
+                                                              )
+                                                            ]
+                                                          )
+                                                        : _vm._e(),
+                                                      _vm._v(" "),
+                                                      !_vm.showrecommended
+                                                        ? _c(
+                                                            "span",
+                                                            {
+                                                              staticClass:
+                                                                "variant_title",
+                                                              attrs: {
+                                                                "data-variant":
+                                                                  row.id
+                                                              }
+                                                            },
+                                                            [
+                                                              row.title
+                                                                .toUpperCase()
+                                                                .substring(
+                                                                  0,
+                                                                  2
+                                                                ) == "XL" ||
+                                                              row.title
+                                                                .toUpperCase()
+                                                                .substring(
+                                                                  0,
+                                                                  2
+                                                                ) == "XS"
+                                                                ? _c("span", [
+                                                                    _c(
+                                                                      "span",
+                                                                      {
+                                                                        staticClass:
+                                                                          "big-size-margin"
+                                                                      },
+                                                                      [
+                                                                        _vm._v(
+                                                                          _vm._s(
+                                                                            row.title.toUpperCase()
+                                                                          )
+                                                                        )
+                                                                      ]
+                                                                    )
+                                                                  ])
+                                                                : _vm._e(),
+                                                              _vm._v(" "),
+                                                              row.title.toUpperCase() !=
+                                                                "XS" &&
+                                                              row.title.toUpperCase() !=
+                                                                "XL"
+                                                                ? _c("span", [
+                                                                    _vm._v(
+                                                                      _vm._s(
+                                                                        row.title
+                                                                          .toUpperCase()
+                                                                          .charAt(
+                                                                            0
+                                                                          )
+                                                                      )
+                                                                    )
+                                                                  ])
+                                                                : _vm._e()
+                                                            ]
+                                                          )
+                                                        : _vm._e()
+                                                    ]
+                                                  )
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        }),
+                                        0
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        {
+                                          staticClass: " dfOagu",
+                                          staticStyle: { "z-index": "30" }
+                                        },
+                                        [
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass:
+                                                " jjnwUS  hjNiUI arrow-next next",
+                                              attrs: { size: "10" },
+                                              on: {
+                                                click: function($event) {
+                                                  return _vm.changesize()
+                                                }
+                                              }
+                                            },
+                                            [
+                                              _c(
+                                                "svg",
+                                                {
+                                                  staticClass:
+                                                    "StyledIconBase-ea9ulj-0 jZGNBW",
+                                                  attrs: {
+                                                    viewBox: "0 0 16 16",
+                                                    height: "10",
+                                                    width: "10",
+                                                    "aria-hidden": "true",
+                                                    focusable: "false",
+                                                    fill: "currentColor",
+                                                    xmlns:
+                                                      "http://www.w3.org/2000/svg"
+                                                  }
+                                                },
+                                                [
+                                                  _c("path", {
+                                                    attrs: {
+                                                      "fill-rule": "evenodd",
+                                                      d:
+                                                        "M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"
+                                                    }
+                                                  })
+                                                ]
+                                              )
+                                            ]
+                                          )
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _c("p", { staticClass: " fit-advisor-header-desc" }, [
+                            _vm._v("Fit Size:"),
+                            _vm.showrecommended
+                              ? _c("strong", [_vm._v("Recommended")])
+                              : _c(
+                                  "strong",
+                                  { attrs: { id: "allSizeTextHeading" } },
+                                  [_vm._v(_vm._s(this.allSizeText))]
+                                ),
+                            _vm._v(" "),
+                            this.otherSize
+                              ? _c("strong", [_vm._v(_vm._s(this.otherSize))])
+                              : _vm._e()
+                          ]),
+                          _vm._m(7)
+                        ])
+                      ]
+                    )
+                  ]),
+                  _c("div", { staticStyle: { overflow: "auto" } }, [
+                    _c(
+                      "div",
+                      {
+                        staticClass: "custom-offset-lg",
+                        staticStyle: {
+                          "margin-top": "8% !Important",
+                          display: "none"
+                        }
+                      },
+                      [
+                        _c(
+                          "button",
+                          {
+                            staticClass: "fit-advisor-custom_previous_btn",
+                            attrs: { type: "button", id: "prevBtn" },
                             on: {
                               click: function($event) {
                                 return _vm.nextPrev(-1)
                               }
                             }
                           },
-                          [
-                            _c("polyline", {
-                              attrs: {
-                                fill: "none",
-                                stroke: "currentColor",
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round",
-                                "stroke-width": "48",
-                                points: "328 112 184 256 328 400"
-                              }
-                            })
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.lastTab
-                      ? _c(
-                          "svg",
-                          {
-                            staticClass:
-                              "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi",
-                            attrs: {
-                              viewBox: "0 0 512 512",
-                              height: "24",
-                              width: "24",
-                              "aria-hidden": "true",
-                              focusable: "false",
-                              fill: "currentColor",
-                              xmlns: "http://www.w3.org/2000/svg"
-                            },
-                            on: { click: _vm.restart }
-                          },
-                          [
-                            _c("path", {
-                              attrs: {
-                                fill: "none",
-                                stroke: "currentColor",
-                                "stroke-linecap": "round",
-                                "stroke-miterlimit": "10",
-                                "stroke-width": "32",
-                                d: "M320 146s24.36-12-64-12a160 160 0 10160 160"
-                              }
-                            }),
-                            _c("polyline", {
-                              attrs: {
-                                fill: "none",
-                                stroke: "currentColor",
-                                "stroke-linecap": "round",
-                                "stroke-linejoin": "round",
-                                "stroke-width": "32",
-                                points: "256 58 336 138 256 218"
-                              }
-                            })
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "span",
-                      {
-                        staticClass:
-                          "predict__sc-1a4an9n-3 OSFBL switch find-fit-header"
-                      },
-                      [_vm._v("FIND YOUR FIT")]
-                    )
-                  ])
-                ]
-              ),
-              _vm._m(0)
-            ]
-          ),
-          _vm._v(" "),
-          _c("a", { staticClass: "close", attrs: { href: "#" } }, [
-            _vm._v("×")
-          ]),
-          _vm._v(" "),
-          _c(
-            "div",
-            {
-              staticClass: "content",
-              staticStyle: {
-                "margin-top": "-155px !important",
-                "margin-bottom": "-120px !important"
-              }
-            },
-            [
-              _c("form", { attrs: { id: "regForm" } }, [
-                _vm._m(1),
-                _vm._v(" "),
-                _vm._m(2),
-                _vm._v(" "),
-                _vm._m(3),
-                _vm._v(" "),
-                _vm._m(4),
-                _vm._v(" "),
-                _vm._m(5),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass:
-                      "tab fit-advisor-custom_row form-group offset-1",
-                    attrs: { id: "fields" }
-                  },
-                  [
-                    _c("div", { staticClass: "fit-advisor-custom_row" }, [
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass:
-                              "adjust-label labels-tab1 height_weight",
-                            attrs: { for: "height_ft" }
-                          },
-                          [_vm._v("Height")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.heightfoot,
-                              expression: "form.heightfoot"
-                            }
-                          ],
-                          staticClass: "form-control w-75 input-border",
-                          attrs: {
-                            type: "number",
-                            id: "height_ft",
-                            placeholder: "Feet",
-                            name: "heightfoot"
-                          },
-                          domProps: { value: _vm.form.heightfoot },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.form,
-                                "heightfoot",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.heightinch,
-                              expression: "form.heightinch"
-                            }
-                          ],
-                          staticClass: "form-control mt-3  w-75 input-border",
-                          attrs: {
-                            type: "number",
-                            id: "height_in",
-                            placeholder: "Inches",
-                            name: "heightinch"
-                          },
-                          domProps: { value: _vm.form.heightinch },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.form,
-                                "heightinch",
-                                $event.target.value
-                              )
-                            }
-                          }
-                        })
-                      ])
-                    ]),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "fit-advisor-custom_row mtf-5" }, [
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c(
-                          "label",
-                          {
-                            staticClass:
-                              "adjust-label labels-tab1 height_weight",
-                            attrs: { for: "weight" }
-                          },
-                          [_vm._v("Weight")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.weight,
-                              expression: "form.weight"
-                            }
-                          ],
-                          staticClass: "form-control  w-75 input-border",
-                          attrs: {
-                            type: "number",
-                            id: "weight",
-                            placeholder: "Lbs",
-                            name: "weight"
-                          },
-                          domProps: { value: _vm.form.weight },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "weight", $event.target.value)
-                            }
-                          }
-                        })
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _vm._m(6),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.form.age,
-                              expression: "form.age"
-                            }
-                          ],
-                          staticClass: "form-control  w-75 input-border mt-n1",
-                          attrs: {
-                            type: "number",
-                            id: "age",
-                            placeholder: "Years",
-                            name: "Age"
-                          },
-                          domProps: { value: _vm.form.age },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(_vm.form, "age", $event.target.value)
-                            }
-                          }
-                        })
-                      ])
-                    ])
-                  ]
-                ),
-                _vm._v(" "),
-                !_vm.onfirstTab
-                  ? _c("div", { staticClass: "row" }, [
-                      _c("input", {
-                        directives: [
-                          {
-                            name: "model",
-                            rawName: "v-model",
-                            value: _vm.countrycheck,
-                            expression: "countrycheck"
-                          }
-                        ],
-                        staticClass: "countrycheck no-gutters",
-                        attrs: { type: "checkbox", name: "countrycheck" },
-                        domProps: {
-                          checked: Array.isArray(_vm.countrycheck)
-                            ? _vm._i(_vm.countrycheck, null) > -1
-                            : _vm.countrycheck
-                        },
-                        on: {
-                          change: [
-                            function($event) {
-                              var $$a = _vm.countrycheck,
-                                $$el = $event.target,
-                                $$c = $$el.checked ? true : false
-                              if (Array.isArray($$a)) {
-                                var $$v = null,
-                                  $$i = _vm._i($$a, $$v)
-                                if ($$el.checked) {
-                                  $$i < 0 &&
-                                    (_vm.countrycheck = $$a.concat([$$v]))
-                                } else {
-                                  $$i > -1 &&
-                                    (_vm.countrycheck = $$a
-                                      .slice(0, $$i)
-                                      .concat($$a.slice($$i + 1)))
-                                }
-                              } else {
-                                _vm.countrycheck = $$c
-                              }
-                            },
-                            function($event) {
-                              return _vm.countryval()
-                            }
-                          ]
-                        }
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "svg",
-                        {
-                          staticClass: "img_country",
-                          staticStyle: {
-                            "enable-background": "new 0 0 512 512"
-                          },
-                          attrs: {
-                            version: "1.1",
-                            id: "Capa_1",
-                            xmlns: "http://www.w3.org/2000/svg",
-                            "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                            x: "0px",
-                            y: "0px",
-                            viewBox: "0 0 512 512",
-                            "xml:space": "preserve"
-                          }
-                        },
-                        [
-                          _c("rect", {
-                            staticStyle: { fill: "#F0F0F0" },
-                            attrs: {
-                              y: "85.331",
-                              width: "512",
-                              height: "341.337"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("g", [
-                            _c("rect", {
-                              staticStyle: { fill: "#D80027" },
-                              attrs: {
-                                y: "127.994",
-                                width: "512",
-                                height: "42.663"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("rect", {
-                              staticStyle: { fill: "#D80027" },
-                              attrs: {
-                                y: "213.331",
-                                width: "512",
-                                height: "42.663"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("rect", {
-                              staticStyle: { fill: "#D80027" },
-                              attrs: {
-                                y: "298.657",
-                                width: "512",
-                                height: "42.663"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("rect", {
-                              staticStyle: { fill: "#D80027" },
-                              attrs: {
-                                y: "383.994",
-                                width: "512",
-                                height: "42.663"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("rect", {
-                            staticStyle: { fill: "#2E52B2" },
-                            attrs: {
-                              y: "85.331",
-                              width: "256",
-                              height: "183.797"
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c("g", [
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \n\t\t99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \n\t\t99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \n\t\t43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \n\t\t54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \n\t\t99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \n\t\t54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \n\t\t156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \n\t\t145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \n\t\t201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \n\t\t212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \n\t\t156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("polygon", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                points:
-                                  "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \n\t\t212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g"),
-                          _vm._v(" "),
-                          _c("g")
-                        ]
-                      )
-                    ])
-                  : _vm._e(),
-                _vm._v(" "),
-                _vm.showContinueBtn
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "continue-btn",
-                        staticStyle: {
-                          position: "absolute",
-                          right: "30%",
-                          width: "33%",
-                          bottom: "90px"
-                        },
-                        attrs: { type: "button", id: "nextBtn" },
-                        on: {
-                          click: function($event) {
-                            return _vm.nextPrev(1)
-                          }
-                        }
-                      },
-                      [_vm._v("Get Started")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                !_vm.showContinueBtn
-                  ? _c(
-                      "button",
-                      {
-                        staticClass: "continue-btn",
-                        staticStyle: {
-                          position: "absolute",
-                          right: "32%",
-                          width: "33%",
-                          bottom: "90px",
-                          display: "block !important"
-                        },
-                        attrs: { type: "button", id: "cartBtn" },
-                        on: {
-                          click: function($event) {
-                            return _vm.addToCart()
-                          }
-                        }
-                      },
-                      [_vm._v("Add Size to Cart")]
-                    )
-                  : _vm._e(),
-                _vm._v(" "),
-                _c("div", { staticClass: "tab" }, [
-                  _c("div", [
-                    _c(
-                      "div",
-                      { staticClass: " fit-advisor-chest-tab size-position" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-chest-tab-item" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { opacity: "1", transform: "none" }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: " fit-advisor-options-img",
-                                  attrs: {
-                                    id: "chest1",
-                                    src:
-                                      "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.chest(1)
-                                    }
-                                  }
-                                }),
-                                _c(
-                                  "p",
-                                  { staticClass: " fit-advisor-options-text" },
-                                  [_vm._v("Narrower")]
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-chest-tab-item" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { opacity: "1", transform: "none" }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: " fit-advisor-options-img",
-                                  attrs: {
-                                    id: "chest2",
-                                    src:
-                                      "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.chest(2)
-                                    }
-                                  }
-                                }),
-                                _c(
-                                  "p",
-                                  { staticClass: " fit-advisor-options-text" },
-                                  [_vm._v("Average")]
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-chest-tab-item" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { opacity: "1", transform: "none" }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: " fit-advisor-options-img",
-                                  attrs: {
-                                    id: "chest3",
-                                    src:
-                                      "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.chest(3)
-                                    }
-                                  }
-                                }),
-                                _c(
-                                  "p",
-                                  { staticClass: " fit-advisor-options-text" },
-                                  [_vm._v("Broader")]
-                                )
-                              ]
-                            )
-                          ]
+                          [_vm._v("Previous")]
                         )
                       ]
                     )
-                  ])
-                ]),
-                _c("div", { staticClass: "tab" }, [
-                  _c("div", [
-                    _c(
-                      "div",
-                      { staticClass: " fit-advisor-chest-tab size-position" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-chest-tab-item" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { opacity: "1", transform: "none" }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: " fit-advisor-options-img",
-                                  attrs: {
-                                    id: "stomach1",
-                                    src:
-                                      "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.stomach(1)
-                                    }
-                                  }
-                                }),
-                                _c(
-                                  "p",
-                                  { staticClass: " fit-advisor-options-text" },
-                                  [_vm._v("Flatter")]
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-chest-tab-item" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { opacity: "1", transform: "none" }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: " fit-advisor-options-img",
-                                  attrs: {
-                                    id: "stomach2",
-                                    src:
-                                      "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.stomach(2)
-                                    }
-                                  }
-                                }),
-                                _c(
-                                  "p",
-                                  { staticClass: " fit-advisor-options-text" },
-                                  [_vm._v("Average")]
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-chest-tab-item" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { opacity: "1", transform: "none" }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: " fit-advisor-options-img",
-                                  attrs: {
-                                    id: "stomach3",
-                                    src:
-                                      "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.stomach(3)
-                                    }
-                                  }
-                                }),
-                                _c(
-                                  "p",
-                                  { staticClass: " fit-advisor-options-text" },
-                                  [_vm._v("Rounder")]
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "tab" }, [
-                  _c("div", [
-                    _c(
-                      "div",
-                      { staticClass: " fit-advisor-chest-tab size-position" },
-                      [
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-chest-tab-item" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { opacity: "1", transform: "none" }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: " fit-advisor-options-img",
-                                  attrs: {
-                                    id: "bottom1",
-                                    src:
-                                      "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.bottom(1)
-                                    }
-                                  }
-                                }),
-                                _c(
-                                  "p",
-                                  { staticClass: " fit-advisor-options-text" },
-                                  [_vm._v("Flatter")]
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-chest-tab-item" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { opacity: "1", transform: "none" }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: " fit-advisor-options-img",
-                                  attrs: {
-                                    id: "bottom2",
-                                    src:
-                                      "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.bottom(2)
-                                    }
-                                  }
-                                }),
-                                _c(
-                                  "p",
-                                  { staticClass: " fit-advisor-options-text" },
-                                  [_vm._v("Average")]
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-chest-tab-item" },
-                          [
-                            _c(
-                              "div",
-                              {
-                                staticStyle: { opacity: "1", transform: "none" }
-                              },
-                              [
-                                _c("img", {
-                                  staticClass: " fit-advisor-options-img",
-                                  attrs: {
-                                    id: "bottom3",
-                                    src:
-                                      "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg"
-                                  },
-                                  on: {
-                                    click: function($event) {
-                                      return _vm.bottom(3)
-                                    }
-                                  }
-                                }),
-                                _c(
-                                  "p",
-                                  { staticClass: " fit-advisor-options-text" },
-                                  [_vm._v("Rounder")]
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      ]
-                    )
-                  ])
-                ]),
-                _c("div", { staticClass: "tab" }, [
-                  _c(
-                    "div",
-                    { staticClass: " fit-advisor-selected-product-grid" },
-                    [
-                      _c("div", [
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-product-size-box" },
-                          [
-                            _c(
-                              "div",
-                              { staticClass: " fit-advisor-fit-grid" },
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass:
-                                      " fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          " selected-product-arrow-left"
-                                      },
-                                      [
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass:
-                                              " jjnwUS  selected-product-arrow-left-pointer next",
-                                            attrs: { size: "10" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.changesize()
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "svg",
-                                              {
-                                                staticClass:
-                                                  "StyledIconBase-ea9ulj-0 jZGNBW",
-                                                attrs: {
-                                                  viewBox: "0 0 16 16",
-                                                  height: "10",
-                                                  width: "10",
-                                                  "aria-hidden": "true",
-                                                  focusable: "false",
-                                                  fill: "currentColor",
-                                                  xmlns:
-                                                    "http://www.w3.org/2000/svg"
-                                                }
-                                              },
-                                              [
-                                                _c("path", {
-                                                  attrs: {
-                                                    "fill-rule": "evenodd",
-                                                    d:
-                                                      "M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"
-                                                  }
-                                                })
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      { staticClass: "listfit" },
-                                      _vm._l(_vm.product.variants, function(
-                                        row,
-                                        key,
-                                        index
-                                      ) {
-                                        return _c(
-                                          "div",
-                                          {
-                                            key: row.id,
-                                            staticClass:
-                                              " fit-advisor-selected-size",
-                                            staticStyle: { opacity: "1" },
-                                            attrs: {
-                                              id: "fit-advisor-sizes-slider",
-                                              "font-size": "40"
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "span",
-                                              { attrs: { id: "fsize" } },
-                                              [
-                                                _vm.is_loading
-                                                  ? _c(
-                                                      "div",
-                                                      {
-                                                        staticClass:
-                                                          "spinner-border",
-                                                        staticStyle: {
-                                                          width: "3rem",
-                                                          height: "3rem",
-                                                          "margin-top":
-                                                            "70px !important"
-                                                        },
-                                                        attrs: {
-                                                          role: "status"
-                                                        }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "span",
-                                                          {
-                                                            staticClass:
-                                                              "sr-only"
-                                                          },
-                                                          [_vm._v("Loading...")]
-                                                        )
-                                                      ]
-                                                    )
-                                                  : _vm._e(),
-                                                _vm._v(" "),
-                                                _c(
-                                                  "h4",
-                                                  {
-                                                    staticClass: "result-size"
-                                                  },
-                                                  [
-                                                    _vm.showrecommended
-                                                      ? _c(
-                                                          "span",
-                                                          {
-                                                            staticClass:
-                                                              "recommendedbyus big-size-margin-recommend-size"
-                                                          },
-                                                          [
-                                                            _vm._v(
-                                                              _vm._s(
-                                                                _vm.recommended_size
-                                                              )
-                                                            )
-                                                          ]
-                                                        )
-                                                      : _vm._e(),
-                                                    _vm._v(" "),
-                                                    !_vm.showrecommended
-                                                      ? _c(
-                                                          "span",
-                                                          {
-                                                            staticClass:
-                                                              "variant_title",
-                                                            attrs: {
-                                                              "data-variant":
-                                                                row.id,
-                                                              "data-title":
-                                                                row.title
-                                                            }
-                                                          },
-                                                          [
-                                                            row.title
-                                                              .toUpperCase()
-                                                              .substring(
-                                                                0,
-                                                                2
-                                                              ) == "XL" ||
-                                                            row.title
-                                                              .toUpperCase()
-                                                              .substring(
-                                                                0,
-                                                                2
-                                                              ) == "XS"
-                                                              ? _c("span", [
-                                                                  _c(
-                                                                    "span",
-                                                                    {
-                                                                      staticClass:
-                                                                        "big-size-margin"
-                                                                    },
-                                                                    [
-                                                                      _vm._v(
-                                                                        _vm._s(
-                                                                          row.title.toUpperCase()
-                                                                        )
-                                                                      )
-                                                                    ]
-                                                                  )
-                                                                ])
-                                                              : _vm._e(),
-                                                            _vm._v(" "),
-                                                            row.title.toUpperCase() !=
-                                                              "XS" &&
-                                                            row.title.toUpperCase() !=
-                                                              "XL"
-                                                              ? _c("span", [
-                                                                  _vm._v(
-                                                                    _vm._s(
-                                                                      row.title
-                                                                        .toUpperCase()
-                                                                        .charAt(
-                                                                          0
-                                                                        )
-                                                                    )
-                                                                  )
-                                                                ])
-                                                              : _vm._e()
-                                                          ]
-                                                        )
-                                                      : _vm._e()
-                                                  ]
-                                                )
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      }),
-                                      0
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass: " dfOagu",
-                                        staticStyle: { "z-index": "30" }
-                                      },
-                                      [
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass:
-                                              " jjnwUS  hjNiUI arrow-next next",
-                                            attrs: { size: "10" },
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.changesize()
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c(
-                                              "svg",
-                                              {
-                                                staticClass:
-                                                  "StyledIconBase-ea9ulj-0 jZGNBW",
-                                                attrs: {
-                                                  viewBox: "0 0 16 16",
-                                                  height: "10",
-                                                  width: "10",
-                                                  "aria-hidden": "true",
-                                                  focusable: "false",
-                                                  fill: "currentColor",
-                                                  xmlns:
-                                                    "http://www.w3.org/2000/svg"
-                                                }
-                                              },
-                                              [
-                                                _c("path", {
-                                                  attrs: {
-                                                    "fill-rule": "evenodd",
-                                                    d:
-                                                      "M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"
-                                                  }
-                                                })
-                                              ]
-                                            )
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                )
-                              ]
-                            )
-                          ]
-                        ),
-                        _c("p", { staticClass: " fit-advisor-header-desc" }, [
-                          _vm._v("Fit Size:"),
-                          _vm.showrecommended
-                            ? _c("strong", [_vm._v("Recommended")])
-                            : _c(
-                                "strong",
-                                { attrs: { id: "allSizeTextHeading" } },
-                                [_vm._v(_vm._s(this.allSizeText))]
-                              ),
-                          _vm._v(" "),
-                          this.otherSize
-                            ? _c("strong", [_vm._v(_vm._s(this.otherSize))])
-                            : _vm._e()
-                        ]),
-                        _vm._m(7)
-                      ])
-                    ]
-                  )
-                ]),
-                _c("div", { staticStyle: { overflow: "auto" } }, [
-                  _c(
-                    "div",
-                    {
-                      staticClass: "custom-offset-lg",
-                      staticStyle: {
-                        "margin-top": "8% !Important",
-                        display: "none"
-                      }
-                    },
-                    [
-                      _c(
-                        "button",
-                        {
-                          staticClass: "fit-advisor-custom_previous_btn",
-                          attrs: { type: "button", id: "prevBtn" },
-                          on: {
-                            click: function($event) {
-                              return _vm.nextPrev(-1)
-                            }
-                          }
-                        },
-                        [_vm._v("Previous")]
-                      )
-                    ]
-                  )
-                ]),
-                _c("p"),
-                _vm._m(8)
-              ])
-            ]
-          )
-        ])
+                  ]),
+                  _c("p"),
+                  _vm._m(8)
+                ])
+              ]
+            )
+          ]
+        )
       ]
     )
   ])
@@ -43571,6 +43660,7 @@ var staticRenderFns = [
     return _c(
       "div",
       {
+        staticClass: "m-result",
         staticStyle: { "text-align": "center", "margin-top": "100px" },
         attrs: { id: "steps-mark" }
       },
