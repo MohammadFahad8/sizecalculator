@@ -16,7 +16,7 @@
     </div>
     <div class="card-body">
         
-<table class="table table-bordered  " style="width:100% !important;">
+<table class="table table-bordered" style="width:100% !important;">
     <thead>
 <tr>
     {{-- <th>Sr #</th> --}}

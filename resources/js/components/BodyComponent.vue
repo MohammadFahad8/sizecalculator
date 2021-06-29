@@ -29,9 +29,9 @@
 <p class="fit-advisor-intro" id="intro5"><span id="mark1">Drop-cut:LUX</span>  <br><span id="mark2"></span></p>
 
 
- <div class="tab fit-advisor-custom_row form-group offset-1"> 
+ <div id="fields" class="tab fit-advisor-custom_row form-group offset-1"> 
    <div class="fit-advisor-custom_row">
-     <div class="col-md-6"><label class="adjust-label labels-tab1"   for="height_ft">Height</label>
+     <div class="col-md-6"><label class="adjust-label labels-tab1 height_weight"   for="height_ft">Height</label>
   <input type="number" id="height_ft" placeholder="Feet" class="form-control w-75 input-border" v-model="form.heightfoot" name="heightfoot">
   </div>
   <div class="col-md-6">
@@ -43,11 +43,11 @@
 
  <div class="fit-advisor-custom_row mtf-5">   
    <div class="col-md-6">
-   <label class="adjust-label labels-tab1" for="weight">Weight</label>
+   <label class="adjust-label labels-tab1 height_weight" for="weight">Weight</label>
    <input type="number" id="weight" placeholder="Lbs" class="form-control  w-75 input-border" v-model="form.weight" name="weight">
    </div>
    <div class="col-md-6">
-   <label for="age"><span class="adjust-label-age labels-tab1 " >Age</span></label>
+   <label  for="age"><span class="adjust-label-age labels-tab1 " id="age-label-5s" >Age</span></label>
     <input type="number" id="age"  placeholder="Years" class="form-control  w-75 input-border mt-n1" v-model="form.age" name="Age">
     </div>
     
@@ -891,10 +891,80 @@ var height_cm  = heighti* 2.54;
             {
               
 
+            },
+            responsiveness:function()
+            {
+              
+$(document).ready(function($) {
+  var alterClass = function() {
+    var ww = document.body.clientWidth;
+   if(ww == 320)
+   {
+     
+  $('.form-control').addClass('ml-n4');
+        $('.form-control').removeClass('ml-n5');
+        $('.form-control').addClass('w-100');
+       // $('.form-control').addClass('w-75');
+        $('#fields').removeClass('offset-1');
+        $('#fields').removeClass('ml-n5');
+        $('#fields').addClass('ml-n4');
+        $('.height_weight').removeClass('adjust-label');
+        $('.height_weight').removeClass('ml-n5');
+        $('.height_weight').removeClass('ml-n4');
+        $('.height_weight').addClass('adjust-label-5s');
+        $('#age-label-5s').removeClass('adjust-label-age');
+        $('#age-label-5s').addClass('adjust-label-age-5s');
+        $('#intro1').addClass('ml-n6');
+
+        
+   }
+  else if(ww == 411) {
+    
+    alert(ww)
+     $('#intro1').removeClass('ml-n6');
+      
+       $('#fields').removeClass('ml-n5');
+       $('#fields').removeClass('offset-1');
+        
+          $('.form-control').removeClass('w-75');
+        $('.form-control').addClass('w-100');
+        
+    }
+    else if ((ww >= 412 && ww <= 480) || (ww >= 321 && ww < 411 ) ) {
+      
+      $('#intro1').removeClass('ml-n6');
+      $('#fields').addClass('ml-n5');
+        $('#fields').removeClass('offset-1');
+        $('.form-control').removeClass('w-75');
+        $('.form-control').addClass('w-100');
+        if(ww==360)
+        {
+          $('#fields').removeClass('ml-n4');
+          $('#fields').addClass('ml-n5');
+
+        }
+    } 
+    else {
+      
+      $('#intro1').removeClass('ml-n6');
+       $('#fields').removeClass('ml-n5');
+        $('#fields').addClass('offset-1');
+         $('.form-control').removeClass('w-100');
+        $('.form-control').addClass('w-75');
+    };
+  };
+  $(window).resize(function(){
+    alterClass();
+  });
+  //Fire it when the page first loads:
+  alterClass();
+});
+		 
             }
         },
         mounted() {
-		 
+
+this.responsiveness();
 	  console.log(this.shop)
     this.getLocalData();
 		this.showBodyFit();
@@ -906,7 +976,8 @@ var height_cm  = heighti* 2.54;
            // this.dev_reset();
         
             
-    $('input[name="countrycheck"]').click(function(){
+    $('input[name="countrycheck"]').click(function()
+    {
         var $radio = $(this);
 
         // if this was previously checked
