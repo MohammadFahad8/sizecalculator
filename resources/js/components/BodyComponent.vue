@@ -32,40 +32,41 @@
                 </div>
             </div>
             <!-- close modal btn -->
-            <a class="close" href="#">&times;</a>
+            <a class="close mt-n6" id="closeApp" href="#">&times;</a>
+            
             <div class="content" style="margin-top:-155px !important; margin-bottom: -120px !important;">
                 <form id="regForm">
-                    <p class="fit-advisor-intro" id="intro1">
+                    <p class="fit-advisor-intro text-center" id="intro1">
                         <span id="mark1">To get a size recommendation,</span> <br><span id="mark2">fill out the form below</span></p>
                     <p class="fit-advisor-intro" id="intro2"><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your chest</span></p>
                     <p class="fit-advisor-intro" id="intro3"><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your stomach</span></p>
                     <p class="fit-advisor-intro" id="intro4"><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your bottom</span></p>
-                    <p class="fit-advisor-intro" id="intro5"><span id="mark1">Drop-cut:LUX</span> <br><span id="mark2"></span></p>
+                    <p class="fit-advisor-intro text-center" id="intro5"><span id="mark1">Drop-cut:LUX</span> <br><span id="mark2"></span></p>
 
                     <div id="fields" class="tab fit-advisor-custom_row form-group offset-1">
                         <div class="fit-advisor-custom_row" v-if="!countrycheck">
-                            <div class="col-md-6"><label class="adjust-label labels-tab1 height_weight" for="height_ft">Height</label>
-                                <input type="number" id="height_ft" placeholder="Feet" class="form-control w-75 input-border" v-model="form.heightfoot" name="heightfoot">
+                            <div class="col-md-6"><label class=" labels-tab1 height_weight text-center" for="height_ft">Height</label>
+                                <input type="number" id="height_ft" placeholder="Feet" class="form-control  input-border" v-model="form.heightfoot" name="heightfoot">
                             </div>
                             <div class="col-md-6">
-                                <input type="number" id="height_in" placeholder="Inches" class="form-control mt-3  w-75 input-border" v-model="form.heightinch" name="heightinch">
+                                <input type="number" id="height_in" placeholder="Inches" class="form-control mtf-3   input-border" v-model="form.heightinch" name="heightinch">
                             </div>
 
                         </div>
                         <div class="fit-advisor-custom_row" v-if="countrycheck">
-                            <div class="col-md-12"><label class="adjust-label labels-tab1 height_weight" for="height_ft">Height</label>
+                            <div class="col-md-12"><label class=" labels-tab1 height_weight text-center" for="height_ft">Height</label>
                                 <input type="number" id="height_cm" placeholder="Cm" class="form-control w-100 input-border" v-model="form.heightcm" name="heightcm">
                             </div>
                         </div>
 
                         <div class="fit-advisor-custom_row mtf-5">
                             <div class="col-md-6">
-                                <label class="adjust-label labels-tab1 height_weight" for="weight">Weight</label>
-                                <input type="number" id="weight" placeholder="Lbs" class="form-control  w-75 input-border" v-model="form.weight" name="weight">
+                                <label class=" labels-tab1 height_weight text-center" for="weight">Weight</label>
+                                <input type="number" id="weight" placeholder="Lbs" class="form-control   input-border" v-model="form.weight" name="weight">
                             </div>
                             <div class="col-md-6">
-                                <label for="age"><span class="adjust-label-age labels-tab1 " id="age-label-5s">Age</span></label>
-                                <input type="number" id="age" placeholder="Years" class="form-control  w-75 input-border mt-n1" v-model="form.age" name="Age">
+                                <label for="age"><span class="text-center labels-tab1 " id="age-label-5s">Age</span></label>
+                                <input type="number" id="age" placeholder="Years" class="form-control   input-border mt-n1" v-model="form.age" name="Age">
                             </div>
 
                         </div>
@@ -235,7 +236,7 @@
                             <!-- <div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div> -->
                             <div>
                                 <div class=" fit-advisor-product-size-box">
-                                    <div class=" fit-advisor-fit-grid">
+                                    <div class=" fit-advisor-fit-grid float-left">
 
                                         <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box">
                                             <div class=" selected-product-arrow-left">
@@ -288,14 +289,14 @@
                         <div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div>
                     </div>
                     </p>
-                    <div id="steps-mark" style="text-align:center;margin-top:100px;" class="m-result"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
+                    <div id="steps-mark" style="text-align:center;margin-top:100px;" class="m-result float-right"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
                 </form>
             </div>
         </div>
     </div>
-    <!-- </div> -->
+    </div>
 
-</div>
+<!-- </div> -->
 </template>
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script><script>
@@ -645,8 +646,10 @@ export default {
             }
 
             if (n == 0) {
-
+                $('#closeApp').addClass('mtf-n6')
+                $('#closeApp').removeClass('mt-n6')
                 $('#intro1').css('display', 'block');
+                $("#steps-mark").css('visibility', 'hidden');
 
                 $('.switch').removeClass('introfirst');
                 $('.switch').addClass('find-fit-header');
@@ -656,6 +659,8 @@ export default {
                 $('#intro5').css('display', 'none');
             }
             if (n == 1) {
+                  $('#closeApp').removeClass('mtf-n6')
+                $('#closeApp').addClass('mt-n6')
 
                 $('#intro1').css('display', 'none');
                 $('#intro2').css('display', 'block');
@@ -667,6 +672,8 @@ export default {
 
             }
             if (n == 2) {
+                 $('#closeApp').removeClass('mtf-n6')
+                $('#closeApp').addClass('mt-n6')
                 $('#intro1').css('display', 'none');
                 $('#intro2').css('display', 'none');
                 $('#intro3').css('display', 'block');
@@ -676,6 +683,8 @@ export default {
                 $('.switch').removeClass('find-fit-header');
             }
             if (n == 3) {
+                 $('#closeApp').removeClass('mtf-n6')
+                $('#closeApp').addClass('mt-n6')
                 $('#intro1').css('display', 'none');
                 $('#intro2').css('display', 'none');
                 $('#intro3').css('display', 'none');
@@ -686,6 +695,8 @@ export default {
 
             }
             if (n == 4) {
+                 $('#closeApp').removeClass('mtf-n6')
+                $('#closeApp').addClass('mt-n6')
 
                 $('.fit-advisor-selected-product-grid').css('display', 'inline');
                 $('#intro1').css('display', 'none');
@@ -706,7 +717,8 @@ export default {
             x[n].style.display = "block";
             //... and fix the Previous/Next buttons:
             if (n == 0) {
-
+                 $('#closeApp').removeClass('mt-n6')
+                $('#closeApp').addClass('mtf-n6')
                 document.getElementById("prevBtn").style.display = "none";
                 document.getElementById("steps-mark").style.visibility = "hidden";
                 this.firstTab = false;
@@ -723,9 +735,13 @@ export default {
 
             }
             if (n == 1) {
+                 $('#closeApp').removeClass('mtf-n6')
+                $('#closeApp').addClass('mt-n6')
                 $('#popup1').css('overflow', 'scroll');
             }
             if (n == 4) {
+                 $('#closeApp').removeClass('mtf-n6')
+                $('#closeApp').addClass('mt-n6')
 
                 this.firstTab = false;
                 this.onfirstTab = true,
@@ -964,6 +980,7 @@ export default {
             this.showContinueBtn = true,
 
                 $('.fit-advisor-selected-product-grid').css('display', 'none');
+                $("#steps-mark").css('visibility', 'hidden');
             this.dev_reset();
             this.showTab(this.currentTab);
             this.nextPrev(-4)
@@ -978,51 +995,57 @@ export default {
                 var alterClass = function () {
                     var ww = document.body.clientWidth;
                     if (ww == 320) {
+                        
+                        $('.height_weight').addClass('text-center');
+                        $('.height_weight').removeClass('text-left');
+                        $('#age-label-5s').removeClass('text-left');
+                        $('#age-label-5s').addClass('text-center');
+                   
                         $('#intro5').removeClass('ml-n4');
-                        $('.fit-advisor-header-desc').addClass('float-left');
-                        $('.fit-advisor-header-desc-mt').addClass('ml-n5');
+                        $('.fit-advisor-header-desc').addClass('text-center');
+                        
                         $('.fit-advisor-header-desc-mt').removeClass('fit-advisor-header-desc-mt');
-                        $('#intro5').addClass('ml-n6');
+                        
                         $('.fit-advisor-product-size-box').addClass('ml-n6');
-                        $('.form-control').addClass('ml-n4');
-                        $('.form-control').removeClass('ml-n5');
-                        $('.form-control').addClass('w-100');
+                       
                         // $('.form-control').addClass('w-75');
+                        
                         $('#fields').removeClass('offset-1');
                         $('#fields').removeClass('ml-n5');
                         $('#fields').addClass('ml-n4');
-                        $('.height_weight').removeClass('adjust-label');
-                        $('.height_weight').removeClass('ml-n5');
-                        $('.height_weight').removeClass('ml-n4');
-                        $('.height_weight').addClass('adjust-label-5s');
-                        $('#age-label-5s').removeClass('adjust-label-age');
-                        $('#age-label-5s').addClass('adjust-label-age-5s');
-                        $('#intro1').addClass('ml-n6');
+                        // $('.height_weight').removeClass('adjust-label');
+                        // $('.height_weight').removeClass('ml-n5');
+                        // $('.height_weight').removeClass('ml-n4');
+                        // $('.height_weight').addClass('adjust-label-5s');
+                        // $('#age-label-5s').removeClass('adjust-label-age');
+                        // $('#age-label-5s').addClass('adjust-label-age-5s');
+                        
                         $('.fit-advisor-selected-product-grid > div').removeClass('mr-3')
                         $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
 
                     } else if (ww == 411) {
 
+
                         $('.fit-advisor-selected-product-grid > div').removeClass('mr-3')
                         $('#intro1').removeClass('ml-n6');
                         $('.fit-advisor-product-size-box').removeClass('ml-n6');
                         $('#fields').removeClass('ml-n5');
                         $('#fields').removeClass('offset-1');
 
-                        $('.form-control').removeClass('w-75');
-                        $('.form-control').addClass('w-100');
+                       
                         $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
 
                     } else if ((ww >= 412 && ww <= 480) || (ww >= 321 && ww < 411)) {
+                     
                         $('.fit-advisor-product-size-box').removeClass('ml-n6');
                         $('#intro1').removeClass('ml-n6');
                         $('#fields').addClass('ml-n5');
                         $('#fields').removeClass('offset-1');
-                        $('.form-control').removeClass('w-75');
-                        $('.form-control').addClass('w-100');
+                      
                         $('.fit-advisor-selected-product-grid > div').addClass('mr-3')
                         $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
                         if (ww == 360) {
+                         
                             $('.fit-advisor-product-size-box').removeClass('ml-n6');
                             $('#intro5').addClass('ml-n4');
                             $('#fields').removeClass('ml-n4');
@@ -1032,13 +1055,19 @@ export default {
 
                         }
                     } else {
+                     
 
                         $('#intro1').removeClass('ml-n6');
                         $('#fields').removeClass('ml-n5');
                         $('#fields').addClass('offset-1');
-                        $('.form-control').removeClass('w-100');
-                        $('.form-control').addClass('w-75');
+                      $('.height_weight').removeClass('text-center');
+                        $('.height_weight').addClass('text-left');
+                        $('#age-label-5s').addClass('text-left');
+                        $('#age-label-5s').removeClass('text-center');
+                      
                         $('.fit-advisor-selected-product-grid > div').removeClass('mr-3')
+                        $('#steps-mark').removeClass('float-right')
+                        $('.fit-advisor-fit-grid ').removeClass('float-left')
                     };
                 };
                 $(window).resize(function () {
