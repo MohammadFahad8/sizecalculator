@@ -832,10 +832,12 @@ var height_cm  = heighti* 2.54;
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
   y = x[this.currentTab].getElementsByTagName("input");
+  
   // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
     // If a field is empty...
     if (y[i].value == "") {
+      
       // add an "invalid" class to the field:
       y[i].className += " invalid";
       // and set the current valid status to false
@@ -853,11 +855,16 @@ var height_cm  = heighti* 2.54;
             },
             validateHeight:function(event)
             {
+              $('#height_ft').keydown(function(e) {
+  if (e.keyCode === 190 || e.keyCode === 110) {
+    e.preventDefault();
+  }
+});
               $('#height_ft').removeClass('invalid')
               
               if(this.form.heightfoot >9)
                     { 
-                $("#height_ft").attr("placeholder", "Must be less than 9");
+                $("#height_ft").attr("placeholder", "Limit is 9");
                 $("#height_ft").addClass("warning-place");
                     this.form.heightfoot='';
                       
@@ -877,11 +884,16 @@ var height_cm  = heighti* 2.54;
             },
             validateInches: function()
             {
+               $('#height_in').keydown(function(e) {
+  if (e.keyCode === 190 || e.keyCode === 110) {
+    e.preventDefault();
+  }
+});
               $('#height_in').removeClass('invalid')
               
                     if(this.form.heightinch >11)
                     {
-                $("#height_in").attr("placeholder", "Must be less than 11");
+                $("#height_in").attr("placeholder", "Limit is 11");
                 $("#height_in").addClass("warning-place");
                       this.form.heightinch='';
                       
@@ -928,10 +940,15 @@ var height_cm  = heighti* 2.54;
               }
             },
             validateAge:function(){
+              $('#height_in').keydown(function(e) {
+  if (e.keyCode === 190 || e.keyCode === 110) {
+    e.preventDefault();
+  }
+});
               $('#age').removeClass('invalid')
               if(this.form.age >100)
                     {
-                  $("#age").attr("placeholder", "Limit for Age is 100");
+                  $("#age").attr("placeholder", "Limit is 100");
                 $("#age").addClass("warning-place");
                       this.form.age=''
                       
@@ -960,7 +977,7 @@ var height_cm  = heighti* 2.54;
               
               if(this.form.heightcm >302)
                     {
-                  $("#height_cm").attr("placeholder", "Centimeter range exceeding");
+                  $("#height_cm").attr("placeholder", "Limit is 300");
                 $("#height_cm").addClass("warning-place");
                       this.form.heightcm=''
                       

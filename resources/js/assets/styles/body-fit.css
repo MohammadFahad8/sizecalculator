@@ -187,7 +187,8 @@ input {
 
 /* Mark input boxes that gets an error on validation: */
 input.invalid {
-  background-color: #ffdddd;
+  border-bottom: 1px solid #fb6c6c !important;
+    border-bottom-width: thick !important;
 }
 
 /* Hide all steps by default: */
@@ -1501,6 +1502,7 @@ input {
 }
 .warning-place::-webkit-input-placeholder {
   color: #fc0000;
+  opacity:1;
   font-weight: bold;
   font-family: karla;
   transition: ease-in-out 1s;
