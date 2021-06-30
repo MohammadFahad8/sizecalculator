@@ -2058,7 +2058,7 @@ input {
   text-align: center ;
   margin-top: 0px ;
   visibility: visible ;
-  margin-bottom: -8.5em ;
+  margin-bottom: -8.5em ;  
   margin-right: 50px ;
 
 }
@@ -2068,7 +2068,7 @@ input {
     text-align: center !important;
     margin-top: 0px !important;
     visibility: visible !important;
-    margin-bottom: -8.5em !important;
+    margin-bottom: -5.5em !important;
     margin-right: 50px !important;
 
   }

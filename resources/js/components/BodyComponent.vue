@@ -29,15 +29,20 @@
 <p class="fit-advisor-intro" id="intro5"><span id="mark1">Drop-cut:LUX</span>  <br><span id="mark2"></span></p>
 
 
- <div id="fields" class="tab fit-advisor-custom_row form-group offset-1"> 
-   <div class="fit-advisor-custom_row">
+ <div id="fields" class="tab fit-advisor-custom_row form-group offset-1" > 
+   <div class="fit-advisor-custom_row" v-if="!countrycheck">
      <div class="col-md-6"><label class="adjust-label labels-tab1 height_weight"   for="height_ft">Height</label>
   <input type="number" id="height_ft" placeholder="Feet" class="form-control w-75 input-border" v-model="form.heightfoot" name="heightfoot">
   </div>
-  <div class="col-md-6">
+  <div class="col-md-6" >
   <input type="number" id="height_in" placeholder="Inches" class="form-control mt-3  w-75 input-border" v-model="form.heightinch"  name="heightinch">
   </div>
   
+  </div>
+  <div class="fit-advisor-custom_row" v-if="countrycheck">
+ <div class="col-md-12"><label class="adjust-label labels-tab1 height_weight"   for="height_ft">Height</label>
+  <input type="number" id="height_cm" placeholder="Cm" class="form-control w-100 input-border" v-model="form.heightcm" name="heightcm">
+  </div>
   </div>
   
 
@@ -129,7 +134,7 @@
 </div>
 
 
-<button v-if="showContinueBtn" class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: 90px;" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button>
+<button v-if="showContinueBtn" class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: -50px" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button>
 <button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 32%;width: 33%;bottom: 90px;display:none !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button>
 <div class="tab"><div><div class=" fit-advisor-chest-tab size-position" ><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
     <img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="chest(1)" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Narrower</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
@@ -140,14 +145,19 @@
                         <img id="stomach3" v-on:click="stomach(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div> <div class="tab"><div><div class=" fit-advisor-chest-tab size-position"><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
                             <img id="bottom1" v-on:click="bottom(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Flatter</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
                                 <img id="bottom2"  v-on:click="bottom(2)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Average</p></div></div><div class=" fit-advisor-chest-tab-item"><div style="opacity: 1; transform: none;">
-                                    <img id="bottom3"  v-on:click="bottom(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div><div class="tab"><div class=" fit-advisor-selected-product-grid">
+                            <img id="bottom3"  v-on:click="bottom(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img"><p class=" fit-advisor-options-text">Rounder</p></div></div></div></div></div>
+                            <div class="tab"><div class=" fit-advisor-selected-product-grid">
                                         <!-- <div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div> -->
                                     <div><div class=" fit-advisor-product-size-box"><div class=" fit-advisor-fit-grid">
                                   
                                   
                                     <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box">
                                       <div class=" selected-product-arrow-left">
-                                             <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer next" @click="changesize();"><svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW"><path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg></span></div>  
+    <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer next" @click="changesize();">
+      <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW">
+      <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path></svg>
+      </span>
+      </div>  
                                                         
                                                         
                                                         
@@ -202,12 +212,14 @@
                 form:{
                     heightfoot:localStorage.getItem('foot'),
                     heightinch:localStorage.getItem('inch'),
-                    weight:localStorage.getItem('weight'),
+                    heightcm:parseInt(localStorage.getItem('cm')),
+                    weight:parseFloat(localStorage.getItem('weight')).toFixed(0),
                     age:localStorage.getItem('age'),
                     chest:localStorage.getItem('chest'),
                     stomach:localStorage.getItem('stomach'),
                     bottom:localStorage.getItem('bottom'),
                     tags:JSON.parse(localStorage.getItem('tags')),
+                    convertedMeasurements:false,
             
                 },
                 countrycheck:'',
@@ -235,6 +247,7 @@
                 traverseDefault:'',
                 actionDefault:'',
                 otherSize:'',
+                
 
 
                 image_us:'https://24bbe8b8d790.ngrok.io/images/us.png',
@@ -252,7 +265,7 @@
 				id.append('shop_name',shop_name);
         
 				axios.post(this.$appUrl+'/api/permission-to-show',id).then((res)=>{
-          console.log(res.data)
+          
 					if(res.data.display == true)
 					{
             if(res.data.clearLog==true)
@@ -310,7 +323,7 @@
                 .then((res)=>{
                   
                     this.is_loading = false;
-                    console.log(res.data);
+                    
                      if(((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs') ))
                      {
                        this.recommended_size = res.data.toUpperCase().substr(0, 2)
@@ -520,10 +533,15 @@
                 {
                     
                     $('input[name="weight"]').attr('placeholder','Lbs');
+                    $('input[name="heightfoot"]').attr('placeholder','Feet');
+                    $('input[name="heightinch"]').attr('placeholder','Inches');
                     $('input[name="countrycheck"]').attr('value',0);
                     this.countrycheck == 0;
-                    
+                    this.form.convertedMeasurements = false;
                     this.weightconvert(this.form.weight,false);
+                    this.heightconvert(localStorage.getItem('foot'),localStorage.getItem('inch'),parseFloat(localStorage.getItem('cm')).toFixed(0),false);                
+                    
+                    
                     
 
                 }
@@ -531,9 +549,12 @@
                 {
                     
                      $('input[name="weight"]').attr('placeholder','Kg');
-                     $('input[name="countrycheck"]').attr('value',1);
+                     $('input[name="heightcm"]').attr('placeholder','Cm');
+                    $('input[name="countrycheck"]').attr('value',1);
                         this.countrycheck == 1
+                        this.form.convertedMeasurements = true;
                      this.weightconvert(this.form.weight,true);
+                         this.heightconvert(localStorage.getItem('foot'),localStorage.getItem('inch'),parseFloat(localStorage.getItem('cm')).toFixed(0),true);
                      
 
                 }
@@ -544,11 +565,68 @@
                     {
                         if((c == true) && (w!='') )
                         {
-                        this.form.weight = w/2.2 //pound to kg
+                        this.form.weight = parseFloat(w/2.2).toFixed(0) //pound to kg
                         }
                         else if((c == false) && (w!='') )
                         {
-                            this.form.weight = w*2.2 //kg to pound
+                            this.form.weight = parseFloat(w*2.2).toFixed(0) //kg to pound
+                        }
+                        
+                        
+
+              },  heightconvert:function(f,i,cm,c) 
+                    {
+                      
+                      
+                        if((c == true))
+                        {
+                          if(isNaN(f))
+                          {
+                            return;
+                          }else{
+                          this.form.heightcm= (f * 30.48)+ (parseInt(i) * 2.54);
+                        var heightcm = parseFloat(this.form.heightcm).toFixed(0);
+                        
+                        localStorage.setItem('cm',heightcm);
+                        this.form.heightcm = localStorage.getItem('cm')
+                          
+                         
+                        // this.form.heightinch = f * 30.48 + parsetInt($data['heightinch']) * 2.54;}
+
+                        }
+                        }
+                        
+                        else if((c == false))
+                        {
+                          if(isNaN(cm))
+                          {
+                            return;
+
+                          }else
+                          {
+                             
+                            var length,feet,inch=0;
+                            length = cm/2.54; //cm to ft and inches
+                            feet = Math.floor(length/12);
+                            inch = length - 12 * feet;
+                            this.form.heightfoot = feet
+                            if(inch >=5)
+                            {
+                              
+
+                            }else if(inch <5)
+                            {
+                              this.form.heightinch = parseInt(Math.floor(inch))
+
+                            }
+                            
+                            localStorage.setItem('foot',this.form.heightfoot)
+                            localStorage.setItem('inch',this.form.heightinch)
+                          }
+
+                           
+                            
+                            
                         }
                         
                         
@@ -569,6 +647,7 @@
                 {   
                   
                     $('#intro1').css('display', 'block');
+                     
                     $('.switch').removeClass('introfirst');
                     $('.switch').addClass('find-fit-header');                   
                     $('#intro2').css('display', 'none');
@@ -628,6 +707,7 @@
   // This function will display the specified tab of the form...
   var x = document.getElementsByClassName("tab");
   
+  
   x[n].style.display = "block";
   //... and fix the Previous/Next buttons:
   if (n == 0) {
@@ -674,7 +754,10 @@
  this.getProductDetails();
   }
    else {
+     
     document.getElementById("nextBtn").style.display = "inline";
+    
+    
     
   }
   if((n >= 1) && (n <4))
@@ -815,7 +898,13 @@ var height_cm  = heighti* 2.54;
               }
             },
             validateWeight: function(){
+              $('#weight').keydown(function(e) {
+  if (e.keyCode === 190 || e.keyCode === 110) {
+    e.preventDefault();
+  }
+});
               $('#weight').removeClass('invalid')
+               
                     if(this.form.weight > 500)
                     {
                 $("#weight").attr("placeholder", "Limit is 500 Lbs");
@@ -834,7 +923,8 @@ var height_cm  = heighti* 2.54;
                     }
                     else
               {
-                localStorage.setItem('weight',this.form.weight)
+                
+                localStorage.setItem('weight',parseFloat(this.form.weight).toFixed(0))
               }
             },
             validateAge:function(){
@@ -857,6 +947,40 @@ var height_cm  = heighti* 2.54;
               {
                 localStorage.setItem('age',this.form.age)
               }
+            },
+            validateCm:function()
+            {
+                $('#height_cm').keydown(function(e) {
+  if (e.keyCode === 190 || e.keyCode === 110) {
+    e.preventDefault();
+  }
+});
+              
+              $('#height_cm').removeClass('invalid')
+              
+              if(this.form.heightcm >302)
+                    {
+                  $("#height_cm").attr("placeholder", "Centimeter range exceeding");
+                $("#height_cm").addClass("warning-place");
+                      this.form.heightcm=''
+                      
+
+                    }
+              else if(this.form.heightcm <= 0)
+                    {
+                      this.form.heightcm = ''
+                      
+
+                    }
+                    else
+              {
+                var heightincm = parseFloat(this.form.heightcm).toFixed(0)
+                
+                localStorage.setItem('cm',heightincm)
+                this.form.heightcm = localStorage.getItem('cm')
+
+              }
+
             },
             fixStepIndicator:function(n)
             {
@@ -1000,22 +1124,24 @@ this.responsiveness();
            // this.dev_reset();
         
             
-    $('input[name="countrycheck"]').click(function()
-    {
-        var $radio = $(this);
+    // $('input[name="countrycheck"]').click(function()
+    // {
+    //     var $radio = $(this);
 
-        // if this was previously checked
-        if ($radio.data('waschecked') == true)
-        {
-            $radio.prop('checked', false);
-            $radio.data('waschecked', false);
-        }
-        else
-            $radio.data('waschecked', true);
+    //     // if this was previously checked
+    //     if ($radio.data('waschecked') == true)
+    //     {
+    //         $radio.prop('checked', false);
+    //         $radio.data('waschecked', false);
+    //         this.convertedMeasurements = true;
+    //     }
+    //     else
+    //         $radio.data('waschecked', true);
+    //         this.convertedMeasurements = false;
 
-        // remove was checked from other radios
+    //     // remove was checked from other radios
         
-    });
+    // });
             // Current tab is set to be the first tab (0)
 
             if(localStorage.getItem('recommended_size')!=null)
@@ -1042,12 +1168,6 @@ $('#popup-trigger').on('click',function(){
 //formula to caluclate height into centimeters
 
 
-$('.bvHnuU').on('click',function(){
-  var measureh = localStorage.getItem('height');
-  var measurew = localStorage.getItem('weight');
-
-})
-
 
 
 
@@ -1064,11 +1184,16 @@ $('.bvHnuU').on('click',function(){
 		},	
 			'form.weight':function()
 		{
+      
 			this.validateWeight();
 		},
 				'form.age':function()
 		{
 			this.validateAge();
+		},	
+    	'form.heightcm':function()
+		{
+			this.validateCm();
 		},
 	}
     }
