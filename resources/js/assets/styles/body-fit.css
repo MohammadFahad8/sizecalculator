@@ -1439,7 +1439,18 @@ input:focus {
 /*   //responsiveness of modal */
 
 @media (min-width:320px) and (max-width:480px) {
+  
+    .spinner-position{
+        width: 2rem !important;
+        height: 2rem !important;
+        margin-left:0px !important;
+        
+      }
     /* smartphones, iPhone, portrait 480x320 phones */
+    .ml-xl-spinner
+    {
+        margin-left:12rem !important;
+    }
     .result-size {
         width: 100%;
         font-family: karla;
@@ -3262,3 +3273,27 @@ input:focus {
 .text-right {
     text-align: right !important;
 }
+.ml-xl-6,
+    .mx-xl-6 {
+        margin-left: 6rem !important;
+    }.ml-xl-11,
+    .mx-xl-11 {
+        margin-left: 11rem !important;
+    }
+    .ml-xl-12,
+    .mx-xl-12 {
+        margin-left: 12rem !important;
+    }
+    .center-force {
+        margin: 0;
+        position: sticky;
+        top: 50%;
+        left: 50%;
+        -ms-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+      }
+      .spinner-position{
+        width: 3rem;
+        height: 3rem;
+        margin-left: 44px;
+      }

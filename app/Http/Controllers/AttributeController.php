@@ -257,7 +257,7 @@ class AttributeController extends Controller
 
     public function calculateSize(Request $request)
     {
-
+            
         $data = $request->all();
         $height_cm = 0;
 

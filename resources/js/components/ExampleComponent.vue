@@ -15,13 +15,20 @@
 </template>
 
 <script>
+
     export default {
         data(){
             return{
                 message:"Jello"
             }
         },
+        methods:{
+            checkEventBus:function(){
+               
+            }
+        },
         mounted() {
+            
             console.log('Component mounted.')
         }
     }

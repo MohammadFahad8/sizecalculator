@@ -239,7 +239,7 @@
                                     <div class=" fit-advisor-fit-grid float-left">
 
                                         <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box">
-                                            <div class=" selected-product-arrow-left">
+                                            <div class=" selected-product-arrow-left" v-if="!is_loading" >
                                                 <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer next" @click="changesize();">
                                                     <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW">
                                                         <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path>
@@ -248,15 +248,26 @@
                                             </div>
 
                                             <!-- LIST OF ALL VARIANTS -->
+                                            <div class="fit-advisor-custom_row center-force " v-if="is_loading">
+                                                    <div class="col-md-12"><div class="spinner-border spinner-position"  role="status">
+                                                            <span class="sr-only">Loading...</span>
+                                                        </div></div>
+                                                  <div class="fit-advisor-custom_row" v-if="is_loading">
+  <div class="col" style="visibility:hidden">col</div>
+  <div class="col" style="visibility:hidden">col</div>
+  
+ 
+</div>
+                                            </div>
+                                           
+                                            
                                             <div class="listfit">
 
                                                 <div id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id" class=" fit-advisor-selected-size" style="opacity: 1;">
                                                     <span id="fsize">
-                                                        <div v-if="is_loading" class="spinner-border" style="width:3rem;height:3rem;margin-top:70px !important;" role="status">
-                                                            <span class="sr-only">Loading...</span>
-                                                        </div>
+                                                       
 
-                                                        <h4 class="result-size">
+                                                        <h4 class="result-size"  >
 
                                                             <span v-if="showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span>
 
@@ -269,7 +280,7 @@
                                                 </div>
                                             </div>
 
-                                            <div class=" dfOagu" style="z-index:30">
+                                            <div class=" dfOagu" style="z-index:30" v-if="!is_loading">
                                                 <span size="10" class=" jjnwUS  hjNiUI arrow-next next" @click="changesize()">
                                                     <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW">
                                                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path>
@@ -299,7 +310,8 @@
 <!-- </div> -->
 </template>
 
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script><script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
 export default {
     props: {
         product: Object,
