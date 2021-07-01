@@ -269,9 +269,9 @@
 
                                                         <h4 class="result-size"  >
 
-                                                            <span v-if="showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span>
+                                                            <!-- <span v-if="!showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span> -->
 
-                                                            <span v-if="!showrecommended " class="variant_title" :data-variant=" row.id ">
+                                                            <span class="variant_title" :data-variant=" row.id ">
                                                                 <span v-if="row.title.toUpperCase().substring(0, 2)=='XL' || row.title.toUpperCase().substring(0, 2)=='XS'">
                                                                     <span class="big-size-margin">{{row.title.toUpperCase()}}</span></span>
                                                                 <span v-if="row.title.toUpperCase()!='XS' && row.title.toUpperCase()!='XL' ">{{row.title.toUpperCase().charAt(0)}}</span></span>
@@ -357,6 +357,7 @@ export default {
             traverseDefault: '',
             actionDefault: '',
             otherSize: '',
+            sizeIndex:0,
 
             image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
             image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png',
@@ -406,8 +407,10 @@ export default {
             }
 
         },
-        setSlides: function () {
-            $('div.fit-advisor-selected-size:gt(0)').hide(); //Hide all but the first one
+        setSlides: function (sizeposition) {
+            
+            $('div.fit-advisor-selected-size:gt('+sizeposition+')').hide();
+            $('div.fit-advisor-selected-size:lt('+sizeposition+')').hide(); //Hide all but the first one
 
             this.$allSlides = $('div.fit-advisor-selected-size'),
                 this.traverseDefault = "first", //set the defaults
@@ -416,13 +419,31 @@ export default {
         getProductDetails: function () {
             this.is_loading = true;
             var a = '';
+            if(localStorage.getItem("sizeindex"))
+            {
+                this.setSlides(localStorage.getItem("sizeindex"));
 
-            this.setSlides();
+            }
+
+            
+
             axios.post(this.$appUrl + '/api/size-recommend/', this.form)
                 .then((res) => {
 
                     this.is_loading = false;
+                    this.product.variants.forEach((el, index) => {
+                        
+                        
+  if (el.title.toUpperCase().charAt(0) == res.data.toUpperCase().charAt(0) )
+  { 
+      this.sizeIndex = index
+      localStorage.setItem('sizeindex',index)
+      localStorage.getItem('sizeindex')
+      
+      this.setSlides(this.sizeIndex);
 
+  }
+                    })
                     if (((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs'))) {
                         this.recommended_size = res.data.toUpperCase().substr(0, 2)
                         a = this.recommended_size;
@@ -652,6 +673,7 @@ export default {
 
         showTab: function (n) {
 
+               
             if (localStorage.getItem('recommended_size') != null) {
                 n = 4;
 
@@ -727,11 +749,17 @@ export default {
             var x = document.getElementsByClassName("tab");
 
             x[n].style.display = "block";
+            
+            
+            
+            
             //... and fix the Previous/Next buttons:
             if (n == 0) {
                  $('#closeApp').removeClass('mt-n6')
+                  $('.fit-advisor-selected-product-grid').css('display', 'none');
                 $('#closeApp').addClass('mtf-n6')
                 document.getElementById("prevBtn").style.display = "none";
+               //  document.getElementById("nextBtn").style.display = "inline";
                 document.getElementById("steps-mark").style.visibility = "hidden";
                 this.firstTab = false;
                 this.onfirstTab = false;
@@ -768,11 +796,7 @@ export default {
                 //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
 
                 this.getProductDetails();
-            } else {
-
-                document.getElementById("nextBtn").style.display = "inline";
-
-            }
+            } 
             if ((n >= 1) && (n < 4)) {
                 document.getElementById("nextBtn").style.display = "none";
 
@@ -824,7 +848,7 @@ export default {
             //return false;
             //}
             // Otherwise, display the correct tab:
-
+           
             this.showTab(this.currentTab);
 
         },
@@ -978,7 +1002,8 @@ export default {
         },
         restart: function () {
 
-            this.changesizetorecommended()
+           // this.changesizetorecommended()
+            
             this.form.heightfoot = '';
             this.form.heightinch = '';
             this.form.weight = '';
@@ -990,12 +1015,15 @@ export default {
 
                 this.currentTab = 0;
             this.showContinueBtn = true,
-
-                $('.fit-advisor-selected-product-grid').css('display', 'none');
+ 
+//                $('.fit-advisor-selected-product-grid').css('display', 'none');
                 $("#steps-mark").css('visibility', 'hidden');
             this.dev_reset();
+            
+             
             this.showTab(this.currentTab);
-            this.nextPrev(-4)
+            this.nextPrev(0)
+           
 
         },
         nextprevslide: function () {
@@ -1124,8 +1152,11 @@ export default {
 
         if (localStorage.getItem('recommended_size') != null) {
             var n = 4;
+            
             this.showTab(n);
         } else {
+            
+
             this.showTab(this.currentTab);
         }
 
