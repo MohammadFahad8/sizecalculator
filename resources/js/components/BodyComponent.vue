@@ -261,13 +261,13 @@
                                             </div>
                                            
                                             
-                                            <div class="listfit">
+                                            <div class="listfit" >
 
-                                                <div id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id" class=" fit-advisor-selected-size" style="opacity: 1;">
+                                                <div  id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id" class=" fit-advisor-selected-size" style="opacity: 1;">
                                                     <span id="fsize">
                                                        
 
-                                                        <h4 class="result-size"  >
+                                                        <h4 class="result-size" v-if="showSelectedSizeSlider"  >
 
                                                             <!-- <span v-if="!showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span> -->
 
@@ -358,6 +358,7 @@ export default {
             actionDefault: '',
             otherSize: '',
             sizeIndex:0,
+            showSelectedSizeSlider:false,
 
             image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
             image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png',
@@ -416,34 +417,42 @@ export default {
                 this.traverseDefault = "first", //set the defaults
                 this.actionDefault = "next";
         },
-        getProductDetails: function () {
-            this.is_loading = true;
-            var a = '';
-            if(localStorage.getItem("sizeindex"))
-            {
-                this.setSlides(localStorage.getItem("sizeindex"));
-
-            }
-
+        setSelectedSizeFromList:function(size){
             
-
-            axios.post(this.$appUrl + '/api/size-recommend/', this.form)
-                .then((res) => {
-
-                    this.is_loading = false;
-                    this.product.variants.forEach((el, index) => {
+            
+               this.product.variants.forEach((el, index) => {
                         
                         
-  if (el.title.toUpperCase().charAt(0) == res.data.toUpperCase().charAt(0) )
+  if (el.title.toUpperCase().charAt(0) == size.charAt(0) )
   { 
       this.sizeIndex = index
-      localStorage.setItem('sizeindex',index)
-      localStorage.getItem('sizeindex')
+      localStorage.setItem('sizeindex',this.sizeIndex)
+      
       
       this.setSlides(this.sizeIndex);
 
   }
                     })
+                        
+                    
+        },
+        getProductDetails: function () {
+            this.is_loading = true;
+            var a = '';
+            if(localStorage.getItem("sizeindex")!=null)
+            {
+                this.setSlides(localStorage.getItem("sizeindex"));
+
+            }
+
+            this.showSelectedSizeSlider = false;
+
+            axios.post(this.$appUrl + '/api/size-recommend/', this.form)
+                .then((res) => {
+
+                    this.is_loading = false;
+                    this.showSelectedSizeSlider = true;
+                  this.setSelectedSizeFromList(res.data.toUpperCase())
                     if (((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs'))) {
                         this.recommended_size = res.data.toUpperCase().substr(0, 2)
                         a = this.recommended_size;

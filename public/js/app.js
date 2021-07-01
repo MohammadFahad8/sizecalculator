@@ -2202,6 +2202,7 @@ __webpack_require__.r(__webpack_exports__);
       actionDefault: '',
       otherSize: '',
       sizeIndex: 0,
+      showSelectedSizeSlider: false,
       image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
       image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png'
     };
@@ -2247,49 +2248,55 @@ __webpack_require__.r(__webpack_exports__);
       this.$allSlides = $('div.fit-advisor-selected-size'), this.traverseDefault = "first", //set the defaults
       this.actionDefault = "next";
     },
-    getProductDetails: function getProductDetails() {
+    setSelectedSizeFromList: function setSelectedSizeFromList(size) {
       var _this2 = this;
+
+      this.product.variants.forEach(function (el, index) {
+        if (el.title.toUpperCase().charAt(0) == size.charAt(0)) {
+          _this2.sizeIndex = index;
+          localStorage.setItem('sizeindex', _this2.sizeIndex);
+
+          _this2.setSlides(_this2.sizeIndex);
+        }
+      });
+    },
+    getProductDetails: function getProductDetails() {
+      var _this3 = this;
 
       this.is_loading = true;
       var a = '';
 
-      if (localStorage.getItem("sizeindex")) {
+      if (localStorage.getItem("sizeindex") != null) {
         this.setSlides(localStorage.getItem("sizeindex"));
       }
 
+      this.showSelectedSizeSlider = false;
       axios.post(this.$appUrl + '/api/size-recommend/', this.form).then(function (res) {
-        _this2.is_loading = false;
+        _this3.is_loading = false;
+        _this3.showSelectedSizeSlider = true;
 
-        _this2.product.variants.forEach(function (el, index) {
-          if (el.title.toUpperCase().charAt(0) == res.data.toUpperCase().charAt(0)) {
-            _this2.sizeIndex = index;
-            localStorage.setItem('sizeindex', index);
-            localStorage.getItem('sizeindex');
-
-            _this2.setSlides(_this2.sizeIndex);
-          }
-        });
+        _this3.setSelectedSizeFromList(res.data.toUpperCase());
 
         if (res.data == 'XL' || res.data == 'xl' || res.data == 'XS' || res.data == 'xs') {
-          _this2.recommended_size = res.data.toUpperCase().substr(0, 2);
-          a = _this2.recommended_size;
+          _this3.recommended_size = res.data.toUpperCase().substr(0, 2);
+          a = _this3.recommended_size;
           $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
           $('.dfOagu').addClass('dfOagu-second');
 
-          if (_this2.showContinueBtn == true) {
-            _this2.showContinueBtn = false;
+          if (_this3.showContinueBtn == true) {
+            _this3.showContinueBtn = false;
           }
         } else {
-          _this2.recommended_size = res.data.toUpperCase().charAt(0);
-          a = _this2.recommended_size;
+          _this3.recommended_size = res.data.toUpperCase().charAt(0);
+          a = _this3.recommended_size;
 
-          if (_this2.showContinueBtn == true) {
-            _this2.showContinueBtn = false;
+          if (_this3.showContinueBtn == true) {
+            _this3.showContinueBtn = false;
           }
         }
 
-        localStorage.setItem('recommended_size', _this2.recommended_size);
-        _this2.finalsize = localStorage.getItem('recommended_size');
+        localStorage.setItem('recommended_size', _this3.recommended_size);
+        _this3.finalsize = localStorage.getItem('recommended_size');
       });
     },
     addToCart: function addToCart() {
@@ -43653,74 +43660,83 @@ var render = function() {
                                                         attrs: { id: "fsize" }
                                                       },
                                                       [
-                                                        _c(
-                                                          "h4",
-                                                          {
-                                                            staticClass:
-                                                              "result-size"
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "span",
+                                                        _vm.showSelectedSizeSlider
+                                                          ? _c(
+                                                              "h4",
                                                               {
                                                                 staticClass:
-                                                                  "variant_title",
-                                                                attrs: {
-                                                                  "data-variant":
-                                                                    row.id
-                                                                }
+                                                                  "result-size"
                                                               },
                                                               [
-                                                                row.title
-                                                                  .toUpperCase()
-                                                                  .substring(
-                                                                    0,
-                                                                    2
-                                                                  ) == "XL" ||
-                                                                row.title
-                                                                  .toUpperCase()
-                                                                  .substring(
-                                                                    0,
-                                                                    2
-                                                                  ) == "XS"
-                                                                  ? _c("span", [
-                                                                      _c(
-                                                                        "span",
-                                                                        {
-                                                                          staticClass:
-                                                                            "big-size-margin"
-                                                                        },
-                                                                        [
-                                                                          _vm._v(
-                                                                            _vm._s(
-                                                                              row.title.toUpperCase()
+                                                                _c(
+                                                                  "span",
+                                                                  {
+                                                                    staticClass:
+                                                                      "variant_title",
+                                                                    attrs: {
+                                                                      "data-variant":
+                                                                        row.id
+                                                                    }
+                                                                  },
+                                                                  [
+                                                                    row.title
+                                                                      .toUpperCase()
+                                                                      .substring(
+                                                                        0,
+                                                                        2
+                                                                      ) ==
+                                                                      "XL" ||
+                                                                    row.title
+                                                                      .toUpperCase()
+                                                                      .substring(
+                                                                        0,
+                                                                        2
+                                                                      ) == "XS"
+                                                                      ? _c(
+                                                                          "span",
+                                                                          [
+                                                                            _c(
+                                                                              "span",
+                                                                              {
+                                                                                staticClass:
+                                                                                  "big-size-margin"
+                                                                              },
+                                                                              [
+                                                                                _vm._v(
+                                                                                  _vm._s(
+                                                                                    row.title.toUpperCase()
+                                                                                  )
+                                                                                )
+                                                                              ]
                                                                             )
-                                                                          )
-                                                                        ]
-                                                                      )
-                                                                    ])
-                                                                  : _vm._e(),
-                                                                _vm._v(" "),
-                                                                row.title.toUpperCase() !=
-                                                                  "XS" &&
-                                                                row.title.toUpperCase() !=
-                                                                  "XL"
-                                                                  ? _c("span", [
-                                                                      _vm._v(
-                                                                        _vm._s(
-                                                                          row.title
-                                                                            .toUpperCase()
-                                                                            .charAt(
-                                                                              0
-                                                                            )
+                                                                          ]
                                                                         )
-                                                                      )
-                                                                    ])
-                                                                  : _vm._e()
+                                                                      : _vm._e(),
+                                                                    _vm._v(" "),
+                                                                    row.title.toUpperCase() !=
+                                                                      "XS" &&
+                                                                    row.title.toUpperCase() !=
+                                                                      "XL"
+                                                                      ? _c(
+                                                                          "span",
+                                                                          [
+                                                                            _vm._v(
+                                                                              _vm._s(
+                                                                                row.title
+                                                                                  .toUpperCase()
+                                                                                  .charAt(
+                                                                                    0
+                                                                                  )
+                                                                              )
+                                                                            )
+                                                                          ]
+                                                                        )
+                                                                      : _vm._e()
+                                                                  ]
+                                                                )
                                                               ]
                                                             )
-                                                          ]
-                                                        )
+                                                          : _vm._e()
                                                       ]
                                                     )
                                                   ]
