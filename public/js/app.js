@@ -2323,7 +2323,7 @@ __webpack_require__.r(__webpack_exports__);
     setSize: function setSize(id) {
       this.variantselected = id;
     },
-    changesize: function changesize() {
+    changesize: function changesize(trigger) {
       if (this.showrecommended == true) {
         this.showrecommended = false; //    orignial           $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
         //original $('.dfOagu').removeClass('dfOagu-second');
@@ -2338,7 +2338,7 @@ __webpack_require__.r(__webpack_exports__);
       var traverse = this.traverseDefault,
           action = this.actionDefault;
 
-      if ($(this).is('.prev')) {
+      if (trigger == 0) {
         //if action is prev
         traverse = "last"; //set traverse to last in case nothing is available
 
@@ -2936,7 +2936,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 
 
-Vue.prototype.$appUrl = 'https://f0f463b4229f.ngrok.io';
+Vue.prototype.$appUrl = 'https://bf21c2cb718f.ngrok.io';
 Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__.default);
 /**
  * The following block of code may be used to automatically register your
@@ -43510,13 +43510,15 @@ var render = function() {
                                                     "span",
                                                     {
                                                       staticClass:
-                                                        " jjnwUS  selected-product-arrow-left-pointer next",
+                                                        " jjnwUS  selected-product-arrow-left-pointer prev",
                                                       attrs: { size: "10" },
                                                       on: {
                                                         click: function(
                                                           $event
                                                         ) {
-                                                          return _vm.changesize()
+                                                          return _vm.changesize(
+                                                            0
+                                                          )
                                                         }
                                                       }
                                                     },
@@ -43758,7 +43760,9 @@ var render = function() {
                                                         click: function(
                                                           $event
                                                         ) {
-                                                          return _vm.changesize()
+                                                          return _vm.changesize(
+                                                            1
+                                                          )
                                                         }
                                                       }
                                                     },

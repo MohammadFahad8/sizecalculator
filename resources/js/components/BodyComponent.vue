@@ -240,7 +240,7 @@
 
                                         <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box">
                                             <div class=" selected-product-arrow-left" v-if="!is_loading" >
-                                                <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer next" @click="changesize();">
+                                                <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer prev" @click="changesize(0);">
                                                     <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW">
                                                         <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path>
                                                     </svg>
@@ -281,7 +281,7 @@
                                             </div>
 
                                             <div class=" dfOagu" style="z-index:30" v-if="!is_loading">
-                                                <span size="10" class=" jjnwUS  hjNiUI arrow-next next" @click="changesize()">
+                                                <span size="10" class=" jjnwUS  hjNiUI arrow-next next" @click="changesize(1)">
                                                     <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW">
                                                         <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path>
                                                     </svg></span></div>
@@ -509,7 +509,7 @@ export default {
             this.variantselected = id
 
         },
-        changesize: function () {
+        changesize: function (trigger) {
             if (this.showrecommended == true) {
                 this.showrecommended = false;
                 //    orignial           $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
@@ -528,7 +528,7 @@ export default {
             var traverse = this.traverseDefault,
                 action = this.actionDefault;
 
-            if ($(this).is('.prev')) { //if action is prev
+            if (trigger == 0) { //if action is prev
                 traverse = "last"; //set traverse to last in case nothing is available
                 action = "prev"; //set action to prev
             }
