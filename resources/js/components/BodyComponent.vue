@@ -261,7 +261,7 @@ display: inline-block;
                                                     </div>
                                                 </div>
 
-                                                <div class="listfit">
+                                                <div class="listfit ml-5">
 
                                                     <div id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id" class=" fit-advisor-selected-size" style="opacity: 1;">
                                                         <span id="fsize">
@@ -558,6 +558,7 @@ export default {
                 //original $('.dfOagu').removeClass('dfOagu-second');
                // $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
                 $('.dfOagu').addClass('dfOagu-second');
+                $('.listfit').removeClass('ml-5');
 
             }
 
@@ -1074,6 +1075,7 @@ export default {
 
                         $('.fit-advisor-selected-product-grid > div').removeClass('mr-3')
                         $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
+                        $('.listfit').removeClass('ml-5')
 
                     } else if (ww == 411) {
 
@@ -1086,6 +1088,7 @@ export default {
                         $('.dfOagu').addClass('dfOagu-411w')
 
                         $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
+                        $('.listfit').removeClass('ml-5')
                         $('.listfit').addClass('ml-4')
 
                     } else if ((ww >= 412 && ww <= 480) || (ww >= 321 && ww < 411)) {
@@ -1099,10 +1102,12 @@ export default {
                         $('.fit-advisor-selected-product-grid > div').addClass('mr-3')
                         $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
                         $('.fit-advisor-sizes-slider').addClass('ml-4')
-                        $('.listfit').addClass('ml-4')
+                       $('.listfit').removeClass('ml-5')
+                       $('.listfit').addClass('ml-4')
                         $('.fit-advisor-fit-grid').removeClass('float-left')
                         $('.fit-advisor-fit-grid').addClass('ml-1')
                         $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
+                        
                      
                         if (ww == 360) {
 
@@ -1113,7 +1118,8 @@ export default {
                             $('.fit-advisor-selected-product-grid > div').removeClass('mr-3')
                             $('.fit-advisor-fit-grid').addClass('fit-advisor-fit-grid-s5');
                             $('.fit-advisor-selected-size-arrow-box').addClass('ml-n3')
-                            $('.listfit').addClass('ml-4')
+                          $('.listfit').removeClass('ml-5')
+                          $('.listfit').addClass('ml-4')
                             $('.dfOagu').css('margin-top','0px !important')
 
                         }
@@ -1121,6 +1127,7 @@ export default {
                     else if(ww >= 641 && ww <=960)
                     {
                         $('.fit-advisor-selected-size-container').removeClass('bigsize')
+                        $('.listfit').removeClass('ml-5')
                         $('.listfit').addClass('ml-n2')
                         $('.m-result').removeClass('float-right')
                     }

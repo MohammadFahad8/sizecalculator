@@ -32,12 +32,12 @@
 
 .dfOagu {
     margin-left: 50px;
-    margin-top: -5px;
+    margin-top: 0px;
 }
 
 .dfOagu-second {
     margin-left: 10px;
-    margin-top: -5px !important;
+    margin-top: 0px ;
 }
 
 .result-size {
@@ -373,9 +373,7 @@ body {
     margin-top: 135px !important;
 }
 
-h1 {
-    text-align: center;
-}
+
 
 input {
     padding: 10px;
@@ -629,12 +627,12 @@ body *::after,
 body *::before {
     box-sizing: border-box;
 }
-
+/* 
 h1 {
     font-size: 2rem;
     text-align: center;
     margin: 0 0 2em;
-}
+} */
 
 .container {
     position: relative;
@@ -1344,7 +1342,7 @@ input:focus {
     position: relative;
     z-index: 40;
     padding: 5px 0px;
-    grid-template-columns: 1fr 160px 1fr;
+    grid-template-columns: 1fr 198px 1fr;
     justify-self: flex-end;
 }
 
