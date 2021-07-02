@@ -2204,6 +2204,7 @@ __webpack_require__.r(__webpack_exports__);
       sizeIndex: 0,
       showSelectedSizeSlider: false,
       restarted: false,
+      sizecheck: false,
       image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
       image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png'
     };
@@ -2243,26 +2244,30 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     setSlides: function setSlides(sizeposition) {
-      if (this.restarted == true) {
-        $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
-        $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
-      } else {
-        $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
-        $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide(); //Hide all but the first one
-      }
+      $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
+      $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide(); //Hide all but the Predicted Size
 
       this.$allSlides = $('div.fit-advisor-selected-size'), this.traverseDefault = "first", //set the defaults
       this.actionDefault = "next";
     },
-    setSelectedSizeFromList: function setSelectedSizeFromList(size) {
+    setSelectedSizeFromList: function setSelectedSizeFromList(size, sizecheck) {
       var _this2 = this;
 
       this.product.variants.forEach(function (el, index) {
-        if (el.title.toUpperCase().charAt(0) == size.charAt(0)) {
-          _this2.sizeIndex = index;
-          localStorage.setItem('sizeindex', _this2.sizeIndex);
+        if (sizecheck == true) {
+          if (el.title.toUpperCase() == size) {
+            _this2.sizeIndex = index;
+            localStorage.setItem('sizeindex', _this2.sizeIndex);
 
-          _this2.setSlides(_this2.sizeIndex);
+            _this2.setSlides(_this2.sizeIndex);
+          }
+        } else if (sizecheck == false) {
+          if (el.title.toUpperCase().charAt(0) == size) {
+            _this2.sizeIndex = index;
+            localStorage.setItem('sizeindex', _this2.sizeIndex);
+
+            _this2.setSlides(_this2.sizeIndex);
+          }
         }
       });
     },
@@ -2283,14 +2288,12 @@ __webpack_require__.r(__webpack_exports__);
         _this3.is_loading = false;
         _this3.showSelectedSizeSlider = true;
 
-        if (_this3.restarted == true) {
-          _this3.setSelectedSizeFromList(res.data.toUpperCase());
-        }
-
-        _this3.setSelectedSizeFromList(res.data.toUpperCase());
-
         if (res.data == 'XL' || res.data == 'xl' || res.data == 'XS' || res.data == 'xs') {
           _this3.recommended_size = res.data.toUpperCase().substr(0, 2);
+          _this3.sizecheck = true;
+
+          _this3.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this3.sizecheck);
+
           a = _this3.recommended_size;
           $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
           $('.dfOagu').addClass('dfOagu-second');
@@ -2300,6 +2303,10 @@ __webpack_require__.r(__webpack_exports__);
           }
         } else {
           _this3.recommended_size = res.data.toUpperCase().charAt(0);
+          _this3.sizecheck = false;
+
+          _this3.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this3.sizecheck);
+
           a = _this3.recommended_size;
 
           if (_this3.showContinueBtn == true) {

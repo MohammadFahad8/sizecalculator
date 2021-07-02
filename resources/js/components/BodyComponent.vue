@@ -360,6 +360,7 @@ export default {
             sizeIndex:0,
             showSelectedSizeSlider:false,
             restarted:false,
+            sizecheck: false,
 
             image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
             image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png',
@@ -411,32 +412,26 @@ export default {
         },
         setSlides: function (sizeposition) {
             
-            if(this.restarted == true)
-            {
-                    
-                   
-                   $('div.fit-advisor-selected-size:gt('+sizeposition+')').hide();
-                   $('div.fit-advisor-selected-size:lt('+sizeposition+')').hide();
-                   
             
-
-            }else{
+                    
+                           
             $('div.fit-advisor-selected-size:gt('+sizeposition+')').hide();
-            $('div.fit-advisor-selected-size:lt('+sizeposition+')').hide(); //Hide all but the first one
-            }
+            $('div.fit-advisor-selected-size:lt('+sizeposition+')').hide();
+             //Hide all but the Predicted Size
+            
            
 
             this.$allSlides = $('div.fit-advisor-selected-size'),
                 this.traverseDefault = "first", //set the defaults
                 this.actionDefault = "next";    
         },
-        setSelectedSizeFromList:function(size){
+        setSelectedSizeFromList:function(size,sizecheck){
+            
             
             
                this.product.variants.forEach((el, index) => {
-                        
-                        
-  if (el.title.toUpperCase().charAt(0) == size.charAt(0) )
+                       if(sizecheck == true){
+            if (el.title.toUpperCase() == size)
   { 
       this.sizeIndex = index
       localStorage.setItem('sizeindex',this.sizeIndex)
@@ -444,7 +439,17 @@ export default {
       
       this.setSlides(this.sizeIndex);
 
-  }
+  }}else if(sizecheck == false){   if (el.title.toUpperCase().charAt(0) == size)
+  { 
+      this.sizeIndex = index
+      localStorage.setItem('sizeindex',this.sizeIndex)
+      
+      
+      this.setSlides(this.sizeIndex);
+
+  }}
+                        
+ 
                     })
                         
                     
@@ -471,10 +476,12 @@ export default {
                         
                     this.is_loading = false;
                     this.showSelectedSizeSlider = true;
-                    if(this.restarted == true){this.setSelectedSizeFromList(res.data.toUpperCase())}
-                  this.setSelectedSizeFromList(res.data.toUpperCase())
+                    
+                  
                     if (((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs'))) {
                         this.recommended_size = res.data.toUpperCase().substr(0, 2)
+                        this.sizecheck = true;
+                        this.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2),this.sizecheck)
                         a = this.recommended_size;
                         $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
                         $('.dfOagu').addClass('dfOagu-second');
@@ -485,6 +492,8 @@ export default {
 
                     } else {
                         this.recommended_size = res.data.toUpperCase().charAt(0)
+                        this.sizecheck = false;
+                        this.setSelectedSizeFromList(res.data.toUpperCase().charAt(0),this.sizecheck)
                         a = this.recommended_size;
                         if (this.showContinueBtn == true) {
                             this.showContinueBtn = false;
