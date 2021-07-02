@@ -32,7 +32,7 @@
 
 .dfOagu {
     margin-left: 50px;
-    margin-top: -5px !important;
+    margin-top: -5px;
 }
 
 .dfOagu-second {
@@ -1439,7 +1439,10 @@ input:focus {
 /*   //responsiveness of modal */
 
 @media (min-width:320px) and (max-width:480px) {
-  
+    .dfOagu{
+        margin-left: 50px;
+         margin-top: 0px  !important  ;
+    }
     .spinner-position{
         width: 2rem !important;
         height: 2rem !important;
@@ -1468,7 +1471,7 @@ input:focus {
         position: relative;
         z-index: 40;
         padding: 5px 0px;
-        grid-template-columns: 1fr 70px 1fr;
+        grid-template-columns: 1fr 128px 1fr;
         justify-self: flex-end;
     }
     .bigsize {
@@ -1728,6 +1731,26 @@ input:focus {
 
 @media (min-width:641px) and (max-width:960px) {
     /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */
+    .fit-advisor-selected-size-arrow-box {
+        position: relative;
+        z-index: 40;
+        padding: 5px 0px;
+        grid-template-columns: 1fr 100px 1fr !important;
+        justify-self: flex-end;
+    }
+    .result-size {
+        width: 100%;
+        font-family: karla;
+        font-weight: 900;
+        font-size: 55px;
+    }
+    .m-result {
+        text-align: center !important;
+        margin-top: 0px;
+        visibility: visible;
+        margin-bottom: -5.5em !important;
+        /* margin-right: 50px; */
+    }
 }
 
 @media (min-width:961px) and (max-width:1024px) {
@@ -2540,7 +2563,7 @@ input:focus {
     }
     .dfOagu {
         margin-left: 25px;
-        margin-top: -5px !important;
+        margin-top: 0px ;
         margin-right: 40px !important;
     }
     .fit-advisor-selected-size-arrow-box {
@@ -3297,3 +3320,7 @@ input:focus {
         height: 3rem;
         margin-left: 44px;
       }
+      .dfOagu-411w {
+        margin-left: 50px;
+        margin-top: 5px;
+    }
