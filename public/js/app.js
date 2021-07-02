@@ -2203,6 +2203,7 @@ __webpack_require__.r(__webpack_exports__);
       otherSize: '',
       sizeIndex: 0,
       showSelectedSizeSlider: false,
+      restarted: false,
       image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
       image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png'
     };
@@ -2242,8 +2243,13 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     setSlides: function setSlides(sizeposition) {
-      $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
-      $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide(); //Hide all but the first one
+      if (this.restarted == true) {
+        $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
+        $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
+      } else {
+        $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
+        $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide(); //Hide all but the first one
+      }
 
       this.$allSlides = $('div.fit-advisor-selected-size'), this.traverseDefault = "first", //set the defaults
       this.actionDefault = "next";
@@ -2266,14 +2272,20 @@ __webpack_require__.r(__webpack_exports__);
       this.is_loading = true;
       var a = '';
 
-      if (localStorage.getItem("sizeindex") != null) {
-        this.setSlides(localStorage.getItem("sizeindex"));
+      if (this.restarted == false) {
+        if (localStorage.getItem("sizeindex") != null) {
+          this.setSlides(localStorage.getItem("sizeindex"));
+        }
       }
 
       this.showSelectedSizeSlider = false;
       axios.post(this.$appUrl + '/api/size-recommend/', this.form).then(function (res) {
         _this3.is_loading = false;
         _this3.showSelectedSizeSlider = true;
+
+        if (_this3.restarted == true) {
+          _this3.setSelectedSizeFromList(res.data.toUpperCase());
+        }
 
         _this3.setSelectedSizeFromList(res.data.toUpperCase());
 
@@ -2749,6 +2761,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     restart: function restart() {
       // this.changesizetorecommended()
+      $('div.fit-advisor-selected-size:gt(' + localStorage.getItem('sizeindex') + ')').show();
+      $('div.fit-advisor-selected-size:lt(' + localStorage.getItem('sizeindex') + ')').show();
+      this.restarted = true;
       this.form.heightfoot = '';
       this.form.heightinch = '';
       this.form.weight = '';
@@ -2959,7 +2974,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 
 
-Vue.prototype.$appUrl = 'https://bf21c2cb718f.ngrok.io';
+Vue.prototype.$appUrl = 'https://b1cd67f7e24d.ngrok.io';
 Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__.default);
 /**
  * The following block of code may be used to automatically register your

@@ -359,6 +359,7 @@ export default {
             otherSize: '',
             sizeIndex:0,
             showSelectedSizeSlider:false,
+            restarted:false,
 
             image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
             image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png',
@@ -410,12 +411,24 @@ export default {
         },
         setSlides: function (sizeposition) {
             
+            if(this.restarted == true)
+            {
+                    
+                   
+                   $('div.fit-advisor-selected-size:gt('+sizeposition+')').hide();
+                   $('div.fit-advisor-selected-size:lt('+sizeposition+')').hide();
+                   
+            
+
+            }else{
             $('div.fit-advisor-selected-size:gt('+sizeposition+')').hide();
             $('div.fit-advisor-selected-size:lt('+sizeposition+')').hide(); //Hide all but the first one
+            }
+           
 
             this.$allSlides = $('div.fit-advisor-selected-size'),
                 this.traverseDefault = "first", //set the defaults
-                this.actionDefault = "next";
+                this.actionDefault = "next";    
         },
         setSelectedSizeFromList:function(size){
             
@@ -439,19 +452,26 @@ export default {
         getProductDetails: function () {
             this.is_loading = true;
             var a = '';
+            if(this.restarted == false){        
+
+            
             if(localStorage.getItem("sizeindex")!=null)
             {
+
+                
                 this.setSlides(localStorage.getItem("sizeindex"));
 
             }
-
+            }
             this.showSelectedSizeSlider = false;
 
             axios.post(this.$appUrl + '/api/size-recommend/', this.form)
                 .then((res) => {
-
+                    
+                        
                     this.is_loading = false;
                     this.showSelectedSizeSlider = true;
+                    if(this.restarted == true){this.setSelectedSizeFromList(res.data.toUpperCase())}
                   this.setSelectedSizeFromList(res.data.toUpperCase())
                     if (((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs'))) {
                         this.recommended_size = res.data.toUpperCase().substr(0, 2)
@@ -1012,7 +1032,10 @@ export default {
         restart: function () {
 
            // this.changesizetorecommended()
+              $('div.fit-advisor-selected-size:gt('+localStorage.getItem('sizeindex')+')').show();
+              $('div.fit-advisor-selected-size:lt('+localStorage.getItem('sizeindex')+')').show();
             
+            this.restarted = true;
             this.form.heightfoot = '';
             this.form.heightinch = '';
             this.form.weight = '';

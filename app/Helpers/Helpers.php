@@ -12,7 +12,7 @@ class Helpers {
   {
       $shop = Auth::user();
       
-      $scripttags = $shop->api()->rest('GET','/admin/api/2021-01/script_tags.json')['body']['container'];
+      $scripttags = $shop->api()->rest('GET','/admin/api/2021-07/script_tags.json')['body']['container'];
       
       
       foreach($scripttags as $row)
@@ -60,7 +60,7 @@ class Helpers {
       "event"=> "onload",
       "src"=>  Config::get('constants.SHOPIFY_URL.SCRIPT_TAG_APP', 'default')
     ]);
-      $products = $shop->api()->rest('POST', '/admin/api/2021-01/script_tags.json',$scripttags)['body'];
+      $products = $shop->api()->rest('POST', '/admin/api/2021-07/script_tags.json',$scripttags)['body'];
       
       
   }
@@ -72,7 +72,7 @@ class Helpers {
       "id"=> $id,
       "src"=>  Config::get('constants.SHOPIFY_URL.SCRIPT_TAG_APP', 'default')
     ]);
-      $products = $shop->api()->rest('PUT', '/admin/api/2021-01/script_tags/'.$id.'.json',$scripttags)['body'];
+      $products = $shop->api()->rest('PUT', '/admin/api/2021-07/script_tags/'.$id.'.json',$scripttags)['body'];
       
       
   }
@@ -80,7 +80,7 @@ class Helpers {
   {
     
     $shop = Auth::user();
-    $theme = $shop->api()->rest('GET','/admin/api/2021-01/themes.json')['body']['container'];
+    $theme = $shop->api()->rest('GET','/admin/api/2021-07/themes.json')['body']['container'];
     return  $theme['themes'][0]['id'];
   }
    function updateAsset()
@@ -95,7 +95,7 @@ class Helpers {
    
     $shop = Auth::user();
     Config::set('constants.SHOPIFY_URL.THEME_ID',$this->getThemeData());
-    $products = $shop->api()->rest('PUT', '/admin/api/2021-01/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',$scripttags)['body'];
+    $products = $shop->api()->rest('PUT', '/admin/api/2021-07/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',$scripttags)['body'];
     
 
 
@@ -115,7 +115,7 @@ $scripttags = array('asset' =>[
 
 $shop = Auth::user();
 Config::set('constants.SHOPIFY_URL.THEME_ID',$this->getThemeData());
-$products = $shop->api()->rest('PUT', '/admin/api/2021-01/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',$scripttags)['body'];
+$products = $shop->api()->rest('PUT', '/admin/api/2021-07/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',$scripttags)['body'];
 
 
 
@@ -129,7 +129,7 @@ $page = session()->get('page');
 unset($page);
 $shop = Auth::user();
 Config::set('constants.SHOPIFY_URL.THEME_ID',$this->getThemeData());
-$productpage = $shop->api()->rest('GET', '/admin/api/2021-01/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',['asset[key]'=>'sections/product-template.liquid'])['body']['container'];
+$productpage = $shop->api()->rest('GET', '/admin/api/2021-07/themes/'.Config::get('constants.SHOPIFY_URL.THEME_ID', 'default').'/assets.json',['asset[key]'=>'sections/product-template.liquid'])['body']['container'];
 session()->put('page',$productpage);
 $page  = session()->get('page');
 

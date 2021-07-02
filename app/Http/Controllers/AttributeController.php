@@ -37,7 +37,7 @@ class AttributeController extends Controller
         if (count(Settings::where('name', '=', Auth::user()->name)->get()) == 0) {
 
             $settings = new Settings();
-            $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-04/shop.json')['body']['container'];
+            $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
             $shop_config = $shop_cfg['shop'];
             $settings->name = $shop_config['domain'];
             $settings->email = $shop_config['email'];
@@ -204,9 +204,9 @@ class AttributeController extends Controller
         $shop = Auth::user();
 
 
-        $productsall = $shop->api()->rest('GET', '/admin/api/2021-04/products.json')['body']['container'];
+        $productsall = $shop->api()->rest('GET', '/admin/api/2021-07/products.json')['body']['container'];
         $prod = $productsall['products'];
-        $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-04/shop.json')['body']['container'];
+        $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
         $shop_config = $shop_cfg['shop'];
 
         foreach ($prod as $row) {
@@ -486,7 +486,7 @@ class AttributeController extends Controller
     public function shopConfiguration()
     {
         $shop = Auth::user();
-        $shop_config = $shop->api()->rest('GET', '/admin/api/2021-04/shop.json')['body']['container'];
+        $shop_config = $shop->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
         dd($shop_config);
     }
 }
