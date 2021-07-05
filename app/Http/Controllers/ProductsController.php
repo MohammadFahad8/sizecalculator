@@ -39,7 +39,7 @@ class ProductsController extends Controller
         ]);
         
         //174544322744
-          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/174544322744.json')['body'];
+          $products = $shop->api()->rest('DELETE', '/admin/api/2021-01/script_tags/176903618715.json')['body'];
           dd($products);
         
         // $curl = curl_init();

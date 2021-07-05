@@ -10,7 +10,7 @@ window.Vue = require('vue').default;
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 
-Vue.prototype.$appUrl = 'https://b1cd67f7e24d.ngrok.io';
+Vue.prototype.$appUrl = 'https://7943cbda1de2.ngrok.io';
 Vue.use(VueSweetalert2)
 
 /**

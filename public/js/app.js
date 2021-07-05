@@ -2233,7 +2233,13 @@ __webpack_require__.r(__webpack_exports__);
             _this.dev_reset();
           }
 
-          _this.product.options == "Size" ? _this.showBodyFitApp = true : _this.showBodyFitApp = false;
+          _this.product.options.forEach(function (el, index) {
+            if (el.toLowerCase() == "size") {
+              _this.showBodyFitApp = true;
+            } else {
+              _this.showBodyFitApp = false;
+            }
+          });
         } else {
           if (res.data.clearLog == true) {
             _this.dev_reset();
@@ -2274,66 +2280,6 @@ __webpack_require__.r(__webpack_exports__);
 
             if (size == "XS") {
               for (var i = 0; i <= _this2.size_descriptions.length; i++) {
-                if (i == 4) {
-                  _this2.size_descriptions.splice(i, 1, {
-                    title: "Recommended"
-                  });
-                }
-              }
-
-              _this2.size_descriptions.splice(0, 1, {
-                title: "Slightly Relaxed"
-              });
-
-              _this2.size_descriptions.splice(1, 1, {
-                title: "Relaxed"
-              });
-
-              _this2.size_descriptions.splice(2, 1, {
-                title: "Very Relaxed"
-              });
-
-              _this2.size_descriptions.splice(3, 1, {
-                title: "Very Relaxed"
-              });
-            } else if (size == "XL") {
-              for (var i = 0; i <= _this2.size_descriptions.length; i++) {
-                if (i == 3) {
-                  _this2.size_descriptions.splice(i, 1, {
-                    title: "Recommended"
-                  });
-                }
-              }
-
-              _this2.size_descriptions.splice(0, 1, {
-                title: " Very Snugged"
-              });
-
-              _this2.size_descriptions.splice(1, 1, {
-                title: " Snug"
-              });
-
-              _this2.size_descriptions.splice(2, 1, {
-                title: "Slightly Snug"
-              });
-
-              _this2.size_descriptions.splice(4, 1, {
-                title: "Very Snugged"
-              });
-            }
-
-            localStorage.setItem('sizeindex', _this2.sizeIndex);
-
-            _this2.setSlides(_this2.sizeIndex);
-          }
-        } else if (sizecheck == false) {
-          if (el.title.toUpperCase().charAt(0) == size) {
-            _this2.sizeIndex = index;
-
-            _this2.array_move(_this2.size_descriptions, 2, index);
-
-            if (size == "S") {
-              for (var i = 0; i <= _this2.size_descriptions.length; i++) {
                 if (i == 0) {
                   _this2.size_descriptions.splice(i, 1, {
                     title: "Recommended"
@@ -2356,11 +2302,46 @@ __webpack_require__.r(__webpack_exports__);
               _this2.size_descriptions.splice(4, 1, {
                 title: "Very Relaxed"
               });
-            } else if (size == 'M') {
-              console.log(_this2.size_descriptions);
+            } else if (size == "XL") {
+              for (var i = 0; i <= _this2.size_descriptions.length; i++) {
+                if (i == 4) {
+                  _this2.size_descriptions.splice(i, 1, {
+                    title: "Recommended"
+                  });
+                }
+              }
 
+              _this2.size_descriptions.splice(0, 1, {
+                title: " Very Snugged"
+              });
+
+              _this2.size_descriptions.splice(1, 1, {
+                title: "Very Snug"
+              });
+
+              _this2.size_descriptions.splice(2, 1, {
+                title: "Snug"
+              });
+
+              _this2.size_descriptions.splice(3, 1, {
+                title: "Slightly Snugged"
+              });
+            }
+
+            localStorage.setItem('sizeindex', _this2.sizeIndex);
+
+            _this2.setSlides(_this2.sizeIndex);
+          }
+        } else if (sizecheck == false) {
+          if (el.title.toUpperCase().charAt(0) == size) {
+            _this2.sizeIndex = index;
+
+            _this2.array_move(_this2.size_descriptions, 2, index);
+
+            if (size == "S") {
               for (var i = 0; i <= _this2.size_descriptions.length; i++) {
                 if (i == 1) {
+                  //
                   _this2.size_descriptions.splice(i, 1, {
                     title: "Recommended"
                   });
@@ -2380,11 +2361,35 @@ __webpack_require__.r(__webpack_exports__);
               });
 
               _this2.size_descriptions.splice(4, 1, {
-                title: "Very Snugged"
+                title: "Very Relaxed"
+              });
+            } else if (size == 'M') {
+              for (var i = 0; i <= _this2.size_descriptions.length; i++) {
+                if (i == 2) {
+                  _this2.size_descriptions.splice(i, 1, {
+                    title: "Recommended"
+                  });
+                }
+              }
+
+              _this2.size_descriptions.splice(0, 1, {
+                title: "Snug"
+              });
+
+              _this2.size_descriptions.splice(1, 1, {
+                title: "Slightly Snugged"
+              });
+
+              _this2.size_descriptions.splice(3, 1, {
+                title: " Relaxed"
+              });
+
+              _this2.size_descriptions.splice(4, 1, {
+                title: "Very Relaxed"
               });
             } else if (size == 'L') {
               for (var i = 0; i <= _this2.size_descriptions.length; i++) {
-                if (i == 2) {
+                if (i == 3) {
                   _this2.size_descriptions.splice(i, 1, {
                     title: "Recommended"
                   });
@@ -2399,12 +2404,12 @@ __webpack_require__.r(__webpack_exports__);
                 title: "Snug"
               });
 
-              _this2.size_descriptions.splice(3, 1, {
-                title: "Relaxed"
+              _this2.size_descriptions.splice(2, 1, {
+                title: "Slightly Snugged"
               });
 
               _this2.size_descriptions.splice(4, 1, {
-                title: "Very Snugged"
+                title: "Relaxed"
               });
             }
 
@@ -3048,6 +3053,7 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
+    console.log(this.product.options);
     this.responsiveness();
     this.getLocalData();
     this.showBodyFit(); //this.addOrUpdateProduct();
@@ -3169,7 +3175,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js").default;
 
 
-Vue.prototype.$appUrl = 'https://b1cd67f7e24d.ngrok.io';
+Vue.prototype.$appUrl = 'https://7943cbda1de2.ngrok.io';
 Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_0__.default);
 /**
  * The following block of code may be used to automatically register your

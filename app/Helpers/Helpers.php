@@ -17,7 +17,9 @@ class Helpers {
       
       foreach($scripttags as $row)
       {
-          if(!$row)
+        
+
+          if($row == null)
           {
             
               $this->addScriptTag();
@@ -27,10 +29,10 @@ class Helpers {
               
           }else {
             foreach($row as $r)
-            
+            {
            
-            
             $this->updateFrontScriptTag($r['id']);
+            }
             echo '<script>console.log(" !! Welcome Body Fit Application !! ")</script>';
           
             
@@ -67,6 +69,7 @@ class Helpers {
    function updateFrontScriptTag($id)
   {
       $shop = Auth::user();
+      
     
     $scripttags = array("script_tag"=> [
       "id"=> $id,

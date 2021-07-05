@@ -398,8 +398,17 @@ export default {
                     if (res.data.clearLog == true) {
                         this.dev_reset();
                     }
-                    
-                    (this.product.options == "Size")?this.showBodyFitApp = true:this.showBodyFitApp = false;
+                    this.product.options.forEach((el,index)=>{
+                        
+                          if(el.toLowerCase()== "size")
+                          { 
+                               this.showBodyFitApp = true;
+                          }else{
+                                this.showBodyFitApp = false;
+                          }
+
+                    });
+                  
                 } else {
                     if (res.data.clearLog == true) {
                         this.dev_reset();
@@ -453,7 +462,7 @@ export default {
                             
                             for (var i = 0; i <=this.size_descriptions.length; i++) {
                                         
-                                          if(i == 4)
+                                          if(i == 0)
                                         {
                                             this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
                                             
@@ -462,17 +471,17 @@ export default {
                                         }
                                         
                                     }    
-                                        this.size_descriptions.splice(0,1 ,{title:"Slightly Relaxed"});                                       
-                                        this.size_descriptions.splice(1,1 ,{title:"Relaxed"});                                       
-                                        this.size_descriptions.splice(2,1 ,{title:"Very Relaxed"});                                       
+                                        this.size_descriptions.splice(1,1 ,{title:"Slightly Relaxed"});                                       
+                                        this.size_descriptions.splice(2,1 ,{title:"Relaxed"});                                       
                                         this.size_descriptions.splice(3,1 ,{title:"Very Relaxed"});                                       
+                                        this.size_descriptions.splice(4,1 ,{title:"Very Relaxed"});                                       
 
                         }
                         else if(size == "XL")
                         {
                                  for (var i = 0; i <=this.size_descriptions.length; i++) {
                                         
-                                         if(i == 3)
+                                         if(i == 4)
                                         {
                                             this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
                                             
@@ -481,9 +490,9 @@ export default {
                                         
                                     }    
                                          this.size_descriptions.splice(0,1 ,{title:" Very Snugged"});                                       
-                                        this.size_descriptions.splice(1,1 ,{title:" Snug"});                                       
-                                        this.size_descriptions.splice(2,1 ,{title:"Slightly Snug"});                                       
-                                        this.size_descriptions.splice(4,1 ,{title:"Very Snugged"});     
+                                        this.size_descriptions.splice(1,1 ,{title:"Very Snug"});                                       
+                                        this.size_descriptions.splice(2,1 ,{title:"Snug"});                                       
+                                        this.size_descriptions.splice(3,1 ,{title:"Slightly Snugged"});     
 
 
                         }
@@ -493,6 +502,8 @@ export default {
 
                     }
                 } else if (sizecheck == false) {
+                    
+
                     if (el.title.toUpperCase().charAt(0) == size) {
                         this.sizeIndex = index
                     this.array_move(this.size_descriptions,2,index)
@@ -503,14 +514,19 @@ export default {
                             
                             for (var i = 0; i <=this.size_descriptions.length; i++) {
                                         
-                                            if(i == 0)
+                                        
+                                            if(i == 1)
                                         {
-                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
                                             
+                                           //
+                                           
+                                           this.size_descriptions.splice(i,1 ,{title:"Recommended"});
 
                                         }
+                                        
+                                        
                                     }    
-                                        this.size_descriptions.splice(1,1 ,{title:"Slightly Relaxed"});                                       
+                                        this.size_descriptions.splice(0,1 ,{title:"Snug"});                                       
                                         this.size_descriptions.splice(2,1 ,{title:"Relaxed"});
                                          this.size_descriptions.splice(3,1 ,{title:"Very Relaxed"});                                       
                                         this.size_descriptions.splice(4,1 ,{title:"Very Relaxed"});                                       
@@ -518,10 +534,11 @@ export default {
                         }
                         else if(size == 'M')
                         {
-                             console.log(this.size_descriptions)
+                             
                             for (var i = 0; i <=this.size_descriptions.length; i++) {
-                                        if(i == 1)
+                                        if(i == 2)
                                         {
+                                            
                                             this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
                                             
 
@@ -530,15 +547,15 @@ export default {
                                         
                                     }    
                                         this.size_descriptions.splice(0,1 ,{title:"Snug"});                                         
-                                        this.size_descriptions.splice(2,1 ,{title:"Relaxed"});  
-                                        this.size_descriptions.splice(3,1 ,{title:"Very Relaxed"});  
-                                        this.size_descriptions.splice(4,1 ,{title:"Very Snugged"});  
+                                        this.size_descriptions.splice(1,1 ,{title:"Slightly Snugged"});  
+                                        this.size_descriptions.splice(3,1 ,{title:" Relaxed"});  
+                                        this.size_descriptions.splice(4,1 ,{title:"Very Relaxed"});  
                                         
                         }
                          else if(size == 'L')
                         {
                              for (var i = 0; i <=this.size_descriptions.length; i++) {
-                                         if(i == 2)
+                                         if(i == 3)
                                         {
                                             this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
                                             
@@ -549,8 +566,8 @@ export default {
                                     }    
                                         this.size_descriptions.splice(0,1 ,{title:"Very Snugged"});                                         
                                         this.size_descriptions.splice(1,1 ,{title:"Snug"});  
-                                        this.size_descriptions.splice(3,1 ,{title:"Relaxed"});  
-                                        this.size_descriptions.splice(4,1 ,{title:"Very Snugged"});  
+                                        this.size_descriptions.splice(2,1 ,{title:"Slightly Snugged"});  
+                                        this.size_descriptions.splice(4,1 ,{title:"Relaxed"});  
 
                         }
                         
@@ -560,11 +577,13 @@ export default {
                         this.setSlides(this.sizeIndex);
 
                     }
+                   
                 }
 
             })
 
         },
+        
         getProductDetails: function () {
             this.is_loading = true;
             var a = '';
@@ -600,6 +619,7 @@ export default {
                         this.recommended_size = res.data.toUpperCase().charAt(0)
                         this.sizecheck = false;
                         this.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), this.sizecheck)
+                        
                         a = this.recommended_size;
                         if (this.showContinueBtn == true) {
                             this.showContinueBtn = false;
@@ -1307,7 +1327,7 @@ export default {
 }    },
     mounted() {
         
-            
+            console.log(this.product.options)
         this.responsiveness();
 
         this.getLocalData();
