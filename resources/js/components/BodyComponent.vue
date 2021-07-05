@@ -287,8 +287,8 @@ display: inline-block;
                                             </div>
                                         </div>
                                     </div>
-                                    <p class=" fit-advisor-header-desc">Fit Size:<strong v-if="showrecommended">Recommended</strong><strong id="allSizeTextHeading" v-else>{{this.allSizeText}}</strong> <strong v-if="this.otherSize">{{this.otherSize}}</strong> </p>
-                                    <p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="https://getwair.com/blog/fit-advisor-learn-more/" class=" learn-text">Learn More</a></p>
+                                    <p  class=" fit-advisor-header-desc size_descriptions" v-for="(row,key,index) in size_descriptions"><span v-if="!is_loading">Fit Size:<strong >{{ row.title }}</strong></span>   </p>
+                                    <p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="javascript:void(0)" class=" learn-text">Learn More</a></p>
                                 </div>
                             </div>
                         </div>
@@ -330,6 +330,24 @@ export default {
                 convertedMeasurements: false,
 
             },
+            size_descriptions:[{
+                title:'Very Snugged',
+            },
+            {
+                title:' Snugged',
+            },
+            {
+                title:'Recommended',
+            },
+            {
+                title:'Relaxed',
+            },
+            {
+                title:'Very Relaxed',
+            },
+
+            ],
+
             countrycheck: '',
             checked: false,
             currentTab: 0,
@@ -352,6 +370,7 @@ export default {
             showBodyFitApp: false,
             allSizeText: 'Recommended',
             $allSlides: '',
+            $allSlidesSize: '',
             traverseDefault: '',
             actionDefault: '',
             otherSize: '',
@@ -379,8 +398,8 @@ export default {
                     if (res.data.clearLog == true) {
                         this.dev_reset();
                     }
-
-                    this.showBodyFitApp = true;
+                    
+                    (this.product.options == "Size")?this.showBodyFitApp = true:this.showBodyFitApp = false;
                 } else {
                     if (res.data.clearLog == true) {
                         this.dev_reset();
@@ -412,9 +431,12 @@ export default {
 
             $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
             $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
+            $('p.size_descriptions:gt('+sizeposition+')').hide();
+            $('p.size_descriptions:lt('+sizeposition+')').hide();
             //Hide all but the Predicted Size
 
             this.$allSlides = $('div.fit-advisor-selected-size'),
+            this.$allSlidesSize = $('p.size_descriptions'),
                 this.traverseDefault = "first", //set the defaults
                 this.actionDefault = "next";
         },
@@ -424,6 +446,47 @@ export default {
                 if (sizecheck == true) {
                     if (el.title.toUpperCase() == size) {
                         this.sizeIndex = index
+                         this.array_move(this.size_descriptions,2,index)
+                        if(size == "XS")
+                        {
+                            
+                            
+                            for (var i = 0; i <=this.size_descriptions.length; i++) {
+                                        
+                                          if(i == 4)
+                                        {
+                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
+                                            
+                                            
+
+                                        }
+                                        
+                                    }    
+                                        this.size_descriptions.splice(0,1 ,{title:"Slightly Relaxed"});                                       
+                                        this.size_descriptions.splice(1,1 ,{title:"Relaxed"});                                       
+                                        this.size_descriptions.splice(2,1 ,{title:"Very Relaxed"});                                       
+                                        this.size_descriptions.splice(3,1 ,{title:"Very Relaxed"});                                       
+
+                        }
+                        else if(size == "XL")
+                        {
+                                 for (var i = 0; i <=this.size_descriptions.length; i++) {
+                                        
+                                         if(i == 3)
+                                        {
+                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
+                                            
+
+                                        }
+                                        
+                                    }    
+                                         this.size_descriptions.splice(0,1 ,{title:" Very Snugged"});                                       
+                                        this.size_descriptions.splice(1,1 ,{title:" Snug"});                                       
+                                        this.size_descriptions.splice(2,1 ,{title:"Slightly Snug"});                                       
+                                        this.size_descriptions.splice(4,1 ,{title:"Very Snugged"});     
+
+
+                        }
                         localStorage.setItem('sizeindex', this.sizeIndex)
 
                         this.setSlides(this.sizeIndex);
@@ -432,6 +495,66 @@ export default {
                 } else if (sizecheck == false) {
                     if (el.title.toUpperCase().charAt(0) == size) {
                         this.sizeIndex = index
+                    this.array_move(this.size_descriptions,2,index)
+                    
+                        if(size == "S")
+                        {
+                            
+                            
+                            for (var i = 0; i <=this.size_descriptions.length; i++) {
+                                        
+                                            if(i == 0)
+                                        {
+                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
+                                            
+
+                                        }
+                                    }    
+                                        this.size_descriptions.splice(1,1 ,{title:"Slightly Relaxed"});                                       
+                                        this.size_descriptions.splice(2,1 ,{title:"Relaxed"});
+                                         this.size_descriptions.splice(3,1 ,{title:"Very Relaxed"});                                       
+                                        this.size_descriptions.splice(4,1 ,{title:"Very Relaxed"});                                       
+
+                        }
+                        else if(size == 'M')
+                        {
+                             console.log(this.size_descriptions)
+                            for (var i = 0; i <=this.size_descriptions.length; i++) {
+                                        if(i == 1)
+                                        {
+                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
+                                            
+
+                                        }
+                                            
+                                        
+                                    }    
+                                        this.size_descriptions.splice(0,1 ,{title:"Snug"});                                         
+                                        this.size_descriptions.splice(2,1 ,{title:"Relaxed"});  
+                                        this.size_descriptions.splice(3,1 ,{title:"Very Relaxed"});  
+                                        this.size_descriptions.splice(4,1 ,{title:"Very Snugged"});  
+                                        
+                        }
+                         else if(size == 'L')
+                        {
+                             for (var i = 0; i <=this.size_descriptions.length; i++) {
+                                         if(i == 2)
+                                        {
+                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
+                                            
+
+                                        }
+                                            
+                                        
+                                    }    
+                                        this.size_descriptions.splice(0,1 ,{title:"Very Snugged"});                                         
+                                        this.size_descriptions.splice(1,1 ,{title:"Snug"});  
+                                        this.size_descriptions.splice(3,1 ,{title:"Relaxed"});  
+                                        this.size_descriptions.splice(4,1 ,{title:"Very Snugged"});  
+
+                        }
+                        
+
                         localStorage.setItem('sizeindex', this.sizeIndex)
 
                         this.setSlides(this.sizeIndex);
@@ -583,7 +706,23 @@ export default {
             $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
 
             if (!$nxtTarget.length) { //if no next
+                
                 $nxtTarget = this.$allSlides[traverse](); //based on traverse pick the next one
+
+            }
+
+            $nxtTarget.stop(true, true).fadeIn(1000).addClass('active'); //show the target
+
+            //slides size end
+            
+            var $curr = this.$allSlidesSize.filter(':visible'), //get the visible slide
+                $nxtTarget = $curr[action](".size_descriptions"); //get the next target based on the action.
+            $nxtTarget.addClass('active');
+
+            $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
+
+            if (!$nxtTarget.length) { //if no next
+                $nxtTarget = this.$allSlidesSize[traverse](); //based on traverse pick the next one
 
             }
 
@@ -1023,6 +1162,8 @@ export default {
             // this.changesizetorecommended()
             $('div.fit-advisor-selected-size:gt(' + localStorage.getItem('sizeindex') + ')').show();
             $('div.fit-advisor-selected-size:lt(' + localStorage.getItem('sizeindex') + ')').show();
+            $('p.size_descriptions:gt(' + localStorage.getItem('sizeindex') + ')').show();
+            $('p.size_descriptions:lt(' + localStorage.getItem('sizeindex') + ')').show();
 
             this.restarted = true;
             this.form.heightfoot = '';
@@ -1153,10 +1294,20 @@ export default {
                 alterClass();
             });
 
+        },
+         array_move:function(arr, old_index, new_index) {
+    if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+        while (k--) {
+            arr.push(undefined);
         }
-    },
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing
+}    },
     mounted() {
-
+        
+            
         this.responsiveness();
 
         this.getLocalData();

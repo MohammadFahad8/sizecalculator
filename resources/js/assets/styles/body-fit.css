@@ -44,7 +44,7 @@
     width: 100%;
     font-family: karla;
     font-weight: 900;
-    font-size: 133px;
+    font-size: 106px;
 }
 
 .introfirst {
@@ -3322,3 +3322,6 @@ input:focus {
         margin-left: 50px;
         margin-top: 5px;
     }
+    .someclass {
+        cursor: default
+     }
