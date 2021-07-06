@@ -2215,6 +2215,7 @@ __webpack_require__.r(__webpack_exports__);
       showSelectedSizeSlider: false,
       restarted: false,
       sizecheck: false,
+      allow: true,
       image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
       image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png'
     };
@@ -2233,13 +2234,16 @@ __webpack_require__.r(__webpack_exports__);
             _this.dev_reset();
           }
 
-          _this.product.options.forEach(function (el, index) {
-            if (el.toLowerCase() == "size") {
-              _this.showBodyFitApp = true;
+          for (var k = 0; k <= _this.product.options.length; k++) {
+            if (_this.allow) {
+              if (_this.product.options[k].toLowerCase() == "size") {
+                _this.allow = false;
+                _this.showBodyFitApp = true;
+              }
             } else {
-              _this.showBodyFitApp = false;
+              break;
             }
-          });
+          }
         } else {
           if (res.data.clearLog == true) {
             _this.dev_reset();

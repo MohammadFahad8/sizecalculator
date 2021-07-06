@@ -378,6 +378,7 @@ export default {
             showSelectedSizeSlider: false,
             restarted: false,
             sizecheck: false,
+            allow:true,
           
 
             image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
@@ -399,16 +400,21 @@ export default {
                     if (res.data.clearLog == true) {
                         this.dev_reset();
                     }
-                    this.product.options.forEach((el,index)=>{
-                        
-                          if(el.toLowerCase()== "size")
-                          { 
+                    for(var k=0;k<=this.product.options.length;k++) {
+                        if(this.allow){
+                             if(this.product.options[k].toLowerCase()== "size")
+                          {     this.allow= false;
                                this.showBodyFitApp = true;
-                          }else{
-                                this.showBodyFitApp = false;
                           }
+                        }
+                        else
+                        {
+                            break;
+                        }
+                        
+                         
 
-                    });
+                    }
                   
                 } else {
                     if (res.data.clearLog == true) {
