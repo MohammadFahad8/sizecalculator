@@ -607,6 +607,7 @@ export default {
                 .then((res) => {
 
                     this.is_loading = false;
+
                     this.showSelectedSizeSlider = true;
 
                     if (((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs'))) {
@@ -701,20 +702,10 @@ export default {
 
         },
         changesize: function (trigger) {
-            if(this.product.variants[this.product.variants.length-1])
-            {
-                
-
-            }
-            else
-            {
-                
-            }
+           
             if (this.showrecommended == true) {
                 this.showrecommended = false;
-                //    orignial           $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
-                //original $('.dfOagu').removeClass('dfOagu-second');
-               // $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
+             
                 $('.dfOagu').addClass('dfOagu-second');
                 $('.listfit').removeClass('ml-5');
 
@@ -722,7 +713,7 @@ export default {
 
             //slides size
 
-            //
+            var $time = 1000;
 
             this.showrecommended = false;
 
@@ -740,15 +731,16 @@ export default {
             $nxtTarget.addClass('active');
             
 
-            $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
+            $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
                
             if (!$nxtTarget.length) { //if no next
-              
-                console.log(trigger);
+              $time =1 ;
+                
                 if(trigger == 0)
                 {
                 
                 $nxtTarget = this.$allSlides["first"]();
+                
 
                 }else{
                 
@@ -761,7 +753,7 @@ export default {
             }
             
 
-            $nxtTarget.stop(true, true).fadeIn(1000).addClass('active'); //show the target
+            $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
 
             //slides size end
             
@@ -769,20 +761,27 @@ export default {
                 $nxtTarget = $curr[action](".size_descriptions"); //get the next target based on the action.
             $nxtTarget.addClass('active');
 
-            $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
+            $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
 
             if (!$nxtTarget.length) { //if no next
-            
-          
+              
+                
+                if(trigger == 0)
+                {
+                
+                $nxtTarget = this.$allSlidesSize["first"]();
 
-
-
-
-               $nxtTarget = this.$allSlidesSize[traverse](); //based on traverse pick the next one
+                }else{
+                
+                $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
+                
+                }
+                
+                
 
             }
 
-            $nxtTarget.stop(true, true).fadeIn(1000).addClass('active'); //show the target
+            $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
 
             //slides size end
 
