@@ -17,7 +17,7 @@ class CreateVariantsTable extends Migration
             $table->id();
             $table->double('variant_id')->unique();
             $table->string('size')->nullable();
-            $table->float('price');
+            $table->float('price')->nullable();
             $table->double('product_id');
 
             $table->timestamps();

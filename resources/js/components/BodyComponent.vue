@@ -1,6 +1,7 @@
 <template>
 <div>
 
+
 <link href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
@@ -271,9 +272,9 @@ display: inline-block;
                                                                 <!-- <span v-if="!showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span> -->
 
                                                                 <span class="variant_title" :data-variant=" row.id ">
-                                                                    <span v-if="row.title.toUpperCase().substring(0, 2)=='XL' || row.title.toUpperCase().substring(0, 2)=='XS'">
-                                                                        <span class="big-size-margin">{{row.title.toUpperCase()}}</span></span>
-                                                                    <span v-if="row.title.toUpperCase()!='XS' && row.title.toUpperCase()!='XL' ">{{row.title.toUpperCase().charAt(0)}}</span></span>
+                                                                    <span v-if="row.option1.toUpperCase().substring(0, 2)=='XL' || row.option1.toUpperCase().substring(0, 2)=='XS'">
+                                                                        <span class="big-size-margin">{{row.option1.toUpperCase()}}</span></span>
+                                                                    <span v-if="row.option1.toUpperCase()!='XS' && row.option1.toUpperCase()!='XL' ">{{row.option1.toUpperCase().charAt(0)}}</span></span>
                                                             </h4>
                                                         </span>
                                                     </div>
@@ -328,6 +329,7 @@ export default {
                 bottom: localStorage.getItem('bottom'),
                 tags: JSON.parse(localStorage.getItem('tags')),
                 convertedMeasurements: false,
+                conversionCount:'',
 
             },
             size_descriptions:[{
@@ -459,13 +461,14 @@ export default {
                 this.actionDefault = "next";
         },
         setSelectedSizeFromList: function (size, sizecheck) {
+            console.log(this.product.variants);
 
             this.product.variants.forEach((el, index) => {
                 
                 
                 if (sizecheck == true) {
                     
-                    if (el.title.toUpperCase() == size) {
+                    if (el.option1.toUpperCase() == size) {
                         this.sizeIndex = index
                          this.array_move(this.size_descriptions,2,index)
                         if(size == "XS")
@@ -516,7 +519,7 @@ export default {
                 } else if (sizecheck == false) {
                     
 
-                    if (el.title.toUpperCase().charAt(0) == size) {
+                    if (el.option1.toUpperCase().charAt(0) == size) {
                         this.sizeIndex = index
                     this.array_move(this.size_descriptions,2,index)
                     
@@ -608,7 +611,7 @@ export default {
                 }
             }
             this.showSelectedSizeSlider = false;
-
+            this.form.conversionCount = this.product.id
             axios.post(this.$appUrl + '/api/size-recommend/', this.form)
                 .then((res) => {
 

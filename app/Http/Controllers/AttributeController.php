@@ -208,10 +208,13 @@ class AttributeController extends Controller
         $prod = $productsall['products'];
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
         $shop_config = $shop_cfg['shop'];
-
+    
         foreach ($prod as $row) {
 
 
+
+        
+    
             Products::updateOrCreate(
                 ['product_id' => $row['id']],
 
@@ -219,8 +222,25 @@ class AttributeController extends Controller
                     'name' => $row['title'],
                     'image_link' => ($row['image'] == null) ? null : $row['image']['src'],
                     'website_name' => $shop_config['id'],
+                    
                 ]
             );
+            if($row['variants'] != null){
+            foreach($row['variants'] as $variant){
+                
+                Variants::updateOrCreate(
+                    ['variant_id' => $variant['id']],
+    
+                    [
+                        'size' => strtolower($variant['option1']),
+                        'price' => ($variant['price'] == null) ? null :$variant['price'] ,
+                        'product_id' => $variant['product_id'],
+                        
+                    ]
+                );
+
+            }
+          }
         }
         $products = Products::where('website_name', '=', $shop_config['id'])->paginate(5);
 
@@ -257,8 +277,14 @@ class AttributeController extends Controller
 
     public function calculateSize(Request $request)
     {
-            
+        
         $data = $request->all();
+        $productid = $data['conversionCount'];
+        
+        $product = session()->get('product');
+        unset($product);
+        session()->put('product',$productid);
+
         $height_cm = 0;
 
         if ($data['convertedMeasurements'] == true) {
@@ -350,6 +376,108 @@ class AttributeController extends Controller
         //end female adult
 
 
+    }public function checkVariantIFExists($predictedSize)
+    {
+        $size ='';
+        $variants = Variants::where('product_id','=',session('product'))->pluck('size');
+      
+            
+        if(!in_array(strtolower($predictedSize), json_decode($variants)) ){
+
+            
+             if(strtolower(substr($predictedSize,0,2))=='xs'){
+                 
+                 
+                 $size='small';
+                 if(in_array(strtolower($size), json_decode($variants))==false)
+                 {
+                    
+                        $size='medium';
+                        
+                        if(in_array(strtolower($size), json_decode($variants))==false)
+                 {
+                    
+
+                    $size='large';
+                    if(in_array(strtolower($size), json_decode($variants))==false)
+                    {
+                        $size='XL';
+                        
+                    }
+
+
+                 }
+                 }
+
+            }
+            else if(strtolower($predictedSize)=='small'){
+                $size='Medium';
+                if(in_array(strtolower($size), json_decode($variants))==false)
+                {
+                       $size='Large';
+                       if(in_array(strtolower($size), json_decode($variants))==false)
+                {
+                   $size='XL';
+                   if(in_array(strtolower($size), json_decode($variants))==false)
+                   {
+                       $size='none';
+                       
+                   }
+
+
+                }
+                }
+
+
+            }else if(strtolower(substr($predictedSize,0,2))=='m'){
+                 $size='L';
+                 if(in_array(strtolower($size), json_decode($variants))==false)
+                 {
+                        $size='XL';
+                        if(in_array(strtolower($size), json_decode($variants))==false)
+                 {
+                    $size='none';
+                   
+
+
+                 }
+                 }
+
+            }
+            else if(strtolower(substr($predictedSize,0,2))=='l'){
+                $size='XL';
+                
+                if(in_array(strtolower($size), json_decode($variants))==false)
+                {
+                       $size='none';
+                  
+                }
+
+           }
+           else if(strtolower(substr($predictedSize,0,2))=='xl'){
+            $size='XL';
+            if(in_array(strtolower($size), json_decode($variants))==false)
+            {
+                   $size='l';
+                   if(in_array(strtolower($size), json_decode($variants))==false)
+                   {
+                       $size='m';
+                       if(in_array(strtolower($size), json_decode($variants))==false)
+                       {
+                        $size='s';
+                       }
+                   }
+              
+            }
+
+       }
+            return $size;
+            
+
+        }
+        
+       
+
     }
     public function measurements($xs = null, $c, $s, $b, $xl = null)
     {
@@ -363,23 +491,32 @@ class AttributeController extends Controller
         if ($c == 1 && $s  == 1 && $b == 1) {
 
             if (isset($xs) && $xs == 'xs') {
-                return  $size = 'XS';
+                  $size = 'XS';
+                return $this->checkVariantIFExists($size);
             }
-            return $size = "Small";
+            
+           
+             $size = "Small";
+            return $this->checkVariantIFExists($size);
+
         } else if ($c == 2 && $s  == 2 && $b == 2) {
             //medium
-            return $size = 'Medium';
+            
+            $size = "Medium";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 3 && $s == 3 && $b == 3) {
             if (isset($xl) && $xl == 'xl') {
                 return $size = 'XL';
             }
-            return $size = 'Large';
+            $size = "Large";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 3 && $s == 3 && $b == 3) {
 
             if (isset($xl) && $xl == 'xxl') {
                 return $size = 'XXL';
             }
-            return $size = 'Large';
+            $size = "Large";
+            return $this->checkVariantIFExists($size);
         }
         //wide chest
         else if ($c == 3 && $s == 1 && $b == 1) {
@@ -396,47 +533,59 @@ class AttributeController extends Controller
             return $size = 'XL';
         } else if ($c == 3 && $s == 1 && $b == 2) {
 
-            return $size = 'L';
+            $size = "Large";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 1 && $s == 2 && $b == 3) {
 
-            return $size = 'L';
+            $size = "Large";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 1 && $s == 3 && $b == 3) {
 
             return $size = 'XL';
         } else if ($c == 1 && $s == 1 && $b == 2) {
 
-            return $size = 'M';
+            $size = "Medium";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 1 && $s == 1 && $b == 3) {
 
-            return $size = 'ML';
+            $size = "Medium";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 2 && $s == 1 && $b == 1) {
 
-            return $size = 'M';
+            $size = "Medium";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 2 && $s == 1 && $b == 2) {
 
-            return $size = 'ML';
+            return $size = 'Medium';
         } else if ($c == 2 && $s == 1 && $b == 3) {
 
-            return $size = 'L';
+            $size = "Large";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 2 && $s == 2 && $b == 1) {
 
-            return $size = 'M';
+            $size = "Medium";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 2 && $s == 2 && $b == 3) {
 
-            return $size = 'L';
+            $size = "Large";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 2 && $s == 3 && $b == 1) {
 
-            return $size = 'L';
+            $size = "Large";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 2 && $s == 3 && $b == 2) {
 
-            return $size = 'L';
+            $size = "Large";
+            return $this->checkVariantIFExists($size);
         } else if ($c == 2 && $s == 3 && $b == 3) {
 
             return $size = 'XL';
         } else {
-            return $size = 'M';
+            $size = "Medium";
+            return $this->checkVariantIFExists($size);
         }
     }
+    
     public function  addProductFromSelection(Request $request)
     {
         $message = array();
