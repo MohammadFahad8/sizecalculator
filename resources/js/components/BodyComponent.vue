@@ -240,7 +240,7 @@ display: inline-block;
 
                                             <div class=" fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box">
                                                 <div class=" selected-product-arrow-left" v-if="!is_loading">
-                                                    <span size="10" class=" jjnwUS  selected-product-arrow-left-pointer prev" @click="changesize(0);">
+                                                    <span  size="10" id="arrow-left" class=" jjnwUS  selected-product-arrow-left-pointer prev" @click="changesize(0);">
                                                         <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW">
                                                             <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path>
                                                         </svg>
@@ -280,7 +280,7 @@ display: inline-block;
                                                 </div>
 
                                                 <div class="dfOagu" style="z-index:30" v-if="!is_loading">
-                                                    <span size="10" class=" jjnwUS  hjNiUI arrow-next next" @click="changesize(1)">
+                                                    <span   size="10" id="arrow-right" class=" jjnwUS  hjNiUI arrow-next next" @click="changesize(1)">
                                                         <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW">
                                                             <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path>
                                                         </svg></span></div>
@@ -378,6 +378,7 @@ export default {
             showSelectedSizeSlider: false,
             restarted: false,
             sizecheck: false,
+          
 
             image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
             image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png',
@@ -437,6 +438,8 @@ export default {
 
         },
         setSlides: function (sizeposition) {
+            
+            
 
             $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
             $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
@@ -452,7 +455,10 @@ export default {
         setSelectedSizeFromList: function (size, sizecheck) {
 
             this.product.variants.forEach((el, index) => {
+                
+                
                 if (sizecheck == true) {
+                    
                     if (el.title.toUpperCase() == size) {
                         this.sizeIndex = index
                          this.array_move(this.size_descriptions,2,index)
@@ -695,6 +701,15 @@ export default {
 
         },
         changesize: function (trigger) {
+            if(this.product.variants[this.product.variants.length-1])
+            {
+                
+
+            }
+            else
+            {
+                
+            }
             if (this.showrecommended == true) {
                 this.showrecommended = false;
                 //    orignial           $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
@@ -720,16 +735,31 @@ export default {
             }
 
             var $curr = this.$allSlides.filter(':visible'), //get the visible slide
+            
                 $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
             $nxtTarget.addClass('active');
+            
 
             $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
-
+               
             if (!$nxtTarget.length) { //if no next
+              
+                console.log(trigger);
+                if(trigger == 0)
+                {
                 
-                $nxtTarget = this.$allSlides[traverse](); //based on traverse pick the next one
+                $nxtTarget = this.$allSlides["first"]();
+
+                }else{
+                
+                $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
+                
+                }
+                
+                
 
             }
+            
 
             $nxtTarget.stop(true, true).fadeIn(1000).addClass('active'); //show the target
 
@@ -742,7 +772,13 @@ export default {
             $curr.stop(true, true).fadeIn(1000).removeClass('active').hide(); //hide current one
 
             if (!$nxtTarget.length) { //if no next
-                $nxtTarget = this.$allSlidesSize[traverse](); //based on traverse pick the next one
+            
+          
+
+
+
+
+               $nxtTarget = this.$allSlidesSize[traverse](); //based on traverse pick the next one
 
             }
 

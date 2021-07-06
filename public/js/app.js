@@ -2515,6 +2515,8 @@ __webpack_require__.r(__webpack_exports__);
       this.variantselected = id;
     },
     changesize: function changesize(trigger) {
+      if (this.product.variants[this.product.variants.length - 1]) {} else {}
+
       if (this.showrecommended == true) {
         this.showrecommended = false; //    orignial           $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
         //original $('.dfOagu').removeClass('dfOagu-second');
@@ -2546,7 +2548,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!$nxtTarget.length) {
         //if no next
-        $nxtTarget = this.$allSlides[traverse](); //based on traverse pick the next one
+        console.log(trigger);
+
+        if (trigger == 0) {
+          $nxtTarget = this.$allSlides["first"]();
+        } else {
+          $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
+        }
       }
 
       $nxtTarget.stop(true, true).fadeIn(1000).addClass('active'); //show the target
@@ -43752,7 +43760,10 @@ var render = function() {
                                                       {
                                                         staticClass:
                                                           " jjnwUS  selected-product-arrow-left-pointer prev",
-                                                        attrs: { size: "10" },
+                                                        attrs: {
+                                                          size: "10",
+                                                          id: "arrow-left"
+                                                        },
                                                         on: {
                                                           click: function(
                                                             $event
@@ -43983,7 +43994,10 @@ var render = function() {
                                                       {
                                                         staticClass:
                                                           " jjnwUS  hjNiUI arrow-next next",
-                                                        attrs: { size: "10" },
+                                                        attrs: {
+                                                          size: "10",
+                                                          id: "arrow-right"
+                                                        },
                                                         on: {
                                                           click: function(
                                                             $event
