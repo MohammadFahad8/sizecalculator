@@ -912,6 +912,7 @@ export default {
                 $('#intro3').css('display', 'none');
                 $('#intro4').css('display', 'none');
                 $('#intro5').css('display', 'none');
+                $('#nextBtn').css('display', 'inline-block');
             }
             if (n == 1) {
                 $('#closeApp').removeClass('mtf-n6')
@@ -1025,6 +1026,7 @@ export default {
         },
 
         nextPrev: function (n) {
+           
 
             // This function will figure out which tab to display
             var x = document.getElementsByClassName("tab");
@@ -1066,7 +1068,7 @@ export default {
             //return false;
             //}
             // Otherwise, display the correct tab:
-
+            
             this.showTab(this.currentTab);
 
         },

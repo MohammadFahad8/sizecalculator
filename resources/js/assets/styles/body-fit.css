@@ -2511,7 +2511,10 @@ input:focus {
 
 .input-border {
     border-bottom: 1px solid lightgrey !important;
-    border-radius: 0 !important;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-radius: 0px;
 }
 
 .justify-content-center {
