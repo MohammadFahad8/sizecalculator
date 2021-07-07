@@ -1276,7 +1276,7 @@ input:focus {
 
 .fit-advisor-popup-adjustments {
     width: 50% !important;
-    overflow: scroll !important;
+    overflow-y: scroll !important;
 }
 
 .gIdEkK p {

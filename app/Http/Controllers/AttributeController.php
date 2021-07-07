@@ -379,13 +379,16 @@ class AttributeController extends Controller
     }public function checkVariantIFExists($predictedSize)
     {
         $size ='';
-        $variants = Variants::where('product_id','=',session('product'))->pluck('size');
-      
-            
-        if(!in_array(strtolower($predictedSize), json_decode($variants)) ){
+        $variants = Variants::where([['product_id','=',session('product')],['size','=',$predictedSize]])->pluck('size');
+        $count = $variants->count();
+        
+    //   echo( json_encode($variants));
+    //   echo(strtolower($predictedSize));
+    //         dd(!in_array(strtolower($predictedSize), json_decode($variants)));
+        if($count == 0 || $count==null){
 
             
-             if(strtolower(substr($predictedSize,0,2))=='xs'){
+             if(strtolower($predictedSize)=='xs'){
                  
                  
                  $size='small';
@@ -411,10 +414,10 @@ class AttributeController extends Controller
 
             }
             else if(strtolower($predictedSize)=='small'){
-                $size='Medium';
+                $size='medium';
                 if(in_array(strtolower($size), json_decode($variants))==false)
                 {
-                       $size='Large';
+                       $size='large';
                        if(in_array(strtolower($size), json_decode($variants))==false)
                 {
                    $size='XL';
@@ -429,7 +432,8 @@ class AttributeController extends Controller
                 }
 
 
-            }else if(strtolower(substr($predictedSize,0,2))=='m'){
+            }else if(strtolower($predictedSize)=='medium'){
+                dd('come');
                  $size='L';
                  if(in_array(strtolower($size), json_decode($variants))==false)
                  {
@@ -444,7 +448,7 @@ class AttributeController extends Controller
                  }
 
             }
-            else if(strtolower(substr($predictedSize,0,2))=='l'){
+            else if(strtolower($predictedSize)=='large'){
                 $size='XL';
                 
                 if(in_array(strtolower($size), json_decode($variants))==false)
@@ -454,7 +458,7 @@ class AttributeController extends Controller
                 }
 
            }
-           else if(strtolower(substr($predictedSize,0,2))=='xl'){
+           else if(strtolower($predictedSize)=='xl'){
             $size='XL';
             if(in_array(strtolower($size), json_decode($variants))==false)
             {
@@ -473,6 +477,11 @@ class AttributeController extends Controller
        }
             return $size;
             
+
+        }
+        else{
+            $size = $predictedSize;
+            return $size;
 
         }
         

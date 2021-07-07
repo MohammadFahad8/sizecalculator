@@ -461,7 +461,8 @@ export default {
                 this.actionDefault = "next";
         },
         setSelectedSizeFromList: function (size, sizecheck) {
-            console.log(this.product.variants);
+            console.log(this.product.variants.length);
+
 
             this.product.variants.forEach((el, index) => {
                 
@@ -550,7 +551,7 @@ export default {
                         else if(size == 'M')
                         {
                              
-                            for (var i = 0; i <=this.size_descriptions.length; i++) {
+                            for (var i = 0; i <=this.product.variants.length; i++) {
                                         if(i == 2)
                                         {
                                             
@@ -1152,6 +1153,11 @@ export default {
 
             if (this.form.weight > 500) {
                 $("#weight").attr("placeholder", "Limit is 500 Lbs");
+                if(this.countrycheck == true)
+                {
+                $("#weight").attr("placeholder", "Limit is 227 Kg");
+                }
+                
                 $("#weight").addClass("warning-place");
                 this.form.weight = ''
 
