@@ -376,33 +376,40 @@ class AttributeController extends Controller
         //end female adult
 
 
-    }public function checkVariantIFExists($predictedSize)
+    }
+    public function getSizeCount($predictedSize)
     {
-        $size ='';
         $variants = Variants::where([['product_id','=',session('product')],['size','=',$predictedSize]])->pluck('size');
         $count = $variants->count();
+        return $count;
+    }
+    public function checkVariantIFExists($predictedSize)
+    {
+        $size ='';
+        
         
     //   echo( json_encode($variants));
     //   echo(strtolower($predictedSize));
     //         dd(!in_array(strtolower($predictedSize), json_decode($variants)));
-        if($count == 0 || $count==null){
+    
+        if($this->getSizeCount($predictedSize) == 0 || $this->getSizeCount($predictedSize) ==null){
 
             
              if(strtolower($predictedSize)=='xs'){
                  
                  
                  $size='small';
-                 if(in_array(strtolower($size), json_decode($variants))==false)
+                 if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                  {
                     
                         $size='medium';
                         
-                        if(in_array(strtolower($size), json_decode($variants))==false)
+                        if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                  {
                     
 
                     $size='large';
-                    if(in_array(strtolower($size), json_decode($variants))==false)
+                    if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                     {
                         $size='XL';
                         
@@ -415,13 +422,13 @@ class AttributeController extends Controller
             }
             else if(strtolower($predictedSize)=='small'){
                 $size='medium';
-                if(in_array(strtolower($size), json_decode($variants))==false)
+                if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                 {
                        $size='large';
-                       if(in_array(strtolower($size), json_decode($variants))==false)
+                       if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                 {
                    $size='XL';
-                   if(in_array(strtolower($size), json_decode($variants))==false)
+                   if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                    {
                        $size='none';
                        
@@ -433,12 +440,12 @@ class AttributeController extends Controller
 
 
             }else if(strtolower($predictedSize)=='medium'){
-                dd('come');
+                
                  $size='L';
-                 if(in_array(strtolower($size), json_decode($variants))==false)
+                 if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                  {
                         $size='XL';
-                        if(in_array(strtolower($size), json_decode($variants))==false)
+                        if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                  {
                     $size='none';
                    
@@ -451,7 +458,7 @@ class AttributeController extends Controller
             else if(strtolower($predictedSize)=='large'){
                 $size='XL';
                 
-                if(in_array(strtolower($size), json_decode($variants))==false)
+                if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                 {
                        $size='none';
                   
@@ -460,13 +467,13 @@ class AttributeController extends Controller
            }
            else if(strtolower($predictedSize)=='xl'){
             $size='XL';
-            if(in_array(strtolower($size), json_decode($variants))==false)
+            if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
             {
                    $size='l';
-                   if(in_array(strtolower($size), json_decode($variants))==false)
+                   if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                    {
                        $size='m';
-                       if(in_array(strtolower($size), json_decode($variants))==false)
+                       if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                        {
                         $size='s';
                        }
