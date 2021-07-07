@@ -288,7 +288,7 @@ display: inline-block;
                                             </div>
                                         </div>
                                     </div>
-                                    <p  class=" fit-advisor-header-desc size_descriptions" v-for="(row,key,index) in size_descriptions"><span v-if="!is_loading">Fit Size:<strong >{{ row.title }}</strong></span>   </p>
+                                    <p  class=" fit-advisor-header-desc size_descriptions" v-for="(row,key,index) in product.variants"><span v-if="!is_loading">Fit Size:<strong >{{ row.desc_title }}</strong></span>   </p>
                                     <p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="javascript:void(0)" class=" learn-text">Learn More</a></p>
                                 </div>
                             </div>
@@ -461,8 +461,8 @@ export default {
                 this.actionDefault = "next";
         },
         setSelectedSizeFromList: function (size, sizecheck) {
-            console.log(this.product.variants.length);
-
+            
+            
 
             this.product.variants.forEach((el, index) => {
                 
@@ -476,39 +476,81 @@ export default {
                         {
                             
                             
-                            for (var i = 0; i <=this.size_descriptions.length; i++) {
+                              for (var i = 0; i <=this.product.variants.length; i++) {
+                                       
+                                       
+                                     
                                         
-                                          if(i == 0)
+                                            
+                                       if(i == this.sizeIndex){this.product.variants[i].desc_title="Recommended"; }
+                                             
+                                             if((i > this.sizeIndex) && (i < this.product.variants.length ))
                                         {
-                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
+                                            
+                                            this.product.variants[i].desc_title="Slightly Relaxed"; 
+                                            if(i == this.product.variants.indexOf(this.product.variants[this.product.variants.length-3]))
+                                            {
+                                                this.product.variants[i].desc_title="Relaxed";
+                                            }if(i == this.product.variants.indexOf(this.product.variants[this.product.variants.length-2]))
+                                            {
+                                                this.product.variants[i].desc_title="Relaxed";
+                                            }if(i == this.product.variants.indexOf(this.product.variants[this.product.variants.length-1]))
+                                            {
+                                                this.product.variants[i].desc_title="Very Relaxed";
+                                            }
                                             
                                             
 
                                         }
                                         
-                                    }    
-                                        this.size_descriptions.splice(1,1 ,{title:"Slightly Relaxed"});                                       
-                                        this.size_descriptions.splice(2,1 ,{title:"Relaxed"});                                       
-                                        this.size_descriptions.splice(3,1 ,{title:"Very Relaxed"});                                       
-                                        this.size_descriptions.splice(4,1 ,{title:"Very Relaxed"});                                       
+                                        
+                                  
+                                      
+                                            
+                                        
+                                    }                                       
 
                         }
                         else if(size == "XL")
                         {
-                                 for (var i = 0; i <=this.size_descriptions.length; i++) {
-                                        
-                                         if(i == 4)
+                            var counter =1;
+                                    for (var i = 0; i <=this.product.variants.length; i++) {
+                                       
+                                       
+                                       if(i < this.sizeIndex)
                                         {
-                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
+                                             this.product.variants[i].desc_title="Very Snug"; 
+                                            
+                                            
+                                            
+                                            
+                                             if((i < this.sizeIndex) && (i >= counter ))
+                                        {
+                                            counter++;
+                                            
+                                            this.product.variants[i].desc_title="Snug"; 
+                                            
                                             
 
                                         }
                                         
-                                    }    
-                                         this.size_descriptions.splice(0,1 ,{title:" Very Snugged"});                                       
-                                        this.size_descriptions.splice(1,1 ,{title:"Very Snug"});                                       
-                                        this.size_descriptions.splice(2,1 ,{title:"Snug"});                                       
-                                        this.size_descriptions.splice(3,1 ,{title:"Slightly Snugged"});     
+                                                                        } 
+                                        
+                                            
+                                       if(i == this.sizeIndex){this.product.variants[i].desc_title="Recommended"; }
+                                         if(i == this.product.variants.indexOf(this.product.variants[this.product.variants.length-2]))
+                                            {
+                                                this.product.variants[i].desc_title="Slightly Snugged";
+                                            }
+                                             
+                                           
+                                        
+                                        
+                                  
+                                      
+                                            
+                                        
+                                    }     
 
 
                         }
@@ -522,68 +564,141 @@ export default {
 
                     if (el.option1.toUpperCase().charAt(0) == size) {
                         this.sizeIndex = index
+                        
                     this.array_move(this.size_descriptions,2,index)
+                    
                     
                         if(size == "S")
                         {
                             
                             
-                            for (var i = 0; i <=this.size_descriptions.length; i++) {
-                                        
-                                        
-                                            if(i == 1)
+                            for (var i = 0; i <=this.product.variants.length; i++) {
+                                       
+                                       
+                                       if(i < this.sizeIndex)
+                                        {
+                                             this.product.variants[i].desc_title="Very Snug"; 
+                                            
+                                            
+                                             if((i < this.sizeIndex) && (i > 0 ))
                                         {
                                             
-                                           //
-                                           
-                                           this.size_descriptions.splice(i,1 ,{title:"Recommended"});
+                                            this.product.variants[i].desc_title="Snug"; 
+                                            
+                                            
+
+                                        }
+                                                                        } 
+                                        
+                                            
+                                       if(i == this.sizeIndex){this.product.variants[i].desc_title="Recommended"; }
+                                             
+                                             if((i > this.sizeIndex) && (i < this.product.variants.length ))
+                                        {
+                                            
+                                            this.product.variants[i].desc_title="Relaxed"; 
+                                            if(i == this.product.variants.indexOf(this.product.variants[this.product.variants.length-1]))
+                                            {
+                                                this.product.variants[i].desc_title="Very Relaxed";
+                                            }
+                                            
+                                            
 
                                         }
                                         
                                         
-                                    }    
-                                        this.size_descriptions.splice(0,1 ,{title:"Snug"});                                       
-                                        this.size_descriptions.splice(2,1 ,{title:"Relaxed"});
-                                         this.size_descriptions.splice(3,1 ,{title:"Very Relaxed"});                                       
-                                        this.size_descriptions.splice(4,1 ,{title:"Very Relaxed"});                                       
+                                  
+                                      
+                                            
+                                        
+                                    }                                      
 
                         }
                         else if(size == 'M')
                         {
                              
-                            for (var i = 0; i <=this.product.variants.length; i++) {
-                                        if(i == 2)
+                              for (var i = 0; i <=this.product.variants.length; i++) {
+                                       
+                                       
+                                       if(i < this.sizeIndex)
+                                        {
+                                             this.product.variants[i].desc_title="Very Snug"; 
+                                            
+                                            
+                                             if((i < this.sizeIndex) && (i > 0 ))
                                         {
                                             
-                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
+                                            this.product.variants[i].desc_title="Snug"; 
+                                            
                                             
 
                                         }
+                                                                        } 
+                                        
+                                            
+                                       if(i == this.sizeIndex){this.product.variants[i].desc_title="Recommended"; }
+                                             
+                                             if((i > this.sizeIndex) && (i < this.product.variants.length ))
+                                        {
+                                            
+                                            this.product.variants[i].desc_title="Relaxed"; 
+                                            if(i == this.product.variants.indexOf(this.product.variants[this.product.variants.length-1]))
+                                            {
+                                                this.product.variants[i].desc_title="Very Relaxed";
+                                            }
+                                            
+                                            
+
+                                        }
+                                        
+                                        
+                                  
+                                      
                                             
                                         
                                     }    
-                                        this.size_descriptions.splice(0,1 ,{title:"Snug"});                                         
-                                        this.size_descriptions.splice(1,1 ,{title:"Slightly Snugged"});  
-                                        this.size_descriptions.splice(3,1 ,{title:" Relaxed"});  
-                                        this.size_descriptions.splice(4,1 ,{title:"Very Relaxed"});  
                                         
                         }
                          else if(size == 'L')
                         {
-                             for (var i = 0; i <=this.size_descriptions.length; i++) {
-                                         if(i == 3)
+                             for (var i = 0; i <=this.product.variants.length; i++) {
+                                       
+                                       
+                                       if(i < this.sizeIndex)
                                         {
-                                            this.size_descriptions.splice(i,1 ,{title:"Recommended"}); 
+                                             this.product.variants[i].desc_title="Very Snug"; 
+                                            
+                                            
+                                             if((i < this.sizeIndex) && (i > 0 ))
+                                        {
+                                            
+                                            this.product.variants[i].desc_title="Snug"; 
+                                            
                                             
 
                                         }
+                                                                        } 
+                                        
+                                            
+                                       if(i == this.sizeIndex){this.product.variants[i].desc_title="Recommended"; }
+                                             
+                                             if((i > this.sizeIndex) && (i < this.product.variants.length ))
+                                        {
+                                            
+                                            this.product.variants[i].desc_title="Very Relaxed"; 
+                                            
+                                            
+
+                                        }
+                                        
+                                        
+                                  
+                                      
                                             
                                         
-                                    }    
-                                        this.size_descriptions.splice(0,1 ,{title:"Very Snugged"});                                         
-                                        this.size_descriptions.splice(1,1 ,{title:"Snug"});  
-                                        this.size_descriptions.splice(2,1 ,{title:"Slightly Snugged"});  
-                                        this.size_descriptions.splice(4,1 ,{title:"Relaxed"});  
+                                    }
+                                    
+                                      
 
                         }
                         
@@ -1379,7 +1494,13 @@ export default {
 }    },
     mounted() {
         
-            console.log(this.product.options)
+            
+            
+            this.product.variants = this.product.variants.map(v => ({...v, desc_title: 'Recommended'}));
+            console.log(this.product.variants);
+            
+
+           
         this.responsiveness();
 
         this.getLocalData();

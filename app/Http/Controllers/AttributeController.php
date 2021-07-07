@@ -379,13 +379,14 @@ class AttributeController extends Controller
     }
     public function getSizeCount($predictedSize)
     {
-        $variants = Variants::where([['product_id','=',session('product')],['size','=',$predictedSize]])->pluck('size');
+        $variants = Variants::where([['product_id','=',session('product')],['size','=',strtolower($predictedSize)]])->pluck('size');
         $count = $variants->count();
         return $count;
     }
     public function checkVariantIFExists($predictedSize)
     {
         $size ='';
+        
         
         
     //   echo( json_encode($variants));
@@ -487,6 +488,7 @@ class AttributeController extends Controller
 
         }
         else{
+            
             $size = $predictedSize;
             return $size;
 

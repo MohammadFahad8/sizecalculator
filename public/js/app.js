@@ -1845,6 +1845,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -2277,7 +2283,6 @@ __webpack_require__.r(__webpack_exports__);
     setSelectedSizeFromList: function setSelectedSizeFromList(size, sizecheck) {
       var _this2 = this;
 
-      console.log(this.product.variants.length);
       this.product.variants.forEach(function (el, index) {
         if (sizecheck == true) {
           if (el.option1.toUpperCase() == size) {
@@ -2286,53 +2291,48 @@ __webpack_require__.r(__webpack_exports__);
             _this2.array_move(_this2.size_descriptions, 2, index);
 
             if (size == "XS") {
-              for (var i = 0; i <= _this2.size_descriptions.length; i++) {
-                if (i == 0) {
-                  _this2.size_descriptions.splice(i, 1, {
-                    title: "Recommended"
-                  });
+              for (var i = 0; i <= _this2.product.variants.length; i++) {
+                if (i == _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
+                  _this2.product.variants[i].desc_title = "Slightly Relaxed";
+
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 3])) {
+                    _this2.product.variants[i].desc_title = "Relaxed";
+                  }
+
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
+                    _this2.product.variants[i].desc_title = "Relaxed";
+                  }
+
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+                    _this2.product.variants[i].desc_title = "Very Relaxed";
+                  }
                 }
               }
-
-              _this2.size_descriptions.splice(1, 1, {
-                title: "Slightly Relaxed"
-              });
-
-              _this2.size_descriptions.splice(2, 1, {
-                title: "Relaxed"
-              });
-
-              _this2.size_descriptions.splice(3, 1, {
-                title: "Very Relaxed"
-              });
-
-              _this2.size_descriptions.splice(4, 1, {
-                title: "Very Relaxed"
-              });
             } else if (size == "XL") {
-              for (var i = 0; i <= _this2.size_descriptions.length; i++) {
-                if (i == 4) {
-                  _this2.size_descriptions.splice(i, 1, {
-                    title: "Recommended"
-                  });
+              var counter = 1;
+
+              for (var i = 0; i <= _this2.product.variants.length; i++) {
+                if (i < _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Very Snug";
+
+                  if (i < _this2.sizeIndex && i >= counter) {
+                    counter++;
+                    _this2.product.variants[i].desc_title = "Snug";
+                  }
+                }
+
+                if (i == _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
+                  _this2.product.variants[i].desc_title = "Slightly Snugged";
                 }
               }
-
-              _this2.size_descriptions.splice(0, 1, {
-                title: " Very Snugged"
-              });
-
-              _this2.size_descriptions.splice(1, 1, {
-                title: "Very Snug"
-              });
-
-              _this2.size_descriptions.splice(2, 1, {
-                title: "Snug"
-              });
-
-              _this2.size_descriptions.splice(3, 1, {
-                title: "Slightly Snugged"
-              });
             }
 
             localStorage.setItem('sizeindex', _this2.sizeIndex);
@@ -2346,78 +2346,67 @@ __webpack_require__.r(__webpack_exports__);
             _this2.array_move(_this2.size_descriptions, 2, index);
 
             if (size == "S") {
-              for (var i = 0; i <= _this2.size_descriptions.length; i++) {
-                if (i == 1) {
-                  //
-                  _this2.size_descriptions.splice(i, 1, {
-                    title: "Recommended"
-                  });
+              for (var i = 0; i <= _this2.product.variants.length; i++) {
+                if (i < _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Very Snug";
+
+                  if (i < _this2.sizeIndex && i > 0) {
+                    _this2.product.variants[i].desc_title = "Snug";
+                  }
+                }
+
+                if (i == _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
+                  _this2.product.variants[i].desc_title = "Relaxed";
+
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+                    _this2.product.variants[i].desc_title = "Very Relaxed";
+                  }
                 }
               }
-
-              _this2.size_descriptions.splice(0, 1, {
-                title: "Snug"
-              });
-
-              _this2.size_descriptions.splice(2, 1, {
-                title: "Relaxed"
-              });
-
-              _this2.size_descriptions.splice(3, 1, {
-                title: "Very Relaxed"
-              });
-
-              _this2.size_descriptions.splice(4, 1, {
-                title: "Very Relaxed"
-              });
             } else if (size == 'M') {
               for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i == 2) {
-                  _this2.size_descriptions.splice(i, 1, {
-                    title: "Recommended"
-                  });
+                if (i < _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Very Snug";
+
+                  if (i < _this2.sizeIndex && i > 0) {
+                    _this2.product.variants[i].desc_title = "Snug";
+                  }
+                }
+
+                if (i == _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
+                  _this2.product.variants[i].desc_title = "Relaxed";
+
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+                    _this2.product.variants[i].desc_title = "Very Relaxed";
+                  }
                 }
               }
-
-              _this2.size_descriptions.splice(0, 1, {
-                title: "Snug"
-              });
-
-              _this2.size_descriptions.splice(1, 1, {
-                title: "Slightly Snugged"
-              });
-
-              _this2.size_descriptions.splice(3, 1, {
-                title: " Relaxed"
-              });
-
-              _this2.size_descriptions.splice(4, 1, {
-                title: "Very Relaxed"
-              });
             } else if (size == 'L') {
-              for (var i = 0; i <= _this2.size_descriptions.length; i++) {
-                if (i == 3) {
-                  _this2.size_descriptions.splice(i, 1, {
-                    title: "Recommended"
-                  });
+              for (var i = 0; i <= _this2.product.variants.length; i++) {
+                if (i < _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Very Snug";
+
+                  if (i < _this2.sizeIndex && i > 0) {
+                    _this2.product.variants[i].desc_title = "Snug";
+                  }
+                }
+
+                if (i == _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
+                  _this2.product.variants[i].desc_title = "Very Relaxed";
                 }
               }
-
-              _this2.size_descriptions.splice(0, 1, {
-                title: "Very Snugged"
-              });
-
-              _this2.size_descriptions.splice(1, 1, {
-                title: "Snug"
-              });
-
-              _this2.size_descriptions.splice(2, 1, {
-                title: "Slightly Snugged"
-              });
-
-              _this2.size_descriptions.splice(4, 1, {
-                title: "Relaxed"
-              });
             }
 
             localStorage.setItem('sizeindex', _this2.sizeIndex);
@@ -3074,7 +3063,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    console.log(this.product.options);
+    this.product.variants = this.product.variants.map(function (v) {
+      return _objectSpread(_objectSpread({}, v), {}, {
+        desc_title: 'Recommended'
+      });
+    });
+    console.log(this.product.variants);
     this.responsiveness();
     this.getLocalData();
     this.showBodyFit(); //this.addOrUpdateProduct();
@@ -44065,7 +44059,7 @@ var render = function() {
                                   ]
                                 ),
                                 _vm._v(" "),
-                                _vm._l(_vm.size_descriptions, function(
+                                _vm._l(_vm.product.variants, function(
                                   row,
                                   key,
                                   index
@@ -44081,7 +44075,7 @@ var render = function() {
                                         ? _c("span", [
                                             _vm._v("Fit Size:"),
                                             _c("strong", [
-                                              _vm._v(_vm._s(row.title))
+                                              _vm._v(_vm._s(row.desc_title))
                                             ])
                                           ])
                                         : _vm._e()
