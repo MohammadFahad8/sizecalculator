@@ -2162,7 +2162,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     product: Object
@@ -3060,35 +3059,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
       return arr; // for testing
+    },
+    setupProduct: function setupProduct() {
+      this.product.variants = this.product.variants.map(function (v) {
+        return _objectSpread(_objectSpread({}, v), {}, {
+          desc_title: 'Recommended'
+        });
+      });
     }
   },
   mounted: function mounted() {
-    this.product.variants = this.product.variants.map(function (v) {
-      return _objectSpread(_objectSpread({}, v), {}, {
-        desc_title: 'Recommended'
-      });
-    });
-    console.log(this.product.variants);
+    this.setupProduct();
     this.responsiveness();
     this.getLocalData();
-    this.showBodyFit(); //this.addOrUpdateProduct();
-    // this.dev_reset();
-    // $('input[name="countrycheck"]').click(function()
-    // {
-    //     var $radio = $(this);
-    //     // if this was previously checked
-    //     if ($radio.data('waschecked') == true)
-    //     {
-    //         $radio.prop('checked', false);
-    //         $radio.data('waschecked', false);
-    //         this.convertedMeasurements = true;
-    //     }
-    //     else
-    //         $radio.data('waschecked', true);
-    //         this.convertedMeasurements = false;
-    //     // remove was checked from other radios
-    // });
-    // Current tab is set to be the first tab (0)
+    this.showBodyFit();
 
     if (localStorage.getItem('recommended_size') != null) {
       var n = 4;

@@ -226,6 +226,7 @@ class AttributeController extends Controller
                 ]
             );
             if($row['variants'] != null){
+                Variants::truncate();
             foreach($row['variants'] as $variant){
                 
                 Variants::updateOrCreate(
