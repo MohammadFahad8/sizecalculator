@@ -210,10 +210,6 @@ class AttributeController extends Controller
         $shop_config = $shop_cfg['shop'];
     
         foreach ($prod as $row) {
-
-
-
-        
     
             Products::updateOrCreate(
                 ['product_id' => $row['id']],
@@ -387,12 +383,7 @@ class AttributeController extends Controller
     public function checkVariantIFExists($predictedSize)
     {
         $size ='';
-        
-        
-        
-    //   echo( json_encode($variants));
-    //   echo(strtolower($predictedSize));
-    //         dd(!in_array(strtolower($predictedSize), json_decode($variants)));
+    
     
         if($this->getSizeCount($predictedSize) == 0 || $this->getSizeCount($predictedSize) ==null){
 
@@ -417,7 +408,6 @@ class AttributeController extends Controller
                         
                     }
 
-
                  }
                  }
 
@@ -436,7 +426,6 @@ class AttributeController extends Controller
                        
                    }
 
-
                 }
                 }
 
@@ -450,8 +439,7 @@ class AttributeController extends Controller
                         if($this->getSizeCount($size) == 0 || $this->getSizeCount($size) ==null)
                  {
                     $size='none';
-                   
-
+                
 
                  }
                  }

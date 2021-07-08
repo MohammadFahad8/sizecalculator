@@ -9,9 +9,10 @@ require('./bootstrap');
 window.Vue = require('vue').default;
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import VSwitch from 'v-switch-case'
 
 Vue.prototype.$appUrl = 'https://7943cbda1de2.ngrok.io';
-Vue.use(VueSweetalert2)
+Vue.use(VSwitch)
 
 /**
  * The following block of code may be used to automatically register your
@@ -26,6 +27,7 @@ Vue.use(VueSweetalert2)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('bodyfit-component', require('./components/BodyComponent.vue').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

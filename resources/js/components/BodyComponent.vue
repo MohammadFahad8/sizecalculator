@@ -272,7 +272,7 @@ display: inline-block;
 
                                                                     <span class="variant_title" :data-variant=" row.id ">
                                                                         <span v-if="row.option1.toUpperCase().substring(0, 2)=='XL' || row.option1.toUpperCase().substring(0, 2)=='XS'">
-                                                                            <span class="big-size-margin">{{row.option1.toUpperCase()}}</span></span>
+                                                                            <span >{{row.option1.toUpperCase()}}</span></span>
                                                                         <span v-if="row.option1.toUpperCase()!='XS' && row.option1.toUpperCase()!='XL' ">{{row.option1.toUpperCase().charAt(0)}}</span></span>
                                                                 </h4>
                                                             </span>
@@ -287,7 +287,7 @@ display: inline-block;
                                                 </div>
                                             </div>
                                         </div>
-                                        <p class=" fit-advisor-header-desc size_descriptions" v-for="(row,key,index) in product.variants"><span v-if="!is_loading">Fit Size:<strong>{{ row.desc_title }}</strong></span> </p>
+                                        <p class=" fit-advisor-header-desc size_descriptions" v-for="(row,key,index) in product.variants" ><span v-if="!is_loading">Fit Size:<strong>{{ row.desc_title }}</strong></span> </p>
                                         <p class=" fit-advisor-header-desc  fit-advisor-header-desc-mt ">The size we recommend is based on how we intended this item to suit your body. <br><a target="_blank" rel="noopener noreferrer nofollow" href="javascript:void(0)" class=" learn-text">Learn More</a></p>
                                     </div>
                                 </div>
@@ -737,8 +737,8 @@ export default {
             if (this.showrecommended == true) {
                 this.showrecommended = false;
 
-                $('.dfOagu').addClass('dfOagu-second');
-                $('.listfit').removeClass('ml-5');
+                // $('.dfOagu').addClass('dfOagu-second');
+                // $('.listfit').removeClass('ml-5');
 
             }
 
@@ -1384,6 +1384,8 @@ export default {
                 ...v,
                 desc_title: 'Recommended'
             }));
+
+            
         },
     },
     mounted() {
@@ -1401,18 +1403,15 @@ export default {
             this.showTab(this.currentTab);
         }
 
-        // $("#featured_image").attr("src",this.product.featured_image);
+        
 
         $('#popup-trigger').on('click', function () {
 
             $('.product-card').css('z-index', '-1');
-
-            //$('body').css('overflow','hidden');
             $('#popup1').css('overflow', 'scroll');
         })
 
-        //size decider happens
-        //formula to caluclate height into centimeters
+      
 
     },
     watch: {
