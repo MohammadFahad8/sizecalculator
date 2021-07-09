@@ -264,7 +264,7 @@
 @endsection
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
- <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
  <script>
@@ -519,7 +519,7 @@
       background-color: DodgerBlue !important; 
       color: #ffffff; 
     }
-    
+/*     
 ::-webkit-scrollbar-track
 {
 	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
@@ -542,7 +542,7 @@
 									   color-stop(0.44, rgb(122,153,217)),
 									   color-stop(0.72, rgb(73,125,189)),
 									   color-stop(0.86, rgb(28,58,148)));
-}
+} */
 
 
     </style>

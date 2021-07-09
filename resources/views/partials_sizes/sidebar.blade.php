@@ -2,12 +2,12 @@
     <div class="card">
         <div class="card-header">{{ __('Side Bar') }}</div>
         <div class="card-body">
-            <li class="sidebar_icon">
+            <li class="sidebar_icon"  style="list-style-type: none !important;">
                  <a  href="{{ route('attributes.home') }}" class="btn-sidebar">   {{ __('Dashboard') }} </a>
             </li>
             
 
-            <li>
+            <li  style="list-style-type: none !important;">
                 <a href="{{ route('sizes.create') }}" class="btn-sidebar"> {{ __('Add Sizes') }} </a>
             </li>
               <li style="list-style-type: none !important;">

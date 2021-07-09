@@ -1,6 +1,6 @@
 @extends('shopify-app::layouts.default')
 @section('content')
-<div class="row mt-5 ">
+<div class="row mt-5 ml-3 ">
     @include('partials_attributes.sidebar')
     <div class="col-md-9 ">
 <div class="card w-75 ">
