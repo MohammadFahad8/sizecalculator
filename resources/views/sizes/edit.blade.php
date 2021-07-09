@@ -166,7 +166,7 @@
     
     
     <th :colspan="variant_count"  ><span class="offset-4">Variants</span> </th>
-    <th :colspan= "image_count" ><span class="offset-4">Images</span> </th>
+    <th :colspan= "image_count" ><span class="text-center">Images</span> </th>
     <th>Action</th>
 </tr>
     </thead>

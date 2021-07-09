@@ -1,6 +1,6 @@
 <span class="refresh" id="refreshsvg" >
 <svg version="1.1" id="Capa_1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:10% !important;float:right;" xml:space="preserve"
+viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:10% !important;float:right;cursor: pointer !important;" xml:space="preserve"
 data-toggle="tooltip"  data-placement="bottom" title="Refresh Products">
 <g>
 <g>

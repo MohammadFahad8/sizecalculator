@@ -10,7 +10,7 @@
             <li>
                 <a href="{{ route('sizes.create') }}" class="btn-sidebar"> {{ __('Add Sizes') }} </a>
             </li>
-              <li>
+              <li style="list-style-type: none !important;">
                     <a href="{{ route('sizes.home') }}" class="btn-sidebar"> {{ __('Sizes List') }} </a>
             </li>
         {{-- <li>
@@ -19,8 +19,3 @@
         </div>
     </div>
 </div>
-<style>
-    li{
-        list-style-type: none !important;
-    }
-</style>

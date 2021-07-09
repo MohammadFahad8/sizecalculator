@@ -298,7 +298,7 @@ display: inline-block;
                     <div style="overflow:auto;">
                         <div class="custom-offset-lg" style="margin-top:8% !Important; display:none;"><button class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">Previous</button></div>
                     </div>
-                    </p>
+                    <!-- </p> -->
                     <div id="steps-mark" style="text-align:center;margin-top:100px;" class="m-result float-right"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
                 </form>
             </div>
@@ -1389,6 +1389,7 @@ export default {
         },
     },
     mounted() {
+        
         this.setupProduct();
         this.responsiveness();
         this.getLocalData();
