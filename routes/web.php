@@ -84,6 +84,12 @@ Route::post('add/product-from-selection',[App\Http\Controllers\AttributeCOntroll
 
                                             //check shop config
 Route::get('/shop_config',[App\Http\Controllers\AttributeController::class,'shopConfiguration']);
+                                                //Size Chart
+
+Route::group(['prefix'=>'sizechart'],function(){
+    Route::get('/home',[App\Http\Controllers\AttributeController::class,'sizeChartIndex'])->name('sizechart.home');
+    Route::get('/bodysizes/{id}',[App\Http\Controllers\AttributeController::class,'sizeOfSpecificRange'])->name('sizechart.range');
+});                                                
 });
 
 

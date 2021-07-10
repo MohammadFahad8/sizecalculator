@@ -26,6 +26,7 @@
     },
     "dependencies": {
         "@popperjs/core": "^2.9.2",
+        "jw-vue-pagination": "^1.0.3",
         "v-switch-case": "^1.0.3",
         "vue": "^2.6.12",
         "vue-cookies": "^1.7.4",

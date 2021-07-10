@@ -9,6 +9,8 @@ use App\Models\Products;
 use App\Models\Settings;
 use App\Models\Variants;
 use App\Models\Attribute;
+use App\Models\Sizechart;
+use App\Models\Bodyfeature;
 use App\Models\Selectedsize;
 use Illuminate\Http\Request;
 use App\Http\Helpers\Apihooks;
@@ -644,5 +646,22 @@ class AttributeController extends Controller
         $shop = Auth::user();
         $shop_config = $shop->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
         dd($shop_config);
+    }
+    //Size Chart
+
+    public function sizeChartIndex()
+    {
+        $sizeChart = Sizechart::with('bodyFeature')->get();
+        return view('size-charts.index',[
+            'sizeChart'=>$sizeChart
+
+        ]);
+    }
+    public function sizeOfSpecificRange($id)
+    {
+
+        $bodySpecs = Bodyfeature::where('sizechart_id','=',$id)->get();
+        
+        return $bodySpecs;
     }
 }

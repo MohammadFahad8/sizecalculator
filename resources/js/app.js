@@ -9,9 +9,11 @@ require('./bootstrap');
 window.Vue = require('vue').default;
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
+import JwPagination from 'jw-vue-pagination';
 import VSwitch from 'v-switch-case'
 
 Vue.prototype.$appUrl = 'https://7943cbda1de2.ngrok.io';
+Vue.component('jw-pagination', JwPagination);
 Vue.use(VSwitch)
 
 /**
@@ -27,6 +29,7 @@ Vue.use(VSwitch)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('bodyfit-component', require('./components/BodyComponent.vue').default);
+Vue.component('sizechart-component', require('./components/SizechartComponent.vue').default);
 
 
 
