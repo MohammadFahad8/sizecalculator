@@ -44,7 +44,7 @@
     width: 100%;
     font-family: karla;
     font-weight: 900;
-    font-size: 106px;
+    font-size: 90px;
 }
 
 .introfirst {
@@ -1456,7 +1456,7 @@ input:focus {
         width: 100%;
         font-family: karla;
         font-weight: 900;
-        font-size: 1.4em;
+        font-size: 1.3em;
     }
     .m-result {
         text-align: center !important;
@@ -1740,7 +1740,7 @@ input:focus {
         width: 100%;
         font-family: karla;
         font-weight: 900;
-        font-size: 55px;
+        font-size: 45px;
     }
     .m-result {
         text-align: center !important;
@@ -2585,7 +2585,7 @@ input:focus {
         width: 100%;
         font-family: karla;
         font-weight: 900;
-        font-size: 1.4em;
+        font-size: 1.3em;
     }
 }
 
