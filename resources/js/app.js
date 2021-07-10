@@ -11,7 +11,7 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import VSwitch from 'v-switch-case'
 
-Vue.prototype.$appUrl = 'https://7943cbda1de2.ngrok.io';
+Vue.prototype.$appUrl = 'https://c6e13c2fa76e.ngrok.io';
 Vue.use(VSwitch)
 
 /**

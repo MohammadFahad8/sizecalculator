@@ -3173,7 +3173,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://7943cbda1de2.ngrok.io';
+Vue.prototype.$appUrl = 'https://c6e13c2fa76e.ngrok.io';
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_2___default()));
 /**
  * The following block of code may be used to automatically register your
