@@ -15,7 +15,7 @@
             @if (is_array($element))
                 @foreach ($element as $page => $url)
                     @if ($page == $paginator->currentPage())
-                       <li class="pgn__num current " style="font-family: metropolis-bold, sans-serif;
+                       <li class="pgn__num  " style="font-family: metropolis-bold, sans-serif;
                        font-size: 18px;
                        line-height: 2.4rem;
                        display: inline-block;
@@ -25,7 +25,10 @@
                        color: #151515;
                        border-radius: 3px;
                        -webkit-transition: all 0.3s ease-in-out;
-                       transition: all 0.3s ease-in-out;"><span>{{ $page }}</span></li>
+                       transition: all 0.3s ease-in-out;
+                       background-color: #151515;
+                        color: #FFFFFF !important;
+                       "><span>{{ $page }}</span></li>
                       
                     @else
                         <li><a class="pgn__num" href="{{ $url }}">{{ $page }}</a></li>
@@ -49,10 +52,3 @@
 </div>
 @endif
 
-<style>
-    .current{
-    
-        background-color: #151515;
-    color: #FFFFFF !important;
-    }
-</style>

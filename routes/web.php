@@ -59,6 +59,7 @@ Route::get('/add/type',[App\Http\Controllers\SizeController::class,'create'])->n
 Route::post('/add',[App\Http\Controllers\SizeController::class,'store'])->name('sizes.add');
 });
 Route::get('/get/products',[App\Http\Controllers\ProductsController::class,'getProducts'])->name('products.collection');
+Route::get('get/product-details/{id}',[App\Http\Controllers\AttributeController::class,'getSpecificProducts'])->name('products.specific');
 
 Route::get('/selected/products',[App\Http\Controllers\SizeController::class,'selectedProducts'])->name('products.selectedbox');
 Route::get('/all/products',[App\Http\Controllers\SizeController::class,'getAllProducts'])->name('products.getAllProducts');

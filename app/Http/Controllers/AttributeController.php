@@ -210,7 +210,7 @@ class AttributeController extends Controller
         $prod = $productsall['products'];
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
         $shop_config = $shop_cfg['shop'];
-    
+        
         foreach ($prod as $row) {
     
             Products::updateOrCreate(
@@ -244,8 +244,16 @@ class AttributeController extends Controller
         $products = Products::where('website_name', '=', $shop_config['id'])->paginate(5);
 
         return view('products.index', [
-            'other' => $products
+            'other' => $products,
+            
         ]);
+    }
+    public function getSpecificProducts($id)
+    {
+        $shop = Auth::user();
+        $product = $shop->api()->rest('GET','/admin/api/2021-04/products/'.$id.'.json')['body']['container'];
+        return $product;
+        
     }
     public function permissionToShowBodyFit(Request $request)
     {

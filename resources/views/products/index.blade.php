@@ -7,7 +7,7 @@
 
 
 {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
-<div class="row mt-5  " style="margin-left:10px !important">
+<div class="row mt-5  " style="margin-left:10px !important" id="app">
 @include('partials_attributes.sidebar')
 <div class="col-md-8" >
 <div class="card">
@@ -26,12 +26,19 @@
 </tr>
     </thead>
        <tbody>
-        
+        @php
+          $temp = 0;
+        @endphp
     @forelse($other as $key=> $row)
     <tr>
             
             {{-- <td>{{ $key+1 }}</td> --}}
-            <td><div class="row"><div class="col-md-2"><img src="{{ ($row->image_link == null) ? 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png' : $row->image_link}}" class="img-thumbnail" width="50"></div><div class="col-md-10">{{ $row->name }}</div></div></td>
+            <td>
+              <div class="row"><div class="col-md-2">
+                <img id="product-id-specific" data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer" data-id="{{ $row->product_id }}" src="{{ ($row->image_link == null) ? 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png' : $row->image_link}}" class="img-thumbnail" width="50">
+              </div>
+              <div class="col-md-10" style="cursor: pointer;">
+              <a href="javascript:void(0)" class="text-dark" data-toggle="modal" data-target="#exampleModalCenter">{{ $row->name }}</a></div></div></td>
             <td>
             {{-- <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}> --}}
             <label class="switch">
@@ -72,18 +79,53 @@
 
 </div>
 </div>
+
+
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Product Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-3">
+          <img id="single-product"  alt="" class="img-thumbnail">
+          </div>
+          <div class="col-md-9"> 
+        <productdetails-component :product_id="{{ $temp }}" ></productdetails-component>
+      </div>
+      </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </div>
 
+
 <script>
+   $('#product-id-specific').on('click',function(){
+     alert(1)
+    var a = $('#product-id-specific').attr('data-id')
+    alert(a)
+   })
    
    
+  
     $(function() {
         
         
         $('#Capa_1').on('click',function(){
             window.location.reload();
-        })
-      $('.toggle-class').change(function() {
+         })
+         $('.toggle-class').change(function() {
           var status = $(this).prop('checked') == true ? 1 : 0; 
           var product_id = $(this).data('id'); 
            
