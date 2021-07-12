@@ -30,7 +30,7 @@ Vue.use(VSwitch)
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('bodyfit-component', require('./components/BodyComponent.vue').default);
 Vue.component('sizechart-component', require('./components/SizechartComponent.vue').default);
-Vue.component('productdetails-component', require('./components/ProductdetailsComponent.vue').default);
+
 
 
 

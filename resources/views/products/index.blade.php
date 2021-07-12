@@ -7,7 +7,7 @@
 
 
 {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
-<div class="row mt-5  " style="margin-left:10px !important" id="app">
+<div class="row mt-5  " style="margin-left:10px !important" id="products-all">
 @include('partials_attributes.sidebar')
 <div class="col-md-8" >
 <div class="card">
@@ -34,11 +34,12 @@
             
             {{-- <td>{{ $key+1 }}</td> --}}
             <td>
+              
               <div class="row"><div class="col-md-2">
-                <img id="product-id-specific" data-toggle="modal" data-target="#exampleModalCenter" style="cursor: pointer" data-id="{{ $row->product_id }}" src="{{ ($row->image_link == null) ? 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png' : $row->image_link}}" class="img-thumbnail" width="50">
+                <img id="product-id-specific" v-on:click="productFix({{ $row->product_id }})" style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter" src="{{ ($row->image_link == null) ? 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png' : $row->image_link}}" class="img-thumbnail" width="50">
               </div>
               <div class="col-md-10" style="cursor: pointer;">
-              <a href="javascript:void(0)" class="text-dark" data-toggle="modal" data-target="#exampleModalCenter">{{ $row->name }}</a></div></div></td>
+              <a href="javascript:void(0)" class="text-dark" >{{ $row->name }}</a></div></div></td>
             <td>
             {{-- <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}> --}}
             <label class="switch">
@@ -91,14 +92,65 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="row">
-          <div class="col-md-3">
-          <img id="single-product"  alt="" class="img-thumbnail">
-          </div>
-          <div class="col-md-9"> 
-        <productdetails-component :product_id="{{ $temp }}" ></productdetails-component>
-      </div>
-      </div>
+        
+          
+          
+            
+              
+           
+<table class="table table-bordered table-responsive-lg " >
+  <thead>
+<tr>
+  <th>Picture</th>
+  <th>Name</th>
+  <th :colspan="variant_count" class="text-center">variants</th>
+  <th>Predicted Size</th>
+  
+</tr>
+  </thead>
+     <tbody>
+     <tr v-if="isLoading"  > 
+    <td><div class="text-center"><div class="spinner-grow spinner-grow-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+</div>
+ </td>
+         <td><div class="d-flex justify-content-center text-center">
+<div class="spinner-grow spinner-grow-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div>
+</div></td> 
+<td> <div class="text-center"><div class="spinner-grow spinner-grow-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div></div></td>
+<td><div class="text-center"> <div class="spinner-grow spinner-grow-sm" role="status">
+  <span class="sr-only">Loading...</span>
+</div></div></td>
+</tr>  
+<tr v-if="!isLoading" >
+  <td>
+    
+     <img id="single-product" :src="product.image_link" width="50" height="50"  alt="" class="img-thumbnail"> 
+    </td>
+
+  <td>@{{ product.name }}</td>
+  
+  <td v-for="(row,index) in product.variants" :key="row.id">
+    
+    @{{ row.size }}
+  </td>
+  
+  <td> <a href="javascript:void(0)" v-on:click="viewAttributes(product.product_id)">View Attributes</a> </td>
+</tr>
+
+
+  </tbody>
+    
+</table>  
+
+        
+      
+      
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -108,19 +160,73 @@
   </div>
 </div>
 </div>
-
+@include('scripts.index')
 
 <script>
-   $('#product-id-specific').on('click',function(){
-     alert(1)
-    var a = $('#product-id-specific').attr('data-id')
-    alert(a)
-   })
+  var v = new Vue({
+    el:'#products-all',
+    data: {
+      variant_count:'',
+        
+        checkval:23123,
+        isLoading:false,
+        product:[],
+        p_id:null,
+        
+        
+    },
+    methods:{
+
+      viewAttributes:function($id)
+      {
+        window.location.href = "attributetypes-all/view/"+$id;
+      },
+      productFix:function($id)
+      {
+        this.p_id = $id;
+        this.getProductDetails(this.p_id);
+      },
+       getProductDetails:function($id){
+           this.isLoading = true;
+           axios.get('product-details/'+$id)
+           .then((res)=>{
+             
+               
+               this.isLoading = false;
+                this.product  = res.data
+                
+                this.variant_count = this.product.variants.length;
+                 console.log(this.product.variants.size)
+                 
+
+           })
+       },
+          decodeHtml: function (html) {
+                var txt = document.createElement("textarea");
+                txt.innerHTML = html;
+                return txt.value;
+            }
+    },
+    mounted(){
+      
+      
+      
+     
+    
+      
+    },
+    watch:{}
+  })
+</script>
+
+<script>
+  
    
    
   
     $(function() {
-        
+
+     
         
         $('#Capa_1').on('click',function(){
             window.location.reload();

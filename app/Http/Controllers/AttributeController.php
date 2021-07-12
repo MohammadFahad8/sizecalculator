@@ -211,7 +211,9 @@ class AttributeController extends Controller
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
         $shop_config = $shop_cfg['shop'];
         
+        Variants::truncate();
         foreach ($prod as $row) {
+            
     
             Products::updateOrCreate(
                 ['product_id' => $row['id']],
@@ -223,25 +225,28 @@ class AttributeController extends Controller
                     
                 ]
             );
+             
             if($row['variants'] != null){
-                Variants::truncate();
-            foreach($row['variants'] as $variant){
                 
-                Variants::updateOrCreate(
-                    ['variant_id' => $variant['id']],
-    
-                    [
-                        'size' => strtolower($variant['option1']),
-                        'price' => ($variant['price'] == null) ? null :$variant['price'] ,
-                        'product_id' => $variant['product_id'],
-                        
-                    ]
-                );
+            foreach($row['variants'] as $variant){
+               
+                
+                $vari = new Variants();
+                $vari->variant_id = $variant['id'];
+                $vari-> size = strtolower($variant['option1']);
+                $vari->price=($variant['price'] == null) ? null :$variant['price'];
+                $vari->product_id = $variant['product_id'];
+                $vari->save();
+               
 
             }
           }
+          else{
+              echo'no variants';
+          }
         }
         $products = Products::where('website_name', '=', $shop_config['id'])->paginate(5);
+        
 
         return view('products.index', [
             'other' => $products,
@@ -250,8 +255,8 @@ class AttributeController extends Controller
     }
     public function getSpecificProducts($id)
     {
-        $shop = Auth::user();
-        $product = $shop->api()->rest('GET','/admin/api/2021-04/products/'.$id.'.json')['body']['container'];
+        $product = Products::with('variants')->where('product_id', '=', $id)->first();
+        
         return $product;
         
     }
@@ -671,5 +676,84 @@ class AttributeController extends Controller
         $bodySpecs = Bodyfeature::where('sizechart_id','=',$id)->get();
         
         return $bodySpecs;
+    }
+    
+    public function attributeType($id)
+    {
+        $attributeTypeOfProducts = Attributetypes::with('product')->where([['product_id','=',$id],['status','>',0]])->get();
+        
+        
+        return view('attribute_types.index',[
+            'attrTypeOfProducts'=>$attributeTypeOfProducts
+        ]);
+
+    }
+    public function attributeTypeCreate(Request $request)
+    
+    {
+        $attributeTypeOfProducts = Attributetypes::with('product')->where('product_id','=',$request['id'])->get();
+        
+        return view('attribute_types.create',
+        [
+            'attrOfProduct'=>$attributeTypeOfProducts
+        ]);
+
+    }
+    public function storeAttributeType(Request $request)
+    {
+        
+        
+        $this->validate($request, [
+            "attribute_name" => "required",
+            
+
+
+        ], [
+            "attribute_name.required" => "Please Enter Attribute name",
+            
+
+        ]);
+        $attr = new AttributeTypes();
+        $attr->name = $request->get('attribute_name');
+        $attr->product_id = $request->get('product_id');
+        $attr->status = ($request->get('is_required') == 'on' ? 1 : 0);
+        $attr->save();
+      return   redirect()->route('attributetypes.home', ['id' => $request->get('product_id')]);
+        
+        
+    }
+    public function storeAttributeEdit(Request $request)
+    {
+        $attributeTypeOfProducts = Attributetypes::with('product')->find($request['id']);
+
+        
+        return view('attribute_types.edit',[
+            'attrId'=>$request['id'],
+            'attrTypeOfProduct'=>$attributeTypeOfProducts
+        ]);
+        
+    }
+    public function storeAttributeUpdate(Request $request)
+    {
+        //
+        
+        
+        $data = $request->all();
+        $attr = AttributeTypes::find($data['product_id']);
+        $attr->name = $data['attribute_name'];
+       
+        $attr->status = (isset($data['is_required'])) ? 1 : 0;
+        $attr->save();
+        
+        return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
+    
+    }
+    public function disableAttributeType(Request $request)
+    {
+        $attr = AttributeTypes::find($request->get('id'));
+        $attr->status = 0;
+        $attr->save();
+        return back();
+
     }
 }

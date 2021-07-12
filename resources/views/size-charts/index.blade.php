@@ -5,7 +5,7 @@
 
 
 {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
-<div class="row mt-5  " style="margin-left:10px !important" id="app">
+<div class="row mt-5  " style="margin-left:10px !important" id="size-chart">
       
 @include('partials_attributes.sidebar')
 <div class="col-md-8" >
@@ -46,7 +46,7 @@
             <td>{{ $attr->height_end }}</td>
             <td>{{ $attr->weight_start }} </td>
             <td>{{ $attr->weight_end }} </td>
-            <td class="text-center"><a id="get-body-data" href="javascript:void(0)" onclick="getBody({{$attr->id  }})"  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-info">Watch sizes</a></td>
+            <td class="text-center"><a id="get-body-data" href="javascript:void(0)" v-on:click="setSizeChart({{$attr->id  }})"  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-info">Watch sizes</a></td>
             {{-- <td><a href="{{ route('attributes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
             <td><a href="{{ route('attributes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td> --}}
 
@@ -70,7 +70,34 @@
         </div>
         <div class="modal-body">
            
-              <sizechart-component></sizechart-component>
+          <table class="table table-bordered  " style="width:100% !important;">
+            <thead v-if="!isLoading" >
+        <tr>
+            <th>Chest</th>
+            <th>Stomach</th>
+            <th>Bottom</th>
+            <th>Predicted Size</th>
+            
+        </tr>
+            </thead>
+               <tbody>
+               
+          <tr v-if="!isLoading"  v-for="(row,index) in bodysizes" :key="row.id">
+        
+            <td>@{{ row.chest }}</td>
+            <td>@{{ row.stomach }}</td>
+            <td>@{{ row.bottom }}</td>
+            <td>@{{ row.predicted_size }}</td>
+          </tr>
+             <div v-if="isLoading" class="d-flex justify-content-center">
+          <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        
+            </tbody>
+              
+        </table>
 
         </div>
         <div class="modal-footer">
@@ -87,7 +114,47 @@
 
 
 
+@include('scripts.index')
+<script>
+  var sizechart = new Vue({
+    el:'#size-chart',
+   
+    data:{
+        
+        bodysizes:[],
+        isLoading:false,
+        sizeChartId:'',
+        
+    },
+    methods:{
+      setSizeChart:function($id){
+        this.sizeChartId=$id;
+        this.getBodySize(this.sizeChartId);
+      },
+        onChangePage(bodysizes) {
+            // update page of items
+            this.bodysizes = bodysizes;
+        },
 
+        getBodySize:function(id)
+        {
+            this.isLoading = true;
+            axios.get('bodysizes/'+id).then((res)=>{
+              this.isLoading=false;
+                this.bodysizes = res.data;
+                
+
+            })
+        }
+    },
+    mounted(){
+        
+        
+    }
+    ,
+    watch:{}
+  })
+</script>
 <script>
     function getBody($id){
         localStorage.removeItem('bodyid');
