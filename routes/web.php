@@ -95,8 +95,11 @@ Route::get('/shop_config',[App\Http\Controllers\AttributeController::class,'shop
                                                 //Size Chart
 
 Route::group(['prefix'=>'sizechart'],function(){
-    Route::get('/home',[App\Http\Controllers\AttributeController::class,'sizeChartIndex'])->name('sizechart.home');
+    Route::get('/home/{id}',[App\Http\Controllers\AttributeController::class,'sizeChartIndex'])->name('sizechart.home');
     Route::get('/bodysizes/{id}',[App\Http\Controllers\AttributeController::class,'sizeOfSpecificRange'])->name('sizechart.range');
+    Route::get('/sizechart/delete',[App\Http\Controllers\AttributeController::class,'sizeChartDelete'])->name('sizechart.delete');
+    Route::get('/add/{id}',[App\Http\Controllers\AttributeController::class,'createSizeChart'])->name('sizechart.create');
+    Route::post('sizechart/post',[App\Http\Controllers\AttributeController::class,'sizeChartPost'])->name('sizechart.add');
 });                                                
 });
 

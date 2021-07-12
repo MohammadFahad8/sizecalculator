@@ -17,9 +17,9 @@
              <li style="list-style-type: none !important;">
                 <a href="{{ route('attributes.products') }}" class="btn-sidebar"> {{ __('Products') }} </a>
             </li>
-            <li style="list-style-type: none !important;">
+            {{-- <li style="list-style-type: none !important;">
                 <a href="{{ route('sizechart.home') }}" class="btn-sidebar"> {{ __('Size Chart') }} </a>
-            </li>
+            </li> --}}
            
         {{-- <li>
                 <a href=""> {{ __('Attribute List') }} </a>

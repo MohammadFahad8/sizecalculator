@@ -15,11 +15,13 @@ class CreateBodyfeaturesTable extends Migration
     {
         Schema::create('bodyfeatures', function (Blueprint $table) {
             $table->id();
-            $table->integer('chest');
-            $table->integer('stomach');
-            $table->integer('bottom');
+            $table->string('attr_name');
+            $table->integer('attr_measurement');
             $table->string('predicted_size');
             $table->integer('sizechart_id');
+            $table->integer('attr_id');
+            $table->boolean('status')->default(1);
+
             $table->timestamps();
         });
     }

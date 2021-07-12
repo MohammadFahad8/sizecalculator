@@ -82,7 +82,7 @@ class AttributeController extends Controller
     public function create()
     {
         //
-        $attr = Attributetypes::latest()->get();
+        $attr = Attributetypes::latest()->where('status','>','0')->get();
         return view(
             'attributes.create',
             [
@@ -141,7 +141,7 @@ class AttributeController extends Controller
     {
         //
         $attr = Attribute::find($id);
-        $attrtypes = Attributetypes::latest()->get();
+        $attrtypes = Attributetypes::latest()->where('status','>','0')->get();
         return view('attributes.edit', [
             'attr' => $attr,
             'attributetypes' => $attrtypes,
@@ -662,10 +662,12 @@ class AttributeController extends Controller
     }
     //Size Chart
 
-    public function sizeChartIndex()
+    public function sizeChartIndex($id)
     {
-        $sizeChart = Sizechart::with('bodyFeature')->get();
+        $sizeChart = Sizechart::with('product','bodyFeature')->where('product_id','=',$id)->get();
+        
         return view('size-charts.index',[
+            'current_product_id'=>$id,
             'sizeChart'=>$sizeChart
 
         ]);
@@ -677,13 +679,54 @@ class AttributeController extends Controller
         
         return $bodySpecs;
     }
-    
+    public function sizeChartDelete(Request $request)
+    {
+        $sizechart = Sizechart::find($request->get('id'));
+        $sizechart->status = 0;
+        $sizechart->save();
+        
+        $body = Bodyfeature::where('sizechart_id','=',$request->get('id'));
+        $body->status = 0;
+        $body->save();
+        return   redirect()->route('sizechart.home', ['id' => $sizechart->product_id]);
+
+    }
+    public function createSizeChart($id)
+    {
+            $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id','=',$id],['status','>',0]])->get();
+            
+            
+        return view('size-charts.create',[
+            'product_id'=>$id,
+            'variantsOfAttributes'=>$variantsOfAttributes
+        ]);
+
+    }
+    public function sizeChartPost(Request $request)
+    {
+        
+        
+        $sizeChartLastId = Sizechart::create($request->all());
+        $attrBody = Attributetypes::find($request->get('attribute_type'));
+
+        
+        $body = new Bodyfeature();
+        $body->sizechart_id = $sizeChartLastId->id;
+        $body->attr_measurement = $request->get('body_measurement');
+        $body->predicted_size = $request->get('predicted_size');
+        $body->attr_id = $request->get('attribute_type');
+        $body->attr_name = $attrBody->name;
+        $body->save();
+        return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
+
+    }
     public function attributeType($id)
     {
         $attributeTypeOfProducts = Attributetypes::with('product')->where([['product_id','=',$id],['status','>',0]])->get();
         
         
         return view('attribute_types.index',[
+            'id'=>$id,
             'attrTypeOfProducts'=>$attributeTypeOfProducts
         ]);
 
@@ -749,11 +792,11 @@ class AttributeController extends Controller
     
     }
     public function disableAttributeType(Request $request)
-    {
+    {   
         $attr = AttributeTypes::find($request->get('id'));
         $attr->status = 0;
         $attr->save();
-        return back();
+        return   redirect()->route('attributetypes.home', ['id' => $request->get('id')]);
 
     }
 }

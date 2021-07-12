@@ -22,4 +22,14 @@ class Bodyfeature extends Model
     {
         return $this->belongsTo(Sizechart::class, 'sizechart_id', 'id');
     }
+
+    /**
+     * Get the user that owns the Bodyfeature
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function attributeTypeParent(): BelongsTo
+    {
+        return $this->belongsTo(Attributetypes::class, 'attr_id', 'id');
+    }
 }

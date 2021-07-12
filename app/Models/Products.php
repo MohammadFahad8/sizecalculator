@@ -37,5 +37,16 @@ public function attributetypes(): HasMany
     return $this->hasMany(Attributetypes::class, 'product_id', 'product_id');
 }
 
+/**
+ * Get all of the comments for the Products
+ *
+ * @return \Illuminate\Database\Eloquent\Relations\HasMany
+ */
+public function sizeChart(): HasMany
+{
+    return $this->hasMany(Sizechart::class, 'product_id', 'product_id');
+}
+
+
 }
 

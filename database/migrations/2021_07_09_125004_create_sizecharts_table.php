@@ -21,6 +21,8 @@ class CreateSizechartsTable extends Migration
             $table->double('weight_end');
             $table->double('height_start');
             $table->double('height_end');
+            $table->double('product_id');
+            $table->boolean('status')->default(1);
             
            
 
