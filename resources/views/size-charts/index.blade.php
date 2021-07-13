@@ -51,11 +51,16 @@
           <div class="text-center"> <td class=" text-center"><span class="badge badge-pill badge-warning">{{$sizeChart[0]['product']['name']}} </span></td></div> 
             <td class="text-center">
               <div class="col">
-              <a id="get-body-data" href="javascript:void(0)" v-on:click="setSizeChart({{$attr->id  }})"  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-info btn-sm">Watch sizes</a>
+              <a id="get-body-data" href="javascript:void(0)" v-on:click="setSizeChart({{$attr->id  }})"  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-block btn-info btn-sm">Watch sizes</a>
               </div>
               <div class="col">
-            <a id="get-body-data" href="{{ route('sizechart.delete',['id'=>$attr->id]) }}"  onclick="return confirm('Are you sure?')" class="btn btn-danger btn-sm mt-1">Delete</a>
-              </div></td>
+                  <a id="get-body-data-2" href="{{ route('sizechart.edit',['id'=>$attr->id,'product_id'=>$current_product_id]) }}" class="btn btn-block btn-info btn-sm mt-1">Edit</a>
+              </div>
+               <div class="col">
+                  <a id="get-body-data-3" href="{{ route('sizechart.delete',['id'=>$attr->id]) }}"  onclick="return confirm('Are you sure?')" class="btn btn-block btn-danger btn-sm mt-1">Delete</a>
+              </div>
+            
+            </td>
             {{-- <td><a href="{{ route('attributes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
             <td><a href="{{ route('attributes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td> --}}
 
@@ -83,7 +88,7 @@
             <thead v-if="!isLoading" >
         <tr>
             <th>Attribute Name</th>
-            <th>Attribute Measurement</th>
+            <th colspan="2" class="text-center" ><span> Attribute Measurement Range</span></th>
             
             <th>Predicted Size</th>
             
@@ -94,7 +99,8 @@
           <tr v-if="!isLoading"  v-for="(row,index) in bodysizes" :key="row.id">
         
             <td>@{{ row.attr_name }}</td>
-            <td>@{{ row.attr_measurement }}</td>
+            <td>@{{ row.attr_measurement_start }}</td>
+            <td>@{{ row.attr_measurement_end }}</td>
             
             <td>@{{ row.predicted_size }}</td>
           </tr>

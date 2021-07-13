@@ -4,10 +4,13 @@
     @include('partials_sizes.sidebar')
     <div class="col-md-9 ">
 <div class="card  w-75">
-    <div class="card-header">@include('snippets.buttonback'){{ __('Add Measurement') }}</div>
+    
+    
+    
+    <div class="card-header">@include('snippets.buttonback'){{ __('Update Measurement') }}</div>
     <div class="card-body">
         
-        <form method="POST" action="{{ route('sizechart.add',['product_id'=> $product_id ]) }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('sizechart.update',['id'=>$id,'product_id'=> $current_product_id ]) }}" enctype="multipart/form-data">
             @csrf
             
             <div class="form-group row">
@@ -16,8 +19,11 @@
 
                 <div class="col-md-6">
                     <input id="weight" type="number"
-                           class="form-control @error('weight_start') is-invalid @enderror" name="weight_start" min="0" max="500" placeholder="Enter Weight Start"
-                            required autocomplete="off"
+                        class="form-control  @error('weight_start') is-invalid @enderror"
+                        name="weight_start" min="0" max="500" 
+                        placeholder="Enter Weight Start"
+                        required autocomplete="off"
+                        value="{{ $sizechart->weight_start }}"
                            >
 
                     @error('weight_start')
@@ -34,7 +40,7 @@
                 <div class="col-md-6">
                     <input id="weight_end" type="number"
                            class="form-control @error('weight_end') is-invalid @enderror" name="weight_end"
-                            required autocomplete="off" min="0" max="500" placeholder="Enter Weight End"
+                            required autocomplete="off" min="0" max="500" placeholder="Enter Weight End" value="{{ $sizechart->weight_end }}"
                            >
 
                     @error('weight_end')
@@ -52,6 +58,7 @@
                     <input id="height_start" type="number"
                            class="form-control @error('height_start') is-invalid @enderror" name="height_start"
                             required autocomplete="off" min="0" max="500" placeholder="Enter Height Start"
+                            value="{{ $sizechart->height_start }}"
                            >
 
                     @error('height_start')
@@ -69,6 +76,7 @@
                     <input id="height_end" type="number"
                            class="form-control @error('height_end') is-invalid @enderror" name="height_end"
                             required autocomplete="off" min="0" max="500" placeholder="Enter Height End"
+                            value="{{ $sizechart->height_end }}"
                            >
 
                     @error('height_end')
@@ -91,7 +99,7 @@
                         <option value=""> i.e Chest</option>
                         @foreach($variantsOfAttributes as $attr)
                             <option
-                                value="{{ $attr->id }}"> {{ $attr->name }} </option>
+                                value="{{ $attr->id }}" {{ ($attr->id == $sizechart->bodyFeature->attr_id )?'selected':'' }}> {{ $attr->name }} </option>
                         @endforeach
                     </select>
 
@@ -109,7 +117,9 @@
                 <div class="col-md-6">
                     <input id="body_measurement_start" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_start') is-invalid @enderror"
-                           name="body_measurement_start" placeholder="Enter Measurement" >
+                           name="body_measurement_start" placeholder="Enter Measurement"
+                           value="{{ $sizechart->bodyFeature->attr_measurement_start }}" >
+                           
 
                     @error('body_measurement_start')
                     <span class="invalid-feedback" role="alert">
@@ -125,7 +135,8 @@
                 <div class="col-md-6">
                     <input id="body_measurement_end" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_end') is-invalid @enderror"
-                           name="body_measurement_end" placeholder="Enter Measurement" >
+                           name="body_measurement_end" placeholder="Enter Measurement"
+                           value="{{ $sizechart->bodyFeature->attr_measurement_end }}" >
 
                     @error('body_measurement_end')
                     <span class="invalid-feedback" role="alert">
@@ -141,8 +152,11 @@
                 <div class="col-md-6">
                     <input id="predicted_size" type="text" required
                            class="form-control @error('predicted_size') is-invalid @enderror"
-                           name="predicted_size" placeholder="Relatable Size" >
-
+                           name="predicted_size" placeholder="Relatable Size"
+                           value="{{ $sizechart->bodyFeature->predicted_size }}"
+                            >
+                           
+                            
                     @error('predicted_size')
                     <span class="invalid-feedback" role="alert">
                         <strong>{{ $message }}</strong>

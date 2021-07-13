@@ -16,7 +16,8 @@ class CreateBodyfeaturesTable extends Migration
         Schema::create('bodyfeatures', function (Blueprint $table) {
             $table->id();
             $table->string('attr_name');
-            $table->integer('attr_measurement');
+            $table->integer('attr_measurement_start');
+            $table->integer('attr_measurement_end');
             $table->string('predicted_size');
             $table->integer('sizechart_id');
             $table->integer('attr_id');
