@@ -809,6 +809,9 @@ class AttributeController extends Controller
     }
     public function sizeChartPost(Request $request)
     {
+        dd($request->all());
+      
+        str_replace("body_measurement_start16","body_measurement_start","body_measurement_start16");
         $this->validate($request,[
                 'weight_start'=>'required|min:10|max:999|numeric',
                 'weight_end'=>'required|min:10|max:999|numeric',

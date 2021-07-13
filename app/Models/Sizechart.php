@@ -19,11 +19,11 @@ class Sizechart extends Model
     /**
      * Get all of the comments for the Sizechart
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function bodyFeature(): HasOne
+    public function bodyFeature(): HasMany
     {
-        return $this->hasOne(Bodyfeature::class, 'sizechart_id', 'id');
+        return $this->hasMany(Bodyfeature::class, 'sizechart_id', 'id');
     }
 
     /**

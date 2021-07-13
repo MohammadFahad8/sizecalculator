@@ -79,37 +79,19 @@
                 </div>
             </div>
            
-
-            <div class="form-group row">
-                <label for="attribute_type"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Attribute Type') }}</label>
-
-                <div class="col-md-6">
-                    <select class="form-control @error('attribute_type') is-invalid @enderror attributes-types"
-                            name="attribute_type" required>
-
-                        <option value=""> i.e Chest</option>
-                        @foreach($variantsOfAttributes as $attr)
-                            <option
-                                value="{{ $attr->id }}"> {{ $attr->name }} </option>
-                        @endforeach
-                    </select>
-
-                    @error('attribute_type')
-                    <span class="invalid-feedback" role="alert">
-                        <strong>{{ $message }}</strong>
-                    </span>
-                    @enderror
-                </div>
-            </div>
+            @foreach($variantsOfAttributes as $attr)
+                            
+            
+    
+            
             <div class="form-group row " >
                 <label for="body_measurement_start"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Measurement Start') }}</label>
+                       class="col-md-4 col-form-label text-md-right">{{ $attr->name }}</label>
 
-                <div class="col-md-6">
+                <div class="col-3">
                     <input id="body_measurement_start" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_start') is-invalid @enderror"
-                           name="body_measurement_start" placeholder="Enter Measurement" >
+                           name="body_measurement_start[]" placeholder="Enter Start..." >
 
                     @error('body_measurement_start')
                     <span class="invalid-feedback" role="alert">
@@ -117,15 +99,11 @@
                     </span>
                     @enderror
                 </div>
-            </div>
-            <div class="form-group row " >
-                <label for="body_measurement_end"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Measurement End') }}</label>
-
-                <div class="col-md-6">
+                
+                <div class="col-3">
                     <input id="body_measurement_end" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_end') is-invalid @enderror"
-                           name="body_measurement_end" placeholder="Enter Measurement" >
+                           name="body_measurement_end[]" placeholder="Enter End..." >
 
                     @error('body_measurement_end')
                     <span class="invalid-feedback" role="alert">
@@ -134,6 +112,8 @@
                     @enderror
                 </div>
             </div>
+           
+            @endforeach
              <div class="form-group row " >
                 <label for="predicted_size"
                        class="col-md-4 col-form-label text-md-right">{{ __('Predicted Size') }}</label>
