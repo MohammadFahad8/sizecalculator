@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Sizechart extends Model
 {
@@ -35,5 +36,14 @@ class Sizechart extends Model
         return $this->belongsTo(Products::class, 'product_id', 'product_id');
     }
 
+        /**
+         * Get the user that owns the Sizechart
+         *
+         * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+         */
+        public function attributecsb(): BelongsToMany
+        {
+            return $this->belongsToMany(Attributetypes::class, 'product_id', 'product_id');
+        }
     
 }

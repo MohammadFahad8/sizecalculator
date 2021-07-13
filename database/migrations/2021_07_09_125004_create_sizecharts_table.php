@@ -17,11 +17,11 @@ class CreateSizechartsTable extends Migration
             $table->id();
             
             
-            $table->double('weight_start');
-            $table->double('weight_end');
-            $table->double('height_start');
-            $table->double('height_end');
-            $table->double('product_id');
+            $table->bigInteger('weight_start');
+            $table->bigInteger('weight_end');
+            $table->bigInteger('height_start');
+            $table->bigInteger('height_end');
+            $table->bigInteger('product_id');
             $table->boolean('status')->default(1);
             
            

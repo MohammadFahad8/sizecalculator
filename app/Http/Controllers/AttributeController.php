@@ -347,6 +347,36 @@ class AttributeController extends Controller
     {
         
         $data = $request->all();
+        
+        $measurement = array('stomach','bottom','chest');
+        foreach($measurement as $m)
+        {
+ $sizeList = Attributetypes::with('bodyFeatureOfType','sizecharts')->where('product_id','=',$data['conversionCount'])->get();
+ $sizeChartList = Sizechart::with('bodyFeature','product')->where('product_id','=',$data['conversionCount'])->get();
+          
+
+            
+            foreach($sizeChartList as $s)
+            {
+                if($s['weight_start'] >= 10 && $s['weight_end'] <= 10 && $s['height_start'] >= 10 && $s['height_end'] <= 10 )
+                {
+
+                        echo json_encode($s);
+                    
+                }
+            }
+ 
+
+        
+        }
+
+       
+        
+        
+        
+       
+        exit;
+        
         $productid = $data['conversionCount'];
         
         $product = session()->get('product');
@@ -817,7 +847,7 @@ class AttributeController extends Controller
         $body->attr_measurement_end = $request->get('body_measurement_end');
         $body->predicted_size = $request->get('predicted_size');
         $body->attr_id = $request->get('attribute_type');
-        $body->attr_name = $attrBody->name;
+        $body->attr_name = strtolower($attrBody->name);
         $body->save();
         return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
 

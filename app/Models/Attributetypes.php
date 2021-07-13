@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -35,5 +36,15 @@ class Attributetypes extends Model
     public function bodyFeatureOfType(): HasOne
     {
         return $this->hasOne(Bodyfeature::class, 'attr_id', 'id');
+    }
+
+    /**
+     * Get all of the comments for the Attributetypes
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function sizecharts(): HasMany
+    {
+        return $this->hasMany(Sizechart::class, 'product_id', 'product_id');
     }
 }
