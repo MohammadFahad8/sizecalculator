@@ -9,7 +9,7 @@
     <div class="card-body">
         <form method="POST" action="{{ route('attributesTypes.add') }}" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="product_id" value="{{ $attrOfProduct[0]['product']['product_id'] }}">
+            <input type="hidden" name="product_id" value="{{($attrOfProduct[0]['product']['product_id'])??$product_id }}">
             <div class="form-group row">
                 <label for="name"
                        class="col-md-4 col-form-label text-md-right">{{ __('Attribute Name') }}</label>
@@ -33,7 +33,7 @@
 
                 <div class="col-md-6">
                     <input id="product_name" type="text"
-                           class="form-control @error('product_name') is-invalid @enderror" value="{{$attrOfProduct[0]['product']['name']}}"
+                           class="form-control @error('product_name') is-invalid @enderror" value="{{$attrOfProduct[0]['name']}}"
                             required autocomplete="off" readonly disabled
                            >
 
@@ -79,5 +79,26 @@
         </form>
     </div>
 </div>
+ <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
 </div>
+<script>
+    $(function(){
+        $("#loader").fadeOut("slow", function() {
+                // will fade out the whole DIV that covers the website.
+                $("#preloader").delay(300).fadeOut("slow");
+            }); 
+    })
+</script>
 @endsection

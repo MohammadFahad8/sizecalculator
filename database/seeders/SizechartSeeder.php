@@ -12,8 +12,9 @@ class SizechartSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run($name)
     {
+        dd($name);
         //
         DB::table('sizecharts')->insert([
             'height_start'=>'160',  'height_end'=>'172',  'weight_start'=>'120',  'weight_end'=>'145',

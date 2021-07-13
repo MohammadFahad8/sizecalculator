@@ -11,12 +11,13 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run($pata)
     {
+        
         // \App\Models\User::factory(10)->create();
         
         //$this->call(Attributetypeseeder::class);
-        $this->call(SizechartSeeder::class);
+        $this->call(SizechartSeeder::class,false,[$pata]);
         $this->call(BodyFeatureSeeder::class);
     }
 }

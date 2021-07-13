@@ -12,7 +12,8 @@
 <div class="col-md-8" >
 <div class="card">
     <div class="card-header ">
-        <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Products') }}</span><span class="float-right" >@include('snippets.refresh_products')</span> 
+        <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Products') }}</span>
+        <span class="float-right" >@include('snippets.refresh_products')</span> 
     </div>
     <div class="card-body">
         
@@ -29,6 +30,7 @@
         @php
           $temp = 0;
         @endphp
+        
     @forelse($other as $key=> $row)
     <tr>
             
@@ -41,9 +43,9 @@
               <div class="col-md-10" style="cursor: pointer;">
               <a href="javascript:void(0)" class="text-dark" >{{ $row->name }}</a></div></div></td>
             <td>
-            {{-- <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}> --}}
+            
             <label class="switch">
-                <input data-id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}>
+                <input data-id="{{$row->product_id}}" id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}>
                 <span class="slider round"></span>
               </label>
              </td>
@@ -51,9 +53,7 @@
                 
             
            
-            {{-- 
-<td><a href="{{ route('attributes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">
-    Delete</a></td> --}}
+           
 
     </tr>
     
@@ -160,6 +160,19 @@
   </div>
 </div>
 </div>
+<!-- preloader
+    ================================================== -->
+    <div id="preloader">
+      <div id="loader">
+          <div class="line-scale">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
+      </div>
+  </div>
 @include('scripts.index')
 
 <script>
@@ -196,7 +209,7 @@
                 this.product  = res.data
                 
                 this.variant_count = this.product.variants.length;
-                 console.log(this.product.variants.size)
+                console.log(this.product.variants.size)
                  
 
            })
@@ -221,11 +234,17 @@
 
 <script>
   
+   /* Preloader
+    * ----------------------------------------------------- */
+   
    
    
   
     $(function() {
-
+ $("#loader").fadeOut("slow", function() {
+                // will fade out the whole DIV that covers the website.
+                $("#preloader").delay(300).fadeOut("slow");
+            }); 
      
         
         $('#Capa_1').on('click',function(){
@@ -234,6 +253,8 @@
          $('.toggle-class').change(function() {
           var status = $(this).prop('checked') == true ? 1 : 0; 
           var product_id = $(this).data('id'); 
+          var tag_id = $(this).prop('id'); 
+          
            
           $.ajax({
               type: "GET",
@@ -242,16 +263,27 @@
               data: {'status': status, 'id': product_id},
               success: function(data){
                   
-               
-               if(data.status==1)
+               if(data.error_msg)
                {
+                toastr.info(data.error_msg)
+                
+                $("#"+tag_id).prop("checked", false);
+               }
+               else
+               {
+                 if(data.status==1)
+               {
+                 
                 toastr.options.progressBar = true;
             
                    toastr.success('Widget Permission granted for this Product')
                }
                else{
+                 
                 toastr.warning('Widget removed for this Product')
                      }
+               }
+               
              
                
               }

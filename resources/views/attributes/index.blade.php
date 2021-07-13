@@ -13,42 +13,18 @@
     </a></div> --}}
     <div class="card-header ">
         <div class="row">
-            <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Attributes') }}</span> </div>
-            <div class="col-md-9"><a
-                href="{{ route('attributes.create') }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute</span></a></div>
+            <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Dashboard') }}</span> </div>
+            {{-- <div class="col-md-9"><a  href="{{ route('attributes.create') }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute</span></a></div> --}}
         </div>
        </div>
     <div class="card-body">
-        
-<table class="table table-bordered  " style="width:100% !important;">
-    <thead>
-<tr>
-    <th>Attribute</th>
-    <th>Type</th>
-    <th>Required</th>
-    <th>Status</th>
-    <th colspan="2" > <span class="offset-5">Action</span></th>
-</tr>
-    </thead>
-       <tbody>
-    @forelse($attributes as $attr)
-    <tr>
-            <td>{{ $attr->attribute_name }}</td>
-            <td>{{ $attr->attributetype->name }}</td>
-            <td>{{ $attr->is_required }}</td>
-            <td>{{ $attr->status }}</td>
-            <td><a href="{{ route('attributes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
-            <td><a href="{{ route('attributes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td>
-
-    </tr>
-    @empty
-    @endforelse
- 
-
-    </tbody>
-</table>
+        <div class="text-left">
+             <p>Welcome to Body Fit Application</p>
+        </div>
+       
     </div>
 </div>
 </div>
+
 </div>
 @endsection

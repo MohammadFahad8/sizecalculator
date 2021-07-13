@@ -19,6 +19,7 @@ class CreateProductsTable extends Migration
             $table->text('name')->default('nothing');
             $table->text('image_link')->nullable();
             $table->boolean('status')->default(0);
+            $table->boolean('is_deleted')->default(0);
             $table->bigInteger('website_name')->default('123321');
             
             $table->timestamps();

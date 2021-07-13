@@ -27,7 +27,7 @@
     <th>Product Name</th>
     
     <th>Status</th>
-    <th colspan="2" > <span class="offset-5">Action</span></th>
+    <th colspan="3" > <span class="offset-5">Action</span></th>
 </tr>
     </thead>
        <tbody>
@@ -131,6 +131,19 @@
       </div>
     </div>
   </div> --}}
+  <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+      <div id="loader">
+          <div class="line-scale">
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+              <div></div>
+          </div>
+      </div>
+  </div>
 </div>
 @include('scripts.index')
 <script>
@@ -151,7 +164,16 @@
 
             }
         },
+       
     })
+</script>
+<script>
+  $(function(){
+    $("#loader").fadeOut("slow", function() {
+                // will fade out the whole DIV that covers the website.
+                $("#preloader").delay(300).fadeOut("slow");
+            }); 
+  })
 </script>
 
 @endsection

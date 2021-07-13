@@ -15,6 +15,7 @@ use App\Models\Selectedsize;
 use Illuminate\Http\Request;
 use App\Http\Helpers\Apihooks;
 use App\Models\Attributetypes;
+use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
 
@@ -28,7 +29,8 @@ class AttributeController extends Controller
     public function index()
     {
         //
-
+        // $db = new DatabaseSeeder();
+        // $db->run('fahad');
         $helpers = new Helpers();
         $helpers->ifScriptTag();
         $helpers->updateAsset();
@@ -153,8 +155,18 @@ class AttributeController extends Controller
     public function editProduct(Request $request)
     {
         //
+        $messageContainer = array('error_msg' =>'Configure Product By clicking on Image First');
+            
+        $product = Products::where('product_id','=',$request['id'])->first();
+        $sizeChartCount = Sizechart::where('product_id','=',$request['id'])->get();
+        
+        
+        if(count($sizeChartCount)==0)
+        {
+            
+            return $messageContainer;
 
-        $product = Products::find($request['id']);
+        }
         $setting = Settings::where('name', '=', Auth::user()->name)->first();
         if ($setting->clear_logs == 1) {
 
@@ -207,24 +219,49 @@ class AttributeController extends Controller
 
 
         $productsall = $shop->api()->rest('GET', '/admin/api/2021-07/products.json')['body']['container'];
+        
         $prod = $productsall['products'];
+        
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
+        
         $shop_config = $shop_cfg['shop'];
         
         Variants::truncate();
+    // Products::truncate();
         foreach ($prod as $row) {
+            $product = Products::where('product_id','=',$row['id'])->first();
+           if( $product == null) {
+                
+                $product = new Products();
+            $product->product_id =  $row['id'];
+            $product->name =   $row['title'];
+            $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
+            $product->website_name =  $shop_config['id'];
+            $product->save();
+            }  
+            else
+            {
+               
+           
+            $product->product_id =  $row['id'];
+            $product->name =   $row['title'];
+            $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
+            $product->website_name =  $shop_config['id'];
+            $product->save();  
+            }
             
+           
     
-            Products::updateOrCreate(
-                ['product_id' => $row['id']],
+            // Products::updateOrCreate(
+            //     ['product_id' => $row['id']],
 
-                [
-                    'name' => $row['title'],
-                    'image_link' => ($row['image'] == null) ? null : $row['image']['src'],
-                    'website_name' => $shop_config['id'],
+            //     [
+            //         'name' => $row['title'],
+            //         'image_link' => ($row['image'] == null) ? null : $row['image']['src'],
+            //         'website_name' => $shop_config['id'],
                     
-                ]
-            );
+            //     ]
+            // );
              
             if($row['variants'] != null){
                 
@@ -245,7 +282,25 @@ class AttributeController extends Controller
               echo'no variants';
           }
         }
-        $products = Products::where('website_name', '=', $shop_config['id'])->paginate(5);
+         //DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
+        $checkInApiResponse = Products::latest()->get();
+                
+        foreach($checkInApiResponse as $resp)
+        {   
+            
+             $productCheckIfDeletedFromStore = Auth::user()->api()->rest('GET','/admin/api/2021-04/products/'.$resp['product_id'].'.json')['body'];
+    
+    if($productCheckIfDeletedFromStore == "Not Found")
+    {   $product = Products::where('product_id','=',$resp['product_id'])->first();
+
+        $product->is_deleted =  1;
+        $product->save();
+    }
+        }
+
+        //END DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
+        $products = Products::where([['website_name', '=', $shop_config['id']],['is_deleted','=',0]])->paginate(5);
+      
         
 
         return view('products.index', [
@@ -266,6 +321,7 @@ class AttributeController extends Controller
         $products = Products::where('product_id', '=', $request['id'])->first();
 
         $setting = Settings::where('name', '=', $request['shop_name'])->first();
+       
 
         if ($products->status == 1) {
 
@@ -834,10 +890,13 @@ class AttributeController extends Controller
     public function attributeTypeCreate(Request $request)
     
     {
-        $attributeTypeOfProducts = Attributetypes::with('product')->where('product_id','=',$request['id'])->get();
+        
+        // $attributeTypeOfProducts = Attributetypes::with('product')->where('product_id','=',$request['id'])->get();
+       $attributeTypeOfProducts = Products::with('attributetypes')->where('product_id','=',$request['id'])->get();
+       
         
         return view('attribute_types.create',
-        [
+        [   'product_id'=>$request['id'],
             'attrOfProduct'=>$attributeTypeOfProducts
         ]);
 
