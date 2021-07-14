@@ -7,7 +7,7 @@
     <div class="card-header">@include('snippets.buttonback'){{ __('Add Measurement') }}</div>
     <div class="card-body">
         
-        <form method="POST" action="{{ route('sizechart.add',['product_id'=> $product_id ]) }}" enctype="multipart/form-data">
+        <form id="sizechartform" method="POST" action="{{ route('sizechart.add',['product_id'=> $product_id ]) }}" enctype="multipart/form-data">
             @csrf
             
             <div class="form-group row">
@@ -167,6 +167,16 @@
 </div>
 </div>
 <script type="text/javascript">
+$("#sizechartform").validate({
+        rules: {
+            "body_measurement_start[]": "required"
+            "body_measurement_end[]": "required"
+        },
+        messages: {
+            "body_measurement_start[]": "Please select Start Range",
+            "body_measurement_end[]": "Please select End Range",
+        }
+    });
     $('.attributes-types').change(function () {
         var role = $(this).find('option:selected').text();
         
@@ -174,4 +184,5 @@
         $("input[name=body_measurement_end]").attr("placeholder",role+" Measurement End");
     });
 </script>
+
 @endsection

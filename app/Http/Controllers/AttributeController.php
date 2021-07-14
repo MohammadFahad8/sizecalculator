@@ -348,97 +348,111 @@ class AttributeController extends Controller
         
         $data = $request->all();
         
+        
         $measurement = array('stomach','bottom','chest');
-        foreach($measurement as $m)
-        {
+       
  $sizeList = Attributetypes::with('bodyFeatureOfType','sizecharts')->where('product_id','=',$data['conversionCount'])->get();
  $sizeChartList = Sizechart::with('bodyFeature','product')->where('product_id','=',$data['conversionCount'])->get();
-          
+ $productid = $data['conversionCount'];
+        
+ $product = session()->get('product');
+ unset($product);
+ session()->put('product',$productid);
 
+ $height_cm = 0;
+
+ if ($data['convertedMeasurements'] == true) {
+
+     $data['weight'] = $data['weight'] * 2.2;
+
+     $height_cm = $data['heightcm'];
+ } else {
+     $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
+ }
+
+ 
+dd($data);
+
+ $tags = array_map('strtolower', $data['tags']);
+ if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
             
             foreach($sizeChartList as $s)
             {
-                if($s['weight_start'] >= 10 && $s['weight_end'] <= 10 && $s['height_start'] >= 10 && $s['height_end'] <= 10 )
-                {
+                 
+                  
+                         if($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm>=$s['height_start'] && $height_cm<=$s['height_end'])
+                               {
+                                     foreach($s['bodyFeature'] as $b)
+                                {
+                                    if( $b['attr_name']=='chest' && $b['attr_measurement_start']>=100 && $b['attr_measurement_end']<=200)
+                                    {
+                                        
+                                        echo $b['predicted_size'];
+                                    }else if($b['attr_name']=='bottom' && $b['attr_measurement_start']>=100 && $b['attr_measurement_end']<=200)
+                                    {
+                                        echo $b['predicted_size'];
 
-                        echo json_encode($s);
-                    
-                }
+                                    }
+                                    else if($b['attr_name']=='stomach' && $b['attr_measurement_start']>=100 && $b['attr_measurement_end']<=200)
+
+                                    {
+                                        
+                                        echo $b['predicted_size'];
+                                    }
+                       
+
+
+                                }
+                    }
+               
             }
  
-
-        
         }
-
-       
-        
-        
-        
-       
         exit;
         
-        $productid = $data['conversionCount'];
-        
-        $product = session()->get('product');
-        unset($product);
-        session()->put('product',$productid);
-
-        $height_cm = 0;
-
-        if ($data['convertedMeasurements'] == true) {
-
-            $data['weight'] = $data['weight'] * 2.2;
-
-            $height_cm = $data['heightcm'];
-        } else {
-            $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
-        }
+       
 
 
-
-        $tags = array_map('strtolower', $data['tags']);
-
-
-        if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
+        // if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
 
 
-            //Man  Adult
+        //     //Man  Adult
 
 
-            if (($data['weight'] >= 103 && $data['weight'] <= 121) && ($height_cm  >=  134 && $height_cm <= 150)) {
-                //xxs
-                return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-            } else if (($data['weight'] > 121 && $data['weight'] <= 139) && ($height_cm  >  150 && $height_cm <= 165)) {
-                //xs
-                return  $this->measurements($xs = 'xs', $data['chest'], $data['stomach'], $data['bottom'], null);
-            } else  if (($data['weight'] > 139 && $data['weight'] <= 161) && ($height_cm  >=  165 && $height_cm <= 175)) {
+        //     if (($data['weight'] >= 103 && $data['weight'] <= 121) && ($height_cm  >=  134 && $height_cm <= 150)) {
+        //         //xxs
+        //         return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
+        //     } else if (($data['weight'] > 121 && $data['weight'] <= 139) && ($height_cm  >  150 && $height_cm <= 165)) {
+        //         //xs
+        //         return  $this->measurements($xs = 'xs', $data['chest'], $data['stomach'], $data['bottom'], null);
+        //     } else  if (($data['weight'] > 139 && $data['weight'] <= 161) && ($height_cm  >=  165 && $height_cm <= 175)) {
 
-                //s
-                return $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-            } else if (($data['weight'] > 155 && $data['weight'] <= 175) && ($height_cm  >=  173 && $height_cm <= 185)) {
-                //M
-                return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-            } else  if (($data['weight'] > 165 && $data['weight'] <= 198) && ($height_cm  >=  178 && $height_cm <= 190)) {
+        //         //s
+        //         return $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
+        //     } else if (($data['weight'] > 155 && $data['weight'] <= 175) && ($height_cm  >=  173 && $height_cm <= 185)) {
+        //         //M
+        //         return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
+        //     } else  if (($data['weight'] > 165 && $data['weight'] <= 198) && ($height_cm  >=  178 && $height_cm <= 190)) {
 
-                //ML
-                return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-            } else if (($data['weight'] > 187 && $data['weight'] <= 214) && ($height_cm  >=  185 && $height_cm <= 195)) {
+        //         //ML
+        //         return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
+        //     } else if (($data['weight'] > 187 && $data['weight'] <= 214) && ($height_cm  >=  185 && $height_cm <= 195)) {
 
-                //L
-                return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-            } else if (($data['weight'] > 207 && $data['weight'] <= 242) && ($height_cm  >=  190 && $height_cm <= 205)) {
-                //XL
-                return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], $xl = 'xl');
-            } else  if (($data['weight'] > 242) && ($height_cm  >  205)) {
-                //XXL
-                return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], $xl = 'xxl');
-            } else {
-                return $size = 'M';
-            }
-        } else {
+        //         //L
+        //         return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
+        //     } else if (($data['weight'] > 207 && $data['weight'] <= 242) && ($height_cm  >=  190 && $height_cm <= 205)) {
+        //         //XL
+        //         return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], $xl = 'xl');
+        //     } else  if (($data['weight'] > 242) && ($height_cm  >  205)) {
+        //         //XXL
+        //         return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], $xl = 'xxl');
+        //     } else {
+        //         return $size = 'M';
+        //     }
+        // } else {
 
-            return  $this->calculateSizeFemale($data, $height_cm);
-        }
+        //     return  $this->calculateSizeFemale($data, $height_cm);
+        // }
         //end man adult
     }
     public function calculateSizeFemale($data, $height_cm)
@@ -786,6 +800,7 @@ class AttributeController extends Controller
 
         $sizechart = Sizechart::with('bodyFeature','product')->find($request->get('id'));
         
+        
         $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id','=',$request->get('product_id')],['status','>',0]])->get();
         return view('size-charts.edit',[
             'sizechart'=>$sizechart,
@@ -809,49 +824,56 @@ class AttributeController extends Controller
     }
     public function sizeChartPost(Request $request)
     {
-        dd($request->all());
+    
       
-        str_replace("body_measurement_start16","body_measurement_start","body_measurement_start16");
         $this->validate($request,[
-                'weight_start'=>'required|min:10|max:999|numeric',
-                'weight_end'=>'required|min:10|max:999|numeric',
-                'height_start'=>'required|min:10|max:999|numeric',
-                'height_end'=>'required|min:10|max:999|numeric',
-                'body_measurement_start'=>'required|min:10|max:999|numeric',
-                'body_measurement_end'=>'required|min:10|max:999|numeric',
-                'predicted_size'=>'required|min:2|alpha',
-                
-        ],[
-            'weight_start.required'=>"Enter Value for Weight Start Range",
-            'weight_end.required'=>"Enter Value for Weight End Range",
-            'height_start.required'=>"Enter Value for Height Start Range",
-            'height_end.required'=>"Enter Value for Height End Range",
-            'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
-            'body_measurement_end.required'=>"Enter Value for Attribute End Range",
-            'predicted_size.required'=>"Enter Value for Predicted Size",
-            'predicted_size.alpha'=>"Input must be Letters i.e (A-Z,a-z)",
-            'weight_start.numeric'=>"Entered Value must be Numeric",
-            'weight_end.numeric'=>"Entered Value must be Numeric",
-            'height_start.numeric'=>"Entered Value must be Numeric",
-            'height_end.numeric'=>"Entered Value must be Numeric",
-            'body_measurement_start.numeric'=>"Entered Value must be Numeric",
-            'body_measurement_end.numeric'=>"Entered Value must be Numeric",
+            'weight_start'=>'required|min:10|max:999|numeric',
+            'weight_end'=>'required|min:10|max:999|numeric',
+            'height_start'=>'required|min:10|max:999|numeric',
+            'height_end'=>'required|min:10|max:999|numeric',
+            // 'body_measurement_start.*'=>'required|array|numeric',
+            // 'body_measurement_end.*'=>'required|array|numeric',
+            'predicted_size'=>'required|min:2|alpha',
+            
+    ],[
+        'weight_start.required'=>"Enter Value for Weight Start Range",
+        'weight_end.required'=>"Enter Value for Weight End Range",
+        'height_start.required'=>"Enter Value for Height Start Range",
+        'height_end.required'=>"Enter Value for Height End Range",
+        // 'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
+        // 'body_measurement_end.required'=>"Enter Value for Attribute End Range",
+        'predicted_size.required'=>"Enter Value for Predicted Size",
+        'predicted_size.alpha'=>"Input must be Letters i.e (A-Z,a-z)",
+        'weight_start.numeric'=>"Entered Value must be Numeric",
+        'weight_end.numeric'=>"Entered Value must be Numeric",
+        'height_start.numeric'=>"Entered Value must be Numeric",
+        'height_end.numeric'=>"Entered Value must be Numeric",
+        // 'body_measurement_start.numeric'=>"Entered Value must be Numeric",
+        // 'body_measurement_end.numeric'=>"Entered Value must be Numeric",
 
 
-        ]);
+    ]);
+        
         
         $sizeChartLastId = Sizechart::create($request->all());
-        $attrBody = Attributetypes::find($request->get('attribute_type'));
-
         
+        
+        for($i=0;$i<=count($request->get('body_measurement_start'))-1;$i++ )
+        {
+            
+            
+                
+        $attrBody = Attributetypes::find($request->get('attribute_type')[$i]);
         $body = new Bodyfeature();
         $body->sizechart_id = $sizeChartLastId->id;
-        $body->attr_measurement_start = $request->get('body_measurement_start');
-        $body->attr_measurement_end = $request->get('body_measurement_end');
+        $body->attr_measurement_start = $request->get('body_measurement_start')[$i];
+        $body->attr_measurement_end = $request->get('body_measurement_end')[$i];
         $body->predicted_size = $request->get('predicted_size');
-        $body->attr_id = $request->get('attribute_type');
-        $body->attr_name = strtolower($attrBody->name);
+        $body->attr_id = $attrBody->id;
+        $body->attr_name = strtolower($request->get('attribute_type_name')[$i]);
         $body->save();
+        }
+      
         return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
 
     }
@@ -862,8 +884,8 @@ class AttributeController extends Controller
             'weight_end'=>'required|min:10|max:999|numeric',
             'height_start'=>'required|min:10|max:999|numeric',
             'height_end'=>'required|min:10|max:999|numeric',
-            'body_measurement_start'=>'required|min:10|max:999|numeric',
-            'body_measurement_end'=>'required|min:10|max:999|numeric',
+            // 'body_measurement_start'=>'required|min:10|max:999|numeric',
+            // 'body_measurement_end'=>'required|min:10|max:999|numeric',
             'predicted_size'=>'required|min:2|alpha',
             
     ],[
@@ -871,16 +893,16 @@ class AttributeController extends Controller
         'weight_end.required'=>"Enter Value for Weight End Range",
         'height_start.required'=>"Enter Value for Height Start Range",
         'height_end.required'=>"Enter Value for Height End Range",
-        'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
-        'body_measurement_end.required'=>"Enter Value for Attribute End Range",
+        // 'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
+        // 'body_measurement_end.required'=>"Enter Value for Attribute End Range",
         'predicted_size.required'=>"Enter Value for Predicted Size",
         'predicted_size.alpha'=>"Input must be Letters i.e (A-Z,a-z)",
         'weight_start.numeric'=>"Entered Value must be Numeric",
         'weight_end.numeric'=>"Entered Value must be Numeric",
         'height_start.numeric'=>"Entered Value must be Numeric",
         'height_end.numeric'=>"Entered Value must be Numeric",
-        'body_measurement_start.numeric'=>"Entered Value must be Numeric",
-        'body_measurement_end.numeric'=>"Entered Value must be Numeric",
+        // 'body_measurement_start.numeric'=>"Entered Value must be Numeric",
+        // 'body_measurement_end.numeric'=>"Entered Value must be Numeric",
 
 
     ]);
@@ -894,19 +916,24 @@ class AttributeController extends Controller
     $sizeChart->height_end = $request->get('height_end');
     $sizeChart->product_id = $request->get('product_id');
     $sizeChart->save();
-    $attrBody = Attributetypes::find($request->get('attribute_type'));
-
     
-    $body =  Bodyfeature::where('sizechart_id','=',$request->get('id'))->first();
-    $body->sizechart_id = $sizeChart->id;
-    $body->attr_measurement_start = $request->get('body_measurement_start');
-    $body->attr_measurement_end = $request->get('body_measurement_end');
-    $body->predicted_size = $request->get('predicted_size');
-    $body->attr_id = $request->get('attribute_type');
-    $body->attr_name = $attrBody->name;
-    $body->save();
-    return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
-
+    for($i=0;$i<=count($request->get('body_measurement_start'))-1;$i++ )
+        {
+    
+        $b=Bodyfeature::where('sizechart_id','=',$request->get('id'))->get();
+        $b[$i]['sizechart_id'] = $sizeChart->id;
+        $b[$i]['attr_measurement_start'] = $request->get('body_measurement_start')[$i];
+        $b[$i]['attr_measurement_end'] = $request->get('body_measurement_end')[$i];
+        $b[$i]['predicted_size'] = $request->get('predicted_size');
+        $b[$i]['attr_id']= $request->get('attribute_type')[$i] ;
+        $b[$i]['attr_name']= strtolower($request->get('attribute_type_name')[$i]);
+        $b[$i]->save();
+        
+        
+    
+       }
+        return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
+        
 
     }
     public function attributeType($id)
@@ -988,7 +1015,7 @@ class AttributeController extends Controller
         $attr = AttributeTypes::find($request->get('id'));
         $attr->status = 0;
         $attr->save();
-        return   redirect()->route('attributetypes.home', ['id' => $request->get('id')]);
+        return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
 
     }
 }
