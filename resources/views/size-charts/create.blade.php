@@ -85,9 +85,10 @@
     
             
             <div class="form-group row " >
-                <label for="body_measurement_start"
-                       class="col-md-4 col-form-label text-md-right">{{ $attr->name }}</label>
-
+                <input type="hidden" value="{{ $attr->id }}" name="attribute_type[]">
+                <input for="body_measurement_start"
+                       class="col-md-4 col-form-label text-md-right border-0 size-name" name="attribute_type_name[]" value="{{ $attr->name }}" readonly/>
+ 
                 <div class="col-3">
                     <input id="body_measurement_start" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_start') is-invalid @enderror"
