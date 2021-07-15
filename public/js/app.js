@@ -2174,9 +2174,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         heightcm: parseInt(localStorage.getItem('cm')),
         weight: parseFloat(localStorage.getItem('weight')).toFixed(0),
         age: localStorage.getItem('age'),
-        chest: localStorage.getItem('chest'),
-        stomach: localStorage.getItem('stomach'),
-        bottom: localStorage.getItem('bottom'),
+        chest: {
+          name: 'chest',
+          other: localStorage.getItem('chest')
+        },
+        stomach: {
+          name: 'stomach',
+          other: localStorage.getItem('stomach')
+        },
+        bottom: {
+          name: 'bottom',
+          other: localStorage.getItem('bottom')
+        },
         tags: JSON.parse(localStorage.getItem('tags')),
         convertedMeasurements: false,
         conversionCount: ''
@@ -2192,6 +2201,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         title: 'Very Relaxed'
       }],
+      attributes: {},
       countrycheck: '',
       checked: false,
       currentTab: 0,
@@ -2223,8 +2233,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       restarted: false,
       sizecheck: false,
       allow: true,
-      image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
-      image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png'
+      chestSizeOne: '1',
+      chestSizeTwo: '2',
+      chestSizeThree: '3',
+      stomachSizeOne: '1',
+      stomachSizeTwo: '2',
+      stomachSizeThree: '3',
+      bottomSizeOne: '1',
+      bottomSizeTwo: '2',
+      bottomSizeThree: '3',
+      image_us: this.$appUrl + '/images/us.png',
+      image_uk: this.$appUrl + '/images/uk.png'
     };
   },
   methods: {
@@ -2575,17 +2594,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
     },
     chest: function chest(n) {
-      this.form.chest = n;
+      this.form.chest.other = n;
       localStorage.setItem('chest', n);
       this.nextPrev(1);
     },
     stomach: function stomach(n) {
-      this.form.stomach = n;
+      this.form.stomach.other = n;
       localStorage.setItem('stomach', n);
       this.nextPrev(1);
     },
     bottom: function bottom(n) {
-      this.form.bottom = n;
+      this.form.bottom.other = n;
       localStorage.setItem('bottom', n);
       this.form.tags = this.product.tags;
       localStorage.setItem('tags', JSON.stringify(this.product.tags));
@@ -2950,9 +2969,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form.heightinch = '';
       this.form.weight = '';
       this.form.age = '';
-      this.form.chest = '';
-      this.form.stomach = '';
-      this.form.bottom = '';
+      this.form.chest.name = '';
+      this.form.chest.other = '';
+      this.form.stomach.name = '';
+      this.form.stomach.other = '';
+      this.form.bottom.name = '';
+      this.form.bottom.other = '';
       this.recommended_size = '', this.currentTab = 0;
       this.showContinueBtn = true, //                $('.fit-advisor-selected-product-grid').css('display', 'none');
       $("#steps-mark").css('visibility', 'hidden');
@@ -3065,6 +3087,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           desc_title: 'Recommended'
         });
       });
+    },
+    getAttributes: function getAttributes() {
+      var _this4 = this;
+
+      axios.get(this.$appUrl + '/api/get-attrbutes/' + this.product.id).then(function (res) {
+        _this4.attributes = res.data;
+
+        _this4.attributes.forEach(function (el, index) {
+          if (el.name.toLowerCase() == _this4.form.chest.name.toLowerCase()) {
+            _this4.form.chest.name = el.name.toLowerCase();
+            console.log(_this4.form.chest.name);
+            _this4.chestSizeOne = el.size_one;
+            _this4.chestSizeTwo = el.size_second;
+            _this4.chestSizeThree = el.size_third;
+          } else if (el.name.toLowerCase() == _this4.form.stomach.name.toLowerCase()) {
+            _this4.form.stomach.name = el.name.toLowerCase();
+            console.log(_this4.form.stomach.name);
+            _this4.stomachSizeOne = el.size_one;
+            _this4.stomachSizeTwo = el.size_second;
+            _this4.stomachSizeThree = el.size_third;
+          } else if (el.name.toLowerCase() == _this4.form.bottom.name.toLowerCase()) {
+            _this4.form.bottom.name = el.name.toLowerCase();
+            console.log(_this4.form.bottom.name);
+            _this4.bottomSizeOne = el.size_one;
+            _this4.bottomSizeTwo = el.size_second;
+            _this4.bottomSizeThree = el.size_third;
+          }
+        });
+      });
     }
   },
   mounted: function mounted() {
@@ -3072,6 +3123,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.responsiveness();
     this.getLocalData();
     this.showBodyFit();
+    this.getAttributes();
 
     if (localStorage.getItem('recommended_size') != null) {
       var n = 4;
@@ -42804,7 +42856,7 @@ var render = function() {
                               staticClass:
                                 "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN",
                               staticStyle: {
-                                display: "inline-block",
+                                cursor: "pointer",
                                 "/* width": "59px"
                               },
                               attrs: {
@@ -42843,6 +42895,7 @@ var render = function() {
                             {
                               staticClass:
                                 "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi",
+                              staticStyle: { cursor: "pointer" },
                               attrs: {
                                 viewBox: "0 0 512 512",
                                 height: "24",
@@ -43472,7 +43525,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.chest(1)
+                                        return _vm.chest(_vm.chestSizeOne)
                                       }
                                     }
                                   }),
@@ -43511,7 +43564,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.chest(2)
+                                        return _vm.chest(_vm.chestSizeTwo)
                                       }
                                     }
                                   }),
@@ -43550,7 +43603,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.chest(3)
+                                        return _vm.chest(_vm.chestSizeThree)
                                       }
                                     }
                                   }),
@@ -43599,7 +43652,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.stomach(1)
+                                        return _vm.stomach(_vm.stomachSizeOne)
                                       }
                                     }
                                   }),
@@ -43638,7 +43691,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.stomach(2)
+                                        return _vm.stomach(_vm.stomachSizeTwo)
                                       }
                                     }
                                   }),
@@ -43677,7 +43730,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.stomach(3)
+                                        return _vm.stomach(_vm.stomachSizeThree)
                                       }
                                     }
                                   }),
@@ -43726,7 +43779,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.bottom(1)
+                                        return _vm.bottom(_vm.bottomSizeOne)
                                       }
                                     }
                                   }),
@@ -43765,7 +43818,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.bottom(2)
+                                        return _vm.bottom(_vm.bottomSizeOne)
                                       }
                                     }
                                   }),
@@ -43804,7 +43857,7 @@ var render = function() {
                                     },
                                     on: {
                                       click: function($event) {
-                                        return _vm.bottom(3)
+                                        return _vm.bottom(_vm.bottomSizeOne)
                                       }
                                     }
                                   }),

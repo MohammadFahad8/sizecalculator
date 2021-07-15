@@ -27,6 +27,7 @@
     <th>Product Name</th>
     
     <th>Status</th>
+    <th>Sizes of Product</th>
     <th colspan="3" > <span class="offset-5">Action</span></th>
 </tr>
     </thead>
@@ -38,6 +39,14 @@
             <td>{{ $attr->product->name }}</td>
             
             <td>{{ $attr->status }}</td>
+            <td><select class="form-control btn" name="" id=""  required="required" readonly=""  >
+            <option >
+             Sizes of {{ $attr->name }}
+            </option>
+            <option >{{ $attr->size_one }}</option>
+            <option >{{ $attr->size_second }}</option>
+            <option >{{ $attr->size_third }}</option>
+            </select></td>
             <td><a href="{{ route('sizechart.home',['id'=>$attrTypeOfProducts[0]['product']->product_id ]) }}"  class="">View Variants</a></td>
             <td><a href="{{ route('attributesTypes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
             <td><a href="{{ route('attributesTypes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td>

@@ -345,12 +345,9 @@ class AttributeController extends Controller
 
     public function calculateSize(Request $request)
     {
+        $break=0;
+        dd($data = $request->all());
         
-        $data = $request->all();
-        
-        
-        $measurement = array('stomach','bottom','chest');
-       
  $sizeList = Attributetypes::with('bodyFeatureOfType','sizecharts')->where('product_id','=',$data['conversionCount'])->get();
  $sizeChartList = Sizechart::with('bodyFeature','product')->where('product_id','=',$data['conversionCount'])->get();
  $productid = $data['conversionCount'];
@@ -371,7 +368,7 @@ class AttributeController extends Controller
  }
 
  
-dd($data);
+
 
  $tags = array_map('strtolower', $data['tags']);
  if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
@@ -382,27 +379,38 @@ dd($data);
                   
                          if($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm>=$s['height_start'] && $height_cm<=$s['height_end'])
                                {
+                                   
                                      foreach($s['bodyFeature'] as $b)
                                 {
-                                    if( $b['attr_name']=='chest' && $b['attr_measurement_start']>=100 && $b['attr_measurement_end']<=200)
+                                    
+                                    if( $b['attr_name']==$data['chest']['name'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
                                     {
                                         
                                         echo $b['predicted_size'];
-                                    }else if($b['attr_name']=='bottom' && $b['attr_measurement_start']>=100 && $b['attr_measurement_end']<=200)
+                                    }else if($b['attr_name']==$data['bottom']['name'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
                                     {
+                                       
                                         echo $b['predicted_size'];
 
                                     }
-                                    else if($b['attr_name']=='stomach' && $b['attr_measurement_start']>=100 && $b['attr_measurement_end']<=200)
+                                    else if($b['attr_name']==$data['stomach']['name'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
 
                                     {
                                         
                                         echo $b['predicted_size'];
                                     }
+                                   
                        
-
+ if($break == 1)
+                                {
+                                    break;
+                                }
 
                                 }
+                               
+                    }
+                    else{
+                        echo "M";
                     }
                
             }
@@ -945,6 +953,12 @@ dd($data);
             'id'=>$id,
             'attrTypeOfProducts'=>$attributeTypeOfProducts
         ]);
+
+    }
+    public function attributeTypeFront($id)
+    {
+         $attributeTypeOfProducts = Attributetypes::with('product')->where([['product_id','=',$id],['status','>',0]])->get();
+         return $attributeTypeOfProducts;
 
     }
     public function attributeTypeCreate(Request $request)

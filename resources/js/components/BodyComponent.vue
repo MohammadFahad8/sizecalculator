@@ -14,13 +14,13 @@
             <div class="predict__sc-1a4an9n-7 fit-advisor-header-box">
                 <div class="predict__sc-1a4an9n-0 fot-advisor-header">
                     <div></div>
-                    <div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="
+                    <div><svg v-if="firstTab" v-on:click="nextPrev(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="cursor:pointer
 display: inline-block;
 /* width: 59px; */
 ">
                             <polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" points="328 112 184 256 328 400"></polyline>
                         </svg>
-                        <svg v-if="lastTab" v-on:click="restart" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi">
+                        <svg style="cursor:pointer" v-if="lastTab" v-on:click="restart" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi">
                             <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M320 146s24.36-12-64-12a160 160 0 10160 160"></path>
                             <polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" points="256 58 336 138 256 218"></polyline>
                         </svg>
@@ -162,19 +162,19 @@ display: inline-block;
                             <div class=" fit-advisor-chest-tab size-position">
                                 <div class=" fit-advisor-chest-tab-item">
                                     <div style="opacity: 1; transform: none;">
-                                        <img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="chest(1)" class=" fit-advisor-options-img">
+                                        <img id="chest1" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg" v-on:click="chest(chestSizeOne)" class=" fit-advisor-options-img">
                                         <p class=" fit-advisor-options-text">Narrower</p>
                                     </div>
                                 </div>
                                 <div class=" fit-advisor-chest-tab-item">
                                     <div style="opacity: 1; transform: none;">
-                                        <img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="chest(2)" class=" fit-advisor-options-img">
+                                        <img id="chest2" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg" v-on:click="chest(chestSizeTwo)" class=" fit-advisor-options-img">
                                         <p class=" fit-advisor-options-text">Average</p>
                                     </div>
                                 </div>
                                 <div class=" fit-advisor-chest-tab-item">
                                     <div style="opacity: 1; transform: none;">
-                                        <img id="chest3" v-on:click="chest(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img">
+                                        <img id="chest3" v-on:click="chest(chestSizeThree)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg" class=" fit-advisor-options-img">
                                         <p class=" fit-advisor-options-text">Broader</p>
                                     </div>
                                 </div>
@@ -186,19 +186,19 @@ display: inline-block;
                             <div class=" fit-advisor-chest-tab size-position">
                                 <div class=" fit-advisor-chest-tab-item">
                                     <div style="opacity: 1; transform: none;">
-                                        <img id="stomach1" v-on:click="stomach(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg" class=" fit-advisor-options-img">
+                                        <img id="stomach1" v-on:click="stomach(stomachSizeOne)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg" class=" fit-advisor-options-img">
                                         <p class=" fit-advisor-options-text">Flatter</p>
                                     </div>
                                 </div>
                                 <div class=" fit-advisor-chest-tab-item">
                                     <div style="opacity: 1; transform: none;">
-                                        <img id="stomach2" v-on:click="stomach(2)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg" class=" fit-advisor-options-img">
+                                        <img id="stomach2" v-on:click="stomach(stomachSizeTwo)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg" class=" fit-advisor-options-img">
                                         <p class=" fit-advisor-options-text">Average</p>
                                     </div>
                                 </div>
                                 <div class=" fit-advisor-chest-tab-item">
                                     <div style="opacity: 1; transform: none;">
-                                        <img id="stomach3" v-on:click="stomach(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img">
+                                        <img id="stomach3" v-on:click="stomach(stomachSizeThree)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg" class=" fit-advisor-options-img">
                                         <p class=" fit-advisor-options-text">Rounder</p>
                                     </div>
                                 </div>
@@ -210,19 +210,19 @@ display: inline-block;
                             <div class=" fit-advisor-chest-tab size-position">
                                 <div class=" fit-advisor-chest-tab-item">
                                     <div style="opacity: 1; transform: none;">
-                                        <img id="bottom1" v-on:click="bottom(1)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg" class=" fit-advisor-options-img">
+                                        <img id="bottom1" v-on:click="bottom(bottomSizeOne)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg" class=" fit-advisor-options-img">
                                         <p class=" fit-advisor-options-text">Flatter</p>
                                     </div>
                                 </div>
                                 <div class=" fit-advisor-chest-tab-item">
                                     <div style="opacity: 1; transform: none;">
-                                        <img id="bottom2" v-on:click="bottom(2)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg" class=" fit-advisor-options-img">
+                                        <img id="bottom2" v-on:click="bottom(bottomSizeOne)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg" class=" fit-advisor-options-img">
                                         <p class=" fit-advisor-options-text">Average</p>
                                     </div>
                                 </div>
                                 <div class=" fit-advisor-chest-tab-item">
                                     <div style="opacity: 1; transform: none;">
-                                        <img id="bottom3" v-on:click="bottom(3)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img">
+                                        <img id="bottom3" v-on:click="bottom(bottomSizeOne)" src="https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg" class=" fit-advisor-options-img">
                                         <p class=" fit-advisor-options-text">Rounder</p>
                                     </div>
                                 </div>
@@ -323,9 +323,19 @@ export default {
                 heightcm: parseInt(localStorage.getItem('cm')),
                 weight: parseFloat(localStorage.getItem('weight')).toFixed(0),
                 age: localStorage.getItem('age'),
-                chest: localStorage.getItem('chest'),
-                stomach: localStorage.getItem('stomach'),
-                bottom: localStorage.getItem('bottom'),
+                chest:{
+                    name:'chest', 
+                    other:localStorage.getItem('chest'),
+                } ,
+                stomach:{
+                    name:'stomach',
+                   other:localStorage.getItem('stomach')
+                   },
+
+                bottom:{ 
+                    name:'bottom',
+                    other:localStorage.getItem('bottom')
+                },
                 tags: JSON.parse(localStorage.getItem('tags')),
                 convertedMeasurements: false,
                 conversionCount: '',
@@ -348,6 +358,7 @@ export default {
                 },
 
             ],
+            attributes:{},
 
             countrycheck: '',
             checked: false,
@@ -380,9 +391,18 @@ export default {
             restarted: false,
             sizecheck: false,
             allow: true,
+            chestSizeOne:'1',
+            chestSizeTwo:'2',
+            chestSizeThree:'3', 
+            stomachSizeOne:'1',
+            stomachSizeTwo:'2',
+            stomachSizeThree:'3',
+            bottomSizeOne:'1',
+            bottomSizeTwo:'2',
+            bottomSizeThree:'3',
 
-            image_us: 'https://24bbe8b8d790.ngrok.io/images/us.png',
-            image_uk: 'https://24bbe8b8d790.ngrok.io/images/uk.png',
+            image_us: this.$appUrl+'/images/us.png',
+            image_uk: this.$appUrl+'/images/uk.png',
 
         }
     },
@@ -815,17 +835,18 @@ export default {
 
         },
         chest: function (n) {
-            this.form.chest = n;
+            this.form.chest.other = n;
+            
             localStorage.setItem('chest', n)
             this.nextPrev(1)
         },
         stomach: function (n) {
-            this.form.stomach = n;
+            this.form.stomach.other = n;
             localStorage.setItem('stomach', n)
             this.nextPrev(1)
         },
         bottom: function (n) {
-            this.form.bottom = n;
+            this.form.bottom.other = n;
             localStorage.setItem('bottom', n)
 
             this.form.tags = this.product.tags
@@ -1251,9 +1272,12 @@ export default {
             this.form.heightinch = '';
             this.form.weight = '';
             this.form.age = '';
-            this.form.chest = '';
-            this.form.stomach = '';
-            this.form.bottom = '';
+            this.form.chest.name = '';
+            this.form.chest.other = '';
+            this.form.stomach.name = '';
+            this.form.stomach.other = '';
+            this.form.bottom.name = '';
+            this.form.bottom.other = '';
             this.recommended_size = '',
 
                 this.currentTab = 0;
@@ -1387,14 +1411,61 @@ export default {
 
             
         },
+        getAttributes:function(){
+            axios.get(this.$appUrl +'/api/get-attrbutes/'+this.product.id).then((res)=>
+            {
+               
+                this.attributes = res.data;
+                 this.attributes.forEach((el,index)=>{
+                     
+
+                    if(el.name.toLowerCase() == this.form.chest.name.toLowerCase())
+                    {
+                        this.form.chest.name = el.name.toLowerCase();
+                        console.log(this.form.chest.name)
+                    this.chestSizeOne=el.size_one
+                    this.chestSizeTwo=el.size_second
+                    this.chestSizeThree=el.size_third
+
+                    }else if(el.name.toLowerCase() == this.form.stomach.name.toLowerCase())
+                    {
+                        
+                        this.form.stomach.name = el.name.toLowerCase();
+                        console.log(this.form.stomach.name)
+                            this.stomachSizeOne=el.size_one
+                            this.stomachSizeTwo=el.size_second
+                            this.stomachSizeThree=el.size_third
+                    }else if(el.name.toLowerCase() == this.form.bottom.name.toLowerCase())
+                    {
+                        this.form.bottom.name = el.name.toLowerCase();
+                        console.log(this.form.bottom.name)
+                        this.bottomSizeOne=el.size_one
+                        this.bottomSizeTwo=el.size_second
+                        this.bottomSizeThree=el.size_third
+
+
+                    }
+                })
+             
+                
+             
+              
+                
+               
+
+
+            })
+        }
     },
     mounted() {
+        
         
         this.setupProduct();
         this.responsiveness();
         this.getLocalData();
         this.showBodyFit();
-
+        this.getAttributes();
+        
         if (localStorage.getItem('recommended_size') != null) {
             var n = 4;
 
