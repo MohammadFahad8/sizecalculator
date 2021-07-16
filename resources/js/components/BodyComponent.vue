@@ -14,7 +14,7 @@
             <div class="predict__sc-1a4an9n-7 fit-advisor-header-box">
                 <div class="predict__sc-1a4an9n-0 fot-advisor-header">
                     <div></div>
-                    <div><svg v-show="tabnumber > 1" v-on:click="nextStep(-1)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="cursor:pointer
+                    <div><svg v-if="tabnumber >1 && tabnumber<5" v-on:click="back(tabnumber)" viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="cursor:pointer
 display: inline-block;
 /* width: 59px; */
 ">
@@ -47,16 +47,16 @@ display: inline-block;
                     <!-- <p class="fit-advisor-intro text-center" id="intro1">
                         <span id="mark1">To get a size recommendation,</span> <br><span id="mark2">fill out the form below</span></p> -->
                     
-                    <p class="fit-advisor-intro" id="intro3"><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your stomach</span></p>
-                    <p class="fit-advisor-intro" id="intro4"><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your bottom</span></p>
-                    <p class="fit-advisor-intro text-center" id="intro5"><span id="mark1">Drop-cut:LUX</span> <br><span id="mark2"></span></p>
+                    
+                    
+                  
 
                                 <div v-switch="tabnumber">
                                         <div v-case="1"><form-component></form-component></div>    
                                         <div v-case="2"><attribute-one-component></attribute-one-component></div>    
                                         <div v-case="3"><attribute-two-component></attribute-two-component></div>    
                                         <div v-case="4"><attribute-three-component></attribute-three-component></div>    
-                                        <div v-case="5"><result-component></result-component></div>    
+                                        <div v-case="5"><result-component :product="this.product" :form="this.form"></result-component></div>    
 
                                 </div>
 
@@ -189,21 +189,80 @@ export default {
 
         formSubmit:function(){
             EventBus.$on('formsubmit',container=>{
-                console.log(container)
+                
                 this.form.heightfoot = container.form.heightfoot;
                 this.form.heightinch = container.form.heightinch;
                 this.form.heightcm = container.form.heightcm;
                 this.form.weight = container.form.weight;
                 this.form.age = container.form.age;
-                this.tabnumber = container.form.number;
+                this.tabnumber = container.form.tabnumber;
+                
                 this.form.convertedMeasurements = container.form.convertedMeasurements
                 this.conversionCount = container.form.conversionCount;
                 this.firstTab = container.firstTab;
             })
+            EventBus.$on('attributeone',container=>{
+                this.form.chest.other = container.chest.other
+                this.lastTab =false;
+                this.tabnumber = container.tabnumber
+            }) 
+             EventBus.$on('attributetwo',container=>{
+                 this.lastTab =false;
+                this.form.stomach.other = container.stomach.other
+                this.tabnumber = container.tabnumber
+                
+            })
+              EventBus.$on('attributethree',container=>{
+                this.form.bottom.other = container.bottom.other
+                this.tabnumber = container.tabnumber
+                this.lastTab =true;
+            })
+            EventBus.$on('resetForm',tabnum=>{
+                this.lastTab =false;
+                this.tabnumber = tabnum
+                this.restart();
+            })
+            
+
         },
          nextStep: function (n){
             this.tabnumber  = n;
             
+
+        },
+        back:function(num)
+        {
+            this.tabnumber = num-1
+        },
+           restart: function () {
+
+            $('div.fit-advisor-selected-size:gt(' + localStorage.getItem('sizeindex') + ')').show();
+            $('div.fit-advisor-selected-size:lt(' + localStorage.getItem('sizeindex') + ')').show();
+            $('p.size_descriptions:gt(' + localStorage.getItem('sizeindex') + ')').show();
+            $('p.size_descriptions:lt(' + localStorage.getItem('sizeindex') + ')').show();
+
+            this.restarted = true;
+            this.form.heightfoot = '';
+            this.form.heightinch = '';
+            this.form.weight = '';
+            this.form.age = '';
+            this.form.chest.name = '';
+            this.form.chest.other = '';
+            this.form.stomach.name = '';
+            this.form.stomach.other = '';
+            this.form.bottom.name = '';
+            this.form.bottom.other = '';
+            this.recommended_size = '',
+            this.lastTab=false;
+            // EventBus.$emit('resetSlides',this.tabnumber)
+            // EventBus.$on('home',num=>{
+            //     console.log(num)
+            //     this.nextStep(num)
+            // })
+            this.nextStep(1)
+
+            this.dev_reset();
+        
 
         },
         showBodyFit: function () {
@@ -257,238 +316,238 @@ export default {
             }
 
         },
-        setSlides: function (sizeposition) {
+        // setSlides: function (sizeposition) {
 
-            $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
-            $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
-            $('p.size_descriptions:gt(' + sizeposition + ')').hide();
-            $('p.size_descriptions:lt(' + sizeposition + ')').hide();
-            //Hide all but the Predicted Size
+        //     $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
+        //     $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
+        //     $('p.size_descriptions:gt(' + sizeposition + ')').hide();
+        //     $('p.size_descriptions:lt(' + sizeposition + ')').hide();
+        //     //Hide all but the Predicted Size
 
-            this.$allSlides = $('div.fit-advisor-selected-size'),
-                this.$allSlidesSize = $('p.size_descriptions'),
-                this.traverseDefault = "first", //set the defaults
-                this.actionDefault = "next";
-        },
-        setSelectedSizeFromList: function (size, sizecheck) {
+        //     this.$allSlides = $('div.fit-advisor-selected-size'),
+        //         this.$allSlidesSize = $('p.size_descriptions'),
+        //         this.traverseDefault = "first", //set the defaults
+        //         this.actionDefault = "next";
+        // },
+        // setSelectedSizeFromList: function (size, sizecheck) {
 
-            this.product.variants.forEach((el, index) => {
+        //     this.product.variants.forEach((el, index) => {
 
-                if (sizecheck == true) {
+        //         if (sizecheck == true) {
 
-                    if (el.option1.toUpperCase() == size) {
-                        this.sizeIndex = index
-                        this.array_move(this.size_descriptions, 2, index)
-                        if (size == "XS") {
+        //             if (el.option1.toUpperCase() == size) {
+        //                 this.sizeIndex = index
+        //                 this.array_move(this.size_descriptions, 2, index)
+        //                 if (size == "XS") {
 
-                            for (var i = 0; i <= this.product.variants.length; i++) {
+        //                     for (var i = 0; i <= this.product.variants.length; i++) {
 
-                                if (i == this.sizeIndex) {
-                                    this.product.variants[i].desc_title = "Recommended";
-                                }
+        //                         if (i == this.sizeIndex) {
+        //                             this.product.variants[i].desc_title = "Recommended";
+        //                         }
 
-                                if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
+        //                         if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
 
-                                    this.product.variants[i].desc_title = "Slightly Relaxed";
-                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 3])) {
-                                        this.product.variants[i].desc_title = "Relaxed";
-                                    }
-                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 2])) {
-                                        this.product.variants[i].desc_title = "Relaxed";
-                                    }
-                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
-                                        this.product.variants[i].desc_title = "Very Relaxed";
-                                    }
+        //                             this.product.variants[i].desc_title = "Slightly Relaxed";
+        //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 3])) {
+        //                                 this.product.variants[i].desc_title = "Relaxed";
+        //                             }
+        //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 2])) {
+        //                                 this.product.variants[i].desc_title = "Relaxed";
+        //                             }
+        //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
+        //                                 this.product.variants[i].desc_title = "Very Relaxed";
+        //                             }
 
-                                }
+        //                         }
 
-                            }
+        //                     }
 
-                        } else if (size == "XL") {
-                            var counter = 1;
-                            for (var i = 0; i <= this.product.variants.length; i++) {
+        //                 } else if (size == "XL") {
+        //                     var counter = 1;
+        //                     for (var i = 0; i <= this.product.variants.length; i++) {
 
-                                if (i < this.sizeIndex) {
-                                    this.product.variants[i].desc_title = "Very Snug";
+        //                         if (i < this.sizeIndex) {
+        //                             this.product.variants[i].desc_title = "Very Snug";
 
-                                    if ((i < this.sizeIndex) && (i >= counter)) {
-                                        counter++;
+        //                             if ((i < this.sizeIndex) && (i >= counter)) {
+        //                                 counter++;
 
-                                        this.product.variants[i].desc_title = "Snug";
+        //                                 this.product.variants[i].desc_title = "Snug";
 
-                                    }
+        //                             }
 
-                                }
+        //                         }
 
-                                if (i == this.sizeIndex) {
-                                    this.product.variants[i].desc_title = "Recommended";
-                                }
-                                if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 2])) {
-                                    this.product.variants[i].desc_title = "Slightly Snugged";
-                                }
+        //                         if (i == this.sizeIndex) {
+        //                             this.product.variants[i].desc_title = "Recommended";
+        //                         }
+        //                         if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 2])) {
+        //                             this.product.variants[i].desc_title = "Slightly Snugged";
+        //                         }
 
-                            }
+        //                     }
 
-                        }
-                        localStorage.setItem('sizeindex', this.sizeIndex)
+        //                 }
+        //                 localStorage.setItem('sizeindex', this.sizeIndex)
 
-                        this.setSlides(this.sizeIndex);
+        //                 this.setSlides(this.sizeIndex);
 
-                    }
-                } else if (sizecheck == false) {
+        //             }
+        //         } else if (sizecheck == false) {
 
-                    if (el.option1.toUpperCase().charAt(0) == size) {
-                        this.sizeIndex = index
+        //             if (el.option1.toUpperCase().charAt(0) == size) {
+        //                 this.sizeIndex = index
 
-                        this.array_move(this.size_descriptions, 2, index)
+        //                 this.array_move(this.size_descriptions, 2, index)
 
-                        if (size == "S") {
+        //                 if (size == "S") {
 
-                            for (var i = 0; i <= this.product.variants.length; i++) {
+        //                     for (var i = 0; i <= this.product.variants.length; i++) {
 
-                                if (i < this.sizeIndex) {
-                                    this.product.variants[i].desc_title = "Very Snug";
+        //                         if (i < this.sizeIndex) {
+        //                             this.product.variants[i].desc_title = "Very Snug";
 
-                                    if ((i < this.sizeIndex) && (i > 0)) {
+        //                             if ((i < this.sizeIndex) && (i > 0)) {
 
-                                        this.product.variants[i].desc_title = "Snug";
+        //                                 this.product.variants[i].desc_title = "Snug";
 
-                                    }
-                                }
+        //                             }
+        //                         }
 
-                                if (i == this.sizeIndex) {
-                                    this.product.variants[i].desc_title = "Recommended";
-                                }
+        //                         if (i == this.sizeIndex) {
+        //                             this.product.variants[i].desc_title = "Recommended";
+        //                         }
 
-                                if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
+        //                         if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
 
-                                    this.product.variants[i].desc_title = "Relaxed";
-                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
-                                        this.product.variants[i].desc_title = "Very Relaxed";
-                                    }
+        //                             this.product.variants[i].desc_title = "Relaxed";
+        //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
+        //                                 this.product.variants[i].desc_title = "Very Relaxed";
+        //                             }
 
-                                }
+        //                         }
 
-                            }
+        //                     }
 
-                        } else if (size == 'M') {
+        //                 } else if (size == 'M') {
 
-                            for (var i = 0; i <= this.product.variants.length; i++) {
+        //                     for (var i = 0; i <= this.product.variants.length; i++) {
 
-                                if (i < this.sizeIndex) {
-                                    this.product.variants[i].desc_title = "Very Snug";
+        //                         if (i < this.sizeIndex) {
+        //                             this.product.variants[i].desc_title = "Very Snug";
 
-                                    if ((i < this.sizeIndex) && (i > 0)) {
+        //                             if ((i < this.sizeIndex) && (i > 0)) {
 
-                                        this.product.variants[i].desc_title = "Snug";
+        //                                 this.product.variants[i].desc_title = "Snug";
 
-                                    }
-                                }
+        //                             }
+        //                         }
 
-                                if (i == this.sizeIndex) {
-                                    this.product.variants[i].desc_title = "Recommended";
-                                }
+        //                         if (i == this.sizeIndex) {
+        //                             this.product.variants[i].desc_title = "Recommended";
+        //                         }
 
-                                if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
+        //                         if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
 
-                                    this.product.variants[i].desc_title = "Relaxed";
-                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
-                                        this.product.variants[i].desc_title = "Very Relaxed";
-                                    }
+        //                             this.product.variants[i].desc_title = "Relaxed";
+        //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
+        //                                 this.product.variants[i].desc_title = "Very Relaxed";
+        //                             }
 
-                                }
+        //                         }
 
-                            }
+        //                     }
 
-                        } else if (size == 'L') {
-                            for (var i = 0; i <= this.product.variants.length; i++) {
+        //                 } else if (size == 'L') {
+        //                     for (var i = 0; i <= this.product.variants.length; i++) {
 
-                                if (i < this.sizeIndex) {
-                                    this.product.variants[i].desc_title = "Very Snug";
+        //                         if (i < this.sizeIndex) {
+        //                             this.product.variants[i].desc_title = "Very Snug";
 
-                                    if ((i < this.sizeIndex) && (i > 0)) {
+        //                             if ((i < this.sizeIndex) && (i > 0)) {
 
-                                        this.product.variants[i].desc_title = "Snug";
+        //                                 this.product.variants[i].desc_title = "Snug";
 
-                                    }
-                                }
+        //                             }
+        //                         }
 
-                                if (i == this.sizeIndex) {
-                                    this.product.variants[i].desc_title = "Recommended";
-                                }
+        //                         if (i == this.sizeIndex) {
+        //                             this.product.variants[i].desc_title = "Recommended";
+        //                         }
 
-                                if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
+        //                         if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
 
-                                    this.product.variants[i].desc_title = "Very Relaxed";
+        //                             this.product.variants[i].desc_title = "Very Relaxed";
 
-                                }
+        //                         }
 
-                            }
+        //                     }
 
-                        }
+        //                 }
 
-                        localStorage.setItem('sizeindex', this.sizeIndex)
+        //                 localStorage.setItem('sizeindex', this.sizeIndex)
 
-                        this.setSlides(this.sizeIndex);
+        //                 this.setSlides(this.sizeIndex);
 
-                    }
+        //             }
 
-                }
+        //         }
 
-            })
+        //     })
 
-        },
+        // },
 
-        getProductDetails: function () {
-            this.is_loading = true;
-            var a = '';
-            if (this.restarted == false) {
+        // getProductDetails: function () {
+        //     this.is_loading = true;
+        //     var a = '';
+        //     if (this.restarted == false) {
 
-                if (localStorage.getItem("sizeindex") != null) {
+        //         if (localStorage.getItem("sizeindex") != null) {
 
-                    this.setSlides(localStorage.getItem("sizeindex"));
+        //             this.setSlides(localStorage.getItem("sizeindex"));
 
-                }
-            }
-            this.showSelectedSizeSlider = false;
-            this.form.conversionCount = this.product.id
-            axios.post(this.$appUrl + '/api/size-recommend/', this.form)
-                .then((res) => {
+        //         }
+        //     }
+        //     this.showSelectedSizeSlider = false;
+        //     this.form.conversionCount = this.product.id
+        //     axios.post(this.$appUrl + '/api/size-recommend/', this.form)
+        //         .then((res) => {
 
-                    this.is_loading = false;
+        //             this.is_loading = false;
 
-                    this.showSelectedSizeSlider = true;
+        //             this.showSelectedSizeSlider = true;
 
-                    if (((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs'))) {
-                        this.recommended_size = res.data.toUpperCase().substr(0, 2)
-                        this.sizecheck = true;
-                        this.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), this.sizecheck)
-                        a = this.recommended_size;
-                        $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
-                        $('.dfOagu').addClass('dfOagu-second');
-                        if (this.showContinueBtn == true) {
-                            this.showContinueBtn = false;
+        //             if (((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs'))) {
+        //                 this.recommended_size = res.data.toUpperCase().substr(0, 2)
+        //                 this.sizecheck = true;
+        //                 this.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), this.sizecheck)
+        //                 a = this.recommended_size;
+        //                 $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
+        //                 $('.dfOagu').addClass('dfOagu-second');
+        //                 if (this.showContinueBtn == true) {
+        //                     this.showContinueBtn = false;
 
-                        }
+        //                 }
 
-                    } else {
-                        this.recommended_size = res.data.toUpperCase().charAt(0)
-                        this.sizecheck = false;
-                        this.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), this.sizecheck)
+        //             } else {
+        //                 this.recommended_size = res.data.toUpperCase().charAt(0)
+        //                 this.sizecheck = false;
+        //                 this.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), this.sizecheck)
 
-                        a = this.recommended_size;
-                        if (this.showContinueBtn == true) {
-                            this.showContinueBtn = false;
-                        }
+        //                 a = this.recommended_size;
+        //                 if (this.showContinueBtn == true) {
+        //                     this.showContinueBtn = false;
+        //                 }
 
-                    }
+        //             }
 
-                    localStorage.setItem('recommended_size', this.recommended_size)
+        //             localStorage.setItem('recommended_size', this.recommended_size)
 
-                    this.finalsize = localStorage.getItem('recommended_size');
+        //             this.finalsize = localStorage.getItem('recommended_size');
 
-                })
-        },
+        //         })
+        // },
         addToCart: function () {
 
             var pickCharacter = 0;
@@ -550,81 +609,81 @@ export default {
             this.variantselected = id
 
         },
-        changesize: function (trigger) {
+        // changesize: function (trigger) {
 
-            if (this.showrecommended == true) {
-                this.showrecommended = false;
+        //     if (this.showrecommended == true) {
+        //         this.showrecommended = false;
 
-                // $('.dfOagu').addClass('dfOagu-second');
-                // $('.listfit').removeClass('ml-5');
+        //         // $('.dfOagu').addClass('dfOagu-second');
+        //         // $('.listfit').removeClass('ml-5');
 
-            }
+        //     }
 
-            //slides size
+        //     //slides size
 
-            var $time = 1000;
+        //     var $time = 1000;
 
-            this.showrecommended = false;
+        //     this.showrecommended = false;
 
-            var traverse = this.traverseDefault,
-                action = this.actionDefault;
+        //     var traverse = this.traverseDefault,
+        //         action = this.actionDefault;
 
-            if (trigger == 0) { //if action is prev
-                traverse = "last"; //set traverse to last in case nothing is available
-                action = "prev"; //set action to prev
-            }
+        //     if (trigger == 0) { //if action is prev
+        //         traverse = "last"; //set traverse to last in case nothing is available
+        //         action = "prev"; //set action to prev
+        //     }
 
-            var $curr = this.$allSlides.filter(':visible'), //get the visible slide
+        //     var $curr = this.$allSlides.filter(':visible'), //get the visible slide
 
-                $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
-            $nxtTarget.addClass('active');
+        //         $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
+        //     $nxtTarget.addClass('active');
 
-            $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+        //     $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
 
-            if (!$nxtTarget.length) { //if no next
-                $time = 1;
+        //     if (!$nxtTarget.length) { //if no next
+        //         $time = 1;
 
-                if (trigger == 0) {
+        //         if (trigger == 0) {
 
-                    $nxtTarget = this.$allSlides["first"]();
+        //             $nxtTarget = this.$allSlides["first"]();
 
-                } else {
+        //         } else {
 
-                    $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
+        //             $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
 
-                }
+        //         }
 
-            }
+        //     }
 
-            $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+        //     $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
 
-            //slides size end
+        //     //slides size end
 
-            var $curr = this.$allSlidesSize.filter(':visible'), //get the visible slide
-                $nxtTarget = $curr[action](".size_descriptions"); //get the next target based on the action.
-            $nxtTarget.addClass('active');
+        //     var $curr = this.$allSlidesSize.filter(':visible'), //get the visible slide
+        //         $nxtTarget = $curr[action](".size_descriptions"); //get the next target based on the action.
+        //     $nxtTarget.addClass('active');
 
-            $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+        //     $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
 
-            if (!$nxtTarget.length) { //if no next
+        //     if (!$nxtTarget.length) { //if no next
 
-                if (trigger == 0) {
+        //         if (trigger == 0) {
 
-                    $nxtTarget = this.$allSlidesSize["first"]();
+        //             $nxtTarget = this.$allSlidesSize["first"]();
 
-                } else {
+        //         } else {
 
-                    $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
+        //             $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
 
-                }
+        //         }
 
-            }
+        //     }
 
-            $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+        //     $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
 
-            //slides size end
+        //     //slides size end
 
-        },
+        // },
         changesizetorecommended: function () {
             if (this.showrecommended == false) {
                 this.showrecommended = true;
@@ -632,255 +691,205 @@ export default {
             }
 
         },
-        chest: function (n) {
-            this.form.chest.other = n;
-            
-            localStorage.setItem('chest', n)
-            this.nextPrev(1)
-        },
-        stomach: function (n) {
-            this.form.stomach.other = n;
-            localStorage.setItem('stomach', n)
-            this.nextPrev(1)
-        },
-        bottom: function (n) {
-            this.form.bottom.other = n;
-            localStorage.setItem('bottom', n)
-
-            this.form.tags = this.product.tags
-            localStorage.setItem('tags', JSON.stringify(this.product.tags))
-            this.nextPrev(1)
-
-        },
+        //took 3 chest function for second component
      //took country val function from here for form-component
        //took weight convert and height convert  funcitons from here for Form Component
 
-        showTab: function (n) {
+        // showTab: function (n) {
 
-            if (localStorage.getItem('recommended_size') != null) {
-                n = 4;
+        //     if (localStorage.getItem('recommended_size') != null) {
+        //         n = 4;
 
-            }
+        //     }
 
-            if (n == 0) {
-                $('#closeApp').addClass('mtf-n6')
-                $('#closeApp').removeClass('mt-n6')
-                $('#intro1').css('display', 'block');
-                $("#steps-mark").css('visibility', 'hidden');
+        //     if (n == 0) {
+        //         $('#closeApp').addClass('mtf-n6')
+        //         $('#closeApp').removeClass('mt-n6')
+        //         $('#intro1').css('display', 'block');
+        //         $("#steps-mark").css('visibility', 'hidden');
 
-                $('.switch').removeClass('introfirst');
-                $('.switch').addClass('find-fit-header');
-                $('#intro2').css('display', 'none');
-                $('#intro3').css('display', 'none');
-                $('#intro4').css('display', 'none');
-                $('#intro5').css('display', 'none');
-                $('#nextBtn').css('display', 'inline-block');
-            }
-            if (n == 1) {
-                $('#closeApp').removeClass('mtf-n6')
-                $('#closeApp').addClass('mt-n6')
+        //         $('.switch').removeClass('introfirst');
+        //         $('.switch').addClass('find-fit-header');
+        //         $('#intro2').css('display', 'none');
+        //         $('#intro3').css('display', 'none');
+        //         $('#intro4').css('display', 'none');
+        //         $('#intro5').css('display', 'none');
+        //         $('#nextBtn').css('display', 'inline-block');
+        //     }
+        //     if (n == 1) {
+        //         $('#closeApp').removeClass('mtf-n6')
+        //         $('#closeApp').addClass('mt-n6')
 
-                $('#intro1').css('display', 'none');
-                $('#intro2').css('display', 'block');
-                $('#intro3').css('display', 'none');
-                $('#intro4').css('display', 'none');
-                $('#intro5').css('display', 'none');
-                $('.switch').addClass('introfirst');
-                $('.switch').removeClass('find-fit-header');
+        //         $('#intro1').css('display', 'none');
+        //         $('#intro2').css('display', 'block');
+        //         $('#intro3').css('display', 'none');
+        //         $('#intro4').css('display', 'none');
+        //         $('#intro5').css('display', 'none');
+        //         $('.switch').addClass('introfirst');
+        //         $('.switch').removeClass('find-fit-header');
 
-            }
-            if (n == 2) {
-                $('#closeApp').removeClass('mtf-n6')
-                $('#closeApp').addClass('mt-n6')
-                $('#intro1').css('display', 'none');
-                $('#intro2').css('display', 'none');
-                $('#intro3').css('display', 'block');
-                $('#intro4').css('display', 'none');
-                $('#intro5').css('display', 'none');
-                $('.switch').addClass('introfirst');
-                $('.switch').removeClass('find-fit-header');
-            }
-            if (n == 3) {
-                $('#closeApp').removeClass('mtf-n6')
-                $('#closeApp').addClass('mt-n6')
-                $('#intro1').css('display', 'none');
-                $('#intro2').css('display', 'none');
-                $('#intro3').css('display', 'none');
-                $('#intro4').css('display', 'block');
-                $('#intro5').css('display', 'none');
-                $('.switch').addClass('introfirst');
-                $('.switch').removeClass('find-fit-header');
+        //     }
+        //     if (n == 2) {
+        //         $('#closeApp').removeClass('mtf-n6')
+        //         $('#closeApp').addClass('mt-n6')
+        //         $('#intro1').css('display', 'none');
+        //         $('#intro2').css('display', 'none');
+        //         $('#intro3').css('display', 'block');
+        //         $('#intro4').css('display', 'none');
+        //         $('#intro5').css('display', 'none');
+        //         $('.switch').addClass('introfirst');
+        //         $('.switch').removeClass('find-fit-header');
+        //     }
+        //     if (n == 3) {
+        //         $('#closeApp').removeClass('mtf-n6')
+        //         $('#closeApp').addClass('mt-n6')
+        //         $('#intro1').css('display', 'none');
+        //         $('#intro2').css('display', 'none');
+        //         $('#intro3').css('display', 'none');
+        //         $('#intro4').css('display', 'block');
+        //         $('#intro5').css('display', 'none');
+        //         $('.switch').addClass('introfirst');
+        //         $('.switch').removeClass('find-fit-header');
 
-            }
-            if (n == 4) {
-                $('#closeApp').removeClass('mtf-n6')
-                $('#closeApp').addClass('mt-n6')
+        //     }
+        //     if (n == 4) {
+        //         $('#closeApp').removeClass('mtf-n6')
+        //         $('#closeApp').addClass('mt-n6')
 
-                $('.fit-advisor-selected-product-grid').css('display', 'inline');
-                $('#intro1').css('display', 'none');
-                $('#intro2').css('display', 'none');
-                $('#intro3').css('display', 'none');
-                $('#intro4').css('display', 'none');
-                $('#intro5').css('display', 'block');
-                $('.switch').addClass('introfirst');
-                $('.switch').removeClass('find-fit-header');
-                $('#fields').css('display', 'none');
+        //         $('.fit-advisor-selected-product-grid').css('display', 'inline');
+        //         $('#intro1').css('display', 'none');
+        //         $('#intro2').css('display', 'none');
+        //         $('#intro3').css('display', 'none');
+        //         $('#intro4').css('display', 'none');
+        //         $('#intro5').css('display', 'block');
+        //         $('.switch').addClass('introfirst');
+        //         $('.switch').removeClass('find-fit-header');
+        //         $('#fields').css('display', 'none');
 
-            }
+        //     }
     
 
-            // This function will display the specified tab of the form...
-            var x = document.getElementsByClassName("tab");
+        //     // This function will display the specified tab of the form...
+        //     var x = document.getElementsByClassName("tab");
 
-            x[n].style.display = "block";
+        //     x[n].style.display = "block";
 
-            //... and fix the Previous/Next buttons:
-            if (n == 0) {
-                $('#closeApp').removeClass('mt-n6')
-                $('.fit-advisor-selected-product-grid').css('display', 'none');
-                $('#closeApp').addClass('mtf-n6')
-                document.getElementById("prevBtn").style.display = "none";
-                //  document.getElementById("nextBtn").style.display = "inline";
-                document.getElementById("steps-mark").style.visibility = "hidden";
-                this.firstTab = false;
-                this.onfirstTab = false;
-                this.lastTab = false;
+        //     //... and fix the Previous/Next buttons:
+        //     if (n == 0) {
+        //         $('#closeApp').removeClass('mt-n6')
+        //         $('.fit-advisor-selected-product-grid').css('display', 'none');
+        //         $('#closeApp').addClass('mtf-n6')
+        //         document.getElementById("prevBtn").style.display = "none";
+        //         //  document.getElementById("nextBtn").style.display = "inline";
+        //         document.getElementById("steps-mark").style.visibility = "hidden";
+        //         this.firstTab = false;
+        //         this.onfirstTab = false;
+        //         this.lastTab = false;
 
-            } else {
-                document.getElementById("steps-mark").style.visibility = "visible";
-                document.getElementById("prevBtn").style.display = "inline";
-                //$('.fit-advisor-intro').text('Find Your Fit');
-                this.firstTab = true;
-                this.onfirstTab = true,
-                    this.lastTab = false;
+        //     } else {
+        //         document.getElementById("steps-mark").style.visibility = "visible";
+        //         document.getElementById("prevBtn").style.display = "inline";
+        //         //$('.fit-advisor-intro').text('Find Your Fit');
+        //         this.firstTab = true;
+        //         this.onfirstTab = true,
+        //             this.lastTab = false;
 
-            }
-            if (n == 1) {
-                $('#closeApp').removeClass('mtf-n6')
-                $('#closeApp').addClass('mt-n6')
-                $('#popup1').css('overflow', 'scroll');
-            }
-            if (n == 4) {
-                $('#closeApp').removeClass('mtf-n6')
-                $('#closeApp').addClass('mt-n6')
+        //     }
+        //     if (n == 1) {
+        //         $('#closeApp').removeClass('mtf-n6')
+        //         $('#closeApp').addClass('mt-n6')
+        //         $('#popup1').css('overflow', 'scroll');
+        //     }
+        //     if (n == 4) {
+        //         $('#closeApp').removeClass('mtf-n6')
+        //         $('#closeApp').addClass('mt-n6')
 
-                this.firstTab = false;
-                this.onfirstTab = true,
-                    this.lastTab = true;
+        //         this.firstTab = false;
+        //         this.onfirstTab = true,
+        //             this.lastTab = true;
 
-                this.showContinueBtn = false;
+        //         this.showContinueBtn = false;
 
-                //document.getElementById("nextBtn").style.display = "none";
-                // document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
-                document.getElementById("steps-mark").style.visibility = "inline";
+        //         //document.getElementById("nextBtn").style.display = "none";
+        //         // document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
+        //         document.getElementById("steps-mark").style.visibility = "inline";
 
-                //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
+        //         //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
 
-                this.getProductDetails();
-            }
-            if ((n >= 1) && (n < 4)) {
-                document.getElementById("nextBtn").style.display = "none";
+        //         this.getProductDetails();
+        //     }
+        //     if ((n >= 1) && (n < 4)) {
+        //         document.getElementById("nextBtn").style.display = "none";
 
-            }
+        //     }
 
-            //... and run a function that will display the correct step indicator:
-            this.fixStepIndicator(n)
-        },
+        //     //... and run a function that will display the correct step indicator:
+        //     this.fixStepIndicator(n)
+        // },
 
-        nextPrev: function (n) {
+        // nextPrev: function (n) {
 
-            // This function will figure out which tab to display
-            var x = document.getElementsByClassName("tab");
-            // Exit the function if any field in the current tab is invalid:
-            if (n == 1 && !this.validateForm()) return false;
-            // Hide the current tab:
+        //     // This function will figure out which tab to display
+        //     var x = document.getElementsByClassName("tab");
+        //     // Exit the function if any field in the current tab is invalid:
+        //     if (n == 1 && !this.validateForm()) return false;
+        //     // Hide the current tab:
 
-            x[this.currentTab].style.display = "none";
-            // Increase or decrease the current tab by 1:
-            this.currentTab = this.currentTab + n;
+        //     x[this.currentTab].style.display = "none";
+        //     // Increase or decrease the current tab by 1:
+        //     this.currentTab = this.currentTab + n;
 
-            var ft = $('#height_ft').val();
-            var inch = $('#height_in').val();
-            var weightf = $('#weight').val();
+        //     var ft = $('#height_ft').val();
+        //     var inch = $('#height_in').val();
+        //     var weightf = $('#weight').val();
 
-            var weight_lbs = parseInt(weightf) * 2.205;
-            var heightf = ft * 12;
-            var heighti = heightf + parseInt(inch);
-            var height_cm = heighti * 2.54;
+        //     var weight_lbs = parseInt(weightf) * 2.205;
+        //     var heightf = ft * 12;
+        //     var heighti = heightf + parseInt(inch);
+        //     var height_cm = heighti * 2.54;
 
-            //  this.measureh = localStorage.getItem('height');
-            // this.measurew = localStorage.getItem('weight');
-            // if(  this.measurew == null){
+        //     //  this.measureh = localStorage.getItem('height');
+        //     // this.measurew = localStorage.getItem('weight');
+        //     // if(  this.measurew == null){
 
-            //   localStorage.setItem("weight", weight_lbs);
+        //     //   localStorage.setItem("weight", weight_lbs);
 
-            //  }
+        //     //  }
 
-            //  if( this.measureh == null){
+        //     //  if( this.measureh == null){
 
-            //   localStorage.setItem("height", height_cm);
+        //     //   localStorage.setItem("height", height_cm);
 
-            //  }
+        //     //  }
 
-            // if you have reached the end of the form...
-            // if (this.currentTab >= x.length) {
-            // ... the form gets submitted:
-            //document.getElementById("regForm").submit();
-            //return false;
-            //}
-            // Otherwise, display the correct tab:
+        //     // if you have reached the end of the form...
+        //     // if (this.currentTab >= x.length) {
+        //     // ... the form gets submitted:
+        //     //document.getElementById("regForm").submit();
+        //     //return false;
+        //     //}
+        //     // Otherwise, display the correct tab:
 
-            this.showTab(this.currentTab);
+        //     this.showTab(this.currentTab);
 
-        },
+        // },
         //took validate form fucntion from here for form component
        //took validate height ,weight, age,sm, inch function from here
-        fixStepIndicator: function (n) {
+        // fixStepIndicator: function (n) {
 
-            // This function removes the "active" class of all steps...
-            var i, x = document.getElementsByClassName("step");
-            for (i = 0; i < x.length; i++) {
-                x[i].className = x[i].className.replace(" active", "");
-            }
-            //... and adds the "active" class on the current step:
-            x[n].className += " active";
-        },
+        //     // This function removes the "active" class of all steps...
+        //     var i, x = document.getElementsByClassName("step");
+        //     for (i = 0; i < x.length; i++) {
+        //         x[i].className = x[i].className.replace(" active", "");
+        //     }
+        //     //... and adds the "active" class on the current step:
+        //     x[n].className += " active";
+        // },
         dev_reset: function () {
 
             window.localStorage.clear();
         },
-        restart: function () {
-
-            // this.changesizetorecommended()
-            $('div.fit-advisor-selected-size:gt(' + localStorage.getItem('sizeindex') + ')').show();
-            $('div.fit-advisor-selected-size:lt(' + localStorage.getItem('sizeindex') + ')').show();
-            $('p.size_descriptions:gt(' + localStorage.getItem('sizeindex') + ')').show();
-            $('p.size_descriptions:lt(' + localStorage.getItem('sizeindex') + ')').show();
-
-            this.restarted = true;
-            this.form.heightfoot = '';
-            this.form.heightinch = '';
-            this.form.weight = '';
-            this.form.age = '';
-            this.form.chest.name = '';
-            this.form.chest.other = '';
-            this.form.stomach.name = '';
-            this.form.stomach.other = '';
-            this.form.bottom.name = '';
-            this.form.bottom.other = '';
-            this.recommended_size = '',
-
-                this.currentTab = 0;
-            this.showContinueBtn = true,
-
-                //                $('.fit-advisor-selected-product-grid').css('display', 'none');
-                $("#steps-mark").css('visibility', 'hidden');
-            this.dev_reset();
-
-            this.showTab(this.currentTab);
-            this.nextPrev(0)
-
-        },
+       //took restart function for last component
         nextprevslide: function () {
 
         },
@@ -983,16 +992,7 @@ export default {
             });
 
         },
-        array_move: function (arr, old_index, new_index) {
-            if (new_index >= arr.length) {
-                var k = new_index - arr.length + 1;
-                while (k--) {
-                    arr.push(undefined);
-                }
-            }
-            arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-            return arr; // for testing
-        },
+       //toook array move function from 
         setupProduct: function () {
             this.product.variants = this.product.variants.map(v => ({
                 ...v,
@@ -1049,31 +1049,26 @@ export default {
         }
     },
     mounted() {
-        this.tabnumber = 1;
+        
+        this.form.tags = this.product.tags
+        localStorage.setItem('tags', JSON.stringify(this.product.tags))
+        
         
         var x = document.getElementsByClassName("tab")
         this.formSubmit();
-        this.setupProduct();
+     //   this.setupProduct();
         this.responsiveness();
         this.getLocalData();
         this.showBodyFit();
-        this.getAttributes();
+        //this.getAttributes();
         
         
-        // if (localStorage.getItem('recommended_size') != null) {
+        if (localStorage.getItem('recommended_size') != null) {
             
-        //     this.attr_first = true;
-        //     this.attr_second = true;
-        //     this.attr_third = true;
-        //     this.showTab(x.length-1);
-        // } else {
-
-        //     this.attr_first = true;
-        //     this.attr_second = true;
-        //     this.attr_third = true;
-        //     this.showTab(this.currentTab);
-        // }
-
+            
+            this.tabnumber = 5;
+            this.lastTab=true;
+        }
         
 
         $('#popup-trigger').on('click', function () {

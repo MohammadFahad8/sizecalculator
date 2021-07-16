@@ -1,7 +1,8 @@
 <template>
     
 <div>
-     <div class="tab">
+      <p class="fit-advisor-intro text-center" ><span id="mark1">Drop-cut:LUX</span> <br><span id="mark2"></span></p>
+     <div >
                         <div class="fit-advisor-custom_row">
                             <div class="col-md-12">
                                 <div class=" fit-advisor-selected-product-grid">
@@ -38,7 +39,7 @@
                                                         <div id="fit-advisor-sizes-slider" font-size="40" v-for="(row,key,index) in product.variants" :key="row.id" class=" fit-advisor-selected-size" style="opacity: 1;">
                                                             <span id="fsize">
 
-                                                                <h4 class="result-size" v-if="showSelectedSizeSlider">
+                                                                <h4 class="result-size" v-if="container.showSelectedSizeSlider">
 
                                                                     <!-- <span v-if="!showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span> -->
 
@@ -69,19 +70,408 @@
                     </div>
 
 
-<div id="steps-mark" style="text-align:center;margin-top:100px;" class="m-result float-right"><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
+<div id="steps-mark" style="text-align:center;margin-top:100px;" class="m-result "><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
 </div>
 </template>
 <script>
+import EventBus from '../event-bus';
 
+export default {
+    props: {
+        product: Object,
+        form:Object,
 
-export default ({
+    },
     data() {
         return{
             container:{
                 is_loading:false,
-            }
+                showSelectedSizeSlider:false,
+                conversionCount:'',
+                recommended_size:'',
+                restarted:false,
+                sizecheck:false,
+                finalsize:'',
+               
+            sizeIndex: 0,
+            size_descriptions: [{
+                    title: 'Very Snugged',
+                },
+                {
+                    title: ' Snugged',
+                },
+                {
+                    title: 'Recommended',
+                },
+                {
+                    title: 'Relaxed',
+                },
+                {
+                    title: 'Very Relaxed',
+                },
+
+            ],
+                
+            },
+            showrecommended:false,
+              $allSlides: '',
+            $allSlidesSize: '',
+            traverseDefault: '',
+            actionDefault: '',
+            otherSize: '',
+            tabnumber:'',
+            formBody:{},
         }
     },
-})
+    methods:{
+          setupProduct: function () {
+            this.product.variants = this.product.variants.map(v => ({
+                ...v,
+                desc_title: 'Recommended'
+            }));
+                    this.formBody = this.form;
+                    var tabnumber  = 1;
+                    // EventBus.$on('resetSlides',tabnumber=>{
+                    //     this.restart();
+                    // })
+            
+        },
+         setSlides: function (sizeposition) {
+
+            $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
+            $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
+            $('p.size_descriptions:gt(' + sizeposition + ')').hide();
+            $('p.size_descriptions:lt(' + sizeposition + ')').hide();
+            //Hide all but the Predicted Size
+
+            this.$allSlides = $('div.fit-advisor-selected-size'),
+                this.$allSlidesSize = $('p.size_descriptions'),
+                this.traverseDefault = "first", //set the defaults
+                this.actionDefault = "next";
+        },
+        setSelectedSizeFromList: function (size, sizecheck) {
+
+            this.product.variants.forEach((el, index) => {
+
+                if (sizecheck == true) {
+
+                    if (el.option1.toUpperCase() == size) {
+                        this.container.sizeIndex = index
+                        this.array_move(this.container.size_descriptions, 2, index)
+                        if (size == "XS") {
+
+                            for (var i = 0; i <= this.product.variants.length; i++) {
+
+                                if (i == this.sizeIndex) {
+                                    this.product.variants[i].desc_title = "Recommended";
+                                }
+
+                                if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
+
+                                    this.product.variants[i].desc_title = "Slightly Relaxed";
+                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 3])) {
+                                        this.product.variants[i].desc_title = "Relaxed";
+                                    }
+                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 2])) {
+                                        this.product.variants[i].desc_title = "Relaxed";
+                                    }
+                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
+                                        this.product.variants[i].desc_title = "Very Relaxed";
+                                    }
+
+                                }
+
+                            }
+
+                        } else if (size == "XL") {
+                            var counter = 1;
+                            for (var i = 0; i <= this.product.variants.length; i++) {
+
+                                if (i < this.container.sizeIndex) {
+                                    this.product.variants[i].desc_title = "Very Snug";
+
+                                    if ((i < this.container.sizeIndex) && (i >= counter)) {
+                                        counter++;
+
+                                        this.product.variants[i].desc_title = "Snug";
+
+                                    }
+
+                                }
+
+                                if (i == this.container.sizeIndex) {
+                                    this.product.variants[i].desc_title = "Recommended";
+                                }
+                                if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 2])) {
+                                    this.product.variants[i].desc_title = "Slightly Snugged";
+                                }
+
+                            }
+
+                        }
+                        localStorage.setItem('sizeindex', this.container.sizeIndex)
+
+                        this.setSlides(this.container.sizeIndex);
+
+                    }
+                } else if (sizecheck == false) {
+
+                    if (el.option1.toUpperCase().charAt(0) == size) {
+                        this.container.sizeIndex = index
+
+                        this.array_move(this.container.size_descriptions, 2, index)
+
+                        if (size == "S") {
+
+                            for (var i = 0; i <= this.product.variants.length; i++) {
+
+                                if (i < this.container.sizeIndex) {
+                                    this.product.variants[i].desc_title = "Very Snug";
+
+                                    if ((i < this.container.sizeIndex) && (i > 0)) {
+
+                                        this.product.variants[i].desc_title = "Snug";
+
+                                    }
+                                }
+
+                                if (i == this.container.sizeIndex) {
+                                    this.product.variants[i].desc_title = "Recommended";
+                                }
+
+                                if ((i > this.container.sizeIndex) && (i < this.product.variants.length)) {
+
+                                    this.product.variants[i].desc_title = "Relaxed";
+                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
+                                        this.product.variants[i].desc_title = "Very Relaxed";
+                                    }
+
+                                }
+
+                            }
+
+                        } else if (size == 'M') {
+
+                            for (var i = 0; i <= this.product.variants.length; i++) {
+
+                                if (i < this.container.sizeIndex) {
+                                    this.product.variants[i].desc_title = "Very Snug";
+
+                                    if ((i < this.container.sizeIndex) && (i > 0)) {
+
+                                        this.product.variants[i].desc_title = "Snug";
+
+                                    }
+                                }
+
+                                if (i == this.container.sizeIndex) {
+                                    this.product.variants[i].desc_title = "Recommended";
+                                }
+
+                                if ((i > this.container.sizeIndex) && (i < this.product.variants.length)) {
+
+                                    this.product.variants[i].desc_title = "Relaxed";
+                                    if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
+                                        this.product.variants[i].desc_title = "Very Relaxed";
+                                    }
+
+                                }
+
+                            }
+
+                        } else if (size == 'L') {
+                            for (var i = 0; i <= this.product.variants.length; i++) {
+
+                                if (i < this.container.sizeIndex) {
+                                    this.product.variants[i].desc_title = "Very Snug";
+
+                                    if ((i < this.container.sizeIndex) && (i > 0)) {
+
+                                        this.product.variants[i].desc_title = "Snug";
+
+                                    }
+                                }
+
+                                if (i == this.container.sizeIndex) {
+                                    this.product.variants[i].desc_title = "Recommended";
+                                }
+
+                                if ((i > this.container.sizeIndex) && (i < this.product.variants.length)) {
+
+                                    this.product.variants[i].desc_title = "Very Relaxed";
+
+                                }
+
+                            }
+
+                        }
+
+                        localStorage.setItem('sizeindex', this.container.sizeIndex)
+
+                        this.setSlides(this.container.sizeIndex);
+
+                    }
+
+                }
+
+            })
+
+        },
+
+        getProductDetails: function () {
+            this.container.is_loading = true;
+            var a = '';
+            if (this.container.restarted == false) {
+
+                if (localStorage.getItem("sizeindex") != null) {
+
+                    this.setSlides(localStorage.getItem("sizeindex"));
+
+                }
+            }
+            this.container.showSelectedSizeSlider = false;
+            this.container.conversionCount = this.product.id
+            axios.post(this.$appUrl + '/api/size-recommend/', this.formBody)
+                .then((res) => {
+
+                    this.container.is_loading = false;
+
+                    this.container.showSelectedSizeSlider = true;
+
+                    if (((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs'))) {
+                        this.container.recommended_size = res.data.toUpperCase().substr(0, 2)
+                        this.container.sizecheck = true;
+                        this.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), this.container.sizecheck)
+                        a = this.container.recommended_size;
+                        $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
+                        $('.dfOagu').addClass('dfOagu-second');
+                       
+
+                    } else {
+                        this.container.recommended_size = res.data.toUpperCase().charAt(0)
+                        this.container.sizecheck = false;
+                        this.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), this.container.sizecheck)
+
+                        a = this.container.recommended_size;
+                       
+
+                    }
+
+                    localStorage.setItem('recommended_size', this.container.recommended_size)
+
+                    this.container.finalsize = localStorage.getItem('recommended_size');
+
+                })
+        },
+          changesize: function (trigger) {
+
+            if (this.showrecommended == true) {
+                this.showrecommended = false;
+
+                // $('.dfOagu').addClass('dfOagu-second');
+                // $('.listfit').removeClass('ml-5');
+
+            }
+
+            //slides size
+
+            var $time = 1000;
+
+            this.showrecommended = false;
+
+            var traverse = this.traverseDefault,
+                action = this.actionDefault;
+
+            if (trigger == 0) { //if action is prev
+                traverse = "last"; //set traverse to last in case nothing is available
+                action = "prev"; //set action to prev
+            }
+
+            var $curr = this.$allSlides.filter(':visible'), //get the visible slide
+
+                $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
+            $nxtTarget.addClass('active');
+
+            $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+
+            if (!$nxtTarget.length) { //if no next
+                $time = 1;
+
+                if (trigger == 0) {
+
+                    $nxtTarget = this.$allSlides["first"]();
+
+                } else {
+
+                    $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
+
+                }
+
+            }
+
+            $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+
+            //slides size end
+
+            var $curr = this.$allSlidesSize.filter(':visible'), //get the visible slide
+                $nxtTarget = $curr[action](".size_descriptions"); //get the next target based on the action.
+            $nxtTarget.addClass('active');
+
+            $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+
+            if (!$nxtTarget.length) { //if no next
+
+                if (trigger == 0) {
+
+                    $nxtTarget = this.$allSlidesSize["first"]();
+
+                } else {
+
+                    $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
+
+                }
+
+            }
+
+            $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+
+            //slides size end
+
+        },
+         array_move: function (arr, old_index, new_index) {
+            if (new_index >= arr.length) {
+                var k = new_index - arr.length + 1;
+                while (k--) {
+                    arr.push(undefined);
+                }
+            }
+            arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+            return arr; // for testing
+        },
+         restart: function () {
+
+            // this.changesizetorecommended()
+       
+
+            
+
+                //                $('.fit-advisor-selected-product-grid').css('display', 'none');
+                
+            this.tabnumber=1;
+            console.log(this.tabnumber)
+            EventBus.$emit('home',this.tabnumber)
+            
+            
+
+        },
+    },
+    mounted(){
+        this.setupProduct();
+        this.getProductDetails();
+        EventBus.$on('sizeCalculate',num=>{
+            this.setupProduct();
+        this.getProductDetails();
+        })
+    }
+}
 </script>

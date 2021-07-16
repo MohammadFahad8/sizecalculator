@@ -1,6 +1,7 @@
 <template>
     <div>
-          <div class="tab"  v-if="container.attr_second">
+        <p class="fit-advisor-intro" ><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your stomach</span></p>
+          <div   v-if="container.attr_second">
                         <div>
                             <div class=" fit-advisor-chest-tab size-position">
                                 <div class=" fit-advisor-chest-tab-item">
@@ -34,14 +35,38 @@ export default {
     data() {
         return{
              container:{
-            attr_second:false,
+                 tabnumber:'',
+            attr_second:true,
             stomachSizeOne:'1',
             stomachSizeTwo:'2',
             stomachSizeThree:'3',
             is_loading:false,
+              stomach:{
+                    title:'stomach',
+                   other:localStorage.getItem('stomach')
+                   },
 
         }
         }
     },
+    methods:{
+          nextStep: function (n){
+            
+           
+                this.container.tabnumber  = n;
+            EventBus.$emit('attributetwo',this.container);
+            
+            
+            
+            
+
+        },
+         stomach: function (n) {
+            this.container.stomach.other = n;
+            localStorage.setItem('stomach', n)
+            this.nextStep(4)
+        },
+    },
+    mounted(){}
 }
 </script>

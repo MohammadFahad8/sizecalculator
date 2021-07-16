@@ -1,6 +1,8 @@
 <template>
     <div>
-           <div class="tab"  v-if="container.attr_third">
+        
+        <p class="fit-advisor-intro" ><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your bottom</span></p>
+           <div v-if="container.attr_third">
                         <div>
                             <div class=" fit-advisor-chest-tab size-position">
                                 <div class=" fit-advisor-chest-tab-item">
@@ -34,14 +36,44 @@ export default {
     data() {
         return{
             container : {
+                tabnumber:'',
              
-            attr_third:false,
+            attr_third:true,
              bottomSizeOne:'1',
             bottomSizeTwo:'2',
             bottomSizeThree:'3',
             is_loading:false,
+               bottom:{ 
+                    title:'bottom',
+                    other:localStorage.getItem('bottom')
+                },
+                tags: JSON.parse(localStorage.getItem('tags')),
             }
         }
     },
+    methods:{
+          nextStep: function (n){
+            
+           
+                this.container.tabnumber  = n;
+            EventBus.$emit('attributethree',this.container);
+            
+            EventBus.$emit('sizeCalculate',n);
+            
+            
+
+        },
+         bottom: function (n) {
+            this.container.bottom.other = n;
+            localStorage.setItem('bottom', n)
+
+            
+            this.nextStep(5)
+
+        },
+    },
+    mounted(){
+        
+    }
 }
 </script>

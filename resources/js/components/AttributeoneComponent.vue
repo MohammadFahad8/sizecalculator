@@ -1,7 +1,8 @@
 <template>
     <div>
-        <p class="fit-advisor-intro" id="intro2"><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your chest</span></p>
-         <div class="tab" v-if="container.attr_first">
+        
+        <p class="fit-advisor-intro" ><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your chest</span></p>
+         <div >
                         <div>
                             <div class=" fit-advisor-chest-tab size-position">
                                 <div class=" fit-advisor-chest-tab-item">
@@ -35,13 +36,46 @@ export default {
     data() {
         return{
             container:{
-             attr_first:false,
+                tabnumber:'',
+             attr_first:true,
                  chestSizeOne:'1',
             chestSizeTwo:'2',
             chestSizeThree:'3', 
             is_loading:false,
+             chest:{
+                    title:'chest', 
+                    other:localStorage.getItem('chest'),
+                } ,
+              
+
+             
             }
         }
     },
+    methods:{
+         nextStep: function (n){
+            
+           
+                this.container.tabnumber  = n;
+            EventBus.$emit('attributeone',this.container);
+            
+            
+            
+            
+
+        },
+        chest: function (n) {
+            this.container.chest.other = n;
+            
+            localStorage.setItem('chest', n)
+            this.nextStep(3)
+        },
+       
+       
+    },
+    mounted()
+    {
+        
+    }
 }
 </script>

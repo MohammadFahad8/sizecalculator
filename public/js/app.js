@@ -1876,19 +1876,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       container: {
-        attr_first: false,
+        tabnumber: '',
+        attr_first: true,
         chestSizeOne: '1',
         chestSizeTwo: '2',
         chestSizeThree: '3',
-        is_loading: false
+        is_loading: false,
+        chest: {
+          title: 'chest',
+          other: localStorage.getItem('chest')
+        }
       }
     };
-  }
+  },
+  methods: {
+    nextStep: function nextStep(n) {
+      this.container.tabnumber = n;
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('attributeone', this.container);
+    },
+    chest: function chest(n) {
+      this.container.chest.other = n;
+      localStorage.setItem('chest', n);
+      this.nextStep(3);
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -1934,19 +1952,40 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       container: {
-        attr_third: false,
+        tabnumber: '',
+        attr_third: true,
         bottomSizeOne: '1',
         bottomSizeTwo: '2',
         bottomSizeThree: '3',
-        is_loading: false
+        is_loading: false,
+        bottom: {
+          title: 'bottom',
+          other: localStorage.getItem('bottom')
+        },
+        tags: JSON.parse(localStorage.getItem('tags'))
       }
     };
-  }
+  },
+  methods: {
+    nextStep: function nextStep(n) {
+      this.container.tabnumber = n;
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('attributethree', this.container);
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('sizeCalculate', n);
+    },
+    bottom: function bottom(n) {
+      this.container.bottom.other = n;
+      localStorage.setItem('bottom', n);
+      this.nextStep(5);
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -1992,19 +2031,37 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       container: {
-        attr_second: false,
+        tabnumber: '',
+        attr_second: true,
         stomachSizeOne: '1',
         stomachSizeTwo: '2',
         stomachSizeThree: '3',
-        is_loading: false
+        is_loading: false,
+        stomach: {
+          title: 'stomach',
+          other: localStorage.getItem('stomach')
+        }
       }
     };
-  }
+  },
+  methods: {
+    nextStep: function nextStep(n) {
+      this.container.tabnumber = n;
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('attributetwo', this.container);
+    },
+    stomach: function stomach(n) {
+      this.container.stomach.other = n;
+      localStorage.setItem('stomach', n);
+      this.nextStep(4);
+    }
+  },
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -2204,20 +2261,68 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this = this;
 
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('formsubmit', function (container) {
-        console.log(container);
         _this.form.heightfoot = container.form.heightfoot;
         _this.form.heightinch = container.form.heightinch;
         _this.form.heightcm = container.form.heightcm;
         _this.form.weight = container.form.weight;
         _this.form.age = container.form.age;
-        _this.tabnumber = container.form.number;
+        _this.tabnumber = container.form.tabnumber;
         _this.form.convertedMeasurements = container.form.convertedMeasurements;
         _this.conversionCount = container.form.conversionCount;
         _this.firstTab = container.firstTab;
       });
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('attributeone', function (container) {
+        _this.form.chest.other = container.chest.other;
+        _this.lastTab = false;
+        _this.tabnumber = container.tabnumber;
+      });
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('attributetwo', function (container) {
+        _this.lastTab = false;
+        _this.form.stomach.other = container.stomach.other;
+        _this.tabnumber = container.tabnumber;
+      });
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('attributethree', function (container) {
+        _this.form.bottom.other = container.bottom.other;
+        _this.tabnumber = container.tabnumber;
+        _this.lastTab = true;
+      });
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('resetForm', function (tabnum) {
+        _this.lastTab = false;
+        _this.tabnumber = tabnum;
+
+        _this.restart();
+      });
     },
     nextStep: function nextStep(n) {
       this.tabnumber = n;
+    },
+    back: function back(num) {
+      this.tabnumber = num - 1;
+    },
+    restart: function restart() {
+      $('div.fit-advisor-selected-size:gt(' + localStorage.getItem('sizeindex') + ')').show();
+      $('div.fit-advisor-selected-size:lt(' + localStorage.getItem('sizeindex') + ')').show();
+      $('p.size_descriptions:gt(' + localStorage.getItem('sizeindex') + ')').show();
+      $('p.size_descriptions:lt(' + localStorage.getItem('sizeindex') + ')').show();
+      this.restarted = true;
+      this.form.heightfoot = '';
+      this.form.heightinch = '';
+      this.form.weight = '';
+      this.form.age = '';
+      this.form.chest.name = '';
+      this.form.chest.other = '';
+      this.form.stomach.name = '';
+      this.form.stomach.other = '';
+      this.form.bottom.name = '';
+      this.form.bottom.other = '';
+      this.recommended_size = '', this.lastTab = false; // EventBus.$emit('resetSlides',this.tabnumber)
+      // EventBus.$on('home',num=>{
+      //     console.log(num)
+      //     this.nextStep(num)
+      // })
+
+      this.nextStep(1);
+      this.dev_reset();
     },
     showBodyFit: function showBodyFit() {
       var _this2 = this;
@@ -2261,199 +2366,161 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         this.finalsize = '';
       }
     },
-    setSlides: function setSlides(sizeposition) {
-      $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
-      $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
-      $('p.size_descriptions:gt(' + sizeposition + ')').hide();
-      $('p.size_descriptions:lt(' + sizeposition + ')').hide(); //Hide all but the Predicted Size
-
-      this.$allSlides = $('div.fit-advisor-selected-size'), this.$allSlidesSize = $('p.size_descriptions'), this.traverseDefault = "first", //set the defaults
-      this.actionDefault = "next";
-    },
-    setSelectedSizeFromList: function setSelectedSizeFromList(size, sizecheck) {
-      var _this3 = this;
-
-      this.product.variants.forEach(function (el, index) {
-        if (sizecheck == true) {
-          if (el.option1.toUpperCase() == size) {
-            _this3.sizeIndex = index;
-
-            _this3.array_move(_this3.size_descriptions, 2, index);
-
-            if (size == "XS") {
-              for (var i = 0; i <= _this3.product.variants.length; i++) {
-                if (i == _this3.sizeIndex) {
-                  _this3.product.variants[i].desc_title = "Recommended";
-                }
-
-                if (i > _this3.sizeIndex && i < _this3.product.variants.length) {
-                  _this3.product.variants[i].desc_title = "Slightly Relaxed";
-
-                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 3])) {
-                    _this3.product.variants[i].desc_title = "Relaxed";
-                  }
-
-                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 2])) {
-                    _this3.product.variants[i].desc_title = "Relaxed";
-                  }
-
-                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 1])) {
-                    _this3.product.variants[i].desc_title = "Very Relaxed";
-                  }
-                }
-              }
-            } else if (size == "XL") {
-              var counter = 1;
-
-              for (var i = 0; i <= _this3.product.variants.length; i++) {
-                if (i < _this3.sizeIndex) {
-                  _this3.product.variants[i].desc_title = "Very Snug";
-
-                  if (i < _this3.sizeIndex && i >= counter) {
-                    counter++;
-                    _this3.product.variants[i].desc_title = "Snug";
-                  }
-                }
-
-                if (i == _this3.sizeIndex) {
-                  _this3.product.variants[i].desc_title = "Recommended";
-                }
-
-                if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 2])) {
-                  _this3.product.variants[i].desc_title = "Slightly Snugged";
-                }
-              }
-            }
-
-            localStorage.setItem('sizeindex', _this3.sizeIndex);
-
-            _this3.setSlides(_this3.sizeIndex);
-          }
-        } else if (sizecheck == false) {
-          if (el.option1.toUpperCase().charAt(0) == size) {
-            _this3.sizeIndex = index;
-
-            _this3.array_move(_this3.size_descriptions, 2, index);
-
-            if (size == "S") {
-              for (var i = 0; i <= _this3.product.variants.length; i++) {
-                if (i < _this3.sizeIndex) {
-                  _this3.product.variants[i].desc_title = "Very Snug";
-
-                  if (i < _this3.sizeIndex && i > 0) {
-                    _this3.product.variants[i].desc_title = "Snug";
-                  }
-                }
-
-                if (i == _this3.sizeIndex) {
-                  _this3.product.variants[i].desc_title = "Recommended";
-                }
-
-                if (i > _this3.sizeIndex && i < _this3.product.variants.length) {
-                  _this3.product.variants[i].desc_title = "Relaxed";
-
-                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 1])) {
-                    _this3.product.variants[i].desc_title = "Very Relaxed";
-                  }
-                }
-              }
-            } else if (size == 'M') {
-              for (var i = 0; i <= _this3.product.variants.length; i++) {
-                if (i < _this3.sizeIndex) {
-                  _this3.product.variants[i].desc_title = "Very Snug";
-
-                  if (i < _this3.sizeIndex && i > 0) {
-                    _this3.product.variants[i].desc_title = "Snug";
-                  }
-                }
-
-                if (i == _this3.sizeIndex) {
-                  _this3.product.variants[i].desc_title = "Recommended";
-                }
-
-                if (i > _this3.sizeIndex && i < _this3.product.variants.length) {
-                  _this3.product.variants[i].desc_title = "Relaxed";
-
-                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 1])) {
-                    _this3.product.variants[i].desc_title = "Very Relaxed";
-                  }
-                }
-              }
-            } else if (size == 'L') {
-              for (var i = 0; i <= _this3.product.variants.length; i++) {
-                if (i < _this3.sizeIndex) {
-                  _this3.product.variants[i].desc_title = "Very Snug";
-
-                  if (i < _this3.sizeIndex && i > 0) {
-                    _this3.product.variants[i].desc_title = "Snug";
-                  }
-                }
-
-                if (i == _this3.sizeIndex) {
-                  _this3.product.variants[i].desc_title = "Recommended";
-                }
-
-                if (i > _this3.sizeIndex && i < _this3.product.variants.length) {
-                  _this3.product.variants[i].desc_title = "Very Relaxed";
-                }
-              }
-            }
-
-            localStorage.setItem('sizeindex', _this3.sizeIndex);
-
-            _this3.setSlides(_this3.sizeIndex);
-          }
-        }
-      });
-    },
-    getProductDetails: function getProductDetails() {
-      var _this4 = this;
-
-      this.is_loading = true;
-      var a = '';
-
-      if (this.restarted == false) {
-        if (localStorage.getItem("sizeindex") != null) {
-          this.setSlides(localStorage.getItem("sizeindex"));
-        }
-      }
-
-      this.showSelectedSizeSlider = false;
-      this.form.conversionCount = this.product.id;
-      axios.post(this.$appUrl + '/api/size-recommend/', this.form).then(function (res) {
-        _this4.is_loading = false;
-        _this4.showSelectedSizeSlider = true;
-
-        if (res.data == 'XL' || res.data == 'xl' || res.data == 'XS' || res.data == 'xs') {
-          _this4.recommended_size = res.data.toUpperCase().substr(0, 2);
-          _this4.sizecheck = true;
-
-          _this4.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this4.sizecheck);
-
-          a = _this4.recommended_size;
-          $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
-          $('.dfOagu').addClass('dfOagu-second');
-
-          if (_this4.showContinueBtn == true) {
-            _this4.showContinueBtn = false;
-          }
-        } else {
-          _this4.recommended_size = res.data.toUpperCase().charAt(0);
-          _this4.sizecheck = false;
-
-          _this4.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this4.sizecheck);
-
-          a = _this4.recommended_size;
-
-          if (_this4.showContinueBtn == true) {
-            _this4.showContinueBtn = false;
-          }
-        }
-
-        localStorage.setItem('recommended_size', _this4.recommended_size);
-        _this4.finalsize = localStorage.getItem('recommended_size');
-      });
-    },
+    // setSlides: function (sizeposition) {
+    //     $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
+    //     $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
+    //     $('p.size_descriptions:gt(' + sizeposition + ')').hide();
+    //     $('p.size_descriptions:lt(' + sizeposition + ')').hide();
+    //     //Hide all but the Predicted Size
+    //     this.$allSlides = $('div.fit-advisor-selected-size'),
+    //         this.$allSlidesSize = $('p.size_descriptions'),
+    //         this.traverseDefault = "first", //set the defaults
+    //         this.actionDefault = "next";
+    // },
+    // setSelectedSizeFromList: function (size, sizecheck) {
+    //     this.product.variants.forEach((el, index) => {
+    //         if (sizecheck == true) {
+    //             if (el.option1.toUpperCase() == size) {
+    //                 this.sizeIndex = index
+    //                 this.array_move(this.size_descriptions, 2, index)
+    //                 if (size == "XS") {
+    //                     for (var i = 0; i <= this.product.variants.length; i++) {
+    //                         if (i == this.sizeIndex) {
+    //                             this.product.variants[i].desc_title = "Recommended";
+    //                         }
+    //                         if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
+    //                             this.product.variants[i].desc_title = "Slightly Relaxed";
+    //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 3])) {
+    //                                 this.product.variants[i].desc_title = "Relaxed";
+    //                             }
+    //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 2])) {
+    //                                 this.product.variants[i].desc_title = "Relaxed";
+    //                             }
+    //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
+    //                                 this.product.variants[i].desc_title = "Very Relaxed";
+    //                             }
+    //                         }
+    //                     }
+    //                 } else if (size == "XL") {
+    //                     var counter = 1;
+    //                     for (var i = 0; i <= this.product.variants.length; i++) {
+    //                         if (i < this.sizeIndex) {
+    //                             this.product.variants[i].desc_title = "Very Snug";
+    //                             if ((i < this.sizeIndex) && (i >= counter)) {
+    //                                 counter++;
+    //                                 this.product.variants[i].desc_title = "Snug";
+    //                             }
+    //                         }
+    //                         if (i == this.sizeIndex) {
+    //                             this.product.variants[i].desc_title = "Recommended";
+    //                         }
+    //                         if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 2])) {
+    //                             this.product.variants[i].desc_title = "Slightly Snugged";
+    //                         }
+    //                     }
+    //                 }
+    //                 localStorage.setItem('sizeindex', this.sizeIndex)
+    //                 this.setSlides(this.sizeIndex);
+    //             }
+    //         } else if (sizecheck == false) {
+    //             if (el.option1.toUpperCase().charAt(0) == size) {
+    //                 this.sizeIndex = index
+    //                 this.array_move(this.size_descriptions, 2, index)
+    //                 if (size == "S") {
+    //                     for (var i = 0; i <= this.product.variants.length; i++) {
+    //                         if (i < this.sizeIndex) {
+    //                             this.product.variants[i].desc_title = "Very Snug";
+    //                             if ((i < this.sizeIndex) && (i > 0)) {
+    //                                 this.product.variants[i].desc_title = "Snug";
+    //                             }
+    //                         }
+    //                         if (i == this.sizeIndex) {
+    //                             this.product.variants[i].desc_title = "Recommended";
+    //                         }
+    //                         if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
+    //                             this.product.variants[i].desc_title = "Relaxed";
+    //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
+    //                                 this.product.variants[i].desc_title = "Very Relaxed";
+    //                             }
+    //                         }
+    //                     }
+    //                 } else if (size == 'M') {
+    //                     for (var i = 0; i <= this.product.variants.length; i++) {
+    //                         if (i < this.sizeIndex) {
+    //                             this.product.variants[i].desc_title = "Very Snug";
+    //                             if ((i < this.sizeIndex) && (i > 0)) {
+    //                                 this.product.variants[i].desc_title = "Snug";
+    //                             }
+    //                         }
+    //                         if (i == this.sizeIndex) {
+    //                             this.product.variants[i].desc_title = "Recommended";
+    //                         }
+    //                         if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
+    //                             this.product.variants[i].desc_title = "Relaxed";
+    //                             if (i == this.product.variants.indexOf(this.product.variants[this.product.variants.length - 1])) {
+    //                                 this.product.variants[i].desc_title = "Very Relaxed";
+    //                             }
+    //                         }
+    //                     }
+    //                 } else if (size == 'L') {
+    //                     for (var i = 0; i <= this.product.variants.length; i++) {
+    //                         if (i < this.sizeIndex) {
+    //                             this.product.variants[i].desc_title = "Very Snug";
+    //                             if ((i < this.sizeIndex) && (i > 0)) {
+    //                                 this.product.variants[i].desc_title = "Snug";
+    //                             }
+    //                         }
+    //                         if (i == this.sizeIndex) {
+    //                             this.product.variants[i].desc_title = "Recommended";
+    //                         }
+    //                         if ((i > this.sizeIndex) && (i < this.product.variants.length)) {
+    //                             this.product.variants[i].desc_title = "Very Relaxed";
+    //                         }
+    //                     }
+    //                 }
+    //                 localStorage.setItem('sizeindex', this.sizeIndex)
+    //                 this.setSlides(this.sizeIndex);
+    //             }
+    //         }
+    //     })
+    // },
+    // getProductDetails: function () {
+    //     this.is_loading = true;
+    //     var a = '';
+    //     if (this.restarted == false) {
+    //         if (localStorage.getItem("sizeindex") != null) {
+    //             this.setSlides(localStorage.getItem("sizeindex"));
+    //         }
+    //     }
+    //     this.showSelectedSizeSlider = false;
+    //     this.form.conversionCount = this.product.id
+    //     axios.post(this.$appUrl + '/api/size-recommend/', this.form)
+    //         .then((res) => {
+    //             this.is_loading = false;
+    //             this.showSelectedSizeSlider = true;
+    //             if (((res.data == 'XL') || (res.data == 'xl')) || ((res.data == 'XS') || (res.data == 'xs'))) {
+    //                 this.recommended_size = res.data.toUpperCase().substr(0, 2)
+    //                 this.sizecheck = true;
+    //                 this.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), this.sizecheck)
+    //                 a = this.recommended_size;
+    //                 $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
+    //                 $('.dfOagu').addClass('dfOagu-second');
+    //                 if (this.showContinueBtn == true) {
+    //                     this.showContinueBtn = false;
+    //                 }
+    //             } else {
+    //                 this.recommended_size = res.data.toUpperCase().charAt(0)
+    //                 this.sizecheck = false;
+    //                 this.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), this.sizecheck)
+    //                 a = this.recommended_size;
+    //                 if (this.showContinueBtn == true) {
+    //                     this.showContinueBtn = false;
+    //                 }
+    //             }
+    //             localStorage.setItem('recommended_size', this.recommended_size)
+    //             this.finalsize = localStorage.getItem('recommended_size');
+    //         })
+    // },
     addToCart: function addToCart() {
       var pickCharacter = 0;
 
@@ -2501,280 +2568,214 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     setSize: function setSize(id) {
       this.variantselected = id;
     },
-    changesize: function changesize(trigger) {
-      if (this.showrecommended == true) {
-        this.showrecommended = false; // $('.dfOagu').addClass('dfOagu-second');
-        // $('.listfit').removeClass('ml-5');
-      } //slides size
-
-
-      var $time = 1000;
-      this.showrecommended = false;
-      var traverse = this.traverseDefault,
-          action = this.actionDefault;
-
-      if (trigger == 0) {
-        //if action is prev
-        traverse = "last"; //set traverse to last in case nothing is available
-
-        action = "prev"; //set action to prev
-      }
-
-      var $curr = this.$allSlides.filter(':visible'),
-          //get the visible slide
-      $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
-
-      $nxtTarget.addClass('active');
-      $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
-
-      if (!$nxtTarget.length) {
-        //if no next
-        $time = 1;
-
-        if (trigger == 0) {
-          $nxtTarget = this.$allSlides["first"]();
-        } else {
-          $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
-        }
-      }
-
-      $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
-      //slides size end
-
-      var $curr = this.$allSlidesSize.filter(':visible'),
-          //get the visible slide
-      $nxtTarget = $curr[action](".size_descriptions"); //get the next target based on the action.
-
-      $nxtTarget.addClass('active');
-      $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
-
-      if (!$nxtTarget.length) {
-        //if no next
-        if (trigger == 0) {
-          $nxtTarget = this.$allSlidesSize["first"]();
-        } else {
-          $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
-        }
-      }
-
-      $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
-      //slides size end
-    },
+    // changesize: function (trigger) {
+    //     if (this.showrecommended == true) {
+    //         this.showrecommended = false;
+    //         // $('.dfOagu').addClass('dfOagu-second');
+    //         // $('.listfit').removeClass('ml-5');
+    //     }
+    //     //slides size
+    //     var $time = 1000;
+    //     this.showrecommended = false;
+    //     var traverse = this.traverseDefault,
+    //         action = this.actionDefault;
+    //     if (trigger == 0) { //if action is prev
+    //         traverse = "last"; //set traverse to last in case nothing is available
+    //         action = "prev"; //set action to prev
+    //     }
+    //     var $curr = this.$allSlides.filter(':visible'), //get the visible slide
+    //         $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
+    //     $nxtTarget.addClass('active');
+    //     $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+    //     if (!$nxtTarget.length) { //if no next
+    //         $time = 1;
+    //         if (trigger == 0) {
+    //             $nxtTarget = this.$allSlides["first"]();
+    //         } else {
+    //             $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
+    //         }
+    //     }
+    //     $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+    //     //slides size end
+    //     var $curr = this.$allSlidesSize.filter(':visible'), //get the visible slide
+    //         $nxtTarget = $curr[action](".size_descriptions"); //get the next target based on the action.
+    //     $nxtTarget.addClass('active');
+    //     $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+    //     if (!$nxtTarget.length) { //if no next
+    //         if (trigger == 0) {
+    //             $nxtTarget = this.$allSlidesSize["first"]();
+    //         } else {
+    //             $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
+    //         }
+    //     }
+    //     $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+    //     //slides size end
+    // },
     changesizetorecommended: function changesizetorecommended() {
       if (this.showrecommended == false) {
         this.showrecommended = true;
       }
     },
-    chest: function chest(n) {
-      this.form.chest.other = n;
-      localStorage.setItem('chest', n);
-      this.nextPrev(1);
-    },
-    stomach: function stomach(n) {
-      this.form.stomach.other = n;
-      localStorage.setItem('stomach', n);
-      this.nextPrev(1);
-    },
-    bottom: function bottom(n) {
-      this.form.bottom.other = n;
-      localStorage.setItem('bottom', n);
-      this.form.tags = this.product.tags;
-      localStorage.setItem('tags', JSON.stringify(this.product.tags));
-      this.nextPrev(1);
-    },
+    //took 3 chest function for second component
     //took country val function from here for form-component
     //took weight convert and height convert  funcitons from here for Form Component
-    showTab: function showTab(n) {
-      if (localStorage.getItem('recommended_size') != null) {
-        n = 4;
-      }
-
-      if (n == 0) {
-        $('#closeApp').addClass('mtf-n6');
-        $('#closeApp').removeClass('mt-n6');
-        $('#intro1').css('display', 'block');
-        $("#steps-mark").css('visibility', 'hidden');
-        $('.switch').removeClass('introfirst');
-        $('.switch').addClass('find-fit-header');
-        $('#intro2').css('display', 'none');
-        $('#intro3').css('display', 'none');
-        $('#intro4').css('display', 'none');
-        $('#intro5').css('display', 'none');
-        $('#nextBtn').css('display', 'inline-block');
-      }
-
-      if (n == 1) {
-        $('#closeApp').removeClass('mtf-n6');
-        $('#closeApp').addClass('mt-n6');
-        $('#intro1').css('display', 'none');
-        $('#intro2').css('display', 'block');
-        $('#intro3').css('display', 'none');
-        $('#intro4').css('display', 'none');
-        $('#intro5').css('display', 'none');
-        $('.switch').addClass('introfirst');
-        $('.switch').removeClass('find-fit-header');
-      }
-
-      if (n == 2) {
-        $('#closeApp').removeClass('mtf-n6');
-        $('#closeApp').addClass('mt-n6');
-        $('#intro1').css('display', 'none');
-        $('#intro2').css('display', 'none');
-        $('#intro3').css('display', 'block');
-        $('#intro4').css('display', 'none');
-        $('#intro5').css('display', 'none');
-        $('.switch').addClass('introfirst');
-        $('.switch').removeClass('find-fit-header');
-      }
-
-      if (n == 3) {
-        $('#closeApp').removeClass('mtf-n6');
-        $('#closeApp').addClass('mt-n6');
-        $('#intro1').css('display', 'none');
-        $('#intro2').css('display', 'none');
-        $('#intro3').css('display', 'none');
-        $('#intro4').css('display', 'block');
-        $('#intro5').css('display', 'none');
-        $('.switch').addClass('introfirst');
-        $('.switch').removeClass('find-fit-header');
-      }
-
-      if (n == 4) {
-        $('#closeApp').removeClass('mtf-n6');
-        $('#closeApp').addClass('mt-n6');
-        $('.fit-advisor-selected-product-grid').css('display', 'inline');
-        $('#intro1').css('display', 'none');
-        $('#intro2').css('display', 'none');
-        $('#intro3').css('display', 'none');
-        $('#intro4').css('display', 'none');
-        $('#intro5').css('display', 'block');
-        $('.switch').addClass('introfirst');
-        $('.switch').removeClass('find-fit-header');
-        $('#fields').css('display', 'none');
-      } // This function will display the specified tab of the form...
-
-
-      var x = document.getElementsByClassName("tab");
-      x[n].style.display = "block"; //... and fix the Previous/Next buttons:
-
-      if (n == 0) {
-        $('#closeApp').removeClass('mt-n6');
-        $('.fit-advisor-selected-product-grid').css('display', 'none');
-        $('#closeApp').addClass('mtf-n6');
-        document.getElementById("prevBtn").style.display = "none"; //  document.getElementById("nextBtn").style.display = "inline";
-
-        document.getElementById("steps-mark").style.visibility = "hidden";
-        this.firstTab = false;
-        this.onfirstTab = false;
-        this.lastTab = false;
-      } else {
-        document.getElementById("steps-mark").style.visibility = "visible";
-        document.getElementById("prevBtn").style.display = "inline"; //$('.fit-advisor-intro').text('Find Your Fit');
-
-        this.firstTab = true;
-        this.onfirstTab = true, this.lastTab = false;
-      }
-
-      if (n == 1) {
-        $('#closeApp').removeClass('mtf-n6');
-        $('#closeApp').addClass('mt-n6');
-        $('#popup1').css('overflow', 'scroll');
-      }
-
-      if (n == 4) {
-        $('#closeApp').removeClass('mtf-n6');
-        $('#closeApp').addClass('mt-n6');
-        this.firstTab = false;
-        this.onfirstTab = true, this.lastTab = true;
-        this.showContinueBtn = false; //document.getElementById("nextBtn").style.display = "none";
-        // document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
-
-        document.getElementById("steps-mark").style.visibility = "inline"; //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
-
-        this.getProductDetails();
-      }
-
-      if (n >= 1 && n < 4) {
-        document.getElementById("nextBtn").style.display = "none";
-      } //... and run a function that will display the correct step indicator:
-
-
-      this.fixStepIndicator(n);
-    },
-    nextPrev: function nextPrev(n) {
-      // This function will figure out which tab to display
-      var x = document.getElementsByClassName("tab"); // Exit the function if any field in the current tab is invalid:
-
-      if (n == 1 && !this.validateForm()) return false; // Hide the current tab:
-
-      x[this.currentTab].style.display = "none"; // Increase or decrease the current tab by 1:
-
-      this.currentTab = this.currentTab + n;
-      var ft = $('#height_ft').val();
-      var inch = $('#height_in').val();
-      var weightf = $('#weight').val();
-      var weight_lbs = parseInt(weightf) * 2.205;
-      var heightf = ft * 12;
-      var heighti = heightf + parseInt(inch);
-      var height_cm = heighti * 2.54; //  this.measureh = localStorage.getItem('height');
-      // this.measurew = localStorage.getItem('weight');
-      // if(  this.measurew == null){
-      //   localStorage.setItem("weight", weight_lbs);
-      //  }
-      //  if( this.measureh == null){
-      //   localStorage.setItem("height", height_cm);
-      //  }
-      // if you have reached the end of the form...
-      // if (this.currentTab >= x.length) {
-      // ... the form gets submitted:
-      //document.getElementById("regForm").submit();
-      //return false;
-      //}
-      // Otherwise, display the correct tab:
-
-      this.showTab(this.currentTab);
-    },
+    // showTab: function (n) {
+    //     if (localStorage.getItem('recommended_size') != null) {
+    //         n = 4;
+    //     }
+    //     if (n == 0) {
+    //         $('#closeApp').addClass('mtf-n6')
+    //         $('#closeApp').removeClass('mt-n6')
+    //         $('#intro1').css('display', 'block');
+    //         $("#steps-mark").css('visibility', 'hidden');
+    //         $('.switch').removeClass('introfirst');
+    //         $('.switch').addClass('find-fit-header');
+    //         $('#intro2').css('display', 'none');
+    //         $('#intro3').css('display', 'none');
+    //         $('#intro4').css('display', 'none');
+    //         $('#intro5').css('display', 'none');
+    //         $('#nextBtn').css('display', 'inline-block');
+    //     }
+    //     if (n == 1) {
+    //         $('#closeApp').removeClass('mtf-n6')
+    //         $('#closeApp').addClass('mt-n6')
+    //         $('#intro1').css('display', 'none');
+    //         $('#intro2').css('display', 'block');
+    //         $('#intro3').css('display', 'none');
+    //         $('#intro4').css('display', 'none');
+    //         $('#intro5').css('display', 'none');
+    //         $('.switch').addClass('introfirst');
+    //         $('.switch').removeClass('find-fit-header');
+    //     }
+    //     if (n == 2) {
+    //         $('#closeApp').removeClass('mtf-n6')
+    //         $('#closeApp').addClass('mt-n6')
+    //         $('#intro1').css('display', 'none');
+    //         $('#intro2').css('display', 'none');
+    //         $('#intro3').css('display', 'block');
+    //         $('#intro4').css('display', 'none');
+    //         $('#intro5').css('display', 'none');
+    //         $('.switch').addClass('introfirst');
+    //         $('.switch').removeClass('find-fit-header');
+    //     }
+    //     if (n == 3) {
+    //         $('#closeApp').removeClass('mtf-n6')
+    //         $('#closeApp').addClass('mt-n6')
+    //         $('#intro1').css('display', 'none');
+    //         $('#intro2').css('display', 'none');
+    //         $('#intro3').css('display', 'none');
+    //         $('#intro4').css('display', 'block');
+    //         $('#intro5').css('display', 'none');
+    //         $('.switch').addClass('introfirst');
+    //         $('.switch').removeClass('find-fit-header');
+    //     }
+    //     if (n == 4) {
+    //         $('#closeApp').removeClass('mtf-n6')
+    //         $('#closeApp').addClass('mt-n6')
+    //         $('.fit-advisor-selected-product-grid').css('display', 'inline');
+    //         $('#intro1').css('display', 'none');
+    //         $('#intro2').css('display', 'none');
+    //         $('#intro3').css('display', 'none');
+    //         $('#intro4').css('display', 'none');
+    //         $('#intro5').css('display', 'block');
+    //         $('.switch').addClass('introfirst');
+    //         $('.switch').removeClass('find-fit-header');
+    //         $('#fields').css('display', 'none');
+    //     }
+    //     // This function will display the specified tab of the form...
+    //     var x = document.getElementsByClassName("tab");
+    //     x[n].style.display = "block";
+    //     //... and fix the Previous/Next buttons:
+    //     if (n == 0) {
+    //         $('#closeApp').removeClass('mt-n6')
+    //         $('.fit-advisor-selected-product-grid').css('display', 'none');
+    //         $('#closeApp').addClass('mtf-n6')
+    //         document.getElementById("prevBtn").style.display = "none";
+    //         //  document.getElementById("nextBtn").style.display = "inline";
+    //         document.getElementById("steps-mark").style.visibility = "hidden";
+    //         this.firstTab = false;
+    //         this.onfirstTab = false;
+    //         this.lastTab = false;
+    //     } else {
+    //         document.getElementById("steps-mark").style.visibility = "visible";
+    //         document.getElementById("prevBtn").style.display = "inline";
+    //         //$('.fit-advisor-intro').text('Find Your Fit');
+    //         this.firstTab = true;
+    //         this.onfirstTab = true,
+    //             this.lastTab = false;
+    //     }
+    //     if (n == 1) {
+    //         $('#closeApp').removeClass('mtf-n6')
+    //         $('#closeApp').addClass('mt-n6')
+    //         $('#popup1').css('overflow', 'scroll');
+    //     }
+    //     if (n == 4) {
+    //         $('#closeApp').removeClass('mtf-n6')
+    //         $('#closeApp').addClass('mt-n6')
+    //         this.firstTab = false;
+    //         this.onfirstTab = true,
+    //             this.lastTab = true;
+    //         this.showContinueBtn = false;
+    //         //document.getElementById("nextBtn").style.display = "none";
+    //         // document.getElementById("nextBtn").innerHTML = "Add Size to Cart";
+    //         document.getElementById("steps-mark").style.visibility = "inline";
+    //         //document.getElementById("nextBtn").classList.add('fit-advisor-product-btn-to-cart');
+    //         this.getProductDetails();
+    //     }
+    //     if ((n >= 1) && (n < 4)) {
+    //         document.getElementById("nextBtn").style.display = "none";
+    //     }
+    //     //... and run a function that will display the correct step indicator:
+    //     this.fixStepIndicator(n)
+    // },
+    // nextPrev: function (n) {
+    //     // This function will figure out which tab to display
+    //     var x = document.getElementsByClassName("tab");
+    //     // Exit the function if any field in the current tab is invalid:
+    //     if (n == 1 && !this.validateForm()) return false;
+    //     // Hide the current tab:
+    //     x[this.currentTab].style.display = "none";
+    //     // Increase or decrease the current tab by 1:
+    //     this.currentTab = this.currentTab + n;
+    //     var ft = $('#height_ft').val();
+    //     var inch = $('#height_in').val();
+    //     var weightf = $('#weight').val();
+    //     var weight_lbs = parseInt(weightf) * 2.205;
+    //     var heightf = ft * 12;
+    //     var heighti = heightf + parseInt(inch);
+    //     var height_cm = heighti * 2.54;
+    //     //  this.measureh = localStorage.getItem('height');
+    //     // this.measurew = localStorage.getItem('weight');
+    //     // if(  this.measurew == null){
+    //     //   localStorage.setItem("weight", weight_lbs);
+    //     //  }
+    //     //  if( this.measureh == null){
+    //     //   localStorage.setItem("height", height_cm);
+    //     //  }
+    //     // if you have reached the end of the form...
+    //     // if (this.currentTab >= x.length) {
+    //     // ... the form gets submitted:
+    //     //document.getElementById("regForm").submit();
+    //     //return false;
+    //     //}
+    //     // Otherwise, display the correct tab:
+    //     this.showTab(this.currentTab);
+    // },
     //took validate form fucntion from here for form component
     //took validate height ,weight, age,sm, inch function from here
-    fixStepIndicator: function fixStepIndicator(n) {
-      // This function removes the "active" class of all steps...
-      var i,
-          x = document.getElementsByClassName("step");
-
-      for (i = 0; i < x.length; i++) {
-        x[i].className = x[i].className.replace(" active", "");
-      } //... and adds the "active" class on the current step:
-
-
-      x[n].className += " active";
-    },
+    // fixStepIndicator: function (n) {
+    //     // This function removes the "active" class of all steps...
+    //     var i, x = document.getElementsByClassName("step");
+    //     for (i = 0; i < x.length; i++) {
+    //         x[i].className = x[i].className.replace(" active", "");
+    //     }
+    //     //... and adds the "active" class on the current step:
+    //     x[n].className += " active";
+    // },
     dev_reset: function dev_reset() {
       window.localStorage.clear();
     },
-    restart: function restart() {
-      // this.changesizetorecommended()
-      $('div.fit-advisor-selected-size:gt(' + localStorage.getItem('sizeindex') + ')').show();
-      $('div.fit-advisor-selected-size:lt(' + localStorage.getItem('sizeindex') + ')').show();
-      $('p.size_descriptions:gt(' + localStorage.getItem('sizeindex') + ')').show();
-      $('p.size_descriptions:lt(' + localStorage.getItem('sizeindex') + ')').show();
-      this.restarted = true;
-      this.form.heightfoot = '';
-      this.form.heightinch = '';
-      this.form.weight = '';
-      this.form.age = '';
-      this.form.chest.name = '';
-      this.form.chest.other = '';
-      this.form.stomach.name = '';
-      this.form.stomach.other = '';
-      this.form.bottom.name = '';
-      this.form.bottom.other = '';
-      this.recommended_size = '', this.currentTab = 0;
-      this.showContinueBtn = true, //                $('.fit-advisor-selected-product-grid').css('display', 'none');
-      $("#steps-mark").css('visibility', 'hidden');
-      this.dev_reset();
-      this.showTab(this.currentTab);
-      this.nextPrev(0);
-    },
+    //took restart function for last component
     nextprevslide: function nextprevslide() {},
     responsiveness: function responsiveness() {
       $(document).ready(function ($) {
@@ -2862,18 +2863,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         alterClass();
       });
     },
-    array_move: function array_move(arr, old_index, new_index) {
-      if (new_index >= arr.length) {
-        var k = new_index - arr.length + 1;
-
-        while (k--) {
-          arr.push(undefined);
-        }
-      }
-
-      arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-      return arr; // for testing
-    },
+    //toook array move function from 
     setupProduct: function setupProduct() {
       this.product.variants = this.product.variants.map(function (v) {
         return _objectSpread(_objectSpread({}, v), {}, {
@@ -2882,54 +2872,49 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     getAttributes: function getAttributes() {
-      var _this5 = this;
+      var _this3 = this;
 
       axios.get(this.$appUrl + '/api/get-attrbutes/' + this.product.id).then(function (res) {
-        _this5.attributes = res.data;
+        _this3.attributes = res.data;
 
-        _this5.attributes.forEach(function (el, index) {
-          if (el.name.toLowerCase() == _this5.form.chest.title.toLowerCase()) {
-            _this5.form.chest.title = el.name.toLowerCase();
-            _this5.attr_first = true;
-            _this5.chestSizeOne = el.size_one;
-            _this5.chestSizeTwo = el.size_second;
-            _this5.chestSizeThree = el.size_third;
-          } else if (el.name.toLowerCase() == _this5.form.stomach.title.toLowerCase()) {
-            _this5.form.stomach.title = el.name.toLowerCase();
-            _this5.attr_second = true;
-            _this5.stomachSizeOne = el.size_one;
-            _this5.stomachSizeTwo = el.size_second;
-            _this5.stomachSizeThree = el.size_third;
-          } else if (el.name.toLowerCase() == _this5.form.bottom.title.toLowerCase()) {
-            _this5.form.bottom.title = el.name.toLowerCase();
-            _this5.attr_third = true;
-            _this5.bottomSizeOne = el.size_one;
-            _this5.bottomSizeTwo = el.size_second;
-            _this5.bottomSizeThree = el.size_third;
+        _this3.attributes.forEach(function (el, index) {
+          if (el.name.toLowerCase() == _this3.form.chest.title.toLowerCase()) {
+            _this3.form.chest.title = el.name.toLowerCase();
+            _this3.attr_first = true;
+            _this3.chestSizeOne = el.size_one;
+            _this3.chestSizeTwo = el.size_second;
+            _this3.chestSizeThree = el.size_third;
+          } else if (el.name.toLowerCase() == _this3.form.stomach.title.toLowerCase()) {
+            _this3.form.stomach.title = el.name.toLowerCase();
+            _this3.attr_second = true;
+            _this3.stomachSizeOne = el.size_one;
+            _this3.stomachSizeTwo = el.size_second;
+            _this3.stomachSizeThree = el.size_third;
+          } else if (el.name.toLowerCase() == _this3.form.bottom.title.toLowerCase()) {
+            _this3.form.bottom.title = el.name.toLowerCase();
+            _this3.attr_third = true;
+            _this3.bottomSizeOne = el.size_one;
+            _this3.bottomSizeTwo = el.size_second;
+            _this3.bottomSizeThree = el.size_third;
           }
         });
       });
     }
   },
   mounted: function mounted() {
-    this.tabnumber = 1;
+    this.form.tags = this.product.tags;
+    localStorage.setItem('tags', JSON.stringify(this.product.tags));
     var x = document.getElementsByClassName("tab");
-    this.formSubmit();
-    this.setupProduct();
+    this.formSubmit(); //   this.setupProduct();
+
     this.responsiveness();
     this.getLocalData();
-    this.showBodyFit();
-    this.getAttributes(); // if (localStorage.getItem('recommended_size') != null) {
-    //     this.attr_first = true;
-    //     this.attr_second = true;
-    //     this.attr_third = true;
-    //     this.showTab(x.length-1);
-    // } else {
-    //     this.attr_first = true;
-    //     this.attr_second = true;
-    //     this.attr_third = true;
-    //     this.showTab(this.currentTab);
-    // }
+    this.showBodyFit(); //this.getAttributes();
+
+    if (localStorage.getItem('recommended_size') != null) {
+      this.tabnumber = 5;
+      this.lastTab = true;
+    }
 
     $('#popup-trigger').on('click', function () {
       $('.product-card').css('z-index', '-1');
@@ -3376,6 +3361,13 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
 //
 //
 //
@@ -3450,13 +3442,332 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    product: Object,
+    form: Object
+  },
   data: function data() {
     return {
       container: {
-        is_loading: false
-      }
+        is_loading: false,
+        showSelectedSizeSlider: false,
+        conversionCount: '',
+        recommended_size: '',
+        restarted: false,
+        sizecheck: false,
+        finalsize: '',
+        sizeIndex: 0,
+        size_descriptions: [{
+          title: 'Very Snugged'
+        }, {
+          title: ' Snugged'
+        }, {
+          title: 'Recommended'
+        }, {
+          title: 'Relaxed'
+        }, {
+          title: 'Very Relaxed'
+        }]
+      },
+      showrecommended: false,
+      $allSlides: '',
+      $allSlidesSize: '',
+      traverseDefault: '',
+      actionDefault: '',
+      otherSize: '',
+      tabnumber: '',
+      formBody: {}
     };
+  },
+  methods: {
+    setupProduct: function setupProduct() {
+      this.product.variants = this.product.variants.map(function (v) {
+        return _objectSpread(_objectSpread({}, v), {}, {
+          desc_title: 'Recommended'
+        });
+      });
+      this.formBody = this.form;
+      var tabnumber = 1; // EventBus.$on('resetSlides',tabnumber=>{
+      //     this.restart();
+      // })
+    },
+    setSlides: function setSlides(sizeposition) {
+      $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
+      $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
+      $('p.size_descriptions:gt(' + sizeposition + ')').hide();
+      $('p.size_descriptions:lt(' + sizeposition + ')').hide(); //Hide all but the Predicted Size
+
+      this.$allSlides = $('div.fit-advisor-selected-size'), this.$allSlidesSize = $('p.size_descriptions'), this.traverseDefault = "first", //set the defaults
+      this.actionDefault = "next";
+    },
+    setSelectedSizeFromList: function setSelectedSizeFromList(size, sizecheck) {
+      var _this = this;
+
+      this.product.variants.forEach(function (el, index) {
+        if (sizecheck == true) {
+          if (el.option1.toUpperCase() == size) {
+            _this.container.sizeIndex = index;
+
+            _this.array_move(_this.container.size_descriptions, 2, index);
+
+            if (size == "XS") {
+              for (var i = 0; i <= _this.product.variants.length; i++) {
+                if (i == _this.sizeIndex) {
+                  _this.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i > _this.sizeIndex && i < _this.product.variants.length) {
+                  _this.product.variants[i].desc_title = "Slightly Relaxed";
+
+                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 3])) {
+                    _this.product.variants[i].desc_title = "Relaxed";
+                  }
+
+                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 2])) {
+                    _this.product.variants[i].desc_title = "Relaxed";
+                  }
+
+                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 1])) {
+                    _this.product.variants[i].desc_title = "Very Relaxed";
+                  }
+                }
+              }
+            } else if (size == "XL") {
+              var counter = 1;
+
+              for (var i = 0; i <= _this.product.variants.length; i++) {
+                if (i < _this.container.sizeIndex) {
+                  _this.product.variants[i].desc_title = "Very Snug";
+
+                  if (i < _this.container.sizeIndex && i >= counter) {
+                    counter++;
+                    _this.product.variants[i].desc_title = "Snug";
+                  }
+                }
+
+                if (i == _this.container.sizeIndex) {
+                  _this.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 2])) {
+                  _this.product.variants[i].desc_title = "Slightly Snugged";
+                }
+              }
+            }
+
+            localStorage.setItem('sizeindex', _this.container.sizeIndex);
+
+            _this.setSlides(_this.container.sizeIndex);
+          }
+        } else if (sizecheck == false) {
+          if (el.option1.toUpperCase().charAt(0) == size) {
+            _this.container.sizeIndex = index;
+
+            _this.array_move(_this.container.size_descriptions, 2, index);
+
+            if (size == "S") {
+              for (var i = 0; i <= _this.product.variants.length; i++) {
+                if (i < _this.container.sizeIndex) {
+                  _this.product.variants[i].desc_title = "Very Snug";
+
+                  if (i < _this.container.sizeIndex && i > 0) {
+                    _this.product.variants[i].desc_title = "Snug";
+                  }
+                }
+
+                if (i == _this.container.sizeIndex) {
+                  _this.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
+                  _this.product.variants[i].desc_title = "Relaxed";
+
+                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 1])) {
+                    _this.product.variants[i].desc_title = "Very Relaxed";
+                  }
+                }
+              }
+            } else if (size == 'M') {
+              for (var i = 0; i <= _this.product.variants.length; i++) {
+                if (i < _this.container.sizeIndex) {
+                  _this.product.variants[i].desc_title = "Very Snug";
+
+                  if (i < _this.container.sizeIndex && i > 0) {
+                    _this.product.variants[i].desc_title = "Snug";
+                  }
+                }
+
+                if (i == _this.container.sizeIndex) {
+                  _this.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
+                  _this.product.variants[i].desc_title = "Relaxed";
+
+                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 1])) {
+                    _this.product.variants[i].desc_title = "Very Relaxed";
+                  }
+                }
+              }
+            } else if (size == 'L') {
+              for (var i = 0; i <= _this.product.variants.length; i++) {
+                if (i < _this.container.sizeIndex) {
+                  _this.product.variants[i].desc_title = "Very Snug";
+
+                  if (i < _this.container.sizeIndex && i > 0) {
+                    _this.product.variants[i].desc_title = "Snug";
+                  }
+                }
+
+                if (i == _this.container.sizeIndex) {
+                  _this.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
+                  _this.product.variants[i].desc_title = "Very Relaxed";
+                }
+              }
+            }
+
+            localStorage.setItem('sizeindex', _this.container.sizeIndex);
+
+            _this.setSlides(_this.container.sizeIndex);
+          }
+        }
+      });
+    },
+    getProductDetails: function getProductDetails() {
+      var _this2 = this;
+
+      this.container.is_loading = true;
+      var a = '';
+
+      if (this.container.restarted == false) {
+        if (localStorage.getItem("sizeindex") != null) {
+          this.setSlides(localStorage.getItem("sizeindex"));
+        }
+      }
+
+      this.container.showSelectedSizeSlider = false;
+      this.container.conversionCount = this.product.id;
+      axios.post(this.$appUrl + '/api/size-recommend/', this.formBody).then(function (res) {
+        _this2.container.is_loading = false;
+        _this2.container.showSelectedSizeSlider = true;
+
+        if (res.data == 'XL' || res.data == 'xl' || res.data == 'XS' || res.data == 'xs') {
+          _this2.container.recommended_size = res.data.toUpperCase().substr(0, 2);
+          _this2.container.sizecheck = true;
+
+          _this2.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this2.container.sizecheck);
+
+          a = _this2.container.recommended_size;
+          $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
+          $('.dfOagu').addClass('dfOagu-second');
+        } else {
+          _this2.container.recommended_size = res.data.toUpperCase().charAt(0);
+          _this2.container.sizecheck = false;
+
+          _this2.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this2.container.sizecheck);
+
+          a = _this2.container.recommended_size;
+        }
+
+        localStorage.setItem('recommended_size', _this2.container.recommended_size);
+        _this2.container.finalsize = localStorage.getItem('recommended_size');
+      });
+    },
+    changesize: function changesize(trigger) {
+      if (this.showrecommended == true) {
+        this.showrecommended = false; // $('.dfOagu').addClass('dfOagu-second');
+        // $('.listfit').removeClass('ml-5');
+      } //slides size
+
+
+      var $time = 1000;
+      this.showrecommended = false;
+      var traverse = this.traverseDefault,
+          action = this.actionDefault;
+
+      if (trigger == 0) {
+        //if action is prev
+        traverse = "last"; //set traverse to last in case nothing is available
+
+        action = "prev"; //set action to prev
+      }
+
+      var $curr = this.$allSlides.filter(':visible'),
+          //get the visible slide
+      $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
+
+      $nxtTarget.addClass('active');
+      $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+
+      if (!$nxtTarget.length) {
+        //if no next
+        $time = 1;
+
+        if (trigger == 0) {
+          $nxtTarget = this.$allSlides["first"]();
+        } else {
+          $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
+        }
+      }
+
+      $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+      //slides size end
+
+      var $curr = this.$allSlidesSize.filter(':visible'),
+          //get the visible slide
+      $nxtTarget = $curr[action](".size_descriptions"); //get the next target based on the action.
+
+      $nxtTarget.addClass('active');
+      $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+
+      if (!$nxtTarget.length) {
+        //if no next
+        if (trigger == 0) {
+          $nxtTarget = this.$allSlidesSize["first"]();
+        } else {
+          $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
+        }
+      }
+
+      $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+      //slides size end
+    },
+    array_move: function array_move(arr, old_index, new_index) {
+      if (new_index >= arr.length) {
+        var k = new_index - arr.length + 1;
+
+        while (k--) {
+          arr.push(undefined);
+        }
+      }
+
+      arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+      return arr; // for testing
+    },
+    restart: function restart() {
+      // this.changesizetorecommended()
+      //                $('.fit-advisor-selected-product-grid').css('display', 'none');
+      this.tabnumber = 1;
+      console.log(this.tabnumber);
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('home', this.tabnumber);
+    }
+  },
+  mounted: function mounted() {
+    var _this3 = this;
+
+    this.setupProduct();
+    this.getProductDetails();
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('sizeCalculate', function (num) {
+      _this3.setupProduct();
+
+      _this3.getProductDetails();
+    });
   }
 });
 
@@ -43353,91 +43664,77 @@ var render = function() {
   return _c("div", [
     _vm._m(0),
     _vm._v(" "),
-    _vm.container.attr_first
-      ? _c("div", { staticClass: "tab" }, [
-          _c("div", [
-            _c("div", { staticClass: " fit-advisor-chest-tab size-position" }, [
-              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
-                _c(
-                  "div",
-                  { staticStyle: { opacity: "1", transform: "none" } },
-                  [
-                    _c("img", {
-                      staticClass: " fit-advisor-options-img",
-                      attrs: {
-                        id: "chest1",
-                        src:
-                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg"
-                      },
-                      on: {
-                        click: function($event) {
-                          return _vm.chest(_vm.container.chestSizeOne)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("p", { staticClass: " fit-advisor-options-text" }, [
-                      _vm._v("Narrower")
-                    ])
-                  ]
-                )
-              ]),
+    _c("div", [
+      _c("div", [
+        _c("div", { staticClass: " fit-advisor-chest-tab size-position" }, [
+          _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+            _c("div", { staticStyle: { opacity: "1", transform: "none" } }, [
+              _c("img", {
+                staticClass: " fit-advisor-options-img",
+                attrs: {
+                  id: "chest1",
+                  src:
+                    "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.chest(_vm.container.chestSizeOne)
+                  }
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
-                _c(
-                  "div",
-                  { staticStyle: { opacity: "1", transform: "none" } },
-                  [
-                    _c("img", {
-                      staticClass: " fit-advisor-options-img",
-                      attrs: {
-                        id: "chest2",
-                        src:
-                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg"
-                      },
-                      on: {
-                        click: function($event) {
-                          return _vm.chest(_vm.container.chestSizeTwo)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("p", { staticClass: " fit-advisor-options-text" }, [
-                      _vm._v("Average")
-                    ])
-                  ]
-                )
-              ]),
+              _c("p", { staticClass: " fit-advisor-options-text" }, [
+                _vm._v("Narrower")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+            _c("div", { staticStyle: { opacity: "1", transform: "none" } }, [
+              _c("img", {
+                staticClass: " fit-advisor-options-img",
+                attrs: {
+                  id: "chest2",
+                  src:
+                    "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.chest(_vm.container.chestSizeTwo)
+                  }
+                }
+              }),
               _vm._v(" "),
-              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
-                _c(
-                  "div",
-                  { staticStyle: { opacity: "1", transform: "none" } },
-                  [
-                    _c("img", {
-                      staticClass: " fit-advisor-options-img",
-                      attrs: {
-                        id: "chest3",
-                        src:
-                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg"
-                      },
-                      on: {
-                        click: function($event) {
-                          return _vm.chest(_vm.container.chestSizeThree)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _c("p", { staticClass: " fit-advisor-options-text" }, [
-                      _vm._v("Broader")
-                    ])
-                  ]
-                )
+              _c("p", { staticClass: " fit-advisor-options-text" }, [
+                _vm._v("Average")
+              ])
+            ])
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+            _c("div", { staticStyle: { opacity: "1", transform: "none" } }, [
+              _c("img", {
+                staticClass: " fit-advisor-options-img",
+                attrs: {
+                  id: "chest3",
+                  src:
+                    "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg"
+                },
+                on: {
+                  click: function($event) {
+                    return _vm.chest(_vm.container.chestSizeThree)
+                  }
+                }
+              }),
+              _vm._v(" "),
+              _c("p", { staticClass: " fit-advisor-options-text" }, [
+                _vm._v("Broader")
               ])
             ])
           ])
         ])
-      : _vm._e(),
+      ])
+    ]),
     _vm._v(" "),
     _vm._m(1)
   ])
@@ -43447,18 +43744,14 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "fit-advisor-intro", attrs: { id: "intro2" } },
-      [
-        _c("span", { attrs: { id: "mark1" } }, [
-          _vm._v("Choose the option that best")
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _c("span", { attrs: { id: "mark2" } }, [_vm._v("describes your chest")])
-      ]
-    )
+    return _c("p", { staticClass: "fit-advisor-intro" }, [
+      _c("span", { attrs: { id: "mark1" } }, [
+        _vm._v("Choose the option that best")
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _c("span", { attrs: { id: "mark2" } }, [_vm._v("describes your chest")])
+    ])
   },
   function() {
     var _vm = this
@@ -43504,8 +43797,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
     _vm.container.attr_third
-      ? _c("div", { staticClass: "tab" }, [
+      ? _c("div", [
           _c("div", [
             _c("div", { staticClass: " fit-advisor-chest-tab size-position" }, [
               _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
@@ -43590,10 +43885,23 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm._m(0)
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "fit-advisor-intro" }, [
+      _c("span", { attrs: { id: "mark1" } }, [
+        _vm._v("Choose the option that best")
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _c("span", { attrs: { id: "mark2" } }, [_vm._v("describes your bottom")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -43638,8 +43946,10 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
     _vm.container.attr_second
-      ? _c("div", { staticClass: "tab" }, [
+      ? _c("div", [
           _c("div", [
             _c("div", { staticClass: " fit-advisor-chest-tab size-position" }, [
               _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
@@ -43724,10 +44034,23 @@ var render = function() {
         ])
       : _vm._e(),
     _vm._v(" "),
-    _vm._m(0)
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "fit-advisor-intro" }, [
+      _c("span", { attrs: { id: "mark1" } }, [
+        _vm._v("Choose the option that best")
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _c("span", { attrs: { id: "mark2" } }, [_vm._v("describes your stomach")])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -43847,51 +44170,45 @@ var render = function() {
                     _c("div"),
                     _vm._v(" "),
                     _c("div", [
-                      _c(
-                        "svg",
-                        {
-                          directives: [
+                      _vm.tabnumber > 1 && _vm.tabnumber < 5
+                        ? _c(
+                            "svg",
                             {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.tabnumber > 1,
-                              expression: "tabnumber > 1"
-                            }
-                          ],
-                          staticClass:
-                            "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN",
-                          staticStyle: {
-                            cursor: "pointer",
-                            "/* width": "59px"
-                          },
-                          attrs: {
-                            viewBox: "0 0 512 512",
-                            height: "24",
-                            width: "24",
-                            "aria-hidden": "true",
-                            focusable: "false",
-                            fill: "currentColor",
-                            xmlns: "http://www.w3.org/2000/svg"
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.nextStep(-1)
-                            }
-                          }
-                        },
-                        [
-                          _c("polyline", {
-                            attrs: {
-                              fill: "none",
-                              stroke: "currentColor",
-                              "stroke-linecap": "round",
-                              "stroke-linejoin": "round",
-                              "stroke-width": "48",
-                              points: "328 112 184 256 328 400"
-                            }
-                          })
-                        ]
-                      ),
+                              staticClass:
+                                "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN",
+                              staticStyle: {
+                                cursor: "pointer",
+                                "/* width": "59px"
+                              },
+                              attrs: {
+                                viewBox: "0 0 512 512",
+                                height: "24",
+                                width: "24",
+                                "aria-hidden": "true",
+                                focusable: "false",
+                                fill: "currentColor",
+                                xmlns: "http://www.w3.org/2000/svg"
+                              },
+                              on: {
+                                click: function($event) {
+                                  return _vm.back(_vm.tabnumber)
+                                }
+                              }
+                            },
+                            [
+                              _c("polyline", {
+                                attrs: {
+                                  fill: "none",
+                                  stroke: "currentColor",
+                                  "stroke-linecap": "round",
+                                  "stroke-linejoin": "round",
+                                  "stroke-width": "48",
+                                  points: "328 112 184 256 328 400"
+                                }
+                              })
+                            ]
+                          )
+                        : _vm._e(),
                       _vm._v(" "),
                       _vm.lastTab
                         ? _c(
@@ -43967,12 +44284,6 @@ var render = function() {
               },
               [
                 _c("form", { attrs: { id: "regForm" } }, [
-                  _vm._m(2),
-                  _vm._v(" "),
-                  _vm._m(3),
-                  _vm._v(" "),
-                  _vm._m(4),
-                  _vm._v(" "),
                   _c(
                     "div",
                     {
@@ -44062,7 +44373,11 @@ var render = function() {
                             }
                           ]
                         },
-                        [_c("result-component")],
+                        [
+                          _c("result-component", {
+                            attrs: { product: this.product, form: this.form }
+                          })
+                        ],
                         1
                       )
                     ]
@@ -44139,59 +44454,6 @@ var staticRenderFns = [
         [_vm._v("FIND YOUR FIT")]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "fit-advisor-intro", attrs: { id: "intro3" } },
-      [
-        _c("span", { attrs: { id: "mark1" } }, [
-          _vm._v("Choose the option that best")
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _c("span", { attrs: { id: "mark2" } }, [
-          _vm._v("describes your stomach")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "fit-advisor-intro", attrs: { id: "intro4" } },
-      [
-        _c("span", { attrs: { id: "mark1" } }, [
-          _vm._v("Choose the option that best")
-        ]),
-        _vm._v(" "),
-        _c("br"),
-        _c("span", { attrs: { id: "mark2" } }, [
-          _vm._v("describes your bottom")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "fit-advisor-intro text-center", attrs: { id: "intro5" } },
-      [
-        _c("span", { attrs: { id: "mark1" } }, [_vm._v("Drop-cut:LUX")]),
-        _vm._v(" "),
-        _c("br"),
-        _c("span", { attrs: { id: "mark2" } })
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -44776,7 +45038,9 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", { staticClass: "tab" }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c("div", [
       _c("div", { staticClass: "fit-advisor-custom_row" }, [
         _c("div", { staticClass: "col-md-12" }, [
           _c("div", { staticClass: " fit-advisor-selected-product-grid" }, [
@@ -44852,7 +45116,7 @@ var render = function() {
                                     "fit-advisor-custom_row center-force "
                                 },
                                 [
-                                  _vm._m(0),
+                                  _vm._m(1),
                                   _vm._v(" "),
                                   _vm.container.is_loading
                                     ? _c(
@@ -44910,7 +45174,7 @@ var render = function() {
                                 },
                                 [
                                   _c("span", { attrs: { id: "fsize" } }, [
-                                    _vm.showSelectedSizeSlider
+                                    _vm.container.showSelectedSizeSlider
                                       ? _c(
                                           "h4",
                                           { staticClass: "result-size" },
@@ -45042,7 +45306,7 @@ var render = function() {
                   )
                 }),
                 _vm._v(" "),
-                _vm._m(1)
+                _vm._m(2)
               ],
               2
             )
@@ -45051,10 +45315,21 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(2)
+    _vm._m(3)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("p", { staticClass: "fit-advisor-intro text-center" }, [
+      _c("span", { attrs: { id: "mark1" } }, [_vm._v("Drop-cut:LUX")]),
+      _vm._v(" "),
+      _c("br"),
+      _c("span", { attrs: { id: "mark2" } })
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -45104,7 +45379,7 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "m-result float-right",
+        staticClass: "m-result ",
         staticStyle: { "text-align": "center", "margin-top": "100px" },
         attrs: { id: "steps-mark" }
       },
