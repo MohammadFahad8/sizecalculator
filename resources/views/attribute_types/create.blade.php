@@ -15,7 +15,7 @@
                        class="col-md-4 col-form-label text-md-right">{{ __('Attribute Name') }}</label>
 
                 <div class="col-md-6">
-                    <input id="attribute_name" type="text"
+                    <input tabindex="1" id="attribute_name" type="text"
                            class="form-control @error('attribute_name') is-invalid @enderror" name="attribute_name"
                             required autocomplete="off"
                            >
@@ -34,7 +34,7 @@
                        class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
 
                 <div class="col-md-6">
-                    <input id="product_name" type="text"
+                    <input tabindex="2" id="product_name" type="text"
                            class="form-control @error('product_name') is-invalid @enderror" value="{{$attrOfProduct[0]['name']}}"
                             required autocomplete="off" readonly disabled
                            >

@@ -15,8 +15,8 @@
                        class="col-md-4 col-form-label text-md-right">{{ __('Weight Start') }}</label>
 
                 <div class="col-md-6">
-                    <input id="weight" type="number"
-                           class="form-control @error('weight_start') is-invalid @enderror" name="weight_start" min="0" max="500" placeholder="Enter Weight Start"
+                    <input tabindex="1" id="weight" type="number"
+                           class="form-control @error('weight_start') is-invalid @enderror" name="weight_start" min="0" max="500" placeholder="Enter Weight Start (Lbs.)"
                             required autocomplete="off"
                            >
 
@@ -32,9 +32,9 @@
                        class="col-md-4 col-form-label text-md-right">{{ __('Weight End') }}</label>
 
                 <div class="col-md-6">
-                    <input id="weight_end" type="number"
+                    <input tabindex="2" id="weight_end" type="number"
                            class="form-control @error('weight_end') is-invalid @enderror" name="weight_end"
-                            required autocomplete="off" min="0" max="500" placeholder="Enter Weight End"
+                            required autocomplete="off" min="0" max="500" placeholder="Enter Weight End (Lbs.)"
                            >
 
                     @error('weight_end')
@@ -49,9 +49,9 @@
                        class="col-md-4 col-form-label text-md-right">{{ __('Height Start') }}</label>
 
                 <div class="col-md-6">
-                    <input id="height_start" type="number"
+                    <input tabindex="3" id="height_start" type="number"
                            class="form-control @error('height_start') is-invalid @enderror" name="height_start"
-                            required autocomplete="off" min="0" max="500" placeholder="Enter Height Start"
+                            required autocomplete="off" min="0" max="500" placeholder="Enter Height Start (Cm.)"
                            >
 
                     @error('height_start')
@@ -66,9 +66,9 @@
                        class="col-md-4 col-form-label text-md-right">{{ __('Height End') }}</label>
 
                 <div class="col-md-6">
-                    <input id="height_end" type="number"
+                    <input tabindex="4" id="height_end" type="number"
                            class="form-control @error('height_end') is-invalid @enderror" name="height_end"
-                            required autocomplete="off" min="0" max="500" placeholder="Enter Height End"
+                            required autocomplete="off" min="0" max="500" placeholder="Enter Height End  (Cm.)"
                            >
 
                     @error('height_end')
@@ -79,7 +79,7 @@
                 </div>
             </div>
            
-            @foreach($variantsOfAttributes as $attr)
+            @foreach($variantsOfAttributes as $key => $attr)
                             
             
     
@@ -90,7 +90,7 @@
                        class="col-md-4 col-form-label text-md-right border-0 size-name" name="attribute_type_name[]" value="{{ $attr->name }}" readonly/>
  
                 <div class="col-3">
-                    <input id="body_measurement_start" type="number" max="99999" step="1" min="0"
+                    <input tabindex="{{ $key + 5 }}" id="body_measurement_start" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_start') is-invalid @enderror"
                            name="body_measurement_start[]" placeholder="Enter Start..." >
 
@@ -102,7 +102,7 @@
                 </div>
                 
                 <div class="col-3">
-                    <input id="body_measurement_end" type="number" max="99999" step="1" min="0"
+                    <input tabindex="{{ $key + 6 }}" id="body_measurement_end" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_end') is-invalid @enderror"
                            name="body_measurement_end[]" placeholder="Enter End..." >
 

@@ -267,6 +267,7 @@
                {
                 toastr.info(data.error_msg)
                 
+                
                 $("#"+tag_id).prop("checked", false);
                }
                else

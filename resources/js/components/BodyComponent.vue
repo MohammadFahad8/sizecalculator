@@ -157,7 +157,7 @@ display: inline-block;
 
                     <button v-if="showContinueBtn" class="continue-btn" style="position: absolute;right: 30%;width: 33%;bottom: -50px" type="button" id="nextBtn" v-on:click="nextPrev(1)">Get Started</button>
                     <button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 32%;width: 33%;bottom: 90px;display:none !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button>
-                    <div class="tab">
+                    <div class="tab" v-if="attr_first">
                         <div>
                             <div class=" fit-advisor-chest-tab size-position">
                                 <div class=" fit-advisor-chest-tab-item">
@@ -181,7 +181,7 @@ display: inline-block;
                             </div>
                         </div>
                     </div>
-                    <div class="tab">
+                    <div class="tab"  v-if="attr_second">
                         <div>
                             <div class=" fit-advisor-chest-tab size-position">
                                 <div class=" fit-advisor-chest-tab-item">
@@ -205,7 +205,7 @@ display: inline-block;
                             </div>
                         </div>
                     </div>
-                    <div class="tab">
+                    <div class="tab"  v-if="attr_third">
                         <div>
                             <div class=" fit-advisor-chest-tab size-position">
                                 <div class=" fit-advisor-chest-tab-item">
@@ -324,16 +324,16 @@ export default {
                 weight: parseFloat(localStorage.getItem('weight')).toFixed(0),
                 age: localStorage.getItem('age'),
                 chest:{
-                    name:'chest', 
+                    title:'chest', 
                     other:localStorage.getItem('chest'),
                 } ,
                 stomach:{
-                    name:'stomach',
+                    title:'stomach',
                    other:localStorage.getItem('stomach')
                    },
 
                 bottom:{ 
-                    name:'bottom',
+                    title:'bottom',
                     other:localStorage.getItem('bottom')
                 },
                 tags: JSON.parse(localStorage.getItem('tags')),
@@ -400,6 +400,9 @@ export default {
             bottomSizeOne:'1',
             bottomSizeTwo:'2',
             bottomSizeThree:'3',
+            attr_first:false,
+            attr_second:false,
+            attr_third:false,
 
             image_us: this.$appUrl+'/images/us.png',
             image_uk: this.$appUrl+'/images/uk.png',
@@ -1416,29 +1419,30 @@ export default {
             {
                
                 this.attributes = res.data;
+                
                  this.attributes.forEach((el,index)=>{
                      
 
-                    if(el.name.toLowerCase() == this.form.chest.name.toLowerCase())
+                    if(el.name.toLowerCase() == this.form.chest.title.toLowerCase())
                     {
-                        this.form.chest.name = el.name.toLowerCase();
-                        console.log(this.form.chest.name)
-                    this.chestSizeOne=el.size_one
-                    this.chestSizeTwo=el.size_second
-                    this.chestSizeThree=el.size_third
+                        this.form.chest.title = el.name.toLowerCase();
+                        this.attr_first = true;
+                        this.chestSizeOne=el.size_one
+                        this.chestSizeTwo=el.size_second
+                        this.chestSizeThree=el.size_third
 
-                    }else if(el.name.toLowerCase() == this.form.stomach.name.toLowerCase())
+                    }else if(el.name.toLowerCase() == this.form.stomach.title.toLowerCase())
                     {
                         
-                        this.form.stomach.name = el.name.toLowerCase();
-                        console.log(this.form.stomach.name)
+                            this.form.stomach.title = el.name.toLowerCase();
+                            this.attr_second = true;
                             this.stomachSizeOne=el.size_one
                             this.stomachSizeTwo=el.size_second
                             this.stomachSizeThree=el.size_third
-                    }else if(el.name.toLowerCase() == this.form.bottom.name.toLowerCase())
+                    }else if(el.name.toLowerCase() == this.form.bottom.title.toLowerCase())
                     {
-                        this.form.bottom.name = el.name.toLowerCase();
-                        console.log(this.form.bottom.name)
+                        this.form.bottom.title = el.name.toLowerCase();
+                        this.attr_third = true;
                         this.bottomSizeOne=el.size_one
                         this.bottomSizeTwo=el.size_second
                         this.bottomSizeThree=el.size_third
@@ -1458,7 +1462,7 @@ export default {
         }
     },
     mounted() {
-        
+        var x = document.getElementsByClassName("tab")
         
         this.setupProduct();
         this.responsiveness();
@@ -1466,12 +1470,18 @@ export default {
         this.showBodyFit();
         this.getAttributes();
         
+        
         if (localStorage.getItem('recommended_size') != null) {
-            var n = 4;
-
-            this.showTab(n);
+            
+            this.attr_first = true;
+            this.attr_second = true;
+            this.attr_third = true;
+            this.showTab(x.length-1);
         } else {
 
+            this.attr_first = true;
+            this.attr_second = true;
+            this.attr_third = true;
             this.showTab(this.currentTab);
         }
 
@@ -1509,5 +1519,6 @@ export default {
 
 <style>
 @import '../assets/styles/body-fit.css';
+@import '../assets/styles/bootstrap-body-fit.css';
 </style>
 ``

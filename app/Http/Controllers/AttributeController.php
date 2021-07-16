@@ -215,8 +215,9 @@ class AttributeController extends Controller
     public function getAllProducts()
     {
 
+           
         $shop = Auth::user();
-
+      
 
         $productsall = $shop->api()->rest('GET', '/admin/api/2021-07/products.json')['body']['container'];
         
@@ -229,6 +230,7 @@ class AttributeController extends Controller
         Variants::truncate();
     // Products::truncate();
         foreach ($prod as $row) {
+
             $product = Products::where('product_id','=',$row['id'])->first();
            if( $product == null) {
                 
@@ -346,7 +348,8 @@ class AttributeController extends Controller
     public function calculateSize(Request $request)
     {
         $break=0;
-        dd($data = $request->all());
+        $data = $request->all();
+        $data['bottom']['title'] = strtolower($data['bottom']['title']);
         
  $sizeList = Attributetypes::with('bodyFeatureOfType','sizecharts')->where('product_id','=',$data['conversionCount'])->get();
  $sizeChartList = Sizechart::with('bodyFeature','product')->where('product_id','=',$data['conversionCount'])->get();
@@ -381,23 +384,40 @@ class AttributeController extends Controller
                                {
                                    
                                      foreach($s['bodyFeature'] as $b)
-                                {
+                                {  
                                     
-                                    if( $b['attr_name']==$data['chest']['name'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
+                                    if( $b['attr_name']==$data['chest']['title'])
+                                    {
+
+                                        if($data['chest']['other']>=$b['attr_measurement_start'] && $data['chest']['other']<=$b['attr_measurement_end'])
+                                        {
+                                            
+                                            
+                                            
+                                            $size = $b['predicted_size'];
+                                            return $this->checkVariantIFExists($size);
+                                        
+                                        
+                                        
+                                        }
+                                      
+                                        
+                                        
+                                    }else if($b['attr_name']==$data['bottom']['title'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
                                     {
                                         
-                                        echo $b['predicted_size'];
-                                    }else if($b['attr_name']==$data['bottom']['name'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
-                                    {
                                        
-                                        echo $b['predicted_size'];
+                                        $size = $b['predicted_size'];
+                                        return $this->checkVariantIFExists($size);
 
                                     }
-                                    else if($b['attr_name']==$data['stomach']['name'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
+                                    else if($b['attr_name']==$data['stomach']['title'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
 
                                     {
+                                     
                                         
-                                        echo $b['predicted_size'];
+                                        $size = $b['predicted_size'];
+                                        return $this->checkVariantIFExists($size);
                                     }
                                    
                        
