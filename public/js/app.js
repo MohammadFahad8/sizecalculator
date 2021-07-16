@@ -1834,6 +1834,181 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      container: {
+        attr_first: false,
+        chestSizeOne: '1',
+        chestSizeTwo: '2',
+        chestSizeThree: '3',
+        is_loading: false
+      }
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributethreeComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributethreeComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      container: {
+        attr_third: false,
+        bottomSizeOne: '1',
+        bottomSizeTwo: '2',
+        bottomSizeThree: '3',
+        is_loading: false
+      }
+    };
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributetwoComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributetwoComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      container: {
+        attr_second: false,
+        stomachSizeOne: '1',
+        stomachSizeTwo: '2',
+        stomachSizeThree: '3',
+        is_loading: false
+      }
+    };
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BodyComponent.vue?vue&type=script&lang=js&":
 /*!********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BodyComponent.vue?vue&type=script&lang=js& ***!
@@ -1845,6 +2020,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
 function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) { symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); } keys.push.apply(keys, symbols); } return keys; }
 
 function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
@@ -1934,234 +2110,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
+
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     product: Object
@@ -2245,13 +2194,33 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       attr_first: false,
       attr_second: false,
       attr_third: false,
+      tabnumber: 1,
       image_us: this.$appUrl + '/images/us.png',
       image_uk: this.$appUrl + '/images/uk.png'
     };
   },
   methods: {
-    showBodyFit: function showBodyFit() {
+    formSubmit: function formSubmit() {
       var _this = this;
+
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('formsubmit', function (container) {
+        console.log(container);
+        _this.form.heightfoot = container.form.heightfoot;
+        _this.form.heightinch = container.form.heightinch;
+        _this.form.heightcm = container.form.heightcm;
+        _this.form.weight = container.form.weight;
+        _this.form.age = container.form.age;
+        _this.tabnumber = container.form.number;
+        _this.form.convertedMeasurements = container.form.convertedMeasurements;
+        _this.conversionCount = container.form.conversionCount;
+        _this.firstTab = container.firstTab;
+      });
+    },
+    nextStep: function nextStep(n) {
+      this.tabnumber = n;
+    },
+    showBodyFit: function showBodyFit() {
+      var _this2 = this;
 
       var id = new FormData();
       var shop_name = window.location.hostname;
@@ -2260,14 +2229,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post(this.$appUrl + '/api/permission-to-show', id).then(function (res) {
         if (res.data.display == true) {
           if (res.data.clearLog == true) {
-            _this.dev_reset();
+            _this2.dev_reset();
           }
 
-          for (var k = 0; k <= _this.product.options.length; k++) {
-            if (_this.allow) {
-              if (_this.product.options[k].toLowerCase() == "size") {
-                _this.allow = false;
-                _this.showBodyFitApp = true;
+          for (var k = 0; k <= _this2.product.options.length; k++) {
+            if (_this2.allow) {
+              if (_this2.product.options[k].toLowerCase() == "size") {
+                _this2.allow = false;
+                _this2.showBodyFitApp = true;
               }
             } else {
               break;
@@ -2275,10 +2244,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         } else {
           if (res.data.clearLog == true) {
-            _this.dev_reset();
+            _this2.dev_reset();
           }
 
-          _this.showBodyFitApp = false;
+          _this2.showBodyFitApp = false;
         }
       });
     },
@@ -2302,143 +2271,143 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.actionDefault = "next";
     },
     setSelectedSizeFromList: function setSelectedSizeFromList(size, sizecheck) {
-      var _this2 = this;
+      var _this3 = this;
 
       this.product.variants.forEach(function (el, index) {
         if (sizecheck == true) {
           if (el.option1.toUpperCase() == size) {
-            _this2.sizeIndex = index;
+            _this3.sizeIndex = index;
 
-            _this2.array_move(_this2.size_descriptions, 2, index);
+            _this3.array_move(_this3.size_descriptions, 2, index);
 
             if (size == "XS") {
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i == _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
+              for (var i = 0; i <= _this3.product.variants.length; i++) {
+                if (i == _this3.sizeIndex) {
+                  _this3.product.variants[i].desc_title = "Recommended";
                 }
 
-                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
-                  _this2.product.variants[i].desc_title = "Slightly Relaxed";
+                if (i > _this3.sizeIndex && i < _this3.product.variants.length) {
+                  _this3.product.variants[i].desc_title = "Slightly Relaxed";
 
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 3])) {
-                    _this2.product.variants[i].desc_title = "Relaxed";
+                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 3])) {
+                    _this3.product.variants[i].desc_title = "Relaxed";
                   }
 
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
-                    _this2.product.variants[i].desc_title = "Relaxed";
+                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 2])) {
+                    _this3.product.variants[i].desc_title = "Relaxed";
                   }
 
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
-                    _this2.product.variants[i].desc_title = "Very Relaxed";
+                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 1])) {
+                    _this3.product.variants[i].desc_title = "Very Relaxed";
                   }
                 }
               }
             } else if (size == "XL") {
               var counter = 1;
 
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i < _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Very Snug";
+              for (var i = 0; i <= _this3.product.variants.length; i++) {
+                if (i < _this3.sizeIndex) {
+                  _this3.product.variants[i].desc_title = "Very Snug";
 
-                  if (i < _this2.sizeIndex && i >= counter) {
+                  if (i < _this3.sizeIndex && i >= counter) {
                     counter++;
-                    _this2.product.variants[i].desc_title = "Snug";
+                    _this3.product.variants[i].desc_title = "Snug";
                   }
                 }
 
-                if (i == _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
+                if (i == _this3.sizeIndex) {
+                  _this3.product.variants[i].desc_title = "Recommended";
                 }
 
-                if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
-                  _this2.product.variants[i].desc_title = "Slightly Snugged";
+                if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 2])) {
+                  _this3.product.variants[i].desc_title = "Slightly Snugged";
                 }
               }
             }
 
-            localStorage.setItem('sizeindex', _this2.sizeIndex);
+            localStorage.setItem('sizeindex', _this3.sizeIndex);
 
-            _this2.setSlides(_this2.sizeIndex);
+            _this3.setSlides(_this3.sizeIndex);
           }
         } else if (sizecheck == false) {
           if (el.option1.toUpperCase().charAt(0) == size) {
-            _this2.sizeIndex = index;
+            _this3.sizeIndex = index;
 
-            _this2.array_move(_this2.size_descriptions, 2, index);
+            _this3.array_move(_this3.size_descriptions, 2, index);
 
             if (size == "S") {
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i < _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Very Snug";
+              for (var i = 0; i <= _this3.product.variants.length; i++) {
+                if (i < _this3.sizeIndex) {
+                  _this3.product.variants[i].desc_title = "Very Snug";
 
-                  if (i < _this2.sizeIndex && i > 0) {
-                    _this2.product.variants[i].desc_title = "Snug";
+                  if (i < _this3.sizeIndex && i > 0) {
+                    _this3.product.variants[i].desc_title = "Snug";
                   }
                 }
 
-                if (i == _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
+                if (i == _this3.sizeIndex) {
+                  _this3.product.variants[i].desc_title = "Recommended";
                 }
 
-                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
-                  _this2.product.variants[i].desc_title = "Relaxed";
+                if (i > _this3.sizeIndex && i < _this3.product.variants.length) {
+                  _this3.product.variants[i].desc_title = "Relaxed";
 
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
-                    _this2.product.variants[i].desc_title = "Very Relaxed";
+                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 1])) {
+                    _this3.product.variants[i].desc_title = "Very Relaxed";
                   }
                 }
               }
             } else if (size == 'M') {
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i < _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Very Snug";
+              for (var i = 0; i <= _this3.product.variants.length; i++) {
+                if (i < _this3.sizeIndex) {
+                  _this3.product.variants[i].desc_title = "Very Snug";
 
-                  if (i < _this2.sizeIndex && i > 0) {
-                    _this2.product.variants[i].desc_title = "Snug";
+                  if (i < _this3.sizeIndex && i > 0) {
+                    _this3.product.variants[i].desc_title = "Snug";
                   }
                 }
 
-                if (i == _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
+                if (i == _this3.sizeIndex) {
+                  _this3.product.variants[i].desc_title = "Recommended";
                 }
 
-                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
-                  _this2.product.variants[i].desc_title = "Relaxed";
+                if (i > _this3.sizeIndex && i < _this3.product.variants.length) {
+                  _this3.product.variants[i].desc_title = "Relaxed";
 
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
-                    _this2.product.variants[i].desc_title = "Very Relaxed";
+                  if (i == _this3.product.variants.indexOf(_this3.product.variants[_this3.product.variants.length - 1])) {
+                    _this3.product.variants[i].desc_title = "Very Relaxed";
                   }
                 }
               }
             } else if (size == 'L') {
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i < _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Very Snug";
+              for (var i = 0; i <= _this3.product.variants.length; i++) {
+                if (i < _this3.sizeIndex) {
+                  _this3.product.variants[i].desc_title = "Very Snug";
 
-                  if (i < _this2.sizeIndex && i > 0) {
-                    _this2.product.variants[i].desc_title = "Snug";
+                  if (i < _this3.sizeIndex && i > 0) {
+                    _this3.product.variants[i].desc_title = "Snug";
                   }
                 }
 
-                if (i == _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
+                if (i == _this3.sizeIndex) {
+                  _this3.product.variants[i].desc_title = "Recommended";
                 }
 
-                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
-                  _this2.product.variants[i].desc_title = "Very Relaxed";
+                if (i > _this3.sizeIndex && i < _this3.product.variants.length) {
+                  _this3.product.variants[i].desc_title = "Very Relaxed";
                 }
               }
             }
 
-            localStorage.setItem('sizeindex', _this2.sizeIndex);
+            localStorage.setItem('sizeindex', _this3.sizeIndex);
 
-            _this2.setSlides(_this2.sizeIndex);
+            _this3.setSlides(_this3.sizeIndex);
           }
         }
       });
     },
     getProductDetails: function getProductDetails() {
-      var _this3 = this;
+      var _this4 = this;
 
       this.is_loading = true;
       var a = '';
@@ -2452,37 +2421,37 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.showSelectedSizeSlider = false;
       this.form.conversionCount = this.product.id;
       axios.post(this.$appUrl + '/api/size-recommend/', this.form).then(function (res) {
-        _this3.is_loading = false;
-        _this3.showSelectedSizeSlider = true;
+        _this4.is_loading = false;
+        _this4.showSelectedSizeSlider = true;
 
         if (res.data == 'XL' || res.data == 'xl' || res.data == 'XS' || res.data == 'xs') {
-          _this3.recommended_size = res.data.toUpperCase().substr(0, 2);
-          _this3.sizecheck = true;
+          _this4.recommended_size = res.data.toUpperCase().substr(0, 2);
+          _this4.sizecheck = true;
 
-          _this3.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this3.sizecheck);
+          _this4.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this4.sizecheck);
 
-          a = _this3.recommended_size;
+          a = _this4.recommended_size;
           $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
           $('.dfOagu').addClass('dfOagu-second');
 
-          if (_this3.showContinueBtn == true) {
-            _this3.showContinueBtn = false;
+          if (_this4.showContinueBtn == true) {
+            _this4.showContinueBtn = false;
           }
         } else {
-          _this3.recommended_size = res.data.toUpperCase().charAt(0);
-          _this3.sizecheck = false;
+          _this4.recommended_size = res.data.toUpperCase().charAt(0);
+          _this4.sizecheck = false;
 
-          _this3.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this3.sizecheck);
+          _this4.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this4.sizecheck);
 
-          a = _this3.recommended_size;
+          a = _this4.recommended_size;
 
-          if (_this3.showContinueBtn == true) {
-            _this3.showContinueBtn = false;
+          if (_this4.showContinueBtn == true) {
+            _this4.showContinueBtn = false;
           }
         }
 
-        localStorage.setItem('recommended_size', _this3.recommended_size);
-        _this3.finalsize = localStorage.getItem('recommended_size');
+        localStorage.setItem('recommended_size', _this4.recommended_size);
+        _this4.finalsize = localStorage.getItem('recommended_size');
       });
     },
     addToCart: function addToCart() {
@@ -2613,65 +2582,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       localStorage.setItem('tags', JSON.stringify(this.product.tags));
       this.nextPrev(1);
     },
-    countryval: function countryval() {
-      if (this.countrycheck == false) {
-        $('input[name="weight"]').attr('placeholder', 'Lbs');
-        $('input[name="heightfoot"]').attr('placeholder', 'Feet');
-        $('input[name="heightinch"]').attr('placeholder', 'Inches');
-        $('input[name="countrycheck"]').attr('value', 0);
-        this.countrycheck == 0;
-        this.form.convertedMeasurements = false;
-        this.weightconvert(this.form.weight, false);
-        this.heightconvert(localStorage.getItem('foot'), localStorage.getItem('inch'), parseFloat(localStorage.getItem('cm')).toFixed(0), false);
-      } else if (this.countrycheck == true) {
-        $('input[name="weight"]').attr('placeholder', 'Kg');
-        $('input[name="heightcm"]').attr('placeholder', 'Cm');
-        $('input[name="countrycheck"]').attr('value', 1);
-        this.countrycheck == 1;
-        this.form.convertedMeasurements = true;
-        this.weightconvert(this.form.weight, true);
-        this.heightconvert(localStorage.getItem('foot'), localStorage.getItem('inch'), parseFloat(localStorage.getItem('cm')).toFixed(0), true);
-      }
-    },
-    weightconvert: function weightconvert(w, c) {
-      if (c == true && w != '') {
-        this.form.weight = parseFloat(w / 2.2).toFixed(0); //pound to kg
-      } else if (c == false && w != '') {
-        this.form.weight = parseFloat(w * 2.2).toFixed(0); //kg to pound
-      }
-    },
-    heightconvert: function heightconvert(f, i, cm, c) {
-      if (c == true) {
-        if (isNaN(f)) {
-          return;
-        } else {
-          this.form.heightcm = f * 30.48 + parseInt(i) * 2.54;
-          var heightcm = parseFloat(this.form.heightcm).toFixed(0);
-          localStorage.setItem('cm', heightcm);
-          this.form.heightcm = localStorage.getItem('cm'); // this.form.heightinch = f * 30.48 + parsetInt($data['heightinch']) * 2.54;}
-        }
-      } else if (c == false) {
-        if (isNaN(cm)) {
-          return;
-        } else {
-          var length,
-              feet,
-              inch = 0;
-          length = cm / 2.54; //cm to ft and inches
-
-          feet = Math.floor(length / 12);
-          inch = length - 12 * feet;
-          this.form.heightfoot = feet;
-
-          if (inch >= 5) {} else if (inch < 5) {
-            this.form.heightinch = parseInt(Math.floor(inch));
-          }
-
-          localStorage.setItem('foot', this.form.heightfoot);
-          localStorage.setItem('inch', this.form.heightinch);
-        }
-      }
-    },
+    //took country val function from here for form-component
+    //took weight convert and height convert  funcitons from here for Form Component
     showTab: function showTab(n) {
       if (localStorage.getItem('recommended_size') != null) {
         n = 4;
@@ -2739,8 +2651,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         $('.switch').addClass('introfirst');
         $('.switch').removeClass('find-fit-header');
         $('#fields').css('display', 'none');
-      } //document.getElementById('tabnumber').innerHTML=n;
-      // This function will display the specified tab of the form...
+      } // This function will display the specified tab of the form...
 
 
       var x = document.getElementsByClassName("tab");
@@ -2823,129 +2734,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.showTab(this.currentTab);
     },
-    validateForm: function validateForm() {
-      // This function deals with validation of the form fields
-      var x,
-          y,
-          i,
-          valid = true;
-      x = document.getElementsByClassName("tab");
-      y = x[this.currentTab].getElementsByTagName("input"); // A loop that checks every input field in the current tab:
-
-      for (i = 0; i < y.length; i++) {
-        // If a field is empty...
-        if (y[i].value == "") {
-          // add an "invalid" class to the field:
-          y[i].className += " invalid"; // and set the current valid status to false
-
-          valid = false;
-        }
-      } // If the valid status is true, mark the step as finished and valid:
-
-
-      if (valid) {
-        document.getElementsByClassName("step")[this.currentTab].className += " finish";
-      }
-
-      return valid; // return the valid status
-    },
-    validateHeight: function validateHeight(event) {
-      $('#height_ft').keydown(function (e) {
-        if (e.keyCode === 190 || e.keyCode === 110) {
-          e.preventDefault();
-        }
-      });
-      $('#height_ft').removeClass('invalid');
-
-      if (this.form.heightfoot > 9) {
-        $("#height_ft").attr("placeholder", "Limit is 9");
-        $("#height_ft").addClass("warning-place");
-        this.form.heightfoot = '';
-      } else if (this.form.heightfoot <= 0) {
-        this.form.heightfoot = '';
-      } else {
-        localStorage.setItem('foot', this.form.heightfoot);
-      }
-    },
-    validateInches: function validateInches() {
-      $('#height_in').keydown(function (e) {
-        if (e.keyCode === 190 || e.keyCode === 110) {
-          e.preventDefault();
-        }
-      });
-      $('#height_in').removeClass('invalid');
-
-      if (this.form.heightinch > 11) {
-        $("#height_in").attr("placeholder", "Limit is 11");
-        $("#height_in").addClass("warning-place");
-        this.form.heightinch = '';
-      } else if (this.form.heightinch < 0) {
-        this.form.heightinch = '';
-      } else {
-        localStorage.setItem('inch', this.form.heightinch);
-      }
-    },
-    validateWeight: function validateWeight() {
-      $('#weight').keydown(function (e) {
-        if (e.keyCode === 190 || e.keyCode === 110) {
-          e.preventDefault();
-        }
-      });
-      $('#weight').removeClass('invalid');
-
-      if (this.form.weight > 500) {
-        $("#weight").attr("placeholder", "Limit is 500 Lbs");
-
-        if (this.countrycheck == true) {
-          $("#weight").attr("placeholder", "Limit is 227 Kg");
-        }
-
-        $("#weight").addClass("warning-place");
-        this.form.weight = '';
-      } else if (this.form.weight <= 0) {
-        this.form.weight = '';
-      } else {
-        localStorage.setItem('weight', parseFloat(this.form.weight).toFixed(0));
-      }
-    },
-    validateAge: function validateAge() {
-      $('#height_in').keydown(function (e) {
-        if (e.keyCode === 190 || e.keyCode === 110) {
-          e.preventDefault();
-        }
-      });
-      $('#age').removeClass('invalid');
-
-      if (this.form.age > 100) {
-        $("#age").attr("placeholder", "Limit is 100");
-        $("#age").addClass("warning-place");
-        this.form.age = '';
-      } else if (this.form.age <= 0) {
-        this.form.age = '';
-      } else {
-        localStorage.setItem('age', this.form.age);
-      }
-    },
-    validateCm: function validateCm() {
-      $('#height_cm').keydown(function (e) {
-        if (e.keyCode === 190 || e.keyCode === 110) {
-          e.preventDefault();
-        }
-      });
-      $('#height_cm').removeClass('invalid');
-
-      if (this.form.heightcm > 302) {
-        $("#height_cm").attr("placeholder", "Limit is 300");
-        $("#height_cm").addClass("warning-place");
-        this.form.heightcm = '';
-      } else if (this.form.heightcm <= 0) {
-        this.form.heightcm = '';
-      } else {
-        var heightincm = parseFloat(this.form.heightcm).toFixed(0);
-        localStorage.setItem('cm', heightincm);
-        this.form.heightcm = localStorage.getItem('cm');
-      }
-    },
+    //took validate form fucntion from here for form component
+    //took validate height ,weight, age,sm, inch function from here
     fixStepIndicator: function fixStepIndicator(n) {
       // This function removes the "active" class of all steps...
       var i,
@@ -3092,77 +2882,61 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     getAttributes: function getAttributes() {
-      var _this4 = this;
+      var _this5 = this;
 
       axios.get(this.$appUrl + '/api/get-attrbutes/' + this.product.id).then(function (res) {
-        _this4.attributes = res.data;
+        _this5.attributes = res.data;
 
-        _this4.attributes.forEach(function (el, index) {
-          if (el.name.toLowerCase() == _this4.form.chest.title.toLowerCase()) {
-            _this4.form.chest.title = el.name.toLowerCase();
-            _this4.attr_first = true;
-            _this4.chestSizeOne = el.size_one;
-            _this4.chestSizeTwo = el.size_second;
-            _this4.chestSizeThree = el.size_third;
-          } else if (el.name.toLowerCase() == _this4.form.stomach.title.toLowerCase()) {
-            _this4.form.stomach.title = el.name.toLowerCase();
-            _this4.attr_second = true;
-            _this4.stomachSizeOne = el.size_one;
-            _this4.stomachSizeTwo = el.size_second;
-            _this4.stomachSizeThree = el.size_third;
-          } else if (el.name.toLowerCase() == _this4.form.bottom.title.toLowerCase()) {
-            _this4.form.bottom.title = el.name.toLowerCase();
-            _this4.attr_third = true;
-            _this4.bottomSizeOne = el.size_one;
-            _this4.bottomSizeTwo = el.size_second;
-            _this4.bottomSizeThree = el.size_third;
+        _this5.attributes.forEach(function (el, index) {
+          if (el.name.toLowerCase() == _this5.form.chest.title.toLowerCase()) {
+            _this5.form.chest.title = el.name.toLowerCase();
+            _this5.attr_first = true;
+            _this5.chestSizeOne = el.size_one;
+            _this5.chestSizeTwo = el.size_second;
+            _this5.chestSizeThree = el.size_third;
+          } else if (el.name.toLowerCase() == _this5.form.stomach.title.toLowerCase()) {
+            _this5.form.stomach.title = el.name.toLowerCase();
+            _this5.attr_second = true;
+            _this5.stomachSizeOne = el.size_one;
+            _this5.stomachSizeTwo = el.size_second;
+            _this5.stomachSizeThree = el.size_third;
+          } else if (el.name.toLowerCase() == _this5.form.bottom.title.toLowerCase()) {
+            _this5.form.bottom.title = el.name.toLowerCase();
+            _this5.attr_third = true;
+            _this5.bottomSizeOne = el.size_one;
+            _this5.bottomSizeTwo = el.size_second;
+            _this5.bottomSizeThree = el.size_third;
           }
         });
       });
     }
   },
   mounted: function mounted() {
+    this.tabnumber = 1;
     var x = document.getElementsByClassName("tab");
+    this.formSubmit();
     this.setupProduct();
     this.responsiveness();
     this.getLocalData();
     this.showBodyFit();
-    this.getAttributes();
-
-    if (localStorage.getItem('recommended_size') != null) {
-      this.attr_first = true;
-      this.attr_second = true;
-      this.attr_third = true;
-      this.showTab(x.length - 1);
-    } else {
-      this.attr_first = true;
-      this.attr_second = true;
-      this.attr_third = true;
-      this.showTab(this.currentTab);
-    }
+    this.getAttributes(); // if (localStorage.getItem('recommended_size') != null) {
+    //     this.attr_first = true;
+    //     this.attr_second = true;
+    //     this.attr_third = true;
+    //     this.showTab(x.length-1);
+    // } else {
+    //     this.attr_first = true;
+    //     this.attr_second = true;
+    //     this.attr_third = true;
+    //     this.showTab(this.currentTab);
+    // }
 
     $('#popup-trigger').on('click', function () {
       $('.product-card').css('z-index', '-1');
       $('#popup1').css('overflow', 'scroll');
     });
-  },
-  watch: {
-    'form.heightfoot': function formHeightfoot() {
-      this.validateHeight();
-    },
-    'form.heightinch': function formHeightinch() {
-      this.validateInches();
-    },
-    'form.weight': function formWeight() {
-      this.validateWeight();
-    },
-    'form.age': function formAge() {
-      this.validateAge();
-    },
-    'form.heightcm': function formHeightcm() {
-      this.validateCm();
-    }
-  }
+  } //    Took watch from here
+
 });
 
 /***/ }),
@@ -3210,10 +2984,391 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SizechartComponent.vue?vue&type=script&lang=js&":
-/*!*************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SizechartComponent.vue?vue&type=script&lang=js& ***!
-  \*************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      container: {
+        form: {
+          heightfoot: localStorage.getItem('foot'),
+          heightinch: localStorage.getItem('inch'),
+          heightcm: parseInt(localStorage.getItem('cm')),
+          weight: parseFloat(localStorage.getItem('weight')).toFixed(0),
+          age: localStorage.getItem('age'),
+          convertedMeasurements: false,
+          conversionCount: ''
+        },
+        countrycheck: '',
+        is_loading: false,
+        valid: true,
+        firstTab: false
+      }
+    };
+  },
+  methods: {
+    nextStep: function nextStep(n) {
+      this.validateForm();
+
+      if (this.container.valid == true) {
+        this.container.form.tabnumber = n;
+        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('formsubmit', this.container);
+      }
+    },
+    validateForm: function validateForm() {
+      if (this.container.countrycheck == false || this.container.countrycheck == '') {
+        if ($('#height_ft').val().length == 0) {
+          $('#height_ft').addClass('invalid');
+          this.container.valid = false;
+        } else if ($('#height_in').val().length == 0) {
+          $('#height_in').addClass('invalid');
+          this.container.valid = false;
+        } else if ($('#weight').val().length == 0) {
+          $('#weight').addClass('invalid');
+          this.container.valid = false;
+        } else if ($('#age').val().length == 0) {
+          $('#age').addClass('invalid');
+          this.container.valid = false;
+        }
+      }
+
+      if (this.container.countrycheck == true) {
+        if ($('#height_cm').val().length == 0) {
+          $('#height_cm').addClass('invalid');
+          this.container.valid = false;
+        }
+
+        if ($('#weight').val().length == 0) {
+          $('#weight').addClass('invalid');
+          this.container.valid = false;
+        }
+
+        if ($('#age').val().length == 0) {
+          $('#age').addClass('invalid');
+        }
+      }
+    },
+    countryval: function countryval() {
+      if (this.container.countrycheck == false) {
+        $('input[name="weight"]').attr('placeholder', 'Lbs');
+        $('input[name="heightfoot"]').attr('placeholder', 'Feet');
+        $('input[name="heightinch"]').attr('placeholder', 'Inches');
+        $('input[name="countrycheck"]').attr('value', 0);
+        this.container.countrycheck == 0;
+        this.container.form.convertedMeasurements = false;
+        this.weightconvert(this.container.form.weight, false);
+        this.heightconvert(localStorage.getItem('foot'), localStorage.getItem('inch'), parseFloat(localStorage.getItem('cm')).toFixed(0), false);
+      } else if (this.container.countrycheck == true) {
+        $('input[name="weight"]').attr('placeholder', 'Kg');
+        $('input[name="heightcm"]').attr('placeholder', 'Cm');
+        $('input[name="countrycheck"]').attr('value', 1);
+        this.container.countrycheck == 1;
+        this.container.form.convertedMeasurements = true;
+        this.weightconvert(this.container.form.weight, true);
+        this.heightconvert(localStorage.getItem('foot'), localStorage.getItem('inch'), parseFloat(localStorage.getItem('cm')).toFixed(0), true);
+      }
+    },
+    validateHeight: function validateHeight(event) {
+      $('#height_ft').keydown(function (e) {
+        if (e.keyCode === 190 || e.keyCode === 110) {
+          e.preventDefault();
+        }
+      });
+      $('#height_ft').removeClass('invalid');
+      this.container.valid = true;
+
+      if (this.container.form.heightfoot > 9) {
+        $("#height_ft").attr("placeholder", "Limit is 9");
+        $("#height_ft").addClass("warning-place");
+        this.container.form.heightfoot = '';
+      } else if (this.container.form.heightfoot <= 0) {
+        this.container.form.heightfoot = '';
+      } else {
+        localStorage.setItem('foot', this.container.form.heightfoot);
+      }
+    },
+    validateInches: function validateInches() {
+      $('#height_in').keydown(function (e) {
+        if (e.keyCode === 190 || e.keyCode === 110) {
+          e.preventDefault();
+        }
+      });
+      $('#height_in').removeClass('invalid');
+      this.container.valid = true;
+
+      if (this.container.form.heightinch > 11) {
+        $("#height_in").attr("placeholder", "Limit is 11");
+        $("#height_in").addClass("warning-place");
+        this.container.form.heightinch = '';
+      } else if (this.container.form.heightinch < 0) {
+        this.container.form.heightinch = '';
+      } else {
+        localStorage.setItem('inch', this.container.form.heightinch);
+      }
+    },
+    validateWeight: function validateWeight() {
+      $('#weight').keydown(function (e) {
+        if (e.keyCode === 190 || e.keyCode === 110) {
+          e.preventDefault();
+        }
+      });
+      $('#weight').removeClass('invalid');
+      this.container.valid = true;
+
+      if (this.container.form.weight > 500) {
+        $("#weight").attr("placeholder", "Limit is 500 Lbs");
+
+        if (this.countrycheck == true) {
+          $("#weight").attr("placeholder", "Limit is 227 Kg");
+        }
+
+        $("#weight").addClass("warning-place");
+        this.container.form.weight = '';
+      } else if (this.container.form.weight <= 0) {
+        this.container.form.weight = '';
+      } else {
+        localStorage.setItem('weight', parseFloat(this.container.form.weight).toFixed(0));
+      }
+    },
+    validateAge: function validateAge() {
+      $('#height_in').keydown(function (e) {
+        if (e.keyCode === 190 || e.keyCode === 110) {
+          e.preventDefault();
+        }
+      });
+      $('#age').removeClass('invalid');
+      this.container.valid = true;
+
+      if (this.container.form.age > 100) {
+        $("#age").attr("placeholder", "Limit is 100");
+        $("#age").addClass("warning-place");
+        this.container.form.age = '';
+      } else if (this.container.form.age <= 0) {
+        this.container.form.age = '';
+      } else {
+        localStorage.setItem('age', this.container.form.age);
+      }
+    },
+    validateCm: function validateCm() {
+      $('#height_cm').keydown(function (e) {
+        if (e.keyCode === 190 || e.keyCode === 110) {
+          e.preventDefault();
+        }
+      });
+      $('#height_cm').removeClass('invalid');
+      this.container.valid = true;
+
+      if (this.container.form.heightcm > 302) {
+        $("#height_cm").attr("placeholder", "Limit is 300");
+        $("#height_cm").addClass("warning-place");
+        this.container.form.heightcm = '';
+      } else if (this.container.form.heightcm <= 0) {
+        this.container.form.heightcm = '';
+      } else {
+        var heightincm = parseFloat(this.container.form.heightcm).toFixed(0);
+        localStorage.setItem('cm', heightincm);
+        this.container.form.heightcm = localStorage.getItem('cm');
+      }
+    },
+    weightconvert: function weightconvert(w, c) {
+      if (c == true && w != '') {
+        this.container.form.weight = parseFloat(w / 2.2).toFixed(0); //pound to kg
+      } else if (c == false && w != '') {
+        this.container.form.weight = parseFloat(w * 2.2).toFixed(0); //kg to pound
+      }
+    },
+    heightconvert: function heightconvert(f, i, cm, c) {
+      if (c == true) {
+        if (isNaN(f)) {
+          return;
+        } else {
+          this.container.form.heightcm = f * 30.48 + parseInt(i) * 2.54;
+          var heightcm = parseFloat(this.container.form.heightcm).toFixed(0);
+          localStorage.setItem('cm', heightcm);
+          this.container.form.heightcm = localStorage.getItem('cm'); // this.form.heightinch = f * 30.48 + parsetInt($data['heightinch']) * 2.54;}
+        }
+      } else if (c == false) {
+        if (isNaN(cm)) {
+          return;
+        } else {
+          var length,
+              feet,
+              inch = 0;
+          length = cm / 2.54; //cm to ft and inches
+
+          feet = Math.floor(length / 12);
+          inch = length - 12 * feet;
+          this.container.form.heightfoot = feet;
+
+          if (inch >= 5) {} else if (inch < 5) {
+            this.container.form.heightinch = parseInt(Math.floor(inch));
+          }
+
+          localStorage.setItem('foot', this.container.form.heightfoot);
+          localStorage.setItem('inch', this.container.form.heightinch);
+        }
+      }
+    }
+  },
+  mounted: function mounted() {},
+  watch: {
+    'container.form.heightfoot': function containerFormHeightfoot() {
+      this.validateHeight();
+    },
+    'container.form.heightinch': function containerFormHeightinch() {
+      this.validateInches();
+    },
+    'container.form.weight': function containerFormWeight() {
+      this.validateWeight();
+    },
+    'container.form.age': function containerFormAge() {
+      this.validateAge();
+    },
+    'container.form.heightcm': function containerFormHeightcm() {
+      this.validateCm();
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResultComponent.vue?vue&type=script&lang=js&":
+/*!**********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResultComponent.vue?vue&type=script&lang=js& ***!
+  \**********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -3227,7 +3382,83 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({});
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      container: {
+        is_loading: false
+      }
+    };
+  }
+});
 
 /***/ }),
 
@@ -3273,7 +3504,11 @@ Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 
 Vue.component('example-component', __webpack_require__(/*! ./components/ExampleComponent.vue */ "./resources/js/components/ExampleComponent.vue").default);
 Vue.component('bodyfit-component', __webpack_require__(/*! ./components/BodyComponent.vue */ "./resources/js/components/BodyComponent.vue").default);
-Vue.component('sizechart-component', __webpack_require__(/*! ./components/SizechartComponent.vue */ "./resources/js/components/SizechartComponent.vue").default);
+Vue.component('form-component', __webpack_require__(/*! ./components/FormComponent.vue */ "./resources/js/components/FormComponent.vue").default);
+Vue.component('attribute-one-component', __webpack_require__(/*! ./components/AttributeoneComponent.vue */ "./resources/js/components/AttributeoneComponent.vue").default);
+Vue.component('attribute-two-component', __webpack_require__(/*! ./components/AttributetwoComponent.vue */ "./resources/js/components/AttributetwoComponent.vue").default);
+Vue.component('attribute-three-component', __webpack_require__(/*! ./components/AttributethreeComponent.vue */ "./resources/js/components/AttributethreeComponent.vue").default);
+Vue.component('result-component', __webpack_require__(/*! ./components/ResultComponent.vue */ "./resources/js/components/ResultComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -3327,6 +3562,24 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     forceTLS: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/event-bus.js":
+/*!***********************************!*\
+  !*** ./resources/js/event-bus.js ***!
+  \***********************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js");
+
+var EventBus = new vue__WEBPACK_IMPORTED_MODULE_0__.default();
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (EventBus);
 
 /***/ }),
 
@@ -7843,7 +8096,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bigsize {\r\n    grid-template-columns: 1fr 213px 1fr !important;\r\n}\r\n\r\n.big-size-margin {\r\n    margin-left: 35px !important;\r\n}\r\n\r\n.big-size-margin-recommend-size {\r\n    margin-left: 50px !important;\r\n}\r\n\r\n.final-size-label {\r\n    font-family: Karla;\r\n    font-weight: 600;\r\n    font-size: small !important;\r\n    margin-left: 10px;\r\n    text-decoration: underline;\r\n}\r\n\r\n.final-size-heading {\r\n    font-family: 'Montserrat';\r\n    font-weight: 900;\r\n    font-size: small;\r\n    margin-left: 10px;\r\n    margin-top: 20px;\r\n}\r\n\r\n.fit-advisor-header-desc-mt {\r\n    margin-top: 40px !important;\r\n}\r\n\r\n.dfOagu {\r\n    margin-left: 50px;\r\n    margin-top: 0px;\r\n}\r\n\r\n.dfOagu-second {\r\n    margin-left: 10px;\r\n    margin-top: 0px ;\r\n}\r\n\r\n.result-size {\r\n    width: 100%;\r\n    font-family: karla;\r\n    font-weight: 900;\r\n    font-size: 106px;\r\n}\r\n\r\n.introfirst {\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 15px !important;\r\n    word-spacing: 5px !important;\r\n}\r\n\r\n#intro1 {\r\n    display: block;\r\n}\r\n\r\n#intro2 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro3 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro4 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro5 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n.find-fit-header {\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 40px !important;\r\n    word-spacing: 5px !important;\r\n}\r\n\r\n.fit-advisor-chest-tab-item:hover {\r\n    /* display: grid; */\r\n    /* justify-content: center; */\r\n    /* align-items: center; */\r\n    /* text-align: center; */\r\n    /* cursor: pointer; */\r\n    transform: scale(0.95) !important;\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked {\r\n    background: rgb(2, 2, 2);\r\n}\r\n\r\n.img_country {\r\n    width: 8% !important;\r\n    margin: 0 auto !important;\r\n    margin-left: -105px !important;\r\n}\r\n\r\n.countrycheck {\r\n    width: 3% !important;\r\n    margin: 0 auto !important\r\n}\r\n\r\n.no-gutters {\r\n    margin-right: 0;\r\n    margin-left: 0;\r\n}\r\n\r\n.row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: 10px;\r\n    margin-left: 35px;\r\n    margin-top: 10px !important;\r\n}\r\n\r\n\r\n/* \r\n.col-xl,\r\n.col-xl-auto,\r\n.col-xl-12,\r\n.col-xl-11,\r\n.col-xl-10,\r\n.col-xl-9,\r\n.col-xl-8,\r\n.col-xl-7,\r\n.col-xl-6,\r\n.col-xl-5,\r\n.col-xl-4,\r\n.col-xl-3,\r\n.col-xl-2,\r\n.col-xl-1,\r\n.col-lg,\r\n.col-lg-auto,\r\n.col-lg-12,\r\n.col-lg-11,\r\n.col-lg-10,\r\n.col-lg-9,\r\n.col-lg-8,\r\n.col-lg-7,\r\n.col-lg-6,\r\n.col-lg-5,\r\n.col-lg-4,\r\n.col-lg-3,\r\n.col-lg-2,\r\n.col-lg-1,\r\n.col-md,\r\n.col-md-auto,\r\n.col-md-12,\r\n.col-md-11,\r\n.col-md-10,\r\n.col-md-9,\r\n.col-md-8,\r\n.col-md-7,\r\n.col-md-6,\r\n.col-md-5,\r\n.col-md-4,\r\n.col-md-3,\r\n.col-md-2,\r\n.col-md-1,\r\n.col-sm,\r\n.col-sm-auto,\r\n.col-sm-12,\r\n.col-sm-11,\r\n.col-sm-10,\r\n.col-sm-9,\r\n.col-sm-8,\r\n.col-sm-7,\r\n.col-sm-6,\r\n.col-sm-5,\r\n.col-sm-4,\r\n.col-sm-3,\r\n.col-sm-2,\r\n.col-sm-1,\r\n.col,\r\n.col-auto,\r\n.col-12,\r\n.col-11,\r\n.col-10,\r\n.col-9,\r\n.col-8,\r\n.col-7,\r\n.col-6,\r\n.col-5,\r\n.col-4,\r\n.col-3,\r\n.col-2,\r\n.col-1 {\r\n    position: relative;\r\n    width: 100%;\r\n    padding-right: 15px;\r\n    padding-left: 15px;\r\n} */\r\n\r\n.col-xl-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-xl-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-xl-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-xl-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-xl-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-xl-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-xl-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-xl-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-xl-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-xl-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-xl-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-xl-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-xl-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-lg-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-lg-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-lg-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-lg-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-lg-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-lg-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-lg-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-lg-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-lg-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-lg-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-lg-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-lg-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-lg-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n\r\n/* style for steps form */\r\n\r\ninput::-webkit-outer-spin-button,\r\ninput::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n* {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.size-position {\r\n    margin-left: -80px !important;\r\n    margin-top: -44px !important;\r\n}\r\n\r\nbody {\r\n    background-color: #ffffff !important;\r\n}\r\n\r\n#regForm {\r\n    background-color: #ffffff;\r\n    margin: 100px auto;\r\n    font-family: Raleway;\r\n    padding: 40px;\r\n    width: 70%;\r\n    min-width: 300px;\r\n    margin-top: 135px !important;\r\n}\r\n\r\n\r\n\r\ninput {\r\n    padding: 10px;\r\n    width: 100%;\r\n    font-size: 17px;\r\n    font-family: Raleway;\r\n    border: 1px solid #aaaaaa;\r\n}\r\n\r\n\r\n/* Mark input boxes that gets an error on validation: */\r\n\r\ninput.invalid {\r\n    border-bottom: 1px solid #fb6c6c !important;\r\n}\r\n\r\n\r\n/* Hide all steps by default: */\r\n\r\n.tab {\r\n    display: none;\r\n}\r\n\r\nbutton {\r\n    background-color: #04AA6D;\r\n    color: #ffffff;\r\n    border: none;\r\n    padding: 10px 20px;\r\n    font-size: 17px;\r\n    font-family: Raleway;\r\n    cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n#prevBtn {\r\n    background-color: #bbbbbb;\r\n}\r\n\r\n\r\n/* Make circles that indicate the steps of the form: */\r\n\r\n.step {\r\n    height: 10px;\r\n    width: 10px;\r\n    margin: 0px 7px;\r\n    background-color: #000000;\r\n    border: none;\r\n    border-radius: 50%;\r\n    display: inline-block;\r\n    opacity: 0.5;\r\n}\r\n\r\n.step.active {\r\n    opacity: 1;\r\n}\r\n\r\n\r\n/* Mark the steps that are finished and valid: */\r\n\r\n.step.finish {\r\n    background-color: #000000;\r\n}\r\n\r\n\r\n/*   END STYLE FOR STEPS FORM */\r\n\r\n.box {\r\n    background-color: #ffffff;\r\n}\r\n\r\n\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\r\n\r\n.overlay {\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: rgba(0, 0, 0, 0.7);\r\n    transition: opacity 500ms;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n.overlay:target {\r\n    visibility: visible;\r\n    opacity: 1;\r\n}\r\n\r\n.popup {\r\n    margin: 70px auto;\r\n    padding: 20px;\r\n    background: #fff;\r\n    border-radius: 5px;\r\n    width: 30%;\r\n    position: relative;\r\n    transition: all 5s ease-in-out;\r\n}\r\n\r\n.popup h2 {\r\n    margin-top: 0;\r\n    color: #333;\r\n    font-family: Tahoma, Arial, sans-serif;\r\n}\r\n\r\n.popup .close {\r\n    position: absolute;\r\n    /* top: 20px; */\r\n    right: 30px;\r\n    /* transition: all 200ms; */\r\n    font-size: 30px;\r\n    font-weight: normal;\r\n    text-decoration: none;\r\n    color: rgb(127, 127, 127);\r\n}\r\n\r\n.popup .close:hover {\r\n    color: #020202;\r\n}\r\n\r\n.popup .content {\r\n    max-height: 30%;\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\r\n\r\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\r\n}\r\n\r\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    user-select: none;\r\n}\r\n\r\n.continue-btn {\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n}\r\n\r\n.fit-advisor-intro {\r\n    text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    margin-top: -22px;\r\n    font-family: karla !important;\r\n}\r\n\r\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\r\n}\r\n\r\n.lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n\r\n\r\n/* code for form */\r\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n    font-family: 'Roboto', sans-serif;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody::after,\r\nbody::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n    box-sizing: border-box;\r\n}\r\n/* \r\nh1 {\r\n    font-size: 2rem;\r\n    text-align: center;\r\n    margin: 0 0 2em;\r\n} */\r\n\r\n.container {\r\n    position: relative;\r\n    max-width: 40rem;\r\n    margin: 5rem auto;\r\n    background: #fff;\r\n    width: 100%;\r\n    padding: 3rem 5rem 0;\r\n    border-radius: 1px;\r\n}\r\n\r\n.container::before {\r\n    content: '';\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n    -webkit-transform: scale(0.98);\r\n    transform: scale(0.98);\r\n    -webkit-transition: -webkit-transform 0.28s ease-in-out;\r\n    transition: -webkit-transform 0.28s ease-in-out;\r\n    transition: transform 0.28s ease-in-out;\r\n    transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;\r\n    z-index: -1;\r\n}\r\n\r\n.container:hover::before {\r\n    -webkit-transform: scale(1);\r\n    transform: scale(1);\r\n}\r\n\r\n.button-container {\r\n    text-align: center;\r\n}\r\n\r\nfieldset {\r\n    margin: 0 0 3rem;\r\n    padding: 0;\r\n    border: none;\r\n}\r\n\r\n.form-radio,\r\n.form-group {\r\n    position: relative;\r\n    margin-top: 2.25rem;\r\n    margin-bottom: 2.25rem;\r\n}\r\n\r\n.form-inline>.form-group,\r\n.form-inline>.btn {\r\n    display: inline-block;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.form-help {\r\n    margin-top: 0.125rem;\r\n    margin-left: 0.125rem;\r\n    color: #b3b3b3;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.checkbox .form-help,\r\n.form-radio .form-help,\r\n.form-group .form-help {\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.checkbox .form-help {\r\n    position: relative;\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.form-radio .form-help {\r\n    padding-top: 0.25rem;\r\n    margin-top: -1rem;\r\n}\r\n\r\n.form-group input {\r\n    height: 1.9rem;\r\n}\r\n\r\n.form-group textarea {\r\n    resize: none;\r\n}\r\n\r\n.form-group select {\r\n    width: 100%;\r\n    font-size: 1rem;\r\n    height: 1.6rem;\r\n    padding: 0.125rem 0.125rem 0.0625rem;\r\n    background: none;\r\n    border: none;\r\n    line-height: 1.6;\r\n    box-shadow: none;\r\n}\r\n\r\n.form-group .control-label {\r\n    position: absolute;\r\n    top: 0.25rem;\r\n    pointer-events: none;\r\n    padding-left: 0.125rem;\r\n    z-index: 1;\r\n    color: #b3b3b3;\r\n    font-size: 1rem;\r\n    font-weight: normal;\r\n    -webkit-transition: all 0.28s ease;\r\n    transition: all 0.28s ease;\r\n}\r\n\r\n.form-group .bar {\r\n    position: relative;\r\n    border-bottom: 0.0625rem solid #999;\r\n    display: block;\r\n}\r\n\r\n.form-group .bar::before {\r\n    content: '';\r\n    height: 0.125rem;\r\n    width: 0;\r\n    left: 50%;\r\n    bottom: -0.0625rem;\r\n    position: absolute;\r\n    background: #337ab7;\r\n    -webkit-transition: left 0.28s ease, width 0.28s ease;\r\n    transition: left 0.28s ease, width 0.28s ease;\r\n    z-index: 2;\r\n}\r\n\r\n.form-group input,\r\n.form-group textarea {\r\n    display: block;\r\n    background: none;\r\n    padding: 0.125rem 0.125rem 0.0625rem;\r\n    font-size: 1rem;\r\n    border-width: 0;\r\n    border-color: transparent;\r\n    line-height: 1.9;\r\n    width: 100%;\r\n    color: transparent;\r\n    -webkit-transition: all 0.28s ease;\r\n    transition: all 0.28s ease;\r\n    box-shadow: none;\r\n}\r\n\r\n.form-group input[type=\"file\"] {\r\n    line-height: 1;\r\n}\r\n\r\n.form-group input[type=\"file\"]~.bar {\r\n    display: none;\r\n}\r\n\r\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n    color: #333;\r\n}\r\n\r\n.form-group select~.control-label,\r\n.form-group input:focus~.control-label,\r\n.form-group input:valid~.control-label,\r\n.form-group input.form-file~.control-label,\r\n.form-group input.has-value~.control-label,\r\n.form-group textarea:focus~.control-label,\r\n.form-group textarea:valid~.control-label,\r\n.form-group textarea.form-file~.control-label,\r\n.form-group textarea.has-value~.control-label {\r\n    font-size: 0.8rem;\r\n    color: gray;\r\n    top: -1rem;\r\n    left: 0;\r\n}\r\n\r\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n    outline: none;\r\n}\r\n\r\n.form-group select:focus~.control-label,\r\n.form-group input:focus~.control-label,\r\n.form-group textarea:focus~.control-label {\r\n    color: #337ab7;\r\n}\r\n\r\n.form-group select:focus~.bar::before,\r\n.form-group input:focus~.bar::before,\r\n.form-group textarea:focus~.bar::before {\r\n    width: 100%;\r\n    left: 0;\r\n}\r\n\r\n.checkbox label,\r\n.form-radio label {\r\n    position: relative;\r\n    cursor: pointer;\r\n    padding-left: 2rem;\r\n    text-align: left;\r\n    color: #333;\r\n    display: block;\r\n}\r\n\r\n.checkbox input,\r\n.form-radio input {\r\n    width: auto;\r\n    opacity: 0.00000001;\r\n    position: absolute;\r\n    left: 0;\r\n}\r\n\r\n.radio {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.radio .helper {\r\n    position: absolute;\r\n    top: -0.25rem;\r\n    left: -0.25rem;\r\n    cursor: pointer;\r\n    display: block;\r\n    font-size: 1rem;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    color: #999;\r\n}\r\n\r\n.radio .helper::before,\r\n.radio .helper::after {\r\n    content: '';\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    margin: 0.25rem;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    -webkit-transition: -webkit-transform 0.28s ease;\r\n    transition: -webkit-transform 0.28s ease;\r\n    transition: transform 0.28s ease;\r\n    transition: transform 0.28s ease, -webkit-transform 0.28s ease;\r\n    border-radius: 50%;\r\n    border: 0.125rem solid currentColor;\r\n}\r\n\r\n.radio .helper::after {\r\n    -webkit-transform: scale(0);\r\n    transform: scale(0);\r\n    background-color: #337ab7;\r\n    border-color: #337ab7;\r\n}\r\n\r\n.radio label:hover .helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.radio input:checked~.helper::after {\r\n    -webkit-transform: scale(0.5);\r\n    transform: scale(0.5);\r\n}\r\n\r\n.radio input:checked~.helper::before {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox {\r\n    margin-top: 3rem;\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.checkbox .helper {\r\n    color: #999;\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 0;\r\n    border: 0.125rem solid currentColor;\r\n    border-radius: 0.0625rem;\r\n    -webkit-transition: border-color 0.28s ease;\r\n    transition: border-color 0.28s ease;\r\n}\r\n\r\n.checkbox .helper::before,\r\n.checkbox .helper::after {\r\n    position: absolute;\r\n    height: 0;\r\n    width: 0.2rem;\r\n    background-color: #337ab7;\r\n    display: block;\r\n    -webkit-transform-origin: left top;\r\n    transform-origin: left top;\r\n    border-radius: 0.25rem;\r\n    content: '';\r\n    -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    opacity: 0;\r\n}\r\n\r\n.checkbox .helper::before {\r\n    top: 0.65rem;\r\n    left: 0.38rem;\r\n    -webkit-transform: rotate(-135deg);\r\n    transform: rotate(-135deg);\r\n    box-shadow: 0 0 0 0.0625rem #fff;\r\n}\r\n\r\n.checkbox .helper::after {\r\n    top: 0.3rem;\r\n    left: 0;\r\n    -webkit-transform: rotate(-45deg);\r\n    transform: rotate(-45deg);\r\n}\r\n\r\n.checkbox label:hover .helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox input:checked~.helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox input:checked~.helper::after,\r\n.checkbox input:checked~.helper::before {\r\n    opacity: 1;\r\n    -webkit-transition: height 0.28s ease;\r\n    transition: height 0.28s ease;\r\n}\r\n\r\n.checkbox input:checked~.helper::after {\r\n    height: 0.5rem;\r\n}\r\n\r\n.checkbox input:checked~.helper::before {\r\n    height: 1.2rem;\r\n    -webkit-transition-delay: 0.28s;\r\n    transition-delay: 0.28s;\r\n}\r\n\r\n.radio+.radio,\r\n.checkbox+.checkbox {\r\n    margin-top: 1rem;\r\n}\r\n\r\n.has-error .legend.legend,\r\n.has-error.form-group .control-label.control-label {\r\n    color: #d9534f;\r\n}\r\n\r\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper,\r\n.has-error.checkbox .form-help,\r\n.has-error.checkbox .helper,\r\n.has-error.radio .form-help,\r\n.has-error.radio .helper,\r\n.has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n    color: #d9534f;\r\n}\r\n\r\n.has-error .bar::before {\r\n    background: #d9534f;\r\n    left: 0;\r\n    width: 100%;\r\n}\r\n\r\n.button {\r\n    position: relative;\r\n    border: 1px solid currentColor;\r\n    font-size: 1.1rem;\r\n    color: #000;\r\n    margin: 3rem 0;\r\n    padding: 0.75rem 3rem;\r\n    cursor: pointer;\r\n    -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n    transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n    overflow: hidden;\r\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.button span {\r\n    color: #fff;\r\n    position: relative;\r\n    z-index: 1;\r\n}\r\n\r\n.button::before {\r\n    content: '';\r\n    position: absolute;\r\n    background: #071017;\r\n    border: 50vh solid #1d4567;\r\n    width: 30vh;\r\n    height: 30vh;\r\n    border-radius: 50%;\r\n    display: block;\r\n    top: 50%;\r\n    left: 50%;\r\n    z-index: 0;\r\n    opacity: 1;\r\n    -webkit-transform: translate(-50%, -50%) scale(0);\r\n    transform: translate(-50%, -50%) scale(0);\r\n}\r\n\r\n.button:hover {\r\n    color: #337ab7;\r\n    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.button:active::before,\r\n.button:focus::before {\r\n    -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n    transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    -webkit-transform: translate(-50%, -50%) scale(1);\r\n    transform: translate(-50%, -50%) scale(1);\r\n    opacity: 0;\r\n}\r\n\r\n.button:focus {\r\n    outline: none;\r\n}\r\n\r\n.fit-advisor-hr {\r\n    margin-top: -15px !important;\r\n}\r\n\r\n\r\n/* input field design */\r\n\r\n ::-webkit-input-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n::-moz-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n:-ms-input-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n::placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n.fit-advisor-custom_row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -15px;\r\n    margin-left: -15px;\r\n}\r\n\r\n.fit-advisor-custom_input {\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;\r\n}\r\n\r\n.custom-offset {\r\n    margin-left: 43px !important;\r\n}\r\n\r\n.labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: karla !important;\r\n    line-height: 18px !important;\r\n    font-weight: 400 !important;\r\n    font-style: normal;\r\n}\r\n\r\n.custom-offset-lg {\r\n    margin-left: 44%;\r\n}\r\n\r\n.adjust-label {\r\n    margin-left: 0%!important;\r\n}\r\n\r\n.adjust-label-age {\r\n    margin-left: 0%!important;\r\n}\r\n\r\ninput::placeholder {\r\n    font-size: 12px !important\r\n}\r\n\r\ntextarea:focus,\r\ninput:focus {\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255) !important;\r\n}\r\n\r\n.fit-advisor-custom_previous_btn {\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 0.5;\r\n}\r\n\r\n.fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\r\n}\r\n\r\n.fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n\r\n.fit-advisor-options-img {\r\n    width: 265.667px;\r\n    height: 222.667px;\r\n}\r\n\r\n.fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\r\n}\r\n\r\n.product-card {\r\n    position: relative;\r\n    z-index: -1;\r\n}\r\n\r\n.fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n    margin-left: 35px !important;\r\n}\r\n\r\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n}\r\n\r\n.fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -40px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n\r\n.next {\r\n    margin-top: -10px !important;\r\n}\r\n\r\n.fit-advisor-product-picture {\r\n    margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\r\n}\r\n\r\n.fit-advisor-popup-adjustments {\r\n    width: 50% !important;\r\n    overflow-y: scroll !important;\r\n}\r\n\r\n.gIdEkK p {\r\n    margin: unset;\r\n}\r\n\r\n.learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n\r\n.fit-advisor-header-desc {\r\n    padding: 10px;\r\n    text-align: center;\r\n    color: rgb(0 0 0);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\r\n    font-family: karla !important;\r\n}\r\n\r\n.gIdEkK p {\r\n    margin: unset;\r\n}\r\n\r\n.jjnwUS {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 50px;\r\n}\r\n\r\n.fit-advisor-product-size-box {\r\n    padding: 0px;\r\n}\r\n\r\n.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin: 0 auto;\r\n    /* margin-left:50px; */\r\n    display: block;\r\n}\r\n\r\n.fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 198px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n\r\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right: 50px !important;\r\n}\r\n\r\n.selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n\r\n.fit-advisor-selected-size-container {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.fit-advisor-product-btn-to-cart {\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n\r\n.fit-advisor-inch {\r\n    margin-left: 73% !important;\r\n    margin-top: -27% !important;\r\n}\r\n\r\n.fit-advisor-agelabel {\r\n    margin-top: -26px !important;\r\n}\r\n\r\n.fit-advisor-agelabel-span {\r\n    margin-left: -68px !important;\r\n    margin-top: 6px !important;\r\n}\r\n\r\n.fit-advisor-age-input {\r\n    margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\r\n}\r\n\r\n.fit-advisor-logo {\r\n    margin-left: 43% !important;\r\n}\r\n\r\n\r\n/*   //responsiveness of bodyfit-modal */\r\n\r\n@media (min-width:320px) and (max-width:480px) {\r\n    .dfOagu{\r\n        margin-left: 50px;\r\n         margin-top: 0px  !important  ;\r\n    }\r\n    .spinner-position{\r\n        width: 2rem !important;\r\n        height: 2rem !important;\r\n        margin-left:0px !important;\r\n        \r\n      }\r\n    /* smartphones, iPhone, portrait 480x320 phones */\r\n    .ml-xl-spinner\r\n    {\r\n        margin-left:12rem !important;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 1.4em;\r\n    }\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px !important;\r\n        visibility: visible ;\r\n        margin-bottom: 4.5em !important;\r\n        margin-right: 0px !important;\r\n    }\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 128px 1fr;\r\n        justify-self: flex-end;\r\n    }\r\n    .bigsize {\r\n        grid-template-columns: 1fr 150px 1fr !important;\r\n    }\r\n    .big-size-margin-recommend-size {\r\n        margin-left: 15px !important;\r\n    }\r\n    .big-size-margin {\r\n        margin-left: 35px !important;\r\n    }\r\n    .final-size-label {\r\n        font-family: Karla;\r\n        font-weight: 600;\r\n        font-size: small !important;\r\n        margin-left: 10px;\r\n        text-decoration: underline;\r\n    }\r\n    .final-size-heading {\r\n        font-family: 'Montserrat';\r\n        font-weight: 900;\r\n        font-size: x-large;\r\n        margin-left: 10px;\r\n    }\r\n    .row {\r\n        display: flex;\r\n        flex-wrap: wrap;\r\n        margin-right: -27px;\r\n        margin-left: -32px;\r\n        margin-top: 10px !important;\r\n        margin-bottom: 50px;\r\n    }\r\n    .adjust-label {\r\n        margin-left: 35%!important;\r\n    }\r\n    .adjust-label-5s {\r\n        margin-left: 10%!important;\r\n    }\r\n    .adjust-label-age {\r\n        margin-left: 40%!important;\r\n    }\r\n    .adjust-label-age-5s {\r\n        margin-left: 15%!important;\r\n    }\r\n    .fit-advisor-intro {\r\n        text-align: center;\r\n        margin-bottom: 50px !important;\r\n        letter-spacing: 0.04em;\r\n        color: rgb(0, 0, 0);\r\n        -webkit-user-select: none;\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        user-select: none;\r\n        font-style: normal !important;\r\n        font-weight: normal !important;\r\n        font-size: 14px !important;\r\n        line-height: 26px !important;\r\n        margin-top: -22px;\r\n        font-family: karla !important;\r\n    }\r\n    .fit-advisor-popup-adjustments {\r\n        width: 100% !important;\r\n        overflow: none;\r\n    }\r\n    .fit-advisor-custom_input {\r\n        display: block;\r\n        width: 50%;\r\n        margin: 0px;\r\n        padding: 10px 0px;\r\n        background: 0px center;\r\n        border-radius: 0px;\r\n        border-width: 0px 0px 1px;\r\n        border-top-style: initial;\r\n        border-right-style: initial;\r\n        border-left-style: initial;\r\n        border-top-color: initial;\r\n        border-right-color: initial;\r\n        border-left-color: initial;\r\n        border-image: initial;\r\n        border-bottom-style: solid;\r\n        border-bottom-color: rgb(175, 175, 175);\r\n        transition: border 0.2s ease-in-out 0s;\r\n        font-family: Lato !important;\r\n        font-size: 20px !important;\r\n        line-height: 24px !important;\r\n    }\r\n    .row-feet-inch {\r\n        display: grid;\r\n        gap: 30px;\r\n        grid-template-columns: 1fr 1fr;\r\n    }\r\n    .fit-advisor-inch {\r\n        margin-left: 143px !important;\r\n        margin-top: -64px!important;\r\n    }\r\n    .fit-advisor-agelabel {}\r\n    .fit-advisor-age-input {\r\n        margin-left: 14.5rem !important;\r\n        margin-top: -65px !important;\r\n        width: 50% !important;\r\n    }\r\n    input {\r\n        text-align: center;\r\n    }\r\n     ::-webkit-input-placeholder {\r\n        text-align: center;\r\n    }\r\n    .jjnwUS {\r\n        display: grid;\r\n        justify-content: center;\r\n        align-items: center;\r\n        background: white;\r\n        color: black;\r\n        border: 1px solid rgb(170, 170, 170);\r\n        border-radius: 50%;\r\n        cursor: pointer;\r\n        width: 22px;\r\n        height: 22px;\r\n        transition: opacity 0.2s ease-in-out 0s;\r\n        margin-left: 15px;\r\n    }\r\n    .selected-product-arrow-left {\r\n        background: rgba(255, 255, 255, 0.5);\r\n        z-index: 30;\r\n        margin-right: 30px !important;\r\n    }\r\n     :-moz-placeholder {\r\n        text-align: center;\r\n    }\r\n    .custom-offset {\r\n        margin-left: -8% !important;\r\n    }\r\n    .fit-advisor-agelabel-span {\r\n        margin-left: 52px !important;\r\n        margin-top: 0px !important;\r\n    }\r\n    .fit-advisor-logo {\r\n        margin-left: 30% !important;\r\n    }\r\n    .continue-btn {\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        -webkit-user-select: none;\r\n        user-select: none;\r\n        -webkit-appearance: none;\r\n        -moz-appearance: none;\r\n        appearance: none;\r\n        display: inline-block;\r\n        width: auto;\r\n        text-decoration: none;\r\n        text-align: center;\r\n        vertical-align: middle;\r\n        cursor: pointer;\r\n        border: 1px solid transparent;\r\n        border-radius: 2px;\r\n        padding: 8px 15px;\r\n        background-color: #000000;\r\n        color: var(--color-btn-primary-text);\r\n        /* font-family: lato !important; */\r\n        /* font-style: var(--font-style-header); */\r\n        /* font-weight: var(--font-weight-header); */\r\n        text-transform: uppercase;\r\n        letter-spacing: 0.08em;\r\n        white-space: normal;\r\n        font-size: 15px !important;\r\n        font-family: 'Karla';\r\n        right: 25% !important;\r\n        width: 50% !important;\r\n    }\r\n    .fit-advisor-product-btn-to-cart {\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        -webkit-user-select: none;\r\n        user-select: none;\r\n        -webkit-appearance: none;\r\n        -moz-appearance: none;\r\n        appearance: none;\r\n        display: inline-block;\r\n        width: auto;\r\n        text-decoration: none;\r\n        text-align: center;\r\n        vertical-align: middle;\r\n        cursor: pointer;\r\n        border: 1px solid transparent;\r\n        border-radius: 2px;\r\n        padding: 8px 15px;\r\n        background-color: #000000;\r\n        color: var(--color-btn-primary-text);\r\n        /* font-family: lato !important; */\r\n        /* font-style: var(--font-style-header); */\r\n        /* font-weight: var(--font-weight-header); */\r\n        text-transform: uppercase;\r\n        letter-spacing: 0.08em;\r\n        white-space: normal;\r\n        font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n        /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n    }\r\n    .fit-advisor-chest-tab {\r\n        display: block;\r\n        gap: 5px;\r\n        margin-left: -65px !important;\r\n        grid-template-columns: 1fr 1fr 1fr;\r\n        padding: 0px 10px 40px;\r\n    }\r\n    .fit-advisor-selected-product-grid {\r\n        /* display: block; */\r\n        grid-template-columns: 2fr 3fr;\r\n        gap: 50px;\r\n        -webkit-box-pack: center;\r\n        justify-content: center;\r\n        -webkit-box-align: center;\r\n        align-items: center;\r\n        padding: 0px 50px;\r\n        margin-left: 50px !important;\r\n        /* display: none; */\r\n    }\r\n    .fit-advisor-selected-product-image {\r\n        padding: 0px;\r\n        align-self: flex-start;\r\n        display: none;\r\n    }\r\n    .fit-advisor-fit-grid {\r\n        display: block;\r\n        grid-template-columns: 1fr 1fr;\r\n        -webkit-box-pack: center;\r\n        justify-content: center;\r\n        -webkit-box-align: center;\r\n        align-items: center;\r\n        text-align: center;\r\n        background: white;\r\n        border: none;\r\n        margin-bottom: 15px;\r\n        margin-left: -15px;\r\n        padding: 10px 20px;\r\n        box-shadow: none;\r\n    }\r\n}\r\n\r\n@media (min-width:481px) and (max-width:640px) {\r\n    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */\r\n}\r\n\r\n@media (min-width:641px) and (max-width:960px) {\r\n    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 100px 1fr !important;\r\n        justify-self: flex-end;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 55px;\r\n    }\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px;\r\n        visibility: visible;\r\n        margin-bottom: -5.5em !important;\r\n        /* margin-right: 50px; */\r\n    }\r\n}\r\n\r\n@media (min-width:961px) and (max-width:1024px) {\r\n    /* tablet, landscape iPad, lo-res laptops ands desktops */\r\n}\r\n\r\n@media (min-width:1025px) and (max-width:1280px) {\r\n    /* big landscape tablets, laptops, and desktops */\r\n}\r\n\r\n\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n\r\n\r\n/*   } / / */\r\n\r\n\r\n/* STYLE FOR LOADER */\r\n\r\n@-webkit-keyframes spinner-border {\r\n    to {\r\n        transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n@keyframes spinner-border {\r\n    to {\r\n        transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n.spinner-border {\r\n    display: inline-block;\r\n    width: 2rem;\r\n    height: 2rem;\r\n    vertical-align: text-bottom;\r\n    border: 0.25em solid currentColor;\r\n    border-right-color: transparent;\r\n    border-radius: 50%;\r\n    -webkit-animation: 0.75s linear infinite spinner-border;\r\n    animation: 0.75s linear infinite spinner-border;\r\n    border-width: 2px !important;\r\n}\r\n\r\n.spinner-border-sm {\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border-width: 0.2em;\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n    .spinner-border,\r\n    .spinner-grow {\r\n        -webkit-animation-duration: 1.5s;\r\n        animation-duration: 1.5s;\r\n    }\r\n}\r\n\r\n.sr-only {\r\n    position: absolute;\r\n    width: 1px;\r\n    height: 1px;\r\n    padding: 0;\r\n    margin: -1px;\r\n    overflow: hidden;\r\n    clip: rect(0, 0, 0, 0);\r\n    white-space: nowrap;\r\n    border: 0;\r\n}\r\n\r\n.sr-only-focusable:active,\r\n.sr-only-focusable:focus {\r\n    position: static;\r\n    width: auto;\r\n    height: auto;\r\n    overflow: visible;\r\n    clip: auto;\r\n    white-space: normal;\r\n}\r\n\r\n.warning-place::-webkit-input-placeholder {\r\n    color: #fc0000;\r\n    opacity: 1;\r\n    font-weight: bold;\r\n    font-family: karla;\r\n    transition: ease-in-out 1s;\r\n}\r\n\r\n.on-excel-size-two {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 190px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n\r\n.on-excel-size {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -10px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n\r\n#chest1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#chest2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#chest3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n.col-xl,\r\n.col-xl-auto,\r\n.col-xl-12,\r\n.col-xl-11,\r\n.col-xl-10,\r\n.col-xl-9,\r\n.col-xl-8,\r\n.col-xl-7,\r\n.col-xl-6,\r\n.col-xl-5,\r\n.col-xl-4,\r\n.col-xl-3,\r\n.col-xl-2,\r\n.col-xl-1,\r\n.col-lg,\r\n.col-lg-auto,\r\n.col-lg-12,\r\n.col-lg-11,\r\n.col-lg-10,\r\n.col-lg-9,\r\n.col-lg-8,\r\n.col-lg-7,\r\n.col-lg-6,\r\n.col-lg-5,\r\n.col-lg-4,\r\n.col-lg-3,\r\n.col-lg-2,\r\n.col-lg-1,\r\n.col-md,\r\n.col-md-auto,\r\n.col-md-12,\r\n.col-md-11,\r\n.col-md-10,\r\n.col-md-9,\r\n.col-md-8,\r\n.col-md-7,\r\n.col-md-6,\r\n.col-md-5,\r\n.col-md-4,\r\n.col-md-3,\r\n.col-md-2,\r\n.col-md-1,\r\n.col-sm,\r\n.col-sm-auto,\r\n.col-sm-12,\r\n.col-sm-11,\r\n.col-sm-10,\r\n.col-sm-9,\r\n.col-sm-8,\r\n.col-sm-7,\r\n.col-sm-6,\r\n.col-sm-5,\r\n.col-sm-4,\r\n.col-sm-3,\r\n.col-sm-2,\r\n.col-sm-1,\r\n.col,\r\n.col-auto,\r\n.col-12,\r\n.col-11,\r\n.col-10,\r\n.col-9,\r\n.col-8,\r\n.col-7,\r\n.col-6,\r\n.col-5,\r\n.col-4,\r\n.col-3,\r\n.col-2,\r\n.col-1 {\r\n    position: relative;\r\n    width: 100%;\r\n    padding-right: 15px;\r\n    padding-left: 15px;\r\n}\r\n\r\n.col-sm-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-sm-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-sm-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-sm-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-sm-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-sm-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-sm-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-sm-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-sm-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-sm-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-sm-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-sm-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-sm-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.col {\r\n    flex-basis: 0;\r\n    flex-grow: 1;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-md-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-md-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-md-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-md-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-md-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-md-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-md-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-md-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-md-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-md-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-md-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-md-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-md-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.mt-0,\r\n.my-0 {\r\n    margin-top: 0 !important;\r\n}\r\n\r\n.mr-0,\r\n.mx-0 {\r\n    margin-right: 0 !important;\r\n}\r\n\r\n.mb-0,\r\n.my-0 {\r\n    margin-bottom: 0 !important;\r\n}\r\n\r\n.ml-0,\r\n.mx-0 {\r\n    margin-left: 0 !important;\r\n}\r\n\r\n.m-1 {\r\n    margin: 0.25rem !important;\r\n}\r\n\r\n.mt-1,\r\n.my-1 {\r\n    margin-top: 0.25rem !important;\r\n}\r\n\r\n.mr-1,\r\n.mx-1 {\r\n    margin-right: 0.25rem !important;\r\n}\r\n\r\n.mb-1,\r\n.my-1 {\r\n    margin-bottom: 0.25rem !important;\r\n}\r\n\r\n.ml-1,\r\n.mx-1 {\r\n    margin-left: 0.25rem !important;\r\n}\r\n\r\n.m-2 {\r\n    margin: 0.5rem !important;\r\n}\r\n\r\n.mt-2,\r\n.my-2 {\r\n    margin-top: 0.5rem !important;\r\n}\r\n\r\n.mr-2,\r\n.mx-2 {\r\n    margin-right: 0.5rem !important;\r\n}\r\n\r\n.mb-2,\r\n.my-2 {\r\n    margin-bottom: 0.5rem !important;\r\n}\r\n\r\n.ml-2,\r\n.mx-2 {\r\n    margin-left: 0.5rem !important;\r\n}\r\n\r\n.m-3 {\r\n    margin: 1rem !important;\r\n}\r\n\r\n.mt-3,\r\n.my-3 {\r\n    margin-top: 1rem !important;\r\n}\r\n.mtf-3,\r\n.myf-3 {\r\n    margin-top: 1.1rem !important;\r\n}\r\n.mr-3,\r\n.mx-3 {\r\n    margin-right: 1rem !important;\r\n}\r\n\r\n.mb-3,\r\n.my-3 {\r\n    margin-bottom: 1rem !important;\r\n}\r\n\r\n.ml-3,\r\n.mx-3 {\r\n    margin-left: 1rem !important;\r\n}\r\n\r\n.m-4 {\r\n    margin: 1.5rem !important;\r\n}\r\n\r\n.mt-4,\r\n.my-4 {\r\n    margin-top: 1.5rem !important;\r\n}\r\n\r\n.mtf-4,\r\n.myf-4 {\r\n    margin-top: 1.3rem !important;\r\n}\r\n\r\n.mr-4,\r\n.mx-4 {\r\n    margin-right: 1.5rem !important;\r\n}\r\n\r\n.mb-4,\r\n.my-4 {\r\n    margin-bottom: 1.5rem !important;\r\n}\r\n\r\n.ml-4,\r\n.mx-4 {\r\n    margin-left: 1.5rem !important;\r\n}\r\n\r\n.m-5 {\r\n    margin: 3rem !important;\r\n}\r\n\r\n.mt-5,\r\n.my-5 {\r\n    margin-top: 3rem !important;\r\n}\r\n\r\n.mtf-5,\r\n.myf-5 {\r\n    margin-top: 2rem !important;\r\n}\r\n\r\n\r\n\r\n.mr-5,\r\n.mx-5 {\r\n    margin-right: 3rem !important;\r\n}\r\n\r\n.mb-5,\r\n.my-5 {\r\n    margin-bottom: 3rem !important;\r\n}\r\n\r\n.ml-5,\r\n.mx-5 {\r\n    margin-left: 3rem !important;\r\n}\r\n\r\n.m-n1 {\r\n    margin: -0.25rem !important;\r\n}\r\n\r\n.mt-n1,\r\n.my-n1 {\r\n    margin-top: -0.25rem !important;\r\n}\r\n\r\n.mr-n1,\r\n.mx-n1 {\r\n    margin-right: -0.25rem !important;\r\n}\r\n\r\n.mb-n1,\r\n.my-n1 {\r\n    margin-bottom: -0.25rem !important;\r\n}\r\n\r\n.ml-n1,\r\n.mx-n1 {\r\n    margin-left: -0.25rem !important;\r\n}\r\n\r\n.m-n2 {\r\n    margin: -0.5rem !important;\r\n}\r\n\r\n.mt-n2,\r\n.my-n2 {\r\n    margin-top: -0.5rem !important;\r\n}\r\n\r\n.mr-n2,\r\n.mx-n2 {\r\n    margin-right: -0.5rem !important;\r\n}\r\n\r\n.mb-n2,\r\n.my-n2 {\r\n    margin-bottom: -0.5rem !important;\r\n}\r\n\r\n.ml-n2,\r\n.mx-n2 {\r\n    margin-left: -0.5rem !important;\r\n}\r\n\r\n.m-n3 {\r\n    margin: -1rem !important;\r\n}\r\n\r\n.mt-n3,\r\n.my-n3 {\r\n    margin-top: -1rem !important;\r\n}\r\n\r\n.mr-n3,\r\n.mx-n3 {\r\n    margin-right: -1rem !important;\r\n}\r\n\r\n.mb-n3,\r\n.my-n3 {\r\n    margin-bottom: -1rem !important;\r\n}\r\n\r\n.ml-n3,\r\n.mx-n3 {\r\n    margin-left: -1rem !important;\r\n}\r\n\r\n.m-n4 {\r\n    margin: -1.5rem !important;\r\n}\r\n\r\n.mt-n4,\r\n.my-n4 {\r\n    margin-top: -1.5rem !important;\r\n}\r\n\r\n.mr-n4,\r\n.mx-n4 {\r\n    margin-right: -1.5rem !important;\r\n}\r\n\r\n.mb-n4,\r\n.my-n4 {\r\n    margin-bottom: -1.5rem !important;\r\n}\r\n\r\n.ml-n4,\r\n.mx-n4 {\r\n    margin-left: -1.5rem !important;\r\n}\r\n\r\n.m-n5 {\r\n    margin: -3rem !important;\r\n}\r\n\r\n.mt-n5,\r\n.my-n5 {\r\n    margin-top: -3rem !important;\r\n}\r\n\r\n.mtf-n6,\r\n.myf-n6 {\r\n    margin-top: -6.5rem !important;\r\n}\r\n\r\n\r\n.mt-n6,\r\n.my-n6 {\r\n    margin-top: -3.8rem !important;\r\n}\r\n\r\n.mr-n5,\r\n.mx-n5 {\r\n    margin-right: -3rem !important;\r\n}\r\n\r\n.mb-n5,\r\n.my-n5 {\r\n    margin-bottom: -3rem !important;\r\n}\r\n\r\n.ml-n5,\r\n.mx-n5 {\r\n    margin-left: -3rem !important;\r\n}\r\n\r\n.offset-1 {\r\n    margin-left: 8.3333333333%;\r\n}\r\n\r\n.offset-2 {\r\n    margin-left: 16.6666666667%;\r\n}\r\n\r\n.offset-3 {\r\n    margin-left: 25%;\r\n}\r\n\r\n.offset-4 {\r\n    margin-left: 33.3333333333%;\r\n}\r\n\r\n.offset-5 {\r\n    margin-left: 41.6666666667%;\r\n}\r\n\r\n.offset-6 {\r\n    margin-left: 50%;\r\n}\r\n\r\n.offset-7 {\r\n    margin-left: 58.3333333333%;\r\n}\r\n\r\n.offset-8 {\r\n    margin-left: 66.6666666667%;\r\n}\r\n\r\n.offset-9 {\r\n    margin-left: 75%;\r\n}\r\n\r\n.offset-10 {\r\n    margin-left: 83.3333333333%;\r\n}\r\n\r\n.offset-11 {\r\n    margin-left: 91.6666666667%;\r\n}\r\n\r\n.form-control {\r\n    display: block;\r\n    width: 100%;\r\n    height: calc(1.6em + 0.75rem + 2px);\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 0.9rem;\r\n    font-weight: 400;\r\n    line-height: 1.6;\r\n    color: #495057;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.25rem;\r\n    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n}\r\n\r\n.form-control-lg {\r\n    height: calc(1.5em + 1rem + 2px);\r\n    padding: 0.5rem 1rem;\r\n    font-size: 1.125rem;\r\n    line-height: 1.5;\r\n    border-radius: 0.3rem;\r\n}\r\n\r\n.w-25 {\r\n    width: 25% !important;\r\n}\r\n\r\n.w-50 {\r\n    width: 50% !important;\r\n}\r\n\r\n.w-75 {\r\n    width: 75% !important;\r\n}\r\n\r\n.w-100 {\r\n    width: 100% !important;\r\n}\r\n\r\n.w-auto {\r\n    width: auto !important;\r\n}\r\n\r\n.h-25 {\r\n    height: 25% !important;\r\n}\r\n\r\n.h-50 {\r\n    height: 50% !important;\r\n}\r\n\r\n.h-75 {\r\n    height: 75% !important;\r\n}\r\n\r\n.h-100 {\r\n    height: 100% !important;\r\n}\r\n\r\n.input-border {\r\n    border-bottom: 1px solid lightgrey !important;\r\n    border-top: none;\r\n    border-left: none;\r\n    border-right: none;\r\n    border-radius: 0px;\r\n}\r\n\r\n.justify-content-center {\r\n    justify-content: center !important;\r\n}\r\n\r\n.d-flex {\r\n    display: flex !important;\r\n}\r\n\r\n.ml-n6 {\r\n    margin-left: -4rem !important;\r\n}\r\n\r\n.adjust-label-more {\r\n    margin-left: 35%!important;\r\n}\r\n\r\n.scrollbar-hidden::-webkit-scrollbar {\r\n    display: none;\r\n}\r\n\r\n\r\n/* Hide scrollbar for IE, Edge add Firefox */\r\n\r\n.scrollbar-hidden {\r\n    -ms-overflow-style: none;\r\n    scrollbar-width: none;\r\n    /* Firefox */\r\n}\r\n\r\n.m-result {\r\n    text-align: center;\r\n    margin-top: 0px;\r\n    visibility: visible;\r\n    margin-bottom: -8.5em;\r\n    /* margin-right: 50px; */\r\n}\r\n\r\n@media only screen and (max-width: 320px) and (min-width: 320px) {\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px !important;\r\n        visibility: visible ;\r\n        margin-bottom: -5.5em !important;\r\n        margin-right: 50px !important;\r\n    }\r\n    .dfOagu {\r\n        margin-left: 25px;\r\n        margin-top: 0px ;\r\n        margin-right: 40px !important;\r\n    }\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 106px 1fr !important;\r\n        justify-self: flex-end;\r\n    }\r\n    .selected-product-arrow-left {\r\n        background: rgba(255, 255, 255, 0.5);\r\n        z-index: 30;\r\n        /* margin-right: -26px !important; */\r\n        margin-left: 38px;\r\n        margin-right: 28px !important;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 1.4em;\r\n    }\r\n}\r\n\r\n.float-left {\r\n    float: left !important;\r\n}\r\n\r\n.float-right {\r\n    float: right !important;\r\n}\r\n\r\n.float-none {\r\n    float: none !important;\r\n}\r\n\r\n.fit-advisor-fit-grid-s5 {\r\n    display: block;\r\n    grid-template-columns: 1fr 1fr;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border: none;\r\n    margin-bottom: 15px;\r\n    margin-left: -43px;\r\n    padding: 10px 20px;\r\n    box-shadow: none;\r\n}\r\n\r\n@media (min-width: 576px) {\r\n    .col-sm {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-sm-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-sm-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-sm-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-sm-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-sm-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-sm-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-sm-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-sm-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-sm-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-sm-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-sm-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-sm-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-sm-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-sm-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-sm-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-sm-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-sm-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-sm-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-sm-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-sm-first {\r\n        order: -1;\r\n    }\r\n    .order-sm-last {\r\n        order: 13;\r\n    }\r\n    .order-sm-0 {\r\n        order: 0;\r\n    }\r\n    .order-sm-1 {\r\n        order: 1;\r\n    }\r\n    .order-sm-2 {\r\n        order: 2;\r\n    }\r\n    .order-sm-3 {\r\n        order: 3;\r\n    }\r\n    .order-sm-4 {\r\n        order: 4;\r\n    }\r\n    .order-sm-5 {\r\n        order: 5;\r\n    }\r\n    .order-sm-6 {\r\n        order: 6;\r\n    }\r\n    .order-sm-7 {\r\n        order: 7;\r\n    }\r\n    .order-sm-8 {\r\n        order: 8;\r\n    }\r\n    .order-sm-9 {\r\n        order: 9;\r\n    }\r\n    .order-sm-10 {\r\n        order: 10;\r\n    }\r\n    .order-sm-11 {\r\n        order: 11;\r\n    }\r\n    .order-sm-12 {\r\n        order: 12;\r\n    }\r\n    .offset-sm-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-sm-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-sm-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-sm-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-sm-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-sm-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-sm-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-sm-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-sm-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-sm-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-sm-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-sm-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    .col-md {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-md-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-md-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-md-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-md-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-md-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-md-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-md-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-md-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-md-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-md-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-md-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-md-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-md-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-md-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-md-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-md-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-md-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-md-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-md-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-md-first {\r\n        order: -1;\r\n    }\r\n    .order-md-last {\r\n        order: 13;\r\n    }\r\n    .order-md-0 {\r\n        order: 0;\r\n    }\r\n    .order-md-1 {\r\n        order: 1;\r\n    }\r\n    .order-md-2 {\r\n        order: 2;\r\n    }\r\n    .order-md-3 {\r\n        order: 3;\r\n    }\r\n    .order-md-4 {\r\n        order: 4;\r\n    }\r\n    .order-md-5 {\r\n        order: 5;\r\n    }\r\n    .order-md-6 {\r\n        order: 6;\r\n    }\r\n    .order-md-7 {\r\n        order: 7;\r\n    }\r\n    .order-md-8 {\r\n        order: 8;\r\n    }\r\n    .order-md-9 {\r\n        order: 9;\r\n    }\r\n    .order-md-10 {\r\n        order: 10;\r\n    }\r\n    .order-md-11 {\r\n        order: 11;\r\n    }\r\n    .order-md-12 {\r\n        order: 12;\r\n    }\r\n    .offset-md-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-md-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-md-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-md-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-md-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-md-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-md-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-md-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-md-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-md-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-md-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-md-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n    .col-lg {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-lg-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-lg-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-lg-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-lg-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-lg-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-lg-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-lg-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-lg-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-lg-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-lg-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-lg-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-lg-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-lg-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-lg-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-lg-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-lg-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-lg-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-lg-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-lg-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-lg-first {\r\n        order: -1;\r\n    }\r\n    .order-lg-last {\r\n        order: 13;\r\n    }\r\n    .order-lg-0 {\r\n        order: 0;\r\n    }\r\n    .order-lg-1 {\r\n        order: 1;\r\n    }\r\n    .order-lg-2 {\r\n        order: 2;\r\n    }\r\n    .order-lg-3 {\r\n        order: 3;\r\n    }\r\n    .order-lg-4 {\r\n        order: 4;\r\n    }\r\n    .order-lg-5 {\r\n        order: 5;\r\n    }\r\n    .order-lg-6 {\r\n        order: 6;\r\n    }\r\n    .order-lg-7 {\r\n        order: 7;\r\n    }\r\n    .order-lg-8 {\r\n        order: 8;\r\n    }\r\n    .order-lg-9 {\r\n        order: 9;\r\n    }\r\n    .order-lg-10 {\r\n        order: 10;\r\n    }\r\n    .order-lg-11 {\r\n        order: 11;\r\n    }\r\n    .order-lg-12 {\r\n        order: 12;\r\n    }\r\n    .offset-lg-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-lg-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-lg-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-lg-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-lg-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-lg-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-lg-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-lg-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-lg-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-lg-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-lg-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-lg-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n    .col-xl {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-xl-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-xl-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-xl-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-xl-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-xl-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-xl-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-xl-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-xl-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-xl-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-xl-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-xl-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-xl-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-xl-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-xl-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-xl-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-xl-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-xl-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-xl-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-xl-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-xl-first {\r\n        order: -1;\r\n    }\r\n    .order-xl-last {\r\n        order: 13;\r\n    }\r\n    .order-xl-0 {\r\n        order: 0;\r\n    }\r\n    .order-xl-1 {\r\n        order: 1;\r\n    }\r\n    .order-xl-2 {\r\n        order: 2;\r\n    }\r\n    .order-xl-3 {\r\n        order: 3;\r\n    }\r\n    .order-xl-4 {\r\n        order: 4;\r\n    }\r\n    .order-xl-5 {\r\n        order: 5;\r\n    }\r\n    .order-xl-6 {\r\n        order: 6;\r\n    }\r\n    .order-xl-7 {\r\n        order: 7;\r\n    }\r\n    .order-xl-8 {\r\n        order: 8;\r\n    }\r\n    .order-xl-9 {\r\n        order: 9;\r\n    }\r\n    .order-xl-10 {\r\n        order: 10;\r\n    }\r\n    .order-xl-11 {\r\n        order: 11;\r\n    }\r\n    .order-xl-12 {\r\n        order: 12;\r\n    }\r\n    .offset-xl-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-xl-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-xl-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-xl-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-xl-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-xl-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-xl-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-xl-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-xl-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-xl-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-xl-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-xl-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n.text-center {\r\n    text-align: center !important;\r\n}\r\n.text-truncate {\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.text-left {\r\n    text-align: left !important;\r\n}\r\n\r\n.text-right {\r\n    text-align: right !important;\r\n}\r\n.ml-xl-6,\r\n    .mx-xl-6 {\r\n        margin-left: 6rem !important;\r\n    }.ml-xl-11,\r\n    .mx-xl-11 {\r\n        margin-left: 11rem !important;\r\n    }\r\n    .ml-xl-12,\r\n    .mx-xl-12 {\r\n        margin-left: 12rem !important;\r\n    }\r\n    .center-force {\r\n        margin: 0;\r\n        position: sticky;\r\n        top: 50%;\r\n        left: 50%;\r\n        -ms-transform: translate(-50%, -50%);\r\n        transform: translate(-50%, -50%);\r\n      }\r\n      .spinner-position{\r\n        width: 3rem;\r\n        height: 3rem;\r\n        margin-left: 0px;\r\n      }\r\n      .dfOagu-411w {\r\n        margin-left: 50px;\r\n        margin-top: 5px;\r\n    }\r\n    .someclass {\r\n        cursor: default\r\n     }\r\n\r\n                                                                                            /* bodyfit-modal */\r\n\r\n                                                                                            \r\n.bodyfit-modal-open {\r\n    overflow: hidden;\r\n  }\r\n  .bodyfit-modal-open .bodyfit-modal {\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n  }\r\n  \r\n  .bodyfit-modal {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1050;\r\n    display: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: hidden;\r\n    outline: 0;\r\n  }\r\n  \r\n  .bodyfit-modal-dialog {\r\n    position: relative;\r\n    width: auto;\r\n    margin: 0.5rem;\r\n    pointer-events: none;\r\n  }\r\n  .bodyfit-modal.fade .bodyfit-modal-dialog {\r\n    transition: transform 0.3s ease-out;\r\n    transform: translate(0, -50px);\r\n  }\r\n  @media (prefers-reduced-motion: reduce) {\r\n    .bodyfit-modal.fade .bodyfit-modal-dialog {\r\n      transition: none;\r\n    }\r\n  }\r\n  .bodyfit-modal.show .bodyfit-modal-dialog {\r\n    transform: none;\r\n  }\r\n  .bodyfit-modal.bodyfit-modal-static .bodyfit-modal-dialog {\r\n    transform: scale(1.02);\r\n  }\r\n  \r\n  .bodyfit-modal-dialog-scrollable {\r\n    display: flex;\r\n    max-height: calc(100% - 1rem);\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n    max-height: calc(100vh - 1rem);\r\n    overflow: hidden;\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-header,\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-footer {\r\n    flex-shrink: 0;\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-body {\r\n    overflow-y: auto;\r\n  }\r\n  \r\n  .bodyfit-modal-dialog-centered {\r\n    display: flex;\r\n    align-items: center;\r\n    min-height: calc(100% - 1rem);\r\n  }\r\n  .bodyfit-modal-dialog-centered::before {\r\n    display: block;\r\n    height: calc(100vh - 1rem);\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n    content: \"\";\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable {\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n    max-height: none;\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable::before {\r\n    content: none;\r\n  }\r\n  \r\n  .bodyfit-modal-content {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n    pointer-events: auto;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid rgba(0, 0, 0, 0.2);\r\n    border-radius: 0.3rem;\r\n    outline: 0;\r\n  }\r\n  \r\n  .bodyfit-modal-backdrop {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1040;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: #000;\r\n  }\r\n  .bodyfit-modal-backdrop.fade {\r\n    opacity: 0;\r\n  }\r\n  .bodyfit-modal-backdrop.show {\r\n    opacity: 0.5;\r\n  }\r\n  \r\n  .bodyfit-modal-header {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    justify-content: space-between;\r\n    padding: 1rem 1rem;\r\n    border-bottom: 1px solid #dee2e6;\r\n    border-top-left-radius: calc(0.3rem - 1px);\r\n    border-top-right-radius: calc(0.3rem - 1px);\r\n  }\r\n  .bodyfit-modal-header .close {\r\n    padding: 1rem 1rem;\r\n    margin: -1rem -1rem -1rem auto;\r\n  }\r\n  \r\n  .bodyfit-modal-title {\r\n    margin-bottom: 0;\r\n    line-height: 1.6;\r\n  }\r\n  \r\n  .bodyfit-modal-body {\r\n    position: relative;\r\n    flex: 1 1 auto;\r\n    padding: 1rem;\r\n  }\r\n  \r\n  .bodyfit-modal-footer {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    padding: 0.75rem;\r\n    border-top: 1px solid #dee2e6;\r\n    border-bottom-right-radius: calc(0.3rem - 1px);\r\n    border-bottom-left-radius: calc(0.3rem - 1px);\r\n  }\r\n  .bodyfit-modal-footer > * {\r\n    margin: 0.25rem;\r\n  }\r\n  \r\n  .bodyfit-modal-scrollbar-measure {\r\n    position: absolute;\r\n    top: -9999px;\r\n    width: 50px;\r\n    height: 50px;\r\n    overflow: scroll;\r\n  }\r\n  \r\n  @media (min-width: 576px) {\r\n    .bodyfit-modal-dialog {\r\n      max-width: 500px;\r\n      margin: 1.75rem auto;\r\n    }\r\n  \r\n    .bodyfit-modal-dialog-scrollable {\r\n      max-height: calc(100% - 3.5rem);\r\n    }\r\n    .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n      max-height: calc(100vh - 3.5rem);\r\n    }\r\n  \r\n    .bodyfit-modal-dialog-centered {\r\n      min-height: calc(100% - 3.5rem);\r\n    }\r\n    .bodyfit-modal-dialog-centered::before {\r\n      height: calc(100vh - 3.5rem);\r\n      height: -webkit-min-content;\r\n      height: -moz-min-content;\r\n      height: min-content;\r\n    }\r\n  \r\n    .bodyfit-modal-sm {\r\n      max-width: 300px;\r\n    }\r\n  }\r\n  @media (min-width: 992px) {\r\n    .bodyfit-modal-lg,\r\n  .bodyfit-modal-xl {\r\n      max-width: 800px;\r\n    }\r\n  }\r\n  @media (min-width: 1200px) {\r\n    .bodyfit-modal-xl {\r\n      max-width: 1140px;\r\n    }\r\n  }", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bigsize {\r\n    grid-template-columns: 1fr 213px 1fr !important;\r\n}\r\n\r\n.big-size-margin {\r\n    margin-left: 35px !important;\r\n}\r\n\r\n.big-size-margin-recommend-size {\r\n    margin-left: 50px !important;\r\n}\r\n\r\n.final-size-label {\r\n    font-family: Karla;\r\n    font-weight: 600;\r\n    font-size: small !important;\r\n    margin-left: 10px;\r\n    text-decoration: underline;\r\n}\r\n\r\n.final-size-heading {\r\n    font-family: 'Montserrat';\r\n    font-weight: 900;\r\n    font-size: small;\r\n    margin-left: 10px;\r\n    margin-top: 20px;\r\n}\r\n\r\n.fit-advisor-header-desc-mt {\r\n    margin-top: 40px !important;\r\n}\r\n\r\n.dfOagu {\r\n    margin-left: 50px;\r\n    margin-top: 0px;\r\n}\r\n\r\n.dfOagu-second {\r\n    margin-left: 10px;\r\n    margin-top: 0px ;\r\n}\r\n\r\n.result-size {\r\n    width: 100%;\r\n    font-family: karla;\r\n    font-weight: 900;\r\n    font-size: 106px;\r\n}\r\n\r\n.introfirst {\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 15px !important;\r\n    word-spacing: 5px !important;\r\n}\r\n\r\n#intro1 {\r\n    display: block;\r\n}\r\n\r\n#intro2 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro3 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro4 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro5 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n.find-fit-header {\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    /* margin-top: 40px !important; */\r\n    word-spacing: 5px !important;\r\n}\r\n\r\n.fit-advisor-chest-tab-item:hover {\r\n    /* display: grid; */\r\n    /* justify-content: center; */\r\n    /* align-items: center; */\r\n    /* text-align: center; */\r\n    /* cursor: pointer; */\r\n    transform: scale(0.95) !important;\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked {\r\n    background: rgb(2, 2, 2);\r\n}\r\n\r\n.img_country {\r\n    width: 8% !important;\r\n    margin: 0 auto !important;\r\n    margin-left: -105px !important;\r\n}\r\n\r\n.countrycheck {\r\n    width: 3% !important;\r\n    margin: 0 auto !important\r\n}\r\n\r\n.no-gutters {\r\n    margin-right: 0;\r\n    margin-left: 0;\r\n}\r\n\r\n.row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: 10px;\r\n    margin-left: 35px;\r\n    margin-top: 10px !important;\r\n}\r\n\r\n\r\n/* \r\n.col-xl,\r\n.col-xl-auto,\r\n.col-xl-12,\r\n.col-xl-11,\r\n.col-xl-10,\r\n.col-xl-9,\r\n.col-xl-8,\r\n.col-xl-7,\r\n.col-xl-6,\r\n.col-xl-5,\r\n.col-xl-4,\r\n.col-xl-3,\r\n.col-xl-2,\r\n.col-xl-1,\r\n.col-lg,\r\n.col-lg-auto,\r\n.col-lg-12,\r\n.col-lg-11,\r\n.col-lg-10,\r\n.col-lg-9,\r\n.col-lg-8,\r\n.col-lg-7,\r\n.col-lg-6,\r\n.col-lg-5,\r\n.col-lg-4,\r\n.col-lg-3,\r\n.col-lg-2,\r\n.col-lg-1,\r\n.col-md,\r\n.col-md-auto,\r\n.col-md-12,\r\n.col-md-11,\r\n.col-md-10,\r\n.col-md-9,\r\n.col-md-8,\r\n.col-md-7,\r\n.col-md-6,\r\n.col-md-5,\r\n.col-md-4,\r\n.col-md-3,\r\n.col-md-2,\r\n.col-md-1,\r\n.col-sm,\r\n.col-sm-auto,\r\n.col-sm-12,\r\n.col-sm-11,\r\n.col-sm-10,\r\n.col-sm-9,\r\n.col-sm-8,\r\n.col-sm-7,\r\n.col-sm-6,\r\n.col-sm-5,\r\n.col-sm-4,\r\n.col-sm-3,\r\n.col-sm-2,\r\n.col-sm-1,\r\n.col,\r\n.col-auto,\r\n.col-12,\r\n.col-11,\r\n.col-10,\r\n.col-9,\r\n.col-8,\r\n.col-7,\r\n.col-6,\r\n.col-5,\r\n.col-4,\r\n.col-3,\r\n.col-2,\r\n.col-1 {\r\n    position: relative;\r\n    width: 100%;\r\n    padding-right: 15px;\r\n    padding-left: 15px;\r\n} */\r\n\r\n.col-xl-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-xl-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-xl-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-xl-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-xl-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-xl-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-xl-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-xl-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-xl-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-xl-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-xl-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-xl-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-xl-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-lg-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-lg-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-lg-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-lg-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-lg-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-lg-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-lg-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-lg-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-lg-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-lg-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-lg-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-lg-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-lg-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n\r\n/* style for steps form */\r\n\r\ninput::-webkit-outer-spin-button,\r\ninput::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n* {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.size-position {\r\n    margin-left: -80px !important;\r\n    margin-top: -44px !important;\r\n}\r\n\r\nbody {\r\n    background-color: #ffffff !important;\r\n}\r\n\r\n#regForm {\r\n    background-color: #ffffff;\r\n    margin: 100px auto;\r\n    font-family: Raleway;\r\n    padding: 40px;\r\n    width: 70%;\r\n    min-width: 300px;\r\n    margin-top: 135px !important;\r\n}\r\n\r\n\r\n\r\ninput {\r\n    padding: 10px;\r\n    width: 100%;\r\n    font-size: 17px;\r\n    font-family: Raleway;\r\n    border: 1px solid #aaaaaa;\r\n}\r\n\r\n\r\n/* Mark input boxes that gets an error on validation: */\r\n\r\ninput.invalid {\r\n    border-bottom: 1px solid #fb6c6c !important;\r\n}\r\n\r\n\r\n/* Hide all steps by default: */\r\n\r\n.tab {\r\n    display: none;\r\n}\r\n\r\nbutton {\r\n    background-color: #04AA6D;\r\n    color: #ffffff;\r\n    border: none;\r\n    padding: 10px 20px;\r\n    font-size: 17px;\r\n    font-family: Raleway;\r\n    cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n#prevBtn {\r\n    background-color: #bbbbbb;\r\n}\r\n\r\n\r\n/* Make circles that indicate the steps of the form: */\r\n\r\n.step {\r\n    height: 10px;\r\n    width: 10px;\r\n    margin: 0px 7px;\r\n    background-color: #000000;\r\n    border: none;\r\n    border-radius: 50%;\r\n    display: inline-block;\r\n    opacity: 0.5;\r\n}\r\n\r\n.step.active {\r\n    opacity: 1;\r\n}\r\n\r\n\r\n/* Mark the steps that are finished and valid: */\r\n\r\n.step.finish {\r\n    background-color: #000000;\r\n}\r\n\r\n\r\n/*   END STYLE FOR STEPS FORM */\r\n\r\n.box {\r\n    background-color: #ffffff;\r\n}\r\n\r\n\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\r\n\r\n.overlay {\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: rgba(0, 0, 0, 0.7);\r\n    transition: opacity 500ms;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n.overlay:target {\r\n    visibility: visible;\r\n    opacity: 1;\r\n}\r\n\r\n.popup {\r\n    margin: 70px auto;\r\n    padding: 20px;\r\n    background: #fff;\r\n    border-radius: 5px;\r\n    width: 30%;\r\n    position: relative;\r\n    transition: all 5s ease-in-out;\r\n}\r\n\r\n.popup h2 {\r\n    margin-top: 0;\r\n    color: #333;\r\n    font-family: Tahoma, Arial, sans-serif;\r\n}\r\n\r\n.popup .close {\r\n    position: absolute;\r\n    /* top: 20px; */\r\n    right: 30px;\r\n    /* transition: all 200ms; */\r\n    font-size: 30px;\r\n    font-weight: normal;\r\n    text-decoration: none;\r\n    color: rgb(127, 127, 127);\r\n}\r\n\r\n.popup .close:hover {\r\n    color: #020202;\r\n}\r\n\r\n.popup .content {\r\n    max-height: 30%;\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\r\n\r\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\r\n}\r\n\r\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    user-select: none;\r\n}\r\n\r\n.continue-btn {\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n}\r\n\r\n.fit-advisor-intro {\r\n    text-align: center;\r\n    margin-bottom: 50px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    /* margin-top: -22px; */\r\n    font-family: karla !important;\r\n}\r\n\r\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\r\n}\r\n\r\n.lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n\r\n\r\n/* code for form */\r\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n    font-family: 'Roboto', sans-serif;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody::after,\r\nbody::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n    box-sizing: border-box;\r\n}\r\n/* \r\nh1 {\r\n    font-size: 2rem;\r\n    text-align: center;\r\n    margin: 0 0 2em;\r\n} */\r\n\r\n.container {\r\n    position: relative;\r\n    max-width: 40rem;\r\n    margin: 5rem auto;\r\n    background: #fff;\r\n    width: 100%;\r\n    padding: 3rem 5rem 0;\r\n    border-radius: 1px;\r\n}\r\n\r\n.container::before {\r\n    content: '';\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n    -webkit-transform: scale(0.98);\r\n    transform: scale(0.98);\r\n    -webkit-transition: -webkit-transform 0.28s ease-in-out;\r\n    transition: -webkit-transform 0.28s ease-in-out;\r\n    transition: transform 0.28s ease-in-out;\r\n    transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;\r\n    z-index: -1;\r\n}\r\n\r\n.container:hover::before {\r\n    -webkit-transform: scale(1);\r\n    transform: scale(1);\r\n}\r\n\r\n.button-container {\r\n    text-align: center;\r\n}\r\n\r\nfieldset {\r\n    margin: 0 0 3rem;\r\n    padding: 0;\r\n    border: none;\r\n}\r\n\r\n.form-radio,\r\n.form-group {\r\n    position: relative;\r\n    margin-top: 2.25rem;\r\n    margin-bottom: 2.25rem;\r\n}\r\n\r\n.form-inline>.form-group,\r\n.form-inline>.btn {\r\n    display: inline-block;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.form-help {\r\n    margin-top: 0.125rem;\r\n    margin-left: 0.125rem;\r\n    color: #b3b3b3;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.checkbox .form-help,\r\n.form-radio .form-help,\r\n.form-group .form-help {\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.checkbox .form-help {\r\n    position: relative;\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.form-radio .form-help {\r\n    padding-top: 0.25rem;\r\n    margin-top: -1rem;\r\n}\r\n\r\n.form-group input {\r\n    height: 1.9rem;\r\n}\r\n\r\n.form-group textarea {\r\n    resize: none;\r\n}\r\n\r\n.form-group select {\r\n    width: 100%;\r\n    font-size: 1rem;\r\n    height: 1.6rem;\r\n    padding: 0.125rem 0.125rem 0.0625rem;\r\n    background: none;\r\n    border: none;\r\n    line-height: 1.6;\r\n    box-shadow: none;\r\n}\r\n\r\n.form-group .control-label {\r\n    position: absolute;\r\n    top: 0.25rem;\r\n    pointer-events: none;\r\n    padding-left: 0.125rem;\r\n    z-index: 1;\r\n    color: #b3b3b3;\r\n    font-size: 1rem;\r\n    font-weight: normal;\r\n    -webkit-transition: all 0.28s ease;\r\n    transition: all 0.28s ease;\r\n}\r\n\r\n.form-group .bar {\r\n    position: relative;\r\n    border-bottom: 0.0625rem solid #999;\r\n    display: block;\r\n}\r\n\r\n.form-group .bar::before {\r\n    content: '';\r\n    height: 0.125rem;\r\n    width: 0;\r\n    left: 50%;\r\n    bottom: -0.0625rem;\r\n    position: absolute;\r\n    background: #337ab7;\r\n    -webkit-transition: left 0.28s ease, width 0.28s ease;\r\n    transition: left 0.28s ease, width 0.28s ease;\r\n    z-index: 2;\r\n}\r\n\r\n.form-group input,\r\n.form-group textarea {\r\n    display: block;\r\n    background: none;\r\n    padding: 0.125rem 0.125rem 0.0625rem;\r\n    font-size: 1rem;\r\n    border-width: 0;\r\n    border-color: transparent;\r\n    line-height: 1.9;\r\n    width: 100%;\r\n    color: transparent;\r\n    -webkit-transition: all 0.28s ease;\r\n    transition: all 0.28s ease;\r\n    box-shadow: none;\r\n}\r\n\r\n.form-group input[type=\"file\"] {\r\n    line-height: 1;\r\n}\r\n\r\n.form-group input[type=\"file\"]~.bar {\r\n    display: none;\r\n}\r\n\r\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n    color: #333;\r\n}\r\n\r\n.form-group select~.control-label,\r\n.form-group input:focus~.control-label,\r\n.form-group input:valid~.control-label,\r\n.form-group input.form-file~.control-label,\r\n.form-group input.has-value~.control-label,\r\n.form-group textarea:focus~.control-label,\r\n.form-group textarea:valid~.control-label,\r\n.form-group textarea.form-file~.control-label,\r\n.form-group textarea.has-value~.control-label {\r\n    font-size: 0.8rem;\r\n    color: gray;\r\n    top: -1rem;\r\n    left: 0;\r\n}\r\n\r\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n    outline: none;\r\n}\r\n\r\n.form-group select:focus~.control-label,\r\n.form-group input:focus~.control-label,\r\n.form-group textarea:focus~.control-label {\r\n    color: #337ab7;\r\n}\r\n\r\n.form-group select:focus~.bar::before,\r\n.form-group input:focus~.bar::before,\r\n.form-group textarea:focus~.bar::before {\r\n    width: 100%;\r\n    left: 0;\r\n}\r\n\r\n.checkbox label,\r\n.form-radio label {\r\n    position: relative;\r\n    cursor: pointer;\r\n    padding-left: 2rem;\r\n    text-align: left;\r\n    color: #333;\r\n    display: block;\r\n}\r\n\r\n.checkbox input,\r\n.form-radio input {\r\n    width: auto;\r\n    opacity: 0.00000001;\r\n    position: absolute;\r\n    left: 0;\r\n}\r\n\r\n.radio {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.radio .helper {\r\n    position: absolute;\r\n    top: -0.25rem;\r\n    left: -0.25rem;\r\n    cursor: pointer;\r\n    display: block;\r\n    font-size: 1rem;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    color: #999;\r\n}\r\n\r\n.radio .helper::before,\r\n.radio .helper::after {\r\n    content: '';\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    margin: 0.25rem;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    -webkit-transition: -webkit-transform 0.28s ease;\r\n    transition: -webkit-transform 0.28s ease;\r\n    transition: transform 0.28s ease;\r\n    transition: transform 0.28s ease, -webkit-transform 0.28s ease;\r\n    border-radius: 50%;\r\n    border: 0.125rem solid currentColor;\r\n}\r\n\r\n.radio .helper::after {\r\n    -webkit-transform: scale(0);\r\n    transform: scale(0);\r\n    background-color: #337ab7;\r\n    border-color: #337ab7;\r\n}\r\n\r\n.radio label:hover .helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.radio input:checked~.helper::after {\r\n    -webkit-transform: scale(0.5);\r\n    transform: scale(0.5);\r\n}\r\n\r\n.radio input:checked~.helper::before {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox {\r\n    margin-top: 3rem;\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.checkbox .helper {\r\n    color: #999;\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 0;\r\n    border: 0.125rem solid currentColor;\r\n    border-radius: 0.0625rem;\r\n    -webkit-transition: border-color 0.28s ease;\r\n    transition: border-color 0.28s ease;\r\n}\r\n\r\n.checkbox .helper::before,\r\n.checkbox .helper::after {\r\n    position: absolute;\r\n    height: 0;\r\n    width: 0.2rem;\r\n    background-color: #337ab7;\r\n    display: block;\r\n    -webkit-transform-origin: left top;\r\n    transform-origin: left top;\r\n    border-radius: 0.25rem;\r\n    content: '';\r\n    -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    opacity: 0;\r\n}\r\n\r\n.checkbox .helper::before {\r\n    top: 0.65rem;\r\n    left: 0.38rem;\r\n    -webkit-transform: rotate(-135deg);\r\n    transform: rotate(-135deg);\r\n    box-shadow: 0 0 0 0.0625rem #fff;\r\n}\r\n\r\n.checkbox .helper::after {\r\n    top: 0.3rem;\r\n    left: 0;\r\n    -webkit-transform: rotate(-45deg);\r\n    transform: rotate(-45deg);\r\n}\r\n\r\n.checkbox label:hover .helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox input:checked~.helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox input:checked~.helper::after,\r\n.checkbox input:checked~.helper::before {\r\n    opacity: 1;\r\n    -webkit-transition: height 0.28s ease;\r\n    transition: height 0.28s ease;\r\n}\r\n\r\n.checkbox input:checked~.helper::after {\r\n    height: 0.5rem;\r\n}\r\n\r\n.checkbox input:checked~.helper::before {\r\n    height: 1.2rem;\r\n    -webkit-transition-delay: 0.28s;\r\n    transition-delay: 0.28s;\r\n}\r\n\r\n.radio+.radio,\r\n.checkbox+.checkbox {\r\n    margin-top: 1rem;\r\n}\r\n\r\n.has-error .legend.legend,\r\n.has-error.form-group .control-label.control-label {\r\n    color: #d9534f;\r\n}\r\n\r\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper,\r\n.has-error.checkbox .form-help,\r\n.has-error.checkbox .helper,\r\n.has-error.radio .form-help,\r\n.has-error.radio .helper,\r\n.has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n    color: #d9534f;\r\n}\r\n\r\n.has-error .bar::before {\r\n    background: #d9534f;\r\n    left: 0;\r\n    width: 100%;\r\n}\r\n\r\n.button {\r\n    position: relative;\r\n    border: 1px solid currentColor;\r\n    font-size: 1.1rem;\r\n    color: #000;\r\n    margin: 3rem 0;\r\n    padding: 0.75rem 3rem;\r\n    cursor: pointer;\r\n    -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n    transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n    overflow: hidden;\r\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.button span {\r\n    color: #fff;\r\n    position: relative;\r\n    z-index: 1;\r\n}\r\n\r\n.button::before {\r\n    content: '';\r\n    position: absolute;\r\n    background: #071017;\r\n    border: 50vh solid #1d4567;\r\n    width: 30vh;\r\n    height: 30vh;\r\n    border-radius: 50%;\r\n    display: block;\r\n    top: 50%;\r\n    left: 50%;\r\n    z-index: 0;\r\n    opacity: 1;\r\n    -webkit-transform: translate(-50%, -50%) scale(0);\r\n    transform: translate(-50%, -50%) scale(0);\r\n}\r\n\r\n.button:hover {\r\n    color: #337ab7;\r\n    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.button:active::before,\r\n.button:focus::before {\r\n    -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n    transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    -webkit-transform: translate(-50%, -50%) scale(1);\r\n    transform: translate(-50%, -50%) scale(1);\r\n    opacity: 0;\r\n}\r\n\r\n.button:focus {\r\n    outline: none;\r\n}\r\n\r\n.fit-advisor-hr {\r\n    margin-top: -15px !important;\r\n}\r\n\r\n\r\n/* input field design */\r\n\r\n ::-webkit-input-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n::-moz-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n:-ms-input-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n::placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n.fit-advisor-custom_row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -15px;\r\n    margin-left: -15px;\r\n}\r\n\r\n.fit-advisor-custom_input {\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;\r\n}\r\n\r\n.custom-offset {\r\n    margin-left: 43px !important;\r\n}\r\n\r\n.labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: karla !important;\r\n    line-height: 18px !important;\r\n    font-weight: 400 !important;\r\n    font-style: normal;\r\n}\r\n\r\n.custom-offset-lg {\r\n    margin-left: 44%;\r\n}\r\n\r\n.adjust-label {\r\n    margin-left: 0%!important;\r\n}\r\n\r\n.adjust-label-age {\r\n    margin-left: 0%!important;\r\n}\r\n\r\ninput::placeholder {\r\n    font-size: 12px !important\r\n}\r\n\r\ntextarea:focus,\r\ninput:focus {\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255) !important;\r\n}\r\n\r\n.fit-advisor-custom_previous_btn {\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 0.5;\r\n}\r\n\r\n.fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px 40px;\r\n}\r\n\r\n.fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n\r\n.fit-advisor-options-img {\r\n    width: 265.667px;\r\n    height: 222.667px;\r\n}\r\n\r\n.fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\r\n}\r\n\r\n.product-card {\r\n    position: relative;\r\n    z-index: -1;\r\n}\r\n\r\n.fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n    margin-left: 35px !important;\r\n}\r\n\r\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n}\r\n\r\n.fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -40px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n\r\n.next {\r\n    margin-top: -10px !important;\r\n}\r\n\r\n.fit-advisor-product-picture {\r\n    margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\r\n}\r\n\r\n.fit-advisor-popup-adjustments {\r\n    width: 50% !important;\r\n    overflow-y: scroll !important;\r\n}\r\n\r\n.gIdEkK p {\r\n    margin: unset;\r\n}\r\n\r\n.learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n\r\n.fit-advisor-header-desc {\r\n    padding: 10px;\r\n    text-align: center;\r\n    color: rgb(0 0 0);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\r\n    font-family: karla !important;\r\n}\r\n\r\n.gIdEkK p {\r\n    margin: unset;\r\n}\r\n\r\n.jjnwUS {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    margin-left: 50px;\r\n}\r\n\r\n.fit-advisor-product-size-box {\r\n    padding: 0px;\r\n}\r\n\r\n.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin: 0 auto;\r\n    /* margin-left:50px; */\r\n    display: block;\r\n}\r\n\r\n.fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 198px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n\r\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right: 50px !important;\r\n}\r\n\r\n.selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n\r\n.fit-advisor-selected-size-container {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.fit-advisor-product-btn-to-cart {\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n\r\n.fit-advisor-inch {\r\n    margin-left: 73% !important;\r\n    margin-top: -27% !important;\r\n}\r\n\r\n.fit-advisor-agelabel {\r\n    margin-top: -26px !important;\r\n}\r\n\r\n.fit-advisor-agelabel-span {\r\n    margin-left: -68px !important;\r\n    margin-top: 6px !important;\r\n}\r\n\r\n.fit-advisor-age-input {\r\n    margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\r\n}\r\n\r\n.fit-advisor-logo {\r\n    margin-left: 43% !important;\r\n}\r\n\r\n\r\n/*   //responsiveness of bodyfit-modal */\r\n\r\n@media (min-width:320px) and (max-width:480px) {\r\n    .dfOagu{\r\n        margin-left: 50px;\r\n         margin-top: 0px  !important  ;\r\n    }\r\n    .spinner-position{\r\n        width: 2rem !important;\r\n        height: 2rem !important;\r\n        margin-left:0px !important;\r\n        \r\n      }\r\n    /* smartphones, iPhone, portrait 480x320 phones */\r\n    .ml-xl-spinner\r\n    {\r\n        margin-left:12rem !important;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 1.4em;\r\n    }\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px !important;\r\n        visibility: visible ;\r\n        margin-bottom: 4.5em !important;\r\n        margin-right: 0px !important;\r\n    }\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 128px 1fr;\r\n        justify-self: flex-end;\r\n    }\r\n    .bigsize {\r\n        grid-template-columns: 1fr 150px 1fr !important;\r\n    }\r\n    .big-size-margin-recommend-size {\r\n        margin-left: 15px !important;\r\n    }\r\n    .big-size-margin {\r\n        margin-left: 35px !important;\r\n    }\r\n    .final-size-label {\r\n        font-family: Karla;\r\n        font-weight: 600;\r\n        font-size: small !important;\r\n        margin-left: 10px;\r\n        text-decoration: underline;\r\n    }\r\n    .final-size-heading {\r\n        font-family: 'Montserrat';\r\n        font-weight: 900;\r\n        font-size: x-large;\r\n        margin-left: 10px;\r\n    }\r\n    .row {\r\n        display: flex;\r\n        flex-wrap: wrap;\r\n        margin-right: -27px;\r\n        margin-left: -32px;\r\n        margin-top: 10px !important;\r\n        margin-bottom: 50px;\r\n    }\r\n    .adjust-label {\r\n        margin-left: 35%!important;\r\n    }\r\n    .adjust-label-5s {\r\n        margin-left: 10%!important;\r\n    }\r\n    .adjust-label-age {\r\n        margin-left: 40%!important;\r\n    }\r\n    .adjust-label-age-5s {\r\n        margin-left: 15%!important;\r\n    }\r\n    .fit-advisor-intro {\r\n        text-align: center;\r\n        margin-bottom: 50px !important;\r\n        letter-spacing: 0.04em;\r\n        color: rgb(0, 0, 0);\r\n        -webkit-user-select: none;\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        user-select: none;\r\n        font-style: normal !important;\r\n        font-weight: normal !important;\r\n        font-size: 14px !important;\r\n        line-height: 26px !important;\r\n        margin-top: -22px;\r\n        font-family: karla !important;\r\n    }\r\n    .fit-advisor-popup-adjustments {\r\n        width: 100% !important;\r\n        overflow: none;\r\n    }\r\n    .fit-advisor-custom_input {\r\n        display: block;\r\n        width: 50%;\r\n        margin: 0px;\r\n        padding: 10px 0px;\r\n        background: 0px center;\r\n        border-radius: 0px;\r\n        border-width: 0px 0px 1px;\r\n        border-top-style: initial;\r\n        border-right-style: initial;\r\n        border-left-style: initial;\r\n        border-top-color: initial;\r\n        border-right-color: initial;\r\n        border-left-color: initial;\r\n        border-image: initial;\r\n        border-bottom-style: solid;\r\n        border-bottom-color: rgb(175, 175, 175);\r\n        transition: border 0.2s ease-in-out 0s;\r\n        font-family: Lato !important;\r\n        font-size: 20px !important;\r\n        line-height: 24px !important;\r\n    }\r\n    .row-feet-inch {\r\n        display: grid;\r\n        gap: 30px;\r\n        grid-template-columns: 1fr 1fr;\r\n    }\r\n    .fit-advisor-inch {\r\n        margin-left: 143px !important;\r\n        margin-top: -64px!important;\r\n    }\r\n    .fit-advisor-agelabel {}\r\n    .fit-advisor-age-input {\r\n        margin-left: 14.5rem !important;\r\n        margin-top: -65px !important;\r\n        width: 50% !important;\r\n    }\r\n    input {\r\n        text-align: center;\r\n    }\r\n     ::-webkit-input-placeholder {\r\n        text-align: center;\r\n    }\r\n    .jjnwUS {\r\n        display: grid;\r\n        justify-content: center;\r\n        align-items: center;\r\n        background: white;\r\n        color: black;\r\n        border: 1px solid rgb(170, 170, 170);\r\n        border-radius: 50%;\r\n        cursor: pointer;\r\n        width: 22px;\r\n        height: 22px;\r\n        transition: opacity 0.2s ease-in-out 0s;\r\n        margin-left: 15px;\r\n    }\r\n    .selected-product-arrow-left {\r\n        background: rgba(255, 255, 255, 0.5);\r\n        z-index: 30;\r\n        margin-right: 30px !important;\r\n    }\r\n     :-moz-placeholder {\r\n        text-align: center;\r\n    }\r\n    .custom-offset {\r\n        margin-left: -8% !important;\r\n    }\r\n    .fit-advisor-agelabel-span {\r\n        margin-left: 52px !important;\r\n        margin-top: 0px !important;\r\n    }\r\n    .fit-advisor-logo {\r\n        margin-left: 30% !important;\r\n    }\r\n    .continue-btn {\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        -webkit-user-select: none;\r\n        user-select: none;\r\n        -webkit-appearance: none;\r\n        -moz-appearance: none;\r\n        appearance: none;\r\n        display: inline-block;\r\n        width: auto;\r\n        text-decoration: none;\r\n        text-align: center;\r\n        vertical-align: middle;\r\n        cursor: pointer;\r\n        border: 1px solid transparent;\r\n        border-radius: 2px;\r\n        padding: 8px 15px;\r\n        background-color: #000000;\r\n        color: var(--color-btn-primary-text);\r\n        /* font-family: lato !important; */\r\n        /* font-style: var(--font-style-header); */\r\n        /* font-weight: var(--font-weight-header); */\r\n        text-transform: uppercase;\r\n        letter-spacing: 0.08em;\r\n        white-space: normal;\r\n        font-size: 15px !important;\r\n        font-family: 'Karla';\r\n        right: 25% !important;\r\n        width: 50% !important;\r\n    }\r\n    .fit-advisor-product-btn-to-cart {\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        -webkit-user-select: none;\r\n        user-select: none;\r\n        -webkit-appearance: none;\r\n        -moz-appearance: none;\r\n        appearance: none;\r\n        display: inline-block;\r\n        width: auto;\r\n        text-decoration: none;\r\n        text-align: center;\r\n        vertical-align: middle;\r\n        cursor: pointer;\r\n        border: 1px solid transparent;\r\n        border-radius: 2px;\r\n        padding: 8px 15px;\r\n        background-color: #000000;\r\n        color: var(--color-btn-primary-text);\r\n        /* font-family: lato !important; */\r\n        /* font-style: var(--font-style-header); */\r\n        /* font-weight: var(--font-weight-header); */\r\n        text-transform: uppercase;\r\n        letter-spacing: 0.08em;\r\n        white-space: normal;\r\n        font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n        /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n    }\r\n    .fit-advisor-chest-tab {\r\n        display: block;\r\n        gap: 5px;\r\n        margin-left: -65px !important;\r\n        grid-template-columns: 1fr 1fr 1fr;\r\n        padding: 0px 10px 40px;\r\n    }\r\n    .fit-advisor-selected-product-grid {\r\n        /* display: block; */\r\n        grid-template-columns: 2fr 3fr;\r\n        gap: 50px;\r\n        -webkit-box-pack: center;\r\n        justify-content: center;\r\n        -webkit-box-align: center;\r\n        align-items: center;\r\n        padding: 0px 50px;\r\n        margin-left: 50px !important;\r\n        /* display: none; */\r\n    }\r\n    .fit-advisor-selected-product-image {\r\n        padding: 0px;\r\n        align-self: flex-start;\r\n        display: none;\r\n    }\r\n    .fit-advisor-fit-grid {\r\n        display: block;\r\n        grid-template-columns: 1fr 1fr;\r\n        -webkit-box-pack: center;\r\n        justify-content: center;\r\n        -webkit-box-align: center;\r\n        align-items: center;\r\n        text-align: center;\r\n        background: white;\r\n        border: none;\r\n        margin-bottom: 15px;\r\n        margin-left: -15px;\r\n        padding: 10px 20px;\r\n        box-shadow: none;\r\n    }\r\n}\r\n\r\n@media (min-width:481px) and (max-width:640px) {\r\n    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */\r\n}\r\n\r\n@media (min-width:641px) and (max-width:960px) {\r\n    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 100px 1fr !important;\r\n        justify-self: flex-end;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 55px;\r\n    }\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px;\r\n        visibility: visible;\r\n        margin-bottom: -5.5em !important;\r\n        /* margin-right: 50px; */\r\n    }\r\n}\r\n\r\n@media (min-width:961px) and (max-width:1024px) {\r\n    /* tablet, landscape iPad, lo-res laptops ands desktops */\r\n}\r\n\r\n@media (min-width:1025px) and (max-width:1280px) {\r\n    /* big landscape tablets, laptops, and desktops */\r\n}\r\n\r\n\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n\r\n\r\n/*   } / / */\r\n\r\n\r\n/* STYLE FOR LOADER */\r\n\r\n@-webkit-keyframes spinner-border {\r\n    to {\r\n        transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n@keyframes spinner-border {\r\n    to {\r\n        transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n.spinner-border {\r\n    display: inline-block;\r\n    width: 2rem;\r\n    height: 2rem;\r\n    vertical-align: text-bottom;\r\n    border: 0.25em solid currentColor;\r\n    border-right-color: transparent;\r\n    border-radius: 50%;\r\n    -webkit-animation: 0.75s linear infinite spinner-border;\r\n    animation: 0.75s linear infinite spinner-border;\r\n    border-width: 2px !important;\r\n}\r\n\r\n.spinner-border-sm {\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border-width: 0.2em;\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n    .spinner-border,\r\n    .spinner-grow {\r\n        -webkit-animation-duration: 1.5s;\r\n        animation-duration: 1.5s;\r\n    }\r\n}\r\n\r\n.sr-only {\r\n    position: absolute;\r\n    width: 1px;\r\n    height: 1px;\r\n    padding: 0;\r\n    margin: -1px;\r\n    overflow: hidden;\r\n    clip: rect(0, 0, 0, 0);\r\n    white-space: nowrap;\r\n    border: 0;\r\n}\r\n\r\n.sr-only-focusable:active,\r\n.sr-only-focusable:focus {\r\n    position: static;\r\n    width: auto;\r\n    height: auto;\r\n    overflow: visible;\r\n    clip: auto;\r\n    white-space: normal;\r\n}\r\n\r\n.warning-place::-webkit-input-placeholder {\r\n    color: #fc0000;\r\n    opacity: 1;\r\n    font-weight: bold;\r\n    font-family: karla;\r\n    transition: ease-in-out 1s;\r\n}\r\n\r\n.on-excel-size-two {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 190px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n\r\n.on-excel-size {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -10px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n\r\n#chest1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#chest2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#chest3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n.col-xl,\r\n.col-xl-auto,\r\n.col-xl-12,\r\n.col-xl-11,\r\n.col-xl-10,\r\n.col-xl-9,\r\n.col-xl-8,\r\n.col-xl-7,\r\n.col-xl-6,\r\n.col-xl-5,\r\n.col-xl-4,\r\n.col-xl-3,\r\n.col-xl-2,\r\n.col-xl-1,\r\n.col-lg,\r\n.col-lg-auto,\r\n.col-lg-12,\r\n.col-lg-11,\r\n.col-lg-10,\r\n.col-lg-9,\r\n.col-lg-8,\r\n.col-lg-7,\r\n.col-lg-6,\r\n.col-lg-5,\r\n.col-lg-4,\r\n.col-lg-3,\r\n.col-lg-2,\r\n.col-lg-1,\r\n.col-md,\r\n.col-md-auto,\r\n.col-md-12,\r\n.col-md-11,\r\n.col-md-10,\r\n.col-md-9,\r\n.col-md-8,\r\n.col-md-7,\r\n.col-md-6,\r\n.col-md-5,\r\n.col-md-4,\r\n.col-md-3,\r\n.col-md-2,\r\n.col-md-1,\r\n.col-sm,\r\n.col-sm-auto,\r\n.col-sm-12,\r\n.col-sm-11,\r\n.col-sm-10,\r\n.col-sm-9,\r\n.col-sm-8,\r\n.col-sm-7,\r\n.col-sm-6,\r\n.col-sm-5,\r\n.col-sm-4,\r\n.col-sm-3,\r\n.col-sm-2,\r\n.col-sm-1,\r\n.col,\r\n.col-auto,\r\n.col-12,\r\n.col-11,\r\n.col-10,\r\n.col-9,\r\n.col-8,\r\n.col-7,\r\n.col-6,\r\n.col-5,\r\n.col-4,\r\n.col-3,\r\n.col-2,\r\n.col-1 {\r\n    position: relative;\r\n    width: 100%;\r\n    padding-right: 15px;\r\n    padding-left: 15px;\r\n}\r\n\r\n.col-sm-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-sm-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-sm-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-sm-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-sm-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-sm-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-sm-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-sm-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-sm-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-sm-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-sm-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-sm-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-sm-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.col {\r\n    flex-basis: 0;\r\n    flex-grow: 1;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-md-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-md-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-md-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-md-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-md-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-md-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-md-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-md-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-md-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-md-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-md-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-md-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-md-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.mt-0,\r\n.my-0 {\r\n    margin-top: 0 !important;\r\n}\r\n\r\n.mr-0,\r\n.mx-0 {\r\n    margin-right: 0 !important;\r\n}\r\n\r\n.mb-0,\r\n.my-0 {\r\n    margin-bottom: 0 !important;\r\n}\r\n\r\n.ml-0,\r\n.mx-0 {\r\n    margin-left: 0 !important;\r\n}\r\n\r\n.m-1 {\r\n    margin: 0.25rem !important;\r\n}\r\n\r\n.mt-1,\r\n.my-1 {\r\n    margin-top: 0.25rem !important;\r\n}\r\n\r\n.mr-1,\r\n.mx-1 {\r\n    margin-right: 0.25rem !important;\r\n}\r\n\r\n.mb-1,\r\n.my-1 {\r\n    margin-bottom: 0.25rem !important;\r\n}\r\n\r\n.ml-1,\r\n.mx-1 {\r\n    margin-left: 0.25rem !important;\r\n}\r\n\r\n.m-2 {\r\n    margin: 0.5rem !important;\r\n}\r\n\r\n.mt-2,\r\n.my-2 {\r\n    margin-top: 0.5rem !important;\r\n}\r\n\r\n.mr-2,\r\n.mx-2 {\r\n    margin-right: 0.5rem !important;\r\n}\r\n\r\n.mb-2,\r\n.my-2 {\r\n    margin-bottom: 0.5rem !important;\r\n}\r\n\r\n.ml-2,\r\n.mx-2 {\r\n    margin-left: 0.5rem !important;\r\n}\r\n\r\n.m-3 {\r\n    margin: 1rem !important;\r\n}\r\n\r\n.mt-3,\r\n.my-3 {\r\n    margin-top: 1rem !important;\r\n}\r\n.mtf-3,\r\n.myf-3 {\r\n    margin-top: 1.1rem !important;\r\n}\r\n.mr-3,\r\n.mx-3 {\r\n    margin-right: 1rem !important;\r\n}\r\n\r\n.mb-3,\r\n.my-3 {\r\n    margin-bottom: 1rem !important;\r\n}\r\n\r\n.ml-3,\r\n.mx-3 {\r\n    margin-left: 1rem !important;\r\n}\r\n\r\n.m-4 {\r\n    margin: 1.5rem !important;\r\n}\r\n\r\n.mt-4,\r\n.my-4 {\r\n    margin-top: 1.5rem !important;\r\n}\r\n\r\n.mtf-4,\r\n.myf-4 {\r\n    margin-top: 1.3rem !important;\r\n}\r\n\r\n.mr-4,\r\n.mx-4 {\r\n    margin-right: 1.5rem !important;\r\n}\r\n\r\n.mb-4,\r\n.my-4 {\r\n    margin-bottom: 1.5rem !important;\r\n}\r\n\r\n.ml-4,\r\n.mx-4 {\r\n    margin-left: 1.5rem !important;\r\n}\r\n\r\n.m-5 {\r\n    margin: 3rem !important;\r\n}\r\n\r\n.mt-5,\r\n.my-5 {\r\n    margin-top: 3rem !important;\r\n}\r\n\r\n.mtf-5,\r\n.myf-5 {\r\n    margin-top: 2rem !important;\r\n}\r\n\r\n\r\n\r\n.mr-5,\r\n.mx-5 {\r\n    margin-right: 3rem !important;\r\n}\r\n\r\n.mb-5,\r\n.my-5 {\r\n    margin-bottom: 3rem !important;\r\n}\r\n\r\n.ml-5,\r\n.mx-5 {\r\n    margin-left: 3rem !important;\r\n}\r\n\r\n.m-n1 {\r\n    margin: -0.25rem !important;\r\n}\r\n\r\n.mt-n1,\r\n.my-n1 {\r\n    margin-top: -0.25rem !important;\r\n}\r\n\r\n.mr-n1,\r\n.mx-n1 {\r\n    margin-right: -0.25rem !important;\r\n}\r\n\r\n.mb-n1,\r\n.my-n1 {\r\n    margin-bottom: -0.25rem !important;\r\n}\r\n\r\n.ml-n1,\r\n.mx-n1 {\r\n    margin-left: -0.25rem !important;\r\n}\r\n\r\n.m-n2 {\r\n    margin: -0.5rem !important;\r\n}\r\n\r\n.mt-n2,\r\n.my-n2 {\r\n    margin-top: -0.5rem !important;\r\n}\r\n\r\n.mr-n2,\r\n.mx-n2 {\r\n    margin-right: -0.5rem !important;\r\n}\r\n\r\n.mb-n2,\r\n.my-n2 {\r\n    margin-bottom: -0.5rem !important;\r\n}\r\n\r\n.ml-n2,\r\n.mx-n2 {\r\n    margin-left: -0.5rem !important;\r\n}\r\n\r\n.m-n3 {\r\n    margin: -1rem !important;\r\n}\r\n\r\n.mt-n3,\r\n.my-n3 {\r\n    margin-top: -1rem !important;\r\n}\r\n\r\n.mr-n3,\r\n.mx-n3 {\r\n    margin-right: -1rem !important;\r\n}\r\n\r\n.mb-n3,\r\n.my-n3 {\r\n    margin-bottom: -1rem !important;\r\n}\r\n\r\n.ml-n3,\r\n.mx-n3 {\r\n    margin-left: -1rem !important;\r\n}\r\n\r\n.m-n4 {\r\n    margin: -1.5rem !important;\r\n}\r\n\r\n.mt-n4,\r\n.my-n4 {\r\n    margin-top: -1.5rem !important;\r\n}\r\n\r\n.mr-n4,\r\n.mx-n4 {\r\n    margin-right: -1.5rem !important;\r\n}\r\n\r\n.mb-n4,\r\n.my-n4 {\r\n    margin-bottom: -1.5rem !important;\r\n}\r\n\r\n.ml-n4,\r\n.mx-n4 {\r\n    margin-left: -1.5rem !important;\r\n}\r\n\r\n.m-n5 {\r\n    margin: -3rem !important;\r\n}\r\n\r\n.mt-n5,\r\n.my-n5 {\r\n    margin-top: -3rem !important;\r\n}\r\n\r\n.mtf-n6,\r\n.myf-n6 {\r\n    margin-top: -6.5rem !important;\r\n}\r\n\r\n\r\n.mt-n6,\r\n.my-n6 {\r\n    margin-top: -3.8rem !important;\r\n}\r\n\r\n.mr-n5,\r\n.mx-n5 {\r\n    margin-right: -3rem !important;\r\n}\r\n\r\n.mb-n5,\r\n.my-n5 {\r\n    margin-bottom: -3rem !important;\r\n}\r\n\r\n.ml-n5,\r\n.mx-n5 {\r\n    margin-left: -3rem !important;\r\n}\r\n\r\n.offset-1 {\r\n    margin-left: 8.3333333333%;\r\n}\r\n\r\n.offset-2 {\r\n    margin-left: 16.6666666667%;\r\n}\r\n\r\n.offset-3 {\r\n    margin-left: 25%;\r\n}\r\n\r\n.offset-4 {\r\n    margin-left: 33.3333333333%;\r\n}\r\n\r\n.offset-5 {\r\n    margin-left: 41.6666666667%;\r\n}\r\n\r\n.offset-6 {\r\n    margin-left: 50%;\r\n}\r\n\r\n.offset-7 {\r\n    margin-left: 58.3333333333%;\r\n}\r\n\r\n.offset-8 {\r\n    margin-left: 66.6666666667%;\r\n}\r\n\r\n.offset-9 {\r\n    margin-left: 75%;\r\n}\r\n\r\n.offset-10 {\r\n    margin-left: 83.3333333333%;\r\n}\r\n\r\n.offset-11 {\r\n    margin-left: 91.6666666667%;\r\n}\r\n\r\n.form-control {\r\n    display: block;\r\n    width: 100%;\r\n    height: calc(1.6em + 0.75rem + 2px);\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 0.9rem;\r\n    font-weight: 400;\r\n    line-height: 1.6;\r\n    color: #495057;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.25rem;\r\n    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n}\r\n\r\n.form-control-lg {\r\n    height: calc(1.5em + 1rem + 2px);\r\n    padding: 0.5rem 1rem;\r\n    font-size: 1.125rem;\r\n    line-height: 1.5;\r\n    border-radius: 0.3rem;\r\n}\r\n\r\n.w-25 {\r\n    width: 25% !important;\r\n}\r\n\r\n.w-50 {\r\n    width: 50% !important;\r\n}\r\n\r\n.w-75 {\r\n    width: 75% !important;\r\n}\r\n\r\n.w-100 {\r\n    width: 100% !important;\r\n}\r\n\r\n.w-auto {\r\n    width: auto !important;\r\n}\r\n\r\n.h-25 {\r\n    height: 25% !important;\r\n}\r\n\r\n.h-50 {\r\n    height: 50% !important;\r\n}\r\n\r\n.h-75 {\r\n    height: 75% !important;\r\n}\r\n\r\n.h-100 {\r\n    height: 100% !important;\r\n}\r\n\r\n.input-border {\r\n    border-bottom: 1px solid lightgrey !important;\r\n    border-top: none;\r\n    border-left: none;\r\n    border-right: none;\r\n    border-radius: 0px;\r\n}\r\n\r\n.justify-content-center {\r\n    justify-content: center !important;\r\n}\r\n\r\n.d-flex {\r\n    display: flex !important;\r\n}\r\n\r\n.ml-n6 {\r\n    margin-left: -4rem !important;\r\n}\r\n\r\n.adjust-label-more {\r\n    margin-left: 35%!important;\r\n}\r\n\r\n.scrollbar-hidden::-webkit-scrollbar {\r\n    display: none;\r\n}\r\n\r\n\r\n/* Hide scrollbar for IE, Edge add Firefox */\r\n\r\n.scrollbar-hidden {\r\n    -ms-overflow-style: none;\r\n    scrollbar-width: none;\r\n    /* Firefox */\r\n}\r\n\r\n.m-result {\r\n    text-align: center;\r\n    margin-top: 0px;\r\n    visibility: visible;\r\n    margin-bottom: -8.5em;\r\n    /* margin-right: 50px; */\r\n}\r\n\r\n@media only screen and (max-width: 320px) and (min-width: 320px) {\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px !important;\r\n        visibility: visible ;\r\n        margin-bottom: -5.5em !important;\r\n        margin-right: 50px !important;\r\n    }\r\n    .dfOagu {\r\n        margin-left: 25px;\r\n        margin-top: 0px ;\r\n        margin-right: 40px !important;\r\n    }\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 106px 1fr !important;\r\n        justify-self: flex-end;\r\n    }\r\n    .selected-product-arrow-left {\r\n        background: rgba(255, 255, 255, 0.5);\r\n        z-index: 30;\r\n        /* margin-right: -26px !important; */\r\n        margin-left: 38px;\r\n        margin-right: 28px !important;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 1.4em;\r\n    }\r\n}\r\n\r\n.float-left {\r\n    float: left !important;\r\n}\r\n\r\n.float-right {\r\n    float: right !important;\r\n}\r\n\r\n.float-none {\r\n    float: none !important;\r\n}\r\n\r\n.fit-advisor-fit-grid-s5 {\r\n    display: block;\r\n    grid-template-columns: 1fr 1fr;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border: none;\r\n    margin-bottom: 15px;\r\n    margin-left: -43px;\r\n    padding: 10px 20px;\r\n    box-shadow: none;\r\n}\r\n\r\n@media (min-width: 576px) {\r\n    .col-sm {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-sm-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-sm-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-sm-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-sm-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-sm-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-sm-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-sm-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-sm-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-sm-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-sm-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-sm-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-sm-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-sm-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-sm-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-sm-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-sm-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-sm-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-sm-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-sm-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-sm-first {\r\n        order: -1;\r\n    }\r\n    .order-sm-last {\r\n        order: 13;\r\n    }\r\n    .order-sm-0 {\r\n        order: 0;\r\n    }\r\n    .order-sm-1 {\r\n        order: 1;\r\n    }\r\n    .order-sm-2 {\r\n        order: 2;\r\n    }\r\n    .order-sm-3 {\r\n        order: 3;\r\n    }\r\n    .order-sm-4 {\r\n        order: 4;\r\n    }\r\n    .order-sm-5 {\r\n        order: 5;\r\n    }\r\n    .order-sm-6 {\r\n        order: 6;\r\n    }\r\n    .order-sm-7 {\r\n        order: 7;\r\n    }\r\n    .order-sm-8 {\r\n        order: 8;\r\n    }\r\n    .order-sm-9 {\r\n        order: 9;\r\n    }\r\n    .order-sm-10 {\r\n        order: 10;\r\n    }\r\n    .order-sm-11 {\r\n        order: 11;\r\n    }\r\n    .order-sm-12 {\r\n        order: 12;\r\n    }\r\n    .offset-sm-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-sm-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-sm-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-sm-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-sm-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-sm-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-sm-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-sm-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-sm-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-sm-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-sm-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-sm-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    .col-md {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-md-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-md-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-md-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-md-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-md-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-md-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-md-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-md-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-md-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-md-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-md-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-md-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-md-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-md-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-md-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-md-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-md-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-md-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-md-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-md-first {\r\n        order: -1;\r\n    }\r\n    .order-md-last {\r\n        order: 13;\r\n    }\r\n    .order-md-0 {\r\n        order: 0;\r\n    }\r\n    .order-md-1 {\r\n        order: 1;\r\n    }\r\n    .order-md-2 {\r\n        order: 2;\r\n    }\r\n    .order-md-3 {\r\n        order: 3;\r\n    }\r\n    .order-md-4 {\r\n        order: 4;\r\n    }\r\n    .order-md-5 {\r\n        order: 5;\r\n    }\r\n    .order-md-6 {\r\n        order: 6;\r\n    }\r\n    .order-md-7 {\r\n        order: 7;\r\n    }\r\n    .order-md-8 {\r\n        order: 8;\r\n    }\r\n    .order-md-9 {\r\n        order: 9;\r\n    }\r\n    .order-md-10 {\r\n        order: 10;\r\n    }\r\n    .order-md-11 {\r\n        order: 11;\r\n    }\r\n    .order-md-12 {\r\n        order: 12;\r\n    }\r\n    .offset-md-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-md-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-md-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-md-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-md-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-md-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-md-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-md-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-md-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-md-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-md-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-md-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n    .col-lg {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-lg-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-lg-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-lg-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-lg-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-lg-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-lg-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-lg-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-lg-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-lg-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-lg-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-lg-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-lg-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-lg-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-lg-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-lg-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-lg-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-lg-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-lg-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-lg-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-lg-first {\r\n        order: -1;\r\n    }\r\n    .order-lg-last {\r\n        order: 13;\r\n    }\r\n    .order-lg-0 {\r\n        order: 0;\r\n    }\r\n    .order-lg-1 {\r\n        order: 1;\r\n    }\r\n    .order-lg-2 {\r\n        order: 2;\r\n    }\r\n    .order-lg-3 {\r\n        order: 3;\r\n    }\r\n    .order-lg-4 {\r\n        order: 4;\r\n    }\r\n    .order-lg-5 {\r\n        order: 5;\r\n    }\r\n    .order-lg-6 {\r\n        order: 6;\r\n    }\r\n    .order-lg-7 {\r\n        order: 7;\r\n    }\r\n    .order-lg-8 {\r\n        order: 8;\r\n    }\r\n    .order-lg-9 {\r\n        order: 9;\r\n    }\r\n    .order-lg-10 {\r\n        order: 10;\r\n    }\r\n    .order-lg-11 {\r\n        order: 11;\r\n    }\r\n    .order-lg-12 {\r\n        order: 12;\r\n    }\r\n    .offset-lg-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-lg-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-lg-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-lg-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-lg-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-lg-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-lg-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-lg-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-lg-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-lg-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-lg-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-lg-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n    .col-xl {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-xl-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-xl-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-xl-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-xl-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-xl-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-xl-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-xl-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-xl-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-xl-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-xl-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-xl-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-xl-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-xl-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-xl-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-xl-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-xl-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-xl-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-xl-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-xl-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-xl-first {\r\n        order: -1;\r\n    }\r\n    .order-xl-last {\r\n        order: 13;\r\n    }\r\n    .order-xl-0 {\r\n        order: 0;\r\n    }\r\n    .order-xl-1 {\r\n        order: 1;\r\n    }\r\n    .order-xl-2 {\r\n        order: 2;\r\n    }\r\n    .order-xl-3 {\r\n        order: 3;\r\n    }\r\n    .order-xl-4 {\r\n        order: 4;\r\n    }\r\n    .order-xl-5 {\r\n        order: 5;\r\n    }\r\n    .order-xl-6 {\r\n        order: 6;\r\n    }\r\n    .order-xl-7 {\r\n        order: 7;\r\n    }\r\n    .order-xl-8 {\r\n        order: 8;\r\n    }\r\n    .order-xl-9 {\r\n        order: 9;\r\n    }\r\n    .order-xl-10 {\r\n        order: 10;\r\n    }\r\n    .order-xl-11 {\r\n        order: 11;\r\n    }\r\n    .order-xl-12 {\r\n        order: 12;\r\n    }\r\n    .offset-xl-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-xl-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-xl-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-xl-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-xl-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-xl-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-xl-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-xl-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-xl-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-xl-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-xl-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-xl-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n.text-center {\r\n    text-align: center !important;\r\n}\r\n.text-truncate {\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.text-left {\r\n    text-align: left !important;\r\n}\r\n\r\n.text-right {\r\n    text-align: right !important;\r\n}\r\n.ml-xl-6,\r\n    .mx-xl-6 {\r\n        margin-left: 6rem !important;\r\n    }.ml-xl-11,\r\n    .mx-xl-11 {\r\n        margin-left: 11rem !important;\r\n    }\r\n    .ml-xl-12,\r\n    .mx-xl-12 {\r\n        margin-left: 12rem !important;\r\n    }\r\n    .center-force {\r\n        margin: 0;\r\n        position: sticky;\r\n        top: 50%;\r\n        left: 50%;\r\n        -ms-transform: translate(-50%, -50%);\r\n        transform: translate(-50%, -50%);\r\n      }\r\n      .spinner-position{\r\n        width: 3rem;\r\n        height: 3rem;\r\n        margin-left: 0px;\r\n      }\r\n      .dfOagu-411w {\r\n        margin-left: 50px;\r\n        margin-top: 5px;\r\n    }\r\n    .someclass {\r\n        cursor: default\r\n     }\r\n\r\n                                                                                            /* bodyfit-modal */\r\n\r\n                                                                                            \r\n.bodyfit-modal-open {\r\n    overflow: hidden;\r\n  }\r\n  .bodyfit-modal-open .bodyfit-modal {\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n  }\r\n  \r\n  .bodyfit-modal {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1050;\r\n    display: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: hidden;\r\n    outline: 0;\r\n  }\r\n  \r\n  .bodyfit-modal-dialog {\r\n    position: relative;\r\n    width: auto;\r\n    margin: 0.5rem;\r\n    pointer-events: none;\r\n  }\r\n  .bodyfit-modal.fade .bodyfit-modal-dialog {\r\n    transition: transform 0.3s ease-out;\r\n    transform: translate(0, -50px);\r\n  }\r\n  @media (prefers-reduced-motion: reduce) {\r\n    .bodyfit-modal.fade .bodyfit-modal-dialog {\r\n      transition: none;\r\n    }\r\n  }\r\n  .bodyfit-modal.show .bodyfit-modal-dialog {\r\n    transform: none;\r\n  }\r\n  .bodyfit-modal.bodyfit-modal-static .bodyfit-modal-dialog {\r\n    transform: scale(1.02);\r\n  }\r\n  \r\n  .bodyfit-modal-dialog-scrollable {\r\n    display: flex;\r\n    max-height: calc(100% - 1rem);\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n    max-height: calc(100vh - 1rem);\r\n    overflow: hidden;\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-header,\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-footer {\r\n    flex-shrink: 0;\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-body {\r\n    overflow-y: auto;\r\n  }\r\n  \r\n  .bodyfit-modal-dialog-centered {\r\n    display: flex;\r\n    align-items: center;\r\n    min-height: calc(100% - 1rem);\r\n  }\r\n  .bodyfit-modal-dialog-centered::before {\r\n    display: block;\r\n    height: calc(100vh - 1rem);\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n    content: \"\";\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable {\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n    max-height: none;\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable::before {\r\n    content: none;\r\n  }\r\n  \r\n  .bodyfit-modal-content {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n    pointer-events: auto;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid rgba(0, 0, 0, 0.2);\r\n    border-radius: 0.3rem;\r\n    outline: 0;\r\n  }\r\n  \r\n  .bodyfit-modal-backdrop {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1040;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: #000;\r\n  }\r\n  .bodyfit-modal-backdrop.fade {\r\n    opacity: 0;\r\n  }\r\n  .bodyfit-modal-backdrop.show {\r\n    opacity: 0.5;\r\n  }\r\n  \r\n  .bodyfit-modal-header {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    justify-content: space-between;\r\n    padding: 1rem 1rem;\r\n    border-bottom: 1px solid #dee2e6;\r\n    border-top-left-radius: calc(0.3rem - 1px);\r\n    border-top-right-radius: calc(0.3rem - 1px);\r\n  }\r\n  .bodyfit-modal-header .close {\r\n    padding: 1rem 1rem;\r\n    margin: -1rem -1rem -1rem auto;\r\n  }\r\n  \r\n  .bodyfit-modal-title {\r\n    margin-bottom: 0;\r\n    line-height: 1.6;\r\n  }\r\n  \r\n  .bodyfit-modal-body {\r\n    position: relative;\r\n    flex: 1 1 auto;\r\n    padding: 1rem;\r\n  }\r\n  \r\n  .bodyfit-modal-footer {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    padding: 0.75rem;\r\n    border-top: 1px solid #dee2e6;\r\n    border-bottom-right-radius: calc(0.3rem - 1px);\r\n    border-bottom-left-radius: calc(0.3rem - 1px);\r\n  }\r\n  .bodyfit-modal-footer > * {\r\n    margin: 0.25rem;\r\n  }\r\n  \r\n  .bodyfit-modal-scrollbar-measure {\r\n    position: absolute;\r\n    top: -9999px;\r\n    width: 50px;\r\n    height: 50px;\r\n    overflow: scroll;\r\n  }\r\n  \r\n  @media (min-width: 576px) {\r\n    .bodyfit-modal-dialog {\r\n      max-width: 500px;\r\n      margin: 1.75rem auto;\r\n    }\r\n  \r\n    .bodyfit-modal-dialog-scrollable {\r\n      max-height: calc(100% - 3.5rem);\r\n    }\r\n    .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n      max-height: calc(100vh - 3.5rem);\r\n    }\r\n  \r\n    .bodyfit-modal-dialog-centered {\r\n      min-height: calc(100% - 3.5rem);\r\n    }\r\n    .bodyfit-modal-dialog-centered::before {\r\n      height: calc(100vh - 3.5rem);\r\n      height: -webkit-min-content;\r\n      height: -moz-min-content;\r\n      height: min-content;\r\n    }\r\n  \r\n    .bodyfit-modal-sm {\r\n      max-width: 300px;\r\n    }\r\n  }\r\n  @media (min-width: 992px) {\r\n    .bodyfit-modal-lg,\r\n  .bodyfit-modal-xl {\r\n      max-width: 800px;\r\n    }\r\n  }\r\n  @media (min-width: 1200px) {\r\n    .bodyfit-modal-xl {\r\n      max-width: 1140px;\r\n    }\r\n  }", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -42558,6 +42811,123 @@ module.exports=function(t){var e={};function n(r){if(e[r])return e[r].exports;va
 
 /***/ }),
 
+/***/ "./resources/js/components/AttributeoneComponent.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/AttributeoneComponent.vue ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AttributeoneComponent_vue_vue_type_template_id_42be9ef8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AttributeoneComponent.vue?vue&type=template&id=42be9ef8& */ "./resources/js/components/AttributeoneComponent.vue?vue&type=template&id=42be9ef8&");
+/* harmony import */ var _AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AttributeoneComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _AttributeoneComponent_vue_vue_type_template_id_42be9ef8___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AttributeoneComponent_vue_vue_type_template_id_42be9ef8___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AttributeoneComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AttributethreeComponent.vue":
+/*!*************************************************************!*\
+  !*** ./resources/js/components/AttributethreeComponent.vue ***!
+  \*************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AttributethreeComponent_vue_vue_type_template_id_75d5c700___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AttributethreeComponent.vue?vue&type=template&id=75d5c700& */ "./resources/js/components/AttributethreeComponent.vue?vue&type=template&id=75d5c700&");
+/* harmony import */ var _AttributethreeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AttributethreeComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/AttributethreeComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _AttributethreeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _AttributethreeComponent_vue_vue_type_template_id_75d5c700___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AttributethreeComponent_vue_vue_type_template_id_75d5c700___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AttributethreeComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AttributetwoComponent.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/AttributetwoComponent.vue ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _AttributetwoComponent_vue_vue_type_template_id_b40ede5c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AttributetwoComponent.vue?vue&type=template&id=b40ede5c& */ "./resources/js/components/AttributetwoComponent.vue?vue&type=template&id=b40ede5c&");
+/* harmony import */ var _AttributetwoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AttributetwoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/AttributetwoComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _AttributetwoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _AttributetwoComponent_vue_vue_type_template_id_b40ede5c___WEBPACK_IMPORTED_MODULE_0__.render,
+  _AttributetwoComponent_vue_vue_type_template_id_b40ede5c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/AttributetwoComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/BodyComponent.vue":
 /*!***************************************************!*\
   !*** ./resources/js/components/BodyComponent.vue ***!
@@ -42638,10 +43008,10 @@ component.options.__file = "resources/js/components/ExampleComponent.vue"
 
 /***/ }),
 
-/***/ "./resources/js/components/SizechartComponent.vue":
-/*!********************************************************!*\
-  !*** ./resources/js/components/SizechartComponent.vue ***!
-  \********************************************************/
+/***/ "./resources/js/components/FormComponent.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/FormComponent.vue ***!
+  \***************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -42649,8 +43019,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _SizechartComponent_vue_vue_type_template_id_3affdaaa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./SizechartComponent.vue?vue&type=template&id=3affdaaa& */ "./resources/js/components/SizechartComponent.vue?vue&type=template&id=3affdaaa&");
-/* harmony import */ var _SizechartComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./SizechartComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/SizechartComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _FormComponent_vue_vue_type_template_id_b1dd1884___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./FormComponent.vue?vue&type=template&id=b1dd1884& */ "./resources/js/components/FormComponent.vue?vue&type=template&id=b1dd1884&");
+/* harmony import */ var _FormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./FormComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/FormComponent.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -42660,9 +43030,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
-  _SizechartComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
-  _SizechartComponent_vue_vue_type_template_id_3affdaaa___WEBPACK_IMPORTED_MODULE_0__.render,
-  _SizechartComponent_vue_vue_type_template_id_3affdaaa___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _FormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _FormComponent_vue_vue_type_template_id_b1dd1884___WEBPACK_IMPORTED_MODULE_0__.render,
+  _FormComponent_vue_vue_type_template_id_b1dd1884___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -42672,8 +43042,95 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/SizechartComponent.vue"
+component.options.__file = "resources/js/components/FormComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/ResultComponent.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/ResultComponent.vue ***!
+  \*****************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _ResultComponent_vue_vue_type_template_id_057ebc76___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ResultComponent.vue?vue&type=template&id=057ebc76& */ "./resources/js/components/ResultComponent.vue?vue&type=template&id=057ebc76&");
+/* harmony import */ var _ResultComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ResultComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ResultComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _ResultComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _ResultComponent_vue_vue_type_template_id_057ebc76___WEBPACK_IMPORTED_MODULE_0__.render,
+  _ResultComponent_vue_vue_type_template_id_057ebc76___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/ResultComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttributeoneComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AttributethreeComponent.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************!*\
+  !*** ./resources/js/components/AttributethreeComponent.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributethreeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttributethreeComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributethreeComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributethreeComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AttributetwoComponent.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/AttributetwoComponent.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributetwoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttributetwoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributetwoComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributetwoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -42709,10 +43166,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/SizechartComponent.vue?vue&type=script&lang=js&":
-/*!*********************************************************************************!*\
-  !*** ./resources/js/components/SizechartComponent.vue?vue&type=script&lang=js& ***!
-  \*********************************************************************************/
+/***/ "./resources/js/components/FormComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/FormComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
@@ -42720,8 +43177,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SizechartComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SizechartComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SizechartComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_SizechartComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FormComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/ResultComponent.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/ResultComponent.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResultComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ResultComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResultComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResultComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/AttributeoneComponent.vue?vue&type=template&id=42be9ef8&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/AttributeoneComponent.vue?vue&type=template&id=42be9ef8& ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_template_id_42be9ef8___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_template_id_42be9ef8___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_template_id_42be9ef8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttributeoneComponent.vue?vue&type=template&id=42be9ef8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributeoneComponent.vue?vue&type=template&id=42be9ef8&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/AttributethreeComponent.vue?vue&type=template&id=75d5c700&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/components/AttributethreeComponent.vue?vue&type=template&id=75d5c700& ***!
+  \********************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributethreeComponent_vue_vue_type_template_id_75d5c700___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributethreeComponent_vue_vue_type_template_id_75d5c700___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributethreeComponent_vue_vue_type_template_id_75d5c700___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttributethreeComponent.vue?vue&type=template&id=75d5c700& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributethreeComponent.vue?vue&type=template&id=75d5c700&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/AttributetwoComponent.vue?vue&type=template&id=b40ede5c&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/AttributetwoComponent.vue?vue&type=template&id=b40ede5c& ***!
+  \******************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributetwoComponent_vue_vue_type_template_id_b40ede5c___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributetwoComponent_vue_vue_type_template_id_b40ede5c___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributetwoComponent_vue_vue_type_template_id_b40ede5c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttributetwoComponent.vue?vue&type=template&id=b40ede5c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributetwoComponent.vue?vue&type=template&id=b40ede5c&");
+
 
 /***/ }),
 
@@ -42759,19 +43283,36 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/SizechartComponent.vue?vue&type=template&id=3affdaaa&":
-/*!***************************************************************************************!*\
-  !*** ./resources/js/components/SizechartComponent.vue?vue&type=template&id=3affdaaa& ***!
-  \***************************************************************************************/
+/***/ "./resources/js/components/FormComponent.vue?vue&type=template&id=b1dd1884&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/FormComponent.vue?vue&type=template&id=b1dd1884& ***!
+  \**********************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SizechartComponent_vue_vue_type_template_id_3affdaaa___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SizechartComponent_vue_vue_type_template_id_3affdaaa___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponent_vue_vue_type_template_id_b1dd1884___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponent_vue_vue_type_template_id_b1dd1884___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_SizechartComponent_vue_vue_type_template_id_3affdaaa___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./SizechartComponent.vue?vue&type=template&id=3affdaaa& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SizechartComponent.vue?vue&type=template&id=3affdaaa&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_FormComponent_vue_vue_type_template_id_b1dd1884___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./FormComponent.vue?vue&type=template&id=b1dd1884& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormComponent.vue?vue&type=template&id=b1dd1884&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/ResultComponent.vue?vue&type=template&id=057ebc76&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/ResultComponent.vue?vue&type=template&id=057ebc76& ***!
+  \************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResultComponent_vue_vue_type_template_id_057ebc76___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResultComponent_vue_vue_type_template_id_057ebc76___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResultComponent_vue_vue_type_template_id_057ebc76___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ResultComponent.vue?vue&type=template&id=057ebc76& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResultComponent.vue?vue&type=template&id=057ebc76&");
 
 
 /***/ }),
@@ -42789,6 +43330,427 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
 /* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_BodyComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_vue_style_loader_index_js_node_modules_css_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_dist_cjs_js_clonedRuleSet_9_0_rules_0_use_2_node_modules_vue_loader_lib_index_js_vue_loader_options_BodyComponent_vue_vue_type_style_index_0_lang_css___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
 /* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributeoneComponent.vue?vue&type=template&id=42be9ef8&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributeoneComponent.vue?vue&type=template&id=42be9ef8& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm.container.attr_first
+      ? _c("div", { staticClass: "tab" }, [
+          _c("div", [
+            _c("div", { staticClass: " fit-advisor-chest-tab size-position" }, [
+              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: {
+                        id: "chest1",
+                        src:
+                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.chest(_vm.container.chestSizeOne)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v("Narrower")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: {
+                        id: "chest2",
+                        src:
+                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.chest(_vm.container.chestSizeTwo)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v("Average")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: {
+                        id: "chest3",
+                        src:
+                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.chest(_vm.container.chestSizeThree)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v("Broader")
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm._m(1)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "p",
+      { staticClass: "fit-advisor-intro", attrs: { id: "intro2" } },
+      [
+        _c("span", { attrs: { id: "mark1" } }, [
+          _vm._v("Choose the option that best")
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _c("span", { attrs: { id: "mark2" } }, [_vm._v("describes your chest")])
+      ]
+    )
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "m-result float-right",
+        staticStyle: { "text-align": "center", "margin-top": "100px" },
+        attrs: { id: "steps-mark" }
+      },
+      [
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" })
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributethreeComponent.vue?vue&type=template&id=75d5c700&":
+/*!***********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributethreeComponent.vue?vue&type=template&id=75d5c700& ***!
+  \***********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.container.attr_third
+      ? _c("div", { staticClass: "tab" }, [
+          _c("div", [
+            _c("div", { staticClass: " fit-advisor-chest-tab size-position" }, [
+              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: {
+                        id: "bottom1",
+                        src:
+                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.bottom(_vm.container.bottomSizeOne)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v("Flatter")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: {
+                        id: "bottom2",
+                        src:
+                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.bottom(_vm.container.bottomSizeOne)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v("Average")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: {
+                        id: "bottom3",
+                        src:
+                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.bottom(_vm.container.bottomSizeOne)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v("Rounder")
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "m-result float-right",
+        staticStyle: { "text-align": "center", "margin-top": "100px" },
+        attrs: { id: "steps-mark" }
+      },
+      [
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" })
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributetwoComponent.vue?vue&type=template&id=b40ede5c&":
+/*!*********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributetwoComponent.vue?vue&type=template&id=b40ede5c& ***!
+  \*********************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.container.attr_second
+      ? _c("div", { staticClass: "tab" }, [
+          _c("div", [
+            _c("div", { staticClass: " fit-advisor-chest-tab size-position" }, [
+              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: {
+                        id: "stomach1",
+                        src:
+                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.stomach(_vm.container.stomachSizeOne)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v("Flatter")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: {
+                        id: "stomach2",
+                        src:
+                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.stomach(_vm.container.stomachSizeTwo)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v("Average")
+                    ])
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: {
+                        id: "stomach3",
+                        src:
+                          "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg"
+                      },
+                      on: {
+                        click: function($event) {
+                          return _vm.stomach(_vm.container.stomachSizeThree)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v("Rounder")
+                    ])
+                  ]
+                )
+              ])
+            ])
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm._m(0)
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "m-result float-right",
+        staticStyle: { "text-align": "center", "margin-top": "100px" },
+        attrs: { id: "steps-mark" }
+      },
+      [
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" }),
+        _c("span", { staticClass: "step" })
+      ]
+    )
+  }
+]
+render._withStripped = true
+
 
 
 /***/ }),
@@ -42885,45 +43847,51 @@ var render = function() {
                     _c("div"),
                     _vm._v(" "),
                     _c("div", [
-                      _vm.firstTab
-                        ? _c(
-                            "svg",
+                      _c(
+                        "svg",
+                        {
+                          directives: [
                             {
-                              staticClass:
-                                "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN",
-                              staticStyle: {
-                                cursor: "pointer",
-                                "/* width": "59px"
-                              },
-                              attrs: {
-                                viewBox: "0 0 512 512",
-                                height: "24",
-                                width: "24",
-                                "aria-hidden": "true",
-                                focusable: "false",
-                                fill: "currentColor",
-                                xmlns: "http://www.w3.org/2000/svg"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.nextPrev(-1)
-                                }
-                              }
-                            },
-                            [
-                              _c("polyline", {
-                                attrs: {
-                                  fill: "none",
-                                  stroke: "currentColor",
-                                  "stroke-linecap": "round",
-                                  "stroke-linejoin": "round",
-                                  "stroke-width": "48",
-                                  points: "328 112 184 256 328 400"
-                                }
-                              })
-                            ]
-                          )
-                        : _vm._e(),
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.tabnumber > 1,
+                              expression: "tabnumber > 1"
+                            }
+                          ],
+                          staticClass:
+                            "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN",
+                          staticStyle: {
+                            cursor: "pointer",
+                            "/* width": "59px"
+                          },
+                          attrs: {
+                            viewBox: "0 0 512 512",
+                            height: "24",
+                            width: "24",
+                            "aria-hidden": "true",
+                            focusable: "false",
+                            fill: "currentColor",
+                            xmlns: "http://www.w3.org/2000/svg"
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.nextStep(-1)
+                            }
+                          }
+                        },
+                        [
+                          _c("polyline", {
+                            attrs: {
+                              fill: "none",
+                              stroke: "currentColor",
+                              "stroke-linecap": "round",
+                              "stroke-linejoin": "round",
+                              "stroke-width": "48",
+                              points: "328 112 184 256 328 400"
+                            }
+                          })
+                        ]
+                      ),
                       _vm._v(" "),
                       _vm.lastTab
                         ? _c(
@@ -42968,16 +43936,7 @@ var render = function() {
                               })
                             ]
                           )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _c(
-                        "span",
-                        {
-                          staticClass:
-                            "predict__sc-1a4an9n-3 OSFBL switch find-fit-header"
-                        },
-                        [_vm._v("FIND YOUR FIT")]
-                      )
+                        : _vm._e()
                     ])
                   ]
                 ),
@@ -42995,6 +43954,8 @@ var render = function() {
               [_vm._v("×")]
             ),
             _vm._v(" "),
+            _vm._m(1),
+            _vm._v(" "),
             _c(
               "div",
               {
@@ -43006,1308 +43967,106 @@ var render = function() {
               },
               [
                 _c("form", { attrs: { id: "regForm" } }, [
-                  _vm._m(1),
-                  _vm._v(" "),
                   _vm._m(2),
                   _vm._v(" "),
                   _vm._m(3),
                   _vm._v(" "),
                   _vm._m(4),
                   _vm._v(" "),
-                  _vm._m(5),
-                  _vm._v(" "),
                   _c(
                     "div",
                     {
-                      staticClass:
-                        "tab fit-advisor-custom_row form-group offset-1",
-                      attrs: { id: "fields" }
+                      directives: [
+                        {
+                          name: "switch",
+                          rawName: "v-switch",
+                          value: _vm.tabnumber,
+                          expression: "tabnumber"
+                        }
+                      ]
                     },
                     [
-                      !_vm.countrycheck
-                        ? _c("div", { staticClass: "fit-advisor-custom_row" }, [
-                            _c("div", { staticClass: "col-md-6" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass:
-                                    " labels-tab1 height_weight text-center",
-                                  attrs: { for: "height_ft" }
-                                },
-                                [_vm._v("Height")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.form.heightfoot,
-                                    expression: "form.heightfoot"
-                                  }
-                                ],
-                                staticClass: "form-control  input-border",
-                                attrs: {
-                                  type: "number",
-                                  id: "height_ft",
-                                  placeholder: "Feet",
-                                  name: "heightfoot"
-                                },
-                                domProps: { value: _vm.form.heightfoot },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.form,
-                                      "heightfoot",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("div", { staticClass: "col-md-6" }, [
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.form.heightinch,
-                                    expression: "form.heightinch"
-                                  }
-                                ],
-                                staticClass:
-                                  "form-control mtf-3   input-border",
-                                attrs: {
-                                  type: "number",
-                                  id: "height_in",
-                                  placeholder: "Inches",
-                                  name: "heightinch"
-                                },
-                                domProps: { value: _vm.form.heightinch },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.form,
-                                      "heightinch",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ])
-                          ])
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.countrycheck
-                        ? _c("div", { staticClass: "fit-advisor-custom_row" }, [
-                            _c("div", { staticClass: "col-md-12" }, [
-                              _c(
-                                "label",
-                                {
-                                  staticClass:
-                                    " labels-tab1 height_weight text-center",
-                                  attrs: { for: "height_ft" }
-                                },
-                                [_vm._v("Height")]
-                              ),
-                              _vm._v(" "),
-                              _c("input", {
-                                directives: [
-                                  {
-                                    name: "model",
-                                    rawName: "v-model",
-                                    value: _vm.form.heightcm,
-                                    expression: "form.heightcm"
-                                  }
-                                ],
-                                staticClass: "form-control w-100 input-border",
-                                attrs: {
-                                  type: "number",
-                                  id: "height_cm",
-                                  placeholder: "Cm",
-                                  name: "heightcm"
-                                },
-                                domProps: { value: _vm.form.heightcm },
-                                on: {
-                                  input: function($event) {
-                                    if ($event.target.composing) {
-                                      return
-                                    }
-                                    _vm.$set(
-                                      _vm.form,
-                                      "heightcm",
-                                      $event.target.value
-                                    )
-                                  }
-                                }
-                              })
-                            ])
-                          ])
-                        : _vm._e(),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "case",
+                              rawName: "v-case",
+                              value: 1,
+                              expression: "1"
+                            }
+                          ]
+                        },
+                        [_c("form-component")],
+                        1
+                      ),
                       _vm._v(" "),
                       _c(
                         "div",
-                        { staticClass: "fit-advisor-custom_row mtf-5" },
-                        [
-                          _c("div", { staticClass: "col-md-6" }, [
-                            _c(
-                              "label",
-                              {
-                                staticClass:
-                                  " labels-tab1 height_weight text-center",
-                                attrs: { for: "weight" }
-                              },
-                              [_vm._v("Weight")]
-                            ),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.form.weight,
-                                  expression: "form.weight"
-                                }
-                              ],
-                              staticClass: "form-control   input-border",
-                              attrs: {
-                                type: "number",
-                                id: "weight",
-                                placeholder: "Lbs",
-                                name: "weight"
-                              },
-                              domProps: { value: _vm.form.weight },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(
-                                    _vm.form,
-                                    "weight",
-                                    $event.target.value
-                                  )
-                                }
-                              }
-                            })
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "col-md-6" }, [
-                            _vm._m(6),
-                            _vm._v(" "),
-                            _c("input", {
-                              directives: [
-                                {
-                                  name: "model",
-                                  rawName: "v-model",
-                                  value: _vm.form.age,
-                                  expression: "form.age"
-                                }
-                              ],
-                              staticClass: "form-control   input-border mt-n1",
-                              attrs: {
-                                type: "number",
-                                id: "age",
-                                placeholder: "Years",
-                                name: "Age"
-                              },
-                              domProps: { value: _vm.form.age },
-                              on: {
-                                input: function($event) {
-                                  if ($event.target.composing) {
-                                    return
-                                  }
-                                  _vm.$set(_vm.form, "age", $event.target.value)
-                                }
-                              }
-                            })
-                          ])
-                        ]
+                        {
+                          directives: [
+                            {
+                              name: "case",
+                              rawName: "v-case",
+                              value: 2,
+                              expression: "2"
+                            }
+                          ]
+                        },
+                        [_c("attribute-one-component")],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "case",
+                              rawName: "v-case",
+                              value: 3,
+                              expression: "3"
+                            }
+                          ]
+                        },
+                        [_c("attribute-two-component")],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "case",
+                              rawName: "v-case",
+                              value: 4,
+                              expression: "4"
+                            }
+                          ]
+                        },
+                        [_c("attribute-three-component")],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          directives: [
+                            {
+                              name: "case",
+                              rawName: "v-case",
+                              value: 5,
+                              expression: "5"
+                            }
+                          ]
+                        },
+                        [_c("result-component")],
+                        1
                       )
                     ]
                   ),
-                  _vm._v(" "),
-                  !_vm.onfirstTab
-                    ? _c("div", { staticClass: "row" }, [
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.countrycheck,
-                              expression: "countrycheck"
-                            }
-                          ],
-                          staticClass: "countrycheck no-gutters",
-                          attrs: { type: "checkbox", name: "countrycheck" },
-                          domProps: {
-                            checked: Array.isArray(_vm.countrycheck)
-                              ? _vm._i(_vm.countrycheck, null) > -1
-                              : _vm.countrycheck
-                          },
-                          on: {
-                            change: [
-                              function($event) {
-                                var $$a = _vm.countrycheck,
-                                  $$el = $event.target,
-                                  $$c = $$el.checked ? true : false
-                                if (Array.isArray($$a)) {
-                                  var $$v = null,
-                                    $$i = _vm._i($$a, $$v)
-                                  if ($$el.checked) {
-                                    $$i < 0 &&
-                                      (_vm.countrycheck = $$a.concat([$$v]))
-                                  } else {
-                                    $$i > -1 &&
-                                      (_vm.countrycheck = $$a
-                                        .slice(0, $$i)
-                                        .concat($$a.slice($$i + 1)))
-                                  }
-                                } else {
-                                  _vm.countrycheck = $$c
-                                }
-                              },
-                              function($event) {
-                                return _vm.countryval()
-                              }
-                            ]
-                          }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "svg",
-                          {
-                            staticClass: "img_country",
-                            staticStyle: {
-                              "enable-background": "new 0 0 512 512"
-                            },
-                            attrs: {
-                              version: "1.1",
-                              id: "Capa_1",
-                              xmlns: "http://www.w3.org/2000/svg",
-                              "xmlns:xlink": "http://www.w3.org/1999/xlink",
-                              x: "0px",
-                              y: "0px",
-                              viewBox: "0 0 512 512",
-                              "xml:space": "preserve"
-                            }
-                          },
-                          [
-                            _c("rect", {
-                              staticStyle: { fill: "#F0F0F0" },
-                              attrs: {
-                                y: "85.331",
-                                width: "512",
-                                height: "341.337"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("g", [
-                              _c("rect", {
-                                staticStyle: { fill: "#D80027" },
-                                attrs: {
-                                  y: "127.994",
-                                  width: "512",
-                                  height: "42.663"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("rect", {
-                                staticStyle: { fill: "#D80027" },
-                                attrs: {
-                                  y: "213.331",
-                                  width: "512",
-                                  height: "42.663"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("rect", {
-                                staticStyle: { fill: "#D80027" },
-                                attrs: {
-                                  y: "298.657",
-                                  width: "512",
-                                  height: "42.663"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("rect", {
-                                staticStyle: { fill: "#D80027" },
-                                attrs: {
-                                  y: "383.994",
-                                  width: "512",
-                                  height: "42.663"
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("rect", {
-                              staticStyle: { fill: "#2E52B2" },
-                              attrs: {
-                                y: "85.331",
-                                width: "256",
-                                height: "183.797"
-                              }
-                            }),
-                            _vm._v(" "),
-                            _c("g", [
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \r\n\r\n99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \r\n\r\n99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \r\n\r\n43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \r\n\r\n54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \r\n\r\n99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \r\n\r\n54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \r\n\r\n156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \r\n\r\n145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \r\n\r\n201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \r\n\r\n212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \r\n\r\n156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polygon", {
-                                staticStyle: { fill: "#F0F0F0" },
-                                attrs: {
-                                  points:
-                                    "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \r\n\r\n212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
-                                }
-                              })
-                            ]),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g"),
-                            _vm._v(" "),
-                            _c("g")
-                          ]
-                        )
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.showContinueBtn
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "continue-btn",
-                          staticStyle: {
-                            position: "absolute",
-                            right: "30%",
-                            width: "33%",
-                            bottom: "-50px"
-                          },
-                          attrs: { type: "button", id: "nextBtn" },
-                          on: {
-                            click: function($event) {
-                              return _vm.nextPrev(1)
-                            }
-                          }
-                        },
-                        [_vm._v("Get Started")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  !_vm.showContinueBtn
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "continue-btn",
-                          staticStyle: {
-                            position: "absolute",
-                            right: "32%",
-                            width: "33%",
-                            bottom: "90px",
-                            display: "none !important"
-                          },
-                          attrs: { type: "button", id: "cartBtn" },
-                          on: {
-                            click: function($event) {
-                              return _vm.addToCart()
-                            }
-                          }
-                        },
-                        [_vm._v("Add Size to Cart")]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.attr_first
-                    ? _c("div", { staticClass: "tab" }, [
-                        _c("div", [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                " fit-advisor-chest-tab size-position"
-                            },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: " fit-advisor-chest-tab-item" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        opacity: "1",
-                                        transform: "none"
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: " fit-advisor-options-img",
-                                        attrs: {
-                                          id: "chest1",
-                                          src:
-                                            "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.chest(_vm.chestSizeOne)
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        {
-                                          staticClass:
-                                            " fit-advisor-options-text"
-                                        },
-                                        [_vm._v("Narrower")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: " fit-advisor-chest-tab-item" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        opacity: "1",
-                                        transform: "none"
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: " fit-advisor-options-img",
-                                        attrs: {
-                                          id: "chest2",
-                                          src:
-                                            "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.chest(_vm.chestSizeTwo)
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        {
-                                          staticClass:
-                                            " fit-advisor-options-text"
-                                        },
-                                        [_vm._v("Average")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: " fit-advisor-chest-tab-item" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        opacity: "1",
-                                        transform: "none"
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: " fit-advisor-options-img",
-                                        attrs: {
-                                          id: "chest3",
-                                          src:
-                                            "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.chest(_vm.chestSizeThree)
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        {
-                                          staticClass:
-                                            " fit-advisor-options-text"
-                                        },
-                                        [_vm._v("Broader")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.attr_second
-                    ? _c("div", { staticClass: "tab" }, [
-                        _c("div", [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                " fit-advisor-chest-tab size-position"
-                            },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: " fit-advisor-chest-tab-item" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        opacity: "1",
-                                        transform: "none"
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: " fit-advisor-options-img",
-                                        attrs: {
-                                          id: "stomach1",
-                                          src:
-                                            "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-1.svg"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.stomach(
-                                              _vm.stomachSizeOne
-                                            )
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        {
-                                          staticClass:
-                                            " fit-advisor-options-text"
-                                        },
-                                        [_vm._v("Flatter")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: " fit-advisor-chest-tab-item" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        opacity: "1",
-                                        transform: "none"
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: " fit-advisor-options-img",
-                                        attrs: {
-                                          id: "stomach2",
-                                          src:
-                                            "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-2.svg"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.stomach(
-                                              _vm.stomachSizeTwo
-                                            )
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        {
-                                          staticClass:
-                                            " fit-advisor-options-text"
-                                        },
-                                        [_vm._v("Average")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: " fit-advisor-chest-tab-item" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        opacity: "1",
-                                        transform: "none"
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: " fit-advisor-options-img",
-                                        attrs: {
-                                          id: "stomach3",
-                                          src:
-                                            "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-stomach-3.svg"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.stomach(
-                                              _vm.stomachSizeThree
-                                            )
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        {
-                                          staticClass:
-                                            " fit-advisor-options-text"
-                                        },
-                                        [_vm._v("Rounder")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _vm.attr_third
-                    ? _c("div", { staticClass: "tab" }, [
-                        _c("div", [
-                          _c(
-                            "div",
-                            {
-                              staticClass:
-                                " fit-advisor-chest-tab size-position"
-                            },
-                            [
-                              _c(
-                                "div",
-                                { staticClass: " fit-advisor-chest-tab-item" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        opacity: "1",
-                                        transform: "none"
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: " fit-advisor-options-img",
-                                        attrs: {
-                                          id: "bottom1",
-                                          src:
-                                            "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-1.svg"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.bottom(_vm.bottomSizeOne)
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        {
-                                          staticClass:
-                                            " fit-advisor-options-text"
-                                        },
-                                        [_vm._v("Flatter")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: " fit-advisor-chest-tab-item" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        opacity: "1",
-                                        transform: "none"
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: " fit-advisor-options-img",
-                                        attrs: {
-                                          id: "bottom2",
-                                          src:
-                                            "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-2.svg"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.bottom(_vm.bottomSizeOne)
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        {
-                                          staticClass:
-                                            " fit-advisor-options-text"
-                                        },
-                                        [_vm._v("Average")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "div",
-                                { staticClass: " fit-advisor-chest-tab-item" },
-                                [
-                                  _c(
-                                    "div",
-                                    {
-                                      staticStyle: {
-                                        opacity: "1",
-                                        transform: "none"
-                                      }
-                                    },
-                                    [
-                                      _c("img", {
-                                        staticClass: " fit-advisor-options-img",
-                                        attrs: {
-                                          id: "bottom3",
-                                          src:
-                                            "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-seat-3.svg"
-                                        },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.bottom(_vm.bottomSizeOne)
-                                          }
-                                        }
-                                      }),
-                                      _vm._v(" "),
-                                      _c(
-                                        "p",
-                                        {
-                                          staticClass:
-                                            " fit-advisor-options-text"
-                                        },
-                                        [_vm._v("Rounder")]
-                                      )
-                                    ]
-                                  )
-                                ]
-                              )
-                            ]
-                          )
-                        ])
-                      ])
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "tab" }, [
-                    _c("div", { staticClass: "fit-advisor-custom_row" }, [
-                      _c("div", { staticClass: "col-md-12" }, [
-                        _c(
-                          "div",
-                          { staticClass: " fit-advisor-selected-product-grid" },
-                          [
-                            _c(
-                              "div",
-                              [
-                                _c(
-                                  "div",
-                                  {
-                                    staticClass: " fit-advisor-product-size-box"
-                                  },
-                                  [
-                                    _c(
-                                      "div",
-                                      {
-                                        staticClass:
-                                          " fit-advisor-fit-grid float-left"
-                                      },
-                                      [
-                                        _c(
-                                          "div",
-                                          {
-                                            staticClass:
-                                              " fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"
-                                          },
-                                          [
-                                            !_vm.is_loading
-                                              ? _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      " selected-product-arrow-left"
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "span",
-                                                      {
-                                                        staticClass:
-                                                          " jjnwUS  selected-product-arrow-left-pointer prev",
-                                                        attrs: {
-                                                          size: "10",
-                                                          id: "arrow-left"
-                                                        },
-                                                        on: {
-                                                          click: function(
-                                                            $event
-                                                          ) {
-                                                            return _vm.changesize(
-                                                              0
-                                                            )
-                                                          }
-                                                        }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "svg",
-                                                          {
-                                                            staticClass:
-                                                              "StyledIconBase-ea9ulj-0 jZGNBW",
-                                                            attrs: {
-                                                              viewBox:
-                                                                "0 0 16 16",
-                                                              height: "10",
-                                                              width: "10",
-                                                              "aria-hidden":
-                                                                "true",
-                                                              focusable:
-                                                                "false",
-                                                              fill:
-                                                                "currentColor",
-                                                              xmlns:
-                                                                "http://www.w3.org/2000/svg"
-                                                            }
-                                                          },
-                                                          [
-                                                            _c("path", {
-                                                              attrs: {
-                                                                "fill-rule":
-                                                                  "evenodd",
-                                                                d:
-                                                                  "M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"
-                                                              }
-                                                            })
-                                                          ]
-                                                        )
-                                                      ]
-                                                    )
-                                                  ]
-                                                )
-                                              : _vm._e(),
-                                            _vm._v(" "),
-                                            _vm.is_loading
-                                              ? _c(
-                                                  "div",
-                                                  {
-                                                    staticClass:
-                                                      "fit-advisor-custom_row center-force "
-                                                  },
-                                                  [
-                                                    _vm._m(7),
-                                                    _vm._v(" "),
-                                                    _vm.is_loading
-                                                      ? _c(
-                                                          "div",
-                                                          {
-                                                            staticClass:
-                                                              "fit-advisor-custom_row"
-                                                          },
-                                                          [
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "col",
-                                                                staticStyle: {
-                                                                  visibility:
-                                                                    "hidden"
-                                                                }
-                                                              },
-                                                              [_vm._v("col")]
-                                                            ),
-                                                            _vm._v(" "),
-                                                            _c(
-                                                              "div",
-                                                              {
-                                                                staticClass:
-                                                                  "col",
-                                                                staticStyle: {
-                                                                  visibility:
-                                                                    "hidden"
-                                                                }
-                                                              },
-                                                              [_vm._v("col")]
-                                                            )
-                                                          ]
-                                                        )
-                                                      : _vm._e()
-                                                  ]
-                                                )
-                                              : _vm._e(),
-                                            _vm._v(" "),
-                                            _c(
-                                              "div",
-                                              { staticClass: "listfit ml-5" },
-                                              _vm._l(
-                                                _vm.product.variants,
-                                                function(row, key, index) {
-                                                  return _c(
-                                                    "div",
-                                                    {
-                                                      key: row.id,
-                                                      staticClass:
-                                                        " fit-advisor-selected-size",
-                                                      staticStyle: {
-                                                        opacity: "1"
-                                                      },
-                                                      attrs: {
-                                                        id:
-                                                          "fit-advisor-sizes-slider",
-                                                        "font-size": "40"
-                                                      }
-                                                    },
-                                                    [
-                                                      _c(
-                                                        "span",
-                                                        {
-                                                          attrs: { id: "fsize" }
-                                                        },
-                                                        [
-                                                          _vm.showSelectedSizeSlider
-                                                            ? _c(
-                                                                "h4",
-                                                                {
-                                                                  staticClass:
-                                                                    "result-size"
-                                                                },
-                                                                [
-                                                                  _c(
-                                                                    "span",
-                                                                    {
-                                                                      staticClass:
-                                                                        "variant_title",
-                                                                      attrs: {
-                                                                        "data-variant":
-                                                                          row.id
-                                                                      }
-                                                                    },
-                                                                    [
-                                                                      row.option1
-                                                                        .toUpperCase()
-                                                                        .substring(
-                                                                          0,
-                                                                          2
-                                                                        ) ==
-                                                                        "XL" ||
-                                                                      row.option1
-                                                                        .toUpperCase()
-                                                                        .substring(
-                                                                          0,
-                                                                          2
-                                                                        ) ==
-                                                                        "XS"
-                                                                        ? _c(
-                                                                            "span",
-                                                                            [
-                                                                              _c(
-                                                                                "span",
-                                                                                [
-                                                                                  _vm._v(
-                                                                                    _vm._s(
-                                                                                      row.option1.toUpperCase()
-                                                                                    )
-                                                                                  )
-                                                                                ]
-                                                                              )
-                                                                            ]
-                                                                          )
-                                                                        : _vm._e(),
-                                                                      _vm._v(
-                                                                        " "
-                                                                      ),
-                                                                      row.option1.toUpperCase() !=
-                                                                        "XS" &&
-                                                                      row.option1.toUpperCase() !=
-                                                                        "XL"
-                                                                        ? _c(
-                                                                            "span",
-                                                                            [
-                                                                              _vm._v(
-                                                                                _vm._s(
-                                                                                  row.option1
-                                                                                    .toUpperCase()
-                                                                                    .charAt(
-                                                                                      0
-                                                                                    )
-                                                                                )
-                                                                              )
-                                                                            ]
-                                                                          )
-                                                                        : _vm._e()
-                                                                    ]
-                                                                  )
-                                                                ]
-                                                              )
-                                                            : _vm._e()
-                                                        ]
-                                                      )
-                                                    ]
-                                                  )
-                                                }
-                                              ),
-                                              0
-                                            ),
-                                            _vm._v(" "),
-                                            !_vm.is_loading
-                                              ? _c(
-                                                  "div",
-                                                  {
-                                                    staticClass: "dfOagu",
-                                                    staticStyle: {
-                                                      "z-index": "30"
-                                                    }
-                                                  },
-                                                  [
-                                                    _c(
-                                                      "span",
-                                                      {
-                                                        staticClass:
-                                                          " jjnwUS  hjNiUI arrow-next next",
-                                                        attrs: {
-                                                          size: "10",
-                                                          id: "arrow-right"
-                                                        },
-                                                        on: {
-                                                          click: function(
-                                                            $event
-                                                          ) {
-                                                            return _vm.changesize(
-                                                              1
-                                                            )
-                                                          }
-                                                        }
-                                                      },
-                                                      [
-                                                        _c(
-                                                          "svg",
-                                                          {
-                                                            staticClass:
-                                                              "StyledIconBase-ea9ulj-0 jZGNBW",
-                                                            attrs: {
-                                                              viewBox:
-                                                                "0 0 16 16",
-                                                              height: "10",
-                                                              width: "10",
-                                                              "aria-hidden":
-                                                                "true",
-                                                              focusable:
-                                                                "false",
-                                                              fill:
-                                                                "currentColor",
-                                                              xmlns:
-                                                                "http://www.w3.org/2000/svg"
-                                                            }
-                                                          },
-                                                          [
-                                                            _c("path", {
-                                                              attrs: {
-                                                                "fill-rule":
-                                                                  "evenodd",
-                                                                d:
-                                                                  "M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"
-                                                              }
-                                                            })
-                                                          ]
-                                                        )
-                                                      ]
-                                                    )
-                                                  ]
-                                                )
-                                              : _vm._e()
-                                          ]
-                                        )
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _vm._l(_vm.product.variants, function(
-                                  row,
-                                  key,
-                                  index
-                                ) {
-                                  return _c(
-                                    "p",
-                                    {
-                                      staticClass:
-                                        " fit-advisor-header-desc size_descriptions"
-                                    },
-                                    [
-                                      !_vm.is_loading
-                                        ? _c("span", [
-                                            _vm._v("Fit Size:"),
-                                            _c("strong", [
-                                              _vm._v(_vm._s(row.desc_title))
-                                            ])
-                                          ])
-                                        : _vm._e()
-                                    ]
-                                  )
-                                }),
-                                _vm._v(" "),
-                                _vm._m(8)
-                              ],
-                              2
-                            )
-                          ]
-                        )
-                      ])
-                    ])
-                  ]),
                   _vm._v(" "),
                   _c("div", { staticStyle: { overflow: "auto" } }, [
                     _c(
@@ -44335,9 +44094,7 @@ var render = function() {
                         )
                       ]
                     )
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(9)
+                  ])
                 ])
               ]
             )
@@ -44363,37 +44120,25 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "fit-advisor-intro text-center", attrs: { id: "intro1" } },
-      [
-        _c("span", { attrs: { id: "mark1" } }, [
-          _vm._v("To get a size recommendation,")
-        ]),
+    return _c("div", [
+      _c("div", { staticClass: "x-row " }, [
+        _c("div", { staticClass: "x-col" }),
         _vm._v(" "),
-        _c("br"),
-        _c("span", { attrs: { id: "mark2" } }, [
-          _vm._v("fill out the form below")
-        ])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "p",
-      { staticClass: "fit-advisor-intro", attrs: { id: "intro2" } },
-      [
-        _c("span", { attrs: { id: "mark1" } }, [
-          _vm._v("Choose the option that best")
-        ]),
+        _c("div", { staticClass: "x-col" }),
         _vm._v(" "),
-        _c("br"),
-        _c("span", { attrs: { id: "mark2" } }, [_vm._v("describes your chest")])
-      ]
-    )
+        _c("div", { staticClass: "x-w-100" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "x-col" }),
+        _vm._v(" "),
+        _c("div", { staticClass: "x-col" })
+      ]),
+      _vm._v(" "),
+      _c(
+        "span",
+        { staticClass: "predict__sc-1a4an9n-3 OSFBL switch find-fit-header" },
+        [_vm._v("FIND YOUR FIT")]
+      )
+    ])
   },
   function() {
     var _vm = this
@@ -44447,6 +44192,550 @@ var staticRenderFns = [
         _c("span", { attrs: { id: "mark2" } })
       ]
     )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
+  \****************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "container" }, [
+      _c("div", { staticClass: "row justify-content-center" }, [
+        _c("div", { staticClass: "col-md-8" }, [
+          _c("div", { staticClass: "card" }, [
+            _c("div", { staticClass: "card-header" }, [
+              _vm._v("Example Component")
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "card-body" })
+          ])
+        ])
+      ])
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormComponent.vue?vue&type=template&id=b1dd1884&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/FormComponent.vue?vue&type=template&id=b1dd1884& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { attrs: { id: "form-bodyfit" } }, [
+    _vm._m(0),
+    _vm._v(" "),
+    _c(
+      "div",
+      {
+        staticClass: "tab fit-advisor-custom_row form-group offset-1",
+        attrs: { id: "fields" }
+      },
+      [
+        !_vm.container.countrycheck
+          ? _c("div", { staticClass: "fit-advisor-custom_row" }, [
+              _c("div", { staticClass: "col-md-6" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: " labels-tab1 height_weight text-center",
+                    attrs: { for: "height_ft" }
+                  },
+                  [_vm._v("Height")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.container.form.heightfoot,
+                      expression: "container.form.heightfoot"
+                    }
+                  ],
+                  staticClass: "form-control  input-border",
+                  attrs: {
+                    type: "number",
+                    id: "height_ft",
+                    placeholder: "Feet",
+                    name: "heightfoot"
+                  },
+                  domProps: { value: _vm.container.form.heightfoot },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.container.form,
+                        "heightfoot",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "col-md-6" }, [
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.container.form.heightinch,
+                      expression: "container.form.heightinch"
+                    }
+                  ],
+                  staticClass: "form-control mtf-3   input-border",
+                  attrs: {
+                    type: "number",
+                    id: "height_in",
+                    placeholder: "Inches",
+                    name: "heightinch"
+                  },
+                  domProps: { value: _vm.container.form.heightinch },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.container.form,
+                        "heightinch",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.container.countrycheck
+          ? _c("div", { staticClass: "fit-advisor-custom_row" }, [
+              _c("div", { staticClass: "col-md-12" }, [
+                _c(
+                  "label",
+                  {
+                    staticClass: " labels-tab1 height_weight text-center",
+                    attrs: { for: "height_ft" }
+                  },
+                  [_vm._v("Height")]
+                ),
+                _vm._v(" "),
+                _c("input", {
+                  directives: [
+                    {
+                      name: "model",
+                      rawName: "v-model",
+                      value: _vm.container.form.heightcm,
+                      expression: "container.form.heightcm"
+                    }
+                  ],
+                  staticClass: "form-control w-100 input-border",
+                  attrs: {
+                    type: "number",
+                    id: "height_cm",
+                    placeholder: "Cm",
+                    name: "heightcm"
+                  },
+                  domProps: { value: _vm.container.form.heightcm },
+                  on: {
+                    input: function($event) {
+                      if ($event.target.composing) {
+                        return
+                      }
+                      _vm.$set(
+                        _vm.container.form,
+                        "heightcm",
+                        $event.target.value
+                      )
+                    }
+                  }
+                })
+              ])
+            ])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("div", { staticClass: "fit-advisor-custom_row mtf-5" }, [
+          _c("div", { staticClass: "col-md-6" }, [
+            _c(
+              "label",
+              {
+                staticClass: " labels-tab1 height_weight text-center",
+                attrs: { for: "weight" }
+              },
+              [_vm._v("Weight")]
+            ),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.container.form.weight,
+                  expression: "container.form.weight"
+                }
+              ],
+              staticClass: "form-control   input-border",
+              attrs: {
+                type: "number",
+                id: "weight",
+                placeholder: "Lbs",
+                name: "weight"
+              },
+              domProps: { value: _vm.container.form.weight },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.container.form, "weight", $event.target.value)
+                }
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-6" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.container.form.age,
+                  expression: "container.form.age"
+                }
+              ],
+              staticClass: "form-control   input-border mt-n1",
+              attrs: {
+                type: "number",
+                id: "age",
+                placeholder: "Years",
+                name: "Age"
+              },
+              domProps: { value: _vm.container.form.age },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.container.form, "age", $event.target.value)
+                }
+              }
+            })
+          ])
+        ])
+      ]
+    ),
+    _vm._v(" "),
+    _c("div", { staticClass: "row" }, [
+      _c("input", {
+        directives: [
+          {
+            name: "model",
+            rawName: "v-model",
+            value: _vm.container.countrycheck,
+            expression: "container.countrycheck"
+          }
+        ],
+        staticClass: "countrycheck no-gutters",
+        attrs: { type: "checkbox", name: "countrycheck" },
+        domProps: {
+          checked: Array.isArray(_vm.container.countrycheck)
+            ? _vm._i(_vm.container.countrycheck, null) > -1
+            : _vm.container.countrycheck
+        },
+        on: {
+          change: [
+            function($event) {
+              var $$a = _vm.container.countrycheck,
+                $$el = $event.target,
+                $$c = $$el.checked ? true : false
+              if (Array.isArray($$a)) {
+                var $$v = null,
+                  $$i = _vm._i($$a, $$v)
+                if ($$el.checked) {
+                  $$i < 0 &&
+                    _vm.$set(_vm.container, "countrycheck", $$a.concat([$$v]))
+                } else {
+                  $$i > -1 &&
+                    _vm.$set(
+                      _vm.container,
+                      "countrycheck",
+                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                    )
+                }
+              } else {
+                _vm.$set(_vm.container, "countrycheck", $$c)
+              }
+            },
+            function($event) {
+              return _vm.countryval()
+            }
+          ]
+        }
+      }),
+      _vm._v(" "),
+      _c(
+        "svg",
+        {
+          staticClass: "img_country",
+          staticStyle: { "enable-background": "new 0 0 512 512" },
+          attrs: {
+            version: "1.1",
+            id: "Capa_1",
+            xmlns: "http://www.w3.org/2000/svg",
+            "xmlns:xlink": "http://www.w3.org/1999/xlink",
+            x: "0px",
+            y: "0px",
+            viewBox: "0 0 512 512",
+            "xml:space": "preserve"
+          }
+        },
+        [
+          _c("rect", {
+            staticStyle: { fill: "#F0F0F0" },
+            attrs: { y: "85.331", width: "512", height: "341.337" }
+          }),
+          _vm._v(" "),
+          _c("g", [
+            _c("rect", {
+              staticStyle: { fill: "#D80027" },
+              attrs: { y: "127.994", width: "512", height: "42.663" }
+            }),
+            _vm._v(" "),
+            _c("rect", {
+              staticStyle: { fill: "#D80027" },
+              attrs: { y: "213.331", width: "512", height: "42.663" }
+            }),
+            _vm._v(" "),
+            _c("rect", {
+              staticStyle: { fill: "#D80027" },
+              attrs: { y: "298.657", width: "512", height: "42.663" }
+            }),
+            _vm._v(" "),
+            _c("rect", {
+              staticStyle: { fill: "#D80027" },
+              attrs: { y: "383.994", width: "512", height: "42.663" }
+            })
+          ]),
+          _vm._v(" "),
+          _c("rect", {
+            staticStyle: { fill: "#2E52B2" },
+            attrs: { y: "85.331", width: "256", height: "183.797" }
+          }),
+          _vm._v(" "),
+          _c("g", [
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \r\n\r\n99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \r\n\r\n99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \r\n\r\n43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \r\n\r\n54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \r\n\r\n99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \r\n\r\n54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \r\n\r\n156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \r\n\r\n145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \r\n\r\n201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \r\n\r\n212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \r\n\r\n156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
+              }
+            }),
+            _vm._v(" "),
+            _c("polygon", {
+              staticStyle: { fill: "#F0F0F0" },
+              attrs: {
+                points:
+                  "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \r\n\r\n212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
+              }
+            })
+          ]),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g"),
+          _vm._v(" "),
+          _c("g")
+        ]
+      )
+    ]),
+    _vm._v(" "),
+    _c(
+      "button",
+      {
+        staticClass: "continue-btn",
+        staticStyle: {
+          position: "absolute",
+          right: "30%",
+          width: "33%",
+          bottom: "-50px"
+        },
+        attrs: { type: "button", id: "nextBtn" },
+        on: {
+          click: function($event) {
+            return _vm.nextStep(2)
+          }
+        }
+      },
+      [_vm._v("Get Started")]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "p",
+      { staticClass: "fit-advisor-intro text-center", attrs: { id: "intro1" } },
+      [
+        _c("span", { attrs: { id: "mark1" } }, [
+          _vm._v("To get a size recommendation,")
+        ]),
+        _vm._v(" "),
+        _c("br"),
+        _c("span", { attrs: { id: "mark2" } }, [
+          _vm._v("fill out the form below")
+        ])
+      ]
+    )
   },
   function() {
     var _vm = this
@@ -44462,7 +44751,310 @@ var staticRenderFns = [
         [_vm._v("Age")]
       )
     ])
-  },
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResultComponent.vue?vue&type=template&id=057ebc76&":
+/*!***************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResultComponent.vue?vue&type=template&id=057ebc76& ***!
+  \***************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c("div", { staticClass: "tab" }, [
+      _c("div", { staticClass: "fit-advisor-custom_row" }, [
+        _c("div", { staticClass: "col-md-12" }, [
+          _c("div", { staticClass: " fit-advisor-selected-product-grid" }, [
+            _c(
+              "div",
+              [
+                _c("div", { staticClass: " fit-advisor-product-size-box" }, [
+                  _c(
+                    "div",
+                    { staticClass: " fit-advisor-fit-grid float-left" },
+                    [
+                      _c(
+                        "div",
+                        {
+                          staticClass:
+                            " fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"
+                        },
+                        [
+                          !_vm.container.is_loading
+                            ? _c(
+                                "div",
+                                { staticClass: " selected-product-arrow-left" },
+                                [
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass:
+                                        " jjnwUS  selected-product-arrow-left-pointer prev",
+                                      attrs: { size: "10", id: "arrow-left" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.changesize(0)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "svg",
+                                        {
+                                          staticClass:
+                                            "StyledIconBase-ea9ulj-0 jZGNBW",
+                                          attrs: {
+                                            viewBox: "0 0 16 16",
+                                            height: "10",
+                                            width: "10",
+                                            "aria-hidden": "true",
+                                            focusable: "false",
+                                            fill: "currentColor",
+                                            xmlns: "http://www.w3.org/2000/svg"
+                                          }
+                                        },
+                                        [
+                                          _c("path", {
+                                            attrs: {
+                                              "fill-rule": "evenodd",
+                                              d:
+                                                "M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.container.is_loading
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass:
+                                    "fit-advisor-custom_row center-force "
+                                },
+                                [
+                                  _vm._m(0),
+                                  _vm._v(" "),
+                                  _vm.container.is_loading
+                                    ? _c(
+                                        "div",
+                                        {
+                                          staticClass: "fit-advisor-custom_row"
+                                        },
+                                        [
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "col",
+                                              staticStyle: {
+                                                visibility: "hidden"
+                                              }
+                                            },
+                                            [_vm._v("col")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c(
+                                            "div",
+                                            {
+                                              staticClass: "col",
+                                              staticStyle: {
+                                                visibility: "hidden"
+                                              }
+                                            },
+                                            [_vm._v("col")]
+                                          )
+                                        ]
+                                      )
+                                    : _vm._e()
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            { staticClass: "listfit ml-5" },
+                            _vm._l(_vm.product.variants, function(
+                              row,
+                              key,
+                              index
+                            ) {
+                              return _c(
+                                "div",
+                                {
+                                  key: row.id,
+                                  staticClass: " fit-advisor-selected-size",
+                                  staticStyle: { opacity: "1" },
+                                  attrs: {
+                                    id: "fit-advisor-sizes-slider",
+                                    "font-size": "40"
+                                  }
+                                },
+                                [
+                                  _c("span", { attrs: { id: "fsize" } }, [
+                                    _vm.showSelectedSizeSlider
+                                      ? _c(
+                                          "h4",
+                                          { staticClass: "result-size" },
+                                          [
+                                            _c(
+                                              "span",
+                                              {
+                                                staticClass: "variant_title",
+                                                attrs: {
+                                                  "data-variant": row.id
+                                                }
+                                              },
+                                              [
+                                                row.option1
+                                                  .toUpperCase()
+                                                  .substring(0, 2) == "XL" ||
+                                                row.option1
+                                                  .toUpperCase()
+                                                  .substring(0, 2) == "XS"
+                                                  ? _c("span", [
+                                                      _c("span", [
+                                                        _vm._v(
+                                                          _vm._s(
+                                                            row.option1.toUpperCase()
+                                                          )
+                                                        )
+                                                      ])
+                                                    ])
+                                                  : _vm._e(),
+                                                _vm._v(" "),
+                                                row.option1.toUpperCase() !=
+                                                  "XS" &&
+                                                row.option1.toUpperCase() !=
+                                                  "XL"
+                                                  ? _c("span", [
+                                                      _vm._v(
+                                                        _vm._s(
+                                                          row.option1
+                                                            .toUpperCase()
+                                                            .charAt(0)
+                                                        )
+                                                      )
+                                                    ])
+                                                  : _vm._e()
+                                              ]
+                                            )
+                                          ]
+                                        )
+                                      : _vm._e()
+                                  ])
+                                ]
+                              )
+                            }),
+                            0
+                          ),
+                          _vm._v(" "),
+                          !_vm.container.is_loading
+                            ? _c(
+                                "div",
+                                {
+                                  staticClass: "dfOagu",
+                                  staticStyle: { "z-index": "30" }
+                                },
+                                [
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass:
+                                        " jjnwUS  hjNiUI arrow-next next",
+                                      attrs: { size: "10", id: "arrow-right" },
+                                      on: {
+                                        click: function($event) {
+                                          return _vm.changesize(1)
+                                        }
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "svg",
+                                        {
+                                          staticClass:
+                                            "StyledIconBase-ea9ulj-0 jZGNBW",
+                                          attrs: {
+                                            viewBox: "0 0 16 16",
+                                            height: "10",
+                                            width: "10",
+                                            "aria-hidden": "true",
+                                            focusable: "false",
+                                            fill: "currentColor",
+                                            xmlns: "http://www.w3.org/2000/svg"
+                                          }
+                                        },
+                                        [
+                                          _c("path", {
+                                            attrs: {
+                                              "fill-rule": "evenodd",
+                                              d:
+                                                "M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"
+                                            }
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  )
+                                ]
+                              )
+                            : _vm._e()
+                        ]
+                      )
+                    ]
+                  )
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.product.variants, function(row, key, index) {
+                  return _c(
+                    "p",
+                    {
+                      key: row.id,
+                      staticClass: " fit-advisor-header-desc size_descriptions"
+                    },
+                    [
+                      !_vm.container.is_loading
+                        ? _c("span", [
+                            _vm._v("Fit Size:"),
+                            _c("strong", [_vm._v(_vm._s(row.desc_title))])
+                          ])
+                        : _vm._e()
+                    ]
+                  )
+                }),
+                _vm._v(" "),
+                _vm._m(1)
+              ],
+              2
+            )
+          ])
+        ])
+      ])
+    ]),
+    _vm._v(" "),
+    _vm._m(2)
+  ])
+}
+var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -44526,75 +45118,6 @@ var staticRenderFns = [
     )
   }
 ]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e&":
-/*!****************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ExampleComponent.vue?vue&type=template&id=299e239e& ***!
-  \****************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _vm._m(0)
-}
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row justify-content-center" }, [
-        _c("div", { staticClass: "col-md-8" }, [
-          _c("div", { staticClass: "card" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Example Component")
-            ]),
-            _vm._v(" "),
-            _c("div", { staticClass: "card-body" })
-          ])
-        ])
-      ])
-    ])
-  }
-]
-render._withStripped = true
-
-
-
-/***/ }),
-
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SizechartComponent.vue?vue&type=template&id=3affdaaa&":
-/*!******************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/SizechartComponent.vue?vue&type=template&id=3affdaaa& ***!
-  \******************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* binding */ render),
-/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
-/* harmony export */ });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div")
-}
-var staticRenderFns = []
 render._withStripped = true
 
 

@@ -29,7 +29,12 @@ Vue.use(VSwitch)
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('bodyfit-component', require('./components/BodyComponent.vue').default);
-Vue.component('sizechart-component', require('./components/SizechartComponent.vue').default);
+Vue.component('form-component', require('./components/FormComponent.vue').default);
+Vue.component('attribute-one-component', require('./components/AttributeoneComponent.vue').default);
+Vue.component('attribute-two-component', require('./components/AttributetwoComponent.vue').default);
+Vue.component('attribute-three-component', require('./components/AttributethreeComponent.vue').default);
+Vue.component('result-component', require('./components/ResultComponent.vue').default);
+
 
 
 

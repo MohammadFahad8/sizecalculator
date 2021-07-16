@@ -31,6 +31,8 @@ class AttributeController extends Controller
         //
         // $db = new DatabaseSeeder();
         // $db->run('fahad');
+        
+        
         $helpers = new Helpers();
         $helpers->ifScriptTag();
         $helpers->updateAsset();

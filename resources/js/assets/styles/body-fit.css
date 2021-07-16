@@ -89,7 +89,7 @@
     text-align: center !important;
     margin: 0 auto;
     display: block;
-    margin-top: 40px !important;
+    /* margin-top: 40px !important; */
     word-spacing: 5px !important;
 }
 
@@ -586,7 +586,7 @@ button:hover {
     font-weight: normal !important;
     font-size: 15px !important;
     line-height: 26px !important;
-    margin-top: -22px;
+    /* margin-top: -22px; */
     font-family: karla !important;
 }
 

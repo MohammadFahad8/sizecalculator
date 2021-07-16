@@ -20,6 +20,7 @@
     <div class="card-body">
         <div class="text-left">
              <p>Welcome to Body Fit Application</p>
+             <bodyfit-component :product=""></bodyfit-component>
         </div>
        
     </div>
