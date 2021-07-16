@@ -2315,14 +2315,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form.stomach.other = '';
       this.form.bottom.name = '';
       this.form.bottom.other = '';
-      this.recommended_size = '', this.lastTab = false; // EventBus.$emit('resetSlides',this.tabnumber)
-      // EventBus.$on('home',num=>{
-      //     console.log(num)
-      //     this.nextStep(num)
-      // })
-
-      this.nextStep(1);
+      this.recommended_size = '', this.lastTab = false;
       this.dev_reset();
+      this.nextStep(1);
     },
     showBodyFit: function showBodyFit() {
       var _this2 = this;
@@ -44534,135 +44529,147 @@ var render = function() {
       [
         !_vm.container.countrycheck
           ? _c("div", { staticClass: "fit-advisor-custom_row" }, [
-              _c("div", { staticClass: "col-md-6" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: " labels-tab1 height_weight text-center",
-                    attrs: { for: "height_ft" }
-                  },
-                  [_vm._v("Height")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                { staticClass: "col-md-6 x-text-lg-left x-text-center" },
+                [
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.container.form.heightfoot,
-                      expression: "container.form.heightfoot"
-                    }
-                  ],
-                  staticClass: "form-control  input-border",
-                  attrs: {
-                    type: "number",
-                    id: "height_ft",
-                    placeholder: "Feet",
-                    name: "heightfoot"
-                  },
-                  domProps: { value: _vm.container.form.heightfoot },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                      staticClass: " labels-tab1 height_weight",
+                      attrs: { for: "height_ft" }
+                    },
+                    [_vm._v("Height")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.container.form.heightfoot,
+                        expression: "container.form.heightfoot"
                       }
-                      _vm.$set(
-                        _vm.container.form,
-                        "heightfoot",
-                        $event.target.value
-                      )
+                    ],
+                    staticClass: "form-control  input-border",
+                    attrs: {
+                      type: "number",
+                      id: "height_ft",
+                      placeholder: "Feet",
+                      name: "heightfoot"
+                    },
+                    domProps: { value: _vm.container.form.heightfoot },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.container.form,
+                          "heightfoot",
+                          $event.target.value
+                        )
+                      }
                     }
-                  }
-                })
-              ]),
+                  })
+                ]
+              ),
               _vm._v(" "),
-              _c("div", { staticClass: "col-md-6" }, [
-                _c("input", {
-                  directives: [
-                    {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.container.form.heightinch,
-                      expression: "container.form.heightinch"
-                    }
-                  ],
-                  staticClass: "form-control mtf-3   input-border",
-                  attrs: {
-                    type: "number",
-                    id: "height_in",
-                    placeholder: "Inches",
-                    name: "heightinch"
-                  },
-                  domProps: { value: _vm.container.form.heightinch },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+              _c(
+                "div",
+                { staticClass: "col-md-6 x-text-lg-left x-text-center" },
+                [
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.container.form.heightinch,
+                        expression: "container.form.heightinch"
                       }
-                      _vm.$set(
-                        _vm.container.form,
-                        "heightinch",
-                        $event.target.value
-                      )
+                    ],
+                    staticClass: "form-control mtf-3   input-border",
+                    attrs: {
+                      type: "number",
+                      id: "height_in",
+                      placeholder: "Inches",
+                      name: "heightinch"
+                    },
+                    domProps: { value: _vm.container.form.heightinch },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.container.form,
+                          "heightinch",
+                          $event.target.value
+                        )
+                      }
                     }
-                  }
-                })
-              ])
+                  })
+                ]
+              )
             ])
           : _vm._e(),
         _vm._v(" "),
         _vm.container.countrycheck
           ? _c("div", { staticClass: "fit-advisor-custom_row" }, [
-              _c("div", { staticClass: "col-md-12" }, [
-                _c(
-                  "label",
-                  {
-                    staticClass: " labels-tab1 height_weight text-center",
-                    attrs: { for: "height_ft" }
-                  },
-                  [_vm._v("Height")]
-                ),
-                _vm._v(" "),
-                _c("input", {
-                  directives: [
+              _c(
+                "div",
+                { staticClass: "col-md-12  x-text-lg-left x-text-center" },
+                [
+                  _c(
+                    "label",
                     {
-                      name: "model",
-                      rawName: "v-model",
-                      value: _vm.container.form.heightcm,
-                      expression: "container.form.heightcm"
-                    }
-                  ],
-                  staticClass: "form-control w-100 input-border",
-                  attrs: {
-                    type: "number",
-                    id: "height_cm",
-                    placeholder: "Cm",
-                    name: "heightcm"
-                  },
-                  domProps: { value: _vm.container.form.heightcm },
-                  on: {
-                    input: function($event) {
-                      if ($event.target.composing) {
-                        return
+                      staticClass: " labels-tab1 height_weight ",
+                      attrs: { for: "height_ft" }
+                    },
+                    [_vm._v("Height")]
+                  ),
+                  _vm._v(" "),
+                  _c("input", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.container.form.heightcm,
+                        expression: "container.form.heightcm"
                       }
-                      _vm.$set(
-                        _vm.container.form,
-                        "heightcm",
-                        $event.target.value
-                      )
+                    ],
+                    staticClass: "form-control w-100 input-border",
+                    attrs: {
+                      type: "number",
+                      id: "height_cm",
+                      placeholder: "Cm",
+                      name: "heightcm"
+                    },
+                    domProps: { value: _vm.container.form.heightcm },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.$set(
+                          _vm.container.form,
+                          "heightcm",
+                          $event.target.value
+                        )
+                      }
                     }
-                  }
-                })
-              ])
+                  })
+                ]
+              )
             ])
           : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "fit-advisor-custom_row mtf-5" }, [
-          _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "col-md-6 x-text-lg-left x-text-center" }, [
             _c(
               "label",
               {
-                staticClass: " labels-tab1 height_weight text-center",
+                staticClass: " labels-tab1 height_weight ",
                 attrs: { for: "weight" }
               },
               [_vm._v("Weight")]
@@ -44677,7 +44684,7 @@ var render = function() {
                   expression: "container.form.weight"
                 }
               ],
-              staticClass: "form-control   input-border",
+              staticClass: "form-control   input-border x-mt-2",
               attrs: {
                 type: "number",
                 id: "weight",
@@ -44696,7 +44703,7 @@ var render = function() {
             })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-6" }, [
+          _c("div", { staticClass: "col-md-6 x-text-lg-left x-text-center" }, [
             _vm._m(1),
             _vm._v(" "),
             _c("input", {

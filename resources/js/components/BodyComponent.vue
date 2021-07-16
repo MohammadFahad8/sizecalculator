@@ -254,14 +254,11 @@ export default {
             this.form.bottom.other = '';
             this.recommended_size = '',
             this.lastTab=false;
-            // EventBus.$emit('resetSlides',this.tabnumber)
-            // EventBus.$on('home',num=>{
-            //     console.log(num)
-            //     this.nextStep(num)
-            // })
+            
+            this.dev_reset();
             this.nextStep(1)
 
-            this.dev_reset();
+            
         
 
         },
