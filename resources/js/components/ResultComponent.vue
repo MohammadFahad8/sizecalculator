@@ -463,7 +463,10 @@ export default {
     mounted() {
         this.setupProduct();
         this.getProductDetails();
+        
         EventBus.$on('sizeCalculate', num => {
+            var a=1;
+            Event.$emit('mount',a);
             this.setupProduct();
             this.getProductDetails();
         })
