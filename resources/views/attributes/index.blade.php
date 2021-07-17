@@ -1,5 +1,6 @@
 @extends('shopify-app::layouts.default')
 @section('content')
+@include('partials_attributes.style')
 
 
 {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}

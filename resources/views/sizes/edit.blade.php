@@ -1,5 +1,6 @@
 @extends('shopify-app::layouts.default')
 @section('content')
+@include('partials_attributes.style')
 @if (session('success'))
 <div class="alert alert-success" role="alert">
     {{ session('success') }}

@@ -43742,15 +43742,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _c("div", [
-      _vm._v(
-        "\r\n  " +
-          _vm._s(_vm.currentRecord) +
-          " /" +
-          _vm._s(_vm.recordsLength) +
-          "\r\n    \r\n\r\n"
-      )
-    ]),
+    _c("div"),
     _vm._v(" "),
     _c("p", { staticClass: "fit-advisor-intro" }, [
       _c("span", { attrs: { id: "mark1" } }, [

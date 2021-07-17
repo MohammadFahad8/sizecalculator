@@ -1,6 +1,6 @@
 @extends('shopify-app::layouts.default')
 @section('content')
-
+@include('partials_attributes.style')
 
 
 
