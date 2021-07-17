@@ -160,6 +160,7 @@ class AttributeController extends Controller
         $messageContainer = array('error_msg' =>'Configure Product By clicking on Image First');
             
         $product = Products::where('product_id','=',$request['id'])->first();
+        
         $sizeChartCount = Sizechart::where('product_id','=',$request['id'])->get();
         
         
@@ -229,6 +230,7 @@ class AttributeController extends Controller
         
         $shop_config = $shop_cfg['shop'];
         
+        
         Variants::truncate();
     // Products::truncate();
         foreach ($prod as $row) {
@@ -251,7 +253,9 @@ class AttributeController extends Controller
             $product->name =   $row['title'];
             $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
             $product->website_name =  $shop_config['id'];
+            
             $product->save();  
+            // Attributetypes::where('product_id','=',$product->product_id)->get();
             }
             
            
