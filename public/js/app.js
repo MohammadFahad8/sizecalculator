@@ -1878,8 +1878,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    attributes: Object,
+    tabnum: String,
+    recordsLength: Number,
+    currentRecord: Number
+  },
   data: function data() {
     return {
       container: {
@@ -1889,10 +1899,9 @@ __webpack_require__.r(__webpack_exports__);
         chestSizeTwo: '2',
         chestSizeThree: '3',
         is_loading: false,
-        chest: {
-          title: 'chest',
-          other: localStorage.getItem('chest')
-        }
+        chest: [],
+        arraytitle: {},
+        arrayval: {}
       }
     };
   },
@@ -1900,11 +1909,17 @@ __webpack_require__.r(__webpack_exports__);
     nextStep: function nextStep(n) {
       this.container.tabnumber = n;
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('attributeone', this.container);
+
+      if (this.currentRecord == this.recordsLength) {
+        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('sizeCalculate', n);
+      }
     },
     chest: function chest(n) {
-      this.container.chest.other = n;
-      localStorage.setItem('chest', n);
-      this.nextStep(3);
+      if (localStorage.getItem(this.attributes.name) == null) {
+        localStorage.setItem(this.attributes.name.toLowerCase(), n);
+      }
+
+      this.nextStep(this.tabnum + 1);
     }
   },
   mounted: function mounted() {}
@@ -2174,6 +2189,75 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2182,40 +2266,43 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       form: {
-        heightfoot: localStorage.getItem('foot'),
-        heightinch: localStorage.getItem('inch'),
-        heightcm: parseInt(localStorage.getItem('cm')),
-        weight: parseFloat(localStorage.getItem('weight')).toFixed(0),
-        age: localStorage.getItem('age'),
-        chest: {
-          title: 'chest',
-          other: localStorage.getItem('chest')
-        },
+        // heightfoot: localStorage.getItem("foot"),
+        // heightinch: localStorage.getItem("inch"),
+        // heightcm: parseInt(localStorage.getItem("cm")),
+        // weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
+        // age: localStorage.getItem("age"),
+        heightfoot: '',
+        heightinch: '',
+        heightcm: '',
+        weight: '',
+        age: '',
+        chest: {},
         stomach: {
-          title: 'stomach',
-          other: localStorage.getItem('stomach')
+          title: "stomach",
+          other: localStorage.getItem("stomach")
         },
         bottom: {
-          title: 'bottom',
-          other: localStorage.getItem('bottom')
+          title: "bottom",
+          other: localStorage.getItem("bottom")
         },
-        tags: JSON.parse(localStorage.getItem('tags')),
+        tags: JSON.parse(localStorage.getItem("tags")),
         convertedMeasurements: false,
-        conversionCount: ''
+        conversionCount: ""
       },
       size_descriptions: [{
-        title: 'Very Snugged'
+        title: "Very Snugged"
       }, {
-        title: ' Snugged'
+        title: " Snugged"
       }, {
-        title: 'Recommended'
+        title: "Recommended"
       }, {
-        title: 'Relaxed'
+        title: "Relaxed"
       }, {
-        title: 'Very Relaxed'
+        title: "Very Relaxed"
       }],
       attributes: {},
-      countrycheck: '',
+      n: '',
+      countrycheck: "",
       checked: false,
       currentTab: 0,
       height_cm: 0,
@@ -2227,73 +2314,65 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       lastTab: false,
       measureh: 0,
       message: "Jello",
-      recommended_size: '',
+      recommended_size: "",
       is_loading: false,
       showlist: false,
       showContinueBtn: true,
       showrecommended: true,
       variantselected: 0,
-      finalsize: '',
+      finalsize: "",
       showBodyFitApp: false,
-      allSizeText: 'Recommended',
-      $allSlides: '',
-      $allSlidesSize: '',
-      traverseDefault: '',
-      actionDefault: '',
-      otherSize: '',
+      allSizeText: "Recommended",
+      $allSlides: "",
+      $allSlidesSize: "",
+      traverseDefault: "",
+      actionDefault: "",
+      otherSize: "",
       sizeIndex: 0,
       showSelectedSizeSlider: false,
       restarted: false,
       sizecheck: false,
       allow: true,
-      chestSizeOne: '1',
-      chestSizeTwo: '2',
-      chestSizeThree: '3',
-      stomachSizeOne: '1',
-      stomachSizeTwo: '2',
-      stomachSizeThree: '3',
-      bottomSizeOne: '1',
-      bottomSizeTwo: '2',
-      bottomSizeThree: '3',
+      chestSizeOne: "1",
+      chestSizeTwo: "2",
+      chestSizeThree: "3",
+      stomachSizeOne: "1",
+      stomachSizeTwo: "2",
+      stomachSizeThree: "3",
+      bottomSizeOne: "1",
+      bottomSizeTwo: "2",
+      bottomSizeThree: "3",
       attr_first: false,
       attr_second: false,
       attr_third: false,
       tabnumber: 1,
-      image_us: this.$appUrl + '/images/us.png',
-      image_uk: this.$appUrl + '/images/uk.png'
+      image_us: this.$appUrl + "/images/us.png",
+      image_uk: this.$appUrl + "/images/uk.png"
     };
   },
   methods: {
     formSubmit: function formSubmit() {
       var _this = this;
 
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('formsubmit', function (container) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("formsubmit", function (container) {
         _this.form.heightfoot = container.form.heightfoot;
         _this.form.heightinch = container.form.heightinch;
         _this.form.heightcm = container.form.heightcm;
         _this.form.weight = container.form.weight;
         _this.form.age = container.form.age;
         _this.tabnumber = container.form.tabnumber;
+        _this.n = container.form.tabnumber;
         _this.form.convertedMeasurements = container.form.convertedMeasurements;
         _this.conversionCount = container.form.conversionCount;
         _this.firstTab = container.firstTab;
       });
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('attributeone', function (container) {
-        _this.form.chest.other = container.chest.other;
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("attributeone", function (container) {
+        _this.chest = container;
         _this.lastTab = false;
         _this.tabnumber = container.tabnumber;
+        _this.n = container.tabnumber;
       });
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('attributetwo', function (container) {
-        _this.lastTab = false;
-        _this.form.stomach.other = container.stomach.other;
-        _this.tabnumber = container.tabnumber;
-      });
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('attributethree', function (container) {
-        _this.form.bottom.other = container.bottom.other;
-        _this.tabnumber = container.tabnumber;
-        _this.lastTab = true;
-      });
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('resetForm', function (tabnum) {
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("resetForm", function (tabnum) {
         _this.lastTab = false;
         _this.tabnumber = tabnum;
 
@@ -2307,22 +2386,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.tabnumber = num - 1;
     },
     restart: function restart() {
-      $('div.fit-advisor-selected-size:gt(' + localStorage.getItem('sizeindex') + ')').show();
-      $('div.fit-advisor-selected-size:lt(' + localStorage.getItem('sizeindex') + ')').show();
-      $('p.size_descriptions:gt(' + localStorage.getItem('sizeindex') + ')').show();
-      $('p.size_descriptions:lt(' + localStorage.getItem('sizeindex') + ')').show();
+      $("div.fit-advisor-selected-size:gt(" + localStorage.getItem("sizeindex") + ")").show();
+      $("div.fit-advisor-selected-size:lt(" + localStorage.getItem("sizeindex") + ")").show();
+      $("p.size_descriptions:gt(" + localStorage.getItem("sizeindex") + ")").show();
+      $("p.size_descriptions:lt(" + localStorage.getItem("sizeindex") + ")").show();
       this.restarted = true;
-      this.form.heightfoot = '';
-      this.form.heightinch = '';
-      this.form.weight = '';
-      this.form.age = '';
-      this.form.chest.name = '';
-      this.form.chest.other = '';
-      this.form.stomach.name = '';
-      this.form.stomach.other = '';
-      this.form.bottom.name = '';
-      this.form.bottom.other = '';
-      this.recommended_size = '', this.lastTab = false;
+      this.form.heightfoot = "";
+      this.form.heightinch = "";
+      this.form.weight = "";
+      this.form.age = "";
+      this.form.chest.name = "";
+      this.form.chest.other = "";
+      this.form.stomach.name = "";
+      this.form.stomach.other = "";
+      this.form.bottom.name = "";
+      this.form.bottom.other = "";
+      this.recommended_size = "", this.lastTab = false;
       this.dev_reset();
       this.nextStep(1);
     },
@@ -2331,9 +2410,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       var id = new FormData();
       var shop_name = window.location.hostname;
-      id.append('id', this.product.id);
-      id.append('shop_name', shop_name);
-      axios.post(this.$appUrl + '/api/permission-to-show', id).then(function (res) {
+      id.append("id", this.product.id);
+      id.append("shop_name", shop_name);
+      axios.post(this.$appUrl + "/api/permission-to-show", id).then(function (res) {
         if (res.data.display == true) {
           if (res.data.clearLog == true) {
             _this2.dev_reset();
@@ -2359,13 +2438,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     addOrUpdateProduct: function addOrUpdateProduct() {
-      axios.post(this.$appUrl + '/api/add-or-update-product', this.product).then(function (res) {});
+      axios.post(this.$appUrl + "/api/add-or-update-product", this.product).then(function (res) {});
     },
     getLocalData: function getLocalData() {
-      if (localStorage.getItem('recommended_size') != null) {
-        this.finalsize = localStorage.getItem('recommended_size');
+      if (localStorage.getItem("recommended_size") != null) {
+        this.finalsize = localStorage.getItem("recommended_size");
       } else {
-        this.finalsize = '';
+        this.finalsize = "";
       }
     },
     // setSlides: function (sizeposition) {
@@ -2784,77 +2863,75 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           var ww = document.body.clientWidth;
 
           if (ww == 320) {
-            $('.height_weight').addClass('text-center');
-            $('.height_weight').removeClass('text-left');
-            $('#age-label-5s').removeClass('text-left');
-            $('#age-label-5s').addClass('text-center');
-            $('#intro5').removeClass('ml-n4');
-            $('.fit-advisor-header-desc').addClass('text-center');
-            $('.fit-advisor-header-desc-mt').removeClass('fit-advisor-header-desc-mt');
-            $('.fit-advisor-product-size-box').addClass('ml-n6');
-            $('#fields').removeClass('offset-1');
-            $('#fields').removeClass('ml-n5');
-            $('#fields').addClass('ml-n4');
-            $('.fit-advisor-selected-product-grid > div').removeClass('mr-3');
-            $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
-            $('.listfit').removeClass('ml-5');
+            $(".height_weight").addClass("text-center");
+            $(".height_weight").removeClass("text-left");
+            $("#age-label-5s").removeClass("text-left");
+            $("#age-label-5s").addClass("text-center");
+            $("#intro5").removeClass("ml-n4");
+            $(".fit-advisor-header-desc").addClass("text-center");
+            $(".fit-advisor-header-desc-mt").removeClass("fit-advisor-header-desc-mt");
+            $(".fit-advisor-product-size-box").addClass("ml-n6");
+            $("#fields").removeClass("offset-1");
+            $("#fields").removeClass("ml-n5");
+            $("#fields").addClass("ml-n4");
+            $(".fit-advisor-selected-product-grid > div").removeClass("mr-3");
+            $(".fit-advisor-fit-grid").removeClass("fit-advisor-fit-grid-s5");
+            $(".listfit").removeClass("ml-5");
           } else if (ww == 411) {
-            $('.fit-advisor-selected-product-grid > div').removeClass('mr-3');
-            $('#intro1').removeClass('ml-n6');
-            $('.fit-advisor-product-size-box').removeClass('ml-n6');
-            $('#fields').removeClass('ml-n5');
-            $('#fields').removeClass('offset-1');
-            $('#steps-mark').removeClass('float-right');
-            $('.dfOagu').addClass('dfOagu-411w');
-            $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
-            $('.listfit').removeClass('ml-5');
-            $('.listfit').addClass('ml-4');
+            $(".fit-advisor-selected-product-grid > div").removeClass("mr-3");
+            $("#intro1").removeClass("ml-n6");
+            $(".fit-advisor-product-size-box").removeClass("ml-n6");
+            $("#fields").removeClass("ml-n5");
+            $("#fields").removeClass("offset-1");
+            $("#steps-mark").removeClass("float-right");
+            $(".dfOagu").addClass("dfOagu-411w");
+            $(".fit-advisor-fit-grid").removeClass("fit-advisor-fit-grid-s5");
+            $(".listfit").removeClass("ml-5");
+            $(".listfit").addClass("ml-4");
           } else if (ww >= 412 && ww <= 480 || ww >= 321 && ww < 411) {
-            $('.fit-advisor-product-size-box').removeClass('ml-n6');
-            $('#intro1').removeClass('ml-n6');
-            $('#fields').addClass('ml-n5');
-            $('#fields').removeClass('offset-1');
-            $('#steps-mark').removeClass('float-right');
-            $('.fit-advisor-selected-product-grid > div').addClass('mr-3');
-            $('.fit-advisor-fit-grid').removeClass('fit-advisor-fit-grid-s5');
-            $('.fit-advisor-sizes-slider').addClass('ml-4');
-            $('.listfit').removeClass('ml-5');
-            $('.listfit').addClass('ml-4');
-            $('.fit-advisor-fit-grid').removeClass('float-left');
-            $('.fit-advisor-fit-grid').addClass('ml-1');
-            $('.fit-advisor-selected-size-arrow-box').removeClass('bigsize');
+            $(".fit-advisor-product-size-box").removeClass("ml-n6");
+            $("#intro1").removeClass("ml-n6");
+            $("#fields").addClass("ml-n5");
+            $("#fields").removeClass("offset-1");
+            $("#steps-mark").removeClass("float-right");
+            $(".fit-advisor-selected-product-grid > div").addClass("mr-3");
+            $(".fit-advisor-fit-grid").removeClass("fit-advisor-fit-grid-s5");
+            $(".fit-advisor-sizes-slider").addClass("ml-4");
+            $(".listfit").removeClass("ml-5");
+            $(".listfit").addClass("ml-4");
+            $(".fit-advisor-fit-grid").removeClass("float-left");
+            $(".fit-advisor-fit-grid").addClass("ml-1");
+            $(".fit-advisor-selected-size-arrow-box").removeClass("bigsize");
 
             if (ww == 360) {
-              $('.fit-advisor-product-size-box').removeClass('ml-n6');
-              $('#intro5').addClass('ml-n4');
-              $('#fields').removeClass('ml-n4');
-              $('#fields').addClass('ml-n5');
-              $('.fit-advisor-selected-product-grid > div').removeClass('mr-3');
-              $('.fit-advisor-fit-grid').addClass('fit-advisor-fit-grid-s5');
-              $('.fit-advisor-selected-size-arrow-box').addClass('ml-n3');
-              $('.listfit').removeClass('ml-5');
-              $('.listfit').addClass('ml-4');
-              $('.dfOagu').css('margin-top', '0px !important');
+              $(".fit-advisor-product-size-box").removeClass("ml-n6");
+              $("#intro5").addClass("ml-n4");
+              $("#fields").removeClass("ml-n4");
+              $("#fields").addClass("ml-n5");
+              $(".fit-advisor-selected-product-grid > div").removeClass("mr-3");
+              $(".fit-advisor-fit-grid").addClass("fit-advisor-fit-grid-s5");
+              $(".fit-advisor-selected-size-arrow-box").addClass("ml-n3");
+              $(".listfit").removeClass("ml-5");
+              $(".listfit").addClass("ml-4");
+              $(".dfOagu").css("margin-top", "0px !important");
             }
           } else if (ww >= 641 && ww <= 960) {
-            $('.fit-advisor-selected-size-container').removeClass('bigsize');
-            $('.listfit').removeClass('ml-5');
-            $('.listfit').addClass('ml-n2');
-            $('.m-result').removeClass('float-right');
+            $(".fit-advisor-selected-size-container").removeClass("bigsize");
+            $(".listfit").removeClass("ml-5");
+            $(".listfit").addClass("ml-n2");
+            $(".m-result").removeClass("float-right");
           } else {
-            $('#intro1').removeClass('ml-n6');
-            $('#fields').removeClass('ml-n5');
-            $('#fields').addClass('offset-1');
-            $('.height_weight').removeClass('text-center');
-            $('.height_weight').addClass('text-left');
-            $('#age-label-5s').addClass('text-left');
-            $('#age-label-5s').removeClass('text-center');
-            $('.fit-advisor-selected-product-grid > div').removeClass('mr-3');
-            $('#steps-mark').removeClass('float-right');
-            $('.fit-advisor-fit-grid ').removeClass('float-left');
+            $("#intro1").removeClass("ml-n6");
+            $("#fields").removeClass("ml-n5");
+            $("#fields").addClass("offset-1");
+            $(".height_weight").removeClass("text-center");
+            $(".height_weight").addClass("text-left");
+            $("#age-label-5s").addClass("text-left");
+            $("#age-label-5s").removeClass("text-center");
+            $(".fit-advisor-selected-product-grid > div").removeClass("mr-3");
+            $("#steps-mark").removeClass("float-right");
+            $(".fit-advisor-fit-grid ").removeClass("float-left");
           }
-
-          ;
         };
 
         $(window).resize(function () {
@@ -2864,63 +2941,62 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         alterClass();
       });
     },
-    //toook array move function from 
+    //toook array move function from
     setupProduct: function setupProduct() {
       this.product.variants = this.product.variants.map(function (v) {
         return _objectSpread(_objectSpread({}, v), {}, {
-          desc_title: 'Recommended'
+          desc_title: "Recommended"
         });
       });
     },
     getAttributes: function getAttributes() {
       var _this3 = this;
 
-      axios.get(this.$appUrl + '/api/get-attrbutes/' + this.product.id).then(function (res) {
+      axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then(function (res) {
         _this3.attributes = res.data;
-
-        _this3.attributes.forEach(function (el, index) {
-          if (el.name.toLowerCase() == _this3.form.chest.title.toLowerCase()) {
-            _this3.form.chest.title = el.name.toLowerCase();
-            _this3.attr_first = true;
-            _this3.chestSizeOne = el.size_one;
-            _this3.chestSizeTwo = el.size_second;
-            _this3.chestSizeThree = el.size_third;
-          } else if (el.name.toLowerCase() == _this3.form.stomach.title.toLowerCase()) {
-            _this3.form.stomach.title = el.name.toLowerCase();
-            _this3.attr_second = true;
-            _this3.stomachSizeOne = el.size_one;
-            _this3.stomachSizeTwo = el.size_second;
-            _this3.stomachSizeThree = el.size_third;
-          } else if (el.name.toLowerCase() == _this3.form.bottom.title.toLowerCase()) {
-            _this3.form.bottom.title = el.name.toLowerCase();
-            _this3.attr_third = true;
-            _this3.bottomSizeOne = el.size_one;
-            _this3.bottomSizeTwo = el.size_second;
-            _this3.bottomSizeThree = el.size_third;
-          }
-        });
+        console.log(_this3.attributes); // this.attributes.forEach((el, index) => {
+        //   if (el.name.toLowerCase() == this.form.chest.title.toLowerCase()) {
+        //     this.form.chest.title = el.name.toLowerCase();
+        //     this.attr_first = true;
+        //     this.chestSizeOne = el.size_one;
+        //     this.chestSizeTwo = el.size_second;
+        //     this.chestSizeThree = el.size_third;
+        //   } else if (el.name.toLowerCase() == this.form.stomach.title.toLowerCase()) {
+        //     this.form.stomach.title = el.name.toLowerCase();
+        //     this.attr_second = true;
+        //     this.stomachSizeOne = el.size_one;
+        //     this.stomachSizeTwo = el.size_second;
+        //     this.stomachSizeThree = el.size_third;
+        //   } else if (el.name.toLowerCase() == this.form.bottom.title.toLowerCase()) {
+        //     this.form.bottom.title = el.name.toLowerCase();
+        //     this.attr_third = true;
+        //     this.bottomSizeOne = el.size_one;
+        //     this.bottomSizeTwo = el.size_second;
+        //     this.bottomSizeThree = el.size_third;
+        //   }
+        // });
       });
     }
   },
   mounted: function mounted() {
     this.form.tags = this.product.tags;
-    localStorage.setItem('tags', JSON.stringify(this.product.tags));
+    localStorage.setItem("tags", JSON.stringify(this.product.tags));
     var x = document.getElementsByClassName("tab");
     this.formSubmit(); //   this.setupProduct();
 
     this.responsiveness();
     this.getLocalData();
-    this.showBodyFit(); //this.getAttributes();
+    this.showBodyFit();
+    this.getAttributes();
 
-    if (localStorage.getItem('recommended_size') != null) {
-      var a = $(".screens");
-      this.tabnumber = 5;
+    if (localStorage.getItem("recommended_size") != null) {
+      this.tabnumber = this.attributes.length + 2;
       this.lastTab = true;
     }
 
-    $('#popup-trigger').on('click', function () {
-      $('.product-card').css('z-index', '-1');
-      $('#popup1').css('overflow', 'scroll');
+    $("#popup-trigger").on("click", function () {
+      $(".product-card").css("z-index", "-1");
+      $("#popup1").css("overflow", "scroll");
     });
   } //    Took watch from here
 
@@ -3480,7 +3556,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       actionDefault: '',
       otherSize: '',
       tabnumber: '',
-      formBody: {}
+      formBody: {},
+      formLocal: {}
     };
   },
   methods: {
@@ -3654,7 +3731,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
-      axios.post(this.$appUrl + '/api/size-recommend/', this.formBody).then(function (res) {
+      this.formLocal = localStorage;
+      console.log(this.formLocal);
+      axios.post(this.$appUrl + '/api/size-recommend/', this.formLocal).then(function (res) {
         _this2.container.is_loading = false;
         _this2.container.showSelectedSizeSlider = true;
 
@@ -43663,7 +43742,26 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
-    _vm._m(0),
+    _c("div", [
+      _vm._v(
+        "\r\n  " +
+          _vm._s(_vm.currentRecord) +
+          " /" +
+          _vm._s(_vm.recordsLength) +
+          "\r\n    \r\n\r\n"
+      )
+    ]),
+    _vm._v(" "),
+    _c("p", { staticClass: "fit-advisor-intro" }, [
+      _c("span", { attrs: { id: "mark1" } }, [
+        _vm._v("Choose the option that best")
+      ]),
+      _vm._v(" "),
+      _c("br"),
+      _c("span", { attrs: { id: "mark2" } }, [
+        _vm._v("describes your " + _vm._s(_vm.attributes.name))
+      ])
+    ]),
     _vm._v(" "),
     _c("div", [
       _c("div", [
@@ -43672,14 +43770,10 @@ var render = function() {
             _c("div", { staticStyle: { opacity: "1", transform: "none" } }, [
               _c("img", {
                 staticClass: " fit-advisor-options-img",
-                attrs: {
-                  id: "chest1",
-                  src:
-                    "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-1.svg"
-                },
+                attrs: { id: "chest1", src: _vm.attributes.img_one },
                 on: {
                   click: function($event) {
-                    return _vm.chest(_vm.container.chestSizeOne)
+                    return _vm.chest(_vm.attributes.size_one)
                   }
                 }
               }),
@@ -43694,14 +43788,10 @@ var render = function() {
             _c("div", { staticStyle: { opacity: "1", transform: "none" } }, [
               _c("img", {
                 staticClass: " fit-advisor-options-img",
-                attrs: {
-                  id: "chest2",
-                  src:
-                    "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-2.svg"
-                },
+                attrs: { id: "chest2", src: _vm.attributes.img_second },
                 on: {
                   click: function($event) {
-                    return _vm.chest(_vm.container.chestSizeTwo)
+                    return _vm.chest(_vm.attributes.size_second)
                   }
                 }
               }),
@@ -43716,14 +43806,10 @@ var render = function() {
             _c("div", { staticStyle: { opacity: "1", transform: "none" } }, [
               _c("img", {
                 staticClass: " fit-advisor-options-img",
-                attrs: {
-                  id: "chest3",
-                  src:
-                    "https://widget-frontend-e16bltk24-wair.vercel.app/images/male-ecto-chest-3.svg"
-                },
+                attrs: { id: "chest3", src: _vm.attributes.img_third },
                 on: {
                   click: function($event) {
-                    return _vm.chest(_vm.container.chestSizeThree)
+                    return _vm.chest(_vm.attributes.size_third)
                   }
                 }
               }),
@@ -43737,7 +43823,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(1)
+    _vm._m(0)
   ])
 }
 var staticRenderFns = [
@@ -43745,23 +43831,10 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "fit-advisor-intro" }, [
-      _c("span", { attrs: { id: "mark1" } }, [
-        _vm._v("Choose the option that best")
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _c("span", { attrs: { id: "mark2" } }, [_vm._v("describes your chest")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c(
       "div",
       {
-        staticClass: "m-result float-right",
+        staticClass: "m-result ",
         staticStyle: { "text-align": "center", "margin-top": "100px" },
         attrs: { id: "steps-mark" }
       },
@@ -43910,7 +43983,7 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "m-result float-right",
+        staticClass: "m-result ",
         staticStyle: { "text-align": "center", "margin-top": "100px" },
         attrs: { id: "steps-mark" }
       },
@@ -44059,7 +44132,7 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "m-result float-right",
+        staticClass: "m-result ",
         staticStyle: { "text-align": "center", "margin-top": "100px" },
         attrs: { id: "steps-mark" }
       },
@@ -44116,10 +44189,10 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass: " btn btn-outline-success",
+              staticClass: "btn btn-outline-success",
               staticStyle: {
-                "margin-left": "1%  !important",
-                "margin-bottom": "20px  !important",
+                "margin-left": "1% !important",
+                "margin-bottom": "20px !important",
                 border: "none"
               },
               attrs: { id: "popup-trigger", href: "#popup1" }
@@ -44308,29 +44381,39 @@ var render = function() {
                               value: 1,
                               expression: "1"
                             }
-                          ],
-                          attrs: { classs: "" }
+                          ]
                         },
                         [_c("form-component")],
                         1
                       ),
                       _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          directives: [
-                            {
-                              name: "case",
-                              rawName: "v-case",
-                              value: 2,
-                              expression: "2"
-                            }
+                      _vm._l(_vm.attributes, function(row, key) {
+                        return _c(
+                          "div",
+                          {
+                            directives: [
+                              {
+                                name: "case",
+                                rawName: "v-case",
+                                value: key + 2,
+                                expression: "key+2"
+                              }
+                            ],
+                            key: row.id
+                          },
+                          [
+                            _c("attribute-one-component", {
+                              attrs: {
+                                attributes: row,
+                                tabnum: _vm.n,
+                                recordsLength: _vm.attributes.length,
+                                currentRecord: key + 1
+                              }
+                            })
                           ],
-                          attrs: { classs: "" }
-                        },
-                        [_c("attribute-one-component")],
-                        1
-                      ),
+                          1
+                        )
+                      }),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -44339,54 +44422,20 @@ var render = function() {
                             {
                               name: "case",
                               rawName: "v-case",
-                              value: 3,
-                              expression: "3"
+                              value: _vm.attributes.length + 2,
+                              expression: "attributes.length+2"
                             }
-                          ],
-                          attrs: { classs: "" }
-                        },
-                        [_c("attribute-two-component")],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          directives: [
-                            {
-                              name: "case",
-                              rawName: "v-case",
-                              value: 4,
-                              expression: "4"
-                            }
-                          ],
-                          attrs: { classs: "" }
-                        },
-                        [_c("attribute-three-component")],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          directives: [
-                            {
-                              name: "case",
-                              rawName: "v-case",
-                              value: 5,
-                              expression: "5"
-                            }
-                          ],
-                          attrs: { classs: "" }
+                          ]
                         },
                         [
                           _c("result-component", {
-                            attrs: { product: this.product, form: this.form }
+                            attrs: { product: _vm.product, form: _vm.form }
                           })
                         ],
                         1
                       )
-                    ]
+                    ],
+                    2
                   ),
                   _vm._v(" "),
                   _c("div", { staticStyle: { overflow: "auto" } }, [
@@ -44395,7 +44444,7 @@ var render = function() {
                       {
                         staticClass: "custom-offset-lg",
                         staticStyle: {
-                          "margin-top": "8% !Important",
+                          "margin-top": "8% !important",
                           display: "none"
                         }
                       },
@@ -44411,7 +44460,11 @@ var render = function() {
                               }
                             }
                           },
-                          [_vm._v("Previous")]
+                          [
+                            _vm._v(
+                              "\n                  Previous\n                "
+                            )
+                          ]
                         )
                       ]
                     )
@@ -44442,7 +44495,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", [
-      _c("div", { staticClass: "x-row " }, [
+      _c("div", { staticClass: "x-row" }, [
         _c("div", { staticClass: "x-col" }),
         _vm._v(" "),
         _c("div", { staticClass: "x-col" }),

@@ -355,6 +355,7 @@ class AttributeController extends Controller
     {
         $break=0;
         $data = $request->all();
+        
 
         echo 'M';
         exit;

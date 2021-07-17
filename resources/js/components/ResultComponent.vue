@@ -120,6 +120,7 @@ export default {
             otherSize: '',
             tabnumber: '',
             formBody: {},
+            formLocal:{},
         }
     },
     methods: {
@@ -330,7 +331,9 @@ export default {
             }
             this.container.showSelectedSizeSlider = false;
             this.container.conversionCount = this.product.id
-            axios.post(this.$appUrl + '/api/size-recommend/', this.formBody)
+            this.formLocal = localStorage;
+            console.log(this.formLocal);
+            axios.post(this.$appUrl + '/api/size-recommend/', this.formLocal)
                 .then((res) => {
 
                     this.container.is_loading = false;

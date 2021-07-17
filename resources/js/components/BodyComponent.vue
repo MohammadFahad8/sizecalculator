@@ -5,6 +5,9 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
+    <!-- ..delete later -->
+  
+    <!-- ..delete later -->
 
     <div v-if="showBodyFitApp" class="box">
       <a
@@ -111,28 +114,20 @@ display: inline-block;
               <div  v-case="1">
                 <form-component></form-component>
               </div>
-              <div  v-case="2">
-                <attribute-one-component></attribute-one-component>
+              
+              <div v-for="(row,key) in attributes" :key="row.id" v-case="key+2">
+
+                <attribute-one-component :attributes="row" :tabnum="n" :recordsLength="attributes.length" :currentRecord="key+1" ></attribute-one-component>
+                  
               </div>
-              <div  v-case="3">
-                <attribute-two-component></attribute-two-component>
-              </div>
-              <div  v-case="4">
-                <attribute-three-component></attribute-three-component>
-              </div>
-              <div  v-case="5">
+              
+              <div  v-case="attributes.length+2">
                 <result-component
-                  :product="this.product"
-                  :form="this.form"
+                  :product="product"
+                  :form="form"
                 ></result-component>
               </div>
             </div>
-
-            <!-- //first tab into its component
-                   //Second tab into its component
-                  //Third tab into its Component
-
-                   //Result Tab into its Component -->
             <div style="overflow: auto">
               <div
                 class="custom-offset-lg"
@@ -169,14 +164,18 @@ export default {
   data() {
     return {
       form: {
-        heightfoot: localStorage.getItem("foot"),
-        heightinch: localStorage.getItem("inch"),
-        heightcm: parseInt(localStorage.getItem("cm")),
-        weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
-        age: localStorage.getItem("age"),
+        // heightfoot: localStorage.getItem("foot"),
+        // heightinch: localStorage.getItem("inch"),
+        // heightcm: parseInt(localStorage.getItem("cm")),
+        // weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
+        // age: localStorage.getItem("age"),
+         heightfoot:'',
+        heightinch:'',
+        heightcm:'',
+        weight:'',
+        age:'',
         chest: {
-          title: "chest",
-          other: localStorage.getItem("chest"),
+         
         },
         stomach: {
           title: "stomach",
@@ -209,6 +208,7 @@ export default {
         },
       ],
       attributes: {},
+      n:'',
 
       countrycheck: "",
       checked: false,
@@ -269,26 +269,22 @@ export default {
         this.form.weight = container.form.weight;
         this.form.age = container.form.age;
         this.tabnumber = container.form.tabnumber;
+        this.n = container.form.tabnumber;
 
         this.form.convertedMeasurements = container.form.convertedMeasurements;
         this.conversionCount = container.form.conversionCount;
         this.firstTab = container.firstTab;
       });
       EventBus.$on("attributeone", (container) => {
-        this.form.chest.other = container.chest.other;
+      
+        this.chest = container
         this.lastTab = false;
         this.tabnumber = container.tabnumber;
+        this.n = container.tabnumber;
+        
       });
-      EventBus.$on("attributetwo", (container) => {
-        this.lastTab = false;
-        this.form.stomach.other = container.stomach.other;
-        this.tabnumber = container.tabnumber;
-      });
-      EventBus.$on("attributethree", (container) => {
-        this.form.bottom.other = container.bottom.other;
-        this.tabnumber = container.tabnumber;
-        this.lastTab = true;
-      });
+      
+    
       EventBus.$on("resetForm", (tabnum) => {
         this.lastTab = false;
         this.tabnumber = tabnum;
@@ -1038,28 +1034,29 @@ export default {
     getAttributes: function () {
       axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then((res) => {
         this.attributes = res.data;
+        console.log(this.attributes)
 
-        this.attributes.forEach((el, index) => {
-          if (el.name.toLowerCase() == this.form.chest.title.toLowerCase()) {
-            this.form.chest.title = el.name.toLowerCase();
-            this.attr_first = true;
-            this.chestSizeOne = el.size_one;
-            this.chestSizeTwo = el.size_second;
-            this.chestSizeThree = el.size_third;
-          } else if (el.name.toLowerCase() == this.form.stomach.title.toLowerCase()) {
-            this.form.stomach.title = el.name.toLowerCase();
-            this.attr_second = true;
-            this.stomachSizeOne = el.size_one;
-            this.stomachSizeTwo = el.size_second;
-            this.stomachSizeThree = el.size_third;
-          } else if (el.name.toLowerCase() == this.form.bottom.title.toLowerCase()) {
-            this.form.bottom.title = el.name.toLowerCase();
-            this.attr_third = true;
-            this.bottomSizeOne = el.size_one;
-            this.bottomSizeTwo = el.size_second;
-            this.bottomSizeThree = el.size_third;
-          }
-        });
+        // this.attributes.forEach((el, index) => {
+        //   if (el.name.toLowerCase() == this.form.chest.title.toLowerCase()) {
+        //     this.form.chest.title = el.name.toLowerCase();
+        //     this.attr_first = true;
+        //     this.chestSizeOne = el.size_one;
+        //     this.chestSizeTwo = el.size_second;
+        //     this.chestSizeThree = el.size_third;
+        //   } else if (el.name.toLowerCase() == this.form.stomach.title.toLowerCase()) {
+        //     this.form.stomach.title = el.name.toLowerCase();
+        //     this.attr_second = true;
+        //     this.stomachSizeOne = el.size_one;
+        //     this.stomachSizeTwo = el.size_second;
+        //     this.stomachSizeThree = el.size_third;
+        //   } else if (el.name.toLowerCase() == this.form.bottom.title.toLowerCase()) {
+        //     this.form.bottom.title = el.name.toLowerCase();
+        //     this.attr_third = true;
+        //     this.bottomSizeOne = el.size_one;
+        //     this.bottomSizeTwo = el.size_second;
+        //     this.bottomSizeThree = el.size_third;
+        //   }
+        // });
       });
     },
   },
@@ -1073,11 +1070,11 @@ export default {
     this.responsiveness();
     this.getLocalData();
     this.showBodyFit();
-    //this.getAttributes();
+    this.getAttributes();
 
     if (localStorage.getItem("recommended_size") != null) {
       
-      this.tabnumber = 5;
+      this.tabnumber = this.attributes.length+2;
       this.lastTab = true;
     }
 
