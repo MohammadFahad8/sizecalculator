@@ -2271,20 +2271,22 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // heightcm: parseInt(localStorage.getItem("cm")),
         // weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
         // age: localStorage.getItem("age"),
+        bodyMeasure: [],
         heightfoot: '',
         heightinch: '',
         heightcm: '',
         weight: '',
         age: '',
-        chest: {},
-        stomach: {
-          title: "stomach",
-          other: localStorage.getItem("stomach")
-        },
-        bottom: {
-          title: "bottom",
-          other: localStorage.getItem("bottom")
-        },
+        // chest: {
+        // },
+        // stomach: {
+        //   title: "stomach",
+        //   other: localStorage.getItem("stomach"),
+        // },
+        // bottom: {
+        //   title: "bottom",
+        //   other: localStorage.getItem("bottom"),
+        // },
         tags: JSON.parse(localStorage.getItem("tags")),
         convertedMeasurements: false,
         conversionCount: ""
@@ -2394,13 +2396,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form.heightfoot = "";
       this.form.heightinch = "";
       this.form.weight = "";
-      this.form.age = "";
-      this.form.chest.name = "";
-      this.form.chest.other = "";
-      this.form.stomach.name = "";
-      this.form.stomach.other = "";
-      this.form.bottom.name = "";
-      this.form.bottom.other = "";
+      this.form.age = ""; // this.form.chest.name = "";
+      // this.form.chest.other = "";
+      // this.form.stomach.name = "";
+      // this.form.stomach.other = "";
+      // this.form.bottom.name = "";
+      // this.form.bottom.other = "";
+
       this.recommended_size = "", this.lastTab = false;
       this.dev_reset();
       this.nextStep(1);
@@ -2559,7 +2561,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this3.attributes = res.data;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('mount', function (num) {
           _this3.lastTab = true;
-          alert(_this3.lastTab);
         });
 
         if (localStorage.getItem("recommended_size") != null) {
@@ -2625,9 +2626,7 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     checkEventBus: function checkEventBus() {}
   },
-  mounted: function mounted() {
-    console.log('Component mounted.');
-  }
+  mounted: function mounted() {}
 });
 
 /***/ }),
@@ -2772,11 +2771,11 @@ __webpack_require__.r(__webpack_exports__);
     return {
       container: {
         form: {
-          heightfoot: localStorage.getItem('foot'),
-          heightinch: localStorage.getItem('inch'),
-          heightcm: parseInt(localStorage.getItem('cm')),
-          weight: parseFloat(localStorage.getItem('weight')).toFixed(0),
-          age: localStorage.getItem('age'),
+          heightfoot: '',
+          heightinch: '',
+          heightcm: '',
+          weight: '',
+          age: '',
           convertedMeasurements: false,
           conversionCount: ''
         },
@@ -3105,6 +3104,82 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -3116,197 +3191,214 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       container: {
         is_loading: false,
         showSelectedSizeSlider: false,
-        conversionCount: '',
-        recommended_size: '',
+        conversionCount: "",
+        recommended_size: "",
         restarted: false,
         sizecheck: false,
-        finalsize: '',
+        finalsize: "",
         sizeIndex: 0,
         size_descriptions: [{
-          title: 'Very Snugged'
+          title: "Very Snugged"
         }, {
-          title: ' Snugged'
+          title: " Snugged"
         }, {
-          title: 'Recommended'
+          title: "Recommended"
         }, {
-          title: 'Relaxed'
+          title: "Relaxed"
         }, {
-          title: 'Very Relaxed'
+          title: "Very Relaxed"
         }]
       },
       showrecommended: false,
-      $allSlides: '',
-      $allSlidesSize: '',
-      traverseDefault: '',
-      actionDefault: '',
-      otherSize: '',
-      tabnumber: '',
+      $allSlides: "",
+      $allSlidesSize: "",
+      traverseDefault: "",
+      actionDefault: "",
+      otherSize: "",
+      tabnumber: "",
       formBody: {},
       formLocal: {}
     };
   },
   methods: {
+    getAttributes: function getAttributes() {
+      var _this = this;
+
+      axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then(function (res) {
+        _this.attributes = res.data;
+
+        for (var i = 0; i < res.data.length; i++) {
+          _this.form.bodyMeasure[i] = localStorage.getItem(res.data[i].name.toLowerCase());
+        }
+
+        _this.form.conversionCount = _this.product.id;
+
+        if (localStorage.getItem("FORM__") == null) {
+          localStorage.setItem("FORM__", JSON.stringify(_this.form));
+        }
+      });
+    },
     setupProduct: function setupProduct() {
       this.product.variants = this.product.variants.map(function (v) {
         return _objectSpread(_objectSpread({}, v), {}, {
-          desc_title: 'Recommended'
+          desc_title: "Recommended"
         });
       });
-      this.formBody = this.form;
+      this.getAttributes();
       var tabnumber = 1; // EventBus.$on('resetSlides',tabnumber=>{
       //     this.restart();
       // })
     },
     setSlides: function setSlides(sizeposition) {
-      $('div.fit-advisor-selected-size:gt(' + sizeposition + ')').hide();
-      $('div.fit-advisor-selected-size:lt(' + sizeposition + ')').hide();
-      $('p.size_descriptions:gt(' + sizeposition + ')').hide();
-      $('p.size_descriptions:lt(' + sizeposition + ')').hide(); //Hide all but the Predicted Size
+      $("div.fit-advisor-selected-size:gt(" + sizeposition + ")").hide();
+      $("div.fit-advisor-selected-size:lt(" + sizeposition + ")").hide();
+      $("p.size_descriptions:gt(" + sizeposition + ")").hide();
+      $("p.size_descriptions:lt(" + sizeposition + ")").hide(); //Hide all but the Predicted Size
 
-      this.$allSlides = $('div.fit-advisor-selected-size'), this.$allSlidesSize = $('p.size_descriptions'), this.traverseDefault = "first", //set the defaults
+      this.$allSlides = $("div.fit-advisor-selected-size"), this.$allSlidesSize = $("p.size_descriptions"), this.traverseDefault = "first", //set the defaults
       this.actionDefault = "next";
     },
     setSelectedSizeFromList: function setSelectedSizeFromList(size, sizecheck) {
-      var _this = this;
+      var _this2 = this;
 
       this.product.variants.forEach(function (el, index) {
         if (sizecheck == true) {
           if (el.option1.toUpperCase() == size) {
-            _this.container.sizeIndex = index;
+            _this2.container.sizeIndex = index;
 
-            _this.array_move(_this.container.size_descriptions, 2, index);
+            _this2.array_move(_this2.container.size_descriptions, 2, index);
 
             if (size == "XS") {
-              for (var i = 0; i <= _this.product.variants.length; i++) {
-                if (i == _this.sizeIndex) {
-                  _this.product.variants[i].desc_title = "Recommended";
+              for (var i = 0; i <= _this2.product.variants.length; i++) {
+                if (i == _this2.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
                 }
 
-                if (i > _this.sizeIndex && i < _this.product.variants.length) {
-                  _this.product.variants[i].desc_title = "Slightly Relaxed";
+                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
+                  _this2.product.variants[i].desc_title = "Slightly Relaxed";
 
-                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 3])) {
-                    _this.product.variants[i].desc_title = "Relaxed";
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 3])) {
+                    _this2.product.variants[i].desc_title = "Relaxed";
                   }
 
-                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 2])) {
-                    _this.product.variants[i].desc_title = "Relaxed";
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
+                    _this2.product.variants[i].desc_title = "Relaxed";
                   }
 
-                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 1])) {
-                    _this.product.variants[i].desc_title = "Very Relaxed";
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+                    _this2.product.variants[i].desc_title = "Very Relaxed";
                   }
                 }
               }
             } else if (size == "XL") {
               var counter = 1;
 
-              for (var i = 0; i <= _this.product.variants.length; i++) {
-                if (i < _this.container.sizeIndex) {
-                  _this.product.variants[i].desc_title = "Very Snug";
+              for (var i = 0; i <= _this2.product.variants.length; i++) {
+                if (i < _this2.container.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Very Snug";
 
-                  if (i < _this.container.sizeIndex && i >= counter) {
+                  if (i < _this2.container.sizeIndex && i >= counter) {
                     counter++;
-                    _this.product.variants[i].desc_title = "Snug";
+                    _this2.product.variants[i].desc_title = "Snug";
                   }
                 }
 
-                if (i == _this.container.sizeIndex) {
-                  _this.product.variants[i].desc_title = "Recommended";
+                if (i == _this2.container.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
                 }
 
-                if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 2])) {
-                  _this.product.variants[i].desc_title = "Slightly Snugged";
+                if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
+                  _this2.product.variants[i].desc_title = "Slightly Snugged";
                 }
               }
             }
 
-            localStorage.setItem('sizeindex', _this.container.sizeIndex);
+            localStorage.setItem("sizeindex", _this2.container.sizeIndex);
 
-            _this.setSlides(_this.container.sizeIndex);
+            _this2.setSlides(_this2.container.sizeIndex);
           }
         } else if (sizecheck == false) {
           if (el.option1.toUpperCase().charAt(0) == size) {
-            _this.container.sizeIndex = index;
+            _this2.container.sizeIndex = index;
 
-            _this.array_move(_this.container.size_descriptions, 2, index);
+            _this2.array_move(_this2.container.size_descriptions, 2, index);
 
             if (size == "S") {
-              for (var i = 0; i <= _this.product.variants.length; i++) {
-                if (i < _this.container.sizeIndex) {
-                  _this.product.variants[i].desc_title = "Very Snug";
+              for (var i = 0; i <= _this2.product.variants.length; i++) {
+                if (i < _this2.container.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Very Snug";
 
-                  if (i < _this.container.sizeIndex && i > 0) {
-                    _this.product.variants[i].desc_title = "Snug";
+                  if (i < _this2.container.sizeIndex && i > 0) {
+                    _this2.product.variants[i].desc_title = "Snug";
                   }
                 }
 
-                if (i == _this.container.sizeIndex) {
-                  _this.product.variants[i].desc_title = "Recommended";
+                if (i == _this2.container.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
                 }
 
-                if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
-                  _this.product.variants[i].desc_title = "Relaxed";
+                if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
+                  _this2.product.variants[i].desc_title = "Relaxed";
 
-                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 1])) {
-                    _this.product.variants[i].desc_title = "Very Relaxed";
-                  }
-                }
-              }
-            } else if (size == 'M') {
-              for (var i = 0; i <= _this.product.variants.length; i++) {
-                if (i < _this.container.sizeIndex) {
-                  _this.product.variants[i].desc_title = "Very Snug";
-
-                  if (i < _this.container.sizeIndex && i > 0) {
-                    _this.product.variants[i].desc_title = "Snug";
-                  }
-                }
-
-                if (i == _this.container.sizeIndex) {
-                  _this.product.variants[i].desc_title = "Recommended";
-                }
-
-                if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
-                  _this.product.variants[i].desc_title = "Relaxed";
-
-                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 1])) {
-                    _this.product.variants[i].desc_title = "Very Relaxed";
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+                    _this2.product.variants[i].desc_title = "Very Relaxed";
                   }
                 }
               }
-            } else if (size == 'L') {
-              for (var i = 0; i <= _this.product.variants.length; i++) {
-                if (i < _this.container.sizeIndex) {
-                  _this.product.variants[i].desc_title = "Very Snug";
+            } else if (size == "M") {
+              for (var i = 0; i <= _this2.product.variants.length; i++) {
+                if (i < _this2.container.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Very Snug";
 
-                  if (i < _this.container.sizeIndex && i > 0) {
-                    _this.product.variants[i].desc_title = "Snug";
+                  if (i < _this2.container.sizeIndex && i > 0) {
+                    _this2.product.variants[i].desc_title = "Snug";
                   }
                 }
 
-                if (i == _this.container.sizeIndex) {
-                  _this.product.variants[i].desc_title = "Recommended";
+                if (i == _this2.container.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
                 }
 
-                if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
-                  _this.product.variants[i].desc_title = "Very Relaxed";
+                if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
+                  _this2.product.variants[i].desc_title = "Relaxed";
+
+                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+                    _this2.product.variants[i].desc_title = "Very Relaxed";
+                  }
+                }
+              }
+            } else if (size == "L") {
+              for (var i = 0; i <= _this2.product.variants.length; i++) {
+                if (i < _this2.container.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Very Snug";
+
+                  if (i < _this2.container.sizeIndex && i > 0) {
+                    _this2.product.variants[i].desc_title = "Snug";
+                  }
+                }
+
+                if (i == _this2.container.sizeIndex) {
+                  _this2.product.variants[i].desc_title = "Recommended";
+                }
+
+                if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
+                  _this2.product.variants[i].desc_title = "Very Relaxed";
                 }
               }
             }
 
-            localStorage.setItem('sizeindex', _this.container.sizeIndex);
+            localStorage.setItem("sizeindex", _this2.container.sizeIndex);
 
-            _this.setSlides(_this.container.sizeIndex);
+            _this2.setSlides(_this2.container.sizeIndex);
           }
         }
       });
     },
     getProductDetails: function getProductDetails() {
-      var _this2 = this;
+      var _this3 = this;
 
       this.container.is_loading = true;
-      var a = '';
+      var a = "";
 
       if (this.container.restarted == false) {
         if (localStorage.getItem("sizeindex") != null) {
@@ -3316,32 +3408,35 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
-      this.formLocal = localStorage;
-      console.log(this.formLocal);
-      axios.post(this.$appUrl + '/api/size-recommend/', this.formLocal).then(function (res) {
-        _this2.container.is_loading = false;
-        _this2.container.showSelectedSizeSlider = true;
 
-        if (res.data == 'XL' || res.data == 'xl' || res.data == 'XS' || res.data == 'xs') {
-          _this2.container.recommended_size = res.data.toUpperCase().substr(0, 2);
-          _this2.container.sizecheck = true;
+      if (localStorage.getItem('FORM__') != null) {
+        this.formLocal = JSON.parse(localStorage.getItem('FORM__'));
+      }
 
-          _this2.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this2.container.sizecheck);
+      axios.post(this.$appUrl + "/api/size-recommend/", this.formLocal).then(function (res) {
+        _this3.container.is_loading = false;
+        _this3.container.showSelectedSizeSlider = true;
 
-          a = _this2.container.recommended_size;
-          $('.fit-advisor-selected-size-arrow-box').addClass('bigsize');
-          $('.dfOagu').addClass('dfOagu-second');
+        if (res.data == "XL" || res.data == "xl" || res.data == "XS" || res.data == "xs") {
+          _this3.container.recommended_size = res.data.toUpperCase().substr(0, 2);
+          _this3.container.sizecheck = true;
+
+          _this3.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this3.container.sizecheck);
+
+          a = _this3.container.recommended_size;
+          $(".fit-advisor-selected-size-arrow-box").addClass("bigsize");
+          $(".dfOagu").addClass("dfOagu-second");
         } else {
-          _this2.container.recommended_size = res.data.toUpperCase().charAt(0);
-          _this2.container.sizecheck = false;
+          _this3.container.recommended_size = res.data.toUpperCase().charAt(0);
+          _this3.container.sizecheck = false;
 
-          _this2.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this2.container.sizecheck);
+          _this3.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this3.container.sizecheck);
 
-          a = _this2.container.recommended_size;
+          a = _this3.container.recommended_size;
         }
 
-        localStorage.setItem('recommended_size', _this2.container.recommended_size);
-        _this2.container.finalsize = localStorage.getItem('recommended_size');
+        localStorage.setItem("recommended_size", _this3.container.recommended_size);
+        _this3.container.finalsize = localStorage.getItem("recommended_size");
       });
     },
     changesize: function changesize(trigger) {
@@ -3363,12 +3458,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         action = "prev"; //set action to prev
       }
 
-      var $curr = this.$allSlides.filter(':visible'),
+      var $curr = this.$allSlides.filter(":visible"),
           //get the visible slide
       $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
 
-      $nxtTarget.addClass('active');
-      $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+      $nxtTarget.addClass("active");
+      $curr.stop(true, true).fadeIn($time).removeClass("active").hide(); //hide current one
 
       if (!$nxtTarget.length) {
         //if no next
@@ -3381,15 +3476,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
 
-      $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+      $nxtTarget.stop(true, true).fadeIn($time).addClass("active"); //show the target
       //slides size end
 
-      var $curr = this.$allSlidesSize.filter(':visible'),
+      var $curr = this.$allSlidesSize.filter(":visible"),
           //get the visible slide
       $nxtTarget = $curr[action](".size_descriptions"); //get the next target based on the action.
 
-      $nxtTarget.addClass('active');
-      $curr.stop(true, true).fadeIn($time).removeClass('active').hide(); //hide current one
+      $nxtTarget.addClass("active");
+      $curr.stop(true, true).fadeIn($time).removeClass("active").hide(); //hide current one
 
       if (!$nxtTarget.length) {
         //if no next
@@ -3400,7 +3495,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
 
-      $nxtTarget.stop(true, true).fadeIn($time).addClass('active'); //show the target
+      $nxtTarget.stop(true, true).fadeIn($time).addClass("active"); //show the target
       //slides size end
     },
     array_move: function array_move(arr, old_index, new_index) {
@@ -3420,21 +3515,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       //                $('.fit-advisor-selected-product-grid').css('display', 'none');
       this.tabnumber = 1;
       console.log(this.tabnumber);
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('home', this.tabnumber);
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("home", this.tabnumber);
     }
   },
   mounted: function mounted() {
-    var _this3 = this;
+    var _this4 = this;
 
     this.setupProduct();
     this.getProductDetails();
-    _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('sizeCalculate', function (num) {
+    this.form.conversionCount = this.product.id;
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("sizeCalculate", function (num) {
       var a = 1;
-      Event.$emit('mount', a);
+      _this4.form.conversionCount = _this4.product.id;
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("mount", a);
 
-      _this3.setupProduct();
+      _this4.setupProduct();
 
-      _this3.getProductDetails();
+      _this4.getProductDetails();
     });
   }
 });
@@ -44699,32 +44796,32 @@ var render = function() {
     _c("div", [
       _c("div", { staticClass: "fit-advisor-custom_row" }, [
         _c("div", { staticClass: "col-md-12" }, [
-          _c("div", { staticClass: " fit-advisor-selected-product-grid" }, [
+          _c("div", { staticClass: "fit-advisor-selected-product-grid" }, [
             _c(
               "div",
               [
-                _c("div", { staticClass: " fit-advisor-product-size-box" }, [
+                _c("div", { staticClass: "fit-advisor-product-size-box" }, [
                   _c(
                     "div",
-                    { staticClass: " fit-advisor-fit-grid float-left" },
+                    { staticClass: "fit-advisor-fit-grid float-left" },
                     [
                       _c(
                         "div",
                         {
                           staticClass:
-                            " fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"
+                            "fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"
                         },
                         [
                           !_vm.container.is_loading
                             ? _c(
                                 "div",
-                                { staticClass: " selected-product-arrow-left" },
+                                { staticClass: "selected-product-arrow-left" },
                                 [
                                   _c(
                                     "span",
                                     {
                                       staticClass:
-                                        " jjnwUS  selected-product-arrow-left-pointer prev",
+                                        "jjnwUS selected-product-arrow-left-pointer prev",
                                       attrs: { size: "10", id: "arrow-left" },
                                       on: {
                                         click: function($event) {
@@ -44769,7 +44866,7 @@ var render = function() {
                                 "div",
                                 {
                                   staticClass:
-                                    "fit-advisor-custom_row center-force "
+                                    "fit-advisor-custom_row center-force"
                                 },
                                 [
                                   _vm._m(1),
@@ -44821,7 +44918,7 @@ var render = function() {
                                 "div",
                                 {
                                   key: row.id,
-                                  staticClass: " fit-advisor-selected-size",
+                                  staticClass: "fit-advisor-selected-size",
                                   staticStyle: { opacity: "1" },
                                   attrs: {
                                     id: "fit-advisor-sizes-slider",
@@ -44899,7 +44996,7 @@ var render = function() {
                                     "span",
                                     {
                                       staticClass:
-                                        " jjnwUS  hjNiUI arrow-next next",
+                                        "jjnwUS hjNiUI arrow-next next",
                                       attrs: { size: "10", id: "arrow-right" },
                                       on: {
                                         click: function($event) {
@@ -44949,7 +45046,7 @@ var render = function() {
                     "p",
                     {
                       key: row.id,
-                      staticClass: " fit-advisor-header-desc size_descriptions"
+                      staticClass: "fit-advisor-header-desc size_descriptions"
                     },
                     [
                       !_vm.container.is_loading
@@ -45007,16 +45104,16 @@ var staticRenderFns = [
     var _c = _vm._self._c || _h
     return _c(
       "p",
-      { staticClass: " fit-advisor-header-desc  fit-advisor-header-desc-mt " },
+      { staticClass: "fit-advisor-header-desc fit-advisor-header-desc-mt" },
       [
         _vm._v(
-          "The size we recommend is based on how we intended this item to suit your body. "
+          "\n              The size we recommend is based on how we intended this item to suit your\n              body. "
         ),
         _c("br"),
         _c(
           "a",
           {
-            staticClass: " learn-text",
+            staticClass: "learn-text",
             attrs: {
               target: "_blank",
               rel: "noopener noreferrer nofollow",
@@ -45035,7 +45132,7 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "m-result ",
+        staticClass: "m-result",
         staticStyle: { "text-align": "center", "margin-top": "100px" },
         attrs: { id: "steps-mark" }
       },

@@ -128,11 +128,11 @@ export default {
         return {
             container: {
                 form: {
-                    heightfoot: localStorage.getItem('foot'),
-                    heightinch: localStorage.getItem('inch'),
-                    heightcm: parseInt(localStorage.getItem('cm')),
-                    weight: parseFloat(localStorage.getItem('weight')).toFixed(0),
-                    age: localStorage.getItem('age'),
+                    heightfoot: '',
+                    heightinch: '',
+                    heightcm: '',
+                    weight: '',
+                    age: '',
                     convertedMeasurements: false,
                     conversionCount: '',
 

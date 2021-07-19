@@ -157,19 +157,21 @@ class AttributeController extends Controller
     public function editProduct(Request $request)
     {
         //
-        $messageContainer = array('error_msg' =>'Configure Product By clicking on Image First');
+        $messageContainer = array('error_msg' =>'Configure Product First Make Variants in Admin');
             
         $product = Products::where('product_id','=',$request['id'])->first();
         
         $sizeChartCount = Sizechart::where('product_id','=',$request['id'])->get();
+        $checkVariantExists = Variants::where('product_id','=',$request['id'])->get();
         
         
-        if(count($sizeChartCount)==0)
+       
+        if((count($sizeChartCount)==0 || count($sizeChartCount)==null) && ($checkVariantExists[0]['size']==0))
         {
-            
+         
             return $messageContainer;
 
-        }
+        }else{
         $setting = Settings::where('name', '=', Auth::user()->name)->first();
         if ($setting->clear_logs == 1) {
 
@@ -181,6 +183,7 @@ class AttributeController extends Controller
 
         $product->save();
         return $product;
+    }
     }
 
     /**
@@ -278,7 +281,8 @@ class AttributeController extends Controller
                 
                 $vari = new Variants();
                 $vari->variant_id = $variant['id'];
-                $vari-> size = strtolower($variant['option1']);
+                
+                $vari-> size = (strtolower($variant['option1'])=='default title')?0:strtolower($variant['option1']);
                 $vari->price=($variant['price'] == null) ? null :$variant['price'];
                 $vari->product_id = $variant['product_id'];
                 $vari->save();
@@ -357,8 +361,7 @@ class AttributeController extends Controller
         $data = $request->all();
         
 
-        echo 'M';
-        exit;
+       
         
  $sizeList = Attributetypes::with('bodyFeatureOfType','sizecharts')->where('product_id','=',$data['conversionCount'])->get();
  $sizeChartList = Sizechart::with('bodyFeature','product')->where('product_id','=',$data['conversionCount'])->get();
@@ -384,9 +387,10 @@ class AttributeController extends Controller
 
  $tags = array_map('strtolower', $data['tags']);
  if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
-            
+  
             foreach($sizeChartList as $s)
             {
+                
                  
                   
                          if($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm>=$s['height_start'] && $height_cm<=$s['height_end'])
@@ -394,54 +398,33 @@ class AttributeController extends Controller
                                    
                                      foreach($s['bodyFeature'] as $b)
                                 {  
+                                    for($i=0;$i<count($data['bodyMeasure']);$i++)
+                                    {
+
+
                                     
-                                    if( $b['attr_name']==$data['chest']['title'])
-                                    {
+                                   if($data['bodyMeasure'][$i]>=$b['attr_measurement_start'] && $data['bodyMeasure'][$i]<= $b['attr_measurement_end'])
+                                   {
+                                    return $this->checkVariantIFExists($b['predicted_size']);
+                                        exit;
 
-                                        if($data['chest']['other']>=$b['attr_measurement_start'] && $data['chest']['other']<=$b['attr_measurement_end'])
-                                        {
-                                            
-                                            
-                                            
-                                            $size = $b['predicted_size'];
-                                            return $this->checkVariantIFExists($size);
-                                        
-                                        
-                                        
-                                        }
-                                      
-                                        
-                                        
-                                    }else if($b['attr_name']==$data['bottom']['title'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
-                                    {
-                                        
+                                   }
+                                   else
+                                   {
                                        
-                                        $size = $b['predicted_size'];
-                                        return $this->checkVariantIFExists($size);
-
-                                    }
-                                    else if($b['attr_name']==$data['stomach']['title'] && $b['attr_measurement_start']>=$data['chest']['other'] && $b['attr_measurement_end']<=$data['chest']['other'])
-
-                                    {
-                                     
-                                        
-                                        $size = $b['predicted_size'];
-                                        return $this->checkVariantIFExists($size);
-                                    }
-                                   
-                       
- if($break == 1)
-                                {
-                                    break;
+                                    return $this->checkVariantIFExists('medium');
+                                    exit;
+                                   }
                                 }
 
-                                }
                                
                     }
-                    else{
-                        echo "M";
-                    }
+                   
                
+            }
+            else {
+        
+                return $this->checkVariantIFExists('medium');
             }
  
         }
@@ -492,6 +475,7 @@ class AttributeController extends Controller
         // }
         //end man adult
     }
+}
     public function calculateSizeFemale($data, $height_cm)
     {
         //Female  Adult
@@ -987,6 +971,7 @@ class AttributeController extends Controller
     public function attributeTypeFront($id)
     {
          $attributeTypeOfProducts = Attributetypes::with('product')->where([['product_id','=',$id],['status','>',0]])->get();
+         
          return $attributeTypeOfProducts;
 
     }

@@ -169,23 +169,24 @@ export default {
         // heightcm: parseInt(localStorage.getItem("cm")),
         // weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
         // age: localStorage.getItem("age"),
+        bodyMeasure:[],
          heightfoot:'',
         heightinch:'',
         heightcm:'',
         weight:'',
         age:'',
-        chest: {
+        // chest: {
          
-        },
-        stomach: {
-          title: "stomach",
-          other: localStorage.getItem("stomach"),
-        },
+        // },
+        // stomach: {
+        //   title: "stomach",
+        //   other: localStorage.getItem("stomach"),
+        // },
 
-        bottom: {
-          title: "bottom",
-          other: localStorage.getItem("bottom"),
-        },
+        // bottom: {
+        //   title: "bottom",
+        //   other: localStorage.getItem("bottom"),
+        // },
         tags: JSON.parse(localStorage.getItem("tags")),
         convertedMeasurements: false,
         conversionCount: "",
@@ -274,6 +275,7 @@ export default {
         this.form.convertedMeasurements = container.form.convertedMeasurements;
         this.conversionCount = container.form.conversionCount;
         this.firstTab = container.firstTab;
+        
       });
       EventBus.$on("attributeone", (container) => {
       
@@ -312,12 +314,12 @@ export default {
       this.form.heightinch = "";
       this.form.weight = "";
       this.form.age = "";
-      this.form.chest.name = "";
-      this.form.chest.other = "";
-      this.form.stomach.name = "";
-      this.form.stomach.other = "";
-      this.form.bottom.name = "";
-      this.form.bottom.other = "";
+      // this.form.chest.name = "";
+      // this.form.chest.other = "";
+      // this.form.stomach.name = "";
+      // this.form.stomach.other = "";
+      // this.form.bottom.name = "";
+      // this.form.bottom.other = "";
       (this.recommended_size = ""), (this.lastTab = false);
 
       this.dev_reset();
@@ -480,7 +482,7 @@ export default {
 
         EventBus.$on('mount',num=>{
             this.lastTab=true
-            alert(this.lastTab)
+            
         })
         
         if (localStorage.getItem("recommended_size") != null) {
