@@ -16,8 +16,8 @@
     </a></div> --}}
     <div class="card-header ">
         <div class="row">
-            <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Attributes') }}</span> </div>
-            <div class="col-md-9"><a href="{{ route('sizechart.create',['id'=>$current_product_id ])}}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute</span></a></div>
+            <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Size Details') }}</span> </div>
+            <div class="col-md-9"><a href="{{ route('sizechart.create',['id'=>$current_product_id ])}}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Add Size</span></a></div>
         </div>
        </div>
     <div class="card-body">
@@ -36,7 +36,7 @@
     <th>End</th>
     <th>Start</th>
     <th>End</th>
-    <th>Product</th>
+    {{-- <th>Product</th> --}}
     <th colspan="2" > <span class="offset-5">Action</span></th>
 </tr>
     </thead>
@@ -48,10 +48,10 @@
             <td>{{ $attr->height_end }}</td>
             <td>{{ $attr->weight_start }} </td>
             <td>{{ $attr->weight_end }} </td>
-          <div class="text-center"> <td class=" text-center"><span class="badge badge-pill badge-warning">{{$sizeChart[0]['product']['name']}} </span></td></div> 
+          {{-- <div class="text-center"> <td class=" text-center"><span class="badge badge-pill badge-warning">{{$sizeChart[0]['product']['name']}} </span></td></div>  --}}
             <td class="text-center">
               <div class="col">
-              <a id="get-body-data" href="javascript:void(0)" v-on:click="setSizeChart({{$attr->id  }})"  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-block btn-info btn-sm">Watch sizes</a>
+              <a id="get-body-data" href="javascript:void(0)" v-on:click="setSizeChart({{$attr->id  }})"  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-block btn-info btn-sm">Watch Other Sizes</a>
               </div>
               <div class="col">
                   <a id="get-body-data-2" href="{{ route('sizechart.edit',['id'=>$attr->id,'product_id'=>$current_product_id]) }}" class="btn btn-block btn-info btn-sm mt-1">Edit</a>
@@ -74,7 +74,7 @@
 
 <!-- Modal -->
 <div class="modal fade overflow-auto" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="exampleModalCenterTitle">Size Chart</h5>

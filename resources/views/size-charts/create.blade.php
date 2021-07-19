@@ -5,7 +5,7 @@
     @include('partials_sizes.sidebar')
     <div class="col-md-9 ">
 <div class="card  w-75">
-    <div class="card-header">@include('snippets.buttonback'){{ __('Add Measurement') }}</div>
+    <div class="card-header">@include('snippets.buttonback'){{ __('Add Size') }}</div>
     <div class="card-body">
         
         <form id="sizechartform" method="POST" action="{{ route('sizechart.add',['product_id'=> $product_id ]) }}" enctype="multipart/form-data">
@@ -132,29 +132,7 @@
                     @enderror
                 </div>
             </div>
-            {{-- <div class="form-group row">
-                <label for="Role"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Required') }}</label>
-
-
-                <div class="col-md-6">
-                    
-                        <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="is_required"
-                                   id="is_required" >
-
-                           
-                        </div>
-
-
-
-                    
-                </div>
-
-            </div> --}}
-
            
-
             <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary" >

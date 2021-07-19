@@ -10,9 +10,9 @@
 {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
 <div class="row mt-5  " style="margin-left:10px !important" id="products-all">
 @include('partials_attributes.sidebar')
-<div class="col-md-8" >
+<div class="col-md-8">
 <div class="card">
-    <div class="card-header ">
+    <div class="card-header">
         <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Products') }}</span>
         <span class="float-right" >@include('snippets.refresh_products')</span> 
     </div>
@@ -46,9 +46,11 @@
             <td>
             
             <label class="switch">
+
                 <input data-id="{{$row->product_id}}" id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status==1) ? 'checked' : '' }}>
                 <span class="slider round"></span>
-              </label>
+
+            </label>
              </td>
             
                 
@@ -263,6 +265,7 @@
               url: '/product/edit/',
               data: {'status': status, 'id': product_id},
               success: function(data){
+                
                   
                if(data.error_msg)
                {

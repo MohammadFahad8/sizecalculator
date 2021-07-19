@@ -5,7 +5,7 @@
     @include('partials_sizes.sidebar')
     <div class="col-md-9 ">
 <div class="card  w-75">
-    <div class="card-header">@include('snippets.buttonback'){{ __('Add Measurement') }}</div>
+    <div class="card-header">@include('snippets.buttonback'){{ __('Edit Size') }}</div>
     <div class="card-body">
         
         <form id="sizechartform" method="POST" action="{{ route('sizechart.update',['id'=>$id,'product_id'=> $current_product_id ]) }}" enctype="multipart/form-data">

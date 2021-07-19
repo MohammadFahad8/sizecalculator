@@ -28,7 +28,7 @@
             <div></div>
             <div>
               <svg
-                v-if="tabnumber > 1 && tabnumber < 5"
+                v-if="tabnumber > 1 && lastTab !=true"
                 v-on:click="back(tabnumber)"
                 viewBox="0 0 512 512"
                 height="24"

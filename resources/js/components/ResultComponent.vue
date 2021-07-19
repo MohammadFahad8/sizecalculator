@@ -422,8 +422,12 @@ export default {
 
         if (
           res.data == "XL" ||
+          res.data == "Xl" ||
+          res.data == "xL" ||
           res.data == "xl" ||
           res.data == "XS" ||
+          res.data == "Xs" ||
+          res.data == "xS" ||
           res.data == "xs"
         ) {
           this.container.recommended_size = res.data.toUpperCase().substr(0, 2);
