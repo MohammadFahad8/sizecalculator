@@ -48,4 +48,14 @@ class Attributetypes extends Model
     {
         return $this->hasMany(Sizechart::class, 'product_id', 'product_id');
     }
+
+    /**
+     * Get all of the comments for the Attributetypes
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function attrDetails(): HasMany
+    {
+        return $this->hasMany(Attributeimages::class, 'foreign_key', 'local_key');
+    }
 }

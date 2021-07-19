@@ -15,10 +15,11 @@ class CreateAttributeimagesTable extends Migration
     {
         Schema::create('attributeimages', function (Blueprint $table) {
             $table->id();
-            $table->integer('size_one')
-            $table->integer('')
-            $table->integer('')
+            $table->integer('attr_size_value')->nullable();
+            $table->text('attr_image_src')->nullable();
+            $table->string('attribute_size_name')->nullable();
             $table->integer('attribute_type_id');
+            $table->integer('product_id');
             $table->timestamps();
         });
     }

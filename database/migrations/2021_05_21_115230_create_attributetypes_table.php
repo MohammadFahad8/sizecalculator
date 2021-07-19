@@ -17,10 +17,6 @@ class CreateAttributetypesTable extends Migration
             $table->id();
             $table->string('name');
             $table->bigInteger('product_id');
-            $table->bigInteger('size_one')->default(30);
-            $table->bigInteger('size_second')->default(40);
-            $table->bigInteger('size_third')->default(50);
-             
             $table->boolean('status')->default(1);
             
             $table->timestamps();

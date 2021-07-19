@@ -936,32 +936,33 @@ class AttributeController extends Controller
         $attr = new AttributeTypes();
         $attr->name = $request->get('attribute_name');
         $attr->product_id = $request->get('product_id');
-        for($j=0;$j<count($request['thumb']);$j++){
-
-        if ($request->file('thumb')) {
-            $this->validate($request, [
-                "thumb" => "mimes:png,jpg,jpeg"
-            ], [
-                "thumb.mimes" => "Please upload png or jpg format"
-            ]);
-            if (File::exists($attr->thumb)) {
-                File::delete($attr->thumb);
-            }
-            $path = 'files/upload/admin/';
-
-            $thumb = $request->file('thumb');
-            $image = Str::slug($attr->name) . rand(12345678, 98765432) . '.' . $thumb->getClientOriginalExtension();
-            if (!file_exists($path)) {
-                mkdir($path, 666, true);
-            }
-           // Image::make($thumb)->resize(300, 300)->save($path . $user->first_name . '_' . $image);
-
-            $attr->thumb = $path . $attr->first_name . '_' . $image;
-            
-        }
-    }
+     
         $attr->status = ($request->get('is_required') == 'on' ? 1 : 0);
         $attr->save();
+        for($j=0;$j<count($request['thumb']);$j++){
+
+            if ($request->file('thumb')) {
+                $this->validate($request, [
+                    "thumb" => "mimes:png,jpg,jpeg"
+                ], [
+                    "thumb.mimes" => "Please upload png or jpg format"
+                ]);
+                if (File::exists($attr->thumb)) {
+                    File::delete($attr->thumb);
+                }
+                $path = 'files/upload/admin/';
+    
+                $thumb = $request->file('thumb');
+                $image = Str::slug($attr->name) . rand(12345678, 98765432) . '.' . $thumb->getClientOriginalExtension();
+                if (!file_exists($path)) {
+                    mkdir($path, 666, true);
+                }
+               // Image::make($thumb)->resize(300, 300)->save($path . $user->first_name . '_' . $image);
+    
+                $attr->thumb = $path . $attr->first_name . '_' . $image;
+                
+            }
+        }
         return   redirect()->route('attributetypes.home', ['id' => $request->get('product_id')]);
     }
     public function storeAttributeEdit(Request $request)
