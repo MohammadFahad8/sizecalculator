@@ -1,6 +1,7 @@
-@extends('shopify-app::layouts.default')
+{{-- @extends('shopify-app::layouts.default') --}}
+@extends('layouts.app')
 @section('content')
-@include('partials_attributes.style')
+
 
 
 {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
@@ -21,7 +22,7 @@
     <div class="card-body">
         <div class="text-left">
              <p>Welcome to Body Fit Application</p>
-             <bodyfit-component :product=""></bodyfit-component>
+             
         </div>
        
     </div>

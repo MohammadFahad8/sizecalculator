@@ -98,9 +98,7 @@ display: inline-block;
             <div class="x-col"></div>
             <div class="x-col"></div>
           </div>
-          <span class="predict__sc-1a4an9n-3 OSFBL switch find-fit-header"
-            >FIND YOUR FIT</span
-          >
+          <span class="predict__sc-1a4an9n-3 OSFBL switch find-fit-header">FIND YOUR FIT</span>
         </div>
         <div
           class="content"
@@ -117,7 +115,10 @@ display: inline-block;
               
               <div v-for="(row,key) in attributes" :key="row.id" v-case="key+2">
 
-                <attribute-one-component :attributes="row" :tabnum="n" :recordsLength="attributes.length" :currentRecord="key+1" ></attribute-one-component>
+                <attribute-one-component :attributes="row" :tabnum="{
+    count: n,
+    
+  }" :recordsLength="attributes.length" :currentRecord="key+1" ></attribute-one-component>
                   
               </div>
               
@@ -131,14 +132,12 @@ display: inline-block;
             <div style="overflow: auto">
               <div
                 class="custom-offset-lg"
-                style="margin-top: 8% !important; display: none"
-              >
+                style="margin-top: 8% !important; display: none">
                 <button
                   class="fit-advisor-custom_previous_btn"
                   type="button"
                   id="prevBtn"
-                  v-on:click="nextPrev(-1)"
-                >
+                  v-on:click="nextPrev(-1)">
                   Previous
                 </button>
               </div>

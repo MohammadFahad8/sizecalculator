@@ -356,7 +356,7 @@ input::-webkit-inner-spin-button {
 
 .size-position {
     margin-left: -80px !important;
-    margin-top: -44px !important;
+    
 }
 
 body {
@@ -1190,7 +1190,7 @@ input:focus {
     width: 150% !important;
     gap: 5px;
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 0px 10px 40px;
+    padding: 0px 10px ;
 }
 
 .fit-advisor-chest-tab-item {
