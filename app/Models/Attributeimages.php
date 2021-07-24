@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Attributeimages extends Model
 {
     use HasFactory;
-    protected $fillable = ['size_one','size_second','size_third','image_one','image_second','image_third','attribute_type_id','product_id','created_at','updated_at'];
+    protected $fillable = ['attr_size_value','attr_image_src','attribute_size_name','attribute_type_id','product_id','created_at','updated_at'];
 
 
     /**
@@ -19,6 +19,6 @@ class Attributeimages extends Model
      */
     public function attributeTypes(): BelongsTo
     {
-        return $this->belongsTo(Attributetypes::class, 'foreign_key', 'other_key');
+        return $this->belongsTo(Attributetypes::class, 'attribute_type_id', 'id');
     }
 }

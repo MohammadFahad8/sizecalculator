@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Attributetypes extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','product_id','size_one','size_second','size_third','status'];
+    protected $fillable = ['name','product_id','status'];
 
     public function attribute()
     {
@@ -56,6 +56,6 @@ class Attributetypes extends Model
      */
     public function attrDetails(): HasMany
     {
-        return $this->hasMany(Attributeimages::class, 'foreign_key', 'local_key');
+        return $this->hasMany(Attributeimages::class, 'attribute_type_id', 'id');
     }
 }

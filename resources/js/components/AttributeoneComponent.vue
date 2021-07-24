@@ -9,13 +9,13 @@
     <div>
         <div>
             <div class=" fit-advisor-chest-tab size-position">
-                <div class=" fit-advisor-chest-tab-item">
+                <div class=" fit-advisor-chest-tab-item" v-for="(row) in attributes.attr_details" :key="row.id">
                     <div style="opacity: 1; transform: none;">
-                        <img id="chest1" :src="attributes.img_one"  v-on:click="chest(attributes.size_one)" class=" fit-advisor-options-img">
-                        <p class=" fit-advisor-options-text">Narrower</p>
+                        <img id="chest1" :src="row.attr_image_src"  v-on:click="chest(row.attr_size_value)" class=" fit-advisor-options-img">
+                        <p class=" fit-advisor-options-text">{{row.attribute_size_name}}</p>
                     </div>
                 </div>
-                <div class=" fit-advisor-chest-tab-item">
+                <!-- <div class=" fit-advisor-chest-tab-item">
                     <div style="opacity: 1; transform: none;">
                         <img id="chest2" :src="attributes.img_second" v-on:click="chest(attributes.size_second)" class=" fit-advisor-options-img">
                         <p class=" fit-advisor-options-text">Average</p>
@@ -26,7 +26,7 @@
                         <img id="chest3" v-on:click="chest(attributes.size_third)" :src="attributes.img_third"  class=" fit-advisor-options-img">
                         <p class=" fit-advisor-options-text">Broader</p>
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -40,7 +40,7 @@ import EventBus from '../event-bus';
 export default {
     props:{
         attributes: Object,
-        tabnum:String,
+        tabnum:Number,
         recordsLength:Number,
         currentRecord: Number,
         
@@ -57,6 +57,7 @@ export default {
                 chest: [
                    
                 ],
+                attributeDetails:[],
                 arraytitle:{},
                 arrayval:{}
 
@@ -93,7 +94,7 @@ export default {
     },
     mounted() {
         
-
+       
 
     }
 }

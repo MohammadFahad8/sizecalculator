@@ -47,7 +47,7 @@
                 <label for="attribut_size"
                        class="col-md-4 col-form-label text-md-right">{{ __('size one') }}</label>
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <input tabindex="1" id="attribut_size" type="number"
                            class="form-control @error('attribut_size') is-invalid @enderror" name="attribut_size[]"
                             required min="1" autocomplete="off"
@@ -58,12 +58,16 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                </div>
+                <div class="col-md-3">
+                    <input tabindex="1" id="attribut_size" type="text" class="form-control " readonly value="Narrower" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
+
                 </div>
             </div> <div class="form-group row">
                 <label for="attribut_size"
                        class="col-md-4 col-form-label text-md-right">{{ __('size two') }}</label>
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <input tabindex="1" id="attribut_size" type="number"
                            class="form-control @error('attribut_size') is-invalid @enderror" name="attribut_size[]"
                             required min="1" autocomplete="off"
@@ -75,11 +79,15 @@
                     </span>
                     @enderror
                 </div>
+                <div class="col-md-3">
+                    <input tabindex="1" id="attribut_size" type="text" class="form-control "  readonly value="Average" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
+
+                </div>
             </div> <div class="form-group row">
                 <label for="attribut_size"
                        class="col-md-4 col-form-label text-md-right">{{ __('size three') }}</label>
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <input tabindex="1" id="attribut_size" type="number"
                            class="form-control @error('attribut_size') is-invalid @enderror" name="attribut_size[]"
                             required min="1" autocomplete="off"
@@ -90,6 +98,10 @@
                         <strong>{{ $message }}</strong>
                     </span>
                     @enderror
+                </div>
+                <div class="col-md-3">
+                    <input tabindex="1" id="attribut_size" type="text" class="form-control " readonly value="Broader" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
+
                 </div>
             </div>
             {{-- delte later --}}
@@ -104,6 +116,7 @@
                            class="form-control @error('product_name') is-invalid @enderror" value="{{$attrOfProduct[0]['name']}}"
                             required autocomplete="off" readonly disabled
                            >
+                        
 
                     @error('product_name')
                     <span class="invalid-feedback" role="alert">
@@ -111,6 +124,7 @@
                     </span>
                     @enderror
                 </div>
+             
             </div>
            
             <div class="form-group row">
@@ -123,10 +137,15 @@
                         <div class="form-check">
                             <input class="form-control-file @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
                                    id="thumb" multiple required >
+                                       
                                    @error('thumb')
                                    <span class="invalid-feedback" role="alert">
                                        <strong>{{ $message }}</strong>
                                    </span>
+                                   @else
+                                    <span>
+                                    <strong class="max-msg text text-danger d-none">Maximum 3 Allowed*</strong>
+                               </span> 
                                    @enderror
 
                            
@@ -191,8 +210,13 @@
        $("button[type = 'submit']").click(function(e){
                var $fileUpload = $("input[type='file']");
                if (parseInt($fileUpload.get(0).files.length) > 3){
-                  alert("You are only allowed to upload a maximum of 3 files");
+                  $('.max-msg').removeClass('d-none');
                   e.preventDefault();
+               }else
+               {
+                $('.max-msg').removeClass('d-none');
+                $('.max-msg').addClass('d-none');
+
                }
             });
     $(function(){

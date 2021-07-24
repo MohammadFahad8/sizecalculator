@@ -19,7 +19,7 @@ class CreateAttributeimagesTable extends Migration
             $table->text('attr_image_src')->nullable();
             $table->string('attribute_size_name')->nullable();
             $table->integer('attribute_type_id');
-            $table->integer('product_id');
+            $table->bigInteger('product_id');
             $table->timestamps();
         });
     }

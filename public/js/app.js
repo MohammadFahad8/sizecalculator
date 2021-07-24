@@ -1886,7 +1886,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     attributes: Object,
-    tabnum: String,
+    tabnum: Number,
     recordsLength: Number,
     currentRecord: Number
   },
@@ -1900,6 +1900,7 @@ __webpack_require__.r(__webpack_exports__);
         chestSizeThree: '3',
         is_loading: false,
         chest: [],
+        attributeDetails: [],
         arraytitle: {},
         arrayval: {}
       }
@@ -3565,7 +3566,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://c6e13c2fa76e.ngrok.io';
+Vue.prototype.$appUrl = 'https://8c4ae24eedd4.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 /**
@@ -43442,61 +43443,38 @@ var render = function() {
     _vm._v(" "),
     _c("div", [
       _c("div", [
-        _c("div", { staticClass: " fit-advisor-chest-tab size-position" }, [
-          _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
-            _c("div", { staticStyle: { opacity: "1", transform: "none" } }, [
-              _c("img", {
-                staticClass: " fit-advisor-options-img",
-                attrs: { id: "chest1", src: _vm.attributes.img_one },
-                on: {
-                  click: function($event) {
-                    return _vm.chest(_vm.attributes.size_one)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("p", { staticClass: " fit-advisor-options-text" }, [
-                _vm._v("Narrower")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
-            _c("div", { staticStyle: { opacity: "1", transform: "none" } }, [
-              _c("img", {
-                staticClass: " fit-advisor-options-img",
-                attrs: { id: "chest2", src: _vm.attributes.img_second },
-                on: {
-                  click: function($event) {
-                    return _vm.chest(_vm.attributes.size_second)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("p", { staticClass: " fit-advisor-options-text" }, [
-                _vm._v("Average")
-              ])
-            ])
-          ]),
-          _vm._v(" "),
-          _c("div", { staticClass: " fit-advisor-chest-tab-item" }, [
-            _c("div", { staticStyle: { opacity: "1", transform: "none" } }, [
-              _c("img", {
-                staticClass: " fit-advisor-options-img",
-                attrs: { id: "chest3", src: _vm.attributes.img_third },
-                on: {
-                  click: function($event) {
-                    return _vm.chest(_vm.attributes.size_third)
-                  }
-                }
-              }),
-              _vm._v(" "),
-              _c("p", { staticClass: " fit-advisor-options-text" }, [
-                _vm._v("Broader")
-              ])
-            ])
-          ])
-        ])
+        _c(
+          "div",
+          { staticClass: " fit-advisor-chest-tab size-position" },
+          _vm._l(_vm.attributes.attr_details, function(row) {
+            return _c(
+              "div",
+              { key: row.id, staticClass: " fit-advisor-chest-tab-item" },
+              [
+                _c(
+                  "div",
+                  { staticStyle: { opacity: "1", transform: "none" } },
+                  [
+                    _c("img", {
+                      staticClass: " fit-advisor-options-img",
+                      attrs: { id: "chest1", src: row.attr_image_src },
+                      on: {
+                        click: function($event) {
+                          return _vm.chest(row.attr_size_value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("p", { staticClass: " fit-advisor-options-text" }, [
+                      _vm._v(_vm._s(row.attribute_size_name))
+                    ])
+                  ]
+                )
+              ]
+            )
+          }),
+          0
+        )
       ])
     ]),
     _vm._v(" "),

@@ -10,15 +10,18 @@ use App\Models\Settings;
 use App\Models\Variants;
 use App\Models\Attribute;
 use App\Models\Sizechart;
+
 use App\Models\Bodyfeature;
 use Illuminate\Support\Str;
 use App\Models\Selectedsize;
 use Illuminate\Http\Request;
 use App\Http\Helpers\Apihooks;
 use App\Models\Attributetypes;
+use App\Models\Attributeimages;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
 
@@ -890,7 +893,8 @@ class AttributeController extends Controller
     }
     public function attributeTypeFront($id)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $attributeTypeOfProducts = Attributetypes::with('product','attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        
 
         return $attributeTypeOfProducts;
     }
@@ -939,27 +943,32 @@ class AttributeController extends Controller
      
         $attr->status = ($request->get('is_required') == 'on' ? 1 : 0);
         $attr->save();
-        for($j=0;$j<count($request['thumb']);$j++){
-
-            if ($request->file('thumb')) {
+        for($j=0;$j<count($request['attribut_size']);$j++){
+            $attrImg = new Attributeimages();
+            if ($request->file('thumb')[$j]) {
                 $this->validate($request, [
-                    "thumb" => "mimes:png,jpg,jpeg"
-                ], [
-                    "thumb.mimes" => "Please upload png or jpg format"
+                    'thumb.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
                 ]);
-                if (File::exists($attr->thumb)) {
-                    File::delete($attr->thumb);
-                }
+                // if (File::exists($attr->thumb)) {
+                //     File::delete($attr->thumb);
+                // }
+                
                 $path = 'files/upload/admin/';
+                
     
-                $thumb = $request->file('thumb');
+                $thumb = $request->file('thumb')[$j];
                 $image = Str::slug($attr->name) . rand(12345678, 98765432) . '.' . $thumb->getClientOriginalExtension();
                 if (!file_exists($path)) {
                     mkdir($path, 666, true);
                 }
-               // Image::make($thumb)->resize(300, 300)->save($path . $user->first_name . '_' . $image);
-    
-                $attr->thumb = $path . $attr->first_name . '_' . $image;
+                Image::make($thumb)->resize(300, 300)->save($path . '_' . $image);
+                
+                $attrImg->attr_size_value = $request['attribut_size'][$j];
+                $attrImg->attr_image_src = env('APP_URL').'/'.$path  . '_' . $image;
+                $attrImg->attribute_size_name = $request['attribut_size_name'][$j];
+                $attrImg->attribute_type_id = $attr->id;
+                $attrImg->product_id =$attr->product_id;
+                $attrImg->save();
                 
             }
         }
