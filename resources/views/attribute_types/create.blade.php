@@ -67,7 +67,7 @@
                 <div class="col-md-5">
                     
                     
-                        <input class="form-control-file attr-img @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
+                        <input class="form-control-file attr-img ml-md-n2 ml-lg-n2 @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
                                id="thumb"  required >
                                    
                                @error('thumb')
@@ -111,7 +111,7 @@
                 <div class="col-md-5">
                     
                     
-                    <input class="form-control-file attr-img @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
+                    <input class="form-control-file attr-img ml-md-n2 ml-lg-n2 @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
                            id="thumb"  required >
                                
                            @error('thumb')
@@ -154,7 +154,7 @@
                 <div class="col-md-5">
                     
                     
-                    <input class="form-control-file attr-img @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
+                    <input class="form-control-file attr-img ml-md-n2 ml-lg-n2 @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
                            id="thumb"  required >
                                
                            @error('thumb')

@@ -1874,6 +1874,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -1885,11 +1898,11 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       container: {
-        tabnumber: '',
+        tabnumber: "",
         attr_first: true,
-        chestSizeOne: '1',
-        chestSizeTwo: '2',
-        chestSizeThree: '3',
+        chestSizeOne: "1",
+        chestSizeTwo: "2",
+        chestSizeThree: "3",
         is_loading: false,
         chest: [],
         attributeDetails: [],
@@ -1901,10 +1914,10 @@ __webpack_require__.r(__webpack_exports__);
   methods: {
     nextStep: function nextStep(n) {
       this.container.tabnumber = n;
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('attributeone', this.container);
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("attributeone", this.container);
 
       if (this.currentRecord == this.recordsLength) {
-        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('sizeCalculate', n);
+        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("sizeCalculate", n);
       }
     },
     chest: function chest(n) {
@@ -2250,6 +2263,31 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2264,11 +2302,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         // weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
         // age: localStorage.getItem("age"),
         bodyMeasure: [],
-        heightfoot: '',
-        heightinch: '',
-        heightcm: '',
-        weight: '',
-        age: '',
+        heightfoot: "",
+        heightinch: "",
+        heightcm: "",
+        weight: "",
+        age: "",
         // chest: {
         // },
         // stomach: {
@@ -2295,7 +2333,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         title: "Very Relaxed"
       }],
       attributes: {},
-      n: '',
+      n: "",
       countrycheck: "",
       checked: false,
       currentTab: 0,
@@ -2538,7 +2576,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then(function (res) {
         _this3.attributes = res.data;
-        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('mount', function (num) {
+        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
           _this3.lastTab = true;
         });
 
@@ -2747,21 +2785,150 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       container: {
         form: {
-          heightfoot: '',
-          heightinch: '',
-          heightcm: '',
-          weight: '',
-          age: '',
+          heightfoot: "",
+          heightinch: "",
+          heightcm: "",
+          weight: "",
+          age: "",
           convertedMeasurements: false,
-          conversionCount: ''
+          conversionCount: ""
         },
-        countrycheck: '',
+        countrycheck: "",
         is_loading: false,
         valid: true,
         firstTab: false
@@ -2774,107 +2941,107 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.container.valid == true) {
         this.container.form.tabnumber = n;
-        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('formsubmit', this.container);
+        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("formsubmit", this.container);
       }
     },
     validateForm: function validateForm() {
-      if (this.container.countrycheck == false || this.container.countrycheck == '') {
-        if ($('#height_ft').val().length == 0) {
-          $('#height_ft').addClass('invalid');
+      if (this.container.countrycheck == false || this.container.countrycheck == "") {
+        if ($("#height_ft").val().length == 0) {
+          $("#height_ft").addClass("invalid");
           this.container.valid = false;
-        } else if ($('#height_in').val().length == 0) {
-          $('#height_in').addClass('invalid');
+        } else if ($("#height_in").val().length == 0) {
+          $("#height_in").addClass("invalid");
           this.container.valid = false;
-        } else if ($('#weight').val().length == 0) {
-          $('#weight').addClass('invalid');
+        } else if ($("#weight").val().length == 0) {
+          $("#weight").addClass("invalid");
           this.container.valid = false;
-        } else if ($('#age').val().length == 0) {
-          $('#age').addClass('invalid');
+        } else if ($("#age").val().length == 0) {
+          $("#age").addClass("invalid");
           this.container.valid = false;
         }
       }
 
       if (this.container.countrycheck == true) {
-        if ($('#height_cm').val().length == 0) {
-          $('#height_cm').addClass('invalid');
+        if ($("#height_cm").val().length == 0) {
+          $("#height_cm").addClass("invalid");
           this.container.valid = false;
         }
 
-        if ($('#weight').val().length == 0) {
-          $('#weight').addClass('invalid');
+        if ($("#weight").val().length == 0) {
+          $("#weight").addClass("invalid");
           this.container.valid = false;
         }
 
-        if ($('#age').val().length == 0) {
-          $('#age').addClass('invalid');
+        if ($("#age").val().length == 0) {
+          $("#age").addClass("invalid");
         }
       }
     },
     countryval: function countryval() {
       if (this.container.countrycheck == false) {
-        $('input[name="weight"]').attr('placeholder', 'Lbs');
-        $('input[name="heightfoot"]').attr('placeholder', 'Feet');
-        $('input[name="heightinch"]').attr('placeholder', 'Inches');
-        $('input[name="countrycheck"]').attr('value', 0);
+        $('input[name="weight"]').attr("placeholder", "Lbs");
+        $('input[name="heightfoot"]').attr("placeholder", "Feet");
+        $('input[name="heightinch"]').attr("placeholder", "Inches");
+        $('input[name="countrycheck"]').attr("value", 0);
         this.container.countrycheck == 0;
         this.container.form.convertedMeasurements = false;
         this.weightconvert(this.container.form.weight, false);
-        this.heightconvert(localStorage.getItem('foot'), localStorage.getItem('inch'), parseFloat(localStorage.getItem('cm')).toFixed(0), false);
+        this.heightconvert(localStorage.getItem("foot"), localStorage.getItem("inch"), parseFloat(localStorage.getItem("cm")).toFixed(0), false);
       } else if (this.container.countrycheck == true) {
-        $('input[name="weight"]').attr('placeholder', 'Kg');
-        $('input[name="heightcm"]').attr('placeholder', 'Cm');
-        $('input[name="countrycheck"]').attr('value', 1);
+        $('input[name="weight"]').attr("placeholder", "Kg");
+        $('input[name="heightcm"]').attr("placeholder", "Cm");
+        $('input[name="countrycheck"]').attr("value", 1);
         this.container.countrycheck == 1;
         this.container.form.convertedMeasurements = true;
         this.weightconvert(this.container.form.weight, true);
-        this.heightconvert(localStorage.getItem('foot'), localStorage.getItem('inch'), parseFloat(localStorage.getItem('cm')).toFixed(0), true);
+        this.heightconvert(localStorage.getItem("foot"), localStorage.getItem("inch"), parseFloat(localStorage.getItem("cm")).toFixed(0), true);
       }
     },
     validateHeight: function validateHeight(event) {
-      $('#height_ft').keydown(function (e) {
+      $("#height_ft").keydown(function (e) {
         if (e.keyCode === 190 || e.keyCode === 110) {
           e.preventDefault();
         }
       });
-      $('#height_ft').removeClass('invalid');
+      $("#height_ft").removeClass("invalid");
       this.container.valid = true;
 
       if (this.container.form.heightfoot > 9) {
         $("#height_ft").attr("placeholder", "Limit is 9");
         $("#height_ft").addClass("warning-place");
-        this.container.form.heightfoot = '';
+        this.container.form.heightfoot = "";
       } else if (this.container.form.heightfoot <= 0) {
-        this.container.form.heightfoot = '';
+        this.container.form.heightfoot = "";
       } else {
-        localStorage.setItem('foot', this.container.form.heightfoot);
+        localStorage.setItem("foot", this.container.form.heightfoot);
       }
     },
     validateInches: function validateInches() {
-      $('#height_in').keydown(function (e) {
+      $("#height_in").keydown(function (e) {
         if (e.keyCode === 190 || e.keyCode === 110) {
           e.preventDefault();
         }
       });
-      $('#height_in').removeClass('invalid');
+      $("#height_in").removeClass("invalid");
       this.container.valid = true;
 
       if (this.container.form.heightinch > 11) {
         $("#height_in").attr("placeholder", "Limit is 11");
         $("#height_in").addClass("warning-place");
-        this.container.form.heightinch = '';
+        this.container.form.heightinch = "";
       } else if (this.container.form.heightinch < 0) {
-        this.container.form.heightinch = '';
+        this.container.form.heightinch = "";
       } else {
-        localStorage.setItem('inch', this.container.form.heightinch);
+        localStorage.setItem("inch", this.container.form.heightinch);
       }
     },
     validateWeight: function validateWeight() {
-      $('#weight').keydown(function (e) {
+      $("#weight").keydown(function (e) {
         if (e.keyCode === 190 || e.keyCode === 110) {
           e.preventDefault();
         }
       });
-      $('#weight').removeClass('invalid');
+      $("#weight").removeClass("invalid");
       this.container.valid = true;
 
       if (this.container.form.weight > 500) {
@@ -2885,57 +3052,57 @@ __webpack_require__.r(__webpack_exports__);
         }
 
         $("#weight").addClass("warning-place");
-        this.container.form.weight = '';
+        this.container.form.weight = "";
       } else if (this.container.form.weight <= 0) {
-        this.container.form.weight = '';
+        this.container.form.weight = "";
       } else {
-        localStorage.setItem('weight', parseFloat(this.container.form.weight).toFixed(0));
+        localStorage.setItem("weight", parseFloat(this.container.form.weight).toFixed(0));
       }
     },
     validateAge: function validateAge() {
-      $('#height_in').keydown(function (e) {
+      $("#height_in").keydown(function (e) {
         if (e.keyCode === 190 || e.keyCode === 110) {
           e.preventDefault();
         }
       });
-      $('#age').removeClass('invalid');
+      $("#age").removeClass("invalid");
       this.container.valid = true;
 
       if (this.container.form.age > 100) {
         $("#age").attr("placeholder", "Limit is 100");
         $("#age").addClass("warning-place");
-        this.container.form.age = '';
+        this.container.form.age = "";
       } else if (this.container.form.age <= 0) {
-        this.container.form.age = '';
+        this.container.form.age = "";
       } else {
-        localStorage.setItem('age', this.container.form.age);
+        localStorage.setItem("age", this.container.form.age);
       }
     },
     validateCm: function validateCm() {
-      $('#height_cm').keydown(function (e) {
+      $("#height_cm").keydown(function (e) {
         if (e.keyCode === 190 || e.keyCode === 110) {
           e.preventDefault();
         }
       });
-      $('#height_cm').removeClass('invalid');
+      $("#height_cm").removeClass("invalid");
       this.container.valid = true;
 
       if (this.container.form.heightcm > 302) {
         $("#height_cm").attr("placeholder", "Limit is 300");
         $("#height_cm").addClass("warning-place");
-        this.container.form.heightcm = '';
+        this.container.form.heightcm = "";
       } else if (this.container.form.heightcm <= 0) {
-        this.container.form.heightcm = '';
+        this.container.form.heightcm = "";
       } else {
         var heightincm = parseFloat(this.container.form.heightcm).toFixed(0);
-        localStorage.setItem('cm', heightincm);
-        this.container.form.heightcm = localStorage.getItem('cm');
+        localStorage.setItem("cm", heightincm);
+        this.container.form.heightcm = localStorage.getItem("cm");
       }
     },
     weightconvert: function weightconvert(w, c) {
-      if (c == true && w != '') {
+      if (c == true && w != "") {
         this.container.form.weight = parseFloat(w / 2.2).toFixed(0); //pound to kg
-      } else if (c == false && w != '') {
+      } else if (c == false && w != "") {
         this.container.form.weight = parseFloat(w * 2.2).toFixed(0); //kg to pound
       }
     },
@@ -2946,8 +3113,8 @@ __webpack_require__.r(__webpack_exports__);
         } else {
           this.container.form.heightcm = f * 30.48 + parseInt(i) * 2.54;
           var heightcm = parseFloat(this.container.form.heightcm).toFixed(0);
-          localStorage.setItem('cm', heightcm);
-          this.container.form.heightcm = localStorage.getItem('cm'); // this.form.heightinch = f * 30.48 + parsetInt($data['heightinch']) * 2.54;}
+          localStorage.setItem("cm", heightcm);
+          this.container.form.heightcm = localStorage.getItem("cm"); // this.form.heightinch = f * 30.48 + parsetInt($data['heightinch']) * 2.54;}
         }
       } else if (c == false) {
         if (isNaN(cm)) {
@@ -2966,27 +3133,27 @@ __webpack_require__.r(__webpack_exports__);
             this.container.form.heightinch = parseInt(Math.floor(inch));
           }
 
-          localStorage.setItem('foot', this.container.form.heightfoot);
-          localStorage.setItem('inch', this.container.form.heightinch);
+          localStorage.setItem("foot", this.container.form.heightfoot);
+          localStorage.setItem("inch", this.container.form.heightinch);
         }
       }
     }
   },
   mounted: function mounted() {},
   watch: {
-    'container.form.heightfoot': function containerFormHeightfoot() {
+    "container.form.heightfoot": function containerFormHeightfoot() {
       this.validateHeight();
     },
-    'container.form.heightinch': function containerFormHeightinch() {
+    "container.form.heightinch": function containerFormHeightinch() {
       this.validateInches();
     },
-    'container.form.weight': function containerFormWeight() {
+    "container.form.weight": function containerFormWeight() {
       this.validateWeight();
     },
-    'container.form.age': function containerFormAge() {
+    "container.form.age": function containerFormAge() {
       this.validateAge();
     },
-    'container.form.heightcm': function containerFormHeightcm() {
+    "container.form.heightcm": function containerFormHeightcm() {
       this.validateCm();
     }
   }
@@ -3012,6 +3179,74 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3391,8 +3626,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
 
-      if (localStorage.getItem('FORM__') != null) {
-        this.formLocal = JSON.parse(localStorage.getItem('FORM__'));
+      if (localStorage.getItem("FORM__") != null) {
+        this.formLocal = JSON.parse(localStorage.getItem("FORM__"));
       }
 
       axios.post(this.$appUrl + "/api/size-recommend/", this.formLocal).then(function (res) {
@@ -43438,7 +43673,11 @@ var render = function() {
             }),
             _vm._v(" "),
             _c("p", { staticClass: " fit-advisor-options-text" }, [
-              _vm._v(_vm._s(row.attribute_size_name))
+              _vm._v(
+                "\n                    " +
+                  _vm._s(row.attribute_size_name) +
+                  "\n                "
+              )
             ])
           ])
         }),
@@ -43834,7 +44073,7 @@ var render = function() {
                   _c("span", { staticClass: "final-size-label" }, [
                     _vm._v("Your Fit Size : ")
                   ]),
-                  _vm._v(" " + _vm._s(_vm.finalsize))
+                  _vm._v("\n                " + _vm._s(_vm.finalsize))
                 ]
               )
             : _vm._e()
@@ -44019,7 +44258,7 @@ var render = function() {
                                 name: "case",
                                 rawName: "v-case",
                                 value: key + 2,
-                                expression: "key+2"
+                                expression: "key + 2"
                               }
                             ],
                             key: row.id
@@ -44048,7 +44287,7 @@ var render = function() {
                               name: "case",
                               rawName: "v-case",
                               value: _vm.attributes.length + 2,
-                              expression: "attributes.length+2"
+                              expression: "attributes.length + 2"
                             }
                           ]
                         },
@@ -44087,7 +44326,7 @@ var render = function() {
                           },
                           [
                             _vm._v(
-                              "\n                  Previous\n                "
+                              "\n                                    Previous\n                                "
                             )
                           ]
                         )
@@ -44543,7 +44782,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \r\n\r\n99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
+                  "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \n\n99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
               }
             }),
             _vm._v(" "),
@@ -44551,7 +44790,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \r\n\r\n99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
+                  "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \n\n99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
               }
             }),
             _vm._v(" "),
@@ -44559,7 +44798,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \r\n\r\n43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
+                  "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \n\n43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
               }
             }),
             _vm._v(" "),
@@ -44567,7 +44806,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \r\n\r\n54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
+                  "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \n\n54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
               }
             }),
             _vm._v(" "),
@@ -44575,7 +44814,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \r\n\r\n99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
+                  "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \n\n99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
               }
             }),
             _vm._v(" "),
@@ -44583,7 +44822,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \r\n\r\n54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
+                  "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \n\n54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
               }
             }),
             _vm._v(" "),
@@ -44591,7 +44830,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \r\n\r\n156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
+                  "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \n\n156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
               }
             }),
             _vm._v(" "),
@@ -44599,7 +44838,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \r\n\r\n145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
+                  "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \n\n145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
               }
             }),
             _vm._v(" "),
@@ -44607,7 +44846,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \r\n\r\n201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
+                  "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \n\n201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
               }
             }),
             _vm._v(" "),
@@ -44615,7 +44854,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \r\n\r\n212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
+                  "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \n\n212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
               }
             }),
             _vm._v(" "),
@@ -44623,7 +44862,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \r\n\r\n156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
+                  "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \n\n156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
               }
             }),
             _vm._v(" "),
@@ -44631,7 +44870,7 @@ var render = function() {
               staticStyle: { fill: "#F0F0F0" },
               attrs: {
                 points:
-                  "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \r\n\r\n212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
+                  "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \n\n212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
               }
             })
           ]),
@@ -44686,7 +44925,7 @@ var render = function() {
           }
         }
       },
-      [_vm._v("Get Started")]
+      [_vm._v("\n            Get Started\n        ")]
     )
   ])
 }
@@ -44844,7 +45083,11 @@ var render = function() {
                                                 visibility: "hidden"
                                               }
                                             },
-                                            [_vm._v("col")]
+                                            [
+                                              _vm._v(
+                                                "\n                                                col\n                                            "
+                                              )
+                                            ]
                                           ),
                                           _vm._v(" "),
                                           _c(
@@ -44855,7 +45098,11 @@ var render = function() {
                                                 visibility: "hidden"
                                               }
                                             },
-                                            [_vm._v("col")]
+                                            [
+                                              _vm._v(
+                                                "\n                                                col\n                                            "
+                                              )
+                                            ]
                                           )
                                         ]
                                       )
@@ -45065,7 +45312,7 @@ var staticRenderFns = [
       { staticClass: "fit-advisor-header-desc fit-advisor-header-desc-mt" },
       [
         _vm._v(
-          "\n              The size we recommend is based on how we intended this item to suit your\n              body. "
+          "\n                            The size we recommend is based on how we\n                            intended this item to suit your body. "
         ),
         _c("br"),
         _c(

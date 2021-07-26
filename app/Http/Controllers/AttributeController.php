@@ -34,21 +34,16 @@ class AttributeController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-     public function loginshop(Request $request)
-     {
-         $this->validate($request,[
-             'shop-name' => 'required|min:10|max:999',
-         ],[
-            'shop-name.required'=> 'Shop Name is Required'
-         ]);
-        
-              return  redirect(env('APP_URL').'?shop='.$request['shop-name']);
-         
-         
+    public function loginshop(Request $request)
+    {
+        $this->validate($request, [
+            'shop-name' => 'required|min:10|max:999',
+        ], [
+            'shop-name.required' => 'Shop Name is Required'
+        ]);
 
-         
-         
-     }
+        return  redirect(env('APP_URL') . '?shop=' . $request['shop-name']);
+    }
     public function index()
     {
         //
@@ -316,7 +311,7 @@ class AttributeController extends Controller
         foreach ($checkInApiResponse as $resp) {
 
             $productCheckIfDeletedFromStore = Auth::user()->api()->rest('GET', '/admin/api/2021-04/products/' . $resp['product_id'] . '.json')['body'];
-                
+
             if ($productCheckIfDeletedFromStore == "Not Found") {
                 $product = Products::where('product_id', '=', $resp['product_id'])->first();
 
@@ -373,7 +368,7 @@ class AttributeController extends Controller
     {
         $break = 0;
         $data = $request->all();
-        
+
 
 
 
@@ -405,10 +400,10 @@ class AttributeController extends Controller
 
             foreach ($sizeChartList as $s) {
 
-                
+
 
                 if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
-                        
+
                     foreach ($s['bodyFeature'] as $b) {
                         for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
 
@@ -429,14 +424,7 @@ class AttributeController extends Controller
                     return $this->checkVariantIFExists('medium');
                 }
             }
-            
-
-
-
-
-        
-        }else
-        {
+        } else {
             foreach ($sizeChartList as $s) {
 
 
@@ -463,7 +451,6 @@ class AttributeController extends Controller
                     return $this->checkVariantIFExists('medium');
                 }
             }
-            
         }
     }
     public function calculateSizeFemale($data, $height_cm)
@@ -901,7 +888,7 @@ class AttributeController extends Controller
     }
     public function attributeType($id)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product','attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
 
 
         return view('attribute_types.index', [
@@ -911,8 +898,8 @@ class AttributeController extends Controller
     }
     public function attributeTypeFront($id)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product','attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
-        
+        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+
 
         return $attributeTypeOfProducts;
     }
@@ -934,15 +921,13 @@ class AttributeController extends Controller
     }
     public function storeAttributeType(Request $request)
     {
-        
 
-         if(count($request['thumb'])>3)
-         {
-           Session::flash('error', "Image Selection Limit is 3");
-           return back();
 
-         }
-         
+        if (count($request['thumb']) > 3) {
+            Session::flash('error', "Image Selection Limit is 3");
+            return back();
+        }
+
         $this->validate($request, [
             "attribute_name" => "required",
             "attribut_size.*"  => "required|numeric|distinct|min:2",
@@ -951,17 +936,17 @@ class AttributeController extends Controller
 
         ], [
             "attribute_name.required" => "Please Enter Attribute name",
-            
+
 
 
         ]);
         $attr = new AttributeTypes();
         $attr->name = $request->get('attribute_name');
         $attr->product_id = $request->get('product_id');
-     
+
         $attr->status = ($request->get('is_required') == 'on' ? 1 : 0);
         $attr->save();
-        for($j=0;$j<count($request['attribut_size']);$j++){
+        for ($j = 0; $j < count($request['attribut_size']); $j++) {
             $attrImg = new Attributeimages();
             if ($request->file('thumb')[$j]) {
                 $this->validate($request, [
@@ -970,24 +955,23 @@ class AttributeController extends Controller
                 // if (File::exists($attr->thumb)) {
                 //     File::delete($attr->thumb);
                 // }
-                
+
                 $path = 'files/upload/admin/';
-                
-    
+
+
                 $thumb = $request->file('thumb')[$j];
                 $image = Str::slug($attr->name) . rand(12345678, 98765432) . '.' . $thumb->getClientOriginalExtension();
                 if (!file_exists($path)) {
                     mkdir($path, 666, true);
                 }
                 Image::make($thumb)->resize(300, 300)->save($path . '_' . $image);
-                
+
                 $attrImg->attr_size_value = $request['attribut_size'][$j];
-                $attrImg->attr_image_src = env('APP_URL').'/'.$path  . '_' . $image;
+                $attrImg->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
                 $attrImg->attribute_size_name = $request['attribut_size_name'][$j];
                 $attrImg->attribute_type_id = $attr->id;
-                $attrImg->product_id =$attr->product_id;
+                $attrImg->product_id = $attr->product_id;
                 $attrImg->save();
-                
             }
         }
         return   redirect()->route('attributetypes.home', ['id' => $request->get('product_id')]);
