@@ -41,18 +41,9 @@ class AttributeController extends Controller
          ],[
             'shop-name.required'=> 'Shop Name is Required'
          ]);
-         $shop = User::where('email','=','shop@'.$request['shop-name'])->first();
-         if($shop===null)
-         { 
-             
-              Session::flash('error', 'Incorrect Shop Name');
-              return back();
-
-          
-         }else
-         {
+        
               return  redirect(env('APP_URL').'?shop='.$request['shop-name']);
-         }
+         
          
 
          
