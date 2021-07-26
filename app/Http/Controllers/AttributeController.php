@@ -538,7 +538,7 @@ class AttributeController extends Controller
                     if ($this->getSizeCount($size) == 0 || $this->getSizeCount($size) == null) {
                         $size = 'XL';
                         if ($this->getSizeCount($size) == 0 || $this->getSizeCount($size) == null) {
-                            $size = 'none';
+                            $size = 'medium';
                         }
                     }
                 }
@@ -548,14 +548,14 @@ class AttributeController extends Controller
                 if ($this->getSizeCount($size) == 0 || $this->getSizeCount($size) == null) {
                     $size = 'XL';
                     if ($this->getSizeCount($size) == 0 || $this->getSizeCount($size) == null) {
-                        $size = 'none';
+                        $size = 'medium';
                     }
                 }
             } else if (strtolower($predictedSize) == 'large') {
                 $size = 'XL';
 
                 if ($this->getSizeCount($size) == 0 || $this->getSizeCount($size) == null) {
-                    $size = 'none';
+                    $size = 'medium';
                 }
             } else if (strtolower($predictedSize) == 'xl') {
                 $size = 'XL';

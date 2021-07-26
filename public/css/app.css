@@ -2248,13 +2248,6 @@ textarea.form-control {
   font-size: 80%;
   color: #e3342f;
 }
-.login-invalid-feedback {
-  
-  width: 100%;
-  margin-top: 0.25rem;
-  font-size: 80%;
-  color: #e3342f;
-}
 
 .invalid-tooltip {
   position: absolute;

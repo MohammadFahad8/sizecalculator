@@ -20,6 +20,7 @@
         </div>
        </div>
     <div class="card-body">
+        
         <div class="text-left">
              <p>Welcome to Body Fit Application</p>
              

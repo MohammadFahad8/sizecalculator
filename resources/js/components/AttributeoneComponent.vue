@@ -6,19 +6,22 @@
 
 </div>
     <p class="fit-advisor-intro"><span id="mark1">Choose the option that best</span> <br><span id="mark2">describes your {{attributes.name}}</span></p>
-    <div>
-        <div>
-            <div class=" fit-advisor-chest-tab size-position">
-                <div class=" fit-advisor-chest-tab-item" v-for="(row) in attributes.attr_details" :key="row.id">
-                    <div style="opacity: 1; transform: none;">
-                        <img id="chest1" :src="row.attr_image_src"  v-on:click="chest(row.attr_size_value)">
+
+            <div class="x-custom-container x-text-center">
+            <div class=" x-row">
+                
+                <div class="col-md-4 parent " v-for="(row) in attributes.attr_details" :key="row.id">
+                    
+                        <img  id="chest1" :src="row.attr_image_src"  v-on:click="chest(row.attr_size_value)">
                         <p class=" fit-advisor-options-text">{{row.attribute_size_name}}</p>
-                    </div>
+                    
                 </div>
+             
                
             </div>
-        </div>
-    </div>
+            </div>
+        
+    
     <div id="steps-mark" style="text-align:center;margin-top:100px;" class="m-result "><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span></div>
 </div>
 </template>

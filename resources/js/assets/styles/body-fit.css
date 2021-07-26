@@ -3530,3 +3530,20 @@ input:focus {
   {
       font-size:medium !important;
   }
+ 
+ 
+ /* This will style any <img> element in .parent div */
+ .parent img {
+    height: 100%;
+    width: 100%;
+ }
+ .x-custom-container
+ {
+    position: relative;
+    max-width: 53rem;
+    margin-left: -7.5rem !important;
+    background: #fff;
+    width: 170%;
+    padding: 3rem 5rem 0;
+    border-radius: 1px;
+ }
