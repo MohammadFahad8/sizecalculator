@@ -316,7 +316,7 @@ class AttributeController extends Controller
         foreach ($checkInApiResponse as $resp) {
 
             $productCheckIfDeletedFromStore = Auth::user()->api()->rest('GET', '/admin/api/2021-04/products/' . $resp['product_id'] . '.json')['body'];
-
+                
             if ($productCheckIfDeletedFromStore == "Not Found") {
                 $product = Products::where('product_id', '=', $resp['product_id'])->first();
 
@@ -328,7 +328,7 @@ class AttributeController extends Controller
         //END DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
         $products = Products::where([['website_name', '=', $shop_config['id']], ['is_deleted', '=', 0]])->paginate(5);
 
-
+        // dd($products);
 
         return view('products.index', [
             'other' => $products,

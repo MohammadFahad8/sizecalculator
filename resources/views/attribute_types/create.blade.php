@@ -28,7 +28,7 @@
             <input type="hidden" name="product_id" value="{{($attrOfProduct[0]['product']['product_id'])??$product_id }}">
             <div class="form-group row">
                 <label for="name"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Attribute Name') }}</label>
+                       class="col-md-3 col-form-label text-md-right">{{ __('Attribute Name') }}</label>
 
                 <div class="col-md-6">
                     <input tabindex="1" id="attribute_name" type="text"
@@ -46,9 +46,9 @@
             {{-- delete later --}}
             <div class="form-group row">
                 <label for="attribut_size"
-                       class="col-md-4 col-form-label text-md-right">{{ __('size one') }}</label>
+                       class="col-md-3 col-form-label text-md-right">{{ __('size one') }}</label>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input tabindex="1" id="attribut_size" type="number"
                            class="form-control @error('attribut_size') is-invalid @enderror" name="attribut_size[]"
                             required min="1" autocomplete="off"
@@ -60,15 +60,39 @@
                     </span>
                     @enderror
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input tabindex="1" id="attribut_size" type="text" class="form-control " readonly value="Narrower" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
 
                 </div>
-            </div> <div class="form-group row">
-                <label for="attribut_size"
-                       class="col-md-4 col-form-label text-md-right">{{ __('size two') }}</label>
+                <div class="col-md-5">
+                    
+                    
+                        <input class="form-control-file attr-img @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
+                               id="thumb"  required >
+                                   
+                               @error('thumb')
+                               <span class="invalid-feedback" role="alert">
+                                   <strong>{{ $message }}</strong>
+                               </span>
+                               @else
+                                <span>
+                                <strong class="max-msg text text-danger d-none">Maximum 3 Allowed*</strong>
+                           </span> 
+                               @enderror
 
-                <div class="col-md-3">
+                       
+                    
+
+
+
+                
+            </div>
+            </div> 
+            <div class="form-group row">
+                <label for="attribut_size"
+                       class="col-md-3 col-form-label text-md-right">{{ __('size two') }}</label>
+
+                <div class="col-md-2">
                     <input tabindex="1" id="attribut_size" type="number"
                            class="form-control @error('attribut_size') is-invalid @enderror" name="attribut_size[]"
                             required min="1" autocomplete="off"
@@ -80,15 +104,38 @@
                     </span>
                     @enderror
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input tabindex="1" id="attribut_size" type="text" class="form-control "  readonly value="Average" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
 
                 </div>
+                <div class="col-md-5">
+                    
+                    
+                    <input class="form-control-file attr-img @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
+                           id="thumb"  required >
+                               
+                           @error('thumb')
+                           <span class="invalid-feedback" role="alert">
+                               <strong>{{ $message }}</strong>
+                           </span>
+                           @else
+                            <span>
+                            <strong class="max-msg text text-danger d-none">Maximum 3 Allowed*</strong>
+                       </span> 
+                           @enderror
+
+                   
+                
+
+
+
+            
+        </div>
             </div> <div class="form-group row">
                 <label for="attribut_size"
-                       class="col-md-4 col-form-label text-md-right">{{ __('size three') }}</label>
+                       class="col-md-3 col-form-label text-md-right">{{ __('size three') }}</label>
 
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input tabindex="1" id="attribut_size" type="number"
                            class="form-control @error('attribut_size') is-invalid @enderror" name="attribut_size[]"
                             required min="1" autocomplete="off"
@@ -100,17 +147,41 @@
                     </span>
                     @enderror
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <input tabindex="1" id="attribut_size" type="text" class="form-control " readonly value="Broader" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
 
                 </div>
+                <div class="col-md-5">
+                    
+                    
+                    <input class="form-control-file attr-img @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
+                           id="thumb"  required >
+                               
+                           @error('thumb')
+                           <span class="invalid-feedback" role="alert">
+                               <strong>{{ $message }}</strong>
+                           </span>
+                           @else
+                            <span>
+                            <strong class="max-msg text text-danger d-none">Maximum 3 Allowed*</strong>
+                       </span> 
+                           @enderror
+
+                   
+                
+
+
+
+            
+        </div>
             </div>
+            
             {{-- delte later --}}
             
             
             <div class="form-group row">
                 <label for="name"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
+                       class="col-md-3 col-form-label text-md-right">{{ __('Product Name') }}</label>
 
                 <div class="col-md-6">
                     <input tabindex="2" id="product_name" type="text"
@@ -128,7 +199,7 @@
              
             </div>
            
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <label for="Role"
                        class="col-md-4 col-form-label text-md-right">{{ __('Select Image') }}</label>
 
@@ -161,11 +232,11 @@
                 </div>
 
 
-            </div>
+            </div> --}}
 
             <div class="form-group row">
                 <label for="Role"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
+                       class="col-md-3 col-form-label text-md-right">{{ __('Status') }}</label>
 
 
                 <div class="col-md-6">
