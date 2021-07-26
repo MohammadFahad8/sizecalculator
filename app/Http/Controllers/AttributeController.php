@@ -356,6 +356,7 @@ class AttributeController extends Controller
     {
         $break = 0;
         $data = $request->all();
+        
 
 
 
@@ -376,7 +377,7 @@ class AttributeController extends Controller
 
             $height_cm = $data['heightcm'];
         } else {
-            $height_cm = ($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54);
+            $height_cm = intval(($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54));
         }
 
 
@@ -387,10 +388,10 @@ class AttributeController extends Controller
 
             foreach ($sizeChartList as $s) {
 
-
+                
 
                 if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
-
+                        
                     foreach ($s['bodyFeature'] as $b) {
                         for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
 
@@ -883,7 +884,7 @@ class AttributeController extends Controller
     }
     public function attributeType($id)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $attributeTypeOfProducts = Attributetypes::with('product','attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
 
 
         return view('attribute_types.index', [

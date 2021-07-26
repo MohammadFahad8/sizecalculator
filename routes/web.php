@@ -15,24 +15,7 @@ use Illuminate\Support\Facades\Config;
 */
 
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-// Route::get('/', function () {
-//     return view('welcome');
-// })->middleware(['auth.shopify'])->name('home');
-// $hmac = $_GET['hmac']??'';
-//         $host = $_GET['host']??'';
-//         $new_design_language = $_GET['new_design_language']??'';
-//         $session = $_GET['session']??'';
-//         $shop = $_GET['shop']??'';
-//         $timestamp = $_GET['timestamp']??'';
-//         Config::set('constants.SHOPIFY_URL.hmac', $hmac);
-//         Config::set('constants.SHOPIFY_URL.host', $host);
-//         Config::set('constants.SHOPIFY_URL.new_design_language', $new_design_language);
-//         Config::set('constants.SHOPIFY_URL.shop', $shop);
-//         Config::set('constants.SHOPIFY_URL.session', $session);
-//         Config::set('constants.SHOPIFY_URL.timestamp', $timestamp);
+Auth::routes();
 
         
     Route::middleware(['auth.shopify'])->group(function () {

@@ -37,17 +37,22 @@
            
     @forelse($attrTypeOfProducts as $attr)
     <tr>
+      
             <td>{{ $attr->name }}</td>
             <td>{{ $attr->product->name }}</td>
             
             <td>{{ $attr->status }}</td>
-            <td><select class="form-control btn" name="" id=""  required="required" readonly=""  >
+            <td>
+              <select class="form-control btn" name="" id=""  required="required" readonly=""  >
             <option >
              Sizes of {{ $attr->name }}
             </option>
-            <option >{{ $attr->size_one }}</option>
-            <option >{{ $attr->size_second }}</option>
-            <option >{{ $attr->size_third }}</option>
+            @forelse($attr['attrDetails'] as $r)
+            <option >{{ $r->attr_size_value }}</option>
+            @empty
+            <option >`Nothing</option>
+            @endforelse
+           
             </select></td>
             <td><a href="{{ route('sizechart.home',['id'=>$attrTypeOfProducts[0]['product']->product_id ]) }}"  class="">View Variants</a></td>
             <td><a href="{{ route('attributesTypes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
@@ -185,6 +190,7 @@
                 $("#preloader").delay(300).fadeOut("slow");
             }); 
   })
+  
 </script>
 
 @endsection

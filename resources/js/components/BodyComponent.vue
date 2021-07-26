@@ -478,7 +478,7 @@ export default {
     getAttributes: function () {
       axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then((res) => {
         this.attributes = res.data;
-
+  
         EventBus.$on('mount',num=>{
             this.lastTab=true
             

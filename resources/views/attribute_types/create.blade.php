@@ -133,7 +133,7 @@
                        class="col-md-4 col-form-label text-md-right">{{ __('Select Image') }}</label>
 
 
-                <div class="col-md-6">
+                <div class="col-md-4">
                     
                         <div class="form-check">
                             <input class="form-control-file @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
@@ -156,6 +156,10 @@
 
                     
                 </div>
+                <div class="col-md-4">
+                    <label class="text text-danger">(i.e min 3)</label>
+                </div>
+
 
             </div>
 
