@@ -562,10 +562,7 @@ button:hover {
     border-radius: 2px;
     padding: 8px 15px;
     background-color: #000000;
-    color: var(--color-btn-primary-text);
-    /* font-family: lato !important; */
-    /* font-style: var(--font-style-header); */
-    /* font-weight: var(--font-weight-header); */
+    color:white;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     white-space: normal;
@@ -1139,9 +1136,11 @@ fieldset {
     letter-spacing: 0.04em;
     margin: 0px;
     font-family: karla !important;
-    line-height: 18px !important;
+    /* line-height: 18px !important; works fit on previous stores*/
+    /* line-height: 5rem !important;  works fit on 2.0*/
     font-weight: 400 !important;
     font-style: normal;
+    font-size: medium;
 }
 
 .custom-offset-lg {
@@ -1627,10 +1626,8 @@ input:focus {
         border-radius: 2px;
         padding: 8px 15px;
         background-color: #000000;
-        color: var(--color-btn-primary-text);
-        /* font-family: lato !important; */
-        /* font-style: var(--font-style-header); */
-        /* font-weight: var(--font-weight-header); */
+        color: white;
+      
         text-transform: uppercase;
         letter-spacing: 0.08em;
         white-space: normal;
@@ -3528,4 +3525,8 @@ input:focus {
     .bodyfit-modal-xl {
       max-width: 1140px;
     }
+  }
+  .text-size-input
+  {
+      font-size:medium !important;
   }

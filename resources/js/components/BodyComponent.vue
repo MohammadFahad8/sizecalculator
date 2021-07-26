@@ -385,18 +385,15 @@ export default {
         var alterClass = function () {
           var ww = document.body.clientWidth;
           if (ww == 320) {
-            $(".height_weight").addClass("text-center");
-            $(".height_weight").removeClass("text-left");
-            $("#age-label-5s").removeClass("text-left");
-            $("#age-label-5s").addClass("text-center");
+          
             $("#intro5").removeClass("ml-n4");
-            $(".fit-advisor-header-desc").addClass("text-center");
+            
 
             $(".fit-advisor-header-desc-mt").removeClass("fit-advisor-header-desc-mt");
 
             $(".fit-advisor-product-size-box").addClass("ml-n6");
 
-            $("#fields").removeClass("offset-1");
+            
             $("#fields").removeClass("ml-n5");
             $("#fields").addClass("ml-n4");
 
@@ -408,7 +405,7 @@ export default {
             $("#intro1").removeClass("ml-n6");
             $(".fit-advisor-product-size-box").removeClass("ml-n6");
             $("#fields").removeClass("ml-n5");
-            $("#fields").removeClass("offset-1");
+            
             $("#steps-mark").removeClass("float-right");
             $(".dfOagu").addClass("dfOagu-411w");
 
@@ -419,7 +416,7 @@ export default {
             $(".fit-advisor-product-size-box").removeClass("ml-n6");
             $("#intro1").removeClass("ml-n6");
             $("#fields").addClass("ml-n5");
-            $("#fields").removeClass("offset-1");
+            
             $("#steps-mark").removeClass("float-right");
 
             $(".fit-advisor-selected-product-grid > div").addClass("mr-3");
@@ -451,11 +448,7 @@ export default {
           } else {
             $("#intro1").removeClass("ml-n6");
             $("#fields").removeClass("ml-n5");
-            $("#fields").addClass("offset-1");
-            $(".height_weight").removeClass("text-center");
-            $(".height_weight").addClass("text-left");
-            $("#age-label-5s").addClass("text-left");
-            $("#age-label-5s").removeClass("text-center");
+            
 
             $(".fit-advisor-selected-product-grid > div").removeClass("mr-3");
             $("#steps-mark").removeClass("float-right");

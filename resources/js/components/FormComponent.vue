@@ -2,30 +2,33 @@
 <div id="form-bodyfit">
     <p class="fit-advisor-intro text-center" id="intro1">
         <span id="mark1">To get a size recommendation,</span> <br><span id="mark2">fill out the form below</span></p>
-    <div id="fields" class="tab fit-advisor-custom_row form-group offset-1">
-        <div class="fit-advisor-custom_row" v-if="!container.countrycheck">
-            <div class="col-md-6 x-text-lg-left x-text-center"><label class=" labels-tab1 height_weight" for="height_ft">Height</label>
-                <input type="number" id="height_ft" placeholder="Feet" class="x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0" v-model="container.form.heightfoot" name="heightfoot">
+    <div id="fields" class="tab x-row form-group x-offset-2 ">
+        <div class="x-row" v-if="!container.countrycheck">
+            <div class="col-md-6 x-text-lg-left x-text-center">
+                <label class=" labels-tab1 height_weight" for="height_ft">Height</label>
+                <input type="number" id="height_ft" placeholder="Feet" class="x-mt-3 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 text-size-input" v-model="container.form.heightfoot" name="heightfoot">
             </div>
             <div class="col-md-6 x-text-lg-left x-text-center">
-                <input type="number" id="height_in" placeholder="Inches" class=" mtf-3 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0" v-model="container.form.heightinch" name="heightinch">
+                <label class=" labels-tab1 height_weight" for="height_ft" style="visibility:hidden">Inches</label>
+                <input type="number" id="height_in" placeholder="Inches" class="x-mt-3  x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 text-size-input" v-model="container.form.heightinch" name="heightinch">
             </div>
 
         </div>
-        <div class="fit-advisor-custom_row" v-if="container.countrycheck">
-            <div class="col-md-12  x-text-lg-left x-text-center"><label class=" labels-tab1 height_weight " for="height_ft">Height</label>
-                <input type="number" id="height_cm" placeholder="Cm" class="x-form-control x-w-100 input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0" v-model="container.form.heightcm" name="heightcm">
+        <div class="x-row" v-if="container.countrycheck">
+            <div class="col-md-12  x-text-lg-left x-text-center">
+                <label class=" labels-tab1 height_weight " for="height_ft">Height</label>
+                <input type="number" id="height_cm" placeholder="Cm" class="x-mt-3 x-form-control x-w-100 input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 text-size-input" v-model="container.form.heightcm" name="heightcm">
             </div>
         </div>
 
-        <div class="fit-advisor-custom_row mtf-5">
+        <div class="x-row mtf-5">
             <div class="col-md-6 x-text-lg-left x-text-center">
                 <label class=" labels-tab1 height_weight " for="weight">Weight</label>
-                <input type="number" id="weight" placeholder="Lbs" class="x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 x-mt-2" v-model="container.form.weight" name="weight">
+                <input type="number" id="weight" placeholder="Lbs" class="x-mt-3 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 x-mt-2 text-size-input" v-model="container.form.weight" name="weight">
             </div>
             <div class="col-md-6 x-text-lg-left x-text-center">
                 <label for="age"><span class="text-center labels-tab1 " id="age-label-5s">Age</span></label>
-                <input type="number" id="age" placeholder="Years" class="x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 mt-n1" v-model="container.form.age" name="Age">
+                <input type="number" id="age" placeholder="Years" class=" x-mt-2 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 mt-n1 text-size-input" v-model="container.form.age" name="Age">
             </div>
 
         </div>

@@ -237,9 +237,7 @@
 </script>
 
 <script>
-$(function () {
-  $('[data-toggle="tooltip"]').tooltip()
-})
+
 
    /* Preloader
     * ----------------------------------------------------- */
