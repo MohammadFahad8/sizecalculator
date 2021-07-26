@@ -162,6 +162,7 @@ export default {
   },
   data() {
     return {
+      
       form: {
         // heightfoot: localStorage.getItem("foot"),
         // heightinch: localStorage.getItem("inch"),
@@ -478,7 +479,7 @@ export default {
     getAttributes: function () {
       axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then((res) => {
         this.attributes = res.data;
-  
+
         EventBus.$on('mount',num=>{
             this.lastTab=true
             
@@ -496,6 +497,8 @@ export default {
     },
   },
   mounted() {
+
+     
     this.form.tags = this.product.tags;
     localStorage.setItem("tags", JSON.stringify(this.product.tags));
 

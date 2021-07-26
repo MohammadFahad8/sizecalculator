@@ -4,13 +4,14 @@ namespace App\Http\Controllers;
 
 use api;
 use App\Models\Size;
+use App\Models\User;
 use App\Helpers\Helpers;
 use App\Models\Products;
 use App\Models\Settings;
 use App\Models\Variants;
 use App\Models\Attribute;
-use App\Models\Sizechart;
 
+use App\Models\Sizechart;
 use App\Models\Bodyfeature;
 use Illuminate\Support\Str;
 use App\Models\Selectedsize;
@@ -32,6 +33,31 @@ class AttributeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function loginshop(Request $request)
+     {
+         $this->validate($request,[
+             'shop-name' => 'required|min:10|max:999',
+         ],[
+            'shop-name.required'=> 'Shop Name is Required'
+         ]);
+         $shop = User::where('email','=','shop@'.$request['shop-name'])->first();
+         if($shop===null)
+         { 
+             
+              Session::flash('error', 'Incorrect Shop Name');
+              return back();
+
+          
+         }else
+         {
+              return  redirect(env('APP_URL').'?shop='.$request['shop-name']);
+         }
+         
+
+         
+         
+     }
     public function index()
     {
         //

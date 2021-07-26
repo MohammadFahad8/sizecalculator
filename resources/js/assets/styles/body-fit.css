@@ -661,10 +661,10 @@ h1 {
     z-index: -1;
 }
 
-.container:hover::before {
+/* .container:hover::before {
     -webkit-transform: scale(1);
     transform: scale(1);
-}
+} */
 
 .button-container {
     text-align: center;

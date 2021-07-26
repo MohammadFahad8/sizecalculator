@@ -22,6 +22,7 @@ Auth::routes();
 
 
 Route::get('/',[App\Http\Controllers\AttributeController::class,'index'])->name('attributes.home');
+Route::get('/home',[App\Http\Controllers\AttributeController::class,'index'])->name('home');
 Route::get('/delete/{id}/',[App\Http\Controllers\AttributeController::class,'destroy'])->name('attributes.delete');
 Route::get('/edit/{id}',[App\Http\Controllers\AttributeController::class,'edit'])->name('attributes.edit');
 Route::post('/update',[App\Http\Controllers\AttributeController::class,'update'])->name('attributes.update');
@@ -88,6 +89,7 @@ Route::group(['prefix'=>'sizechart'],function(){
 });                                                
 });
 
+ROute::get('/loginshop',[App\Http\Controllers\AttributeController::class,'loginshop'])->name('loginshop');
 
 
 // Auth::routes();
