@@ -278,6 +278,7 @@ export default {
             attr_second: false,
             attr_third: false,
             tabnumber: 1,
+            newapp:false,
 
             image_us: this.$appUrl + "/images/us.png",
             image_uk: this.$appUrl + "/images/uk.png"
@@ -368,7 +369,12 @@ export default {
                 .then(res => {
                     if (res.data.display == true) {
                         if (res.data.clearLog == true) {
+                            this.newapp = true;
                             this.dev_reset();
+                        }else
+                        {
+                                                        this.newapp = false;
+
                         }
                         for (var k = 0; k <= this.product.options.length; k++) {
                             if (this.allow) {
@@ -386,6 +392,12 @@ export default {
                     } else {
                         if (res.data.clearLog == true) {
                             this.dev_reset();
+                            this.newapp = true;
+
+                        }else
+                        {
+                                                        this.newapp = false;
+
                         }
                         this.showBodyFitApp = false;
                     }
@@ -436,9 +448,20 @@ export default {
                     });
 
                     if (localStorage.getItem("recommended_size") != null) {
-                        this.tabnumber = parseInt(this.attributes.length) + 2;
+                        alert(this.newapp)
+                        if(this.newapp == true)
+                        {
+                            this.tabnumber = 1;
 
-                        this.lastTab = true;
+                        
+
+                        }else
+                        {
+                            this.tabnumber = parseInt(this.attributes.length) + 2;
+
+                        this.lastTab = true;    
+                        }
+                        
                     }
                 });
         }

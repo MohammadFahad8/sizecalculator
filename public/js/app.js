@@ -2379,6 +2379,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       attr_second: false,
       attr_third: false,
       tabnumber: 1,
+      newapp: false,
       image_us: this.$appUrl + "/images/us.png",
       image_uk: this.$appUrl + "/images/uk.png"
     };
@@ -2448,7 +2449,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post(this.$appUrl + "/api/permission-to-show", id).then(function (res) {
         if (res.data.display == true) {
           if (res.data.clearLog == true) {
+            _this2.newapp = true;
+
             _this2.dev_reset();
+          } else {
+            _this2.newapp = false;
           }
 
           for (var k = 0; k <= _this2.product.options.length; k++) {
@@ -2464,6 +2469,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         } else {
           if (res.data.clearLog == true) {
             _this2.dev_reset();
+
+            _this2.newapp = true;
+          } else {
+            _this2.newapp = false;
           }
 
           _this2.showBodyFitApp = false;
@@ -2512,8 +2521,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
 
         if (localStorage.getItem("recommended_size") != null) {
-          _this3.tabnumber = parseInt(_this3.attributes.length) + 2;
-          _this3.lastTab = true;
+          alert(_this3.newapp);
+
+          if (_this3.newapp == true) {
+            _this3.tabnumber = 1;
+          } else {
+            _this3.tabnumber = parseInt(_this3.attributes.length) + 2;
+            _this3.lastTab = true;
+          }
         }
       });
     }
