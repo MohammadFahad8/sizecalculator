@@ -6,7 +6,7 @@
                 >fill out the form below</span
             >
         </p>
-        <div id="fields" class="tab x-row form-group x-offset-2 ">
+        <div id="fields" class="tab x-row form-group x-offset-sm-2 x-offset-md-2 x-offset-lg-2 x-offset-xl-2 ">
             <div class="x-row" v-if="!container.countrycheck">
                 <div class="col-md-6 x-text-lg-left x-text-center">
                     <label class=" labels-tab1 height_weight" for="height_ft"

@@ -9,7 +9,7 @@
 
 
 {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
-<div class="row mt-5  " style="margin-left:10px !important" id="products-all">
+<div class="row mt-5" style="margin-left:10px !important" id="products-all">
 @include('partials_attributes.sidebar')
 <div class="col-md-8">
 <div class="card">
@@ -159,7 +159,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        
       </div>
     </div>
   </div>

@@ -14,7 +14,7 @@
 
         <div v-if="showBodyFitApp" class="box">
             <a
-                class="btn btn-outline-success"
+                class="x-btn x-btn-dark"
                 id="popup-trigger"
                 href="#popup1"
                 style="margin-left: 1% !important; margin-bottom: 20px !important; border: none"
@@ -103,7 +103,7 @@ display: inline-block;
                     </div>
                 </div>
                 <!-- close modal btn -->
-                <a class="close mt-n6" id="closeApp" href="#">&times;</a>
+                <a class="close mtf-n6" id="closeApp" href="#">&times;</a>
                 <div>
                     <div class="x-row">
                         <div class="x-col"></div>
@@ -418,115 +418,7 @@ export default {
         },
         //took restart function for last component
         // nextprevslide: function () {},
-         responsiveness: function() {
-            $(document).ready(function($) {
-                var alterClass = function() {
-                    var ww = document.body.clientWidth;
-                    if (ww == 320) {
-                        $("#intro5").removeClass("ml-n4");
-
-                        $(".fit-advisor-header-desc-mt").removeClass(
-                            "fit-advisor-header-desc-mt"
-                        );
-
-                        $(".fit-advisor-product-size-box").addClass("ml-n6");
-
-                        $("#fields").removeClass("ml-n5");
-                        $("#fields").addClass("ml-n4");
-
-                        $(
-                            ".fit-advisor-selected-product-grid > div"
-                        ).removeClass("mr-3");
-                        $(".fit-advisor-fit-grid").removeClass(
-                            "fit-advisor-fit-grid-s5"
-                        );
-                        $(".listfit").removeClass("ml-5");
-                    } else if (ww == 411) {
-                        $(
-                            ".fit-advisor-selected-product-grid > div"
-                        ).removeClass("mr-3");
-                        $("#intro1").removeClass("ml-n6");
-                        $(".fit-advisor-product-size-box").removeClass("ml-n6");
-                        $("#fields").removeClass("ml-n5");
-
-                        $("#steps-mark").removeClass("float-right");
-                        $(".dfOagu").addClass("dfOagu-411w");
-
-                        $(".fit-advisor-fit-grid").removeClass(
-                            "fit-advisor-fit-grid-s5"
-                        );
-                        $(".listfit").removeClass("ml-5");
-                        $(".listfit").addClass("ml-4");
-                    } else if (
-                        (ww >= 412 && ww <= 480) ||
-                        (ww >= 321 && ww < 411)
-                    ) {
-                        // $(".fit-advisor-product-size-box").removeClass("ml-n6");
-                        // $("#intro1").removeClass("ml-n6");
-                        // $("#fields").addClass("ml-n5");
-
-                        // $("#steps-mark").removeClass("float-right");
-
-                        // $(".fit-advisor-selected-product-grid > div").addClass(
-                        //     "mr-3"
-                        // );
-                        // $(".fit-advisor-fit-grid").removeClass(
-                        //     "fit-advisor-fit-grid-s5"
-                        // );
-                        // $(".fit-advisor-sizes-slider").addClass("ml-4");
-                        // $(".listfit").removeClass("ml-5");
-                        // $(".listfit").addClass("ml-4");
-                        // $(".fit-advisor-fit-grid").removeClass("float-left");
-                        // $(".fit-advisor-fit-grid").addClass("ml-1");
-                        // $(".fit-advisor-selected-size-arrow-box").removeClass(
-                        //     "bigsize"
-                        // );
-
-                        if (ww == 360) {
-                            $(".fit-advisor-product-size-box").removeClass(
-                                "ml-n6"
-                            );
-                            $("#intro5").addClass("ml-n4");
-                            $("#fields").removeClass("ml-n4");
-                            $("#fields").addClass("ml-n5");
-                            $(
-                                ".fit-advisor-selected-product-grid > div"
-                            ).removeClass("mr-3");
-                            $(".fit-advisor-fit-grid").addClass(
-                                "fit-advisor-fit-grid-s5"
-                            );
-                            $(".fit-advisor-selected-size-arrow-box").addClass(
-                                "ml-n3"
-                            );
-                            $(".listfit").removeClass("ml-5");
-                            $(".listfit").addClass("ml-4");
-                            $(".dfOagu").css("margin-top", "0px !important");
-                        }
-                    } else if (ww >= 641 && ww <= 960) {
-                        $(".fit-advisor-selected-size-container").removeClass(
-                            "bigsize"
-                        );
-                        $(".listfit").removeClass("ml-5");
-                        $(".listfit").addClass("ml-n2");
-                        $(".m-result").removeClass("float-right");
-                    } else {
-                        $("#intro1").removeClass("ml-n6");
-                        $("#fields").removeClass("ml-n5");
-
-                        $(
-                            ".fit-advisor-selected-product-grid > div"
-                        ).removeClass("mr-3");
-                        $("#steps-mark").removeClass("float-right");
-                        $(".fit-advisor-fit-grid ").removeClass("float-left");
-                    }
-                };
-                $(window).resize(function() {
-                    alterClass();
-                });
-                //Fire it when the page first loads:
-                alterClass();
-            });
-        },
+        //took responsienss function from here
         //toook array move function from
         setupProduct: function() {
             this.product.variants = this.product.variants.map(v => ({

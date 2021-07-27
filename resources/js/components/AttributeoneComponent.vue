@@ -8,7 +8,7 @@
             >
         </p>
 
-        <div class="x-custom-container x-text-center">
+        <div class="x-custom-container x-text-center x-mb-5">
             <div class=" x-row">
                 <div
                     class="col-md-4 parent "
@@ -29,8 +29,8 @@
 
         <div
             id="steps-mark"
-            style="text-align:center;margin-top:100px;"
-            class="m-result "
+            style="position:fixed"
+            class="m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1"
         >
             <span class="step"></span><span class="step"></span
             ><span class="step"></span><span class="step"></span

@@ -2492,82 +2492,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     },
     //took restart function for last component
     // nextprevslide: function () {},
-    responsiveness: function responsiveness() {
-      $(document).ready(function ($) {
-        var alterClass = function alterClass() {
-          var ww = document.body.clientWidth;
-
-          if (ww == 320) {
-            $("#intro5").removeClass("ml-n4");
-            $(".fit-advisor-header-desc-mt").removeClass("fit-advisor-header-desc-mt");
-            $(".fit-advisor-product-size-box").addClass("ml-n6");
-            $("#fields").removeClass("ml-n5");
-            $("#fields").addClass("ml-n4");
-            $(".fit-advisor-selected-product-grid > div").removeClass("mr-3");
-            $(".fit-advisor-fit-grid").removeClass("fit-advisor-fit-grid-s5");
-            $(".listfit").removeClass("ml-5");
-          } else if (ww == 411) {
-            $(".fit-advisor-selected-product-grid > div").removeClass("mr-3");
-            $("#intro1").removeClass("ml-n6");
-            $(".fit-advisor-product-size-box").removeClass("ml-n6");
-            $("#fields").removeClass("ml-n5");
-            $("#steps-mark").removeClass("float-right");
-            $(".dfOagu").addClass("dfOagu-411w");
-            $(".fit-advisor-fit-grid").removeClass("fit-advisor-fit-grid-s5");
-            $(".listfit").removeClass("ml-5");
-            $(".listfit").addClass("ml-4");
-          } else if (ww >= 412 && ww <= 480 || ww >= 321 && ww < 411) {
-            // $(".fit-advisor-product-size-box").removeClass("ml-n6");
-            // $("#intro1").removeClass("ml-n6");
-            // $("#fields").addClass("ml-n5");
-            // $("#steps-mark").removeClass("float-right");
-            // $(".fit-advisor-selected-product-grid > div").addClass(
-            //     "mr-3"
-            // );
-            // $(".fit-advisor-fit-grid").removeClass(
-            //     "fit-advisor-fit-grid-s5"
-            // );
-            // $(".fit-advisor-sizes-slider").addClass("ml-4");
-            // $(".listfit").removeClass("ml-5");
-            // $(".listfit").addClass("ml-4");
-            // $(".fit-advisor-fit-grid").removeClass("float-left");
-            // $(".fit-advisor-fit-grid").addClass("ml-1");
-            // $(".fit-advisor-selected-size-arrow-box").removeClass(
-            //     "bigsize"
-            // );
-            if (ww == 360) {
-              $(".fit-advisor-product-size-box").removeClass("ml-n6");
-              $("#intro5").addClass("ml-n4");
-              $("#fields").removeClass("ml-n4");
-              $("#fields").addClass("ml-n5");
-              $(".fit-advisor-selected-product-grid > div").removeClass("mr-3");
-              $(".fit-advisor-fit-grid").addClass("fit-advisor-fit-grid-s5");
-              $(".fit-advisor-selected-size-arrow-box").addClass("ml-n3");
-              $(".listfit").removeClass("ml-5");
-              $(".listfit").addClass("ml-4");
-              $(".dfOagu").css("margin-top", "0px !important");
-            }
-          } else if (ww >= 641 && ww <= 960) {
-            $(".fit-advisor-selected-size-container").removeClass("bigsize");
-            $(".listfit").removeClass("ml-5");
-            $(".listfit").addClass("ml-n2");
-            $(".m-result").removeClass("float-right");
-          } else {
-            $("#intro1").removeClass("ml-n6");
-            $("#fields").removeClass("ml-n5");
-            $(".fit-advisor-selected-product-grid > div").removeClass("mr-3");
-            $("#steps-mark").removeClass("float-right");
-            $(".fit-advisor-fit-grid ").removeClass("float-left");
-          }
-        };
-
-        $(window).resize(function () {
-          alterClass();
-        }); //Fire it when the page first loads:
-
-        alterClass();
-      });
-    },
+    //took responsienss function from here
     //toook array move function from
     setupProduct: function setupProduct() {
       this.product.variants = this.product.variants.map(function (v) {
@@ -43572,7 +43497,7 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _c("div", { staticClass: "x-custom-container x-text-center" }, [
+    _c("div", { staticClass: "x-custom-container x-text-center x-mb-5" }, [
       _c(
         "div",
         { staticClass: " x-row" },
@@ -43611,8 +43536,9 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "m-result ",
-        staticStyle: { "text-align": "center", "margin-top": "100px" },
+        staticClass:
+          "m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1",
+        staticStyle: { position: "fixed" },
         attrs: { id: "steps-mark" }
       },
       [
@@ -43966,7 +43892,7 @@ var render = function() {
           _c(
             "a",
             {
-              staticClass: "btn btn-outline-success",
+              staticClass: "x-btn x-btn-dark",
               staticStyle: {
                 "margin-left": "1% !important",
                 "margin-bottom": "20px !important",
@@ -44116,7 +44042,7 @@ var render = function() {
             _c(
               "a",
               {
-                staticClass: "close mt-n6",
+                staticClass: "close mtf-n6",
                 attrs: { id: "closeApp", href: "#" }
               },
               [_vm._v("×")]
@@ -44366,7 +44292,8 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "tab x-row form-group x-offset-2 ",
+        staticClass:
+          "tab x-row form-group x-offset-sm-2 x-offset-md-2 x-offset-lg-2 x-offset-xl-2 ",
         attrs: { id: "fields" }
       },
       [
@@ -45225,8 +45152,9 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass: "m-result",
-        staticStyle: { "text-align": "center", "margin-top": "100px" },
+        staticClass:
+          "m-result x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1 x-offset-2",
+        staticStyle: { "text-align": "center", position: "fixed" },
         attrs: { id: "steps-mark" }
       },
       [
