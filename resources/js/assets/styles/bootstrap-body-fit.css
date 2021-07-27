@@ -7526,6 +7526,9 @@ button.x-bg-dark:focus {
 .x-my-5 {
   margin-top: 3rem !important;
 }
+.x-mt-6, .x-my-6 {
+  margin-top: 4.5rem !important;
+}
 
 .x-mr-5,
 .x-mx-5 {
@@ -7813,6 +7816,9 @@ button.x-bg-dark:focus {
   .x-my-sm-5 {
     margin-top: 3rem !important;
   }
+  .x-mt-sm-6, .x-my-sm-6 {
+    margin-top: 4.5rem !important;
+  }
   .x-mr-sm-5,
   .x-mx-sm-5 {
     margin-right: 3rem !important;
@@ -8062,6 +8068,9 @@ button.x-bg-dark:focus {
   .x-mt-md-5,
   .x-my-md-5 {
     margin-top: 3rem !important;
+  }
+  .x-mt-md-6, .x-my-md-6 {
+    margin-top: 4.5rem !important;
   }
   .x-mr-md-5,
   .x-mx-md-5 {
@@ -8313,6 +8322,9 @@ button.x-bg-dark:focus {
   .x-my-lg-5 {
     margin-top: 3rem !important;
   }
+  .x-mt-lg-6, .x-my-lg-6 {
+    margin-top: 4.5rem !important;
+  }
   .x-mr-lg-5,
   .x-mx-lg-5 {
     margin-right: 3rem !important;
@@ -8562,6 +8574,9 @@ button.x-bg-dark:focus {
   .x-mt-xl-5,
   .x-my-xl-5 {
     margin-top: 3rem !important;
+  }
+  .x-mt-xl-6, .x-my-xl-6 {
+    margin-top: 4.5rem !important;
   }
   .x-mr-xl-5,
   .x-mx-xl-5 {

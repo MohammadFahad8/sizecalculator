@@ -30,15 +30,15 @@
     margin-top: 40px !important;
 }
 
-.dfOagu {
+/* .dfOagu {
     margin-left: 50px;
     margin-top: 0px;
-}
+} */
 
-.dfOagu-second {
+/* .dfOagu-second {
     margin-left: 10px;
     margin-top: 0px ;
-}
+} */
 
 .result-size {
     width: 100%;
@@ -1260,9 +1260,9 @@ input:focus {
     /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */
 }
 
-.next {
+/* .next {
     margin-top: -10px !important;
-}
+} */
 
 .fit-advisor-product-picture {
     margin: 0px auto 20px;
@@ -1318,7 +1318,7 @@ input:focus {
     width: 22px;
     height: 22px;
     transition: opacity 0.2s ease-in-out 0s;
-    margin-left: 50px;
+    /* margin-top: 50px; */
 }
 
 .fit-advisor-product-size-box {
@@ -1436,10 +1436,10 @@ input:focus {
 /*   //responsiveness of bodyfit-modal */
 
 @media (min-width:320px) and (max-width:480px) {
-    .dfOagu{
+    /* .dfOagu{
         margin-left: 50px;
          margin-top: 0px  !important  ;
-    }
+    } */
     .spinner-position{
         width: 2rem !important;
         height: 2rem !important;
@@ -1588,7 +1588,7 @@ input:focus {
         width: 22px;
         height: 22px;
         transition: opacity 0.2s ease-in-out 0s;
-        margin-left: 15px;
+        /* margin-left: 15px; */
     }
     .selected-product-arrow-left {
         background: rgba(255, 255, 255, 0.5);
@@ -2559,11 +2559,11 @@ input:focus {
         margin-bottom: -5.5em !important;
         margin-right: 50px !important;
     }
-    .dfOagu {
+    /* .dfOagu {
         margin-left: 25px;
         margin-top: 0px ;
         margin-right: 40px !important;
-    }
+    } */
     .fit-advisor-selected-size-arrow-box {
         position: relative;
         z-index: 40;
@@ -3318,10 +3318,10 @@ input:focus {
         height: 3rem;
         margin-left: 0px;
       }
-      .dfOagu-411w {
+      /* .dfOagu-411w {
         margin-left: 50px;
         margin-top: 5px;
-    }
+    } */
     .someclass {
         cursor: default
      }

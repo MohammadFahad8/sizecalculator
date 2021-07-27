@@ -1,109 +1,63 @@
 <template>
+<div>
+    <p class="fit-advisor-intro text-center">
+        <span id="mark1">Drop-cut:LUX</span> <br /><span id="mark2"></span>
+    </p>
     <div>
-        <p class="fit-advisor-intro text-center">
-            <span id="mark1">Drop-cut:LUX</span> <br /><span id="mark2"></span>
-        </p>
-        <div>
-            <div class="fit-advisor-custom_row">
-                <div class="col-md-12">
-                    <div class="fit-advisor-selected-product-grid">
-                        <!-- <div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div> -->
-                        <div>
-                            <div class="fit-advisor-product-size-box">
-                                <div class="fit-advisor-fit-grid float-left">
-                                    <div
-                                        class="fit-advisor-selected-size-container fit-advisor-selected-size-arrow-box"
-                                    >
-                                        <div
-                                            class="selected-product-arrow-left"
-                                            v-if="!container.is_loading"
-                                        >
-                                            <span
-                                                size="10"
-                                                id="arrow-left"
-                                                class="jjnwUS selected-product-arrow-left-pointer prev"
-                                                @click="changesize(0)"
-                                            >
-                                                <svg
-                                                    viewBox="0 0 16 16"
-                                                    height="10"
-                                                    width="10"
-                                                    aria-hidden="true"
-                                                    focusable="false"
-                                                    fill="currentColor"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="StyledIconBase-ea9ulj-0 jZGNBW"
-                                                >
-                                                    <path
-                                                        fill-rule="evenodd"
-                                                        d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"
-                                                    ></path>
-                                                </svg>
-                                            </span>
-                                        </div>
+        <div class="x-row">
+            <div class="col-md-12">
+                <div > 
+                    
+                    <!-- <div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div> -->
+                    <div class="x-container">
+                        <div class="x-row x-justify-content-center">
+                            
+                                <div class="x-col-md-3 x-col-3">
+                                    <div class="dfOagu x-float-left x-mt-4 x-mt-sm-6 x-mt-md-6 x-mt-lg-6 x-mt-xl-6" style="z-index: 30" v-if="!container.is_loading">
+                                        <span size="10" id="arrow-left" class=" jjnwUS selected-product-arrow-left-pointer prev" @click="changesize(0)">
+                                            <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW">
+                                                <path fill-rule="evenodd" d="M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"></path>
+                                            </svg>
+                                        </span>
+                                    </div>
+                                    
+                                    </div>
 
-                                        <!-- LIST OF ALL VARIANTS -->
-                                        <div
-                                            class="fit-advisor-custom_row center-force"
-                                            v-if="container.is_loading"
-                                        >
-                                            <div class="col-md-12">
-                                                <div
-                                                    class="spinner-border spinner-position"
-                                                    role="status"
-                                                >
-                                                    <span class="sr-only"
-                                                        >Loading...</span
-                                                    >
-                                                </div>
-                                            </div>
-                                            <div
-                                                class="fit-advisor-custom_row"
-                                                v-if="container.is_loading"
-                                            >
-                                                <div
-                                                    class="col"
-                                                    style="visibility: hidden"
-                                                >
-                                                    col
-                                                </div>
-                                                <div
-                                                    class="col"
-                                                    style="visibility: hidden"
-                                                >
-                                                    col
-                                                </div>
+                                    <!-- LIST OF ALL VARIANTS -->
+                                    
+                                    <div class="fit-advisor-custom_row center-force" v-if="container.is_loading">
+                                        <div class="col-md-12">
+                                            <div class="spinner-border spinner-position" role="status">
+                                                <span class="sr-only">Loading...</span>
                                             </div>
                                         </div>
+                                        <div class="fit-advisor-custom_row" v-if="container.is_loading">
+                                            <div class="col" style="visibility: hidden">
+                                                col
+                                            </div>
+                                            <div class="col" style="visibility: hidden">
+                                                col
+                                            </div>
+                                        </div>
+                                    </div>
 
-                                        <div class="listfit ml-5">
-                                            <div
-                                                id="fit-advisor-sizes-slider"
-                                                font-size="40"
-                                                v-for="(row,
+
+                                    <div class="x-col-md-6 x-col-6">
+
+                                    
+                                        <div id="fit-advisor-sizes-slider" font-size="40" v-for="(row,
                                                 key,
-                                                index) in product.variants"
-                                                :key="row.id"
-                                                class="fit-advisor-selected-size"
-                                                style="opacity: 1"
-                                            >
-                                                <span id="fsize">
-                                                    <h4
-                                                        class="result-size"
-                                                        v-if="
+                                                index) in product.variants" :key="row.id" class="fit-advisor-selected-size" style="opacity: 1">
+                                            <span id="fsize">
+                                                <h4 class="result-size" v-if="
                                                             container.showSelectedSizeSlider
-                                                        "
-                                                    >
-                                                        <!-- <span v-if="!showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span> -->
+                                                        ">
+                                                    <!-- <span v-if="!showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span> -->
 
-                                                        <span
-                                                            class="variant_title"
-                                                            :data-variant="
+                                                    <span class="variant_title" :data-variant="
                                                                 row.id
-                                                            "
-                                                        >
-                                                            <span
-                                                                v-if="
+                                                            ">
+                                                        <span v-if="
                                                                     row.option1
                                                                         .toUpperCase()
                                                                         .substring(
@@ -118,102 +72,58 @@
                                                                                 2
                                                                             ) ==
                                                                             'XS'
-                                                                "
-                                                            >
-                                                                <span>{{
+                                                                ">
+                                                            <span>{{
                                                                     row.option1.toUpperCase()
-                                                                }}</span></span
-                                                            >
-                                                            <span
-                                                                v-if="
+                                                                }}</span></span>
+                                                        <span v-if="
                                                                     row.option1.toUpperCase() !=
                                                                         'XS' &&
                                                                         row.option1.toUpperCase() !=
                                                                             'XL'
-                                                                "
-                                                                >{{
+                                                                ">{{
                                                                     row.option1
                                                                         .toUpperCase()
                                                                         .charAt(
                                                                             0
                                                                         )
-                                                                }}</span
-                                                            ></span
-                                                        >
-                                                    </h4>
-                                                </span>
-                                            </div>
+                                                                }}</span></span>
+                                                </h4>
+                                            </span>
                                         </div>
-
-                                        <div
-                                            class="dfOagu"
-                                            style="z-index: 30"
-                                            v-if="!container.is_loading"
-                                        >
-                                            <span
-                                                size="10"
-                                                id="arrow-right"
-                                                class="jjnwUS hjNiUI arrow-next next"
-                                                @click="changesize(1)"
-                                            >
-                                                <svg
-                                                    viewBox="0 0 16 16"
-                                                    height="10"
-                                                    width="10"
-                                                    aria-hidden="true"
-                                                    focusable="false"
-                                                    fill="currentColor"
-                                                    xmlns="http://www.w3.org/2000/svg"
-                                                    class="StyledIconBase-ea9ulj-0 jZGNBW"
-                                                >
-                                                    <path
-                                                        fill-rule="evenodd"
-                                                        d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"
-                                                    ></path></svg
-                                            ></span>
-                                        </div>
+                                    
                                     </div>
-                                </div>
-                            </div>
-                            <p
-                                class="fit-advisor-header-desc size_descriptions"
-                                v-for="(row, key, index) in product.variants"
-                                :key="row.id"
-                            >
-                                <span v-if="!container.is_loading"
-                                    >Fit Size:<strong>{{
-                                        row.desc_title
-                                    }}</strong></span
-                                >
-                            </p>
-                            <p
-                                class="fit-advisor-header-desc fit-advisor-header-desc-mt"
-                            >
-                                The size we recommend is based on how we
-                                intended this item to suit your body. <br /><a
-                                    target="_blank"
-                                    rel="noopener noreferrer nofollow"
-                                    href="javascript:void(0)"
-                                    class="learn-text"
-                                    >Learn More</a
-                                >
-                            </p>
+                                    <div class="x-col-md-3 x-col-3">
+
+                                    <div class="dfOagu x-float-right x-mt-4 x-mt-sm-6 x-mt-md-6 x-mt-lg-6 x-mt-xl-6" style="z-index: 30" v-if="!container.is_loading">
+                                        <span size="10" id="arrow-right" class="jjnwUS hjNiUI arrow-next next" @click="changesize(1)">
+                                            <svg viewBox="0 0 16 16" height="10" width="10" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW">
+                                                <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"></path>
+                                            </svg></span>
+                                    </div>
+                                    </div>
+                                
+                            
                         </div>
+                        <p class="fit-advisor-header-desc size_descriptions" v-for="(row, key, index) in product.variants" :key="row.id">
+                            <span v-if="!container.is_loading">Fit Size:<strong>{{
+                                        row.desc_title
+                                    }}</strong></span>
+                        </p>
+                        <p class="fit-advisor-header-desc fit-advisor-header-desc-mt">
+                            The size we recommend is based on how we
+                            intended this item to suit your body. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="javascript:void(0)" class="learn-text">Learn More</a>
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
-
-        <div
-            id="steps-mark"
-            style="text-align: center; margin-top: 100px"
-            class="m-result"
-        >
-            <span class="step"></span><span class="step"></span
-            ><span class="step"></span><span class="step"></span
-            ><span class="step"></span>
-        </div>
     </div>
+
+    <div id="steps-mark" style="text-align: center; margin-top: 100px" class="m-result">
+        <span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span>
+    </div>
+</div>
 </template>
 
 <script>
@@ -236,8 +146,7 @@ export default {
                 finalsize: "",
 
                 sizeIndex: 0,
-                size_descriptions: [
-                    {
+                size_descriptions: [{
                         title: "Very Snugged"
                     },
                     {
@@ -266,7 +175,7 @@ export default {
         };
     },
     methods: {
-        getAttributes: function() {
+        getAttributes: function () {
             axios
                 .get(this.$appUrl + "/api/get-attrbutes/" + this.product.id)
                 .then(res => {
@@ -286,7 +195,7 @@ export default {
                     }
                 });
         },
-        setupProduct: function() {
+        setupProduct: function () {
             this.product.variants = this.product.variants.map(v => ({
                 ...v,
                 desc_title: "Recommended"
@@ -299,7 +208,7 @@ export default {
             //     this.restart();
             // })
         },
-        setSlides: function(sizeposition) {
+        setSlides: function (sizeposition) {
             $("div.fit-advisor-selected-size:gt(" + sizeposition + ")").hide();
             $("div.fit-advisor-selected-size:lt(" + sizeposition + ")").hide();
             $("p.size_descriptions:gt(" + sizeposition + ")").hide();
@@ -307,11 +216,11 @@ export default {
             //Hide all but the Predicted Size
 
             (this.$allSlides = $("div.fit-advisor-selected-size")),
-                (this.$allSlidesSize = $("p.size_descriptions")),
-                (this.traverseDefault = "first"), //set the defaults
-                (this.actionDefault = "next");
+            (this.$allSlidesSize = $("p.size_descriptions")),
+            (this.traverseDefault = "first"), //set the defaults
+            (this.actionDefault = "next");
         },
-        setSelectedSizeFromList: function(size, sizecheck) {
+        setSelectedSizeFromList: function (size, sizecheck) {
             this.product.variants.forEach((el, index) => {
                 if (sizecheck == true) {
                     if (el.option1.toUpperCase() == size) {
@@ -323,9 +232,7 @@ export default {
                         );
                         if (size == "XS") {
                             for (
-                                var i = 0;
-                                i <= this.product.variants.length;
-                                i++
+                                var i = 0; i <= this.product.variants.length; i++
                             ) {
                                 if (i == this.sizeIndex) {
                                     this.product.variants[i].desc_title =
@@ -376,9 +283,7 @@ export default {
                         } else if (size == "XL") {
                             var counter = 1;
                             for (
-                                var i = 0;
-                                i <= this.product.variants.length;
-                                i++
+                                var i = 0; i <= this.product.variants.length; i++
                             ) {
                                 if (i < this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
@@ -431,9 +336,7 @@ export default {
 
                         if (size == "S") {
                             for (
-                                var i = 0;
-                                i <= this.product.variants.length;
-                                i++
+                                var i = 0; i <= this.product.variants.length; i++
                             ) {
                                 if (i < this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
@@ -471,9 +374,7 @@ export default {
                             }
                         } else if (size == "M") {
                             for (
-                                var i = 0;
-                                i <= this.product.variants.length;
-                                i++
+                                var i = 0; i <= this.product.variants.length; i++
                             ) {
                                 if (i < this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
@@ -511,9 +412,7 @@ export default {
                             }
                         } else if (size == "L") {
                             for (
-                                var i = 0;
-                                i <= this.product.variants.length;
-                                i++
+                                var i = 0; i <= this.product.variants.length; i++
                             ) {
                                 if (i < this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
@@ -551,7 +450,7 @@ export default {
             });
         },
 
-        getProductDetails: function() {
+        getProductDetails: function () {
             this.container.is_loading = true;
             var a = "";
             if (this.container.restarted == false) {
@@ -619,7 +518,7 @@ export default {
                     );
                 });
         },
-        changesize: function(trigger) {
+        changesize: function (trigger) {
             if (this.showrecommended == true) {
                 this.showrecommended = false;
 
@@ -697,7 +596,7 @@ export default {
 
             //slides size end
         },
-        array_move: function(arr, old_index, new_index) {
+        array_move: function (arr, old_index, new_index) {
             if (new_index >= arr.length) {
                 var k = new_index - arr.length + 1;
                 while (k--) {
@@ -707,7 +606,7 @@ export default {
             arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
             return arr; // for testing
         },
-        restart: function() {
+        restart: function () {
             // this.changesizetorecommended()
 
             //                $('.fit-advisor-selected-product-grid').css('display', 'none');

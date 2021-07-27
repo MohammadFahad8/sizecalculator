@@ -418,7 +418,7 @@ export default {
         },
         //took restart function for last component
         // nextprevslide: function () {},
-        responsiveness: function() {
+         responsiveness: function() {
             $(document).ready(function($) {
                 var alterClass = function() {
                     var ww = document.body.clientWidth;
@@ -461,26 +461,26 @@ export default {
                         (ww >= 412 && ww <= 480) ||
                         (ww >= 321 && ww < 411)
                     ) {
-                        $(".fit-advisor-product-size-box").removeClass("ml-n6");
-                        $("#intro1").removeClass("ml-n6");
-                        $("#fields").addClass("ml-n5");
+                        // $(".fit-advisor-product-size-box").removeClass("ml-n6");
+                        // $("#intro1").removeClass("ml-n6");
+                        // $("#fields").addClass("ml-n5");
 
-                        $("#steps-mark").removeClass("float-right");
+                        // $("#steps-mark").removeClass("float-right");
 
-                        $(".fit-advisor-selected-product-grid > div").addClass(
-                            "mr-3"
-                        );
-                        $(".fit-advisor-fit-grid").removeClass(
-                            "fit-advisor-fit-grid-s5"
-                        );
-                        $(".fit-advisor-sizes-slider").addClass("ml-4");
-                        $(".listfit").removeClass("ml-5");
-                        $(".listfit").addClass("ml-4");
-                        $(".fit-advisor-fit-grid").removeClass("float-left");
-                        $(".fit-advisor-fit-grid").addClass("ml-1");
-                        $(".fit-advisor-selected-size-arrow-box").removeClass(
-                            "bigsize"
-                        );
+                        // $(".fit-advisor-selected-product-grid > div").addClass(
+                        //     "mr-3"
+                        // );
+                        // $(".fit-advisor-fit-grid").removeClass(
+                        //     "fit-advisor-fit-grid-s5"
+                        // );
+                        // $(".fit-advisor-sizes-slider").addClass("ml-4");
+                        // $(".listfit").removeClass("ml-5");
+                        // $(".listfit").addClass("ml-4");
+                        // $(".fit-advisor-fit-grid").removeClass("float-left");
+                        // $(".fit-advisor-fit-grid").addClass("ml-1");
+                        // $(".fit-advisor-selected-size-arrow-box").removeClass(
+                        //     "bigsize"
+                        // );
 
                         if (ww == 360) {
                             $(".fit-advisor-product-size-box").removeClass(
@@ -559,7 +559,7 @@ export default {
         var x = document.getElementsByClassName("tab");
         this.formSubmit();
         //   this.setupProduct();
-        this.responsiveness();
+        // this.responsiveness();
         this.getLocalData();
         this.showBodyFit();
         this.getAttributes();
