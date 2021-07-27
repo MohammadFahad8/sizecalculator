@@ -32,9 +32,11 @@
             style="position:fixed"
             class="m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1"
         >
-            <span class="step"></span><span class="step"></span
-            ><span class="step"></span><span class="step"></span
-            ><span class="step"></span>
+            <span class="step"></span>
+            <span class="step active" ></span>
+            <span class="step"></span>
+            <span class="step"></span>
+            <span class="step"></span>
         </div>
     </div>
 </template>
