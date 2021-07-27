@@ -2448,15 +2448,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post(this.$appUrl + "/api/permission-to-show", id).then(function (res) {
         if (res.data.display == true) {
           if (res.data.clearLog == true) {
-            var clear = true;
-
-            _this2.firstOrLastTab(clear);
-
             _this2.dev_reset();
-          } else {
-            var clear = false;
-
-            _this2.firstOrLastTab(clear);
           }
 
           for (var k = 0; k <= _this2.product.options.length; k++) {
@@ -2472,14 +2464,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         } else {
           if (res.data.clearLog == true) {
             _this2.dev_reset();
-
-            var clear = true;
-
-            _this2.firstOrLastTab(clear);
-          } else {
-            var clear = false;
-
-            _this2.firstOrLastTab(clear);
           }
 
           _this2.showBodyFitApp = false;
@@ -2526,18 +2510,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
           _this3.lastTab = true;
         });
-      });
-    },
-    firstOrLastTab: function firstOrLastTab($clear) {
-      if ($clear == true) {
-        this.tabnumber = 1;
-        this.lastTab = false;
-      } else {
+
         if (localStorage.getItem("recommended_size") != null) {
-          this.tabnumber = parseInt(this.attributes.length) + 2;
-          this.lastTab = true;
+          _this3.tabnumber = parseInt(_this3.attributes.length) + 2;
+          _this3.lastTab = true;
         }
-      }
+      });
     }
   },
   mounted: function mounted() {
@@ -43527,7 +43505,10 @@ var render = function() {
         _vm._l(_vm.attributes.attr_details, function(row) {
           return _c("div", { key: row.id, staticClass: "col-md-4 parent " }, [
             _c("img", {
-              attrs: { id: "chest1", src: row.attr_image_src },
+              attrs: {
+                id: "chest1",
+                src: _vm.$appUrl + "/" + row.attr_image_src
+              },
               on: {
                 click: function($event) {
                   return _vm.chest(row.attr_size_value)

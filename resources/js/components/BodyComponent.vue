@@ -368,14 +368,7 @@ export default {
                 .then(res => {
                     if (res.data.display == true) {
                         if (res.data.clearLog == true) {
-                            var clear = true;
-                            this.firstOrLastTab(clear);
                             this.dev_reset();
-                        }else
-                        {
-                              var clear = false;
-                            this.firstOrLastTab(clear);
-
                         }
                         for (var k = 0; k <= this.product.options.length; k++) {
                             if (this.allow) {
@@ -392,15 +385,7 @@ export default {
                         }
                     } else {
                         if (res.data.clearLog == true) {
-
                             this.dev_reset();
-                             var clear = true;
-                            this.firstOrLastTab(clear);
-                        }else
-                        {
-                              var clear = false;
-                            this.firstOrLastTab(clear);
-
                         }
                         this.showBodyFitApp = false;
                     }
@@ -450,29 +435,13 @@ export default {
                         this.lastTab = true;
                     });
 
-                  
-                });
-        },
-        firstOrLastTab: function($clear){
-            if($clear== true)
-            {
-                 this.tabnumber = 1;
-
-                this.lastTab = false;
-                    
-            }else
-            {
-                  if (localStorage.getItem("recommended_size") != null) {
+                    if (localStorage.getItem("recommended_size") != null) {
                         this.tabnumber = parseInt(this.attributes.length) + 2;
 
                         this.lastTab = true;
                     }
-
-
-            }
-            
-
-        },
+                });
+        }
     },
     mounted() {
         this.form.tags = this.product.tags;

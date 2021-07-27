@@ -967,7 +967,8 @@ class AttributeController extends Controller
                 Image::make($thumb)->resize(300, 300)->save($path . '_' . $image);
 
                 $attrImg->attr_size_value = $request['attribut_size'][$j];
-                $attrImg->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
+                // $attrImg->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
+                 $attrImg->attr_image_src = $path  . '_' . $image;
                 $attrImg->attribute_size_name = $request['attribut_size_name'][$j];
                 $attrImg->attribute_type_id = $attr->id;
                 $attrImg->product_id = $attr->product_id;

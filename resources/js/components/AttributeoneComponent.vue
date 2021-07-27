@@ -17,7 +17,7 @@
                 >
                     <img
                         id="chest1"
-                        :src="row.attr_image_src"
+                        :src="$appUrl+'/'+row.attr_image_src"
                         v-on:click="chest(row.attr_size_value)"
                     />
                     <p class=" fit-advisor-options-text">
