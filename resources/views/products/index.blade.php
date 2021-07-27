@@ -31,6 +31,7 @@
        <tbody>
         @php
           $temp = 0;
+          
         @endphp
         
     @forelse($other as $key=> $row)
@@ -40,7 +41,7 @@
             <td>
               
               <div class="row"><div class="col-md-2">
-                <img id="product-id-specific" v-on:click="productFix({{ $row->product_id }})" style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter" src="{{ ($row->image_link == null) ? 'https://socialistmodernism.com/wp-content/uploads/2017/07/placeholder-image-300x225.png' : $row->image_link}}" class="img-thumbnail" width="50">
+                <img id="product-id-specific" v-on:click="productFix({{ $row->product_id }})" style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter" src="{{ ($row->image_link == null) ?  env('APP_URL').'/images/download.png'  : $row->image_link}}" class="img-thumbnail" width="50">
               </div>
               <div class="col-md-10" style="cursor: pointer;">
               <a href="javascript:void(0)" class="text-dark" >{{ $row->name }}</a></div></div></td>
@@ -77,7 +78,7 @@
     </tbody>
 </table>
     <div class="d-flex justify-content-center row">
-        {{ $other->links('vendor.pagination.custom') }}
+        {{ $other->render('vendor.pagination.custom') }}
     </div>
 
     </div>
