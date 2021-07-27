@@ -2289,6 +2289,24 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -43877,6 +43895,19 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", [
+    _c(
+      "button",
+      {
+        staticClass: "btn btn-primary",
+        attrs: {
+          type: "button",
+          "data-toggle": "modal",
+          "data-target": "#exampleModalCenter"
+        }
+      },
+      [_vm._v("\n  Launch demo modal\n")]
+    ),
+    _vm._v(" "),
     _c("link", {
       attrs: {
         href: "https://fonts.googleapis.com/css?family=Karla",
@@ -43929,259 +43960,274 @@ var render = function() {
     _c(
       "div",
       {
-        staticClass: "overlay",
-        staticStyle: { "z-index": "999 !important" },
-        attrs: { id: "popup1" }
+        staticClass: "modal fade",
+        attrs: {
+          id: "exampleModalCenter",
+          tabindex: "-1",
+          role: "dialog",
+          "aria-labelledby": "exampleModalCenterTitle",
+          "aria-hidden": "true"
+        }
       },
       [
         _c(
           "div",
           {
-            staticClass: "popup fit-advisor-popup-adjustments",
-            staticStyle: { "margin-top": "20px" }
+            staticClass: "modal-dialog modal-dialog-centered modal-lg",
+            attrs: { role: "document" }
           },
           [
-            _c(
-              "div",
-              { staticClass: "predict__sc-1a4an9n-7 fit-advisor-header-box" },
-              [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
                 _c(
                   "div",
-                  { staticClass: "predict__sc-1a4an9n-0 fot-advisor-header" },
+                  {
+                    staticClass: "predict__sc-1a4an9n-7 fit-advisor-header-box"
+                  },
                   [
-                    _c("div"),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "predict__sc-1a4an9n-0 fot-advisor-header"
+                      },
+                      [
+                        _c("div"),
+                        _vm._v(" "),
+                        _c("div", [
+                          _vm.tabnumber > 1 && _vm.lastTab != true
+                            ? _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN",
+                                  staticStyle: {
+                                    cursor: "pointer",
+                                    "/* width": "59px"
+                                  },
+                                  attrs: {
+                                    viewBox: "0 0 512 512",
+                                    height: "24",
+                                    width: "24",
+                                    "aria-hidden": "true",
+                                    focusable: "false",
+                                    fill: "currentColor",
+                                    xmlns: "http://www.w3.org/2000/svg"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.back(_vm.tabnumber)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c("polyline", {
+                                    attrs: {
+                                      fill: "none",
+                                      stroke: "currentColor",
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round",
+                                      "stroke-width": "48",
+                                      points: "328 112 184 256 328 400"
+                                    }
+                                  })
+                                ]
+                              )
+                            : _vm._e(),
+                          _vm._v(" "),
+                          _vm.lastTab
+                            ? _c(
+                                "svg",
+                                {
+                                  staticClass:
+                                    "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi",
+                                  staticStyle: { cursor: "pointer" },
+                                  attrs: {
+                                    viewBox: "0 0 512 512",
+                                    height: "24",
+                                    width: "24",
+                                    "aria-hidden": "true",
+                                    focusable: "false",
+                                    fill: "currentColor",
+                                    xmlns: "http://www.w3.org/2000/svg"
+                                  },
+                                  on: { click: _vm.restart }
+                                },
+                                [
+                                  _c("path", {
+                                    attrs: {
+                                      fill: "none",
+                                      stroke: "currentColor",
+                                      "stroke-linecap": "round",
+                                      "stroke-miterlimit": "10",
+                                      "stroke-width": "32",
+                                      d:
+                                        "M320 146s24.36-12-64-12a160 160 0 10160 160"
+                                    }
+                                  }),
+                                  _vm._v(" "),
+                                  _c("polyline", {
+                                    attrs: {
+                                      fill: "none",
+                                      stroke: "currentColor",
+                                      "stroke-linecap": "round",
+                                      "stroke-linejoin": "round",
+                                      "stroke-width": "32",
+                                      points: "256 58 336 138 256 218"
+                                    }
+                                  })
+                                ]
+                              )
+                            : _vm._e()
+                        ])
+                      ]
+                    ),
                     _vm._v(" "),
-                    _c("div", [
-                      _vm.tabnumber > 1 && _vm.lastTab != true
-                        ? _c(
-                            "svg",
-                            {
-                              staticClass:
-                                "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN",
-                              staticStyle: {
-                                cursor: "pointer",
-                                "/* width": "59px"
-                              },
-                              attrs: {
-                                viewBox: "0 0 512 512",
-                                height: "24",
-                                width: "24",
-                                "aria-hidden": "true",
-                                focusable: "false",
-                                fill: "currentColor",
-                                xmlns: "http://www.w3.org/2000/svg"
-                              },
-                              on: {
-                                click: function($event) {
-                                  return _vm.back(_vm.tabnumber)
-                                }
-                              }
-                            },
-                            [
-                              _c("polyline", {
-                                attrs: {
-                                  fill: "none",
-                                  stroke: "currentColor",
-                                  "stroke-linecap": "round",
-                                  "stroke-linejoin": "round",
-                                  "stroke-width": "48",
-                                  points: "328 112 184 256 328 400"
-                                }
-                              })
-                            ]
-                          )
-                        : _vm._e(),
-                      _vm._v(" "),
-                      _vm.lastTab
-                        ? _c(
-                            "svg",
-                            {
-                              staticClass:
-                                "StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi",
-                              staticStyle: { cursor: "pointer" },
-                              attrs: {
-                                viewBox: "0 0 512 512",
-                                height: "24",
-                                width: "24",
-                                "aria-hidden": "true",
-                                focusable: "false",
-                                fill: "currentColor",
-                                xmlns: "http://www.w3.org/2000/svg"
-                              },
-                              on: { click: _vm.restart }
-                            },
-                            [
-                              _c("path", {
-                                attrs: {
-                                  fill: "none",
-                                  stroke: "currentColor",
-                                  "stroke-linecap": "round",
-                                  "stroke-miterlimit": "10",
-                                  "stroke-width": "32",
-                                  d:
-                                    "M320 146s24.36-12-64-12a160 160 0 10160 160"
-                                }
-                              }),
-                              _vm._v(" "),
-                              _c("polyline", {
-                                attrs: {
-                                  fill: "none",
-                                  stroke: "currentColor",
-                                  "stroke-linecap": "round",
-                                  "stroke-linejoin": "round",
-                                  "stroke-width": "32",
-                                  points: "256 58 336 138 256 218"
-                                }
-                              })
-                            ]
-                          )
-                        : _vm._e()
-                    ])
+                    _vm._m(1)
                   ]
                 ),
                 _vm._v(" "),
-                _vm._m(0)
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "close mtf-n6",
-                attrs: { id: "closeApp", href: "#" }
-              },
-              [_vm._v("×")]
-            ),
-            _vm._v(" "),
-            _vm._m(1),
-            _vm._v(" "),
-            _c(
-              "div",
-              {
-                staticClass: "content",
-                staticStyle: {
-                  "margin-top": "-155px !important",
-                  "margin-bottom": "-120px !important"
-                }
-              },
-              [
-                _c("form", { attrs: { id: "regForm" } }, [
-                  _c(
-                    "div",
-                    {
-                      directives: [
-                        {
-                          name: "switch",
-                          rawName: "v-switch",
-                          value: _vm.tabnumber,
-                          expression: "tabnumber"
-                        }
-                      ]
-                    },
-                    [
+                _c(
+                  "a",
+                  {
+                    staticClass: "close mtf-n6",
+                    attrs: { id: "closeApp", href: "#" }
+                  },
+                  [_vm._v("×")]
+                ),
+                _vm._v(" "),
+                _vm._m(2),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass: "content",
+                    staticStyle: {
+                      "margin-top": "-155px !important",
+                      "margin-bottom": "-120px !important"
+                    }
+                  },
+                  [
+                    _c("form", { attrs: { id: "regForm" } }, [
                       _c(
                         "div",
                         {
                           directives: [
                             {
-                              name: "case",
-                              rawName: "v-case",
-                              value: 1,
-                              expression: "1"
-                            }
-                          ]
-                        },
-                        [_c("form-component")],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _vm._l(_vm.attributes, function(row, key) {
-                        return _c(
-                          "div",
-                          {
-                            directives: [
-                              {
-                                name: "case",
-                                rawName: "v-case",
-                                value: key + 2,
-                                expression: "key + 2"
-                              }
-                            ],
-                            key: row.id
-                          },
-                          [
-                            _c("attribute-one-component", {
-                              attrs: {
-                                attributes: row,
-                                tabnum: {
-                                  count: _vm.n
-                                },
-                                recordsLength: _vm.attributes.length,
-                                currentRecord: key + 1
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      }),
-                      _vm._v(" "),
-                      _c(
-                        "div",
-                        {
-                          directives: [
-                            {
-                              name: "case",
-                              rawName: "v-case",
-                              value: _vm.attributes.length + 2,
-                              expression: "attributes.length + 2"
+                              name: "switch",
+                              rawName: "v-switch",
+                              value: _vm.tabnumber,
+                              expression: "tabnumber"
                             }
                           ]
                         },
                         [
-                          _c("result-component", {
-                            attrs: { product: _vm.product, form: _vm.form }
-                          })
+                          _c(
+                            "div",
+                            {
+                              directives: [
+                                {
+                                  name: "case",
+                                  rawName: "v-case",
+                                  value: 1,
+                                  expression: "1"
+                                }
+                              ]
+                            },
+                            [_c("form-component")],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _vm._l(_vm.attributes, function(row, key) {
+                            return _c(
+                              "div",
+                              {
+                                directives: [
+                                  {
+                                    name: "case",
+                                    rawName: "v-case",
+                                    value: key + 2,
+                                    expression: "key + 2"
+                                  }
+                                ],
+                                key: row.id
+                              },
+                              [
+                                _c("attribute-one-component", {
+                                  attrs: {
+                                    attributes: row,
+                                    tabnum: {
+                                      count: _vm.n
+                                    },
+                                    recordsLength: _vm.attributes.length,
+                                    currentRecord: key + 1
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "div",
+                            {
+                              directives: [
+                                {
+                                  name: "case",
+                                  rawName: "v-case",
+                                  value: _vm.attributes.length + 2,
+                                  expression: "attributes.length + 2"
+                                }
+                              ]
+                            },
+                            [
+                              _c("result-component", {
+                                attrs: { product: _vm.product, form: _vm.form }
+                              })
+                            ],
+                            1
+                          )
                         ],
-                        1
-                      )
-                    ],
-                    2
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticStyle: { overflow: "auto" } }, [
-                    _c(
-                      "div",
-                      {
-                        staticClass: "custom-offset-lg",
-                        staticStyle: {
-                          "margin-top": "8% !important",
-                          display: "none"
-                        }
-                      },
-                      [
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticStyle: { overflow: "auto" } }, [
                         _c(
-                          "button",
+                          "div",
                           {
-                            staticClass: "fit-advisor-custom_previous_btn",
-                            attrs: { type: "button", id: "prevBtn" },
-                            on: {
-                              click: function($event) {
-                                return _vm.nextPrev(-1)
-                              }
+                            staticClass: "custom-offset-lg",
+                            staticStyle: {
+                              "margin-top": "8% !important",
+                              display: "none"
                             }
                           },
                           [
-                            _vm._v(
-                              "\n                                    Previous\n                                "
+                            _c(
+                              "button",
+                              {
+                                staticClass: "fit-advisor-custom_previous_btn",
+                                attrs: { type: "button", id: "prevBtn" },
+                                on: {
+                                  click: function($event) {
+                                    return _vm.nextPrev(-1)
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    Previous\n                                "
+                                )
+                              ]
                             )
                           ]
                         )
-                      ]
-                    )
-                  ])
-                ])
-              ]
-            )
+                      ])
+                    ])
+                  ]
+                )
+              ])
+            ])
           ]
         )
       ]
@@ -44189,6 +44235,34 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-header" }, [
+      _c(
+        "h5",
+        {
+          staticClass: "modal-title",
+          attrs: { id: "exampleModalCenterTitle" }
+        },
+        [_vm._v("Modal title")]
+      ),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: {
+            type: "button",
+            "data-dismiss": "modal",
+            "aria-label": "Close"
+          }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("×")])]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

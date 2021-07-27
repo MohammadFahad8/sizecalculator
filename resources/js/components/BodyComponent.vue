@@ -1,6 +1,11 @@
 <template>
     <div>
-    
+    <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+  Launch demo modal
+</button>
+
+
         <link
             href="https://fonts.googleapis.com/css?family=Karla"
             rel="stylesheet"
@@ -28,11 +33,18 @@
                 {{ finalsize }}</span
             >
         </div>
-        <div id="popup1" class="overlay" style="z-index: 999 !important">
-            <div
-                class="popup fit-advisor-popup-adjustments"
-                style="margin-top: 20px"
-            >
+        <!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        
                 <div class="predict__sc-1a4an9n-7 fit-advisor-header-box">
                     <div class="predict__sc-1a4an9n-0 fot-advisor-header">
                         <div></div>
@@ -169,8 +181,14 @@ display: inline-block;
                         <!-- </p> -->
                         <!-- Steps marks was here -->
                     </form>
-                </div>
+                
             </div>
+      </div>
+     
+    </div>
+  </div>
+
+           
         </div>
     </div>
 
