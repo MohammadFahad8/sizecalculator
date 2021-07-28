@@ -414,10 +414,6 @@ class AttributeController extends Controller
                                 
                                 return $this->checkVariantIFExists($b['predicted_size']);
                                 // exit;
-                            } else {
-                                
-                                return $this->checkVariantIFExists('medium');
-                                // exit;
                             }
                         }
                     }

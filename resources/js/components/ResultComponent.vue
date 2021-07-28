@@ -197,7 +197,7 @@ export default {
                     this.form.weight = localStorage.getItem("weight");
                     this.form.tags = JSON.parse(localStorage.getItem("tags"));
                     
-                    this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
+                    // this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
                     
                     this.getProductDetails(this.form)
                    

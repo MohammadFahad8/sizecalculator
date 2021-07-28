@@ -354,8 +354,9 @@ export default {
             // this.form.bottom.name = "";
             // this.form.bottom.other = "";
             this.lastTab = false;
+            
 
-            //this.dev_reset();
+            this.dev_reset();
             this.nextStep(1);
         },
         showBodyFit: function() {

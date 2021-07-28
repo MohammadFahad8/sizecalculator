@@ -326,7 +326,7 @@ export default {
                 $('input[name="countrycheck"]').attr("value", 0);
                 this.container.countrycheck == 0;
                 this.container.form.convertedMeasurements = false;
-                localStorage.setItem("convertedMeasurements",this.container.form.convertedMeasurements)
+                
                 this.weightconvert(this.container.form.weight, false);
                 this.heightconvert(
                     localStorage.getItem("foot"),

@@ -2434,8 +2434,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // this.form.bottom.name = "";
       // this.form.bottom.other = "";
 
-      this.lastTab = false; //this.dev_reset();
-
+      this.lastTab = false;
+      this.dev_reset();
       this.nextStep(1);
     },
     showBodyFit: function showBodyFit() {
@@ -2928,7 +2928,6 @@ __webpack_require__.r(__webpack_exports__);
         $('input[name="countrycheck"]').attr("value", 0);
         this.container.countrycheck == 0;
         this.container.form.convertedMeasurements = false;
-        localStorage.setItem("convertedMeasurements", this.container.form.convertedMeasurements);
         this.weightconvert(this.container.form.weight, false);
         this.heightconvert(localStorage.getItem("foot"), localStorage.getItem("inch"), parseFloat(localStorage.getItem("cm")).toFixed(0), false);
       } else if (this.container.countrycheck == true) {
@@ -3309,8 +3308,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.form.heightcm = localStorage.getItem("cm");
         _this.form.age = localStorage.getItem("age");
         _this.form.weight = localStorage.getItem("weight");
-        _this.form.tags = JSON.parse(localStorage.getItem("tags"));
-        _this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
+        _this.form.tags = JSON.parse(localStorage.getItem("tags")); // this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
 
         _this.getProductDetails(_this.form);
       });
