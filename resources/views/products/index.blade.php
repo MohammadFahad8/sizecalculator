@@ -145,7 +145,7 @@
     @{{ row.size }}
   </td>
   
-  <td> <a href="javascript:void(0)" v-on:click="viewAttributes(product.product_id)">View Attributes</a> </td>
+  <td> <a href="javascript:void(0)" v-on:click="viewAttributes(product.product_id)">View Details</a> </td>
 </tr>
 
 

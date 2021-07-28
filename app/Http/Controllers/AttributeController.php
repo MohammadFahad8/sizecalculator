@@ -368,7 +368,7 @@ class AttributeController extends Controller
     {
         $break = 0;
         $data = $request->all();
-        
+        dd($data);
         
 
 
@@ -759,9 +759,11 @@ class AttributeController extends Controller
 
 
         $sizechart = Sizechart::with('bodyFeature', 'product')->find($request->get('id'));
+        
 
 
         $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $request->get('product_id')], ['status', '>', 0]])->get();
+        
         return view('size-charts.edit', [
             'sizechart' => $sizechart,
             'current_product_id' => $request->get('product_id'),

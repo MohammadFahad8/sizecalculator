@@ -16,8 +16,11 @@
     <div class="card-header ">
         <div class="row">
             <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Attribute Types') }}</span> </div>
+            
             <div class="col-md-9">
-                <a href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a></div>
+                <a href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
+                <a href="{{ route('sizechart.home',['id'=>$id]) }}"  class="btn btn-info btn-md button-add border border-light float-right ">View Sizes</a>
+              </div>
         </div>
        </div>
     <div class="card-body">
@@ -50,16 +53,27 @@
             @forelse($attr['attrDetails'] as $r)
             <option >{{ $r->attr_size_value }}</option>
             @empty
-            <option >`Nothing</option>
+            <option >*Nothing</option>
             @endforelse
            
             </select></td>
-            <td><a href="{{ route('sizechart.home',['id'=>$attrTypeOfProducts[0]['product']->product_id ]) }}"  class="">View Sizes</a></td>
+            {{-- <td><a href="{{ route('sizechart.home',['id'=>$attrTypeOfProducts[0]['product']->product_id ]) }}"  class="">View Sizes</a></td> --}}
             <td><a href="{{ route('attributesTypes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
             <td><a href="{{ route('attributesTypes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td>
 
     </tr>
     @empty
+    <tr class="text-center " >
+      <td colspan="5">
+         <span class="mt-3">*No Attribute added</span> <br>
+          <a href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="mt-3 btn btn-info btn-md button-add border border-light ">
+           <i class="fas fa-plus">
+             </i>
+             <span style="margin-left:10px !important">Attribute Type</span>
+          </a>
+        </td>
+      </tr>
+    
     @endforelse
  
 

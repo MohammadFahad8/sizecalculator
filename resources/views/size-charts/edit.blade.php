@@ -98,7 +98,7 @@
                 <div class="col-3">
                     <input id="body_measurement_start" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_start') is-invalid @enderror"
-                           name="body_measurement_start[]" placeholder="Enter Start..." value="{{ $attr->bodyFeatureOfType->attr_measurement_start}}">
+                           name="body_measurement_start[]" placeholder="Enter Start..." value="{{ $attr->bodyFeatureOfType['attr_measurement_start']}}">
 
                     @error('body_measurement_start')
                     <span class="invalid-feedback" role="alert">

@@ -28,7 +28,7 @@
     <thead>
 <tr>
     <th colspan="2">Height (Cm.)</th>
-    <th colspan="3">Weight (Lbs.)</th>
+    <th colspan="2">Weight (Lbs.)</th>
     
     
   
@@ -37,6 +37,7 @@
     <th>End</th>
     <th>Start</th>
     <th>End</th>
+    <th>Predicted Size</th>
     {{-- <th>Product</th> --}}
     <th colspan="2" > <span class="offset-5">Action</span></th>
 </tr>
@@ -49,6 +50,7 @@
             <td>{{ $attr->height_end }}</td>
             <td>{{ $attr->weight_start }} </td>
             <td>{{ $attr->weight_end }} </td>
+            <td>{{ $attr->bodyFeature[0]->predicted_size }} </td>
           {{-- <div class="text-center"> <td class=" text-center"><span class="badge badge-pill badge-warning">{{$sizeChart[0]['product']['name']}} </span></td></div>  --}}
             <td class="text-center">
               <div class="col">
@@ -67,6 +69,12 @@
 
     </tr> 
     @empty
+    <tr class="text-center " >
+      <td colspan="6">
+         <span class="mt-3">*No size added</span> <br>
+         <a href="{{ route('sizechart.create',['id'=>$current_product_id ])}}" class="btn btn-info btn-md button-add border border-light mt-3 "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Add Size</span></a>
+        </td>
+      </tr>
     @endforelse
  
 
