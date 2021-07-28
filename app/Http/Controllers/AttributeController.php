@@ -242,7 +242,7 @@ class AttributeController extends Controller
 
 
         $productsall = $shop->api()->rest('GET', '/admin/api/2021-07/products.json')['body']['container'];
-
+        
         $prod = $productsall['products'];
 
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
@@ -368,7 +368,8 @@ class AttributeController extends Controller
     {
         $break = 0;
         $data = $request->all();
-
+        
+        
 
 
 
@@ -410,21 +411,23 @@ class AttributeController extends Controller
 
 
                             if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+                                
                                 return $this->checkVariantIFExists($b['predicted_size']);
-                                exit;
+                                // exit;
                             } else {
-
+                                
                                 return $this->checkVariantIFExists('medium');
-                                exit;
+                                // exit;
                             }
                         }
                     }
                 } else {
-
+                    
                     return $this->checkVariantIFExists('medium');
                 }
             }
         } else {
+            
             foreach ($sizeChartList as $s) {
 
 
@@ -437,17 +440,18 @@ class AttributeController extends Controller
 
 
                             if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+                                echo 1;
                                 return $this->checkVariantIFExists($b['predicted_size']);
-                                exit;
+                                // exit;
                             } else {
-
+                                echo 2;
                                 return $this->checkVariantIFExists('medium');
-                                exit;
+                                // exit;
                             }
                         }
                     }
                 } else {
-
+                    echo 3;
                     return $this->checkVariantIFExists('medium');
                 }
             }

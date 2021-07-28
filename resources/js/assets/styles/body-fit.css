@@ -3549,11 +3549,14 @@ input:focus {
  }
 .close-custom
 {
+    color:#000;
     font-size: 2em;
     text-decoration: none;
 }
-.close-custom:hover
+.close-custom:hover,
+.close-custom:visited
 {
     font-size: 2em;
     text-decoration: none;
+    color:#000;
 }

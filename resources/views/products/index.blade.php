@@ -214,7 +214,7 @@
                 this.product  = res.data
                 
                 this.variant_count = this.product.variants.length;
-                console.log(this.product.variants.size)
+                
                  
 
            })

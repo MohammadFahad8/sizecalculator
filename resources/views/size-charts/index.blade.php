@@ -158,7 +158,7 @@
             axios.get('/sizechart/bodysizes/'+id).then((res)=>{
               this.isLoading=false;
                 this.bodysizes = res.data;
-                console.log(this.bodysizes);
+                
                 
 
             })

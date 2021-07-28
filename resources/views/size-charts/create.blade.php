@@ -18,7 +18,7 @@
 
                 <div class="col-md-6">
                     <input tabindex="1" id="weight" type="number"
-                           class="form-control @error('weight_start') is-invalid @enderror" name="weight_start" min="0" max="500" placeholder="Enter Weight Start (Lbs.)"
+                           class="form-control @error('weight_start') is-invalid @enderror" name="weight_start" min="1" max="500" placeholder="Enter Weight Start (Lbs.)"
                             required autocomplete="off"
                            >
 
@@ -36,7 +36,7 @@
                 <div class="col-md-6">
                     <input tabindex="2" id="weight_end" type="number"
                            class="form-control @error('weight_end') is-invalid @enderror" name="weight_end"
-                            required autocomplete="off" min="0" max="500" placeholder="Enter Weight End (Lbs.)"
+                            required autocomplete="off" min="1" max="500" placeholder="Enter Weight End (Lbs.)"
                            >
 
                     @error('weight_end')
@@ -53,7 +53,7 @@
                 <div class="col-md-6">
                     <input tabindex="3" id="height_start" type="number"
                            class="form-control @error('height_start') is-invalid @enderror" name="height_start"
-                            required autocomplete="off" min="0" max="500" placeholder="Enter Height Start (Cm.)"
+                            required autocomplete="off" min="1" max="272" placeholder="Enter Height Start (Cm.)"
                            >
 
                     @error('height_start')
@@ -70,7 +70,7 @@
                 <div class="col-md-6">
                     <input tabindex="4" id="height_end" type="number"
                            class="form-control @error('height_end') is-invalid @enderror" name="height_end"
-                            required autocomplete="off" min="0" max="500" placeholder="Enter Height End  (Cm.)"
+                            required autocomplete="off" min="1" max="272" placeholder="Enter Height End  (Cm.)"
                            >
 
                     @error('height_end')

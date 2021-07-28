@@ -187,12 +187,25 @@ export default {
                         );
                     }
                     this.form.conversionCount = this.product.id;
-                    if (localStorage.getItem("FORM__") == null) {
-                        localStorage.setItem(
-                            "FORM__",
-                            JSON.stringify(this.form)
-                        );
-                    }
+                   
+
+                    
+                    this.form.heightfoot = localStorage.getItem("foot");
+                    this.form.heightinch = localStorage.getItem("inch");
+                    this.form.heightcm = localStorage.getItem("cm");
+                    this.form.age = localStorage.getItem("age");
+                    this.form.weight = localStorage.getItem("weight");
+                    this.form.tags = JSON.parse(localStorage.getItem("tags"));
+                    
+                    this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
+                    
+                    this.getProductDetails(this.form)
+                   
+                    
+                    
+                     
+
+                    
                 });
         },
         setupProduct: function () {
@@ -450,7 +463,7 @@ export default {
             });
         },
 
-        getProductDetails: function () {
+        getProductDetails: function (form) {
             this.container.is_loading = true;
             var a = "";
             if (this.container.restarted == false) {
@@ -461,12 +474,12 @@ export default {
             this.container.showSelectedSizeSlider = false;
             this.container.conversionCount = this.product.id;
 
-            if (localStorage.getItem("FORM__") != null) {
-                this.formLocal = JSON.parse(localStorage.getItem("FORM__"));
-            }
+           
 
-            axios
-                .post(this.$appUrl + "/api/size-recommend/", this.formLocal)
+          
+           
+           axios
+                .post(this.$appUrl + "/api/size-recommend/", form)
                 .then(res => {
                     this.container.is_loading = false;
 
@@ -612,21 +625,25 @@ export default {
             //                $('.fit-advisor-selected-product-grid').css('display', 'none');
 
             this.tabnumber = 1;
-            console.log(this.tabnumber);
+            
             EventBus.$emit("home", this.tabnumber);
         }
     },
     mounted() {
+        
         this.setupProduct();
-        this.getProductDetails();
+        // this.getProductDetails();
         this.form.conversionCount = this.product.id;
 
         EventBus.$on("sizeCalculate", num => {
+            
             var a = 1;
+            this.setupProduct();
+            //this.getProductDetails();
             this.form.conversionCount = this.product.id;
             EventBus.$emit("mount", a);
-            this.setupProduct();
-            this.getProductDetails();
+            
+           
         });
     }
 };

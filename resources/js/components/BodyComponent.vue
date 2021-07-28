@@ -36,7 +36,7 @@
                 <div class="x-row x-mb-5" >
                     
                         
-                        <div class="x-col-md-6 mt-2">
+                        <div class="x-col-md-6 mt-2 x-col-6">
                             <svg
                                 v-if="tabnumber > 1 && lastTab != true"
                                 v-on:click="back(tabnumber)"
@@ -92,7 +92,7 @@ display: inline-block;
                                     points="256 58 336 138 256 218"
                                 ></polyline>
                             </svg></div>
-                            <div class="x-col-md-6">
+                            <div class="x-col-md-6 x-col-6">
                             <a class="x-float-right close-custom mt-n2" id="closeApp" href="#">&times;</a>
                             </div>
                         
@@ -346,19 +346,16 @@ export default {
             ).show();
 
             this.restarted = true;
-            this.form.heightfoot = "";
-            this.form.heightinch = "";
-            this.form.weight = "";
-            this.form.age = "";
+          
             // this.form.chest.name = "";
             // this.form.chest.other = "";
             // this.form.stomach.name = "";
             // this.form.stomach.other = "";
             // this.form.bottom.name = "";
             // this.form.bottom.other = "";
-            (this.recommended_size = ""), (this.lastTab = false);
+            this.lastTab = false;
 
-            this.dev_reset();
+            //this.dev_reset();
             this.nextStep(1);
         },
         showBodyFit: function() {
@@ -460,6 +457,7 @@ export default {
 
                         }else
                         {
+                            
                             this.tabnumber = parseInt(this.attributes.length) + 2;
 
                         this.lastTab = true;    

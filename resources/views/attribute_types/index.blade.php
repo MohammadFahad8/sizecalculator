@@ -54,7 +54,7 @@
             @endforelse
            
             </select></td>
-            <td><a href="{{ route('sizechart.home',['id'=>$attrTypeOfProducts[0]['product']->product_id ]) }}"  class="">View Variants</a></td>
+            <td><a href="{{ route('sizechart.home',['id'=>$attrTypeOfProducts[0]['product']->product_id ]) }}"  class="">View Sizes</a></td>
             <td><a href="{{ route('attributesTypes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
             <td><a href="{{ route('attributesTypes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td>
 

@@ -260,7 +260,7 @@ export default {
         return {
             container: {
                 form: {
-                    heightfoot: "",
+                    heightfoot: localStorage.getItem('foot'),
                     heightinch: "",
                     heightcm: "",
                     weight: "",
@@ -281,6 +281,7 @@ export default {
             if (this.container.valid == true) {
                 this.container.form.tabnumber = n;
                 EventBus.$emit("formsubmit", this.container);
+                
             }
         },
         validateForm: function() {
@@ -325,6 +326,7 @@ export default {
                 $('input[name="countrycheck"]').attr("value", 0);
                 this.container.countrycheck == 0;
                 this.container.form.convertedMeasurements = false;
+                localStorage.setItem("convertedMeasurements",this.container.form.convertedMeasurements)
                 this.weightconvert(this.container.form.weight, false);
                 this.heightconvert(
                     localStorage.getItem("foot"),
@@ -338,6 +340,8 @@ export default {
                 $('input[name="countrycheck"]').attr("value", 1);
                 this.container.countrycheck == 1;
                 this.container.form.convertedMeasurements = true;
+                localStorage.setItem("convertedMeasurements",this.container.form.convertedMeasurements)
+
                 this.weightconvert(this.container.form.weight, true);
                 this.heightconvert(
                     localStorage.getItem("foot"),
@@ -357,8 +361,8 @@ export default {
 
             this.container.valid = true;
 
-            if (this.container.form.heightfoot > 9) {
-                $("#height_ft").attr("placeholder", "Limit is 9");
+            if (this.container.form.heightfoot > 8) {
+                $("#height_ft").attr("placeholder", "Limit is 8");
                 $("#height_ft").addClass("warning-place");
                 this.container.form.heightfoot = "";
             } else if (this.container.form.heightfoot <= 0) {
@@ -440,8 +444,8 @@ export default {
             $("#height_cm").removeClass("invalid");
             this.container.valid = true;
 
-            if (this.container.form.heightcm > 302) {
-                $("#height_cm").attr("placeholder", "Limit is 300");
+            if (this.container.form.heightcm > 272) {
+                $("#height_cm").attr("placeholder", "Limit is 272");
                 $("#height_cm").addClass("warning-place");
                 this.container.form.heightcm = "";
             } else if (this.container.form.heightcm <= 0) {
