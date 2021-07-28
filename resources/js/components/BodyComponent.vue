@@ -33,10 +33,10 @@
                 class="popup fit-advisor-popup-adjustments"
                 style="margin-top: 20px"
             >
-                <div class="predict__sc-1a4an9n-7 fit-advisor-header-box">
-                    <div class="predict__sc-1a4an9n-0 fot-advisor-header">
+                <div class="x-row x-mb-5" >
+                    
                         
-                        <div>
+                        <div class="x-col-md-6 mt-2">
                             <svg
                                 v-if="tabnumber > 1 && lastTab != true"
                                 v-on:click="back(tabnumber)"
@@ -91,10 +91,12 @@ display: inline-block;
                                     stroke-width="32"
                                     points="256 58 336 138 256 218"
                                 ></polyline>
-                            </svg>
-                            <a class="close mt-n3" id="closeApp" href="#">&times;</a>
-                        </div>
-                    </div>
+                            </svg></div>
+                            <div class="x-col-md-6">
+                            <a class="x-float-right close-custom mt-n2" id="closeApp" href="#">&times;</a>
+                            </div>
+                        
+                    
                     <!-- <div class="predict__sc-1a4an9n-8 dCmgSk">
                         <div
                             width="0"
