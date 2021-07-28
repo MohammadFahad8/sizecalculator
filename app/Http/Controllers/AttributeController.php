@@ -342,7 +342,7 @@ class AttributeController extends Controller
         $products = Products::where('product_id', '=', $request['id'])->first();
 
         $setting = Settings::where('name', '=', $request['shop_name'])->first();
-
+        
 
         if ($products->status == 1) {
 

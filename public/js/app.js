@@ -2289,6 +2289,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2521,8 +2522,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         });
 
         if (localStorage.getItem("recommended_size") != null) {
-          alert(_this3.newapp);
-
           if (_this3.newapp == true) {
             _this3.tabnumber = 1;
           } else {
@@ -3638,7 +3637,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://e6a3ef32c60c.ngrok.io';
+Vue.prototype.$appUrl = 'https://3de1a73a41a0.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 /**
@@ -43967,8 +43966,6 @@ var render = function() {
                   "div",
                   { staticClass: "predict__sc-1a4an9n-0 fot-advisor-header" },
                   [
-                    _c("div"),
-                    _vm._v(" "),
                     _c("div", [
                       _vm.tabnumber > 1 && _vm.lastTab != true
                         ? _c(
@@ -44053,25 +44050,23 @@ var render = function() {
                               })
                             ]
                           )
-                        : _vm._e()
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "close mt-n3",
+                          attrs: { id: "closeApp", href: "#" }
+                        },
+                        [_vm._v("×")]
+                      )
                     ])
                   ]
-                ),
-                _vm._v(" "),
-                _vm._m(0)
+                )
               ]
             ),
             _vm._v(" "),
-            _c(
-              "a",
-              {
-                staticClass: "close mtf-n6",
-                attrs: { id: "closeApp", href: "#" }
-              },
-              [_vm._v("×")]
-            ),
-            _vm._v(" "),
-            _vm._m(1),
+            _vm._m(0),
             _vm._v(" "),
             _c(
               "div",
@@ -44207,17 +44202,6 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "predict__sc-1a4an9n-8 dCmgSk" }, [
-      _c("div", {
-        staticClass: "predict__sc-1a4an9n-9 eygAJd",
-        attrs: { width: "0" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

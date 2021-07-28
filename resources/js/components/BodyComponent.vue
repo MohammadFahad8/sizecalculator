@@ -35,7 +35,7 @@
             >
                 <div class="predict__sc-1a4an9n-7 fit-advisor-header-box">
                     <div class="predict__sc-1a4an9n-0 fot-advisor-header">
-                        <div></div>
+                        
                         <div>
                             <svg
                                 v-if="tabnumber > 1 && lastTab != true"
@@ -92,17 +92,18 @@ display: inline-block;
                                     points="256 58 336 138 256 218"
                                 ></polyline>
                             </svg>
+                            <a class="close mt-n3" id="closeApp" href="#">&times;</a>
                         </div>
                     </div>
-                    <div class="predict__sc-1a4an9n-8 dCmgSk">
+                    <!-- <div class="predict__sc-1a4an9n-8 dCmgSk">
                         <div
                             width="0"
                             class="predict__sc-1a4an9n-9 eygAJd"
                         ></div>
-                    </div>
+                    </div> -->
                 </div>
                 <!-- close modal btn -->
-                <a class="close mtf-n6" id="closeApp" href="#">&times;</a>
+                
                 <div>
                     <div class="x-row">
                         <div class="x-col"></div>
@@ -448,7 +449,7 @@ export default {
                     });
 
                     if (localStorage.getItem("recommended_size") != null) {
-                        alert(this.newapp)
+                        
                         if(this.newapp == true)
                         {
                             this.tabnumber = 1;
