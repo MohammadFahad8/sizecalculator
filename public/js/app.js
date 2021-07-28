@@ -3634,7 +3634,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://3de1a73a41a0.ngrok.io';
+Vue.prototype.$appUrl = 'https://96b8c83e0af5.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 /**
