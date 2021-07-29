@@ -19,9 +19,8 @@
             
             <div class="col-md-9">
                 <a href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
-              @if(count($showViewBtn)>0)
+              
                 <a href="{{ route('sizechart.home',['id'=>$id]) }}"  class="btn btn-info btn-md button-add border border-light float-right ">View Sizes</a>
-                @endif
               </div>
         </div>
        </div>
@@ -41,7 +40,7 @@
        <tbody>
            
     @forelse($attrTypeOfProducts as $attr)
-    <tr class="{{ ($attr->status == 0)?'tr-disabled':'' }}">
+    <tr>
       
             <td>{{ $attr->name }}</td>
             <td>{{ $attr->product->name }}</td>
@@ -60,10 +59,9 @@
            
             </select></td>
             {{-- <td><a href="{{ route('sizechart.home',['id'=>$attrTypeOfProducts[0]['product']->product_id ]) }}"  class="">View Sizes</a></td> --}}
-            <td colspan="{{ ($attr->status == 0)?'2':'' }}"><a href="{{ route('attributesTypes.edit', ['id'=>$attr->id]) }}" class="{{ ($attr->status == 0)?'btn btn-info btn-block':'btn btn-info' }}">Edit</a></td>
-          @if( $attr->status != 0)
-            <td><a href="{{ route('attributesTypes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td>
-          @endif
+            <td><a href="{{ route('attributesTypes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
+            {{-- <td><a href="{{ route('attributesTypes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td> --}}
+
     </tr>
     @empty
     <tr class="text-center " >

@@ -891,15 +891,12 @@ class AttributeController extends Controller
     }
     public function attributeType($id)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id]])->get();
-        $showViewBtn = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id],['status', '=', 1]])->get();
-        
+        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
 
 
         return view('attribute_types.index', [
             'id' => $id,
-            'attrTypeOfProducts' => $attributeTypeOfProducts,
-            'showViewBtn'=>$showViewBtn
+            'attrTypeOfProducts' => $attributeTypeOfProducts
         ]);
     }
     public function attributeTypeFront($id)
