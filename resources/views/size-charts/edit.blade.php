@@ -85,7 +85,7 @@
                 </div>
             </div>
            
-            @foreach($variantsOfAttributes as $attr)
+            @foreach($sizechart->bodyFeature as $attr)
             
             
     
@@ -93,12 +93,12 @@
             <div class="form-group row " >
                 <input type="hidden" value="{{ $attr->id }}" name="attribute_type[]">
                 <input for="body_measurement_start"
-                       class="col-md-4 col-form-label text-md-right border-0 size-name" name="attribute_type_name[]" value="{{ $attr->name }}" readonly/>
+                       class="col-md-4 col-form-label text-md-right border-0 size-name" name="attribute_type_name[]" value="{{ $attr->attr_name }}" readonly/>
  
                 <div class="col-3">
                     <input id="body_measurement_start" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_start') is-invalid @enderror"
-                           name="body_measurement_start[]" placeholder="Enter Start..." value="{{ $attr->bodyFeatureOfType->attr_measurement_start}}">
+                           name="body_measurement_start[]" placeholder="Enter Start..." value="{{ $attr->attr_measurement_start}}">
 
                     @error('body_measurement_start')
                     <span class="invalid-feedback" role="alert">
@@ -110,7 +110,7 @@
                 <div class="col-3">
                     <input id="body_measurement_end" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_end') is-invalid @enderror"
-                           name="body_measurement_end[]" placeholder="Enter End..." value="{{ $attr->bodyFeatureOfType->attr_measurement_end}}" >
+                           name="body_measurement_end[]" placeholder="Enter End..." value="{{ $attr->attr_measurement_end}}" >
 
                     @error('body_measurement_end')
                     <span class="invalid-feedback" role="alert">
@@ -128,7 +128,7 @@
                 <div class="col-md-6">
                     <input id="predicted_size" type="text" required
                            class="form-control @error('predicted_size') is-invalid @enderror"
-                           name="predicted_size" placeholder="Relatable Size" value="{{ $attr->bodyFeatureOfType->predicted_size }}">
+                           name="predicted_size" placeholder="Relatable Size" value="{{ $attr->predicted_size }}">
 
                     @error('predicted_size')
                     <span class="invalid-feedback" role="alert">

@@ -762,7 +762,8 @@ class AttributeController extends Controller
         
 
 
-        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $request->get('product_id')], ['status', '>', 0]])->get();
+         $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $request->get('product_id')], ['status', '>', 0]])->get();
+        //$variantsOfAttributes= Bodyfeature::where([['attr_id', '=', $request->get('id')], ['status', '>', 0]])->get();
         
         return view('size-charts.edit', [
             'sizechart' => $sizechart,
@@ -890,7 +891,7 @@ class AttributeController extends Controller
     }
     public function attributeType($id)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id]])->get();
 
 
         return view('attribute_types.index', [
