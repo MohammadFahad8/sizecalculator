@@ -19,7 +19,7 @@
             
             <div class="col-md-9">
                 <a href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
-              @if(count($attrTypeOfProducts)>0)
+              @if(count($showViewBtn)>0)
                 <a href="{{ route('sizechart.home',['id'=>$id]) }}"  class="btn btn-info btn-md button-add border border-light float-right ">View Sizes</a>
                 @endif
               </div>
