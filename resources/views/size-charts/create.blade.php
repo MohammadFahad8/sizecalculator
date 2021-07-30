@@ -93,7 +93,7 @@
            
             @foreach($variantsOfAttributes as $key => $attr)
                           
-            @foreach ($attr->attrDetails as $ad )
+            
                 
             
             
@@ -102,10 +102,8 @@
             <div class="form-group row " >
                 <input type="hidden" value="{{ $attr->id }}" name="attribute_type[]">
                 <input for="body_measurement_start"
-                       class="col-md-2 col-form-label text-md-right border-0 size-name "    name="attribute_type_name[]" value="{{ $attr->name }}" readonly/>
-                       <div class="col-2">
-                       <span>{{ $ad->attribute_size_name }}</span>
-                    </div>
+                       class="col-md-4 col-form-label text-md-right border-0 size-name "    name="attribute_type_name[]" value="{{ $attr->name }}" readonly/>
+                       
  
                 <div class="col-3">
                     <input tabindex="{{ $key + 5 }}"  type="number"  step="1"
@@ -131,7 +129,7 @@
                     @enderror
                 </div>
             </div>
-            @endforeach
+            
             @endforeach
             
              <div class="form-group row " >
