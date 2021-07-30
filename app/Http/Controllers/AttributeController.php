@@ -188,6 +188,7 @@ class AttributeController extends Controller
 
             return $messageContainer;
         } else {
+            
             $setting = Settings::where('name', '=', Auth::user()->name)->first();
             if ($setting->clear_logs == 1) {
 
@@ -340,10 +341,12 @@ class AttributeController extends Controller
     {
 
         $products = Products::where('product_id', '=', $request['id'])->first();
+        
 
         $setting = Settings::where('name', '=', $request['shop_name'])->first();
         
-
+        
+        
         if ($products->status == 1) {
 
             if ($setting->clear_logs == 0) {
@@ -368,7 +371,7 @@ class AttributeController extends Controller
     {
         $break = 0;
         $data = $request->all();
-        dd($data);
+        
         
 
 
@@ -394,7 +397,7 @@ class AttributeController extends Controller
         }
 
 
-
+try{
 
         $tags = array_map('strtolower', $data['tags']);
         if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
@@ -417,9 +420,6 @@ class AttributeController extends Controller
                             }
                         }
                     }
-                } else {
-                    
-                    return $this->checkVariantIFExists('medium');
                 }
             }
         } else {
@@ -436,22 +436,38 @@ class AttributeController extends Controller
 
 
                             if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
-                                echo 1;
+                                
                                 return $this->checkVariantIFExists($b['predicted_size']);
                                 // exit;
-                            } else {
-                                echo 2;
-                                return $this->checkVariantIFExists('medium');
-                                // exit;
-                            }
+                            } 
                         }
                     }
-                } else {
-                    echo 3;
-                    return $this->checkVariantIFExists('medium');
-                }
+                } 
             }
         }
+    }catch(\Exception $e){
+        
+        foreach ($sizeChartList as $s) {
+
+
+
+            if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
+
+                foreach ($s['bodyFeature'] as $b) {
+                    for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+
+
+
+                        if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+                            
+                            return $this->checkVariantIFExists($b['predicted_size']);
+                            // exit;
+                        }
+                    }
+                }
+            } 
+        }
+    }
     }
     public function calculateSizeFemale($data, $height_cm)
     {
