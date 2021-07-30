@@ -140,3 +140,9 @@
   {
     background-color:darkgrey;
   }
+
+  .input-btn-outline-danger {
+    color: #e3342f;
+    border-color: #e3342f;
+  }
+  

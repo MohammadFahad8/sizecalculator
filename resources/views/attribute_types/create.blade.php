@@ -17,13 +17,13 @@
     </div>
 </div>
 
-<div class="row mt-5 offset-3 ml-5 " style="10px !important">
+<div class="row mt-5  " >
     @include('partials_attributes.sidebar')
     <div class="col-md-9">  
-<div class="card  w-75">
+<div class="card  ">
     <div class="card-header">@include('snippets.buttonback'){{ __('Add Attribute Type') }}</div>
     <div class="card-body">
-        <form method="POST" action="{{ route('attributesTypes.add') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('attributesTypes.add') }}" enctype="multipart/form-data" >
             @csrf
             <input type="hidden" name="product_id" value="{{($attrOfProduct[0]['product']['product_id'])??$product_id }}">
             <div class="form-group row">
@@ -61,7 +61,7 @@
                     @enderror
                 </div>
                 <div class="col-md-2">
-                    <input tabindex="1" id="attribut_size" type="text" class="form-control " readonly value="Narrower" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
+                    <input tabindex="1" id="attribut_size_name" type="text" class="form-control " readonly value="Narrower" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
 
                 </div>
                 <div class="col-md-5">
@@ -93,7 +93,7 @@
                        class="col-md-3 col-form-label text-md-right">{{ __('size two') }}</label>
 
                 <div class="col-md-2">
-                    <input tabindex="1" id="attribut_size" type="number"
+                    <input tabindex="1" id="attribut_size_two" type="number"
                            class="form-control @error('attribut_size') is-invalid @enderror" name="attribut_size[]"
                             required min="1" autocomplete="off"
                            >
@@ -105,7 +105,7 @@
                     @enderror
                 </div>
                 <div class="col-md-2">
-                    <input tabindex="1" id="attribut_size" type="text" class="form-control "  readonly value="Average" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
+                    <input tabindex="1" id="attribut_size_name" type="text" class="form-control "  readonly value="Average" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
 
                 </div>
                 <div class="col-md-5">
@@ -131,12 +131,13 @@
 
             
         </div>
-            </div> <div class="form-group row">
+            </div> 
+            <div class="form-group row">
                 <label for="attribut_size"
                        class="col-md-3 col-form-label text-md-right">{{ __('size three') }}</label>
 
                 <div class="col-md-2">
-                    <input tabindex="1" id="attribut_size" type="number"
+                    <input tabindex="1" id="attribut_size_three" type="number"
                            class="form-control @error('attribut_size') is-invalid @enderror" name="attribut_size[]"
                             required min="1" autocomplete="off"
                            >
@@ -148,7 +149,7 @@
                     @enderror
                 </div>
                 <div class="col-md-2">
-                    <input tabindex="1" id="attribut_size" type="text" class="form-control " readonly value="Broader" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
+                    <input tabindex="1" id="attribut_size_name" type="text" class="form-control " readonly value="Broader" name="attribut_size_name[]" required="" autocomplete="off" placeholder="Enter Size Name">
 
                 </div>
                 <div class="col-md-5">
@@ -260,7 +261,7 @@
 
             <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
-                    <button type="submit" class="btn btn-primary" >
+                    <button return onclick="checkValidation(event)"  type="submit" class="btn btn-primary" >
                         {{ __('Add') }}
                     </button>
                 </div>
@@ -283,6 +284,60 @@
     </div>
 </div>
 <script>
+    function checkValidation(event){
+        
+        
+        if($("#attribut_size").val().length >0 && $("#attribut_size_two").val().length >0 && $("#attribut_size_three").val().length >0 ){
+
+            if(($("#attribut_size").val()==$("#attribut_size_two").val()) || ($("#attribut_size").val()==$("#attribut_size_three").val())|| ($("#attribut_size_two").val()==$("#attribut_size_three").val()))
+            {
+                toastr.warning(" Value cannot be same")
+                event.preventDefault();
+                return false;
+                
+
+            }
+        
+            else if(($("#attribut_size").val()>=$("#attribut_size_two").val()) || ($("#attribut_size").val()>=$("#attribut_size_three").val()))
+            {
+                toastr.warning($("#attribut_size").val()+" Value must be less than next")
+                event.preventDefault();
+                return false;
+            
+
+            }
+            else if($("#attribut_size_two").val() > $("#attribut_size_three").val())
+            {
+                toastr.warning($("#attribut_size_two").val()+" Value must be less than next")
+                event.preventDefault();
+                return false;
+           
+
+            }
+           
+            else  if(($("#attribut_size_three").val()<=$("#attribut_size_two").val()) || ($("#attribut_size_three").val()<=$("#attribut_size").val()))
+            {
+                toastr.warning($("#attribut_size_three").val()+" Value must be greater than previous")
+                event.preventDefault();
+                return false;
+               
+
+            }
+            else {
+                
+                // $(this).val
+            
+            return true;
+        }
+
+           
+         
+         }else
+            {
+                toastr.info("Enter Value")
+
+            }
+    }
        $("button[type = 'submit']").click(function(e){
                var $fileUpload = $("input[type='file']");
                if (parseInt($fileUpload.get(0).files.length) > 3){
@@ -300,7 +355,7 @@
                 // will fade out the whole DIV that covers the website.
                 $("#preloader").delay(300).fadeOut("slow");
             }); 
-         
+        
     })
 </script>
 @endsection

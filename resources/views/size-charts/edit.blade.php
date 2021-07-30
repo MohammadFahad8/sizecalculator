@@ -93,7 +93,7 @@
             <div class="form-group row " >
                 <input type="hidden" value="{{ $attr->id }}" name="attribute_type[]">
                 <input for="body_measurement_start"
-                       class="col-md-4 col-form-label text-md-right border-0 size-name" name="attribute_type_name[]" value="{{ $attr->attr_name }}" readonly/>
+                       class="col-md-4 col-form-label text-md-right border-0 namesize size-name" name="attribute_type_name[]" value="{{ $attr->attr_name }}" readonly/>
  
                 <div class="col-3">
                     <input id="body_measurement_start" type="number" max="99999" step="1" min="0"
@@ -163,7 +163,7 @@
             <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary" >
-                        {{ __('Add') }}
+                        {{ __('Update') }}
                     </button>
                 </div>
             </div>
@@ -173,22 +173,7 @@
 </div>
 </div>
 <script type="text/javascript">
-$("#sizechartform").validate({
-        rules: {
-            "body_measurement_start[]": "required"
-            "body_measurement_end[]": "required"
-        },
-        messages: {
-            "body_measurement_start[]": "Please select Start Range",
-            "body_measurement_end[]": "Please select End Range",
-        }
-    });
-    $('.attributes-types').change(function () {
-        var role = $(this).find('option:selected').text();
-        
-        $("input[name=body_measurement_start]").attr("placeholder",role+" Measurement Start");
-        $("input[name=body_measurement_end]").attr("placeholder",role+" Measurement End");
-    });
+
 </script>
 
 @endsection

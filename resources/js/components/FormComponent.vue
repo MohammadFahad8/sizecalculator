@@ -256,6 +256,9 @@
 import EventBus from "../event-bus";
 
 export default {
+    props:{
+        product: Object,
+    },
     data() {
         return {
             container: {
@@ -280,7 +283,12 @@ export default {
             this.validateForm();
             if (this.container.valid == true) {
                 this.container.form.tabnumber = n;
+                
+
+
+
                 EventBus.$emit("formsubmit", this.container);
+                
                 
             }
         },
@@ -512,7 +520,10 @@ export default {
             }
         }
     },
-    mounted() {},
+    mounted(){
+
+        this.container.form.conversionCount = this.product.id;
+    },
     watch: {
         "container.form.heightfoot": function() {
             this.validateHeight();

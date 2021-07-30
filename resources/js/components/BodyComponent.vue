@@ -129,7 +129,7 @@ display: inline-block;
 
                         <div v-switch="tabnumber">
                             <div v-case="1">
-                                <form-component></form-component>
+                                <form-component  :product="product"></form-component>
                             </div>
 
                             <div
@@ -144,6 +144,7 @@ display: inline-block;
                                     }"
                                     :recordsLength="attributes.length"
                                     :currentRecord="key + 1"
+                                    
                                 ></attribute-one-component>
                             </div>
 
@@ -151,6 +152,7 @@ display: inline-block;
                                 <result-component
                                     :product="product"
                                     :form="form"
+                                     :recordsLength="attributes.length"
                                 ></result-component>
                             </div>
                         </div>
@@ -282,6 +284,7 @@ export default {
             attr_third: false,
             tabnumber: 1,
             newapp:false,
+            sizeChartId:{},
 
             image_us: this.$appUrl + "/images/us.png",
             image_uk: this.$appUrl + "/images/uk.png"
@@ -289,8 +292,22 @@ export default {
     },
 
     methods: {
+
+        getAttributesOnHeightWeight:function(container){
+                
+
+            axios.post(this.$appUrl+'/api/getAttributesOnHeightWeight',container).then((res)=>{
+                    this.sizeChartId = res.data
+                    
+                    EventBus.$emit('checkAttributeSizes', this.sizeChartId)
+
+
+            });
+        },
         formSubmit: function() {
             EventBus.$on("formsubmit", container => {
+                this.getAttributesOnHeightWeight(container);
+                
                 this.form.heightfoot = container.form.heightfoot;
                 this.form.heightinch = container.form.heightinch;
                 this.form.heightcm = container.form.heightcm;

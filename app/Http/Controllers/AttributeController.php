@@ -368,7 +368,7 @@ class AttributeController extends Controller
     {
         $break = 0;
         $data = $request->all();
-        dd($data);
+        
         
 
 
@@ -396,7 +396,9 @@ class AttributeController extends Controller
 
 
 
-        $tags = array_map('strtolower', $data['tags']);
+        
+        try{
+            $tags = array_map('strtolower', $data['tags']);
         if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
 
             foreach ($sizeChartList as $s) {
@@ -419,7 +421,7 @@ class AttributeController extends Controller
                     }
                 } else {
                     
-                    return $this->checkVariantIFExists('medium');
+                    return    $this->checkVariantIFExists('medium');
                 }
             }
         } else {
@@ -436,57 +438,51 @@ class AttributeController extends Controller
 
 
                             if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
-                                echo 1;
+                                
                                 return $this->checkVariantIFExists($b['predicted_size']);
                                 // exit;
-                            } else {
-                                echo 2;
-                                return $this->checkVariantIFExists('medium');
-                                // exit;
-                            }
+                            } 
                         }
                     }
                 } else {
-                    echo 3;
+                    
                     return $this->checkVariantIFExists('medium');
                 }
             }
         }
     }
-    public function calculateSizeFemale($data, $height_cm)
-    {
-        //Female  Adult
+    catch(\Exception $e){
+        
+        foreach ($sizeChartList as $s) {
 
 
-        if (($data['weight'] <= 100) && ($height_cm  >=  137 && $height_cm <= 145)) {
-            //xxs
-            return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-        } else if (($data['weight'] > 100 && $data['weight'] <= 115) && ($height_cm  >  145 && $height_cm <= 155)) {
-            //xs
-            return  $this->measurements($xs = 'xs', $data['chest'], $data['stomach'], $data['bottom'], null);
-        } else  if (($data['weight'] > 110 && $data['weight'] <= 125) && ($height_cm  >=  155 && $height_cm <= 165)) {
 
-            //s
-            return $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-        } else if (($data['weight'] > 120 && $data['weight'] <= 145) && ($height_cm  >=  165 && $height_cm <= 175)) {
-            //M
+            if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
 
-            return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-        } else  if (($data['weight'] > 140 && $data['weight'] <= 165) && ($height_cm  >=  173 && $height_cm <= 185)) {
+                foreach ($s['bodyFeature'] as $b) {
+                    for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
 
-            //L
-            return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-        } else if (($data['weight'] > 165) && ($height_cm  >  185)) {
 
-            //XL
-            return  $this->measurements(null, $data['chest'], $data['stomach'], $data['bottom'], null);
-        } else {
-            return $size = 'M';
+
+                        if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+                            
+                            return $this->checkVariantIFExists($b['predicted_size']);
+                            
+
+                            
+                            // exit;
+                        } 
+                    }
+                }
+            } else {
+                
+                return $this->checkVariantIFExists('medium');
+            }
         }
-        //end female adult
-
 
     }
+    }
+   
     public function getSizeCount($predictedSize)
     {
         $variants = Variants::where([['product_id', '=', session('product')], ['size', '=', strtolower($predictedSize)]])->pluck('size');
@@ -762,7 +758,7 @@ class AttributeController extends Controller
         
 
 
-         $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $request->get('product_id')], ['status', '>', 0]])->get();
+         $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType','attrDetails')->where([['product_id', '=', $request->get('product_id')], ['status', '>', 0]])->get();
         //$variantsOfAttributes= Bodyfeature::where([['attr_id', '=', $request->get('id')], ['status', '>', 0]])->get();
         
         return view('size-charts.edit', [
@@ -775,7 +771,7 @@ class AttributeController extends Controller
     }
     public function createSizeChart($id)
     {
-        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType','attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
 
 
         return view('size-charts.create', [
@@ -892,11 +888,13 @@ class AttributeController extends Controller
     public function attributeType($id)
     {
         $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $viewBtn = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id], ['status', '=', 1]])->get();
 
 
         return view('attribute_types.index', [
             'id' => $id,
-            'attrTypeOfProducts' => $attributeTypeOfProducts
+            'attrTypeOfProducts' => $attributeTypeOfProducts,
+            'viewBtn'=> $viewBtn
         ]);
     }
     public function attributeTypeFront($id)
@@ -924,6 +922,44 @@ class AttributeController extends Controller
     }
     public function storeAttributeType(Request $request)
     {
+        
+        
+
+            if(($request->get("attribut_size")[0]==$request->get("attribut_size")[1]) || ($request->get("attribut_size")[0]==$request->get("attribut_size")[2])|| ($request->get("attribut_size")[1]==$request->get("attribut_size")[2]))
+            {
+                Session::flash('error','Values Cannot be same');
+                return back();
+                
+
+            }
+        
+            if(($request->get("attribut_size")[0]>=$request->get("attribut_size")[1]) || ($request->get("attribut_size")[0]>=$request->get("attribut_size")[2]))
+            {
+                Session::flash('error','Value Must be less than next');
+                return back();
+            
+
+            }
+             if($request->get("attribut_size")[1] > $request->get("attribut_size")[2])
+            {
+                Session::flash('error','Value must be less than next');
+                return back();
+           
+
+            }
+           
+            if(($request->get("attribut_size")[2]<=$request->get("attribut_size")[1]) || ($request->get("attribut_size")[2]<=$request->get("attribut_size")[0]))
+            {
+                Session::flash('error','Values must be greater than previous');
+                return back();
+               
+
+            }
+
+        
+         
+       
+    
 
 
         if (count($request['thumb']) > 3) {
@@ -982,7 +1018,7 @@ class AttributeController extends Controller
     }
     public function storeAttributeEdit(Request $request)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product')->find($request['id']);
+        $attributeTypeOfProducts = Attributetypes::with('product','attrDetails')->find($request['id']);
 
 
         return view('attribute_types.edit', [
@@ -995,12 +1031,68 @@ class AttributeController extends Controller
         //
 
 
+        
+
+        // $this->validate($request, [
+        //     "attribute_name" => "required",
+        //     "attribut_size.*"  => "required|numeric|distinct|min:2",
+
+
+
+        // ], [
+        //     "attribute_name.required" => "Please Enter Attribute name",
+
+
+
+        // ]);
         $data = $request->all();
         $attr = AttributeTypes::find($data['product_id']);
         $attr->name = $data['attribute_name'];
 
         $attr->status = (isset($data['is_required'])) ? 1 : 0;
         $attr->save();
+        for ($j = 0; $j < count($request['attribut_size']); $j++) {
+            $pid = $data['product_id'];
+            $attrImg = Attributeimages::where('attribute_type_id', '=',$pid)->get();
+            
+            if (isset($request->file('thumb')[$j])) {
+                $this->validate($request, [
+                    'thumb.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                ]);
+                // if (File::exists($attr->thumb)) {
+                //     File::delete($attr->thumb);
+                // }
+
+                $path = 'files/upload/admin/';
+
+
+                $thumb = $request->file('thumb')[$j];
+                $image = Str::slug($attr->name) . rand(12345678, 98765432) . '.' . $thumb->getClientOriginalExtension();
+                if (!file_exists($path)) {
+                    mkdir($path, 666, true);
+                }
+                Image::make($thumb)->resize(300, 300)->save($path . '_' . $image);
+
+                $attrImg[$j]->attr_size_value = $request['attribut_size'][$j];
+                // $attrImg[$j]->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
+                 $attrImg[$j]->attr_image_src = $path  . '_' . $image;
+                $attrImg[$j]->attribute_size_name = $request['attribut_size_name'][$j];
+                $attrImg[$j]->attribute_type_id = $attr->id;
+                $attrImg[$j]->product_id = $attr->product_id;
+                $attrImg[$j]->save();
+            }
+            else
+            {
+                
+                $attrImg[$j]->attr_size_value = $request['attribut_size'][$j];
+                // $attrImg->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
+                //  $attrImg->attr_image_src = $path  . '_' . $image;
+                $attrImg[$j]->attribute_size_name = $request['attribut_size_name'][$j];
+                $attrImg[$j]->attribute_type_id = $attr->id;
+                $attrImg[$j]->product_id = $attr->product_id;
+                $attrImg[$j]->save();
+            }
+        }
 
         return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
     }
@@ -1010,5 +1102,56 @@ class AttributeController extends Controller
         $attr->status = 0;
         $attr->save();
         return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
+    }
+
+    public function getAttributesOnHeightWeight(Request $request)
+    {
+        $response = array();
+
+        $data = $request->get('form');
+        $weight=0;
+        $height=0;
+        
+        if ($data['convertedMeasurements'] == true) {
+
+            $weight = $data['weight'] * 2.2;
+
+            $height = intval($data['heightcm']);
+        } else {
+            $height = intval(($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54));
+            $weight = intval($data['weight']);
+        }
+        
+
+        $sizeChart = Sizechart::where([['product_id','=',$data['conversionCount']],['weight_start','<=',$weight],['weight_end','>=',$weight],['height_start','<=',$height],['height_end','>=',$height],['status','=',1]])->get();
+        
+        foreach($sizeChart as $size)
+        {
+            echo $size->id;
+
+        }
+
+            // $bodyFeature = Bodyfeature::where([['attr_measurement_start','<=',$atSize->attr_size_value],['attr_measurement_end','>=',$atSize->attr_size_value]])->get();
+        
+        //
+
+
+        
+
+    }
+
+    public function sizeToShow(Request $request){
+        $data = $request->all();    
+        
+          $attributes = array();
+            $sizeRange = Bodyfeature::where([['sizechart_id','=',$data['sizechartid']],['attr_id','=',$data['attr_id']],['attr_measurement_start','<=',$data['sizevalue']],['attr_measurement_end','>=',$data['sizevalue']]])->get();
+            foreach($sizeRange as $size)
+            {
+                $attributes = (AttributeImages::where('attribute_type_id','=',$size->attr_id)->get())??0;
+                return $attributes;
+
+            }
+            
+            
     }
 }

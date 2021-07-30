@@ -1889,13 +1889,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     attributes: Object,
     tabnum: Object,
     recordsLength: Number,
-    currentRecord: Number
+    currentRecord: Number // sizechart:Object,
+
   },
   data: function data() {
     return {
@@ -1910,7 +1919,8 @@ __webpack_require__.r(__webpack_exports__);
         attributeDetails: [],
         arraytitle: {},
         arrayval: {}
-      }
+      },
+      attributesToShow: {}
     };
   },
   methods: {
@@ -1928,9 +1938,33 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.nextStep(this.tabnum.count + 1);
+    },
+    sizeToShow: function sizeToShow(id, sizeId, sizeValue) {
+      var _this = this;
+
+      var formd = new FormData();
+      formd.append('sizechartid', id);
+      formd.append('attr_id', sizeId);
+      formd.append('sizevalue', sizeValue);
+      axios.post(this.$appUrl + '/api/size-to-show', formd).then(function (res) {
+        _this.container.is_loading = false;
+        _this.attributesToShow = res.data;
+      });
+    },
+    showAttributeSizes: function showAttributeSizes(sizeChartId, attr_id, attrDetails) {
+      for (var $i = 0; $i <= attrDetails.length - 1; $i++) {
+        this.sizeToShow(sizeChartId, attr_id, attrDetails[$i].attr_size_value);
+      }
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.container.is_loading = true;
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('checkAttributeSizes', function (sizeChartId) {
+      _this2.showAttributeSizes(sizeChartId, _this2.attributes.id, _this2.attributes.attr_details);
+    });
+  }
 });
 
 /***/ }),
@@ -2292,6 +2326,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2383,37 +2419,48 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       attr_third: false,
       tabnumber: 1,
       newapp: false,
+      sizeChartId: {},
       image_us: this.$appUrl + "/images/us.png",
       image_uk: this.$appUrl + "/images/uk.png"
     };
   },
   methods: {
-    formSubmit: function formSubmit() {
+    getAttributesOnHeightWeight: function getAttributesOnHeightWeight(container) {
       var _this = this;
 
+      axios.post(this.$appUrl + '/api/getAttributesOnHeightWeight', container).then(function (res) {
+        _this.sizeChartId = res.data;
+        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('checkAttributeSizes', _this.sizeChartId);
+      });
+    },
+    formSubmit: function formSubmit() {
+      var _this2 = this;
+
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("formsubmit", function (container) {
-        _this.form.heightfoot = container.form.heightfoot;
-        _this.form.heightinch = container.form.heightinch;
-        _this.form.heightcm = container.form.heightcm;
-        _this.form.weight = container.form.weight;
-        _this.form.age = container.form.age;
-        _this.tabnumber = container.form.tabnumber;
-        _this.n = container.form.tabnumber;
-        _this.form.convertedMeasurements = container.form.convertedMeasurements;
-        _this.conversionCount = container.form.conversionCount;
-        _this.firstTab = container.firstTab;
+        _this2.getAttributesOnHeightWeight(container);
+
+        _this2.form.heightfoot = container.form.heightfoot;
+        _this2.form.heightinch = container.form.heightinch;
+        _this2.form.heightcm = container.form.heightcm;
+        _this2.form.weight = container.form.weight;
+        _this2.form.age = container.form.age;
+        _this2.tabnumber = container.form.tabnumber;
+        _this2.n = container.form.tabnumber;
+        _this2.form.convertedMeasurements = container.form.convertedMeasurements;
+        _this2.conversionCount = container.form.conversionCount;
+        _this2.firstTab = container.firstTab;
       });
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("attributeone", function (container) {
-        _this.chest = container;
-        _this.lastTab = false;
-        _this.tabnumber = container.tabnumber;
-        _this.n = container.tabnumber;
+        _this2.chest = container;
+        _this2.lastTab = false;
+        _this2.tabnumber = container.tabnumber;
+        _this2.n = container.tabnumber;
       });
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("resetForm", function (tabnum) {
-        _this.lastTab = false;
-        _this.tabnumber = tabnum;
+        _this2.lastTab = false;
+        _this2.tabnumber = tabnum;
 
-        _this.restart();
+        _this2.restart();
       });
     },
     nextStep: function nextStep(n) {
@@ -2439,7 +2486,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.nextStep(1);
     },
     showBodyFit: function showBodyFit() {
-      var _this2 = this;
+      var _this3 = this;
 
       var id = new FormData();
       var shop_name = window.location.hostname;
@@ -2448,18 +2495,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post(this.$appUrl + "/api/permission-to-show", id).then(function (res) {
         if (res.data.display == true) {
           if (res.data.clearLog == true) {
-            _this2.newapp = true;
+            _this3.newapp = true;
 
-            _this2.dev_reset();
+            _this3.dev_reset();
           } else {
-            _this2.newapp = false;
+            _this3.newapp = false;
           }
 
-          for (var k = 0; k <= _this2.product.options.length; k++) {
-            if (_this2.allow) {
-              if (_this2.product.options[k].toLowerCase() == "size") {
-                _this2.allow = false;
-                _this2.showBodyFitApp = true;
+          for (var k = 0; k <= _this3.product.options.length; k++) {
+            if (_this3.allow) {
+              if (_this3.product.options[k].toLowerCase() == "size") {
+                _this3.allow = false;
+                _this3.showBodyFitApp = true;
               }
             } else {
               break;
@@ -2467,14 +2514,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         } else {
           if (res.data.clearLog == true) {
-            _this2.dev_reset();
+            _this3.dev_reset();
 
-            _this2.newapp = true;
+            _this3.newapp = true;
           } else {
-            _this2.newapp = false;
+            _this3.newapp = false;
           }
 
-          _this2.showBodyFitApp = false;
+          _this3.showBodyFitApp = false;
         }
       });
     },
@@ -2511,20 +2558,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     getAttributes: function getAttributes() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then(function (res) {
-        _this3.attributes = res.data;
+        _this4.attributes = res.data;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
-          _this3.lastTab = true;
+          _this4.lastTab = true;
         });
 
         if (localStorage.getItem("recommended_size") != null) {
-          if (_this3.newapp == true) {
-            _this3.tabnumber = 1;
+          if (_this4.newapp == true) {
+            _this4.tabnumber = 1;
           } else {
-            _this3.tabnumber = parseInt(_this3.attributes.length) + 2;
-            _this3.lastTab = true;
+            _this4.tabnumber = parseInt(_this4.attributes.length) + 2;
+            _this4.lastTab = true;
           }
         }
       });
@@ -2859,6 +2906,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  props: {
+    product: Object
+  },
   data: function data() {
     return {
       container: {
@@ -3083,7 +3133,9 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    this.container.form.conversionCount = this.product.id;
+  },
   watch: {
     "container.form.heightfoot": function containerFormHeightfoot() {
       this.validateHeight();
@@ -3255,7 +3307,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     product: Object,
-    form: Object
+    form: Object,
+    recordsLength: Number
   },
   data: function data() {
     return {
@@ -43510,37 +43563,66 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "x-custom-container x-text-center x-mb-5" }, [
-      _c(
-        "div",
-        { staticClass: " x-row" },
-        _vm._l(_vm.attributes.attr_details, function(row) {
-          return _c("div", { key: row.id, staticClass: "col-md-4 parent " }, [
-            _c("img", {
-              attrs: {
-                id: "chest1",
-                src: _vm.$appUrl + "/" + row.attr_image_src
-              },
-              on: {
-                click: function($event) {
-                  return _vm.chest(row.attr_size_value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("p", { staticClass: " fit-advisor-options-text" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(row.attribute_size_name) +
-                  "\n                "
+      _vm.container.is_loading
+        ? _c("div", { staticClass: "x-col-12" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      !_vm.container.is_loading
+        ? _c(
+            "div",
+            { staticClass: " x-row" },
+            _vm._l(_vm.attributesToShow, function(row) {
+              return _c(
+                "div",
+                { key: row.id, staticClass: "col-md-4 parent" },
+                [
+                  _c("img", {
+                    attrs: {
+                      id: "chest1",
+                      src: _vm.$appUrl + "/" + row.attr_image_src
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.chest(row.attr_size_value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      staticClass: " fit-advisor-options-text",
+                      attrs: { title: row.attr_size_value }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(row.attribute_size_name) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ]
               )
-            ])
-          ])
-        }),
-        0
-      )
+            }),
+            0
+          )
+        : _vm._e()
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _c(
+      "div",
+      {
+        staticClass:
+          "m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1",
+        staticStyle: { position: "fixed" },
+        attrs: { id: "steps-mark" }
+      },
+      _vm._l(parseInt(_vm.recordsLength) + parseInt(2), function(row) {
+        return _c("span", { key: row.id, staticClass: "step" })
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = [
@@ -43551,22 +43633,10 @@ var staticRenderFns = [
     return _c(
       "div",
       {
-        staticClass:
-          "m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1",
-        staticStyle: { position: "fixed" },
-        attrs: { id: "steps-mark" }
+        staticClass: "spinner-border spinner-position",
+        attrs: { role: "status" }
       },
-      [
-        _c("span", { staticClass: "step" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "step active" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "step" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "step" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "step" })
-      ]
+      [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
     )
   }
 ]
@@ -44080,7 +44150,11 @@ var render = function() {
                             }
                           ]
                         },
-                        [_c("form-component")],
+                        [
+                          _c("form-component", {
+                            attrs: { product: _vm.product }
+                          })
+                        ],
                         1
                       ),
                       _vm._v(" "),
@@ -44128,7 +44202,11 @@ var render = function() {
                         },
                         [
                           _c("result-component", {
-                            attrs: { product: _vm.product, form: _vm.form }
+                            attrs: {
+                              product: _vm.product,
+                              form: _vm.form,
+                              recordsLength: _vm.attributes.length
+                            }
                           })
                         ],
                         1
@@ -45086,7 +45164,19 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(3)
+    _c(
+      "div",
+      {
+        staticClass:
+          "m-result x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1 x-offset-2",
+        staticStyle: { "text-align": "center", position: "fixed" },
+        attrs: { id: "steps-mark" }
+      },
+      _vm._l(parseInt(_vm.recordsLength) + parseInt(2), function(row) {
+        return _c("span", { key: row.id, staticClass: "step" })
+      }),
+      0
+    )
   ])
 }
 var staticRenderFns = [
@@ -45140,27 +45230,6 @@ var staticRenderFns = [
           },
           [_vm._v("Learn More")]
         )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "m-result x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1 x-offset-2",
-        staticStyle: { "text-align": "center", position: "fixed" },
-        attrs: { id: "steps-mark" }
-      },
-      [
-        _c("span", { staticClass: "step" }),
-        _c("span", { staticClass: "step" }),
-        _c("span", { staticClass: "step" }),
-        _c("span", { staticClass: "step" }),
-        _c("span", { staticClass: "step active" })
       ]
     )
   }

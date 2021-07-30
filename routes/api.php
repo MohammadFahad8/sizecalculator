@@ -23,5 +23,7 @@ Route::post('/size-recommend',[App\Http\Controllers\AttributeController::class,'
 Route::post('/add-or-update-product',[App\Http\Controllers\AttributeController::class,'addOrUpdateProduct']);
 Route::post('/permission-to-show',[App\Http\Controllers\AttributeController::class,'permissionToShowBodyFit']);
 Route::get('/get-attrbutes/{id}',[App\Http\Controllers\AttributeController::class,'attributeTypeFront']);
+Route::post('/getAttributesOnHeightWeight',[App\Http\Controllers\AttributeController::class,'getAttributesOnHeightWeight']);
+Route::post('/size-to-show',[App\Http\Controllers\AttributeController::class,'sizeToShow']);
 
 

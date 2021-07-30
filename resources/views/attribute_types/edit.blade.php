@@ -3,11 +3,11 @@
 @section('content')
 @include('partials_attributes.style')
 
-<div class="row mt-5 offset-3 ml-5 " style="10px !important">
+<div class="row mt-5  " >
     @include('partials_attributes.sidebar')
     <div class="col-md-9">  
-<div class="card  w-75">
-    <div class="card-header">@include('snippets.buttonback'){{ __('Add Attribute Type') }}</div>
+<div class="card ">
+    <div class="card-header">@include('snippets.buttonback'){{ __('Edit Attribute Type') }}</div>
     <div class="card-body">
         
         <form method="POST" action="{{ route('attributesTypes.update') }}" enctype="multipart/form-data">
@@ -15,7 +15,7 @@
             <input type="hidden" name="product_id" value="{{ $attrId }}">
             <div class="form-group row">
                 <label for="name"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Attribute Name') }}</label>
+                       class="col-md-3 col-form-label text-md-right">{{ __('Attribute Name') }}</label>
 
                 <div class="col-md-6">
                     <input id="attribute_name" type="text"
@@ -30,9 +30,57 @@
                     @enderror
                 </div>
             </div>
+            @foreach ( $attrTypeOfProduct->attrDetails as $at)
+            
+            <div class="form-group row">
+                <label for="attribut_size"
+                       class="col-md-3 col-form-label text-md-right">{{ __('size ') }}</label>
+
+                <div class="col-md-2">
+                    <input tabindex="1" id="attribut_size" type="number"
+                           class="form-control @error('attribut_size') is-invalid @enderror" name="attribut_size[]"
+                            required min="1" autocomplete="off" value="{{ $at->attr_size_value}}"
+                           >
+
+                    @error('attribut_size')
+                    <span class="invalid-feedback" role="alert">
+                        <strong>{{ $message }}</strong>
+                    </span>
+                    @enderror
+                </div>
+                <div class="col-md-2">
+                    <input tabindex="1" id="attribut_size" type="text" class="form-control " readonly value="{{ $at->attribute_size_name }}" name="attribut_size_name[]" required="" autocomplete="off" >
+
+                </div>
+                <div class="col-md-5">
+                    
+                    
+                    <input class="form-control-file attr-img ml-md-n2 ml-lg-n2 @error('thumb')'is-invalid' @enderror" type="file" name="thumb[]"
+                           id="thumb"   >
+                               
+                           @error('thumb')
+                           <span class="invalid-feedback" role="alert">
+                               <strong>{{ $message }}</strong>
+                           </span>
+                           @else
+                            <span>
+                            <strong class="max-msg text text-danger d-none">Maximum 3 Allowed*</strong>
+                       </span> 
+                           @enderror
+
+                   
+                
+
+
+
+            
+        </div>
+            </div>
+                
+            @endforeach
             <div class="form-group row">
                 <label for="name"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Product Name') }}</label>
+                       class="col-md-3 col-form-label text-md-right">{{ __('Product Name') }}</label>
 
                 <div class="col-md-6">
                     <input id="product_name" type="text"
@@ -51,7 +99,7 @@
 
             <div class="form-group row">
                 <label for="Role"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Status') }}</label>
+                       class="col-md-3 col-form-label text-md-right">{{ __('Status') }}</label>
 
 
                 <div class="col-md-6">

@@ -121,7 +121,7 @@
     </div>
 
     <div id="steps-mark" style="text-align: center; position:fixed" class="m-result x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1 x-offset-2">
-        <span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step active"></span>
+      <span class="step" v-for="(row) in parseInt(recordsLength) + parseInt(2)" :key="row.id"></span>
     </div>
 </div>
 </template>
@@ -132,7 +132,9 @@ import EventBus from "../event-bus";
 export default {
     props: {
         product: Object,
-        form: Object
+        form: Object,
+        recordsLength:Number,
+
     },
     data() {
         return {

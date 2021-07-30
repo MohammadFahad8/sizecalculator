@@ -20,7 +20,7 @@
             <div class="col-md-9">
                 <a href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
               
-                <a href="{{ route('sizechart.home',['id'=>$id]) }}"  class="btn btn-info btn-md button-add border border-light float-right ">View Sizes</a>
+                <a href="{{ route('sizechart.home',['id'=>$id]) }}" onclick="{{ (count($viewBtn)==0)?'viewSizes()':'' }}" class="btn btn-info btn-md button-add border border-light float-right " id="view-size">View Sizes</a>
               </div>
         </div>
        </div>
@@ -60,7 +60,7 @@
             </select></td>
             {{-- <td><a href="{{ route('sizechart.home',['id'=>$attrTypeOfProducts[0]['product']->product_id ]) }}"  class="">View Sizes</a></td> --}}
             <td><a href="{{ route('attributesTypes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
-            {{-- <td><a href="{{ route('attributesTypes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td> --}}
+            <td><a href="{{ route('attributesTypes.delete',['id'=>$attr->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td>
 
     </tr>
     @empty
@@ -199,11 +199,22 @@
     })
 </script>
 <script>
+
+function viewSizes(e)
+            {
+              
+            
+            toastr.warning('Set Atleast One Attribute')
+              $('#view-size').attr('href','javascript:void(0)');
+            }
   $(function(){
     $("#loader").fadeOut("slow", function() {
                 // will fade out the whole DIV that covers the website.
                 $("#preloader").delay(300).fadeOut("slow");
             }); 
+
+
+            
   })
   
 </script>
