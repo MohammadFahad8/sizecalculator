@@ -9,7 +9,7 @@
         </p>
 
         <div class="x-custom-container x-text-center x-mb-5">
-          <div class="x-col-12" v-if="container.is_loading">
+          <div class="x-col-12 ml-n3" v-if="container.is_loading">
                     <div class="spinner-border spinner-position" role="status">
                                                 <span class="sr-only">Loading...</span>
                     </div>
@@ -93,12 +93,14 @@ export default {
 
             this.nextStep(this.tabnum.count + 1);
         },
-        sizeToShow: function(id,sizeId,sizeValue)
+        sizeToShow: function(id,sizeId,attr_details)
         {
+            
             var formd = new FormData();
             formd.append('sizechartid',id)
             formd.append('attr_id',sizeId)
-            formd.append('sizevalue',sizeValue)
+            
+            formd.append('attr_details',JSON.stringify(attr_details))
             
 
             axios.post(this.$appUrl+'/api/size-to-show',formd).then((res)=>{
@@ -108,14 +110,12 @@ export default {
             })
 
         },
-        showAttributeSizes:function(sizeChartId,attr_id,attrDetails)
+        showAttributeSizes:function(sizeChartId,attr_id)
         {
-            
-            for(var $i=0;$i<=attrDetails.length-1;$i++)
-            {
-                this.sizeToShow(sizeChartId,attr_id,attrDetails[$i].attr_size_value)
+           
+                this.sizeToShow(sizeChartId,attr_id,this.attributes.attr_details)
 
-            }
+            
 
         }
     },
@@ -123,7 +123,7 @@ export default {
         this.container.is_loading=true;
         EventBus.$on('checkAttributeSizes',(sizeChartId)=>{
 
-            this.showAttributeSizes(sizeChartId,this.attributes.id,this.attributes.attr_details)
+            this.showAttributeSizes(sizeChartId,this.attributes.id)
           
         })
     }

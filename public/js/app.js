@@ -1939,22 +1939,20 @@ __webpack_require__.r(__webpack_exports__);
 
       this.nextStep(this.tabnum.count + 1);
     },
-    sizeToShow: function sizeToShow(id, sizeId, sizeValue) {
+    sizeToShow: function sizeToShow(id, sizeId, attr_details) {
       var _this = this;
 
       var formd = new FormData();
       formd.append('sizechartid', id);
       formd.append('attr_id', sizeId);
-      formd.append('sizevalue', sizeValue);
+      formd.append('attr_details', JSON.stringify(attr_details));
       axios.post(this.$appUrl + '/api/size-to-show', formd).then(function (res) {
         _this.container.is_loading = false;
         _this.attributesToShow = res.data;
       });
     },
-    showAttributeSizes: function showAttributeSizes(sizeChartId, attr_id, attrDetails) {
-      for (var $i = 0; $i <= attrDetails.length - 1; $i++) {
-        this.sizeToShow(sizeChartId, attr_id, attrDetails[$i].attr_size_value);
-      }
+    showAttributeSizes: function showAttributeSizes(sizeChartId, attr_id) {
+      this.sizeToShow(sizeChartId, attr_id, this.attributes.attr_details);
     }
   },
   mounted: function mounted() {
@@ -1962,7 +1960,7 @@ __webpack_require__.r(__webpack_exports__);
 
     this.container.is_loading = true;
     _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('checkAttributeSizes', function (sizeChartId) {
-      _this2.showAttributeSizes(sizeChartId, _this2.attributes.id, _this2.attributes.attr_details);
+      _this2.showAttributeSizes(sizeChartId, _this2.attributes.id);
     });
   }
 });
@@ -43564,7 +43562,7 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "x-custom-container x-text-center x-mb-5" }, [
       _vm.container.is_loading
-        ? _c("div", { staticClass: "x-col-12" }, [_vm._m(0)])
+        ? _c("div", { staticClass: "x-col-12 ml-n3" }, [_vm._m(0)])
         : _vm._e(),
       _vm._v(" "),
       !_vm.container.is_loading

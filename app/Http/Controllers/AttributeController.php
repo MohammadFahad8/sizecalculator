@@ -1141,13 +1141,19 @@ class AttributeController extends Controller
     }
 
     public function sizeToShow(Request $request){
-        $data = $request->all();    
+        
+        $data = $request->all();   
+        $attrdetails = json_decode($data['attr_details']);
+        
+   
         
           $attributes = array();
+          for($i=0;$i<=3;$i++){
             $sizeRange = Bodyfeature::where([['sizechart_id','=',$data['sizechartid']],['attr_id','=',$data['attr_id']],['attr_measurement_start','<=',$data['sizevalue']],['attr_measurement_end','>=',$data['sizevalue']]])->get();
+          }
             foreach($sizeRange as $size)
             {
-                $attributes = (AttributeImages::where('attribute_type_id','=',$size->attr_id)->get())??0;
+                $attributes = (AttributeImages::where('attribute_type_id','=',$size->attr_id)->first())??0;
                 return $attributes;
 
             }
