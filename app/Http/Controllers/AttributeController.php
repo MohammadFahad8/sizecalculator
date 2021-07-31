@@ -1029,17 +1029,74 @@ try{
             'attrTypeOfProduct' => $attributeTypeOfProducts
         ]);
     }
+   
     public function storeAttributeUpdate(Request $request)
     {
         //
 
 
+        
+
+        // $this->validate($request, [
+        //     "attribute_name" => "required",
+        //     "attribut_size.*"  => "required|numeric|distinct|min:2",
+
+
+
+        // ], [
+        //     "attribute_name.required" => "Please Enter Attribute name",
+
+
+
+        // ]);
         $data = $request->all();
         $attr = AttributeTypes::find($data['product_id']);
         $attr->name = $data['attribute_name'];
 
         $attr->status = (isset($data['is_required'])) ? 1 : 0;
         $attr->save();
+        for ($j = 0; $j < count($request['attribut_size']); $j++) {
+            $pid = $data['product_id'];
+            $attrImg = Attributeimages::where('attribute_type_id', '=',$pid)->get();
+            
+            if (isset($request->file('thumb')[$j])) {
+                $this->validate($request, [
+                    'thumb.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+                ]);
+                // if (File::exists($attr->thumb)) {
+                //     File::delete($attr->thumb);
+                // }
+
+                $path = 'files/upload/admin/';
+
+
+                $thumb = $request->file('thumb')[$j];
+                $image = Str::slug($attr->name) . rand(12345678, 98765432) . '.' . $thumb->getClientOriginalExtension();
+                if (!file_exists($path)) {
+                    mkdir($path, 666, true);
+                }
+                Image::make($thumb)->resize(300, 300)->save($path . '_' . $image);
+
+                $attrImg[$j]->attr_size_value = $request['attribut_size'][$j];
+                // $attrImg[$j]->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
+                 $attrImg[$j]->attr_image_src = $path  . '_' . $image;
+                $attrImg[$j]->attribute_size_name = $request['attribut_size_name'][$j];
+                $attrImg[$j]->attribute_type_id = $attr->id;
+                $attrImg[$j]->product_id = $attr->product_id;
+                $attrImg[$j]->save();
+            }
+            else
+            {
+                
+                $attrImg[$j]->attr_size_value = $request['attribut_size'][$j];
+                // $attrImg->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
+                //  $attrImg->attr_image_src = $path  . '_' . $image;
+                $attrImg[$j]->attribute_size_name = $request['attribut_size_name'][$j];
+                $attrImg[$j]->attribute_type_id = $attr->id;
+                $attrImg[$j]->product_id = $attr->product_id;
+                $attrImg[$j]->save();
+            }
+        }
 
         return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
     }
