@@ -3,10 +3,10 @@
 @section('content')
 @include('partials_attributes.style')
 
-<div class="row mt-5 offset-3 ml-5 " style="10px !important">
+<div class="row mt-5  " >
     @include('partials_attributes.sidebar')
     <div class="col-md-9">  
-<div class="card  w-75">
+<div class="card  ">
     <div class="card-header">@include('snippets.buttonback'){{ __('Add Attribute Type') }}</div>
     <div class="card-body">
         

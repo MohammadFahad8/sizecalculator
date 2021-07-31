@@ -765,10 +765,13 @@ try{
         $sizechart->save();
 
         $body = Bodyfeature::where('sizechart_id', '=', $request->get('id'))->first();
+        if($body){
 
         $body->status = 0;
         $body->save();
-        return   redirect()->route('sizechart.home', ['id' => $p_id]);
+     
+        }
+           return   redirect()->route('sizechart.home', ['id' => $p_id]);
     }
     public function sizeChartEdit(Request $request)
     {
@@ -806,7 +809,7 @@ try{
     public function sizeChartPost(Request $request)
     {
 
-
+try{
         $this->validate($request, [
             'weight_start' => 'required|min:10|max:999|numeric',
             'weight_end' => 'required|min:10|max:999|numeric',
@@ -853,11 +856,19 @@ try{
             $body->attr_name = strtolower($request->get('attribute_type_name')[$i]);
             $body->save();
         }
+        Session::flash('success','Added Successfully');
 
         return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
+        }
+        catch(\Exception $e)
+        {
+            Session::flash('error','*Invalid form');
+            return back();
+        }
     }
     public function sizeChartUpdatePost(Request $request)
     {
+        try{
         $this->validate($request, [
             'weight_start' => 'required|min:10|max:999|numeric',
             'weight_end' => 'required|min:10|max:999|numeric',
@@ -907,7 +918,14 @@ try{
             $b[$i]['attr_name'] = strtolower($request->get('attribute_type_name')[$i]);
             $b[$i]->save();
         }
+        Session::flash('success','Updated Successfully');
         return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
+    }
+    catch(\Exception $e)
+    {
+        Session::flash('error','*Invalid form');
+        return back();
+    }
     }
     public function attributeType($id)
     {
@@ -1031,5 +1049,5 @@ try{
         $attr->save();
         return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
     }
-            
+
 }

@@ -2,10 +2,25 @@
 @extends('layouts.app')
 @section('content')
 @include('partials_attributes.style')
-<div class="row mt-5 " style="margin-left:10px !important">
+ <div class="row">
+        <div class="col-md-12">
+            @if (session('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                </div>
+            @endif
+            @if (session('error'))
+                <div class="alert alert-danger" role="alert">
+                   <span class="is-invalid">{{ session('error') }}</span> 
+                </div>
+            @endif
+        </div>
+    </div>
+<div class="row mt-5 " >
+   
     @include('partials_sizes.sidebar')
     <div class="col-md-9 ">
-<div class="card  w-75">
+<div class="card  ">
     <div class="card-header">@include('snippets.buttonback'){{ __('Add Size') }}</div>
     <div class="card-body">
         
@@ -94,7 +109,7 @@
                 <div class="col-3">
                     <input tabindex="{{ $key + 5 }}" id="body_measurement_start" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_start') is-invalid @enderror"
-                           name="body_measurement_start[]" placeholder="Enter Start..." >
+                           name="body_measurement_start[]" placeholder="Enter Start..." required >
 
                     @error('body_measurement_start')
                     <span class="invalid-feedback" role="alert">
@@ -106,7 +121,7 @@
                 <div class="col-3">
                     <input tabindex="{{ $key + 6 }}" id="body_measurement_end" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_end') is-invalid @enderror"
-                           name="body_measurement_end[]" placeholder="Enter End..." >
+                           name="body_measurement_end[]" placeholder="Enter End..." required >
 
                     @error('body_measurement_end')
                     <span class="invalid-feedback" role="alert">

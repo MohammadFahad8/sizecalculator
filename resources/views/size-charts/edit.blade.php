@@ -2,10 +2,24 @@
 @extends('layouts.app')
 @section('content')
 @include('partials_attributes.style')
-<div class="row mt-5 " style="margin-left:10px !important">
+<div class="row">
+    <div class="col-md-12">
+        @if (session('success'))
+            <div class="alert alert-success" role="alert">
+                {{ session('success') }}
+            </div>
+        @endif
+        @if (session('error'))
+            <div class="alert alert-danger" role="alert">
+               <span class="is-invalid">{{ session('error') }}</span> 
+            </div>
+        @endif
+    </div>
+</div>
+<div class="row" >
     @include('partials_sizes.sidebar')
     <div class="col-md-9 ">
-<div class="card  w-75">
+<div class="card  ">
     <div class="card-header">@include('snippets.buttonback'){{ __('Edit Size') }}</div>
     <div class="card-body">
         

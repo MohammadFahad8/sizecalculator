@@ -6,7 +6,7 @@
 
 
 {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
-<div class="row mt-5  " style="margin-left:10px !important" id="size-chart">
+<div class="row mt-5  "  id="size-chart">
       
 @include('partials_attributes.sidebar')
 <div class="col-md-8" >
@@ -50,7 +50,7 @@
             <td>{{ $attr->height_end }}</td>
             <td>{{ $attr->weight_start }} </td>
             <td>{{ $attr->weight_end }} </td>
-            <td>{{ $attr->bodyFeature[0]->predicted_size }} </td>
+            <td>{{ $attr->bodyFeature[0]->predicted_size??'n/a' }} </td>
           {{-- <div class="text-center"> <td class=" text-center"><span class="badge badge-pill badge-warning">{{$sizeChart[0]['product']['name']}} </span></td></div>  --}}
             <td class="text-center">
               <div class="col">
