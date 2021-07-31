@@ -3590,6 +3590,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     var _this4 = this;
 
+    this.is_loading = true;
     this.setupProduct(); // this.getProductDetails();
 
     this.form.conversionCount = this.product.id;

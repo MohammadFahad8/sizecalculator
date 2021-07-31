@@ -121,14 +121,24 @@
             </div>
            
             @endforeach
-             <div class="form-group row " >
+            {{-- checked --}}
+            <div class="form-group row">
                 <label for="predicted_size"
-                       class="col-md-4 col-form-label text-md-right">{{ __('Predicted Size') }}</label>
+                class="col-md-4 col-form-label text-md-right">{{ __('Predicted Size') }}</label>
 
                 <div class="col-md-6">
-                    <input id="predicted_size" type="text" required
-                           class="form-control @error('predicted_size') is-invalid @enderror"
-                           name="predicted_size" placeholder="Relatable Size" value="{{ $attr->predicted_size }}">
+                    <select class="form-control @error('predicted_size') is-invalid @enderror role" name="predicted_size">
+
+                        <option value=""> Please Select Size</option>
+
+                        
+                        @foreach($variants as $v)
+
+
+                            <option value="{{ $v['size'] }}" @if(strtolower($v['size']) == strtolower($attr->predicted_size)) selected @endif > {{ $v->size }}</option>
+                            {{-- <option value="{{ $v['size'] }}"  > {{ $v->size }}</option> --}}
+                        @endforeach
+                    </select>
 
                     @error('predicted_size')
                     <span class="invalid-feedback" role="alert">
@@ -137,6 +147,8 @@
                     @enderror
                 </div>
             </div>
+            {{-- checled --}}
+           
             {{-- <div class="form-group row">
                 <label for="Role"
                        class="col-md-4 col-form-label text-md-right">{{ __('Required') }}</label>

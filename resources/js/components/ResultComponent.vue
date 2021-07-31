@@ -630,6 +630,7 @@ export default {
         }
     },
     mounted() {
+        this.is_loading=true;
         
         this.setupProduct();
         // this.getProductDetails();

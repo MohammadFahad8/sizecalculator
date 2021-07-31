@@ -775,6 +775,7 @@ try{
 
 
         $sizechart = Sizechart::with('bodyFeature', 'product')->find($request->get('id'));
+        $variants = Variants::where('product_id', '=',$request->get('product_id'))->get();
         
 
 
@@ -785,18 +786,21 @@ try{
             'sizechart' => $sizechart,
             'current_product_id' => $request->get('product_id'),
             'id' => $request->get('id'),
-            'variantsOfAttributes' => $variantsOfAttributes
+            'variantsOfAttributes' => $variantsOfAttributes,
+            'variants'=>$variants
 
         ]);
     }
     public function createSizeChart($id)
     {
+        $variants = Variants::where([['product_id','=',$id]])->get();
         $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
 
 
         return view('size-charts.create', [
             'product_id' => $id,
-            'variantsOfAttributes' => $variantsOfAttributes
+            'variantsOfAttributes' => $variantsOfAttributes,
+            'variants'=>$variants
         ]);
     }
     public function sizeChartPost(Request $request)
@@ -1027,4 +1031,5 @@ try{
         $attr->save();
         return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
     }
+            
 }
