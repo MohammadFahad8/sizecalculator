@@ -1021,7 +1021,7 @@ try{
     }
     public function storeAttributeEdit(Request $request)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product')->find($request['id']);
+        $attributeTypeOfProducts = Attributetypes::with('product','attrDetails')->find($request['id']);
 
 
         return view('attribute_types.edit', [
