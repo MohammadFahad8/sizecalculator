@@ -43602,38 +43602,34 @@ var render = function() {
             "div",
             { staticClass: " x-row" },
             _vm._l(_vm.attributes.attr_items, function(row) {
-              return _c(
-                "div",
-                { key: row.id, staticClass: "col-md-4 parent " },
-                [
-                  _c("img", {
-                    attrs: {
-                      id: "chest1",
-                      src: _vm.$appUrl + "/" + row.attr_image_src
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.chest(row.attr_size_value)
-                      }
+              return _c("div", { staticClass: "col-md-4 parent " }, [
+                _c("img", {
+                  attrs: {
+                    id: "chest1",
+                    src: _vm.$appUrl + "/" + row.attr_image_src
+                  },
+                  on: {
+                    click: function($event) {
+                      return _vm.chest(row.attr_size_value)
                     }
-                  }),
-                  _vm._v(" "),
-                  _c(
-                    "p",
-                    {
-                      staticClass: " fit-advisor-options-text",
-                      attrs: { title: row.attr_size_value }
-                    },
-                    [
-                      _vm._v(
-                        "\n                    " +
-                          _vm._s(row.attribute_size_name) +
-                          "\n                "
-                      )
-                    ]
-                  )
-                ]
-              )
+                  }
+                }),
+                _vm._v(" "),
+                _c(
+                  "p",
+                  {
+                    staticClass: " fit-advisor-options-text",
+                    attrs: { title: row.attr_size_value }
+                  },
+                  [
+                    _vm._v(
+                      "\n                    " +
+                        _vm._s(row.attribute_size_name) +
+                        "\n                "
+                    )
+                  ]
+                )
+              ])
             }),
             0
           )

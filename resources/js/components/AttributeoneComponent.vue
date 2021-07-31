@@ -37,7 +37,7 @@
                 <div
                     class="col-md-4 parent "
                     v-for="row in attributes.attr_items"
-                    :key="row.id"
+                        
                     
                 >
                     <img

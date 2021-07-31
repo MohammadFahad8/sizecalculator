@@ -1092,7 +1092,7 @@ try{
                 $attributesjoined = DB::table('sizecharts as sz')
                 
                 ->join('bodyfeatures as bf', 'bf.sizechart_id', '=', 'sz.id')
-                ->join('attributeimages as ai', 'ai.attribute_type_id', '=', 'bf.attr_id')
+                ->join('attributeimages as ai', 'ai.id', '=', 'bf.attr_id')
                 ->join('attributetypes as at', 'at.product_id', '=','sz.product_id')
                 ->select('ai.*','bf.*','sz.*','at.*')
                 ->where('sz.weight_start', '<=',  $w )
