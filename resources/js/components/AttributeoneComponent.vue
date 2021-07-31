@@ -9,18 +9,43 @@
         </p>
 
         <div class="x-custom-container x-text-center x-mb-5">
-            <div class=" x-row">
+            <div class="x-row" v-if="is_loading">
+                  <div class="x-col-md-12">
+                                            <div class="spinner-border spinner-position" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+            </div>
+            <div class=" x-row" v-if="attributes.attr_items.length==0 && is_loading==false">
                 <div
                     class="col-md-4 parent "
                     v-for="row in attributes.attr_details"
                     :key="row.id"
+                    
                 >
                     <img
                         id="chest1"
                         :src="$appUrl+'/'+row.attr_image_src"
                         v-on:click="chest(row.attr_size_value)"
                     />
-                    <p class=" fit-advisor-options-text">
+                    <p :title="row.attr_size_value" class=" fit-advisor-options-text">
+                        {{ row.attribute_size_name }}
+                    </p>
+                </div>
+            </div>
+             <div class=" x-row"  v-if="attributes.attr_items.length>0 && is_loading==false"> 
+                <div
+                    class="col-md-4 parent "
+                    v-for="row in attributes.attr_items"
+                    :key="row.id"
+                    
+                >
+                    <img
+                        id="chest1"
+                        :src="$appUrl+'/'+row.attr_image_src"
+                        v-on:click="chest(row.attr_size_value)"
+                    />
+                    <p :title="row.attr_size_value" class=" fit-advisor-options-text">
                         {{ row.attribute_size_name }}
                     </p>
                 </div>
@@ -64,7 +89,9 @@ export default {
                 attributeDetails: [],
                 arraytitle: {},
                 arrayval: {}
-            }
+            },
+            is_loading: false,
+
         };
     },
     methods: {
@@ -83,6 +110,8 @@ export default {
             this.nextStep(this.tabnum.count + 1);
         }
     },
-    mounted() {}
+    mounted() {
+        this.is_loading= false;
+    }
 };
 </script>

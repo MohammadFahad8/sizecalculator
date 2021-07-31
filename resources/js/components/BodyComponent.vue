@@ -133,7 +133,7 @@ display: inline-block;
                             </div>
 
                             <div
-                                v-for="(row, key) in attributes"
+                                v-for="(row, key) in attributesToShow"
                                 :key="row.id"
                                 v-case="key + 2"
                             >
@@ -284,11 +284,24 @@ export default {
             newapp:false,
 
             image_us: this.$appUrl + "/images/us.png",
-            image_uk: this.$appUrl + "/images/uk.png"
+            image_uk: this.$appUrl + "/images/uk.png",
+            attributesToShow:{},
         };
     },
 
     methods: {
+        getAttributesToHeightWeight: function(form)
+        {
+            form.productkey =  this.product.id
+           
+           
+            axios.post(this.$appUrl+'/api/get-attributes-to-height-weight',form)
+            .then((res)=>{
+                this.attributesToShow =res.data
+                console.log(this.attributesToShow)
+            })
+        },
+
         formSubmit: function() {
             EventBus.$on("formsubmit", container => {
                 this.form.heightfoot = container.form.heightfoot;
@@ -303,6 +316,7 @@ export default {
                     container.form.convertedMeasurements;
                 this.conversionCount = container.form.conversionCount;
                 this.firstTab = container.firstTab;
+                this.getAttributesToHeightWeight(this.form);
             });
             EventBus.$on("attributeone", container => {
                 this.chest = container;

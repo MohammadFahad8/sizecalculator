@@ -1889,6 +1889,31 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -1910,7 +1935,8 @@ __webpack_require__.r(__webpack_exports__);
         attributeDetails: [],
         arraytitle: {},
         arrayval: {}
-      }
+      },
+      is_loading: false
     };
   },
   methods: {
@@ -1930,7 +1956,9 @@ __webpack_require__.r(__webpack_exports__);
       this.nextStep(this.tabnum.count + 1);
     }
   },
-  mounted: function mounted() {}
+  mounted: function mounted() {
+    this.is_loading = false;
+  }
 });
 
 /***/ }),
@@ -2384,36 +2412,48 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       tabnumber: 1,
       newapp: false,
       image_us: this.$appUrl + "/images/us.png",
-      image_uk: this.$appUrl + "/images/uk.png"
+      image_uk: this.$appUrl + "/images/uk.png",
+      attributesToShow: {}
     };
   },
   methods: {
-    formSubmit: function formSubmit() {
+    getAttributesToHeightWeight: function getAttributesToHeightWeight(form) {
       var _this = this;
 
+      form.productkey = this.product.id;
+      axios.post(this.$appUrl + '/api/get-attributes-to-height-weight', form).then(function (res) {
+        _this.attributesToShow = res.data;
+        console.log(_this.attributesToShow);
+      });
+    },
+    formSubmit: function formSubmit() {
+      var _this2 = this;
+
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("formsubmit", function (container) {
-        _this.form.heightfoot = container.form.heightfoot;
-        _this.form.heightinch = container.form.heightinch;
-        _this.form.heightcm = container.form.heightcm;
-        _this.form.weight = container.form.weight;
-        _this.form.age = container.form.age;
-        _this.tabnumber = container.form.tabnumber;
-        _this.n = container.form.tabnumber;
-        _this.form.convertedMeasurements = container.form.convertedMeasurements;
-        _this.conversionCount = container.form.conversionCount;
-        _this.firstTab = container.firstTab;
+        _this2.form.heightfoot = container.form.heightfoot;
+        _this2.form.heightinch = container.form.heightinch;
+        _this2.form.heightcm = container.form.heightcm;
+        _this2.form.weight = container.form.weight;
+        _this2.form.age = container.form.age;
+        _this2.tabnumber = container.form.tabnumber;
+        _this2.n = container.form.tabnumber;
+        _this2.form.convertedMeasurements = container.form.convertedMeasurements;
+        _this2.conversionCount = container.form.conversionCount;
+        _this2.firstTab = container.firstTab;
+
+        _this2.getAttributesToHeightWeight(_this2.form);
       });
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("attributeone", function (container) {
-        _this.chest = container;
-        _this.lastTab = false;
-        _this.tabnumber = container.tabnumber;
-        _this.n = container.tabnumber;
+        _this2.chest = container;
+        _this2.lastTab = false;
+        _this2.tabnumber = container.tabnumber;
+        _this2.n = container.tabnumber;
       });
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("resetForm", function (tabnum) {
-        _this.lastTab = false;
-        _this.tabnumber = tabnum;
+        _this2.lastTab = false;
+        _this2.tabnumber = tabnum;
 
-        _this.restart();
+        _this2.restart();
       });
     },
     nextStep: function nextStep(n) {
@@ -2439,7 +2479,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.nextStep(1);
     },
     showBodyFit: function showBodyFit() {
-      var _this2 = this;
+      var _this3 = this;
 
       var id = new FormData();
       var shop_name = window.location.hostname;
@@ -2448,18 +2488,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post(this.$appUrl + "/api/permission-to-show", id).then(function (res) {
         if (res.data.display == true) {
           if (res.data.clearLog == true) {
-            _this2.newapp = true;
+            _this3.newapp = true;
 
-            _this2.dev_reset();
+            _this3.dev_reset();
           } else {
-            _this2.newapp = false;
+            _this3.newapp = false;
           }
 
-          for (var k = 0; k <= _this2.product.options.length; k++) {
-            if (_this2.allow) {
-              if (_this2.product.options[k].toLowerCase() == "size") {
-                _this2.allow = false;
-                _this2.showBodyFitApp = true;
+          for (var k = 0; k <= _this3.product.options.length; k++) {
+            if (_this3.allow) {
+              if (_this3.product.options[k].toLowerCase() == "size") {
+                _this3.allow = false;
+                _this3.showBodyFitApp = true;
               }
             } else {
               break;
@@ -2467,14 +2507,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         } else {
           if (res.data.clearLog == true) {
-            _this2.dev_reset();
+            _this3.dev_reset();
 
-            _this2.newapp = true;
+            _this3.newapp = true;
           } else {
-            _this2.newapp = false;
+            _this3.newapp = false;
           }
 
-          _this2.showBodyFitApp = false;
+          _this3.showBodyFitApp = false;
         }
       });
     },
@@ -2511,20 +2551,20 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       });
     },
     getAttributes: function getAttributes() {
-      var _this3 = this;
+      var _this4 = this;
 
       axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then(function (res) {
-        _this3.attributes = res.data;
+        _this4.attributes = res.data;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
-          _this3.lastTab = true;
+          _this4.lastTab = true;
         });
 
         if (localStorage.getItem("recommended_size") != null) {
-          if (_this3.newapp == true) {
-            _this3.tabnumber = 1;
+          if (_this4.newapp == true) {
+            _this4.tabnumber = 1;
           } else {
-            _this3.tabnumber = parseInt(_this3.attributes.length) + 2;
-            _this3.lastTab = true;
+            _this4.tabnumber = parseInt(_this4.attributes.length) + 2;
+            _this4.lastTab = true;
           }
         }
       });
@@ -43511,40 +43551,114 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "x-custom-container x-text-center x-mb-5" }, [
-      _c(
-        "div",
-        { staticClass: " x-row" },
-        _vm._l(_vm.attributes.attr_details, function(row) {
-          return _c("div", { key: row.id, staticClass: "col-md-4 parent " }, [
-            _c("img", {
-              attrs: {
-                id: "chest1",
-                src: _vm.$appUrl + "/" + row.attr_image_src
-              },
-              on: {
-                click: function($event) {
-                  return _vm.chest(row.attr_size_value)
-                }
-              }
-            }),
-            _vm._v(" "),
-            _c("p", { staticClass: " fit-advisor-options-text" }, [
-              _vm._v(
-                "\n                    " +
-                  _vm._s(row.attribute_size_name) +
-                  "\n                "
+      _vm.is_loading
+        ? _c("div", { staticClass: "x-row" }, [_vm._m(0)])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.attributes.attr_items.length == 0 && _vm.is_loading == false
+        ? _c(
+            "div",
+            { staticClass: " x-row" },
+            _vm._l(_vm.attributes.attr_details, function(row) {
+              return _c(
+                "div",
+                { key: row.id, staticClass: "col-md-4 parent " },
+                [
+                  _c("img", {
+                    attrs: {
+                      id: "chest1",
+                      src: _vm.$appUrl + "/" + row.attr_image_src
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.chest(row.attr_size_value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      staticClass: " fit-advisor-options-text",
+                      attrs: { title: row.attr_size_value }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(row.attribute_size_name) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ]
               )
-            ])
-          ])
-        }),
-        0
-      )
+            }),
+            0
+          )
+        : _vm._e(),
+      _vm._v(" "),
+      _vm.attributes.attr_items.length > 0 && _vm.is_loading == false
+        ? _c(
+            "div",
+            { staticClass: " x-row" },
+            _vm._l(_vm.attributes.attr_items, function(row) {
+              return _c(
+                "div",
+                { key: row.id, staticClass: "col-md-4 parent " },
+                [
+                  _c("img", {
+                    attrs: {
+                      id: "chest1",
+                      src: _vm.$appUrl + "/" + row.attr_image_src
+                    },
+                    on: {
+                      click: function($event) {
+                        return _vm.chest(row.attr_size_value)
+                      }
+                    }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "p",
+                    {
+                      staticClass: " fit-advisor-options-text",
+                      attrs: { title: row.attr_size_value }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(row.attribute_size_name) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ]
+              )
+            }),
+            0
+          )
+        : _vm._e()
     ]),
     _vm._v(" "),
-    _vm._m(0)
+    _vm._m(1)
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "x-col-md-12" }, [
+      _c(
+        "div",
+        {
+          staticClass: "spinner-border spinner-position",
+          attrs: { role: "status" }
+        },
+        [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+      )
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -44085,7 +44199,7 @@ var render = function() {
                         1
                       ),
                       _vm._v(" "),
-                      _vm._l(_vm.attributes, function(row, key) {
+                      _vm._l(_vm.attributesToShow, function(row, key) {
                         return _c(
                           "div",
                           {

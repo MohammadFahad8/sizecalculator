@@ -19,6 +19,7 @@ use Illuminate\Http\Request;
 use App\Http\Helpers\Apihooks;
 use App\Models\Attributetypes;
 use App\Models\Attributeimages;
+use Illuminate\Support\Facades\DB;
 use Database\Seeders\DatabaseSeeder;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\File;
@@ -1048,6 +1049,88 @@ try{
         $attr->status = 0;
         $attr->save();
         return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
+    }
+
+    public function getAttributesOnHeightWeight(Request $request)
+    {
+        $data = $request->all();
+        
+        $h = 0;
+        $w = 0;
+        $response = array();
+        $container = array();
+
+        if ($data['convertedMeasurements'] == true) {
+
+            $w = intval($data['weight'] * 2.2);
+
+             $h =intval($data['heightcm']);
+        } else {
+            $h = intval(($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54));
+            $w = intval($data['weight']);
+        }
+        
+        $attributeTypeOfProducts = Attributetypes::with('attrDetails')->where([['product_id', '=', $data['productkey']], ['status', '>', 0]])
+        ->get();
+        // $size = Sizechart::with('attributecsb','bodyFeature')
+        // ->where([['weight_start','<=',$w],['weight_end','>=',$w],['height_start','<=',$h],['height_end','>=',$h]])
+        // ->whereHas('bodyFeature',function($q) use ($w,$h){
+            
+        //     $q->whereHas('attributecsb', function ( $query ) {
+          
+        //         $query->where('attr_measurement_start','<=','att_size_value')
+        //         ->where('attr_measurement_end','>=','att_size_value');
+        //     });
+
+        // })
+       
+        // ->get();
+        // echo json_encode($size);
+          //Following query in raw works perfect can be used later
+          
+          
+                $attributesjoined = DB::table('sizecharts as sz')
+                
+                ->join('bodyfeatures as bf', 'bf.sizechart_id', '=', 'sz.id')
+                ->join('attributeimages as ai', 'ai.attribute_type_id', '=', 'bf.attr_id')
+                ->join('attributetypes as at', 'at.product_id', '=','sz.product_id')
+                ->select('ai.*','bf.*','sz.*','at.*')
+                ->where('sz.weight_start', '<=',  $w )
+                ->where('sz.weight_end', '>=',  $w )
+                ->where('sz.height_start', '<=',  $h )
+                 ->where('sz.height_end', '>=',  $h )
+                // ->where('ai.attr_size_value', '>=',  'bf.attr_measurement_start' )
+                // ->where('ai.attr_size_value', '<=',  'bf.attr_measurement_end' )
+                
+                ->get();
+                // echo json_encode($attributesjoined);
+                foreach($attributesjoined as $key => $aj)
+                {
+                  
+                    if($aj->attr_size_value>=$aj->attr_measurement_start && $aj->attr_size_value <=$aj->attr_measurement_end)
+                    {
+                        $container[]=$aj;
+
+                    }
+
+                }
+                // $response['attr_details_hw']=$container;
+               // array_push($attributeTypeOfProducts,$response);
+                foreach($attributeTypeOfProducts as $at)
+                {
+                    $at['attr_items'] =$container;
+                }
+               
+               
+              
+                return $attributeTypeOfProducts;
+        
+        // $size = Sizechart::with('attributecsb','bodyFeature')
+        // ->where([['weight_start','<=',$w],['weight_end','>=',$w],['height_start','<=',$h],['height_end','>=',$h]])
+        
+
+        
+
     }
 
 }
