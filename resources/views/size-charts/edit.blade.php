@@ -99,7 +99,7 @@
                 </div>
             </div>
            
-            @foreach($sizechart->bodyFeature as $attr)
+            @forelse($sizechart->bodyFeature as $attr)
             
             
     
@@ -133,8 +133,11 @@
                     @enderror
                 </div>
             </div>
-           
-            @endforeach
+           @empty
+           <div class="text-center col-12">
+           <label class="text text-danger offset-1">*Sizes for this measurements weren't created</label>
+        </div>
+            @endforelse
             {{-- checked --}}
             <div class="form-group row">
                 <label for="predicted_size"
@@ -149,7 +152,7 @@
                         @foreach($variants as $v)
 
 
-                            <option value="{{ $v['size'] }}" @if(strtolower($v['size']) == strtolower($attr->predicted_size)) selected @endif > {{ $v->size }}</option>
+                            <option value="{{ $v['size'] }}" @if(strtolower($v['size']) == strtolower($attr->predicted_size??'n/a')) selected @endif > {{ $v->size }}</option>
                             {{-- <option value="{{ $v['size'] }}"  > {{ $v->size }}</option> --}}
                         @endforeach
                     </select>
