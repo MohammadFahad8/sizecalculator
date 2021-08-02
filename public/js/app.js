@@ -2450,21 +2450,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         } else if (i == 1) {
           var counte = 1;
-          console.log(at[1].attr_items[3].attribute_type_id);
-          console.log(at[1].id);
 
           for (var s = 0; s < at[i].attr_items.length; s++) {
             if (at[i].id != at[i].attr_items[s].attribute_type_id) {
               // console.log(s)
               at[i].attr_items.splice(s, 1);
+            } else if (at[i].id == at[i].attr_items[s].attribute_type_id) {
+              // console.log(s)
+              at[i].attr_items.shift(s - 1, 1); // at[i].attr_items.splice(s+1,1);
             }
 
-            if (at[i].id == at[i].attr_items[s].attribute_type_id) {
-              // console.log(s)
-              at[i].attr_items.splice(s - 1, 1);
-              at[i].attr_items.splice(s + 1, 1);
-              at[i].attr_items.pop(s - 1, 1);
-              at[i].attr_items.pop(s + 1, 1);
+            if (at[i].id < at[i].attr_items[s].attribute_type_id) {
+              at[i].attr_items.pop();
+              at[i].attr_items.pop();
             } //  if(at[i].id == at[i].attr_items[s].attribute_type_id )
             //      {
             //                 if(s-counte > 0){
@@ -3741,7 +3739,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://a7ab6424158b.ngrok.io';
+Vue.prototype.$appUrl = 'https://52dc136a70f7.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 /**

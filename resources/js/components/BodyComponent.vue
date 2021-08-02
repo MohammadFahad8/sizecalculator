@@ -341,32 +341,33 @@ export default {
          else if(i == 1)
          {var counte = 1
 
-                console.log(at[1].attr_items[3].attribute_type_id)
-                console.log(at[1].id)
+              
               for(var s=0; s < at[i].attr_items.length; s++)
              {
                 
                  
                  if( at[i].id != at[i].attr_items[s].attribute_type_id)
-                 {
+                    {
                     
                         // console.log(s)
                                 at[i].attr_items.splice(s,1);
-                                
-                        
                  
-             }     if( at[i].id == at[i].attr_items[s].attribute_type_id)
+                    }
+                  else if(at[i].id == at[i].attr_items[s].attribute_type_id)
                  {
                     
                         // console.log(s)
-                                at[i].attr_items.splice(s-1,1);
-                                at[i].attr_items.splice(s+1,1);
-                                at[i].attr_items.pop(s-1,1);
-                                at[i].attr_items.pop(s+1,1);
+                                at[i].attr_items.shift(s-1,1);
                                 
-                        
-                 
+                                
+                                // at[i].attr_items.splice(s+1,1);
+                    
              }   
+             if(at[i].id < at[i].attr_items[s].attribute_type_id )
+             {
+                    at[i].attr_items.pop();
+                    at[i].attr_items.pop();
+             }
             //  if(at[i].id == at[i].attr_items[s].attribute_type_id )
             //      {
                     
