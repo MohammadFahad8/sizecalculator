@@ -1111,7 +1111,7 @@ try{
     public function getAttributesOnHeightWeight(Request $request)
     {
         $data = $request->all();
-        
+
         $h = 0;
         $w = 0;
         $response = array();
@@ -1129,48 +1129,45 @@ try{
         
         $attributeTypeOfProducts = Attributetypes::with('attrDetails')->where([['product_id', '=', $data['productkey']], ['status', '>', 0]])
         ->get();
-        // $size = Sizechart::with('attributecsb','bodyFeature')
-        // ->where([['weight_start','<=',$w],['weight_end','>=',$w],['height_start','<=',$h],['height_end','>=',$h]])
-        // ->whereHas('bodyFeature',function($q) use ($w,$h){
-            
-        //     $q->whereHas('attributecsb', function ( $query ) {
-          
-        //         $query->where('attr_measurement_start','<=','att_size_value')
-        //         ->where('attr_measurement_end','>=','att_size_value');
-        //     });
-
-        // })
-       
-        // ->get();
-        // echo json_encode($size);
-          //Following query in raw works perfect can be used later
-          
-          
-                $attributesjoined = DB::table('sizecharts as sz')
+                $attributesjoined =Sizechart::with('bodyFeature','attributecsb')
+           
+                ->where('weight_start', '<=',  $w )
+                ->where('weight_end', '>=',  $w )
+                ->where('height_start', '<=',  $h )
+                 ->where('height_end', '>=',  $h )         
+                ->first();
                 
-                ->join('bodyfeatures as bf', 'bf.sizechart_id', '=', 'sz.id')
-                ->join('attributeimages as ai', 'ai.id', '=', 'bf.attr_id')
-                ->join('attributetypes as at', 'at.product_id', '=','sz.product_id')
-                ->select('ai.*','bf.*','sz.*','at.*')
-                ->where('sz.weight_start', '<=',  $w )
-                ->where('sz.weight_end', '>=',  $w )
-                ->where('sz.height_start', '<=',  $h )
-                 ->where('sz.height_end', '>=',  $h )
-                // ->where('ai.attr_size_value', '>=',  'bf.attr_measurement_start' )
-                // ->where('ai.attr_size_value', '<=',  'bf.attr_measurement_end' )
+                 
                 
-                ->get();
-                // echo json_encode($attributesjoined);
-                foreach($attributesjoined as $key => $aj)
-                {
-                  
-                    if($aj->attr_size_value>=$aj->attr_measurement_start && $aj->attr_size_value <=$aj->attr_measurement_end)
+                   for($i = 0; $i <= count($attributesjoined->bodyFeature) - 1; $i++)
+                   {
+                       
+                    for($j = 0; $j <= count($attributesjoined->attributecsb) - 1; $j++)
                     {
-                        $container[]=$aj;
+                        
+                        if($attributesjoined->bodyFeature[$i]->attr_measurement_start <= $attributesjoined->attributecsb[$j]->attr_size_value && $attributesjoined->bodyFeature[$i]->attr_measurement_end >= $attributesjoined->attributecsb[$j]->attr_size_value)
+                        {
+                            
+                            
+                            
+                            if($attributesjoined->bodyfeature[$i]->attr_id == $attributesjoined->attributecsb[$j]->attribute_type_id)
+                            {
+                                
+                                //this check is to ensure whether to enter the second matching record in same object or next object
+                                $container[]=$attributesjoined->attributecsb[$j];
+    
+                            }
+                            
+                           
+                        }
 
+ 
                     }
 
-                }
+                   }
+                  
+
+                
                 // $response['attr_details_hw']=$container;
                // array_push($attributeTypeOfProducts,$response);
                 foreach($attributeTypeOfProducts as $at)
@@ -1178,9 +1175,86 @@ try{
                     $at['attr_items'] =$container;
                 }
                
+                $count = 0;
+           $bcount = 0;
+           $scount = 0;
+           $nfcount = 0;
+                for( $i = 0; $i < count($attributeTypeOfProducts); $i++){ 
+    
+         if ( $i == 0) {
+            
+             for($k=0; $k < count($attributeTypeOfProducts[$i]['attr_items']); $k++)
+             {
+                 $fcount =count($attributeTypeOfProducts[$i]['attr_items']);
+                
+                 if($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$k]->attribute_type_id )
+                 {
+                     $count = $count+intval(1);
+                     $popcount = count($attributeTypeOfProducts[$i]['attr_items']) - $count;
+                    
+                 }
+            
+             }
+            
+             for($pc=0; $pc<$popcount; $pc++)
+             {
+                 echo getType($attributeTypeOfProducts[$i]['attr_items']);
+                 exit;
                
+                array_pop($attributeTypeOfProducts[$i]['attr_items']);
+               
+             }
+            
+         }
+         else if($i == 1)
+         {
+              for($s=0; $s < count($attributeTypeOfProducts[$i]['attr_items']); $s++)
+             {
+                
+                
+                 if($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$s]->attribute_type_id )
+                 {
+                    
+                      for($sc=$s; $sc<$s+1; $sc--)
+             {
+                
+                            array_splice($attributeTypeOfProducts[$i]['attr_items'],$sc - 1,1);
+                              array_splice($attributeTypeOfProducts[$i]['attr_items'],$sc + 1,1);
+                // $attributeTypeOfProducts[$i].attr_items.pop();
+             }
+
+                 
+                 
+                 }
+                 
+             }
+           
+         }
+         else
+         {
+              for($b=0; $b < count($attributeTypeOfProducts[$i]['attr_items']); $b++)
+             {
+                 
+                 if($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$b]->attribute_type_id )
+                 {
+                      $bcount = $bcount+intval(1);
+                     $shiftcount = count($attributeTypeOfProducts[$i]['attr_items']) - $bcount;
+   
+                 }
+            
+             }
+
+             for($sc=0; $sc<$shiftcount; $sc++)
+             {
+                 array_shift($attributeTypeOfProducts[$i]['attr_items']);
+             }
+
+         }
+        
+    
+     }
               
-                return $attributeTypeOfProducts;
+                 return $attributeTypeOfProducts;
         
         // $size = Sizechart::with('attributecsb','bodyFeature')
         // ->where([['weight_start','<=',$w],['weight_end','>=',$w],['height_start','<=',$h],['height_end','>=',$h]])

@@ -286,21 +286,108 @@ export default {
             image_us: this.$appUrl + "/images/us.png",
             image_uk: this.$appUrl + "/images/uk.png",
             attributesToShow:{},
+            fcount:0,
+            lcount:0,
         };
     },
 
     methods: {
+       
         getAttributesToHeightWeight: function(form)
         {
             form.productkey =  this.product.id
-           
+         
+         
            
             axios.post(this.$appUrl+'/api/get-attributes-to-height-weight',form)
             .then((res)=>{
-                this.attributesToShow =res.data
-                console.log(this.attributesToShow)
+             
+               
+                this.attributesToShow = res.data;
+             //this.getResult(res.data)
             })
         },
+         getResult: function(at){
+               console.log(at)
+    this.attributesToShow = at;
+    console.log(this.attributesToShow);
+              var count = 0;
+           var bcount = 0;
+           var scount = 0;
+           var nfcount = 0;
+                for( var i = 0; i < at.length; i++){ 
+    
+         if ( i == 0) {
+            
+             for(var k=0; k < at[i].attr_items.length; k++)
+             {
+                 this.fcount =at[i].attr_items.length;
+                
+                 if(at[i].id == at[i].attr_items[k].attribute_type_id )
+                 {
+                     count = count+parseInt(1);
+                     var popcount = at[i].attr_items.length - count;
+                    
+                 }
+            
+             }
+            
+             for(var pc=0; pc<popcount; pc++)
+             {
+                 at[i].attr_items.pop();
+             }
+            
+         }
+         else if(i == 1)
+         {
+              for(var s=0; s < at[i].attr_items.length; s++)
+             {
+                
+                
+                 if(at[i].id == at[i].attr_items[s].attribute_type_id )
+                 {
+                    
+                      for(var sc=s; sc<s+1; sc--)
+             {
+                
+                            at[i].attr_items.splice(sc - 1,1);
+                              at[i].attr_items.splice(sc + 1,1)
+                at[i].attr_items.pop();
+             }
+
+                 
+                 
+                 }
+                 
+             }
+           
+         }
+         else
+         {
+              for(var b=0; b < at[i].attr_items.length; b++)
+             {
+                 
+                 if(at[i].id == at[i].attr_items[b].attribute_type_id )
+                 {
+                      bcount = bcount+parseInt(1);
+                     var shiftcount = at[i].attr_items.length - bcount;
+   
+                 }
+            
+             }
+
+             for(var sc=0; sc<shiftcount; sc++)
+             {
+                 at[i].attr_items.shift();
+             }
+
+         }
+        
+    
+     }
+  
+        },
+       
 
         formSubmit: function() {
             EventBus.$on("formsubmit", container => {

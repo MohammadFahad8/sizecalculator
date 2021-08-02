@@ -2413,7 +2413,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       newapp: false,
       image_us: this.$appUrl + "/images/us.png",
       image_uk: this.$appUrl + "/images/uk.png",
-      attributesToShow: {}
+      attributesToShow: {},
+      fcount: 0,
+      lcount: 0
     };
   },
   methods: {
@@ -2422,9 +2424,55 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       form.productkey = this.product.id;
       axios.post(this.$appUrl + '/api/get-attributes-to-height-weight', form).then(function (res) {
-        _this.attributesToShow = res.data;
-        console.log(_this.attributesToShow);
+        _this.attributesToShow = res.data; //this.getResult(res.data)
       });
+    },
+    getResult: function getResult(at) {
+      console.log(at);
+      this.attributesToShow = at;
+      console.log(this.attributesToShow);
+      var count = 0;
+      var bcount = 0;
+      var scount = 0;
+      var nfcount = 0;
+
+      for (var i = 0; i < at.length; i++) {
+        if (i == 0) {
+          for (var k = 0; k < at[i].attr_items.length; k++) {
+            this.fcount = at[i].attr_items.length;
+
+            if (at[i].id == at[i].attr_items[k].attribute_type_id) {
+              count = count + parseInt(1);
+              var popcount = at[i].attr_items.length - count;
+            }
+          }
+
+          for (var pc = 0; pc < popcount; pc++) {
+            at[i].attr_items.pop();
+          }
+        } else if (i == 1) {
+          for (var s = 0; s < at[i].attr_items.length; s++) {
+            if (at[i].id == at[i].attr_items[s].attribute_type_id) {
+              for (var sc = s; sc < s + 1; sc--) {
+                at[i].attr_items.splice(sc - 1, 1);
+                at[i].attr_items.splice(sc + 1, 1);
+                at[i].attr_items.pop();
+              }
+            }
+          }
+        } else {
+          for (var b = 0; b < at[i].attr_items.length; b++) {
+            if (at[i].id == at[i].attr_items[b].attribute_type_id) {
+              bcount = bcount + parseInt(1);
+              var shiftcount = at[i].attr_items.length - bcount;
+            }
+          }
+
+          for (var sc = 0; sc < shiftcount; sc++) {
+            at[i].attr_items.shift();
+          }
+        }
+      }
     },
     formSubmit: function formSubmit() {
       var _this2 = this;
@@ -3675,7 +3723,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://3de1a73a41a0.ngrok.io';
+Vue.prototype.$appUrl = 'https://2490effafc9b.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 /**
