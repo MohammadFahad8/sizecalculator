@@ -303,14 +303,14 @@ export default {
             .then((res)=>{
              
                
-                this.attributesToShow = res.data;
-             //this.getResult(res.data)
+//  this.attributesToShow = res.data;
+             this.getResult(res.data)
             })
         },
          getResult: function(at){
-               console.log(at)
-    this.attributesToShow = at;
-    console.log(this.attributesToShow);
+               
+    
+    
               var count = 0;
            var bcount = 0;
            var scount = 0;
@@ -339,28 +339,49 @@ export default {
             
          }
          else if(i == 1)
-         {
+         {var counte = 1
+
+                console.log(at[1].attr_items[3].attribute_type_id)
+                console.log(at[1].id)
               for(var s=0; s < at[i].attr_items.length; s++)
              {
                 
-                
-                 if(at[i].id == at[i].attr_items[s].attribute_type_id )
+                 
+                 if( at[i].id != at[i].attr_items[s].attribute_type_id)
                  {
                     
-                      for(var sc=s; sc<s+1; sc--)
-             {
+                        // console.log(s)
+                                at[i].attr_items.splice(s,1);
+                                
+                        
+                 
+             }     if( at[i].id == at[i].attr_items[s].attribute_type_id)
+                 {
+                    
+                        // console.log(s)
+                                at[i].attr_items.splice(s-1,1);
+                                at[i].attr_items.splice(s+1,1);
+                                at[i].attr_items.pop(s-1,1);
+                                at[i].attr_items.pop(s+1,1);
+                                
+                        
+                 
+             }   
+            //  if(at[i].id == at[i].attr_items[s].attribute_type_id )
+            //      {
+                    
+               
                 
-                            at[i].attr_items.splice(sc - 1,1);
-                              at[i].attr_items.splice(sc + 1,1)
-                at[i].attr_items.pop();
-             }
-
+            //                 if(s-counte > 0){
+            //                   console.log(s)
+            //                   console.log(counte)
+            //                     at[i].attr_items.splice(s-counte,1);
+            //                     counte++;
+            //                 }
                  
-                 
-                 }
-                 
-             }
+            //  }
            
+         }
          }
          else
          {
@@ -385,6 +406,8 @@ export default {
         
     
      }
+     
+     this.attributesToShow = at;
   
         },
        

@@ -57,5 +57,8 @@ class Attributetypes extends Model
     public function attrDetails(): HasMany
     {
         return $this->hasMany(Attributeimages::class, 'attribute_type_id', 'id');
+    } public function attrItems(): HasMany
+    {
+        return $this->hasMany(Products::class, 'product_id', 'product_id');
     }
 }

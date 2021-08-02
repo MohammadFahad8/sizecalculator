@@ -1129,6 +1129,7 @@ try{
         
         $attributeTypeOfProducts = Attributetypes::with('attrDetails')->where([['product_id', '=', $data['productkey']], ['status', '>', 0]])
         ->get();
+        
                 $attributesjoined =Sizechart::with('bodyFeature','attributecsb')
            
                 ->where('weight_start', '<=',  $w )
@@ -1170,10 +1171,13 @@ try{
                 
                 // $response['attr_details_hw']=$container;
                // array_push($attributeTypeOfProducts,$response);
+        
                 foreach($attributeTypeOfProducts as $at)
                 {
-                    $at['attr_items'] =$container;
-                }
+                    $at['attr_items']=$container;
+                    
+                 }
+                 return $attributeTypeOfProducts;
                
                 $count = 0;
            $bcount = 0;
@@ -1198,8 +1202,7 @@ try{
             
              for($pc=0; $pc<$popcount; $pc++)
              {
-                 echo getType($attributeTypeOfProducts[$i]['attr_items']);
-                 exit;
+                
                
                 array_pop($attributeTypeOfProducts[$i]['attr_items']);
                
@@ -1254,7 +1257,7 @@ try{
     
      }
               
-                 return $attributeTypeOfProducts;
+                //  return $attributeTypeOfProducts;
         
         // $size = Sizechart::with('attributecsb','bodyFeature')
         // ->where([['weight_start','<=',$w],['weight_end','>=',$w],['height_start','<=',$h],['height_end','>=',$h]])

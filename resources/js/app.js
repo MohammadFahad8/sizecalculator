@@ -12,7 +12,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 import JwPagination from 'jw-vue-pagination';
 import VSwitch from 'v-switch-case'
 
-Vue.prototype.$appUrl = 'https://2490effafc9b.ngrok.io';
+Vue.prototype.$appUrl = 'https://a7ab6424158b.ngrok.io';
 Vue.component('jw-pagination', JwPagination);
 Vue.use(VSwitch)
 

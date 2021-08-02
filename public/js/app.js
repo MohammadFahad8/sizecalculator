@@ -2424,13 +2424,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       form.productkey = this.product.id;
       axios.post(this.$appUrl + '/api/get-attributes-to-height-weight', form).then(function (res) {
-        _this.attributesToShow = res.data; //this.getResult(res.data)
+        //  this.attributesToShow = res.data;
+        _this.getResult(res.data);
       });
     },
     getResult: function getResult(at) {
-      console.log(at);
-      this.attributesToShow = at;
-      console.log(this.attributesToShow);
       var count = 0;
       var bcount = 0;
       var scount = 0;
@@ -2451,14 +2449,32 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             at[i].attr_items.pop();
           }
         } else if (i == 1) {
+          var counte = 1;
+          console.log(at[1].attr_items[3].attribute_type_id);
+          console.log(at[1].id);
+
           for (var s = 0; s < at[i].attr_items.length; s++) {
-            if (at[i].id == at[i].attr_items[s].attribute_type_id) {
-              for (var sc = s; sc < s + 1; sc--) {
-                at[i].attr_items.splice(sc - 1, 1);
-                at[i].attr_items.splice(sc + 1, 1);
-                at[i].attr_items.pop();
-              }
+            if (at[i].id != at[i].attr_items[s].attribute_type_id) {
+              // console.log(s)
+              at[i].attr_items.splice(s, 1);
             }
+
+            if (at[i].id == at[i].attr_items[s].attribute_type_id) {
+              // console.log(s)
+              at[i].attr_items.splice(s - 1, 1);
+              at[i].attr_items.splice(s + 1, 1);
+              at[i].attr_items.pop(s - 1, 1);
+              at[i].attr_items.pop(s + 1, 1);
+            } //  if(at[i].id == at[i].attr_items[s].attribute_type_id )
+            //      {
+            //                 if(s-counte > 0){
+            //                   console.log(s)
+            //                   console.log(counte)
+            //                     at[i].attr_items.splice(s-counte,1);
+            //                     counte++;
+            //                 }
+            //  }
+
           }
         } else {
           for (var b = 0; b < at[i].attr_items.length; b++) {
@@ -2473,6 +2489,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         }
       }
+
+      this.attributesToShow = at;
     },
     formSubmit: function formSubmit() {
       var _this2 = this;
@@ -3723,7 +3741,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://2490effafc9b.ngrok.io';
+Vue.prototype.$appUrl = 'https://a7ab6424158b.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 /**
