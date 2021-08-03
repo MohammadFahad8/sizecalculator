@@ -121,7 +121,11 @@
     </div>
 
     <div id="steps-mark" style="text-align: center; position:fixed" class="m-result x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1 x-offset-2">
-        <span class="step"></span><span class="step"></span><span class="step"></span><span class="step"></span><span class="step active"></span>
+
+            <span class="step " ></span>
+          <span class="step" v-for="(row,key) in recordsLength" ></span>
+            <span class="step active"></span>
+        
     </div>
 </div>
 </template>
@@ -132,7 +136,9 @@ import EventBus from "../event-bus";
 export default {
     props: {
         product: Object,
-        form: Object
+        form: Object,
+        recordsLength:Number,
+        
     },
     data() {
         return {
@@ -170,6 +176,7 @@ export default {
             actionDefault: "",
             otherSize: "",
             tabnumber: "",
+            leng:0,
             formBody: {},
             formLocal: {}
         };
@@ -222,10 +229,20 @@ export default {
             // })
         },
         setSlides: function (sizeposition) {
+            if(typeof sizeposition == 'undefined' || sizeposition=="")
+            {
+                   $("div.fit-advisor-selected-size:gt(0)").hide();
+            $("div.fit-advisor-selected-size:lt(0)").hide();
+            $("p.size_descriptions:gt(0)").hide();
+            $("p.size_descriptions:lt(0)").hide();
+
+            }else
+            {
             $("div.fit-advisor-selected-size:gt(" + sizeposition + ")").hide();
             $("div.fit-advisor-selected-size:lt(" + sizeposition + ")").hide();
             $("p.size_descriptions:gt(" + sizeposition + ")").hide();
             $("p.size_descriptions:lt(" + sizeposition + ")").hide();
+            }
             //Hide all but the Predicted Size
 
             (this.$allSlides = $("div.fit-advisor-selected-size")),
@@ -481,6 +498,7 @@ export default {
            axios
                 .post(this.$appUrl + "/api/size-recommend/", form)
                 .then(res => {
+                    
                     this.container.is_loading = false;
 
                     this.container.showSelectedSizeSlider = true;
@@ -631,6 +649,7 @@ export default {
     },
     mounted() {
         this.is_loading=true;
+        
         
         this.setupProduct();
         // this.getProductDetails();

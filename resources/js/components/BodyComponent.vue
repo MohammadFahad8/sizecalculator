@@ -151,6 +151,7 @@ display: inline-block;
                                 <result-component
                                     :product="product"
                                     :form="form"
+                                    :recordsLength="attributes.length"
                                 ></result-component>
                             </div>
                         </div>
@@ -314,6 +315,10 @@ export default {
                this.ogArray = res.data.ogArray;
               // console.log(res.data)
 //  this.attributesToShow = res.data;
+if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
+{
+
+
 if(res.data.scArray.length == 2)
 {
    // console.log("first")
@@ -326,6 +331,10 @@ if(res.data.scArray.length == 2)
 {
    // console.log("third")
     this.getResult(res.data.scArray)
+}
+}else
+{
+this.attributesToShow = res.data
 }
             
             })

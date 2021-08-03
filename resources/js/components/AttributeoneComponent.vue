@@ -16,7 +16,7 @@
                                             </div>
                                         </div>
             </div>
-            <div class=" x-row" v-if="attributes.attr_items.length==0 && is_loading==false">
+            <div class=" x-row" v-if="attributes.attr_items.length==0 || typeof attributes.attr_items == 'undefined' && is_loading==false">
                 <div
                     class="col-md-4 parent "
                     v-for="row in attributes.attr_details"
@@ -33,7 +33,7 @@
                     </p>
                 </div>
             </div>
-             <div class=" x-row"  v-if="attributes.attr_items.length>0 && is_loading==false"> 
+             <div class=" x-row"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
                 <div
                     class="col-md-4 parent "
                     v-for="row in attributes.attr_items"
@@ -57,10 +57,10 @@
             style="position:fixed"
             class="m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1"
         >
-            <span class="step"></span>
+        
+          
             <span class="step active" ></span>
-            <span class="step"></span>
-            <span class="step"></span>
+          <span class="step" v-for="(row,key) in recordsLength" ></span>
             <span class="step"></span>
         </div>
     </div>
@@ -91,6 +91,7 @@ export default {
                 arrayval: {}
             },
             is_loading: false,
+            leng:0,
 
         };
     },
@@ -112,6 +113,7 @@ export default {
     },
     mounted() {
         this.is_loading= false;
+        
     }
 };
 </script>

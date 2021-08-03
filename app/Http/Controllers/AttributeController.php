@@ -189,7 +189,7 @@ class AttributeController extends Controller
 
             return $messageContainer;
         } else {
-            
+
             $setting = Settings::where('name', '=', Auth::user()->name)->first();
             if ($setting->clear_logs == 1) {
 
@@ -244,7 +244,7 @@ class AttributeController extends Controller
 
 
         $productsall = $shop->api()->rest('GET', '/admin/api/2021-07/products.json')['body']['container'];
-        
+
         $prod = $productsall['products'];
 
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
@@ -342,12 +342,12 @@ class AttributeController extends Controller
     {
 
         $products = Products::where('product_id', '=', $request['id'])->first();
-        
+
 
         $setting = Settings::where('name', '=', $request['shop_name'])->first();
-        
-        
-        
+
+
+
         if ($products->status == 1) {
 
             if ($setting->clear_logs == 0) {
@@ -372,14 +372,11 @@ class AttributeController extends Controller
     {
         $break = 0;
         $data = $request->all();
-        
-        
-
-
-
+       
 
         $sizeList = Attributetypes::with('bodyFeatureOfType', 'sizecharts')->where('product_id', '=', $data['conversionCount'])->get();
         $sizeChartList = Sizechart::with('bodyFeature', 'product')->where('product_id', '=', $data['conversionCount'])->get();
+        
         $productid = $data['conversionCount'];
 
         $product = session()->get('product');
@@ -397,62 +394,11 @@ class AttributeController extends Controller
             $height_cm = intval(($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54));
         }
 
-
-try{
-
-        $tags = array_map('strtolower', $data['tags']);
-        if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
-
-            foreach ($sizeChartList as $s) {
-
-
-
-                if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
-
-                    foreach ($s['bodyFeature'] as $b) {
-                        for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
-
-
-
-                            if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
-                                
-                                return $this->checkVariantIFExists($b['predicted_size']);
-                                // exit;
-                            }
-                        }
-                    }
-                }
-            }
-        } else {
-            
-            foreach ($sizeChartList as $s) {
-
-
-
-                if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
-
-                    foreach ($s['bodyFeature'] as $b) {
-                        for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
-
-
-
-                            if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
-                                
-                                return $this->checkVariantIFExists($b['predicted_size']);
-                                // exit;
-                            } 
-                        }
-                    }
-                } 
-            }
-        }
-    }catch(\Exception $e){
-        
         foreach ($sizeChartList as $s) {
 
 
 
-            if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
+           
 
                 foreach ($s['bodyFeature'] as $b) {
                     for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
@@ -460,15 +406,86 @@ try{
 
 
                         if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
-                            
+
                             return $this->checkVariantIFExists($b['predicted_size']);
                             // exit;
                         }
                     }
                 }
-            } 
+            
         }
-    }
+
+        try {
+
+            $tags = array_map('strtolower', $data['tags']);
+            if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
+
+                foreach ($sizeChartList as $s) {
+
+
+
+                    if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
+
+                        foreach ($s['bodyFeature'] as $b) {
+                            for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+
+
+
+                                if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+
+                                    return $this->checkVariantIFExists($b['predicted_size']);
+                                    // exit;
+                                }
+                            }
+                        }
+                    }
+                }
+            } else {
+
+                foreach ($sizeChartList as $s) {
+
+
+
+                    if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
+
+                        foreach ($s['bodyFeature'] as $b) {
+                            for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+
+
+
+                                if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+
+                                    return $this->checkVariantIFExists($b['predicted_size']);
+                                    // exit;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        } catch (\Exception $e) {
+
+            foreach ($sizeChartList as $s) {
+
+
+
+                if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
+
+                    foreach ($s['bodyFeature'] as $b) {
+                        for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+
+
+
+                            if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+
+                                return $this->checkVariantIFExists($b['predicted_size']);
+                                // exit;
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
     public function calculateSizeFemale($data, $height_cm)
     {
@@ -766,167 +783,162 @@ try{
         $sizechart->save();
 
         $body = Bodyfeature::where('sizechart_id', '=', $request->get('id'))->first();
-        if($body){
+        if ($body) {
 
-        $body->status = 0;
-        $body->save();
-     
+            $body->status = 0;
+            $body->save();
         }
-           return   redirect()->route('sizechart.home', ['id' => $p_id]);
+        return   redirect()->route('sizechart.home', ['id' => $p_id]);
     }
     public function sizeChartEdit(Request $request)
     {
 
 
         $sizechart = Sizechart::with('bodyFeature', 'product')->find($request->get('id'));
-        $variants = Variants::where('product_id', '=',$request->get('product_id'))->get();
-        
+        $variants = Variants::where('product_id', '=', $request->get('product_id'))->get();
 
 
-         $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $request->get('product_id')], ['status', '>', 0]])->get();
+
+        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $request->get('product_id')], ['status', '>', 0]])->get();
         //$variantsOfAttributes= Bodyfeature::where([['attr_id', '=', $request->get('id')], ['status', '>', 0]])->get();
-        
+
         return view('size-charts.edit', [
             'sizechart' => $sizechart,
             'current_product_id' => $request->get('product_id'),
             'id' => $request->get('id'),
             'variantsOfAttributes' => $variantsOfAttributes,
-            'variants'=>$variants
+            'variants' => $variants
 
         ]);
     }
     public function createSizeChart($id)
     {
-        $variants = Variants::where([['product_id','=',$id]])->get();
+        $variants = Variants::where([['product_id', '=', $id]])->get();
         $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
 
 
         return view('size-charts.create', [
             'product_id' => $id,
             'variantsOfAttributes' => $variantsOfAttributes,
-            'variants'=>$variants
+            'variants' => $variants
         ]);
     }
     public function sizeChartPost(Request $request)
     {
 
-try{
-        $this->validate($request, [
-            'weight_start' => 'required|min:10|max:999|numeric',
-            'weight_end' => 'required|min:10|max:999|numeric',
-            'height_start' => 'required|min:10|max:999|numeric',
-            'height_end' => 'required|min:10|max:999|numeric',
-            // 'body_measurement_start.*'=>'required|array|numeric',
-            // 'body_measurement_end.*'=>'required|array|numeric',
-            'predicted_size' => 'required|min:2|alpha',
+        try {
+            $this->validate($request, [
+                'weight_start' => 'required|min:10|max:999|numeric',
+                'weight_end' => 'required|min:10|max:999|numeric',
+                'height_start' => 'required|min:10|max:999|numeric',
+                'height_end' => 'required|min:10|max:999|numeric',
+                // 'body_measurement_start.*'=>'required|array|numeric',
+                // 'body_measurement_end.*'=>'required|array|numeric',
+                'predicted_size' => 'required|min:2|alpha',
 
-        ], [
-            'weight_start.required' => "Enter Value for Weight Start Range",
-            'weight_end.required' => "Enter Value for Weight End Range",
-            'height_start.required' => "Enter Value for Height Start Range",
-            'height_end.required' => "Enter Value for Height End Range",
-            // 'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
-            // 'body_measurement_end.required'=>"Enter Value for Attribute End Range",
-            'predicted_size.required' => "Enter Value for Predicted Size",
-            'predicted_size.alpha' => "Input must be Letters i.e (A-Z,a-z)",
-            'weight_start.numeric' => "Entered Value must be Numeric",
-            'weight_end.numeric' => "Entered Value must be Numeric",
-            'height_start.numeric' => "Entered Value must be Numeric",
-            'height_end.numeric' => "Entered Value must be Numeric",
-            // 'body_measurement_start.numeric'=>"Entered Value must be Numeric",
-            // 'body_measurement_end.numeric'=>"Entered Value must be Numeric",
-
-
-        ]);
+            ], [
+                'weight_start.required' => "Enter Value for Weight Start Range",
+                'weight_end.required' => "Enter Value for Weight End Range",
+                'height_start.required' => "Enter Value for Height Start Range",
+                'height_end.required' => "Enter Value for Height End Range",
+                // 'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
+                // 'body_measurement_end.required'=>"Enter Value for Attribute End Range",
+                'predicted_size.required' => "Enter Value for Predicted Size",
+                'predicted_size.alpha' => "Input must be Letters i.e (A-Z,a-z)",
+                'weight_start.numeric' => "Entered Value must be Numeric",
+                'weight_end.numeric' => "Entered Value must be Numeric",
+                'height_start.numeric' => "Entered Value must be Numeric",
+                'height_end.numeric' => "Entered Value must be Numeric",
+                // 'body_measurement_start.numeric'=>"Entered Value must be Numeric",
+                // 'body_measurement_end.numeric'=>"Entered Value must be Numeric",
 
 
-        $sizeChartLastId = Sizechart::create($request->all());
+            ]);
 
 
-        for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
+            $sizeChartLastId = Sizechart::create($request->all());
+
+
+            for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
 
 
 
-            $attrBody = Attributetypes::find($request->get('attribute_type')[$i]);
-            $body = new Bodyfeature();
-            $body->sizechart_id = $sizeChartLastId->id;
-            $body->attr_measurement_start = $request->get('body_measurement_start')[$i];
-            $body->attr_measurement_end = $request->get('body_measurement_end')[$i];
-            $body->predicted_size = $request->get('predicted_size');
-            $body->attr_id = $attrBody->id;
-            $body->attr_name = strtolower($request->get('attribute_type_name')[$i]);
-            $body->save();
-        }
-        Session::flash('success','Added Successfully');
+                $attrBody = Attributetypes::find($request->get('attribute_type')[$i]);
+                $body = new Bodyfeature();
+                $body->sizechart_id = $sizeChartLastId->id;
+                $body->attr_measurement_start = $request->get('body_measurement_start')[$i];
+                $body->attr_measurement_end = $request->get('body_measurement_end')[$i];
+                $body->predicted_size = $request->get('predicted_size');
+                $body->attr_id = $attrBody->id;
+                $body->attr_name = strtolower($request->get('attribute_type_name')[$i]);
+                $body->save();
+            }
+            Session::flash('success', 'Added Successfully');
 
-        return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
-        }
-        catch(\Exception $e)
-        {
-            Session::flash('error','*Invalid form');
+            return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
+        } catch (\Exception $e) {
+            Session::flash('error', '*Invalid form missing attribute');
             return back();
         }
     }
     public function sizeChartUpdatePost(Request $request)
     {
-        try{
-        $this->validate($request, [
-            'weight_start' => 'required|min:10|max:999|numeric',
-            'weight_end' => 'required|min:10|max:999|numeric',
-            'height_start' => 'required|min:10|max:999|numeric',
-            'height_end' => 'required|min:10|max:999|numeric',
-            // 'body_measurement_start'=>'required|min:10|max:999|numeric',
-            // 'body_measurement_end'=>'required|min:10|max:999|numeric',
-            'predicted_size' => 'required|min:2|alpha',
+        try {
+            $this->validate($request, [
+                'weight_start' => 'required|min:10|max:999|numeric',
+                'weight_end' => 'required|min:10|max:999|numeric',
+                'height_start' => 'required|min:10|max:999|numeric',
+                'height_end' => 'required|min:10|max:999|numeric',
+                // 'body_measurement_start'=>'required|min:10|max:999|numeric',
+                // 'body_measurement_end'=>'required|min:10|max:999|numeric',
+                'predicted_size' => 'required|min:2|alpha',
 
-        ], [
-            'weight_start.required' => "Enter Value for Weight Start Range",
-            'weight_end.required' => "Enter Value for Weight End Range",
-            'height_start.required' => "Enter Value for Height Start Range",
-            'height_end.required' => "Enter Value for Height End Range",
-            // 'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
-            // 'body_measurement_end.required'=>"Enter Value for Attribute End Range",
-            'predicted_size.required' => "Enter Value for Predicted Size",
-            'predicted_size.alpha' => "Input must be Letters i.e (A-Z,a-z)",
-            'weight_start.numeric' => "Entered Value must be Numeric",
-            'weight_end.numeric' => "Entered Value must be Numeric",
-            'height_start.numeric' => "Entered Value must be Numeric",
-            'height_end.numeric' => "Entered Value must be Numeric",
-            // 'body_measurement_start.numeric'=>"Entered Value must be Numeric",
-            // 'body_measurement_end.numeric'=>"Entered Value must be Numeric",
-
-
-        ]);
+            ], [
+                'weight_start.required' => "Enter Value for Weight Start Range",
+                'weight_end.required' => "Enter Value for Weight End Range",
+                'height_start.required' => "Enter Value for Height Start Range",
+                'height_end.required' => "Enter Value for Height End Range",
+                // 'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
+                // 'body_measurement_end.required'=>"Enter Value for Attribute End Range",
+                'predicted_size.required' => "Enter Value for Predicted Size",
+                'predicted_size.alpha' => "Input must be Letters i.e (A-Z,a-z)",
+                'weight_start.numeric' => "Entered Value must be Numeric",
+                'weight_end.numeric' => "Entered Value must be Numeric",
+                'height_start.numeric' => "Entered Value must be Numeric",
+                'height_end.numeric' => "Entered Value must be Numeric",
+                // 'body_measurement_start.numeric'=>"Entered Value must be Numeric",
+                // 'body_measurement_end.numeric'=>"Entered Value must be Numeric",
 
 
-        $sizeChart = Sizechart::find($request->get('id'));
+            ]);
 
-        $sizeChart->weight_start = $request->get('weight_start');
-        $sizeChart->weight_end = $request->get('weight_end');
-        $sizeChart->height_start = $request->get('height_start');
-        $sizeChart->height_end = $request->get('height_end');
-        $sizeChart->product_id = $request->get('product_id');
-        $sizeChart->save();
 
-        for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
+            $sizeChart = Sizechart::find($request->get('id'));
 
-            $b = Bodyfeature::where('sizechart_id', '=', $request->get('id'))->get();
-            $b[$i]['sizechart_id'] = $sizeChart->id;
-            $b[$i]['attr_measurement_start'] = $request->get('body_measurement_start')[$i];
-            $b[$i]['attr_measurement_end'] = $request->get('body_measurement_end')[$i];
-            $b[$i]['predicted_size'] = $request->get('predicted_size');
-            $b[$i]['attr_id'] = $request->get('attribute_type')[$i];
-            $b[$i]['attr_name'] = strtolower($request->get('attribute_type_name')[$i]);
-            $b[$i]->save();
+            $sizeChart->weight_start = $request->get('weight_start');
+            $sizeChart->weight_end = $request->get('weight_end');
+            $sizeChart->height_start = $request->get('height_start');
+            $sizeChart->height_end = $request->get('height_end');
+            $sizeChart->product_id = $request->get('product_id');
+            $sizeChart->save();
+
+            for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
+
+                $b = Bodyfeature::where('sizechart_id', '=', $request->get('id'))->get();
+                $b[$i]['sizechart_id'] = $sizeChart->id;
+                $b[$i]['attr_measurement_start'] = $request->get('body_measurement_start')[$i];
+                $b[$i]['attr_measurement_end'] = $request->get('body_measurement_end')[$i];
+                $b[$i]['predicted_size'] = $request->get('predicted_size');
+                $b[$i]['attr_id'] = $request->get('attribute_type')[$i];
+                $b[$i]['attr_name'] = strtolower($request->get('attribute_type_name')[$i]);
+                $b[$i]->save();
+            }
+            Session::flash('success', 'Updated Successfully');
+            return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
+        } catch (\Exception $e) {
+            Session::flash('error', '*Invalid form missing attribute');
+            return back();
         }
-        Session::flash('success','Updated Successfully');
-        return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
-    }
-    catch(\Exception $e)
-    {
-        Session::flash('error','*Invalid form');
-        return back();
-    }
     }
     public function attributeType($id)
     {
@@ -1010,7 +1022,7 @@ try{
 
                 $attrImg->attr_size_value = $request['attribut_size'][$j];
                 // $attrImg->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
-                 $attrImg->attr_image_src = $path  . '_' . $image;
+                $attrImg->attr_image_src = $path  . '_' . $image;
                 $attrImg->attribute_size_name = $request['attribut_size_name'][$j];
                 $attrImg->attribute_type_id = $attr->id;
                 $attrImg->product_id = $attr->product_id;
@@ -1021,7 +1033,7 @@ try{
     }
     public function storeAttributeEdit(Request $request)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product','attrDetails')->find($request['id']);
+        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->find($request['id']);
 
 
         return view('attribute_types.edit', [
@@ -1029,26 +1041,10 @@ try{
             'attrTypeOfProduct' => $attributeTypeOfProducts
         ]);
     }
-   
+
     public function storeAttributeUpdate(Request $request)
     {
-        //
-
-
-        
-
-        // $this->validate($request, [
-        //     "attribute_name" => "required",
-        //     "attribut_size.*"  => "required|numeric|distinct|min:2",
-
-
-
-        // ], [
-        //     "attribute_name.required" => "Please Enter Attribute name",
-
-
-
-        // ]);
+       
         $data = $request->all();
         $attr = AttributeTypes::find($data['product_id']);
         $attr->name = $data['attribute_name'];
@@ -1057,16 +1053,13 @@ try{
         $attr->save();
         for ($j = 0; $j < count($request['attribut_size']); $j++) {
             $pid = $data['product_id'];
-            $attrImg = Attributeimages::where('attribute_type_id', '=',$pid)->get();
-            
+            $attrImg = Attributeimages::where('attribute_type_id', '=', $pid)->get();
+
             if (isset($request->file('thumb')[$j])) {
                 $this->validate($request, [
                     'thumb.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
                 ]);
-                // if (File::exists($attr->thumb)) {
-                //     File::delete($attr->thumb);
-                // }
-
+               
                 $path = 'files/upload/admin/';
 
 
@@ -1079,15 +1072,13 @@ try{
 
                 $attrImg[$j]->attr_size_value = $request['attribut_size'][$j];
                 // $attrImg[$j]->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
-                 $attrImg[$j]->attr_image_src = $path  . '_' . $image;
+                $attrImg[$j]->attr_image_src = $path  . '_' . $image;
                 $attrImg[$j]->attribute_size_name = $request['attribut_size_name'][$j];
                 $attrImg[$j]->attribute_type_id = $attr->id;
                 $attrImg[$j]->product_id = $attr->product_id;
                 $attrImg[$j]->save();
-            }
-            else
-            {
-                
+            } else {
+
                 $attrImg[$j]->attr_size_value = $request['attribut_size'][$j];
                 // $attrImg->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
                 //  $attrImg->attr_image_src = $path  . '_' . $image;
@@ -1121,151 +1112,112 @@ try{
 
             $w = intval($data['weight'] * 2.2);
 
-             $h =intval($data['heightcm']);
+            $h = intval($data['heightcm']);
         } else {
             $h = intval(($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54));
             $w = intval($data['weight']);
         }
-        
-        $attributeTypeOfProducts = Attributetypes::with('attrDetails')->where([['product_id', '=', $data['productkey']], ['status', '>', 0]])
-        ->get();
-        
-                $attributesjoined =Sizechart::with('bodyFeature','attributecsb')
-           
-                ->where('weight_start', '<=',  $w )
-                ->where('weight_end', '>=',  $w )
-                ->where('height_start', '<=',  $h )
-                 ->where('height_end', '>=',  $h )         
-                ->first();
-                
-                 
-                
-                   for($i = 0; $i <= count($attributesjoined->bodyFeature) - 1; $i++)
-                   {
-                       
-                    for($j = 0; $j <= count($attributesjoined->attributecsb) - 1; $j++)
-                    {
-                        
-                        if($attributesjoined->bodyFeature[$i]->attr_measurement_start <= $attributesjoined->attributecsb[$j]->attr_size_value && $attributesjoined->bodyFeature[$i]->attr_measurement_end >= $attributesjoined->attributecsb[$j]->attr_size_value)
-                        {
-                            
-                            
-                            
-                            if($attributesjoined->bodyfeature[$i]->attr_id == $attributesjoined->attributecsb[$j]->attribute_type_id)
-                            {
-                                
-                                //this check is to ensure whether to enter the second matching record in same object or next object
-                                $container[]=$attributesjoined->attributecsb[$j];
-    
-                            }
-                            
-                           
+
+        $attributeTypeOfProducts = Attributetypes::with('attrDetails')->where([['product_id', '=', $data['productkey']], ['status', '=', 1]])
+            ->get();
+
+        $attributesjoined = Sizechart::with('bodyFeature', 'attributecsb')
+
+            ->where('weight_start', '<=',  $w)
+            ->where('weight_end', '>=',  $w)
+            ->where('height_start', '<=',  $h)
+            ->where('height_end', '>=',  $h)
+            ->where('status', '>',  0)
+            ->where('product_id', '=',  $data['productkey'])
+            ->first();
+
+
+        try {
+            for ($i = 0; $i <= count($attributesjoined->bodyFeature) - 1; $i++) {
+
+                for ($j = 0; $j <= count($attributesjoined->attributecsb) - 1; $j++) {
+
+                    if ($attributesjoined->bodyFeature[$i]->attr_measurement_start <= $attributesjoined->attributecsb[$j]->attr_size_value && $attributesjoined->bodyFeature[$i]->attr_measurement_end >= $attributesjoined->attributecsb[$j]->attr_size_value) {
+
+
+
+                        if ($attributesjoined->bodyfeature[$i]->attr_id == $attributesjoined->attributecsb[$j]->attribute_type_id) {
+
+                            //this check is to ensure whether to enter the second matching record in same object or next object
+                            $container[] = $attributesjoined->attributecsb[$j];
                         }
-
- 
                     }
+                }
+            }
 
-                   }
-                  
+            foreach ($attributeTypeOfProducts as $at) {
+                $at['attr_items'] = $container;
+            }
+            $res = array('ogArray' => $attributeTypeOfProducts, 'scArray' => $attributeTypeOfProducts);
+            return $res;
+        } catch (\Exception $e) {
+            return     $attributeTypeOfProducts = Attributetypes::with('attrDetails', 'attrItems')->where([['product_id', '=', $data['productkey']], ['status', '>', 0]])
+                ->get();
+        }
 
-                
-                // $response['attr_details_hw']=$container;
-               // array_push($attributeTypeOfProducts,$response);
-        
-                foreach($attributeTypeOfProducts as $at)
-                {
-                    $at['attr_items']=$container;
-                    
-                 }
-                 $res = array('ogArray' =>$attributeTypeOfProducts ,'scArray' =>$attributeTypeOfProducts );
-                 return $res;
-               
-                $count = 0;
-           $bcount = 0;
-           $scount = 0;
-           $nfcount = 0;
-                for( $i = 0; $i < count($attributeTypeOfProducts); $i++){ 
-    
-         if ( $i == 0) {
-            
-             for($k=0; $k < count($attributeTypeOfProducts[$i]['attr_items']); $k++)
-             {
-                 $fcount =count($attributeTypeOfProducts[$i]['attr_items']);
-                
-                 if($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$k]->attribute_type_id )
-                 {
-                     $count = $count+intval(1);
-                     $popcount = count($attributeTypeOfProducts[$i]['attr_items']) - $count;
-                    
-                 }
-            
-             }
-            
-             for($pc=0; $pc<$popcount; $pc++)
-             {
-                
-               
-                array_pop($attributeTypeOfProducts[$i]['attr_items']);
-               
-             }
-            
-         }
-         else if($i == 1)
-         {
-              for($s=0; $s < count($attributeTypeOfProducts[$i]['attr_items']); $s++)
-             {
-                
-                
-                 if($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$s]->attribute_type_id )
-                 {
-                    
-                      for($sc=$s; $sc<$s+1; $sc--)
-             {
-                
-                            array_splice($attributeTypeOfProducts[$i]['attr_items'],$sc - 1,1);
-                              array_splice($attributeTypeOfProducts[$i]['attr_items'],$sc + 1,1);
-                // $attributeTypeOfProducts[$i].attr_items.pop();
-             }
+        $count = 0;
+        $bcount = 0;
+        $scount = 0;
+        $nfcount = 0;
+        for ($i = 0; $i < count($attributeTypeOfProducts); $i++) {
 
-                 
-                 
-                 }
-                 
-             }
-           
-         }
-         else
-         {
-              for($b=0; $b < count($attributeTypeOfProducts[$i]['attr_items']); $b++)
-             {
-                 
-                 if($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$b]->attribute_type_id )
-                 {
-                      $bcount = $bcount+intval(1);
-                     $shiftcount = count($attributeTypeOfProducts[$i]['attr_items']) - $bcount;
-   
-                 }
-            
-             }
+            if ($i == 0) {
 
-             for($sc=0; $sc<$shiftcount; $sc++)
-             {
-                 array_shift($attributeTypeOfProducts[$i]['attr_items']);
-             }
+                for ($k = 0; $k < count($attributeTypeOfProducts[$i]['attr_items']); $k++) {
+                    $fcount = count($attributeTypeOfProducts[$i]['attr_items']);
 
-         }
-        
-    
-     }
-              
-                //  return $attributeTypeOfProducts;
-        
+                    if ($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$k]->attribute_type_id) {
+                        $count = $count + intval(1);
+                        $popcount = count($attributeTypeOfProducts[$i]['attr_items']) - $count;
+                    }
+                }
+
+                for ($pc = 0; $pc < $popcount; $pc++) {
+
+
+                    array_pop($attributeTypeOfProducts[$i]['attr_items']);
+                }
+            } else if ($i == 1) {
+                for ($s = 0; $s < count($attributeTypeOfProducts[$i]['attr_items']); $s++) {
+
+
+                    if ($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$s]->attribute_type_id) {
+
+                        for ($sc = $s; $sc < $s + 1; $sc--) {
+
+                            array_splice($attributeTypeOfProducts[$i]['attr_items'], $sc - 1, 1);
+                            array_splice($attributeTypeOfProducts[$i]['attr_items'], $sc + 1, 1);
+                            // $attributeTypeOfProducts[$i].attr_items.pop();
+                        }
+                    }
+                }
+            } else {
+                for ($b = 0; $b < count($attributeTypeOfProducts[$i]['attr_items']); $b++) {
+
+                    if ($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$b]->attribute_type_id) {
+                        $bcount = $bcount + intval(1);
+                        $shiftcount = count($attributeTypeOfProducts[$i]['attr_items']) - $bcount;
+                    }
+                }
+
+                for ($sc = 0; $sc < $shiftcount; $sc++) {
+                    array_shift($attributeTypeOfProducts[$i]['attr_items']);
+                }
+            }
+        }
+
+        //  return $attributeTypeOfProducts;
+
         // $size = Sizechart::with('attributecsb','bodyFeature')
         // ->where([['weight_start','<=',$w],['weight_end','>=',$w],['height_start','<=',$h],['height_end','>=',$h]])
-        
 
-        
+
+
 
     }
-
 }

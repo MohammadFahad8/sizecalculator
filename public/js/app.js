@@ -1936,7 +1936,8 @@ __webpack_require__.r(__webpack_exports__);
         arraytitle: {},
         arrayval: {}
       },
-      is_loading: false
+      is_loading: false,
+      leng: 0
     };
   },
   methods: {
@@ -2320,6 +2321,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2434,15 +2436,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.ogArray = res.data.ogArray; // console.log(res.data)
         //  this.attributesToShow = res.data;
 
-        if (res.data.scArray.length == 2) {
-          // console.log("first")
-          _this.getResultTwo(res.data.scArray);
-        } else if (res.data.scArray.length > 3) {
-          // console.log("second")
-          _this.getResultMultiple(res.data.scArray);
+        if (res.data.scArray != null || typeof res.data.scArray != 'undefined') {
+          if (res.data.scArray.length == 2) {
+            // console.log("first")
+            _this.getResultTwo(res.data.scArray);
+          } else if (res.data.scArray.length > 3) {
+            // console.log("second")
+            _this.getResultMultiple(res.data.scArray);
+          } else {
+            // console.log("third")
+            _this.getResult(res.data.scArray);
+          }
         } else {
-          // console.log("third")
-          _this.getResult(res.data.scArray);
+          _this.attributesToShow = res.data;
         }
       });
     },
@@ -3506,11 +3512,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     product: Object,
-    form: Object
+    form: Object,
+    recordsLength: Number
   },
   data: function data() {
     return {
@@ -3542,6 +3553,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       actionDefault: "",
       otherSize: "",
       tabnumber: "",
+      leng: 0,
       formBody: {},
       formLocal: {}
     };
@@ -3580,10 +3592,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // })
     },
     setSlides: function setSlides(sizeposition) {
-      $("div.fit-advisor-selected-size:gt(" + sizeposition + ")").hide();
-      $("div.fit-advisor-selected-size:lt(" + sizeposition + ")").hide();
-      $("p.size_descriptions:gt(" + sizeposition + ")").hide();
-      $("p.size_descriptions:lt(" + sizeposition + ")").hide(); //Hide all but the Predicted Size
+      if (typeof sizeposition == 'undefined' || sizeposition == "") {
+        $("div.fit-advisor-selected-size:gt(0)").hide();
+        $("div.fit-advisor-selected-size:lt(0)").hide();
+        $("p.size_descriptions:gt(0)").hide();
+        $("p.size_descriptions:lt(0)").hide();
+      } else {
+        $("div.fit-advisor-selected-size:gt(" + sizeposition + ")").hide();
+        $("div.fit-advisor-selected-size:lt(" + sizeposition + ")").hide();
+        $("p.size_descriptions:gt(" + sizeposition + ")").hide();
+        $("p.size_descriptions:lt(" + sizeposition + ")").hide();
+      } //Hide all but the Predicted Size
+
 
       this.$allSlides = $("div.fit-advisor-selected-size"), this.$allSlidesSize = $("p.size_descriptions"), this.traverseDefault = "first", //set the defaults
       this.actionDefault = "next";
@@ -43770,7 +43790,9 @@ var render = function() {
         ? _c("div", { staticClass: "x-row" }, [_vm._m(0)])
         : _vm._e(),
       _vm._v(" "),
-      _vm.attributes.attr_items.length == 0 && _vm.is_loading == false
+      _vm.attributes.attr_items.length == 0 ||
+      (typeof _vm.attributes.attr_items == "undefined" &&
+        _vm.is_loading == false)
         ? _c(
             "div",
             { staticClass: " x-row" },
@@ -43812,7 +43834,8 @@ var render = function() {
           )
         : _vm._e(),
       _vm._v(" "),
-      _vm.attributes.attr_items.length > 0 && _vm.is_loading == false
+      typeof _vm.attributes.attr_items != "undefined" ||
+      (_vm.attributes.attr_items.length > 0 && _vm.is_loading == false)
         ? _c(
             "div",
             { staticClass: " x-row" },
@@ -43851,7 +43874,25 @@ var render = function() {
         : _vm._e()
     ]),
     _vm._v(" "),
-    _vm._m(1)
+    _c(
+      "div",
+      {
+        staticClass:
+          "m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1",
+        staticStyle: { position: "fixed" },
+        attrs: { id: "steps-mark" }
+      },
+      [
+        _c("span", { staticClass: "step active" }),
+        _vm._v(" "),
+        _vm._l(_vm.recordsLength, function(row, key) {
+          return _c("span", { staticClass: "step" })
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "step" })
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = [
@@ -43869,31 +43910,6 @@ var staticRenderFns = [
         [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
       )
     ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1",
-        staticStyle: { position: "fixed" },
-        attrs: { id: "steps-mark" }
-      },
-      [
-        _c("span", { staticClass: "step" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "step active" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "step" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "step" }),
-        _vm._v(" "),
-        _c("span", { staticClass: "step" })
-      ]
-    )
   }
 ]
 render._withStripped = true
@@ -44454,7 +44470,11 @@ var render = function() {
                         },
                         [
                           _c("result-component", {
-                            attrs: { product: _vm.product, form: _vm.form }
+                            attrs: {
+                              product: _vm.product,
+                              form: _vm.form,
+                              recordsLength: _vm.attributes.length
+                            }
                           })
                         ],
                         1
@@ -45412,7 +45432,25 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(3)
+    _c(
+      "div",
+      {
+        staticClass:
+          "m-result x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1 x-offset-2",
+        staticStyle: { "text-align": "center", position: "fixed" },
+        attrs: { id: "steps-mark" }
+      },
+      [
+        _c("span", { staticClass: "step " }),
+        _vm._v(" "),
+        _vm._l(_vm.recordsLength, function(row, key) {
+          return _c("span", { staticClass: "step" })
+        }),
+        _vm._v(" "),
+        _c("span", { staticClass: "step active" })
+      ],
+      2
+    )
   ])
 }
 var staticRenderFns = [
@@ -45466,27 +45504,6 @@ var staticRenderFns = [
           },
           [_vm._v("Learn More")]
         )
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      {
-        staticClass:
-          "m-result x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1 x-offset-2",
-        staticStyle: { "text-align": "center", position: "fixed" },
-        attrs: { id: "steps-mark" }
-      },
-      [
-        _c("span", { staticClass: "step" }),
-        _c("span", { staticClass: "step" }),
-        _c("span", { staticClass: "step" }),
-        _c("span", { staticClass: "step" }),
-        _c("span", { staticClass: "step active" })
       ]
     )
   }

@@ -135,7 +135,7 @@
 <tr v-if="!isLoading" >
   <td>
     
-     <img id="single-product" :src="product.image_link" width="50" height="50"  alt="" class="img-thumbnail"> 
+     <img id="single-product" v-on:click="zoomImage(product.image_link)" :src="product.image_link" width="50" height="50"  alt="" class="img-thumbnail"> 
     </td>
 
   <td>@{{ product.name }}</td>
@@ -194,7 +194,9 @@
         
     },
     methods:{
-
+      zoomImage:function($img){
+        window.open($img,"_blank");
+      },
       viewAttributes:function($id)
       {
         window.location.href = "attributetypes-all/view/"+$id;
