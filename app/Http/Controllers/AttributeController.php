@@ -399,30 +399,8 @@ class AttributeController extends Controller
 
 try{
 
-        $tags = array_map('strtolower', $data['tags']);
-        if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
-
-            foreach ($sizeChartList as $s) {
-
-
-
-                if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
-
-                    foreach ($s['bodyFeature'] as $b) {
-                        for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
-
-
-
-                            if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
-                                
-                                return $this->checkVariantIFExists($b['predicted_size']);
-                                // exit;
-                            }
-                        }
-                    }
-                }
-            }
-        } else {
+       
+         
             
             foreach ($sizeChartList as $s) {
 
@@ -444,7 +422,7 @@ try{
                     }
                 } 
             }
-        }
+        
     }catch(\Exception $e){
         
         foreach ($sizeChartList as $s) {
