@@ -44,7 +44,7 @@
                 <img id="product-id-specific" v-on:click="productFix({{ $row->product_id }})" style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter" src="{{ ($row->image_link == null) ?  env('APP_URL').'/images/download.png'  : $row->image_link}}" class="img-thumbnail" width="50">
               </div>
               <div class="col-md-10" style="cursor: pointer;">
-              <a href="javascript:void(0)" class="text-dark" >{{ $row->name }}</a></div></div></td>
+              <a href="javascript:void(0)" v-on:click="productFix({{ $row->product_id }})" style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter"  class="text-dark" >{{ $row->name }}</a></div></div></td>
             <td>
             
             <label class="switch">

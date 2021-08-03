@@ -1177,7 +1177,8 @@ try{
                     $at['attr_items']=$container;
                     
                  }
-                 return $attributeTypeOfProducts;
+                 $res = array('ogArray' =>$attributeTypeOfProducts ,'scArray' =>$attributeTypeOfProducts );
+                 return $res;
                
                 $count = 0;
            $bcount = 0;
