@@ -312,19 +312,19 @@ export default {
                this.ogLength = res.data.length;
 
                this.ogArray = res.data.ogArray;
-               console.log(res.data)
+              // console.log(res.data)
 //  this.attributesToShow = res.data;
 if(res.data.scArray.length == 2)
 {
-    console.log("first")
+   // console.log("first")
     this.getResultTwo(res.data.scArray)
 }else if(res.data.scArray.length >3)
 {
-    console.log("second")
+   // console.log("second")
      this.getResultMultiple(res.data.scArray)
 }else
 {
-    console.log("third")
+   // console.log("third")
     this.getResult(res.data.scArray)
 }
             
@@ -386,7 +386,7 @@ if(res.data.scArray.length == 2)
              }
              
              var countOfLastScreen = at[at.length-1].attr_items.length + parseInt(1);
-             console.log("countOfLastScreen"+countOfLastScreen)
+            // console.log("countOfLastScreen"+countOfLastScreen)
               
               for(var se=0; se < this.fscount; se++)
               {
@@ -402,58 +402,23 @@ if(res.data.scArray.length == 2)
               
               
             
-        //       for(var s=0; s < at[i].attr_items.length; s++)
-        //      {
-        //         if(at[i].id < at[i].attr_items[s].attribute_type_id )
-        //      {
-                 
-        //          for(var pop=0; pop <at.length;pop++)
-        //          {
-        //               at[i].attr_items.pop();
-                   
-        //          }
-                   
-        //      }
-                 
-        //         else if( at[i].id > at[i].attr_items[s].attribute_type_id)
-        //             {
-                    
-        //                 // console.log(s)
-        //                         at[i].attr_items.splice(s,1);
-                 
-        //             }
-        //           else if(at[i].id == at[i].attr_items[s].attribute_type_id)
-        //          {
-                    
-        //                 // console.log(s)
-        //                         at[i].attr_items.shift(s-1,1);
-                                
-                                
-        //                         // at[i].attr_items.splice(s+1,1);
-                    
-        //      }  
-              
-              
-          
-           
-        //  }
         
          }
              else if(i == at.length-1)
          {
              var bcou = 0;
              var shiftcount=0;
-             console.log("length of last screen after edited in second"+ this.ogArray[i])
+             //console.log("length of last screen after edited in second"+ this.ogArray[i])
               for(var b=0; b < this.ogArray[i].attr_items.length; b++)
              {
-                 console.log("inside f0r")
+               //  console.log("inside f0r")
                  
                  if(at[i].id == this.ogArray[i].attr_items[b].attribute_type_id )
                  {
                        bcou = bcou+parseInt(1);
                       
                       shiftcount = this.ogArray[i].attr_items.length - bcou;
-                      console.log("shiftcount"+shiftcount)
+                   //   console.log("shiftcount"+shiftcount)
   
   
                  }
@@ -463,7 +428,7 @@ if(res.data.scArray.length == 2)
   
              for(var sc=0; sc<shiftcount; sc++)
              {
-                 console.log("shiftcount"+sc)
+                // console.log("shiftcount"+sc)
                  this.ogArray[i].attr_items.shift();
              }
              
@@ -556,7 +521,7 @@ if(res.data.scArray.length == 2)
            
          }
          this.sscount = at[i].attr_items.length;
-         console.log("Length after editing:"+at[i].attr_items.length);
+       //  console.log("Length after editing:"+at[i].attr_items.length);
          }
              else if(i == at.length-1)
          {
@@ -608,7 +573,7 @@ if(res.data.scArray.length == 2)
              }
              
              this.lscount = at[at.length-1].attr_items.length;
-             console.log("Last count edit:"+this.lscount);
+            // console.log("Last count edit:"+this.lscount);
              //test
 
               
@@ -618,7 +583,7 @@ if(res.data.scArray.length == 2)
                  
          }
          
-         console.log("Last count edit inside:"+at[at.length-1].attr_items.length);
+         //"Last count edit inside:"+at[at.length-1].attr_items.length);
              for(var m=0; m < this.lscount;m++)
              {
                  at[i].attr_items.pop();
@@ -631,7 +596,7 @@ if(res.data.scArray.length == 2)
      }
      
      this.attributesToShow = at;
-     console.log(this.attributesToShow);
+    // console.log(this.attributesToShow);
   
         },
          getResultTwo: function(at){

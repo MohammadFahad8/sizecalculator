@@ -2431,20 +2431,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       form.productkey = this.product.id;
       axios.post(this.$appUrl + '/api/get-attributes-to-height-weight', form).then(function (res) {
         _this.ogLength = res.data.length;
-        _this.ogArray = res.data.ogArray;
-        console.log(res.data); //  this.attributesToShow = res.data;
+        _this.ogArray = res.data.ogArray; // console.log(res.data)
+        //  this.attributesToShow = res.data;
 
         if (res.data.scArray.length == 2) {
-          console.log("first");
-
+          // console.log("first")
           _this.getResultTwo(res.data.scArray);
         } else if (res.data.scArray.length > 3) {
-          console.log("second");
-
+          // console.log("second")
           _this.getResultMultiple(res.data.scArray);
         } else {
-          console.log("third");
-
+          // console.log("third")
           _this.getResult(res.data.scArray);
         }
       });
@@ -2486,8 +2483,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             at[at.length - 1].attr_items.shift();
           }
 
-          var countOfLastScreen = at[at.length - 1].attr_items.length + parseInt(1);
-          console.log("countOfLastScreen" + countOfLastScreen);
+          var countOfLastScreen = at[at.length - 1].attr_items.length + parseInt(1); // console.log("countOfLastScreen"+countOfLastScreen)
 
           for (var se = 0; se < this.fscount; se++) {
             at[i].attr_items.shift();
@@ -2498,44 +2494,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
 
           this.sscount = at[i].attr_items.length;
-          this.nextcount = this.fscount + parseInt(this.sscount); //       for(var s=0; s < at[i].attr_items.length; s++)
-          //      {
-          //         if(at[i].id < at[i].attr_items[s].attribute_type_id )
-          //      {
-          //          for(var pop=0; pop <at.length;pop++)
-          //          {
-          //               at[i].attr_items.pop();
-          //          }
-          //      }
-          //         else if( at[i].id > at[i].attr_items[s].attribute_type_id)
-          //             {
-          //                 // console.log(s)
-          //                         at[i].attr_items.splice(s,1);
-          //             }
-          //           else if(at[i].id == at[i].attr_items[s].attribute_type_id)
-          //          {
-          //                 // console.log(s)
-          //                         at[i].attr_items.shift(s-1,1);
-          //                         // at[i].attr_items.splice(s+1,1);
-          //      }  
-          //  }
+          this.nextcount = this.fscount + parseInt(this.sscount);
         } else if (i == at.length - 1) {
           var bcou = 0;
-          var shiftcount = 0;
-          console.log("length of last screen after edited in second" + this.ogArray[i]);
+          var shiftcount = 0; //console.log("length of last screen after edited in second"+ this.ogArray[i])
 
           for (var b = 0; b < this.ogArray[i].attr_items.length; b++) {
-            console.log("inside f0r");
-
+            //  console.log("inside f0r")
             if (at[i].id == this.ogArray[i].attr_items[b].attribute_type_id) {
               bcou = bcou + parseInt(1);
-              shiftcount = this.ogArray[i].attr_items.length - bcou;
-              console.log("shiftcount" + shiftcount);
+              shiftcount = this.ogArray[i].attr_items.length - bcou; //   console.log("shiftcount"+shiftcount)
             }
           }
 
           for (var sc = 0; sc < shiftcount; sc++) {
-            console.log("shiftcount" + sc);
+            // console.log("shiftcount"+sc)
             this.ogArray[i].attr_items.shift();
           }
 
@@ -2586,8 +2559,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             }
           }
 
-          this.sscount = at[i].attr_items.length;
-          console.log("Length after editing:" + at[i].attr_items.length);
+          this.sscount = at[i].attr_items.length; //  console.log("Length after editing:"+at[i].attr_items.length);
         } else if (i == at.length - 1) {
           var bcou = 0;
 
@@ -2617,14 +2589,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             at[at.length - 1].attr_items.shift();
           }
 
-          this.lscount = at[at.length - 1].attr_items.length;
-          console.log("Last count edit:" + this.lscount); //test
+          this.lscount = at[at.length - 1].attr_items.length; // console.log("Last count edit:"+this.lscount);
+          //test
 
           for (var s = 0; s < this.fscount + parseInt(this.sscount); s++) {
             at[i].attr_items.shift();
-          }
+          } //"Last count edit inside:"+at[at.length-1].attr_items.length);
 
-          console.log("Last count edit inside:" + at[at.length - 1].attr_items.length);
 
           for (var m = 0; m < this.lscount; m++) {
             at[i].attr_items.pop();
@@ -2632,8 +2603,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         }
       }
 
-      this.attributesToShow = at;
-      console.log(this.attributesToShow);
+      this.attributesToShow = at; // console.log(this.attributesToShow);
     },
     getResultTwo: function getResultTwo(at) {
       var count = 0;
