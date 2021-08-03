@@ -288,6 +288,10 @@ export default {
             attributesToShow:{},
             fcount:0,
             lcount:0,
+            fscount:0,
+            sscount:0,
+            lscount:0,
+            
         };
     },
 
@@ -304,7 +308,14 @@ export default {
              
                
 //  this.attributesToShow = res.data;
-             this.getResult(res.data)
+if(res.data.length == 2)
+{
+    this.getResultTwo(res.data)
+}else
+{
+     this.getResult(res.data)
+}
+            
             })
         },
          getResult: function(at){
@@ -336,6 +347,8 @@ export default {
              {
                  at[i].attr_items.pop();
              }
+             this.fscount = at[i].attr_items.length;
+             
             
          }
          else if(i == 1)
@@ -344,9 +357,18 @@ export default {
               
               for(var s=0; s < at[i].attr_items.length; s++)
              {
-                
+                if(at[i].id < at[i].attr_items[s].attribute_type_id )
+             {
                  
-                 if( at[i].id != at[i].attr_items[s].attribute_type_id)
+                 for(var pop=0; pop <at.length-1;pop++)
+                 {
+                      at[i].attr_items.pop();
+                   
+                 }
+                   
+             }
+                 
+                else if( at[i].id > at[i].attr_items[s].attribute_type_id)
                     {
                     
                         // console.log(s)
@@ -362,29 +384,122 @@ export default {
                                 
                                 // at[i].attr_items.splice(s+1,1);
                     
-             }   
-             if(at[i].id < at[i].attr_items[s].attribute_type_id )
-             {
-                    at[i].attr_items.pop();
-                    at[i].attr_items.pop();
-             }
-            //  if(at[i].id == at[i].attr_items[s].attribute_type_id )
-            //      {
-                    
-               
-                
-            //                 if(s-counte > 0){
-            //                   console.log(s)
-            //                   console.log(counte)
-            //                     at[i].attr_items.splice(s-counte,1);
-            //                     counte++;
-            //                 }
-                 
-            //  }
+             }  
+              
+              
+          
            
          }
+         this.sscount = at[i].attr_items.length;
+         console.log("Length after editing:"+at[i].attr_items.length);
+         }
+             else if(i == at.length-1)
+         {
+             var bcou = 0;
+              for(var b=0; b < at[i].attr_items.length; b++)
+             {
+                 
+                 if(at[i].id == at[i].attr_items[b].attribute_type_id )
+                 {
+                       bcou = bcou+parseInt(1);
+                      
+                     var shiftcount = at[i].attr_items.length - bcou;
+   
+                 }
+            
+             }
+             
+
+             for(var sc=0; sc<shiftcount; sc++)
+             {
+                 at[i].attr_items.shift();
+             }
+             
+             this.lscount = at[i].attr_items.length;
+             
+              
+
          }
          else
+         {
+              var bcou = 0;
+              for(var b=0; b < at[at.length-1].attr_items.length; b++)
+             {
+                 
+                 if(at[i].id == at[at.length-1].attr_items[b].attribute_type_id )
+                 {
+                       bcou = bcou+parseInt(1);
+                      
+                     var shiftcount = at[at.length-1].attr_items.length - bcou;
+   
+                 }
+            
+             }
+             
+
+             for(var sc=0; sc<shiftcount; sc++)
+             {
+                 at[at.length-1].attr_items.shift();
+             }
+             
+             this.lscount = at[at.length-1].attr_items.length;
+             console.log("Last count edit:"+this.lscount);
+             //test
+
+              
+              for(var s=0; s < this.fscount + parseInt(this.sscount); s++)
+             {
+                 at[i].attr_items.shift();
+                 
+         }
+         
+         console.log("Last count edit inside:"+at[at.length-1].attr_items.length);
+             for(var m=0; m < this.lscount;m++)
+             {
+                 at[i].attr_items.pop();
+                 
+         }
+
+         }
+        
+    
+     }
+     
+     this.attributesToShow = at;
+     console.log(this.attributesToShow);
+  
+        },
+         getResultTwo: function(at){
+               
+    
+    
+              var count = 0;
+           var bcount = 0;
+           var scount = 0;
+           var nfcount = 0;
+                for( var i = 0; i < at.length; i++){ 
+    
+         if ( i == 0) {
+            
+             for(var k=0; k < at[i].attr_items.length; k++)
+             {
+                 this.fcount =at[i].attr_items.length;
+                
+                 if(at[i].id == at[i].attr_items[k].attribute_type_id )
+                 {
+                     count = count+parseInt(1);
+                     var popcount = at[i].attr_items.length - count;
+                    
+                 }
+            
+             }
+            
+             for(var pc=0; pc<popcount; pc++)
+             {
+                 at[i].attr_items.pop();
+             }
+            
+         } else
          {
               for(var b=0; b < at[i].attr_items.length; b++)
              {

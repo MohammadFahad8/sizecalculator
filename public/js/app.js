@@ -2415,7 +2415,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       image_uk: this.$appUrl + "/images/uk.png",
       attributesToShow: {},
       fcount: 0,
-      lcount: 0
+      lcount: 0,
+      fscount: 0,
+      sscount: 0,
+      lscount: 0
     };
   },
   methods: {
@@ -2425,7 +2428,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       form.productkey = this.product.id;
       axios.post(this.$appUrl + '/api/get-attributes-to-height-weight', form).then(function (res) {
         //  this.attributesToShow = res.data;
-        _this.getResult(res.data);
+        if (res.data.length == 2) {
+          _this.getResultTwo(res.data);
+        } else {
+          _this.getResult(res.data);
+        }
       });
     },
     getResult: function getResult(at) {
@@ -2448,31 +2455,93 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           for (var pc = 0; pc < popcount; pc++) {
             at[i].attr_items.pop();
           }
+
+          this.fscount = at[i].attr_items.length;
         } else if (i == 1) {
           var counte = 1;
 
           for (var s = 0; s < at[i].attr_items.length; s++) {
-            if (at[i].id != at[i].attr_items[s].attribute_type_id) {
+            if (at[i].id < at[i].attr_items[s].attribute_type_id) {
+              for (var pop = 0; pop < at.length - 1; pop++) {
+                at[i].attr_items.pop();
+              }
+            } else if (at[i].id > at[i].attr_items[s].attribute_type_id) {
               // console.log(s)
               at[i].attr_items.splice(s, 1);
             } else if (at[i].id == at[i].attr_items[s].attribute_type_id) {
               // console.log(s)
               at[i].attr_items.shift(s - 1, 1); // at[i].attr_items.splice(s+1,1);
             }
+          }
 
-            if (at[i].id < at[i].attr_items[s].attribute_type_id) {
-              at[i].attr_items.pop();
-              at[i].attr_items.pop();
-            } //  if(at[i].id == at[i].attr_items[s].attribute_type_id )
-            //      {
-            //                 if(s-counte > 0){
-            //                   console.log(s)
-            //                   console.log(counte)
-            //                     at[i].attr_items.splice(s-counte,1);
-            //                     counte++;
-            //                 }
-            //  }
+          this.sscount = at[i].attr_items.length;
+          console.log("Length after editing:" + at[i].attr_items.length);
+        } else if (i == at.length - 1) {
+          var bcou = 0;
 
+          for (var b = 0; b < at[i].attr_items.length; b++) {
+            if (at[i].id == at[i].attr_items[b].attribute_type_id) {
+              bcou = bcou + parseInt(1);
+              var shiftcount = at[i].attr_items.length - bcou;
+            }
+          }
+
+          for (var sc = 0; sc < shiftcount; sc++) {
+            at[i].attr_items.shift();
+          }
+
+          this.lscount = at[i].attr_items.length;
+        } else {
+          var bcou = 0;
+
+          for (var b = 0; b < at[at.length - 1].attr_items.length; b++) {
+            if (at[i].id == at[at.length - 1].attr_items[b].attribute_type_id) {
+              bcou = bcou + parseInt(1);
+              var shiftcount = at[at.length - 1].attr_items.length - bcou;
+            }
+          }
+
+          for (var sc = 0; sc < shiftcount; sc++) {
+            at[at.length - 1].attr_items.shift();
+          }
+
+          this.lscount = at[at.length - 1].attr_items.length;
+          console.log("Last count edit:" + this.lscount); //test
+
+          for (var s = 0; s < this.fscount + parseInt(this.sscount); s++) {
+            at[i].attr_items.shift();
+          }
+
+          console.log("Last count edit inside:" + at[at.length - 1].attr_items.length);
+
+          for (var m = 0; m < this.lscount; m++) {
+            at[i].attr_items.pop();
+          }
+        }
+      }
+
+      this.attributesToShow = at;
+      console.log(this.attributesToShow);
+    },
+    getResultTwo: function getResultTwo(at) {
+      var count = 0;
+      var bcount = 0;
+      var scount = 0;
+      var nfcount = 0;
+
+      for (var i = 0; i < at.length; i++) {
+        if (i == 0) {
+          for (var k = 0; k < at[i].attr_items.length; k++) {
+            this.fcount = at[i].attr_items.length;
+
+            if (at[i].id == at[i].attr_items[k].attribute_type_id) {
+              count = count + parseInt(1);
+              var popcount = at[i].attr_items.length - count;
+            }
+          }
+
+          for (var pc = 0; pc < popcount; pc++) {
+            at[i].attr_items.pop();
           }
         } else {
           for (var b = 0; b < at[i].attr_items.length; b++) {
@@ -3739,7 +3808,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://52dc136a70f7.ngrok.io';
+Vue.prototype.$appUrl = 'https://2490effafc9b.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 /**
