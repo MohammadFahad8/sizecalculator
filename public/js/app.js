@@ -2429,13 +2429,89 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post(this.$appUrl + '/api/get-attributes-to-height-weight', form).then(function (res) {
         //  this.attributesToShow = res.data;
         if (res.data.length == 2) {
+          console.log("first");
+
           _this.getResultTwo(res.data);
+        } else if (res.data.length > 3) {
+          console.log("second");
+
+          _this.getResultMultiple(res.data);
         } else {
+          console.log("third");
+
           _this.getResult(res.data);
         }
       });
     },
     getResult: function getResult(at) {
+      var count = 0;
+      var bcount = 0;
+      var scount = 0;
+      var nfcount = 0;
+
+      for (var i = 0; i < at.length; i++) {
+        if (i == 0) {
+          for (var k = 0; k < at[i].attr_items.length; k++) {
+            this.fcount = at[i].attr_items.length;
+
+            if (at[i].id == at[i].attr_items[k].attribute_type_id) {
+              count = count + parseInt(1);
+              var popcount = at[i].attr_items.length - count;
+            }
+          }
+
+          for (var pc = 0; pc < popcount; pc++) {
+            at[i].attr_items.pop();
+          }
+
+          this.fscount = at[i].attr_items.length;
+        } else if (i == 1) {
+          var counte = 1;
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('lastcount', function (count) {
+            for (var f = 0; f < count; f++) {
+              at[i].attr_items.pop();
+            }
+          });
+
+          for (var s = 0; s < at[i].attr_items.length; s++) {
+            if (at[i].id < at[i].attr_items[s].attribute_type_id) {
+              for (var pop = 0; pop < at.length; pop++) {
+                at[i].attr_items.pop();
+              }
+            } else if (at[i].id > at[i].attr_items[s].attribute_type_id) {
+              // console.log(s)
+              at[i].attr_items.splice(s, 1);
+            } else if (at[i].id == at[i].attr_items[s].attribute_type_id) {
+              // console.log(s)
+              at[i].attr_items.shift(s - 1, 1); // at[i].attr_items.splice(s+1,1);
+            }
+          }
+
+          this.sscount = at[i].attr_items.length;
+          console.log("Length after editing:" + at[i].attr_items.length);
+        } else if (i == at.length - 1) {
+          var bcou = 0;
+
+          for (var b = 0; b < at[i].attr_items.length; b++) {
+            if (at[i].id == at[i].attr_items[b].attribute_type_id) {
+              bcou = bcou + parseInt(1);
+              var shiftcount = at[i].attr_items.length - bcou;
+            }
+          }
+
+          for (var sc = 0; sc < shiftcount; sc++) {
+            at[i].attr_items.shift();
+          }
+
+          this.lscount = at[i].attr_items.length;
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("lastcount", this.lscount);
+        }
+      }
+
+      this.attributesToShow = at;
+      console.log(this.attributesToShow);
+    },
+    getResultMultiple: function getResultMultiple(at) {
       var count = 0;
       var bcount = 0;
       var scount = 0;
