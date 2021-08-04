@@ -466,11 +466,7 @@ export default {
         getProductDetails: function (form) {
             this.container.is_loading = true;
             var a = "";
-            if (this.container.restarted == false) {
-                if (localStorage.getItem("sizeindex") != null) {
-                    this.setSlides(localStorage.getItem("sizeindex"));
-                }
-            }
+          
             this.container.showSelectedSizeSlider = false;
             this.container.conversionCount = this.product.id;
 
@@ -632,7 +628,7 @@ export default {
     mounted() {
         this.is_loading=true;
         
-        this.setupProduct();
+        //this.setupProduct();
         // this.getProductDetails();
         this.form.conversionCount = this.product.id;
 

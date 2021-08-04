@@ -1923,10 +1923,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     chest: function chest(n) {
-      if (localStorage.getItem(this.attributes.name) == null) {
-        localStorage.setItem(this.attributes.name.toLowerCase(), n);
-      }
-
+      localStorage.setItem(this.attributes.name.toLowerCase(), n);
       this.nextStep(this.tabnum.count + 1);
     }
   },
@@ -2517,16 +2514,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this3.attributes = res.data;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
           _this3.lastTab = true;
-        });
-
-        if (localStorage.getItem("recommended_size") != null) {
-          if (_this3.newapp == true) {
-            _this3.tabnumber = 1;
-          } else {
-            _this3.tabnumber = parseInt(_this3.attributes.length) + 2;
-            _this3.lastTab = true;
-          }
-        }
+        }); //following commented part tells us about if screen should be last when size is already calculated
+        // if (localStorage.getItem("recommended_size") != null) {
+        //     if(this.newapp == true)
+        //     {
+        //         this.tabnumber = 1;
+        //     }else
+        //     {
+        //         this.tabnumber = parseInt(this.attributes.length) + 2;
+        //     this.lastTab = true;    
+        //     }
+        // }
       });
     }
   },
@@ -2863,7 +2861,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       container: {
         form: {
-          heightfoot: localStorage.getItem('foot'),
+          heightfoot: "",
           heightinch: "",
           heightcm: "",
           weight: "",
@@ -3474,13 +3472,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.container.is_loading = true;
       var a = "";
-
-      if (this.container.restarted == false) {
-        if (localStorage.getItem("sizeindex") != null) {
-          this.setSlides(localStorage.getItem("sizeindex"));
-        }
-      }
-
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
       axios.post(this.$appUrl + "/api/size-recommend/", form).then(function (res) {
@@ -3590,8 +3581,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     var _this4 = this;
 
-    this.is_loading = true;
-    this.setupProduct(); // this.getProductDetails();
+    this.is_loading = true; //this.setupProduct();
+    // this.getProductDetails();
 
     this.form.conversionCount = this.product.id;
     _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("sizeCalculate", function (num) {

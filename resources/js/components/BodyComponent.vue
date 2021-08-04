@@ -447,24 +447,24 @@ export default {
                     EventBus.$on("mount", num => {
                         this.lastTab = true;
                     });
-
-                    if (localStorage.getItem("recommended_size") != null) {
+//following commented part tells us about if screen should be last when size is already calculated
+                    // if (localStorage.getItem("recommended_size") != null) {
                         
-                        if(this.newapp == true)
-                        {
-                            this.tabnumber = 1;
+                    //     if(this.newapp == true)
+                    //     {
+                    //         this.tabnumber = 1;
 
                         
 
-                        }else
-                        {
+                    //     }else
+                    //     {
                             
-                            this.tabnumber = parseInt(this.attributes.length) + 2;
+                    //         this.tabnumber = parseInt(this.attributes.length) + 2;
 
-                        this.lastTab = true;    
-                        }
+                    //     this.lastTab = true;    
+                    //     }
                         
-                    }
+                    // }
                 });
         }
     },

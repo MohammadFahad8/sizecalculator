@@ -371,12 +371,6 @@ class AttributeController extends Controller
     {
         $break = 0;
         $data = $request->all();
-        
-        
-
-
-
-
         $sizeList = Attributetypes::with('bodyFeatureOfType', 'sizecharts')->where('product_id', '=', $data['conversionCount'])->get();
         $sizeChartList = Sizechart::with('bodyFeature', 'product')->where('product_id', '=', $data['conversionCount'])->get();
         $productid = $data['conversionCount'];
@@ -397,55 +391,32 @@ class AttributeController extends Controller
         }
 
 
-try{
+
 
        
          
-            
-            foreach ($sizeChartList as $s) {
-
-
-
-                if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
-
-                    foreach ($s['bodyFeature'] as $b) {
-                        for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
-
-
-
-                            if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
-                                
-                                return $this->checkVariantIFExists($b['predicted_size']);
-                                // exit;
-                            } 
-                        }
-                    }
-                } 
-            }
         
-    }catch(\Exception $e){
+    
         
         foreach ($sizeChartList as $s) {
-
-
-
-            if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
+            
 
                 foreach ($s['bodyFeature'] as $b) {
-                    for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+
+                    foreach ($data['bodyMeasure'] as $bm) {
+                        
 
 
-
-                        if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+                        if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end']) {
                             
                             return $this->checkVariantIFExists($b['predicted_size']);
                             // exit;
                         }
                     }
                 }
-            } 
+            
         }
-    }
+    
     }
     public function calculateSizeFemale($data, $height_cm)
     {

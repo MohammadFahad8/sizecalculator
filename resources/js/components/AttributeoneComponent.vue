@@ -76,9 +76,9 @@ export default {
             }
         },
         chest: function(n) {
-            if (localStorage.getItem(this.attributes.name) == null) {
+            
                 localStorage.setItem(this.attributes.name.toLowerCase(), n);
-            }
+            
 
             this.nextStep(this.tabnum.count + 1);
         }
