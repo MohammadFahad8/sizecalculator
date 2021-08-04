@@ -170,6 +170,10 @@ $pos = strpos($page['asset']['value'],"{% form 'product', product");
 
 }
 
- 
+ function df($pay)
+ {
+   echo json_encode($pay);
+
+ }
 
 }

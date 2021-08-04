@@ -401,11 +401,11 @@ class AttributeController extends Controller
            
 
                 foreach ($s['bodyFeature'] as $b) {
-                    for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+                    foreach ($data['bodyMeasure'] as $bm) {
 
 
 
-                        if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+                        if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end']) {
 
                             return $this->checkVariantIFExists($b['predicted_size']);
                             // exit;
@@ -415,77 +415,77 @@ class AttributeController extends Controller
             
         }
 
-        try {
+        // try {
 
-            $tags = array_map('strtolower', $data['tags']);
-            if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
+        //     $tags = array_map('strtolower', $data['tags']);
+        //     if (in_array(strtolower("male"), $tags) || in_array(strtolower("m"), $tags) || in_array(strtolower("men"), $tags)  || in_array(strtolower("man"), $tags)) {
 
-                foreach ($sizeChartList as $s) {
-
-
-
-                    if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
-
-                        foreach ($s['bodyFeature'] as $b) {
-                            for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+        //         foreach ($sizeChartList as $s) {
 
 
 
-                                if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+        //             if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
 
-                                    return $this->checkVariantIFExists($b['predicted_size']);
-                                    // exit;
-                                }
-                            }
-                        }
-                    }
-                }
-            } else {
-
-                foreach ($sizeChartList as $s) {
+        //                 foreach ($s['bodyFeature'] as $b) {
+        //                     for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
 
 
 
-                    if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
+        //                         if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
 
-                        foreach ($s['bodyFeature'] as $b) {
-                            for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+        //                             return $this->checkVariantIFExists($b['predicted_size']);
+        //                             // exit;
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     } else {
 
-
-
-                                if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
-
-                                    return $this->checkVariantIFExists($b['predicted_size']);
-                                    // exit;
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        } catch (\Exception $e) {
-
-            foreach ($sizeChartList as $s) {
+        //         foreach ($sizeChartList as $s) {
 
 
 
-                if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
+        //             if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
 
-                    foreach ($s['bodyFeature'] as $b) {
-                        for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+        //                 foreach ($s['bodyFeature'] as $b) {
+        //                     for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
 
 
 
-                            if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+        //                         if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
 
-                                return $this->checkVariantIFExists($b['predicted_size']);
-                                // exit;
-                            }
-                        }
-                    }
-                }
-            }
-        }
+        //                             return $this->checkVariantIFExists($b['predicted_size']);
+        //                             // exit;
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // } catch (\Exception $e) {
+
+        //     foreach ($sizeChartList as $s) {
+
+
+
+        //         if ($data['weight']  >=  $s['weight_start'] &&  $data['weight'] <=  $s['weight_end']  &&   $height_cm >= $s['height_start'] && $height_cm <= $s['height_end']) {
+
+        //             foreach ($s['bodyFeature'] as $b) {
+        //                 for ($i = 0; $i < count($data['bodyMeasure']); $i++) {
+
+
+
+        //                     if ($data['bodyMeasure'][$i] >= $b['attr_measurement_start'] && $data['bodyMeasure'][$i] <= $b['attr_measurement_end']) {
+
+        //                         return $this->checkVariantIFExists($b['predicted_size']);
+        //                         // exit;
+        //                     }
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
     }
     public function calculateSizeFemale($data, $height_cm)
     {
@@ -1101,10 +1101,11 @@ class AttributeController extends Controller
 
     public function getAttributesOnHeightWeight(Request $request)
     {
-        $data = $request->all();
-
+         $data = $request->all();
+        $h = new Helpers();
         $h = 0;
         $w = 0;
+        
         $response = array();
         $container = array();
 
@@ -1129,36 +1130,46 @@ class AttributeController extends Controller
             ->where('height_end', '>=',  $h)
             ->where('status', '>',  0)
             ->where('product_id', '=',  $data['productkey'])
-            ->first();
+            ->get();
+            
+
+            
 
 
-        try {
-            for ($i = 0; $i <= count($attributesjoined->bodyFeature) - 1; $i++) {
+        
+            foreach($attributesjoined as $key => $aj) {
+                
+                foreach($aj['bodyFeature'] as $i => $aj_bf){
 
-                for ($j = 0; $j <= count($attributesjoined->attributecsb) - 1; $j++) {
+                foreach ($aj['attributecsb'] as $j=> $aj_csb) {
 
-                    if ($attributesjoined->bodyFeature[$i]->attr_measurement_start <= $attributesjoined->attributecsb[$j]->attr_size_value && $attributesjoined->bodyFeature[$i]->attr_measurement_end >= $attributesjoined->attributecsb[$j]->attr_size_value) {
+                    if ($aj_bf->attr_measurement_start <= $aj_csb->attr_size_value && $aj_bf->attr_measurement_end >= $aj_csb->attr_size_value) {
 
 
 
-                        if ($attributesjoined->bodyfeature[$i]->attr_id == $attributesjoined->attributecsb[$j]->attribute_type_id) {
+                        if ($aj_bf->attr_id == $aj_csb->attribute_type_id) {
 
                             //this check is to ensure whether to enter the second matching record in same object or next object
-                            $container[] = $attributesjoined->attributecsb[$j];
+                            $container[] = $aj_csb;
                         }
                     }
                 }
             }
+        }
 
             foreach ($attributeTypeOfProducts as $at) {
                 $at['attr_items'] = $container;
             }
+
+            return $attributeTypeOfProducts;
+            
             $res = array('ogArray' => $attributeTypeOfProducts, 'scArray' => $attributeTypeOfProducts);
             return $res;
-        } catch (\Exception $e) {
-            return     $attributeTypeOfProducts = Attributetypes::with('attrDetails', 'attrItems')->where([['product_id', '=', $data['productkey']], ['status', '>', 0]])
-                ->get();
-        }
+        
+            //return following in case of any error
+            // return     $attributeTypeOfProducts = Attributetypes::with('attrDetails', 'attrItems')->where([['product_id', '=', $data['productkey']], ['status', '>', 0]])
+            //     ->get();
+        
 
         $count = 0;
         $bcount = 0;

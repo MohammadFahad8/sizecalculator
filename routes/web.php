@@ -89,7 +89,8 @@ Route::group(['prefix'=>'sizechart'],function(){
 });                                                
 });
 
-ROute::get('/loginshop',[App\Http\Controllers\AttributeController::class,'loginshop'])->name('loginshop');
+Route::get('/loginshop',[App\Http\Controllers\AttributeController::class,'loginshop'])->name('loginshop');
+Route::get('/hw-work',[App\Http\Controllers\AttributeController::class,'getAttributesOnHeightWeight'])->name('hw');
 
 
 // Auth::routes();
