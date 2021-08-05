@@ -260,7 +260,7 @@ export default {
         return {
             container: {
                 form: {
-                    heightfoot: localStorage.getItem('foot'),
+                    heightfoot:"",
                     heightinch: "",
                     heightcm: "",
                     weight: "",

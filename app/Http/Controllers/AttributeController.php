@@ -791,7 +791,7 @@ class AttributeController extends Controller
             $body->status = 0;
             $body->save();
         }
-        return   redirect()->route('sizechart.home', ['id' => trim($p_id]);
+        return   redirect()->route('sizechart.home', ['id' => trim($p_id)]);
     }
     public function sizeChartEdit(Request $request)
     {
@@ -926,13 +926,14 @@ class AttributeController extends Controller
             $sizeChart->save();
 
             for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
-
+                
                 $b = Bodyfeature::where('sizechart_id', '=', trim($request->get('id')) )->get();
                 $b[$i]['sizechart_id'] = trim($sizeChart->id);
                 $b[$i]['attr_measurement_start'] = $request->get('body_measurement_start')[$i];
                 $b[$i]['attr_measurement_end'] = $request->get('body_measurement_end')[$i];
                 $b[$i]['predicted_size'] = $request->get('predicted_size');
-                $b[$i]['attr_id'] = $request->get('attribute_type')[$i];
+                // commented as the attr_id was to be store id of attribute_Types folder but it was storing id of body_feature table
+                // $b[$i]['attr_id'] = $request->get('attribute_type')[$i];
                 $b[$i]['attr_name'] = strtolower($request->get('attribute_type_name')[$i]);
                 $b[$i]->save();
             }
@@ -1104,6 +1105,7 @@ class AttributeController extends Controller
 
     public function getAttributesOnHeightWeight(Request $request)
     {
+        
          $data = $request->all();
         //$data['productkey'] = '6925368524956';
         $h = 0;

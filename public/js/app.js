@@ -2528,7 +2528,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }
 
       this.attributesToShow = at;
-      console.log(this.attributesToShow);
     },
     getResultMultiple: function getResultMultiple(at) {
       var count = 0;
@@ -2782,16 +2781,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this4.attributes = res.data;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
           _this4.lastTab = true;
-        });
-
-        if (localStorage.getItem("recommended_size") != null) {
-          if (_this4.newapp == true) {
-            _this4.tabnumber = 1;
-          } else {
-            _this4.tabnumber = parseInt(_this4.attributes.length) + 2;
-            _this4.lastTab = true;
-          }
-        }
+        }); //Start removed part that loads last screen if session is set
+        //End removed part that loads last screen if session is set
       });
     }
   },
@@ -3128,7 +3119,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       container: {
         form: {
-          heightfoot: localStorage.getItem('foot'),
+          heightfoot: "",
           heightinch: "",
           heightcm: "",
           weight: "",

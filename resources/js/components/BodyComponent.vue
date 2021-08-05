@@ -455,7 +455,7 @@ export default {
      }
      
      this.attributesToShow = at;
-     console.log(this.attributesToShow);
+     
   
         },
         getResultMultiple: function(at){
@@ -827,24 +827,8 @@ export default {
                     EventBus.$on("mount", num => {
                         this.lastTab = true;
                     });
-
-                    if (localStorage.getItem("recommended_size") != null) {
-                        
-                        if(this.newapp == true)
-                        {
-                            this.tabnumber = 1;
-
-                        
-
-                        }else
-                        {
-                            
-                            this.tabnumber = parseInt(this.attributes.length) + 2;
-
-                        this.lastTab = true;    
-                        }
-                        
-                    }
+//Start removed part that loads last screen if session is set
+//End removed part that loads last screen if session is set
                 });
         }
     },
