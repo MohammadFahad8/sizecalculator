@@ -2434,22 +2434,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.post(this.$appUrl + '/api/get-attributes-to-height-weight', form).then(function (res) {
         _this.ogLength = res.data.length;
         _this.ogArray = res.data.ogArray; // console.log(res.data)
-        //  this.attributesToShow = res.data;
 
-        if (res.data.scArray != null || typeof res.data.scArray != 'undefined') {
-          if (res.data.scArray.length == 2) {
-            // console.log("first")
-            _this.getResultTwo(res.data.scArray);
-          } else if (res.data.scArray.length > 3) {
-            // console.log("second")
-            _this.getResultMultiple(res.data.scArray);
-          } else {
-            // console.log("third")
-            _this.getResult(res.data.scArray);
-          }
-        } else {
-          _this.attributesToShow = res.data;
-        }
+        _this.attributesToShow = res.data; // if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
+        // {
+        // if(res.data.scArray.length == 2)
+        // {
+        //    // console.log("first")
+        //     this.getResultTwo(res.data.scArray)
+        // }else if(res.data.scArray.length >3)
+        // {
+        //    // console.log("second")
+        //      this.getResultMultiple(res.data.scArray)
+        // }else
+        // {
+        //    // console.log("third")
+        //     this.getResult(res.data.scArray)
+        // }
+        // }else
+        // {
+        // this.attributesToShow = res.data
+        // }
       });
     },
     getResult: function getResult(at) {

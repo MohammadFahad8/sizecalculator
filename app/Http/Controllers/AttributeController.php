@@ -250,7 +250,10 @@ class AttributeController extends Controller
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
 
         $shop_config = $shop_cfg['shop'];
+        // $connection = config('database.default');
 
+        // $driver = config("database.connections.{$connection}.driver");
+        // dd($driver);
 
         Variants::truncate();
         // Products::truncate();
@@ -1102,22 +1105,22 @@ class AttributeController extends Controller
     public function getAttributesOnHeightWeight(Request $request)
     {
          $data = $request->all();
-        $h = new Helpers();
+        //$data['productkey'] = '6925368524956';
         $h = 0;
         $w = 0;
         
         $response = array();
         $container = array();
 
-        if ($data['convertedMeasurements'] == true) {
+            if ($data['convertedMeasurements'] == true) {
 
-            $w = intval($data['weight'] * 2.2);
+                $w = intval($data['weight'] * 2.2);
 
-            $h = intval($data['heightcm']);
-        } else {
-            $h = intval(($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54));
-            $w = intval($data['weight']);
-        }
+                $h = intval($data['heightcm']);
+            } else {
+                $h = intval(($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54));
+                $w = intval($data['weight']);
+            }
 
         $attributeTypeOfProducts = Attributetypes::with('attrDetails')->where([['product_id', '=', $data['productkey']], ['status', '=', 1]])
             ->get();
@@ -1128,10 +1131,10 @@ class AttributeController extends Controller
             ->where('weight_end', '>=',  $w)
             ->where('height_start', '<=',  $h)
             ->where('height_end', '>=',  $h)
-            ->where('status', '>',  0)
+            ->where('status','>',0)
             ->where('product_id', '=',  $data['productkey'])
             ->get();
-            
+
 
             
 

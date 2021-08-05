@@ -314,28 +314,29 @@ export default {
 
                this.ogArray = res.data.ogArray;
               // console.log(res.data)
-//  this.attributesToShow = res.data;
-if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
-{
+ this.attributesToShow = res.data;
+// if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
+// {
 
 
-if(res.data.scArray.length == 2)
-{
-   // console.log("first")
-    this.getResultTwo(res.data.scArray)
-}else if(res.data.scArray.length >3)
-{
-   // console.log("second")
-     this.getResultMultiple(res.data.scArray)
-}else
-{
-   // console.log("third")
-    this.getResult(res.data.scArray)
-}
-}else
-{
-this.attributesToShow = res.data
-}
+// if(res.data.scArray.length == 2)
+// {
+//    // console.log("first")
+//     this.getResultTwo(res.data.scArray)
+// }else if(res.data.scArray.length >3)
+// {
+//    // console.log("second")
+//      this.getResultMultiple(res.data.scArray)
+// }else
+// {
+//    // console.log("third")
+//     this.getResult(res.data.scArray)
+// }
+// }else
+// {
+    
+// this.attributesToShow = res.data
+// }
             
             })
         },

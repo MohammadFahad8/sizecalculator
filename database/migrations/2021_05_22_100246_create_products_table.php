@@ -22,6 +22,7 @@ class CreateProductsTable extends Migration
             $table->boolean('is_deleted')->default(0);
             $table->bigInteger('website_name')->default('123321');
             
+            
             $table->timestamps();
         });
     }
