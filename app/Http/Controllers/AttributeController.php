@@ -177,14 +177,14 @@ class AttributeController extends Controller
         //
         $messageContainer = array('error_msg' => 'Configure Product First Make Variants in Admin');
 
-        $product = Products::where('product_id', '=', $request['id'])->first();
+        $product = Products::where('product_id', '=', trim($request['id']))->first();
 
-        $sizeChartCount = Sizechart::where('product_id', '=', $request['id'])->get();
-        $checkVariantExists = Variants::where('product_id', '=', $request['id'])->get();
+        $sizeChartCount = Sizechart::where('product_id', '=', trim($request['id']))->get();
+        $checkVariantExists = Variants::where('product_id', '=', trim($request['id']))->get();
 
 
 
-        if ((count($sizeChartCount) == 0 || count($sizeChartCount) == null) && ($checkVariantExists[0]['size'] == 0)) {
+        if (count($sizeChartCount) == 0 || count($sizeChartCount) == null || isset($checkVariantExists[0]['size']) == false) {
 
             return $messageContainer;
         } else {
