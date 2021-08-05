@@ -928,7 +928,7 @@ class AttributeController extends Controller
             for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
 
                 $b = Bodyfeature::where('sizechart_id', '=', trim($request->get('id')) )->get();
-                $b[$i]['sizechart_id'] = $sizeChart->id;
+                $b[$i]['sizechart_id'] = trim($sizeChart->id);
                 $b[$i]['attr_measurement_start'] = $request->get('body_measurement_start')[$i];
                 $b[$i]['attr_measurement_end'] = $request->get('body_measurement_end')[$i];
                 $b[$i]['predicted_size'] = $request->get('predicted_size');
@@ -937,7 +937,7 @@ class AttributeController extends Controller
                 $b[$i]->save();
             }
             Session::flash('success', 'Updated Successfully');
-            return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
+            return   redirect()->route('sizechart.home', ['id' => trim($request->get('product_id'))]);
         } catch (\Exception $e) {
             Session::flash('error', '*Invalid form missing attribute');
             return back();
@@ -945,7 +945,7 @@ class AttributeController extends Controller
     }
     public function attributeType($id)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', trim($id)], ['status', '>', 0]])->get();
 
 
         return view('attribute_types.index', [
@@ -955,7 +955,7 @@ class AttributeController extends Controller
     }
     public function attributeTypeFront($id)
     {
-        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $attributeTypeOfProducts = Attributetypes::with('product', 'attrDetails')->where([['product_id', '=', trim($id)], ['status', '>', 0]])->get();
 
 
         return $attributeTypeOfProducts;
@@ -965,13 +965,13 @@ class AttributeController extends Controller
     {
 
         // $attributeTypeOfProducts = Attributetypes::with('product')->where('product_id','=',$request['id'])->get();
-        $attributeTypeOfProducts = Products::with('attributetypes')->where('product_id', '=', $request['id'])->get();
+        $attributeTypeOfProducts = Products::with('attributetypes')->where('product_id', '=', trim($request['id']))->get();
 
 
         return view(
             'attribute_types.create',
             [
-                'product_id' => $request['id'],
+                'product_id' => trim($request['id']),
                 'attrOfProduct' => $attributeTypeOfProducts
             ]
         );
@@ -999,7 +999,7 @@ class AttributeController extends Controller
         ]);
         $attr = new AttributeTypes();
         $attr->name = $request->get('attribute_name');
-        $attr->product_id = $request->get('product_id');
+        $attr->product_id = trim($request->get('product_id'));
 
         $attr->status = ($request->get('is_required') == 'on' ? 1 : 0);
         $attr->save();
@@ -1027,8 +1027,8 @@ class AttributeController extends Controller
                 // $attrImg->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
                 $attrImg->attr_image_src = $path  . '_' . $image;
                 $attrImg->attribute_size_name = $request['attribut_size_name'][$j];
-                $attrImg->attribute_type_id = $attr->id;
-                $attrImg->product_id = $attr->product_id;
+                $attrImg->attribute_type_id = trim($attr->id);
+                $attrImg->product_id = trim($attr->product_id);
                 $attrImg->save();
             }
         }
@@ -1040,7 +1040,7 @@ class AttributeController extends Controller
 
 
         return view('attribute_types.edit', [
-            'attrId' => $request['id'],
+            'attrId' => trim($request['id']),
             'attrTypeOfProduct' => $attributeTypeOfProducts
         ]);
     }
@@ -1077,8 +1077,8 @@ class AttributeController extends Controller
                 // $attrImg[$j]->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
                 $attrImg[$j]->attr_image_src = $path  . '_' . $image;
                 $attrImg[$j]->attribute_size_name = $request['attribut_size_name'][$j];
-                $attrImg[$j]->attribute_type_id = $attr->id;
-                $attrImg[$j]->product_id = $attr->product_id;
+                $attrImg[$j]->attribute_type_id = trim($attr->id);
+                $attrImg[$j]->product_id = trim($attr->product_id);
                 $attrImg[$j]->save();
             } else {
 
@@ -1086,8 +1086,8 @@ class AttributeController extends Controller
                 // $attrImg->attr_image_src = env('APP_URL') . '/' . $path  . '_' . $image;
                 //  $attrImg->attr_image_src = $path  . '_' . $image;
                 $attrImg[$j]->attribute_size_name = $request['attribut_size_name'][$j];
-                $attrImg[$j]->attribute_type_id = $attr->id;
-                $attrImg[$j]->product_id = $attr->product_id;
+                $attrImg[$j]->attribute_type_id = trim($attr->id);
+                $attrImg[$j]->product_id = trim($attr->product_id);
                 $attrImg[$j]->save();
             }
         }
@@ -1096,7 +1096,7 @@ class AttributeController extends Controller
     }
     public function disableAttributeType(Request $request)
     {
-        $attr = AttributeTypes::find($request->get('id'));
+        $attr = AttributeTypes::find(trim($request->get('id')));
         $attr->status = 0;
         $attr->save();
         return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
@@ -1122,7 +1122,7 @@ class AttributeController extends Controller
                 $w = intval($data['weight']);
             }
 
-        $attributeTypeOfProducts = Attributetypes::with('attrDetails')->where([['product_id', '=', $data['productkey']], ['status', '=', 1]])
+        $attributeTypeOfProducts = Attributetypes::with('attrDetails')->where([['product_id', '=', trim($data['productkey'])], ['status', '=', 1]])
             ->get();
 
         $attributesjoined = Sizechart::with('bodyFeature', 'attributecsb')
@@ -1132,7 +1132,7 @@ class AttributeController extends Controller
             ->where('height_start', '<=',  $h)
             ->where('height_end', '>=',  $h)
             ->where('status','>',0)
-            ->where('product_id', '=',  $data['productkey'])
+            ->where('product_id', '=',  trim($data['productkey']))
             ->get();
 
 
