@@ -475,7 +475,7 @@ export default {
           
            
            axios
-                .post(this.$appUrl + "/api/size-recommend/", form)
+                .post(this.$appUrl + "/api/size-recommend", form)
                 .then(res => {
                     this.container.is_loading = false;
 

@@ -3474,7 +3474,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var a = "";
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
-      axios.post(this.$appUrl + "/api/size-recommend/", form).then(function (res) {
+      axios.post(this.$appUrl + "/api/size-recommend", form).then(function (res) {
         _this3.container.is_loading = false;
         _this3.container.showSelectedSizeSlider = true;
 
