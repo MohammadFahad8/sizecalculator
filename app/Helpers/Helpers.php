@@ -31,7 +31,7 @@ class Helpers {
             foreach($row as $r)
             {
            
-            $this->updateFrontScriptTag($r['id']);
+            $this->updateFrontScriptTag(trim($r['id']);
             }
             echo '<script>console.log(" !! Welcome Body Fit Application !! ")</script>';
           
@@ -75,7 +75,7 @@ class Helpers {
       "id"=> $id,
       "src"=>  Config::get('constants.SHOPIFY_URL.SCRIPT_TAG_APP', 'default')
     ]);
-      $products = $shop->api()->rest('PUT', '/admin/api/2021-07/script_tags/'.$id.'.json',$scripttags)['body'];
+      $products = $shop->api()->rest('PUT', '/admin/api/2021-07/script_tags/'.trim($id).'.json',$scripttags)['body'];
       
       
   }
@@ -84,7 +84,7 @@ class Helpers {
     
     $shop = Auth::user();
     $theme = $shop->api()->rest('GET','/admin/api/2021-07/themes.json')['body']['container'];
-    return  $theme['themes'][0]['id'];
+    return  trim($theme['themes'][0]['id']);
   }
    function updateAsset()
   {

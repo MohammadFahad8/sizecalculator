@@ -66,7 +66,7 @@ class AttributeController extends Controller
             $shop_config = $shop_cfg['shop'];
             $settings->name = $shop_config['domain'];
             $settings->email = $shop_config['email'];
-            $settings->shop_id = $shop_config['id'];
+            $settings->shop_id = trim($shop_config['id']);
             $settings->save();
         }
 
@@ -86,7 +86,7 @@ class AttributeController extends Controller
                     'id' => $request->id
                 ],
                 [
-                    'id' => $request->id,
+                    'id' => trim($request->id),
                     'name' => $value['title'],
                     'alias' => $value['title'],
                     'attr_id' => $request->id,
@@ -168,7 +168,7 @@ class AttributeController extends Controller
         return view('attributes.edit', [
             'attr' => $attr,
             'attributetypes' => $attrtypes,
-            'id' => $id
+            'id' => trim($id)
 
 
         ]);
@@ -178,14 +178,14 @@ class AttributeController extends Controller
         //
         $messageContainer = array('error_msg' => 'Configure Product First Make Variants in Admin');
 
-        $product = Products::where('product_id', '=', $request['id'])->first();
+        $product = Products::where('product_id', '=', trim($request['id']))->first();
 
-        $sizeChartCount = Sizechart::where('product_id', '=', $request['id'])->get();
-        $checkVariantExists = Variants::where('product_id', '=', $request['id'])->get();
+        $sizeChartCount = Sizechart::where('product_id', '=', trim($request['id']))->get();
+        $checkVariantExists = Variants::where('product_id', '=', trim($request['id']))->get();
 
 
 
-        if ((count($sizeChartCount) == 0 || count($sizeChartCount) == null) && ($checkVariantExists[0]['size'] == 0)) {
+        if (count($sizeChartCount) == 0 || count($sizeChartCount) == null || isset($checkVariantExists[0]['size'] )== false) {
 
             return $messageContainer;
         } else {
@@ -215,7 +215,7 @@ class AttributeController extends Controller
     {
         //
         $data = $request->all();
-        $attr = Attribute::find($data['edit_id']);
+        $attr = Attribute::find(trim($data['edit_id']));
         $attr->attribute_name = $data['attribute_name'];
         $attr->attribute_type = $data['attribute_type'];
         $attr->is_required = (isset($data['is_required'])) ? 1 : 0;
@@ -232,7 +232,7 @@ class AttributeController extends Controller
     public function destroy($id)
     {
         //
-        $attr = Attribute::find($id);
+        $attr = Attribute::find(trim($id));
         $attr->delete();
         return $this->index();
     }
@@ -259,22 +259,22 @@ class AttributeController extends Controller
         // Products::truncate();
         foreach ($prod as $row) {
 
-            $product = Products::where('product_id', '=', $row['id'])->first();
+            $product = Products::where('product_id', '=', trim($row['id']))->first();
             if ($product == null) {
 
                 $product = new Products();
-                $product->product_id =  $row['id'];
+                $product->product_id =  trim($row['id']);
                 $product->name =   $row['title'];
                 $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
-                $product->website_name =  $shop_config['id'];
+                $product->website_name = trim($shop_config['id']);
                 $product->save();
             } else {
 
 
-                $product->product_id =  $row['id'];
+                $product->product_id =  trim($row['id']);
                 $product->name =   $row['title'];
                 $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
-                $product->website_name =  $shop_config['id'];
+                $product->website_name =  trim($shop_config['id']);
 
                 $product->save();
                 // Attributetypes::where('product_id','=',$product->product_id)->get();
@@ -299,11 +299,11 @@ class AttributeController extends Controller
 
 
                     $vari = new Variants();
-                    $vari->variant_id = $variant['id'];
+                    $vari->variant_id = trim($variant['id']);
 
                     $vari->size = (strtolower($variant['option1']) == 'default title') ? 0 : strtolower($variant['option1']);
                     $vari->price = ($variant['price'] == null) ? null : $variant['price'];
-                    $vari->product_id = $variant['product_id'];
+                    $vari->product_id = trim($variant['product_id']);
                     $vari->save();
                 }
             } else {
@@ -315,10 +315,10 @@ class AttributeController extends Controller
 
         foreach ($checkInApiResponse as $resp) {
 
-            $productCheckIfDeletedFromStore = Auth::user()->api()->rest('GET', '/admin/api/2021-04/products/' . $resp['product_id'] . '.json')['body'];
+            $productCheckIfDeletedFromStore = Auth::user()->api()->rest('GET', '/admin/api/2021-04/products/' . trim($resp['product_id']) . '.json')['body'];
 
             if ($productCheckIfDeletedFromStore == "Not Found") {
-                $product = Products::where('product_id', '=', $resp['product_id'])->first();
+                $product = Products::where('product_id', '=', trim($resp['product_id']))->first();
 
                 $product->is_deleted =  1;
                 $product->save();
@@ -326,7 +326,7 @@ class AttributeController extends Controller
         }
 
         //END DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
-        $products = Products::where([['website_name', '=', $shop_config['id']], ['is_deleted', '=', 0]])->paginate(5);
+        $products = Products::where([['website_name', '=', trim($shop_config['id'])], ['is_deleted', '=', 0]])->paginate(5);
 
         // dd($products);
 
@@ -337,14 +337,14 @@ class AttributeController extends Controller
     }
     public function getSpecificProducts($id)
     {
-        $product = Products::with('variants')->where('product_id', '=', $id)->first();
+        $product = Products::with('variants')->where('product_id', '=', trim($id))->first();
 
         return $product;
     }
     public function permissionToShowBodyFit(Request $request)
     {
 
-        $products = Products::where('product_id', '=', $request['id'])->first();
+        $products = Products::where('product_id', '=', trim($request['id']))->first();
 
 
         $setting = Settings::where('name', '=', $request['shop_name'])->first();
@@ -526,7 +526,7 @@ class AttributeController extends Controller
     }
     public function getSizeCount($predictedSize)
     {
-        $variants = Variants::where([['product_id', '=', session('product')], ['size', '=', strtolower($predictedSize)]])->pluck('size');
+        $variants = Variants::where([['product_id', '=', trim(session('product'))], ['size', '=', strtolower($predictedSize)]])->pluck('size');
         $count = $variants->count();
         return $count;
     }
@@ -714,14 +714,14 @@ class AttributeController extends Controller
 
 
         foreach ($data['variants'] as $row) {
-            $variants_count =  Variants::where('variant_id', '=', $row['id'])->count();
+            $variants_count =  Variants::where('variant_id', '=', trim($row['id']))->count();
             $variant = new Variants();
             if ($variants_count == 0) {
 
-                $variant->variant_id = $row['id'];
+                $variant->variant_id = trim($row['id']);
                 $variant->size = $row['option1'];
                 $variant->price = $row['price'];
-                $variant->product_id = $row['product_id'];
+                $variant->product_id = trim($row['product_id']);
             } else {
                 $message['message'] = 'Variant Duplicate';
                 $message['status'] = 0;
@@ -733,14 +733,14 @@ class AttributeController extends Controller
 
 
 
-        $product =  Selectedsize::where('id', '=', $data['id'])->count();
+        $product =  Selectedsize::where('id', '=', trim($data['id']))->count();
         if ($product == 0) {
             $product = new Selectedsize();
             $product->title = $data['title'];
-            $product->product_id = $data['id'];
+            $product->product_id = trim($data['id']);
             $product->image_link = $data['image']['src'];
             $product->vendor = $data['vendor'];
-            $product->admin_graphql_api_id = $data['admin_graphql_api_id'];
+            $product->admin_graphql_api_id = trim($data['admin_graphql_api_id']);
             $product->save();
 
             $message['message'] = 'Product Stored For Comparison';
@@ -762,7 +762,7 @@ class AttributeController extends Controller
 
     public function sizeChartIndex($id)
     {
-        $sizeChart = Sizechart::with('product', 'bodyFeature')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $sizeChart = Sizechart::with('product', 'bodyFeature')->where([['product_id', '=', trim($id)], ['status', '>', 0]])->get();
 
         return view('size-charts.index', [
             'current_product_id' => $id,
@@ -773,42 +773,42 @@ class AttributeController extends Controller
     public function sizeOfSpecificRange($id)
     {
 
-        $bodySpecs = Bodyfeature::where('sizechart_id', '=', $id)->get();
+        $bodySpecs = Bodyfeature::where('sizechart_id', '=',trim($id))->get();
 
         return $bodySpecs;
     }
     public function sizeChartDelete(Request $request)
     {
 
-        $sizechart = Sizechart::find($request->get('id'));
+        $sizechart = Sizechart::find(trim($request->get('id')));
         $p_id = intval($sizechart->product_id);
         $sizechart->status = 0;
         $sizechart->save();
 
-        $body = Bodyfeature::where('sizechart_id', '=', $request->get('id'))->first();
+        $body = Bodyfeature::where('sizechart_id', '=', trim($request->get('id')))->first();
         if ($body) {
 
             $body->status = 0;
             $body->save();
         }
-        return   redirect()->route('sizechart.home', ['id' => $p_id]);
+        return   redirect()->route('sizechart.home', ['id' => trim($p_id]);
     }
     public function sizeChartEdit(Request $request)
     {
 
 
-        $sizechart = Sizechart::with('bodyFeature', 'product')->find($request->get('id'));
-        $variants = Variants::where('product_id', '=', $request->get('product_id'))->get();
+        $sizechart = Sizechart::with('bodyFeature', 'product')->find(trim($request->get('id')));
+        $variants = Variants::where('product_id', '=', trim($request->get('product_id')))->get();
 
 
 
-        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $request->get('product_id')], ['status', '>', 0]])->get();
+        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=',trim($request->get('product_id')) ], ['status', '>', 0]])->get();
         //$variantsOfAttributes= Bodyfeature::where([['attr_id', '=', $request->get('id')], ['status', '>', 0]])->get();
 
         return view('size-charts.edit', [
             'sizechart' => $sizechart,
-            'current_product_id' => $request->get('product_id'),
-            'id' => $request->get('id'),
+            'current_product_id' => trim($request->get('product_id')),
+            'id' => trim($request->get('id')),
             'variantsOfAttributes' => $variantsOfAttributes,
             'variants' => $variants
 
@@ -816,12 +816,12 @@ class AttributeController extends Controller
     }
     public function createSizeChart($id)
     {
-        $variants = Variants::where([['product_id', '=', $id]])->get();
-        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', $id], ['status', '>', 0]])->get();
+        $variants = Variants::where([['product_id', '=', trim($id)]])->get();
+        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', trim($id)], ['status', '>', 0]])->get();
 
 
         return view('size-charts.create', [
-            'product_id' => $id,
+            'product_id' => trim($id),
             'variantsOfAttributes' => $variantsOfAttributes,
             'variants' => $variants
         ]);
@@ -868,11 +868,11 @@ class AttributeController extends Controller
 
                 $attrBody = Attributetypes::find($request->get('attribute_type')[$i]);
                 $body = new Bodyfeature();
-                $body->sizechart_id = $sizeChartLastId->id;
+                $body->sizechart_id = trim($sizeChartLastId->id);
                 $body->attr_measurement_start = $request->get('body_measurement_start')[$i];
                 $body->attr_measurement_end = $request->get('body_measurement_end')[$i];
                 $body->predicted_size = $request->get('predicted_size');
-                $body->attr_id = $attrBody->id;
+                $body->attr_id = trim($attrBody->id);
                 $body->attr_name = strtolower($request->get('attribute_type_name')[$i]);
                 $body->save();
             }
@@ -916,7 +916,7 @@ class AttributeController extends Controller
             ]);
 
 
-            $sizeChart = Sizechart::find($request->get('id'));
+            $sizeChart = Sizechart::find(trim($request->get('id')));
 
             $sizeChart->weight_start = $request->get('weight_start');
             $sizeChart->weight_end = $request->get('weight_end');
@@ -927,7 +927,7 @@ class AttributeController extends Controller
 
             for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
 
-                $b = Bodyfeature::where('sizechart_id', '=', $request->get('id'))->get();
+                $b = Bodyfeature::where('sizechart_id', '=', trim($request->get('id')) )->get();
                 $b[$i]['sizechart_id'] = $sizeChart->id;
                 $b[$i]['attr_measurement_start'] = $request->get('body_measurement_start')[$i];
                 $b[$i]['attr_measurement_end'] = $request->get('body_measurement_end')[$i];
