@@ -246,7 +246,9 @@
             id="nextBtn"
             v-on:click="nextStep(2)"
         >
-            Get Started
+            <span v-if="!submitclicked">Get Started</span>
+            <span v-if="submitclicked" class="spinner-border spinner-border text-white" role="status" aria-hidden="true"></span>
+            
         </button>
         <!-- <button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 32%;width: 33%;bottom: 90px;display:none !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button> -->
     </div>
@@ -271,15 +273,23 @@ export default {
                 countrycheck: "",
                 is_loading: false,
                 valid: true,
-                firstTab: false
-            }
+                firstTab: false,
+               
+            },
+             submitclicked:false,
         };
     },
     methods: {
         nextStep: function(n) {
+
+            this.submitclicked = true;
+            EventBus.$on("hideloader",msg=>{
+                this.submitclicked = false;
+            })
             this.validateForm();
             if (this.container.valid == true) {
                 this.container.form.tabnumber = n;
+                
                 EventBus.$emit("formsubmit", this.container);
                 
             }

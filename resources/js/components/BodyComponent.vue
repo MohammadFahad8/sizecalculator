@@ -706,9 +706,11 @@ export default {
             this.tabnumber = n;
         },
         back: function(num) {
+            EventBus.$emit("hideloader",'ok')
             this.tabnumber = num - 1;
         },
         restart: function() {
+            EventBus.$emit("hideloader",'ok')
             $(
                 "div.fit-advisor-selected-size:gt(" +
                     localStorage.getItem("sizeindex") +
