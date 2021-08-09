@@ -1916,6 +1916,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -43869,34 +43870,40 @@ var render = function() {
             "div",
             { staticClass: " x-row queryattr x-d-none" },
             _vm._l(_vm.attributes.attr_items, function(row) {
-              return _c("div", { staticClass: "col-md-4 parent " }, [
-                _c("img", {
-                  attrs: {
-                    id: "chest1",
-                    src: _vm.$appUrl + "/" + row.attr_image_src
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.chest(row.attr_size_value)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    staticClass: " fit-advisor-options-text",
-                    attrs: { title: row.attr_size_value }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(row.attribute_size_name) +
-                        "\n                "
-                    )
-                  ]
-                )
-              ])
+              return _vm.attributes.id == row.attribute_type_id
+                ? _c("div", { staticClass: "col-md-4 parent " }, [
+                    _vm.attributes.id == row.attribute_type_id
+                      ? _c("img", {
+                          attrs: {
+                            id: "chest1",
+                            src: _vm.$appUrl + "/" + row.attr_image_src
+                          },
+                          on: {
+                            click: function($event) {
+                              return _vm.chest(row.attr_size_value)
+                            }
+                          }
+                        })
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _vm.attributes.id == row.attribute_type_id
+                      ? _c(
+                          "p",
+                          {
+                            staticClass: " fit-advisor-options-text",
+                            attrs: { title: row.attr_size_value }
+                          },
+                          [
+                            _vm._v(
+                              "\n                    " +
+                                _vm._s(row.attribute_size_name) +
+                                "\n                "
+                            )
+                          ]
+                        )
+                      : _vm._e()
+                  ])
+                : _vm._e()
             }),
             0
           )

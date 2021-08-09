@@ -38,16 +38,17 @@
              <div class=" x-row queryattr x-d-none"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
                 <div
                     class="col-md-4 parent "
-                    v-for="row in attributes.attr_items"
+                    v-for="row in attributes.attr_items" v-if="attributes.id == row.attribute_type_id"
                         
                     
                 >
                     <img
+                    v-if="attributes.id == row.attribute_type_id"
                         id="chest1"
                         :src="$appUrl+'/'+row.attr_image_src"
                         v-on:click="chest(row.attr_size_value)"
                     />
-                    <p :title="row.attr_size_value" class=" fit-advisor-options-text">
+                    <p v-if="attributes.id == row.attribute_type_id" :title="row.attr_size_value" class=" fit-advisor-options-text">
                         {{ row.attribute_size_name }}
                     </p>
                 </div>
