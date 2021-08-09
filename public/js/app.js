@@ -3618,18 +3618,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // })
     },
     setSlides: function setSlides(sizeposition) {
-      if (typeof sizeposition == 'undefined' || sizeposition == "") {
-        $("div.fit-advisor-selected-size:gt(0)").hide();
-        $("div.fit-advisor-selected-size:lt(0)").hide();
-        $("p.size_descriptions:gt(0)").hide();
-        $("p.size_descriptions:lt(0)").hide();
-      } else {
-        $("div.fit-advisor-selected-size:gt(" + sizeposition + ")").hide();
-        $("div.fit-advisor-selected-size:lt(" + sizeposition + ")").hide();
-        $("p.size_descriptions:gt(" + sizeposition + ")").hide();
-        $("p.size_descriptions:lt(" + sizeposition + ")").hide();
-      } //Hide all but the Predicted Size
-
+      $("div.fit-advisor-selected-size:gt(" + sizeposition + ")").hide();
+      $("div.fit-advisor-selected-size:lt(" + sizeposition + ")").hide();
+      $("p.size_descriptions:gt(" + sizeposition + ")").hide();
+      $("p.size_descriptions:lt(" + sizeposition + ")").hide(); //Hide all but the Predicted Size
 
       this.$allSlides = $("div.fit-advisor-selected-size"), this.$allSlidesSize = $("p.size_descriptions"), this.traverseDefault = "first", //set the defaults
       this.actionDefault = "next";
