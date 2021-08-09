@@ -381,7 +381,7 @@ class AttributeController extends Controller
        
 
         $sizeList = Attributetypes::with('bodyFeatureOfType', 'sizecharts')->where('product_id', '=', $data['conversionCount'])->get();
-        $sizeChartList = Sizechart::with('bodyFeature', 'product')->where('product_id', '=', ['conversionCount'])->get();
+        $sizeChartList = Sizechart::with('bodyFeature', 'product')->where('product_id', '=', $data['conversionCount'])->get();
         
         $productid = $data['conversionCount'];
 
