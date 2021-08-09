@@ -1,6 +1,7 @@
 <template>
     <div>
         <div></div>
+       
         <p class="fit-advisor-intro">
             <span id="mark1">Choose the option that best</span> <br /><span
                 id="mark2"
@@ -9,14 +10,15 @@
         </p>
 
         <div class="x-custom-container x-text-center x-mb-5">
-            <div class="x-row" v-if="is_loading">
+           
+            <div class="x-row  loadspin x-mr-md-5 x-mr-lg-5" >
                   <div class="x-col-md-12">
                                             <div class="spinner-border spinner-position" role="status">
                                                 <span class="sr-only">Loading...</span>
                                             </div>
                                         </div>
             </div>
-            <div class=" x-row" v-if="attributes.attr_items.length==0 || typeof attributes.attr_items == 'undefined' && is_loading==false">
+            <div class=" x-row allattr x-d-none " v-if="attributes.attr_items.length==0 || typeof attributes.attr_items == 'undefined' && is_loading==false">
                 <div
                     class="col-md-4 parent "
                     v-for="row in attributes.attr_details"
@@ -33,7 +35,7 @@
                     </p>
                 </div>
             </div>
-             <div class=" x-row"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
+             <div class=" x-row queryattr x-d-none"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
                 <div
                     class="col-md-4 parent "
                     v-for="row in attributes.attr_items"
@@ -84,13 +86,14 @@ export default {
                 chestSizeOne: "1",
                 chestSizeTwo: "2",
                 chestSizeThree: "3",
-                is_loading: false,
+                
                 chest: [],
                 attributeDetails: [],
                 arraytitle: {},
                 arrayval: {}
             },
-            is_loading: false,
+            is_loading: true,
+            
             leng:0,
 
         };
@@ -112,7 +115,15 @@ export default {
         }
     },
     mounted() {
-        this.is_loading= false;
+        
+        
+    setTimeout(function(){
+ 	
+     $('.loadspin').addClass('x-d-none');
+     $('.allattr').removeClass('x-d-none');
+     $('.queryattr').removeClass('x-d-none');
+}, 1000);
+
         
     }
 };

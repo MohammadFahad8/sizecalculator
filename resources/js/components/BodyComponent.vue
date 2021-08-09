@@ -144,6 +144,7 @@ display: inline-block;
                                     }"
                                     :recordsLength="attributes.length"
                                     :currentRecord="key + 1"
+                                    
                                 ></attribute-one-component>
                             </div>
 
@@ -830,9 +831,11 @@ export default {
 //Start removed part that loads last screen if session is set
 //End removed part that loads last screen if session is set
                 });
-        }
+        },
+        
     },
     mounted() {
+       
         this.form.tags = this.product.tags;
         localStorage.setItem("tags", JSON.stringify(this.product.tags));
 

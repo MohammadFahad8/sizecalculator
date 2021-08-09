@@ -10,7 +10,14 @@
                     
                     <!-- <div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div> -->
                     <div class="x-container">
-                        <div class="x-row x-justify-content-center">
+                        <div class="x-row x-justify-content-center x-text-center" v-if="sizeLoaded">
+                        <div class="x-col-md-12">
+                                            <div class="spinner-border spinner-position" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+                        </div>  
+                        <div class="x-row x-justify-content-center resultant-all x-d-none">
                             
                                 <div class="x-col-md-3 x-col-3">
                                     <div class="dfOagu x-float-left x-mt-4 x-mt-sm-6 x-mt-md-6 x-mt-lg-6 x-mt-xl-6" style="z-index: 30" v-if="!container.is_loading">
@@ -105,11 +112,13 @@
                                 
                             
                         </div>
+                        <div class="descriptions-all x-d-none">
                         <p class="fit-advisor-header-desc size_descriptions" v-for="(row, key, index) in product.variants" :key="row.id">
                             <span v-if="!container.is_loading">Fit Size:<strong>{{
                                         row.desc_title
                                     }}</strong></span>
                         </p>
+                        </div>
                         <p class="fit-advisor-header-desc fit-advisor-header-desc-mt">
                             The size we recommend is based on how we
                             intended this item to suit your body. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="javascript:void(0)" class="learn-text">Learn More</a>
@@ -178,7 +187,8 @@ export default {
             tabnumber: "",
             leng:0,
             formBody: {},
-            formLocal: {}
+            formLocal: {},
+            sizeLoaded:true,
         };
     },
     methods: {
@@ -481,6 +491,7 @@ export default {
         },
 
         getProductDetails: function (form) {
+        
             this.container.is_loading = true;
             var a = "";
             if (this.container.restarted == false) {
@@ -498,6 +509,11 @@ export default {
            axios
                 .post(this.$appUrl + "/api/size-recommend/", form)
                 .then(res => {
+                    this.sizeLoaded=false;
+                    $('.resultant-all').removeClass('x-d-none')
+                    $('.descriptions-all').removeClass('x-d-none')
+                
+                  
                     
                     this.container.is_loading = false;
 
@@ -650,14 +666,18 @@ export default {
     mounted() {
         this.is_loading=true;
         
-        
-        this.setupProduct();
+     
+     //   this.setupProduct();
         // this.getProductDetails();
         this.form.conversionCount = this.product.id;
 
         EventBus.$on("sizeCalculate", num => {
             
             var a = 1;
+            this.sizeLoaded=true;
+            $('.resultant-all').addClass('x-d-none');
+            $('.descriptions-all').addClass('x-d-none');
+            
             this.setupProduct();
             //this.getProductDetails();
             this.form.conversionCount = this.product.id;

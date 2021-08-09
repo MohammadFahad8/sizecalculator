@@ -1914,6 +1914,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -1930,13 +1932,12 @@ __webpack_require__.r(__webpack_exports__);
         chestSizeOne: "1",
         chestSizeTwo: "2",
         chestSizeThree: "3",
-        is_loading: false,
         chest: [],
         attributeDetails: [],
         arraytitle: {},
         arrayval: {}
       },
-      is_loading: false,
+      is_loading: true,
       leng: 0
     };
   },
@@ -1958,7 +1959,11 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   mounted: function mounted() {
-    this.is_loading = false;
+    setTimeout(function () {
+      $('.loadspin').addClass('x-d-none');
+      $('.allattr').removeClass('x-d-none');
+      $('.queryattr').removeClass('x-d-none');
+    }, 1000);
   }
 });
 
@@ -2139,6 +2144,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -3511,6 +3517,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -3550,7 +3565,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       tabnumber: "",
       leng: 0,
       formBody: {},
-      formLocal: {}
+      formLocal: {},
+      sizeLoaded: true
     };
   },
   methods: {
@@ -3754,6 +3770,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
       axios.post(this.$appUrl + "/api/size-recommend/", form).then(function (res) {
+        _this3.sizeLoaded = false;
+        $('.resultant-all').removeClass('x-d-none');
+        $('.descriptions-all').removeClass('x-d-none');
         _this3.container.is_loading = false;
         _this3.container.showSelectedSizeSlider = true;
 
@@ -3860,12 +3879,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     var _this4 = this;
 
-    this.is_loading = true;
-    this.setupProduct(); // this.getProductDetails();
+    this.is_loading = true; //   this.setupProduct();
+    // this.getProductDetails();
 
     this.form.conversionCount = this.product.id;
     _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("sizeCalculate", function (num) {
       var a = 1;
+      _this4.sizeLoaded = true;
+      $('.resultant-all').addClass('x-d-none');
+      $('.descriptions-all').addClass('x-d-none');
 
       _this4.setupProduct(); //this.getProductDetails();
 
@@ -3873,9 +3895,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _this4.form.conversionCount = _this4.product.id;
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("mount", a);
     });
-  },
-  'container.finalsize': function containerFinalsize() {
-    console.log(1);
   }
 });
 
@@ -3908,7 +3927,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://2407d6d19e6a.ngrok.io';
+Vue.prototype.$appUrl = "https://832b5c43e7b0.ngrok.io";
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 /**
@@ -43784,16 +43803,14 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", { staticClass: "x-custom-container x-text-center x-mb-5" }, [
-      _vm.is_loading
-        ? _c("div", { staticClass: "x-row" }, [_vm._m(0)])
-        : _vm._e(),
+      _vm._m(0),
       _vm._v(" "),
       _vm.attributes.attr_items.length == 0 ||
       (typeof _vm.attributes.attr_items == "undefined" &&
         _vm.is_loading == false)
         ? _c(
             "div",
-            { staticClass: " x-row" },
+            { staticClass: " x-row allattr x-d-none " },
             _vm._l(_vm.attributes.attr_details, function(row) {
               return _c(
                 "div",
@@ -43836,7 +43853,7 @@ var render = function() {
       (_vm.attributes.attr_items.length > 0 && _vm.is_loading == false)
         ? _c(
             "div",
-            { staticClass: " x-row" },
+            { staticClass: " x-row queryattr x-d-none" },
             _vm._l(_vm.attributes.attr_items, function(row) {
               return _c("div", { staticClass: "col-md-4 parent " }, [
                 _c("img", {
@@ -43898,15 +43915,17 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "x-col-md-12" }, [
-      _c(
-        "div",
-        {
-          staticClass: "spinner-border spinner-position",
-          attrs: { role: "status" }
-        },
-        [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-      )
+    return _c("div", { staticClass: "x-row  loadspin x-mr-md-5 x-mr-lg-5" }, [
+      _c("div", { staticClass: "x-col-md-12" }, [
+        _c(
+          "div",
+          {
+            staticClass: "spinner-border spinner-position",
+            attrs: { role: "status" }
+          },
+          [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+        )
+      ])
     ])
   }
 ]
@@ -45178,11 +45197,25 @@ var render = function() {
       _c("div", { staticClass: "x-row" }, [
         _c("div", { staticClass: "col-md-12" }, [
           _c("div", [
-            _c(
-              "div",
-              { staticClass: "x-container" },
-              [
-                _c("div", { staticClass: "x-row x-justify-content-center" }, [
+            _c("div", { staticClass: "x-container" }, [
+              _vm.sizeLoaded
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "x-row x-justify-content-center x-text-center"
+                    },
+                    [_vm._m(1)]
+                  )
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  staticClass:
+                    "x-row x-justify-content-center resultant-all x-d-none"
+                },
+                [
                   _c("div", { staticClass: "x-col-md-3 x-col-3" }, [
                     !_vm.container.is_loading
                       ? _c(
@@ -45243,7 +45276,7 @@ var render = function() {
                         "div",
                         { staticClass: "fit-advisor-custom_row center-force" },
                         [
-                          _vm._m(1),
+                          _vm._m(2),
                           _vm._v(" "),
                           _vm.container.is_loading
                             ? _c(
@@ -45401,8 +45434,12 @@ var render = function() {
                         )
                       : _vm._e()
                   ])
-                ]),
-                _vm._v(" "),
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "descriptions-all x-d-none" },
                 _vm._l(_vm.product.variants, function(row, key, index) {
                   return _c(
                     "p",
@@ -45420,11 +45457,11 @@ var render = function() {
                     ]
                   )
                 }),
-                _vm._v(" "),
-                _vm._m(2)
-              ],
-              2
-            )
+                0
+              ),
+              _vm._v(" "),
+              _vm._m(3)
+            ])
           ])
         ])
       ])
@@ -45461,6 +45498,21 @@ var staticRenderFns = [
       _vm._v(" "),
       _c("br"),
       _c("span", { attrs: { id: "mark2" } })
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "x-col-md-12" }, [
+      _c(
+        "div",
+        {
+          staticClass: "spinner-border spinner-position",
+          attrs: { role: "status" }
+        },
+        [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+      )
     ])
   },
   function() {

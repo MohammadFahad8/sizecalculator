@@ -15,6 +15,7 @@ class Helpers {
       $scripttags = $shop->api()->rest('GET','/admin/api/2021-07/script_tags.json')['body']['container'];
       
       
+      
       foreach($scripttags as $row)
       {
         
@@ -23,7 +24,9 @@ class Helpers {
           {
             
               $this->addScriptTag();
-              echo '<script>console.log(" !! New  Body Fit Application !! ")</script>';
+            
+              // echo '<script>console.log(" !! New  Body Fit Application !! ")</script> ';
+              
                   
   
               
@@ -31,9 +34,9 @@ class Helpers {
             foreach($row as $r)
             {
            
-            $this->updateFrontScriptTag(trim($r['id']);
+            $this->updateFrontScriptTag(trim($r['id']));
             }
-            echo '<script>console.log(" !! Welcome Body Fit Application !! ")</script>';
+            // echo '<script>console.log(" !! Welcome Body Fit Application !! ")</script>';
           
             
           }
