@@ -2328,6 +2328,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2433,13 +2434,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: {
-    getAttributesToHeightWeight: function getAttributesToHeightWeight(form) {
+    getAttributesToHeightWeight: function getAttributesToHeightWeight(form, num) {
       var _this = this;
 
       form.productkey = this.product.id;
       axios.post(this.$appUrl + '/api/get-attributes-to-height-weight', form).then(function (res) {
         _this.ogLength = res.data.length;
-        _this.ogArray = res.data.ogArray; // console.log(res.data)
+        _this.ogArray = res.data.ogArray; // to change screen
+
+        _this.tabnumber = num; //end to change screen
 
         _this.attributesToShow = res.data; // if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
         // {
@@ -2664,14 +2667,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this2.form.heightinch = container.form.heightinch;
         _this2.form.heightcm = container.form.heightcm;
         _this2.form.weight = container.form.weight;
-        _this2.form.age = container.form.age;
-        _this2.tabnumber = container.form.tabnumber;
+        _this2.form.age = container.form.age; // this.tabnumber = container.form.tabnumber;
+
         _this2.n = container.form.tabnumber;
         _this2.form.convertedMeasurements = container.form.convertedMeasurements;
         _this2.conversionCount = container.form.conversionCount;
         _this2.firstTab = container.firstTab;
 
-        _this2.getAttributesToHeightWeight(_this2.form);
+        _this2.getAttributesToHeightWeight(_this2.form, container.form.tabnumber);
       });
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("attributeone", function (container) {
         _this2.chest = container;

@@ -33,6 +33,7 @@
                 class="popup fit-advisor-popup-adjustments"
                 style="margin-top: 20px"
             >
+         
                 <div class="x-row x-mb-5" >
                     
                         
@@ -302,7 +303,7 @@ export default {
 
     methods: {
        
-        getAttributesToHeightWeight: function(form)
+        getAttributesToHeightWeight: function(form,num)
         {
             form.productkey =  this.product.id
          
@@ -314,8 +315,11 @@ export default {
                this.ogLength = res.data.length;
 
                this.ogArray = res.data.ogArray;
-              // console.log(res.data)
- this.attributesToShow = res.data;
+              // to change screen
+              this.tabnumber =  num
+              //end to change screen
+            this.attributesToShow = res.data;
+ 
 // if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
 // {
 
@@ -676,14 +680,14 @@ export default {
                 this.form.heightcm = container.form.heightcm;
                 this.form.weight = container.form.weight;
                 this.form.age = container.form.age;
-                this.tabnumber = container.form.tabnumber;
+                // this.tabnumber = container.form.tabnumber;
                 this.n = container.form.tabnumber;
 
                 this.form.convertedMeasurements =
                     container.form.convertedMeasurements;
                 this.conversionCount = container.form.conversionCount;
                 this.firstTab = container.firstTab;
-                this.getAttributesToHeightWeight(this.form);
+                this.getAttributesToHeightWeight(this.form, container.form.tabnumber);
             });
             EventBus.$on("attributeone", container => {
                 this.chest = container;
