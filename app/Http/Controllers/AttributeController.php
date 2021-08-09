@@ -383,11 +383,11 @@ class AttributeController extends Controller
         $sizeList = Attributetypes::with('bodyFeatureOfType', 'sizecharts')->where('product_id', '=', $data['conversionCount'])->get();
         $sizeChartList = Sizechart::with('bodyFeature', 'product')->where('product_id', '=', $data['conversionCount'])->get();
         
-        $productid = $data['conversionCount'];
+        // $productid = $data['conversionCount'];
 
-        $product = session()->get('product');
-        unset($product);
-        session()->put('product', $productid);
+        // $product = session()->get('product');
+        // unset($product);
+        // session()->put('product', $productid);
 
         $height_cm = 0;
 
@@ -407,7 +407,8 @@ class AttributeController extends Controller
 
                         if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end']) {
 
-                            return $this->checkVariantIFExists($b['predicted_size']);
+                            // return $this->checkVariantIFExists($b['predicted_size']);
+                            return $b['predicted_size'];
                             
                         }                   
                     }
