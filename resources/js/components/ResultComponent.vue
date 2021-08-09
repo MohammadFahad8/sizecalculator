@@ -665,6 +665,7 @@ export default {
             
            
         });
-    }
+    },
+     
 };
 </script>

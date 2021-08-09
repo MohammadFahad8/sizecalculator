@@ -3873,6 +3873,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _this4.form.conversionCount = _this4.product.id;
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("mount", a);
     });
+  },
+  'container.finalsize': function containerFinalsize() {
+    console.log(1);
   }
 });
 
@@ -44270,7 +44273,7 @@ var render = function() {
                   _c("span", { staticClass: "final-size-label" }, [
                     _vm._v("Your Fit Size : ")
                   ]),
-                  _vm._v("\n                " + _vm._s(_vm.finalsize))
+                  _vm._v("\n                " + _vm._s(_vm.finalsize) + " ")
                 ]
               )
             : _vm._e()

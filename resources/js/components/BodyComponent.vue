@@ -25,7 +25,7 @@
                 class="final-size-heading"
             >
                 <span class="final-size-label">Your Fit Size : </span>
-                {{ finalsize }}</span
+                {{ finalsize }} </span
             >
         </div>
         <div id="popup1" class="overlay" style="z-index: 999 !important">
@@ -848,8 +848,9 @@ export default {
             $(".product-card").css("z-index", "-1");
             $("#popup1").css("overflow", "scroll");
         });
-    }
+    },
     //    Took watch from here
+    
 };
 </script>
 

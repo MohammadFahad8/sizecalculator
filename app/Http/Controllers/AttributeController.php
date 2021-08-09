@@ -343,6 +343,7 @@ class AttributeController extends Controller
     }
     public function permissionToShowBodyFit(Request $request)
     {
+        
 
         $products = Products::where('product_id', '=', trim($request['id']))->first();
 
