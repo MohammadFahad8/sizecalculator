@@ -380,10 +380,10 @@ class AttributeController extends Controller
         $data = $request->all();
        
 
-        $sizeList = Attributetypes::with('bodyFeatureOfType', 'sizecharts')->where('product_id', '=', $data['conversionCount'])->get();
-        $sizeChartList = Sizechart::with('bodyFeature', 'product')->where('product_id', '=', $data['conversionCount'])->get();
+        $sizeList = Attributetypes::with('bodyFeatureOfType', 'sizecharts')->where('product_id', '=', trim($data['conversionCount']))->get();
+        $sizeChartList = Sizechart::with('bodyFeature', 'product')->where('product_id', '=', trim($data['conversionCount']))->get();
         
-        $productid = $data['conversionCount'];
+        $productid = trim($data['conversionCount']);
 
         $product = session()->get('product');
         unset($product);
@@ -399,23 +399,17 @@ class AttributeController extends Controller
         } else {
             $height_cm = intval(($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54));
         }
+        
 
         foreach ($sizeChartList as $s) {
-
-
-
-           
-
                 foreach ($s['bodyFeature'] as $b) {
                     foreach ($data['bodyMeasure'] as $bm) {
-
-
 
                         if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end']) {
 
                             return $this->checkVariantIFExists($b['predicted_size']);
-                            // exit;
-                        }
+                            
+                        }                   
                     }
                 }
             
@@ -1140,11 +1134,6 @@ class AttributeController extends Controller
             ->where('product_id', '=',  trim($data['productkey']))
             ->get();
 
-
-            
-
-
-        
             foreach($attributesjoined as $key => $aj) {
                 
                 foreach($aj['bodyFeature'] as $i => $aj_bf){
