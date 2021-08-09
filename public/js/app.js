@@ -3785,9 +3785,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
       axios.post(this.$appUrl + "/api/size-recommend/", form).then(function (res) {
-        _this3.sizeLoaded = false;
-        $('.resultant-all').removeClass('x-d-none');
-        $('.descriptions-all').removeClass('x-d-none');
         _this3.container.is_loading = false;
         _this3.container.showSelectedSizeSlider = true;
 
@@ -3809,6 +3806,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           a = _this3.container.recommended_size;
         }
 
+        _this3.sizeLoaded = false;
+        $('.resultant-all').removeClass('x-d-none');
+        $('.descriptions-all').removeClass('x-d-none');
         localStorage.setItem("recommended_size", _this3.container.recommended_size);
         _this3.container.finalsize = localStorage.getItem("recommended_size");
       });

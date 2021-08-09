@@ -509,9 +509,7 @@ export default {
            axios
                 .post(this.$appUrl + "/api/size-recommend/", form)
                 .then(res => {
-                    this.sizeLoaded=false;
-                    $('.resultant-all').removeClass('x-d-none')
-                    $('.descriptions-all').removeClass('x-d-none')
+                  
                 
                   
                     
@@ -554,6 +552,9 @@ export default {
 
                         a = this.container.recommended_size;
                     }
+                      this.sizeLoaded=false;
+                    $('.resultant-all').removeClass('x-d-none')
+                    $('.descriptions-all').removeClass('x-d-none')
 
                     localStorage.setItem(
                         "recommended_size",
