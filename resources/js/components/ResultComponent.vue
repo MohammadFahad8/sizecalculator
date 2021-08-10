@@ -147,6 +147,7 @@ export default {
         product: Object,
         form: Object,
         recordsLength:Number,
+        attrscall:Array,
         
     },
     data() {
@@ -193,14 +194,12 @@ export default {
     },
     methods: {
         getAttributes: function () {
-            axios
-                .get(this.$appUrl + "/api/get-attrbutes/" + this.product.id)
-                .then(res => {
-                    this.attributes = res.data;
+           
+                    this.attributes = this.attrscall;
 
-                    for (var i = 0; i < res.data.length; i++) {
+                    for (var i = 0; i < this.attrscall.length; i++) {
                         this.form.bodyMeasure[i] = localStorage.getItem(
-                            res.data[i].name.toLowerCase()
+                            this.attrscall[i].name.toLowerCase()
                         );
                     }
                     this.form.conversionCount = this.product.id;
@@ -223,7 +222,7 @@ export default {
                      
 
                     
-                });
+                
         },
         setupProduct: function () {
             this.product.variants = this.product.variants.map(v => ({
@@ -265,10 +264,12 @@ export default {
                         );
                         switch(size){
                             case "XS":
+                            console.log(size +" " +this.container.sizeIndex)
                              for (
                                 var i = 0; i <= this.product.variants.length; i++
                             ) {
                                 if (i == this.container.sizeIndex) {
+
                                     this.product.variants[i].desc_title =
                                         "Recommended";
                                 }
@@ -316,7 +317,8 @@ export default {
                             }
                             break;
 
-                            case "XS":
+                            case "XL":
+                            console.log(size +" " +this.container.sizeIndex)
                             var counter = 1;
                             for (
                                 var i = 0; i <= this.product.variants.length; i++
@@ -359,12 +361,13 @@ export default {
                             console.log('Recommendations failed')
 
                         }
+                        this.setSlides(this.container.sizeIndex);
                         localStorage.setItem(
                             "sizeindex",
                             this.container.sizeIndex
                         );
 
-                        this.setSlides(this.container.sizeIndex);
+                        
                     }
                 } else if (sizecheck == false) {
                     if (el.option1.toUpperCase().charAt(0) == size) {
@@ -379,6 +382,7 @@ export default {
 
                         switch(size){
                                 case "S":
+                                console.log(size +" " +this.container.sizeIndex)
                                 for ( var i = 0; i <= this.product.variants.length; i++) {
                                 if (i < this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
@@ -416,6 +420,7 @@ export default {
                             }
                                         break;
                                     case "M":
+                                    console.log(size +" " +this.container.sizeIndex)
                                         for ( var i = 0; i <= this.product.variants.length; i++) {
                                 if (i < this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
@@ -453,6 +458,7 @@ export default {
                             }
     break;
     case "L":
+    console.log(size +" " +this.container.sizeIndex)
     
                             for (
                                 var i = 0; i <= this.product.variants.length; i++
@@ -481,15 +487,17 @@ export default {
                                 }
                             }
                                         break;
+                                        default:
+                                        console.log('broke in single char conditions')
                                     }
-                        
+                        this.setSlides(this.container.sizeIndex);
 
                         localStorage.setItem(
                             "sizeindex",
                             this.container.sizeIndex
                         );
 
-                        this.setSlides(this.container.sizeIndex);
+                        
                     }
                 }
             });
@@ -499,25 +507,18 @@ export default {
         
             this.container.is_loading = true;
             var a = "";
-            if (this.container.restarted == false) {
-                if (localStorage.getItem("sizeindex") != null) {
-                    this.setSlides(localStorage.getItem("sizeindex"));
-                }
-            }
+            // if (this.container.restarted == false) {
+            //     if (localStorage.getItem("sizeindex") != null) {
+            //         this.setSlides(localStorage.getItem("sizeindex"));
+            //     }
+            // }
             this.container.showSelectedSizeSlider = false;
             this.container.conversionCount = this.product.id;
 
-           
-
-          
-           
            axios
-                .post(this.$appUrl + "/api/size-recommend/", form)
+                .post(this.$appUrl + "/api/size-recommend", form)
                 .then(res => {
                   
-                
-                  
-                    
                     this.container.is_loading = false;
 
                     this.container.showSelectedSizeSlider = true;

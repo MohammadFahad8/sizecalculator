@@ -2330,6 +2330,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2374,7 +2375,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         title: "Very Relaxed"
       }],
-      attributes: {},
+      attributes: [],
       n: "",
       countrycheck: "",
       checked: false,
@@ -3549,7 +3550,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   props: {
     product: Object,
     form: Object,
-    recordsLength: Number
+    recordsLength: Number,
+    attrscall: Array
   },
   data: function data() {
     return {
@@ -3589,25 +3591,21 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   methods: {
     getAttributes: function getAttributes() {
-      var _this = this;
+      this.attributes = this.attrscall;
 
-      axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then(function (res) {
-        _this.attributes = res.data;
+      for (var i = 0; i < this.attrscall.length; i++) {
+        this.form.bodyMeasure[i] = localStorage.getItem(this.attrscall[i].name.toLowerCase());
+      }
 
-        for (var i = 0; i < res.data.length; i++) {
-          _this.form.bodyMeasure[i] = localStorage.getItem(res.data[i].name.toLowerCase());
-        }
+      this.form.conversionCount = this.product.id;
+      this.form.heightfoot = localStorage.getItem("foot");
+      this.form.heightinch = localStorage.getItem("inch");
+      this.form.heightcm = localStorage.getItem("cm");
+      this.form.age = localStorage.getItem("age");
+      this.form.weight = localStorage.getItem("weight");
+      this.form.tags = JSON.parse(localStorage.getItem("tags")); // this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
 
-        _this.form.conversionCount = _this.product.id;
-        _this.form.heightfoot = localStorage.getItem("foot");
-        _this.form.heightinch = localStorage.getItem("inch");
-        _this.form.heightcm = localStorage.getItem("cm");
-        _this.form.age = localStorage.getItem("age");
-        _this.form.weight = localStorage.getItem("weight");
-        _this.form.tags = JSON.parse(localStorage.getItem("tags")); // this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
-
-        _this.getProductDetails(_this.form);
-      });
+      this.getProductDetails(this.form);
     },
     setupProduct: function setupProduct() {
       this.product.variants = this.product.variants.map(function (v) {
@@ -3630,61 +3628,64 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.actionDefault = "next";
     },
     setSelectedSizeFromList: function setSelectedSizeFromList(size, sizecheck) {
-      var _this2 = this;
+      var _this = this;
 
       this.product.variants.forEach(function (el, index) {
         if (sizecheck == true) {
           if (el.option1.toUpperCase() == size) {
-            _this2.container.sizeIndex = index;
+            _this.container.sizeIndex = index;
 
-            _this2.array_move(_this2.container.size_descriptions, 2, index);
+            _this.array_move(_this.container.size_descriptions, 2, index);
 
             switch (size) {
               case "XS":
-                for (var i = 0; i <= _this2.product.variants.length; i++) {
-                  if (i == _this2.container.sizeIndex) {
-                    _this2.product.variants[i].desc_title = "Recommended";
+                console.log(size + " " + _this.container.sizeIndex);
+
+                for (var i = 0; i <= _this.product.variants.length; i++) {
+                  if (i == _this.container.sizeIndex) {
+                    _this.product.variants[i].desc_title = "Recommended";
                   }
 
-                  if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
-                    _this2.product.variants[i].desc_title = "Slightly Relaxed";
+                  if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
+                    _this.product.variants[i].desc_title = "Slightly Relaxed";
 
-                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 3])) {
-                      _this2.product.variants[i].desc_title = "Relaxed";
+                    if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 3])) {
+                      _this.product.variants[i].desc_title = "Relaxed";
                     }
 
-                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
-                      _this2.product.variants[i].desc_title = "Relaxed";
+                    if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 2])) {
+                      _this.product.variants[i].desc_title = "Relaxed";
                     }
 
-                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
-                      _this2.product.variants[i].desc_title = "Very Relaxed";
+                    if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 1])) {
+                      _this.product.variants[i].desc_title = "Very Relaxed";
                     }
                   }
                 }
 
                 break;
 
-              case "XS":
+              case "XL":
+                console.log(size + " " + _this.container.sizeIndex);
                 var counter = 1;
 
-                for (var i = 0; i <= _this2.product.variants.length; i++) {
+                for (var i = 0; i <= _this.product.variants.length; i++) {
                   //DEBUG FROM HERE
-                  if (i < _this2.container.sizeIndex) {
-                    _this2.product.variants[i].desc_title = "Very Snug";
+                  if (i < _this.container.sizeIndex) {
+                    _this.product.variants[i].desc_title = "Very Snug";
 
-                    if (i < _this2.container.sizeIndex && i >= counter) {
+                    if (i < _this.container.sizeIndex && i >= counter) {
                       counter++;
-                      _this2.product.variants[i].desc_title = "Snug";
+                      _this.product.variants[i].desc_title = "Snug";
                     }
                   }
 
-                  if (i == _this2.container.sizeIndex) {
-                    _this2.product.variants[i].desc_title = "Recommended";
+                  if (i == _this.container.sizeIndex) {
+                    _this.product.variants[i].desc_title = "Recommended";
                   }
 
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
-                    _this2.product.variants[i].desc_title = "Slightly Snugged";
+                  if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 2])) {
+                    _this.product.variants[i].desc_title = "Slightly Snugged";
                   }
                 }
 
@@ -3694,36 +3695,38 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 console.log('Recommendations failed');
             }
 
-            localStorage.setItem("sizeindex", _this2.container.sizeIndex);
+            _this.setSlides(_this.container.sizeIndex);
 
-            _this2.setSlides(_this2.container.sizeIndex);
+            localStorage.setItem("sizeindex", _this.container.sizeIndex);
           }
         } else if (sizecheck == false) {
           if (el.option1.toUpperCase().charAt(0) == size) {
-            _this2.container.sizeIndex = index;
+            _this.container.sizeIndex = index;
 
-            _this2.array_move(_this2.container.size_descriptions, 2, index);
+            _this.array_move(_this.container.size_descriptions, 2, index);
 
             switch (size) {
               case "S":
-                for (var i = 0; i <= _this2.product.variants.length; i++) {
-                  if (i < _this2.container.sizeIndex) {
-                    _this2.product.variants[i].desc_title = "Very Snug";
+                console.log(size + " " + _this.container.sizeIndex);
 
-                    if (i < _this2.container.sizeIndex && i > 0) {
-                      _this2.product.variants[i].desc_title = "Snug";
+                for (var i = 0; i <= _this.product.variants.length; i++) {
+                  if (i < _this.container.sizeIndex) {
+                    _this.product.variants[i].desc_title = "Very Snug";
+
+                    if (i < _this.container.sizeIndex && i > 0) {
+                      _this.product.variants[i].desc_title = "Snug";
                     }
                   }
 
-                  if (i == _this2.container.sizeIndex) {
-                    _this2.product.variants[i].desc_title = "Recommended";
+                  if (i == _this.container.sizeIndex) {
+                    _this.product.variants[i].desc_title = "Recommended";
                   }
 
-                  if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
-                    _this2.product.variants[i].desc_title = "Relaxed";
+                  if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
+                    _this.product.variants[i].desc_title = "Relaxed";
 
-                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
-                      _this2.product.variants[i].desc_title = "Very Relaxed";
+                    if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 1])) {
+                      _this.product.variants[i].desc_title = "Very Relaxed";
                     }
                   }
                 }
@@ -3731,24 +3734,26 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 break;
 
               case "M":
-                for (var i = 0; i <= _this2.product.variants.length; i++) {
-                  if (i < _this2.container.sizeIndex) {
-                    _this2.product.variants[i].desc_title = "Very Snug";
+                console.log(size + " " + _this.container.sizeIndex);
 
-                    if (i < _this2.container.sizeIndex && i > 0) {
-                      _this2.product.variants[i].desc_title = "Snug";
+                for (var i = 0; i <= _this.product.variants.length; i++) {
+                  if (i < _this.container.sizeIndex) {
+                    _this.product.variants[i].desc_title = "Very Snug";
+
+                    if (i < _this.container.sizeIndex && i > 0) {
+                      _this.product.variants[i].desc_title = "Snug";
                     }
                   }
 
-                  if (i == _this2.container.sizeIndex) {
-                    _this2.product.variants[i].desc_title = "Recommended";
+                  if (i == _this.container.sizeIndex) {
+                    _this.product.variants[i].desc_title = "Recommended";
                   }
 
-                  if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
-                    _this2.product.variants[i].desc_title = "Relaxed";
+                  if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
+                    _this.product.variants[i].desc_title = "Relaxed";
 
-                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
-                      _this2.product.variants[i].desc_title = "Very Relaxed";
+                    if (i == _this.product.variants.indexOf(_this.product.variants[_this.product.variants.length - 1])) {
+                      _this.product.variants[i].desc_title = "Very Relaxed";
                     }
                   }
                 }
@@ -3756,75 +3761,78 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
                 break;
 
               case "L":
-                for (var i = 0; i <= _this2.product.variants.length; i++) {
-                  if (i < _this2.container.sizeIndex) {
-                    _this2.product.variants[i].desc_title = "Very Snug";
+                console.log(size + " " + _this.container.sizeIndex);
 
-                    if (i < _this2.container.sizeIndex && i > 0) {
-                      _this2.product.variants[i].desc_title = "Snug";
+                for (var i = 0; i <= _this.product.variants.length; i++) {
+                  if (i < _this.container.sizeIndex) {
+                    _this.product.variants[i].desc_title = "Very Snug";
+
+                    if (i < _this.container.sizeIndex && i > 0) {
+                      _this.product.variants[i].desc_title = "Snug";
                     }
                   }
 
-                  if (i == _this2.container.sizeIndex) {
-                    _this2.product.variants[i].desc_title = "Recommended";
+                  if (i == _this.container.sizeIndex) {
+                    _this.product.variants[i].desc_title = "Recommended";
                   }
 
-                  if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
-                    _this2.product.variants[i].desc_title = "Very Relaxed";
+                  if (i > _this.container.sizeIndex && i < _this.product.variants.length) {
+                    _this.product.variants[i].desc_title = "Very Relaxed";
                   }
                 }
 
                 break;
+
+              default:
+                console.log('broke in single char conditions');
             }
 
-            localStorage.setItem("sizeindex", _this2.container.sizeIndex);
+            _this.setSlides(_this.container.sizeIndex);
 
-            _this2.setSlides(_this2.container.sizeIndex);
+            localStorage.setItem("sizeindex", _this.container.sizeIndex);
           }
         }
       });
     },
     getProductDetails: function getProductDetails(form) {
-      var _this3 = this;
+      var _this2 = this;
 
       this.container.is_loading = true;
-      var a = "";
-
-      if (this.container.restarted == false) {
-        if (localStorage.getItem("sizeindex") != null) {
-          this.setSlides(localStorage.getItem("sizeindex"));
-        }
-      }
+      var a = ""; // if (this.container.restarted == false) {
+      //     if (localStorage.getItem("sizeindex") != null) {
+      //         this.setSlides(localStorage.getItem("sizeindex"));
+      //     }
+      // }
 
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
-      axios.post(this.$appUrl + "/api/size-recommend/", form).then(function (res) {
-        _this3.container.is_loading = false;
-        _this3.container.showSelectedSizeSlider = true;
+      axios.post(this.$appUrl + "/api/size-recommend", form).then(function (res) {
+        _this2.container.is_loading = false;
+        _this2.container.showSelectedSizeSlider = true;
 
         if (res.data == "XL" || res.data == "Xl" || res.data == "xL" || res.data == "xl" || res.data == "XS" || res.data == "Xs" || res.data == "xS" || res.data == "xs") {
-          _this3.container.recommended_size = res.data.toUpperCase().substr(0, 2);
-          _this3.container.sizecheck = true;
+          _this2.container.recommended_size = res.data.toUpperCase().substr(0, 2);
+          _this2.container.sizecheck = true;
 
-          _this3.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this3.container.sizecheck);
+          _this2.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this2.container.sizecheck);
 
-          a = _this3.container.recommended_size;
+          a = _this2.container.recommended_size;
           $(".fit-advisor-selected-size-arrow-box").addClass("bigsize");
           $(".dfOagu").addClass("dfOagu-second");
         } else {
-          _this3.container.recommended_size = res.data.toUpperCase().charAt(0);
-          _this3.container.sizecheck = false;
+          _this2.container.recommended_size = res.data.toUpperCase().charAt(0);
+          _this2.container.sizecheck = false;
 
-          _this3.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this3.container.sizecheck);
+          _this2.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this2.container.sizecheck);
 
-          a = _this3.container.recommended_size;
+          a = _this2.container.recommended_size;
         }
 
-        _this3.sizeLoaded = false;
+        _this2.sizeLoaded = false;
         $('.resultant-all').removeClass('x-d-none');
         $('.descriptions-all').removeClass('x-d-none');
-        localStorage.setItem("recommended_size", _this3.container.recommended_size);
-        _this3.container.finalsize = localStorage.getItem("recommended_size");
+        localStorage.setItem("recommended_size", _this2.container.recommended_size);
+        _this2.container.finalsize = localStorage.getItem("recommended_size");
       });
     },
     changesize: function changesize(trigger) {
@@ -3906,7 +3914,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   mounted: function mounted() {
-    var _this4 = this;
+    var _this3 = this;
 
     this.is_loading = true; //   this.setupProduct();
     // this.getProductDetails();
@@ -3914,14 +3922,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.form.conversionCount = this.product.id;
     _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("sizeCalculate", function (num) {
       var a = 1;
-      _this4.sizeLoaded = true;
+      _this3.sizeLoaded = true;
       $('.resultant-all').addClass('x-d-none');
       $('.descriptions-all').addClass('x-d-none');
 
-      _this4.setupProduct(); //this.getProductDetails();
+      _this3.setupProduct(); //this.getProductDetails();
 
 
-      _this4.form.conversionCount = _this4.product.id;
+      _this3.form.conversionCount = _this3.product.id;
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("mount", a);
     });
   }
@@ -44525,7 +44533,8 @@ var render = function() {
                             attrs: {
                               product: _vm.product,
                               form: _vm.form,
-                              recordsLength: _vm.attributes.length
+                              recordsLength: _vm.attributes.length,
+                              attrscall: _vm.attributes
                             }
                           })
                         ],

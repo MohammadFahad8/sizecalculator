@@ -154,6 +154,7 @@ display: inline-block;
                                     :product="product"
                                     :form="form"
                                     :recordsLength="attributes.length"
+                                    :attrscall="attributes"
                                 ></result-component>
                             </div>
                         </div>
@@ -237,7 +238,7 @@ export default {
                     title: "Very Relaxed"
                 }
             ],
-            attributes: {},
+            attributes: [],
             n: "",
 
             countrycheck: "",
