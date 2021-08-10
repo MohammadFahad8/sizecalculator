@@ -1951,9 +1951,10 @@ __webpack_require__.r(__webpack_exports__);
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("sizeCalculate", n);
       }
     },
-    chest: function chest(n) {
+    chest: function chest(n, scid) {
       if (localStorage.getItem(this.attributes.name) == null) {
         localStorage.setItem(this.attributes.name.toLowerCase(), n);
+        localStorage.setItem("sizechart_id", scid);
       }
 
       this.nextStep(this.tabnum.count + 1);
@@ -3603,6 +3604,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.form.heightcm = localStorage.getItem("cm");
       this.form.age = localStorage.getItem("age");
       this.form.weight = localStorage.getItem("weight");
+      this.form.szid = localStorage.getItem("sizechart_id");
       this.form.tags = JSON.parse(localStorage.getItem("tags")); // this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
 
       this.getProductDetails(this.form);
@@ -3915,6 +3917,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   mounted: function mounted() {
     var _this3 = this;
+
+    console.log = function () {};
 
     this.is_loading = true; //   this.setupProduct();
     // this.getProductDetails();
@@ -43860,7 +43864,7 @@ var render = function() {
                     },
                     on: {
                       click: function($event) {
-                        return _vm.chest(row.attr_size_value)
+                        return _vm.chest(row.attr_size_value, row.sizechart_id)
                       }
                     }
                   }),
@@ -43902,7 +43906,10 @@ var render = function() {
                           },
                           on: {
                             click: function($event) {
-                              return _vm.chest(row.attr_size_value)
+                              return _vm.chest(
+                                row.attr_size_value,
+                                row.sizechart_id
+                              )
                             }
                           }
                         })

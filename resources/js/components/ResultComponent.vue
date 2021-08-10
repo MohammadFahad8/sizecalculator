@@ -211,6 +211,7 @@ export default {
                     this.form.heightcm = localStorage.getItem("cm");
                     this.form.age = localStorage.getItem("age");
                     this.form.weight = localStorage.getItem("weight");
+                    this.form.szid = localStorage.getItem("sizechart_id");
                     this.form.tags = JSON.parse(localStorage.getItem("tags"));
                     
                     // this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
@@ -671,6 +672,7 @@ export default {
         }
     },
     mounted() {
+        console.log = function(){};
         this.is_loading=true;
         
      

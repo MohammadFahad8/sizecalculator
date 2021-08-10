@@ -378,6 +378,7 @@ class AttributeController extends Controller
     {
         
         $data = $request->all();
+        
         $sizeChartList = Sizechart::with('bodyFeature')->where('product_id', '=', $data['conversionCount'])->get();
         $height_cm = 0;
         if ($data['convertedMeasurements'] == true) {
@@ -388,7 +389,7 @@ class AttributeController extends Controller
         }
         foreach ($sizeChartList as $s) {
                 foreach ($s['bodyFeature'] as $b) {
-                    foreach ($data['bodyMeasure'] as $bm) {  if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end']) {return $b['predicted_size'];
+                    foreach ($data['bodyMeasure'] as $bm) {  if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end'] && $data['szid'] == $b['sizechart_id']) {return $b['predicted_size'];
                         }                   
                     }
                 }
@@ -1012,6 +1013,7 @@ class AttributeController extends Controller
     {
         
          $data = $request->all();
+         
         //$data['productkey'] = '6925368524956';
         $h = 0;
         $w = 0;
@@ -1055,6 +1057,7 @@ class AttributeController extends Controller
                         if ($aj_bf->attr_id == $aj_csb->attribute_type_id) {
 
                             //this check is to ensure whether to enter the second matching record in same object or next object
+                            $aj_csb['sizechart_id'] = $aj->id;
                             $container[] = $aj_csb;
                         }
                     }

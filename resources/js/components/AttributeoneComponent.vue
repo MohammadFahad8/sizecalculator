@@ -28,7 +28,7 @@
                     <img
                         id="chest1"
                         :src="$appUrl+'/'+row.attr_image_src"
-                        v-on:click="chest(row.attr_size_value)"
+                        v-on:click="chest(row.attr_size_value,row.sizechart_id)"
                     />
                     <p :title="row.attr_size_value" class=" fit-advisor-options-text">
                         {{ row.attribute_size_name }}
@@ -46,7 +46,7 @@
                     v-if="attributes.id == row.attribute_type_id"
                         id="chest1"
                         :src="$appUrl+'/'+row.attr_image_src"
-                        v-on:click="chest(row.attr_size_value)"
+                        v-on:click="chest(row.attr_size_value,row.sizechart_id)"
                     />
                     <p v-if="attributes.id == row.attribute_type_id" :title="row.attr_size_value" class=" fit-advisor-options-text">
                         {{ row.attribute_size_name }}
@@ -107,9 +107,11 @@ export default {
                 EventBus.$emit("sizeCalculate", n);
             }
         },
-        chest: function(n) {
+        chest: function(n,scid) {
             if (localStorage.getItem(this.attributes.name) == null) {
+
                 localStorage.setItem(this.attributes.name.toLowerCase(), n);
+                localStorage.setItem("sizechart_id", scid);
             }
 
             this.nextStep(this.tabnum.count + 1);
