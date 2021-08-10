@@ -289,12 +289,14 @@ export default {
             this.validateForm();
             if (this.container.valid == true) {
                 this.container.form.tabnumber = n;
+                this.submitclicked = true;
                 
                 EventBus.$emit("formsubmit", this.container);
                 
             }
         },
         validateForm: function() {
+            this.submitclicked = false;
             if (
                 this.container.countrycheck == false ||
                 this.container.countrycheck == ""
@@ -362,6 +364,7 @@ export default {
             }
         },
         validateHeight: function(event) {
+            
             $("#height_ft").keydown(function(e) {
                 if (e.keyCode === 190 || e.keyCode === 110) {
                     e.preventDefault();

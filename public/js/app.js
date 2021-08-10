@@ -3161,10 +3161,13 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.container.valid == true) {
         this.container.form.tabnumber = n;
+        this.submitclicked = true;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("formsubmit", this.container);
       }
     },
     validateForm: function validateForm() {
+      this.submitclicked = false;
+
       if (this.container.countrycheck == false || this.container.countrycheck == "") {
         if ($("#height_ft").val().length == 0) {
           $("#height_ft").addClass("invalid");
