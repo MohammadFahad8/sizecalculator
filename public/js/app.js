@@ -3199,6 +3199,7 @@ __webpack_require__.r(__webpack_exports__);
 
         if ($("#age").val().length == 0) {
           $("#age").addClass("invalid");
+          this.container.valid = false;
         }
       }
     },

@@ -327,6 +327,7 @@ export default {
                 }
                 if ($("#age").val().length == 0) {
                     $("#age").addClass("invalid");
+                    this.container.valid = false;
                 }
             }
         },
