@@ -3636,49 +3636,59 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
             _this2.array_move(_this2.container.size_descriptions, 2, index);
 
-            if (size == "XS") {
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i == _this2.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
+            switch (size) {
+              case "XS":
+                for (var i = 0; i <= _this2.product.variants.length; i++) {
+                  if (i == _this2.container.sizeIndex) {
+                    _this2.product.variants[i].desc_title = "Recommended";
+                  }
+
+                  if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
+                    _this2.product.variants[i].desc_title = "Slightly Relaxed";
+
+                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 3])) {
+                      _this2.product.variants[i].desc_title = "Relaxed";
+                    }
+
+                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
+                      _this2.product.variants[i].desc_title = "Relaxed";
+                    }
+
+                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+                      _this2.product.variants[i].desc_title = "Very Relaxed";
+                    }
+                  }
                 }
 
-                if (i > _this2.sizeIndex && i < _this2.product.variants.length) {
-                  _this2.product.variants[i].desc_title = "Slightly Relaxed";
+                break;
 
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 3])) {
-                    _this2.product.variants[i].desc_title = "Relaxed";
+              case "XS":
+                var counter = 1;
+
+                for (var i = 0; i <= _this2.product.variants.length; i++) {
+                  //DEBUG FROM HERE
+                  if (i < _this2.container.sizeIndex) {
+                    _this2.product.variants[i].desc_title = "Very Snug";
+
+                    if (i < _this2.container.sizeIndex && i >= counter) {
+                      counter++;
+                      _this2.product.variants[i].desc_title = "Snug";
+                    }
+                  }
+
+                  if (i == _this2.container.sizeIndex) {
+                    _this2.product.variants[i].desc_title = "Recommended";
                   }
 
                   if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
-                    _this2.product.variants[i].desc_title = "Relaxed";
-                  }
-
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
-                    _this2.product.variants[i].desc_title = "Very Relaxed";
-                  }
-                }
-              }
-            } else if (size == "XL") {
-              var counter = 1;
-
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i < _this2.container.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Very Snug";
-
-                  if (i < _this2.container.sizeIndex && i >= counter) {
-                    counter++;
-                    _this2.product.variants[i].desc_title = "Snug";
+                    _this2.product.variants[i].desc_title = "Slightly Snugged";
                   }
                 }
 
-                if (i == _this2.container.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
-                }
+                break;
 
-                if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 2])) {
-                  _this2.product.variants[i].desc_title = "Slightly Snugged";
-                }
-              }
+              default:
+                console.log('Recommendations failed');
             }
 
             localStorage.setItem("sizeindex", _this2.container.sizeIndex);
@@ -3691,68 +3701,77 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
             _this2.array_move(_this2.container.size_descriptions, 2, index);
 
-            if (size == "S") {
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i < _this2.container.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Very Snug";
+            switch (size) {
+              case "S":
+                for (var i = 0; i <= _this2.product.variants.length; i++) {
+                  if (i < _this2.container.sizeIndex) {
+                    _this2.product.variants[i].desc_title = "Very Snug";
 
-                  if (i < _this2.container.sizeIndex && i > 0) {
-                    _this2.product.variants[i].desc_title = "Snug";
+                    if (i < _this2.container.sizeIndex && i > 0) {
+                      _this2.product.variants[i].desc_title = "Snug";
+                    }
+                  }
+
+                  if (i == _this2.container.sizeIndex) {
+                    _this2.product.variants[i].desc_title = "Recommended";
+                  }
+
+                  if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
+                    _this2.product.variants[i].desc_title = "Relaxed";
+
+                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+                      _this2.product.variants[i].desc_title = "Very Relaxed";
+                    }
                   }
                 }
 
-                if (i == _this2.container.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
+                break;
+
+              case "M":
+                for (var i = 0; i <= _this2.product.variants.length; i++) {
+                  if (i < _this2.container.sizeIndex) {
+                    _this2.product.variants[i].desc_title = "Very Snug";
+
+                    if (i < _this2.container.sizeIndex && i > 0) {
+                      _this2.product.variants[i].desc_title = "Snug";
+                    }
+                  }
+
+                  if (i == _this2.container.sizeIndex) {
+                    _this2.product.variants[i].desc_title = "Recommended";
+                  }
+
+                  if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
+                    _this2.product.variants[i].desc_title = "Relaxed";
+
+                    if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+                      _this2.product.variants[i].desc_title = "Very Relaxed";
+                    }
+                  }
                 }
 
-                if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
-                  _this2.product.variants[i].desc_title = "Relaxed";
+                break;
 
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
+              case "L":
+                for (var i = 0; i <= _this2.product.variants.length; i++) {
+                  if (i < _this2.container.sizeIndex) {
+                    _this2.product.variants[i].desc_title = "Very Snug";
+
+                    if (i < _this2.container.sizeIndex && i > 0) {
+                      _this2.product.variants[i].desc_title = "Snug";
+                    }
+                  }
+
+                  if (i == _this2.container.sizeIndex) {
+                    _this2.product.variants[i].desc_title = "Recommended";
+                  }
+
+                  if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
                     _this2.product.variants[i].desc_title = "Very Relaxed";
                   }
                 }
-              }
-            } else if (size == "M") {
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i < _this2.container.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Very Snug";
 
-                  if (i < _this2.container.sizeIndex && i > 0) {
-                    _this2.product.variants[i].desc_title = "Snug";
-                  }
-                }
-
-                if (i == _this2.container.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
-                }
-
-                if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
-                  _this2.product.variants[i].desc_title = "Relaxed";
-
-                  if (i == _this2.product.variants.indexOf(_this2.product.variants[_this2.product.variants.length - 1])) {
-                    _this2.product.variants[i].desc_title = "Very Relaxed";
-                  }
-                }
-              }
-            } else if (size == "L") {
-              for (var i = 0; i <= _this2.product.variants.length; i++) {
-                if (i < _this2.container.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Very Snug";
-
-                  if (i < _this2.container.sizeIndex && i > 0) {
-                    _this2.product.variants[i].desc_title = "Snug";
-                  }
-                }
-
-                if (i == _this2.container.sizeIndex) {
-                  _this2.product.variants[i].desc_title = "Recommended";
-                }
-
-                if (i > _this2.container.sizeIndex && i < _this2.product.variants.length) {
-                  _this2.product.variants[i].desc_title = "Very Relaxed";
-                }
-              }
+                break;
             }
 
             localStorage.setItem("sizeindex", _this2.container.sizeIndex);

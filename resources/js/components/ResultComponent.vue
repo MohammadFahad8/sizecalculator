@@ -256,23 +256,25 @@ export default {
             this.product.variants.forEach((el, index) => {
                 if (sizecheck == true) {
                     if (el.option1.toUpperCase() == size) {
+                        
                         this.container.sizeIndex = index;
                         this.array_move(
                             this.container.size_descriptions,
                             2,
                             index
                         );
-                        if (size == "XS") {
-                            for (
+                        switch(size){
+                            case "XS":
+                             for (
                                 var i = 0; i <= this.product.variants.length; i++
                             ) {
-                                if (i == this.sizeIndex) {
+                                if (i == this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
                                         "Recommended";
                                 }
 
                                 if (
-                                    i > this.sizeIndex &&
+                                    i > this.container.sizeIndex &&
                                     i < this.product.variants.length
                                 ) {
                                     this.product.variants[i].desc_title =
@@ -312,11 +314,15 @@ export default {
                                     }
                                 }
                             }
-                        } else if (size == "XL") {
+                            break;
+
+                            case "XS":
                             var counter = 1;
                             for (
                                 var i = 0; i <= this.product.variants.length; i++
                             ) {
+
+                                //DEBUG FROM HERE
                                 if (i < this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
                                         "Very Snug";
@@ -348,6 +354,10 @@ export default {
                                         "Slightly Snugged";
                                 }
                             }
+                            break;
+                            default:
+                            console.log('Recommendations failed')
+
                         }
                         localStorage.setItem(
                             "sizeindex",
@@ -358,6 +368,7 @@ export default {
                     }
                 } else if (sizecheck == false) {
                     if (el.option1.toUpperCase().charAt(0) == size) {
+                        
                         this.container.sizeIndex = index;
 
                         this.array_move(
@@ -366,10 +377,9 @@ export default {
                             index
                         );
 
-                        if (size == "S") {
-                            for (
-                                var i = 0; i <= this.product.variants.length; i++
-                            ) {
+                        switch(size){
+                                case "S":
+                                for ( var i = 0; i <= this.product.variants.length; i++) {
                                 if (i < this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
                                         "Very Snug";
@@ -404,10 +414,9 @@ export default {
                                     }
                                 }
                             }
-                        } else if (size == "M") {
-                            for (
-                                var i = 0; i <= this.product.variants.length; i++
-                            ) {
+                                        break;
+                                    case "M":
+                                        for ( var i = 0; i <= this.product.variants.length; i++) {
                                 if (i < this.container.sizeIndex) {
                                     this.product.variants[i].desc_title =
                                         "Very Snug";
@@ -442,7 +451,9 @@ export default {
                                     }
                                 }
                             }
-                        } else if (size == "L") {
+    break;
+    case "L":
+    
                             for (
                                 var i = 0; i <= this.product.variants.length; i++
                             ) {
@@ -469,7 +480,9 @@ export default {
                                         "Very Relaxed";
                                 }
                             }
-                        }
+                                        break;
+                                    }
+                        
 
                         localStorage.setItem(
                             "sizeindex",
