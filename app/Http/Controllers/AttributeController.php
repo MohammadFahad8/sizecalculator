@@ -589,7 +589,6 @@ class AttributeController extends Controller
         $attr->save();
         return   redirect()->route('attributetypes.home', ['id' => $attr->product_id]);
     }
-
     public function getAttributesOnHeightWeight(Request $request)
     {
         
@@ -651,71 +650,8 @@ class AttributeController extends Controller
             }
 
             return $attributeTypeOfProducts;
-            
-            $res = array('ogArray' => $attributeTypeOfProducts, 'scArray' => $attributeTypeOfProducts);
-            return $res;
-        
-            //return following in case of any error
-            // return     $attributeTypeOfProducts = Attributetypes::with('attrDetails', 'attrItems')->where([['product_id', '=', $data['productkey']], ['status', '>', 0]])
-            //     ->get();
-        
-
-        $count = 0;
-        $bcount = 0;
-        $scount = 0;
-        $nfcount = 0;
-        for ($i = 0; $i < count($attributeTypeOfProducts); $i++) {
-
-            if ($i == 0) {
-
-                for ($k = 0; $k < count($attributeTypeOfProducts[$i]['attr_items']); $k++) {
-                    $fcount = count($attributeTypeOfProducts[$i]['attr_items']);
-
-                    if ($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$k]->attribute_type_id) {
-                        $count = $count + intval(1);
-                        $popcount = count($attributeTypeOfProducts[$i]['attr_items']) - $count;
-                    }
-                }
-
-                for ($pc = 0; $pc < $popcount; $pc++) {
-
-
-                    array_pop($attributeTypeOfProducts[$i]['attr_items']);
-                }
-            } else if ($i == 1) {
-                for ($s = 0; $s < count($attributeTypeOfProducts[$i]['attr_items']); $s++) {
-
-
-                    if ($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$s]->attribute_type_id) {
-
-                        for ($sc = $s; $sc < $s + 1; $sc--) {
-
-                            array_splice($attributeTypeOfProducts[$i]['attr_items'], $sc - 1, 1);
-                            array_splice($attributeTypeOfProducts[$i]['attr_items'], $sc + 1, 1);
-                            // $attributeTypeOfProducts[$i].attr_items.pop();
-                        }
-                    }
-                }
-            } else {
-                for ($b = 0; $b < count($attributeTypeOfProducts[$i]['attr_items']); $b++) {
-
-                    if ($attributeTypeOfProducts[$i]->id == $attributeTypeOfProducts[$i]->attr_items[$b]->attribute_type_id) {
-                        $bcount = $bcount + intval(1);
-                        $shiftcount = count($attributeTypeOfProducts[$i]['attr_items']) - $bcount;
-                    }
-                }
-
-                for ($sc = 0; $sc < $shiftcount; $sc++) {
-                    array_shift($attributeTypeOfProducts[$i]['attr_items']);
-                }
-            }
-        }
-
-        //  return $attributeTypeOfProducts;
-
-        // $size = Sizechart::with('attributecsb','bodyFeature')
-        // ->where([['weight_start','<=',$w],['weight_end','>=',$w],['height_start','<=',$h],['height_end','>=',$h]])
-
+           //took code which was used earlier to append to populate the $attributeTypeOfProducts array 
+           
 
 
 
