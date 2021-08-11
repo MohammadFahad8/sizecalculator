@@ -697,7 +697,7 @@ export default {
             
             var a = 1;
             this.sizeLoaded=true;
-            $('.x-progress-bar').css('width','400px');
+            $('.x-progress-bar').css('width','670px');
             $('.resultant-all').addClass('x-d-none');
             $('.descriptions-all').addClass('x-d-none');
             

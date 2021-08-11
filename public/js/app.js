@@ -2454,7 +2454,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this.attributesToShow = res.data;
         var obt = _this.attributes.length + parseInt(2);
-        var total = 400;
+        var total = 670;
         var result = total / obt;
         $('.x-progress-bar').css('width', result + 'px'); // if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
         // {
@@ -2692,7 +2692,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this2.chest = container;
         _this2.lastTab = false;
         var obt = _this2.attributes.length + parseInt(2);
-        var total = 400;
+        var total = 670;
         var result = total / obt;
         var cw = $('.x-progress-bar').width();
         var ww = cw + parseInt(result);
@@ -3948,7 +3948,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("sizeCalculate", function (num) {
       var a = 1;
       _this3.sizeLoaded = true;
-      $('.x-progress-bar').css('width', '400px');
+      $('.x-progress-bar').css('width', '670px');
       $('.resultant-all').addClass('x-d-none');
       $('.descriptions-all').addClass('x-d-none');
 

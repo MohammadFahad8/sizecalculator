@@ -327,7 +327,7 @@ export default {
             this.attributesToShow = res.data;
             
             var obt = this.attributes.length+parseInt(2);
-            var total = 400;
+            var total = 670;
             var result=total/obt;
             
             $('.x-progress-bar').css('width',result+'px');
@@ -706,7 +706,7 @@ export default {
                 this.lastTab = false;
                 
                  var obt = this.attributes.length+parseInt(2);
-            var total = 400;
+            var total = 670;
             var result=total/obt;
             
             var cw = $('.x-progress-bar').width();
