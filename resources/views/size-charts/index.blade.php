@@ -53,14 +53,14 @@
             <td>{{ $attr->bodyFeature[0]->predicted_size??'n/a' }} </td>
           {{-- <div class="text-center"> <td class=" text-center"><span class="badge badge-pill badge-warning">{{$sizeChart[0]['product']['name']}} </span></td></div>  --}}
             <td class="text-center">
-              <div class="col">
-              <a id="get-body-data" href="javascript:void(0)" v-on:click="setSizeChart({{$attr->id  }})"  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-block btn-info btn-sm">Watch Other Sizes</a>
+              <div class="col offset-1">
+              <a id="get-body-data" href="javascript:void(0)" v-on:click="setSizeChart({{$attr->id  }})"  data-toggle="modal" data-target="#exampleModalCenter" class="btn btn-block w-75  btn-info btn-sm">Watch Other Sizes</a>
               </div>
-              <div class="col">
-                  <a id="get-body-data-2" href="{{ route('sizechart.edit',['id'=>$attr->id,'product_id'=>$current_product_id]) }}" class="btn btn-block btn-info btn-sm mt-1">Edit</a>
+              <div class="col offset-1">
+                  <a id="get-body-data-2" href="{{ route('sizechart.edit',['id'=>$attr->id,'product_id'=>$current_product_id]) }}" class="btn btn-block btn-info w-75 btn-sm mt-1">Edit</a>
               </div>
-               <div class="col">
-                  <a id="get-body-data-3" href="{{ route('sizechart.delete',['id'=>$attr->id]) }}"  onclick="return confirm('Are you sure?')" class="btn btn-block btn-danger btn-sm mt-1">Delete</a>
+               <div class="col offset-1">
+                  <a id="get-body-data-3" href="{{ route('sizechart.delete',['id'=>$attr->id]) }}"  onclick="return confirm('Are you sure?')" class="btn btn-block btn-danger w-75  btn-sm mt-1">Delete</a>
               </div>
             
             </td>
