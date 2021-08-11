@@ -354,6 +354,7 @@ class AttributeController extends Controller
     {
         
         $data = $request->all();
+        $sizes = array();
         
         $sizeChartList = Sizechart::with('bodyFeature')->where('product_id', '=', $data['conversionCount'])->get();
         $height_cm = 0;
@@ -371,8 +372,9 @@ class AttributeController extends Controller
                         
                           if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end'] && $data['sz'][$key] == $b['sizechart_id'])
                            {
-                              
-                                return $b['predicted_size'];
+                               return $b['predicted_size'];
+                              //getting all results based upon calculations
+                                $sizes[]= $b['predicted_size'];
                                
                                
                         }                   
@@ -380,6 +382,8 @@ class AttributeController extends Controller
                 }
             
         }
+        // return $sizes;
+        return array_unique($sizes);
     }
     
     public function getSizeCount($predictedSize)
