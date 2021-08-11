@@ -547,6 +547,9 @@ export default {
                         this.container.recommended_size = res.data
                             .toUpperCase()
                             .substr(0, 2);
+                            EventBus.$emit('refreshSize',res.data
+                            .toUpperCase()
+                            .substr(0, 2))
                         this.container.sizecheck = true;
                         this.setSelectedSizeFromList(
                             res.data.toUpperCase().substr(0, 2),
@@ -561,6 +564,9 @@ export default {
                         this.container.recommended_size = res.data
                             .toUpperCase()
                             .charAt(0);
+                             EventBus.$emit('refreshSize',res.data
+                            .toUpperCase()
+                            .charAt(0))
                         this.container.sizecheck = false;
                         this.setSelectedSizeFromList(
                             res.data.toUpperCase().charAt(0),

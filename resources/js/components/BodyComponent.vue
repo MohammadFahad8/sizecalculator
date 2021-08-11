@@ -887,6 +887,10 @@ export default {
             $(".product-card").css("z-index", "-1");
             $("#popup1").css("overflow", "scroll");
         });
+
+        EventBus.$on('refreshSize',size=>{
+            this.finalsize = size
+        })
     },
     //    Took watch from here
     

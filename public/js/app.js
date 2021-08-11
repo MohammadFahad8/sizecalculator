@@ -2822,6 +2822,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     }
   },
   mounted: function mounted() {
+    var _this5 = this;
+
     this.form.tags = this.product.tags;
     localStorage.setItem("tags", JSON.stringify(this.product.tags));
     var x = document.getElementsByClassName("tab");
@@ -2834,6 +2836,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     $("#popup-trigger").on("click", function () {
       $(".product-card").css("z-index", "-1");
       $("#popup1").css("overflow", "scroll");
+    });
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('refreshSize', function (size) {
+      _this5.finalsize = size;
     });
   } //    Took watch from here
 
@@ -3836,6 +3841,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         if (res.data == "XL" || res.data == "Xl" || res.data == "xL" || res.data == "xl" || res.data == "XS" || res.data == "Xs" || res.data == "xS" || res.data == "xs") {
           _this2.container.recommended_size = res.data.toUpperCase().substr(0, 2);
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('refreshSize', res.data.toUpperCase().substr(0, 2));
           _this2.container.sizecheck = true;
 
           _this2.setSelectedSizeFromList(res.data.toUpperCase().substr(0, 2), _this2.container.sizecheck);
@@ -3845,6 +3851,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           $(".dfOagu").addClass("dfOagu-second");
         } else {
           _this2.container.recommended_size = res.data.toUpperCase().charAt(0);
+          _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('refreshSize', res.data.toUpperCase().charAt(0));
           _this2.container.sizecheck = false;
 
           _this2.setSelectedSizeFromList(res.data.toUpperCase().charAt(0), _this2.container.sizecheck);

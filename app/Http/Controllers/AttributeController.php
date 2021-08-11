@@ -370,11 +370,11 @@ class AttributeController extends Controller
                     foreach ($data['bodyMeasure'] as $key=> $bm) 
                     {
                         
-                          if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end'] && $data['sz'][$key] == $b['sizechart_id'])
-                           {
+                        if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end'] && $data['sz'][$key] == $b['sizechart_id'])
+                        {
                                return $b['predicted_size'];
                               //getting all results based upon calculations
-                                $sizes[]= $b['predicted_size'];
+                             // $sizes[]= $b['predicted_size'];
                                
                                
                         }                   
@@ -382,8 +382,8 @@ class AttributeController extends Controller
                 }
             
         }
-        // return $sizes;
-        return array_unique($sizes);
+        
+        //return array_unique($sizes);
     }
     
     public function getSizeCount($predictedSize)
