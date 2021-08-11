@@ -204,6 +204,7 @@ export default {
                 // weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
                 // age: localStorage.getItem("age"),
                 bodyMeasure: [],
+                sz: [],
                 heightfoot: "",
                 heightinch: "",
                 heightcm: "",

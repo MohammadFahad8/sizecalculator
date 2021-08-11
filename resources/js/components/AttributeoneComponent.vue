@@ -112,7 +112,7 @@ export default {
             if (localStorage.getItem(this.attributes.name) == null) {
 
                 localStorage.setItem(this.attributes.name.toLowerCase(), n);
-                localStorage.setItem("sizechart_id", scid);
+                localStorage.setItem("sizechart_id_"+this.attributes.name.toLowerCase(), scid);
                 
             }
             

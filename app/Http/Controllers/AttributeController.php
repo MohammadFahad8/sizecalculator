@@ -364,8 +364,17 @@ class AttributeController extends Controller
             $height_cm = intval(($data['heightfoot'] * 30.48) + ($data['heightinch'] * 2.54));
         }
         foreach ($sizeChartList as $s) {
-                foreach ($s['bodyFeature'] as $b) {
-                    foreach ($data['bodyMeasure'] as $bm) {  if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end'] && $data['szid'] == $b['sizechart_id']) {return $b['predicted_size'];
+                foreach ($s['bodyFeature'] as  $b) {
+                    
+                    foreach ($data['bodyMeasure'] as $key=> $bm) 
+                    {
+                        
+                          if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end'] && $data['sz'][$key] == $b['sizechart_id'])
+                           {
+                              
+                                return $b['predicted_size'];
+                               
+                               
                         }                   
                     }
                 }

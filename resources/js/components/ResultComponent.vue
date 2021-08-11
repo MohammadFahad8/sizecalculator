@@ -198,10 +198,20 @@ export default {
                     this.attributes = this.attrscall;
 
                     for (var i = 0; i < this.attrscall.length; i++) {
+                        
+                      
+                        this.form.sz[i] = localStorage.getItem("sizechart_id_"+this.attrscall[i].name.toLowerCase());
+
+                            
+
                         this.form.bodyMeasure[i] = localStorage.getItem(
                             this.attrscall[i].name.toLowerCase()
+                            
                         );
+                                        
+                      
                     }
+                    
                     this.form.conversionCount = this.product.id;
                    
 
@@ -211,7 +221,7 @@ export default {
                     this.form.heightcm = localStorage.getItem("cm");
                     this.form.age = localStorage.getItem("age");
                     this.form.weight = localStorage.getItem("weight");
-                    this.form.szid = localStorage.getItem("sizechart_id");
+                    
                     this.form.tags = JSON.parse(localStorage.getItem("tags"));
                     
                     // this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
@@ -672,7 +682,7 @@ export default {
         }
     },
     mounted() {
-        console.log = function(){};
+        // console.log = function(){};
         this.is_loading=true;
         
             
