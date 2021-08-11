@@ -675,6 +675,9 @@ export default {
         console.log = function(){};
         this.is_loading=true;
         
+            
+            
+        
      
      //   this.setupProduct();
         // this.getProductDetails();
@@ -684,6 +687,7 @@ export default {
             
             var a = 1;
             this.sizeLoaded=true;
+            $('.x-progress-bar').css('width','400px');
             $('.resultant-all').addClass('x-d-none');
             $('.descriptions-all').addClass('x-d-none');
             
@@ -691,6 +695,7 @@ export default {
             //this.getProductDetails();
             this.form.conversionCount = this.product.id;
             EventBus.$emit("mount", a);
+            
             
            
         });

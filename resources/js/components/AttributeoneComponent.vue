@@ -108,12 +108,14 @@ export default {
             }
         },
         chest: function(n,scid) {
+            
             if (localStorage.getItem(this.attributes.name) == null) {
 
                 localStorage.setItem(this.attributes.name.toLowerCase(), n);
                 localStorage.setItem("sizechart_id", scid);
+                
             }
-
+            
             this.nextStep(this.tabnum.count + 1);
         }
     },

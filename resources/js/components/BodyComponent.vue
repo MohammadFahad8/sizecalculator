@@ -34,7 +34,7 @@
                 style="margin-top: 20px"
             >
          
-                <div class="x-row x-mb-5" >
+                <div class="x-row " >
                     
                         
                         <div class="x-col-md-6 mt-2 x-col-6">
@@ -106,7 +106,11 @@ display: inline-block;
                     </div> -->
                 </div>
                 <!-- close modal btn -->
-                
+                <div class="x-progress x-rounded-0 x-mb-5" style="height:1px;opacity:0.4;margin-left:-20px;margin-right:-20px"  >
+    <div id="pb" class="x-progress-bar bg-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0px;background-color:black">
+      <span class="sr-only">70% Complete</span>
+    </div>
+  </div>
                 <div>
                     <div class="x-row">
                         <div class="x-col"></div>
@@ -320,6 +324,12 @@ export default {
               this.tabnumber =  num
               //end to change screen
             this.attributesToShow = res.data;
+            
+            var obt = this.attributes.length+parseInt(2);
+            var total = 400;
+            var result=total/obt;
+            
+            $('.x-progress-bar').css('width',result+'px');
  
 // if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
 // {
@@ -693,8 +703,20 @@ export default {
             EventBus.$on("attributeone", container => {
                 this.chest = container;
                 this.lastTab = false;
+                
+                 var obt = this.attributes.length+parseInt(2);
+            var total = 400;
+            var result=total/obt;
+            
+            var cw = $('.x-progress-bar').width();
+            var ww = cw+parseInt(result)
+            
+            $('.x-progress-bar').css('width',ww+'px');
                 this.tabnumber = container.tabnumber;
                 this.n = container.tabnumber;
+                
+               
+                 
             });
 
             EventBus.$on("resetForm", tabnum => {
@@ -709,9 +731,15 @@ export default {
         back: function(num) {
             EventBus.$emit("hideloader",'ok')
             this.tabnumber = num - 1;
+            var w = $('.x-progress-bar').width()
+            var c = 100-w;
+            $('.x-progress-bar').css('width',c+'%')
         },
         restart: function() {
             EventBus.$emit("hideloader",'ok')
+             var w = $('.x-progress-bar').width()
+            var c = 0;
+            $('.x-progress-bar').css('width',c+'%')
             $(
                 "div.fit-advisor-selected-size:gt(" +
                     localStorage.getItem("sizeindex") +

@@ -2332,6 +2332,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2447,7 +2451,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this.tabnumber = num; //end to change screen
 
-        _this.attributesToShow = res.data; // if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
+        _this.attributesToShow = res.data;
+        var obt = _this.attributes.length + parseInt(2);
+        var total = 400;
+        var result = total / obt;
+        $('.x-progress-bar').css('width', result + 'px'); // if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
         // {
         // if(res.data.scArray.length == 2)
         // {
@@ -2682,6 +2690,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("attributeone", function (container) {
         _this2.chest = container;
         _this2.lastTab = false;
+        var obt = _this2.attributes.length + parseInt(2);
+        var total = 400;
+        var result = total / obt;
+        var cw = $('.x-progress-bar').width();
+        var ww = cw + parseInt(result);
+        $('.x-progress-bar').css('width', ww + 'px');
         _this2.tabnumber = container.tabnumber;
         _this2.n = container.tabnumber;
       });
@@ -2698,9 +2712,15 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     back: function back(num) {
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("hideloader", 'ok');
       this.tabnumber = num - 1;
+      var w = $('.x-progress-bar').width();
+      var c = 100 - w;
+      $('.x-progress-bar').css('width', c + '%');
     },
     restart: function restart() {
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("hideloader", 'ok');
+      var w = $('.x-progress-bar').width();
+      var c = 0;
+      $('.x-progress-bar').css('width', c + '%');
       $("div.fit-advisor-selected-size:gt(" + localStorage.getItem("sizeindex") + ")").show();
       $("div.fit-advisor-selected-size:lt(" + localStorage.getItem("sizeindex") + ")").show();
       $("p.size_descriptions:gt(" + localStorage.getItem("sizeindex") + ")").show();
@@ -3928,6 +3948,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("sizeCalculate", function (num) {
       var a = 1;
       _this3.sizeLoaded = true;
+      $('.x-progress-bar').css('width', '400px');
       $('.resultant-all').addClass('x-d-none');
       $('.descriptions-all').addClass('x-d-none');
 
@@ -44365,7 +44386,7 @@ var render = function() {
             staticStyle: { "margin-top": "20px" }
           },
           [
-            _c("div", { staticClass: "x-row x-mb-5" }, [
+            _c("div", { staticClass: "x-row " }, [
               _c("div", { staticClass: "x-col-md-6 mt-2 x-col-6" }, [
                 _vm.tabnumber > 1 && _vm.lastTab != true
                   ? _c(
@@ -44453,6 +44474,8 @@ var render = function() {
             ]),
             _vm._v(" "),
             _vm._m(1),
+            _vm._v(" "),
+            _vm._m(2),
             _vm._v(" "),
             _c(
               "div",
@@ -44607,6 +44630,40 @@ var staticRenderFns = [
         [_vm._v("×")]
       )
     ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "div",
+      {
+        staticClass: "x-progress x-rounded-0 x-mb-5",
+        staticStyle: {
+          height: "1px",
+          opacity: "0.4",
+          "margin-left": "-20px",
+          "margin-right": "-20px"
+        }
+      },
+      [
+        _c(
+          "div",
+          {
+            staticClass: "x-progress-bar bg-danger",
+            staticStyle: { width: "0px", "background-color": "black" },
+            attrs: {
+              id: "pb",
+              role: "progressbar",
+              "aria-valuenow": "0",
+              "aria-valuemin": "0",
+              "aria-valuemax": "100"
+            }
+          },
+          [_c("span", { staticClass: "sr-only" }, [_vm._v("70% Complete")])]
+        )
+      ]
+    )
   },
   function() {
     var _vm = this

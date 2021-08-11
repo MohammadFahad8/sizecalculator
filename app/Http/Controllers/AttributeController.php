@@ -651,9 +651,6 @@ class AttributeController extends Controller
 
             return $attributeTypeOfProducts;
            //took code which was used earlier to append to populate the $attributeTypeOfProducts array 
-           
-
-
-
+       
     }
 }
