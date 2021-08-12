@@ -91,7 +91,7 @@
         <div class="x-row">
             <input
                 v-on:change="countryval()"
-                class="countrycheck no-gutters x-mt-3 x-offset-c6"
+                class="countrycheck no-gutters x-mt-3 x-offset-c6 "
                 type="checkbox"
                 name="countrycheck"
                 v-model="container.countrycheck"

@@ -14,7 +14,7 @@
     font-family: Karla;
     font-weight: 600;
     font-size: small !important;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     text-decoration: underline;
 }
 
@@ -22,7 +22,7 @@
     font-family: 'Montserrat';
     font-weight: 900;
     font-size: small;
-    margin-left: 10px;
+    /* margin-left: 10px; */
     margin-top: 20px;
 }
 
@@ -107,16 +107,6 @@ input[type="checkbox"]:checked {
     background: rgb(2, 2, 2);
 }
 
-.img_country {
-    width: 7% !important;
-    margin: 0 auto !important;
-    margin-left: 0px !important;
-}
-
-.countrycheck {
-    width: 2.5% !important;
-    /* margin: 0 auto !important */
-}
 
 .no-gutters {
     margin-right: 0;

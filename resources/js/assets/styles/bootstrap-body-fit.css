@@ -620,6 +620,17 @@ pre code {
   padding-left: 15px;
 }
 
+.img_country {
+  width: 17% !important;
+  margin: 0 auto !important;
+  margin-left: 0px !important;
+}
+
+.countrycheck {
+  width: 7.5% !important;
+  /* margin: 0 auto !important */
+}
+
 .x-col {
   -ms-flex-preferred-size: 0;
   flex-basis: 0;
@@ -835,7 +846,7 @@ pre code {
   margin-left: 50%;
 }
 .x-offset-c6 {
-  margin-left: 56%;
+  margin-left: 41.666667%;
 }
 
 .x-offset-7 {
@@ -1060,6 +1071,17 @@ pre code {
 }
 
 @media (min-width: 768px) {
+  
+.img_country {
+  width: 7% !important;
+  margin: 0 auto !important;
+  margin-left: 0px !important;
+}
+
+.countrycheck {
+  width: 2.5% !important;
+  /* margin: 0 auto !important */
+}
   .x-col-md {
     -ms-flex-preferred-size: 0;
     flex-basis: 0;
@@ -1261,6 +1283,9 @@ pre code {
   }
   .x-offset-md-11 {
     margin-left: 91.666667%;
+  }
+  .x-offset-c6 {
+    margin-left: 56%;
   }
 }
 
