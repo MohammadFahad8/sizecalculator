@@ -170,7 +170,7 @@ display: inline-block;
 </div>
 
                                                                     <!-- OLD MODAL CODE BELOW ME -->
-      <!-- OLD MODAL CODE WAS ABOVE ME -->
+                                                                    <!-- OLD MODAL CODE WAS ABOVE ME -->
     </div>
 
     <!-- </div> -->
