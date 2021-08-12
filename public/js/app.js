@@ -4054,6 +4054,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           $nxtTarget = this.$allSlides["first"]();
         } else {
           $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
+          //added following line of code as when reached end it wasnt stoping at last size
+
+          $curr.stop(true, true).fadeIn($time).addClass("active").show();
         }
       }
 
@@ -4073,10 +4076,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           $nxtTarget = this.$allSlidesSize["first"]();
         } else {
           $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
-        }
-      }
+          //added following line of code as when reached end it wasnt stoping at last size
 
-      $nxtTarget.stop(true, true).fadeIn($time).addClass("active"); //show the target
+          $curr.stop(true, true).fadeIn($time).addClass("active").show();
+        }
+      } //added show method to following line of code as when reached end it wasnt stoping at last size
+
+
+      $nxtTarget.stop(true, true).fadeIn($time).addClass("active").show(); //show the target
       //slides size end
     },
     array_move: function array_move(arr, old_index, new_index) {

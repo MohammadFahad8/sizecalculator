@@ -605,13 +605,13 @@ export default {
 
             var traverse = this.traverseDefault,
                 action = this.actionDefault;
+                
 
             if (trigger == 0) {
                 //if action is prev
                 traverse = "last"; //set traverse to last in case nothing is available
                 action = "prev"; //set action to prev
             }
-
             var $curr = this.$allSlides.filter(":visible"), //get the visible slide
                 $nxtTarget = $curr[action](".fit-advisor-selected-size"); //get the next target based on the action.
             $nxtTarget.addClass("active");
@@ -625,18 +625,29 @@ export default {
             if (!$nxtTarget.length) {
                 //if no next
                 $time = 1;
+                
 
                 if (trigger == 0) {
+                    
                     $nxtTarget = this.$allSlides["first"]();
+                    
                 } else {
+                    
+                    
+                    
                     $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
+                    //added following line of code as when reached end it wasnt stoping at last size
+                    $curr
+                .stop(true, true)
+                .fadeIn($time)
+                .addClass("active")
+                .show();
+                    
+                       
                 }
             }
 
-            $nxtTarget
-                .stop(true, true)
-                .fadeIn($time)
-                .addClass("active"); //show the target
+            $nxtTarget.stop(true, true).fadeIn($time).addClass("active"); //show the target
 
             //slides size end
 
@@ -656,14 +667,22 @@ export default {
                 if (trigger == 0) {
                     $nxtTarget = this.$allSlidesSize["first"]();
                 } else {
+                    
                     $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
+                    //added following line of code as when reached end it wasnt stoping at last size
+                      $curr
+                .stop(true, true)
+                .fadeIn($time)
+                .addClass("active")
+                .show();
+                    
                 }
             }
-
+//added show method to following line of code as when reached end it wasnt stoping at last size
             $nxtTarget
                 .stop(true, true)
                 .fadeIn($time)
-                .addClass("active"); //show the target
+                .addClass("active").show(); //show the target
 
             //slides size end
         },
