@@ -10,34 +10,18 @@
             rel="stylesheet"
         />
        
+<!-- Button trigger modal -->
+<button  v-if="showBodyFitApp" type="button" class="x-btn x-btn-dark" data-toggle="modal" data-target="#exampleModalCenter">
+  Find fit
+</button>
 
-        <div v-if="showBodyFitApp" class="box">
-            <a
-                class="x-btn x-btn-dark"
-                id="popup-trigger"
-                href="#popup1"
-                style="margin-left: 1% !important; margin-bottom: 20px !important; border: none"
-                >Find Fit</a
-            >
-            <span
-                id="finalsize"
-                v-if="finalsize != ''"
-                class="final-size-heading"
-            >
-                <span class="final-size-label">Your Fit Size : </span>
-                {{ finalsize }} </span
-            >
-        </div>
-        <div id="popup1" class="overlay" style="z-index: 999 !important">
-            <div
-                class="popup fit-advisor-popup-adjustments"
-                style="margin-top: 20px"
-            >
-         
-                <div class="x-row " >
-                    
-                        
-                        <div class="x-col-md-6 mt-2 x-col-6">
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" style="background: rgba(0, 0, 0, 0.5); " aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-mdlg" role="document">
+    <div class="modal-content">
+      <div class="modal-header x-border-0">
+         <div class="x-col-md-6 mt-2 x-col-6 modal-title">
+                          <!-- backbtn svg -->
                             <svg
                                 v-if="tabnumber > 1 && lastTab != true"
                                 v-on:click="back(tabnumber)"
@@ -63,6 +47,175 @@ display: inline-block;
                                     points="328 112 184 256 328 400"
                                 ></polyline>
                             </svg>
+                            <!-- restart tbn svg -->
+                            <svg
+                                style="cursor: pointer"
+                                v-if="lastTab"
+                                v-on:click="restart"
+                                viewBox="0 0 512 512"
+                                height="24"
+                                width="24"
+                                aria-hidden="true"
+                                focusable="false"
+                                fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi"
+                            >
+                                <path
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-miterlimit="10"
+                                    stroke-width="32"
+                                    d="M320 146s24.36-12-64-12a160 160 0 10160 160"
+                                ></path>
+                                <polyline
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="32"
+                                    points="256 58 336 138 256 218"
+                                ></polyline>
+                            </svg> 
+        
+        </div>
+        <button type="button" class="close" data-dismiss="modal" style="color:black !important;background-color:#0f8c5e00 !important;font-size:23px " aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+          <div class="x-progress x-rounded-0 x-mb-5" style="height:1px;opacity:0.4;"  >
+    <div id="pb" class="x-progress-bar bg-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0px;background-color:black">
+      <span class="sr-only">70% Complete</span>
+    </div>
+  </div>
+  <div>
+                    <div class="x-row">
+                        <div class="x-col"></div>
+                        <div class="x-col"></div>
+                        <div class="x-w-100"></div>
+                        <div class="x-col"></div>
+                        <div class="x-col"></div>
+                    </div>
+                    <span
+                        class="predict__sc-1a4an9n-3 OSFBL switch find-fit-header"
+                        >FIND YOUR FIT</span
+                    >
+                </div>
+      <div class="modal-body">
+             <form id="regForm">
+                        <!-- <p class="fit-advisor-intro text-center" id="intro1">
+                        <span id="mark1">To get a size recommendation,</span> <br><span id="mark2">fill out the form below</span></p> -->
+
+                        <div v-switch="tabnumber">
+                            <div v-case="1">
+                                <form-component></form-component>
+                            </div>
+
+                            <div
+                                v-for="(row, key) in attributesToShow"
+                                :key="row.id"
+                                v-case="key + 2"
+                            >
+                                <attribute-one-component
+                                    :attributes="row"
+                                    :tabnum="{
+                                        count: n
+                                    }"
+                                    :recordsLength="attributes.length"
+                                    :currentRecord="key + 1"
+                                    
+                                ></attribute-one-component>
+                            </div>
+
+                            <div v-case="attributes.length + 2">
+                                <result-component
+                                    :product="product"
+                                    :form="form"
+                                    :recordsLength="attributes.length"
+                                    :attrscall="attributes"
+                                ></result-component>
+                            </div>
+                        </div>
+                        <div style="overflow: auto">
+                            <div
+                                class="custom-offset-lg"
+                                style="margin-top: 8% !important; display: none"
+                            >
+                                <button
+                                    class="fit-advisor-custom_previous_btn"
+                                    type="button"
+                                    id="prevBtn"
+                                    v-on:click="nextPrev(-1)"
+                                >
+                                    Previous
+                                </button>
+                            </div>
+                        </div>
+                        <!-- </p> -->
+                        <!-- Steps marks was here -->
+                    </form>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+                                                                    <!-- OLD MODAL CODE STARTS -->
+        <div v-if="showBodyFitApp" class="box ">
+            <a
+                class="x-btn x-btn-dark x-d-none"
+                id="popup-trigger"
+                href="#popup1"
+                style="margin-left: 1% !important; margin-bottom: 20px !important; border: none"
+                >Find Fit</a
+            >
+            <span
+                id="finalsize"
+                v-if="finalsize != ''"
+                class="final-size-heading"
+            >
+                <span class="final-size-label">Your Fit Size : </span>
+                {{ finalsize }} </span
+            >
+        </div>
+        <div id="popup1" class="overlay" style="z-index: 999 !important">
+            <div
+                class="popup fit-advisor-popup-adjustments"
+                style="margin-top: 20px"
+            >
+         
+                <div class="x-row " >
+                    
+                        
+                        <div class="x-col-md-6 mt-2 x-col-6">
+                          <!-- backbtn svg -->
+                            <svg
+                                v-if="tabnumber > 1 && lastTab != true"
+                                v-on:click="back(tabnumber)"
+                                viewBox="0 0 512 512"
+                                height="24"
+                                width="24"
+                                aria-hidden="true"
+                                focusable="false"
+                                fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN"
+                                style="cursor:pointer
+display: inline-block;
+/* width: 59px; */
+"
+                            >
+                                <polyline
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="48"
+                                    points="328 112 184 256 328 400"
+                                ></polyline>
+                            </svg>
+                            <!-- restart tbn svg -->
                             <svg
                                 style="cursor: pointer"
                                 v-if="lastTab"
@@ -327,7 +480,7 @@ export default {
             this.attributesToShow = res.data;
             
             var obt = this.attributes.length+parseInt(2);
-            var total = 670;
+            var total = 700;
             var result=total/obt;
             
             $('.x-progress-bar').css('width',result+'px');
@@ -706,7 +859,7 @@ export default {
                 this.lastTab = false;
                 
                  var obt = this.attributes.length+parseInt(2);
-            var total = 670;
+            var total = 700;
             var result=total/obt;
             
             var cw = $('.x-progress-bar').width();
@@ -871,6 +1024,7 @@ export default {
         
     },
     mounted() {
+        
        
         this.form.tags = this.product.tags;
         localStorage.setItem("tags", JSON.stringify(this.product.tags));

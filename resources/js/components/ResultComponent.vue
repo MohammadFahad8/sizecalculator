@@ -1,6 +1,6 @@
 <template>
 <div>
-    <p class="fit-advisor-intro text-center">
+    <p class="fit-advisor-intro text-center mt-n5">
         <span id="mark1">Drop-cut:LUX</span> <br /><span id="mark2"></span>
     </p>
     <div>
@@ -119,7 +119,7 @@
                                     }}</strong></span>
                         </p>
                         </div>
-                        <p class="fit-advisor-header-desc fit-advisor-header-desc-mt">
+                        <p class="fit-advisor-header-desc ">
                             The size we recommend is based on how we
                             intended this item to suit your body. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="javascript:void(0)" class="learn-text">Learn More</a>
                         </p>
@@ -129,7 +129,7 @@
         </div>
     </div>
 
-    <div id="steps-mark" style="text-align: center; position:fixed" class="m-result x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1 x-offset-2">
+    <div id="steps-mark" class="x-text-center x-mt-5">
 
             <span class="step " ></span>
           <span class="step" v-for="(row,key) in recordsLength" ></span>
@@ -703,7 +703,7 @@ export default {
             
             var a = 1;
             this.sizeLoaded=true;
-            $('.x-progress-bar').css('width','670px');
+            $('.x-progress-bar').css('width','700px');
             $('.resultant-all').addClass('x-d-none');
             $('.descriptions-all').addClass('x-d-none');
             

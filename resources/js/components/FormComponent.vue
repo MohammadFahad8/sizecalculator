@@ -88,10 +88,10 @@
             </div>
         </div>
         <!-- v-if="!onfirstTab" removed it from the below div -->
-        <div class="row">
+        <div class="x-row">
             <input
                 v-on:change="countryval()"
-                class="countrycheck no-gutters"
+                class="countrycheck no-gutters x-mt-3 x-offset-c6"
                 type="checkbox"
                 name="countrycheck"
                 v-model="container.countrycheck"
@@ -238,10 +238,10 @@
                 <g></g>
             </svg>
         </div>
-
+<div class="x-mt-5 x-text-center x-pb-5">
         <button
             class="continue-btn"
-            style="position: absolute;right: 30%;width: 33%;bottom: -50px"
+            style="position: absolute;right: 30%;width: 33%;"
             type="button"
             id="nextBtn"
             v-on:click="nextStep(2)"
@@ -250,6 +250,7 @@
             <span v-if="submitclicked" class="spinner-border spinner-border text-white" role="status" aria-hidden="true"></span>
             
         </button>
+        </div>
         <!-- <button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 32%;width: 33%;bottom: 90px;display:none !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button> -->
     </div>
 </template>

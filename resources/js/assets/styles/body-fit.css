@@ -108,14 +108,14 @@ input[type="checkbox"]:checked {
 }
 
 .img_country {
-    width: 8% !important;
+    width: 7% !important;
     margin: 0 auto !important;
-    margin-left: -105px !important;
+    margin-left: 0px !important;
 }
 
 .countrycheck {
-    width: 3% !important;
-    margin: 0 auto !important
+    width: 2.5% !important;
+    /* margin: 0 auto !important */
 }
 
 .no-gutters {
@@ -365,12 +365,13 @@ body {
 
 #regForm {
     background-color: #ffffff;
-    margin: 100px auto;
+    /* margin: 100px auto; */
+    margin: 0px auto;
     font-family: Raleway;
     padding: 40px;
     width: 70%;
-    min-width: 300px;
-    margin-top: 135px !important;
+    /* min-width: 300px; */
+    /* margin-top: 135px !important; */
 }
 
 
@@ -572,7 +573,7 @@ button:hover {
 
 .fit-advisor-intro {
     text-align: center;
-    margin-bottom: 50px !important;
+    margin-bottom: 35px !important;
     letter-spacing: 0.04em;
     color: rgb(0, 0, 0);
     -webkit-user-select: none;
@@ -1515,7 +1516,7 @@ input:focus {
     }
     .fit-advisor-intro {
         text-align: center;
-        margin-bottom: 50px !important;
+        margin-bottom: 35px !important;
         letter-spacing: 0.04em;
         color: rgb(0, 0, 0);
         -webkit-user-select: none;
@@ -3533,10 +3534,7 @@ input:focus {
  
  
  /* This will style any <img> element in .parent div */
- .parent img {
-    height: 100%;
-    width: 100%;
- }
+ 
  .x-custom-container
  {
     position: relative;

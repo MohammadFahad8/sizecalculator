@@ -18,7 +18,7 @@
                                             </div>
                                         </div>
             </div>
-            <div class=" x-row allattr x-d-none " v-if="attributes.attr_items.length==0 || typeof attributes.attr_items == 'undefined' && is_loading==false">
+            <div class=" x-row allattr x-d-none x-pb-5 " v-if="attributes.attr_items.length==0 || typeof attributes.attr_items == 'undefined' && is_loading==false">
                 <div
                     class="col-md-4 parent "
                     v-for="row in attributes.attr_details"
@@ -35,9 +35,9 @@
                     </p>
                 </div>
             </div>
-             <div class=" x-row queryattr x-d-none"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
+             <div class=" x-row queryattr x-d-none x-pb-5"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
                 <div
-                    class="col-md-4 parent "
+                    class="col-md-4 parent x-col "
                     v-for="row in attributes.attr_items" v-if="attributes.id == row.attribute_type_id"
                         
                     
@@ -57,8 +57,8 @@
 
         <div
             id="steps-mark"
-            style="position:fixed"
-            class="m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1"
+            
+             class="x-text-center x-pt-5"
         >
         
           
