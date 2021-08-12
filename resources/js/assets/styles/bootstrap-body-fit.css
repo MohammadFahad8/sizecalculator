@@ -630,6 +630,10 @@ pre code {
   width: 7.5% !important;
   /* margin: 0 auto !important */
 }
+.parent img {
+  height: 100%;
+  width: 100%;
+}
 
 .x-col {
   -ms-flex-preferred-size: 0;

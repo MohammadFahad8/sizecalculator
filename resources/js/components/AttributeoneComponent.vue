@@ -9,7 +9,7 @@
             >
         </p>
 
-        <div class="x-custom-container x-text-center x-mb-5">
+        <div class="x-container x-text-center x-mb-5">
            
             <div class="x-row  loadspin x-mr-md-5 x-mr-lg-5" >
                   <div class="x-col-md-12">
@@ -37,7 +37,7 @@
             </div>
              <div class=" x-row queryattr x-d-none x-pb-5"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
                 <div
-                    class="col-md-4 parent x-col "
+                    class="x-col-md-4 parent x-col x-mb-5 "
                     v-for="row in attributes.attr_items" v-if="attributes.id == row.attribute_type_id"
                         
                     
