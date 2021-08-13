@@ -661,6 +661,7 @@ class AttributeController extends Controller
             foreach ($attributeTypeOfProducts as $at) {
                 $at['attr_items'] = $container;
             }
+            
 
             return $attributeTypeOfProducts;
            //took code which was used earlier to append to populate the $attributeTypeOfProducts array 

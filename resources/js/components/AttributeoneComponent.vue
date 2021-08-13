@@ -11,8 +11,8 @@
 
         <div class="x-container x-text-center x-mb-5">
            
-            <div class="x-row  loadspin x-mr-md-5 x-mr-lg-5" >
-                  <div class="x-col-md-12">
+            <div class="x-row x-p-5 loadspin x-mr-md-5 x-mr-lg-5" >
+                  <div class="x-col-md-12 x-p-5">
                                             <div class="spinner-border spinner-position" role="status">
                                                 <span class="sr-only">Loading...</span>
                                             </div>

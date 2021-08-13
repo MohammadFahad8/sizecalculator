@@ -2701,9 +2701,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     back: function back(num) {
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("hideloader", 'ok');
       this.tabnumber = num - 1;
-      var w = $('.x-progress-bar').width();
-      var c = 100 - w;
-      $('.x-progress-bar').css('width', c + '%');
+      var obt = this.attributes.length + parseInt(2);
+      var total = 700;
+      var result = total / obt;
+      var cw = $('.x-progress-bar').width();
+      var ww = cw - parseInt(result);
+      $('.x-progress-bar').css('width', ww + 'px');
     },
     restart: function restart() {
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("hideloader", 'ok');
@@ -43999,18 +44002,22 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "x-row  loadspin x-mr-md-5 x-mr-lg-5" }, [
-      _c("div", { staticClass: "x-col-md-12" }, [
-        _c(
-          "div",
-          {
-            staticClass: "spinner-border spinner-position",
-            attrs: { role: "status" }
-          },
-          [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-        )
-      ])
-    ])
+    return _c(
+      "div",
+      { staticClass: "x-row x-p-5 loadspin x-mr-md-5 x-mr-lg-5" },
+      [
+        _c("div", { staticClass: "x-col-md-12 x-p-5" }, [
+          _c(
+            "div",
+            {
+              staticClass: "spinner-border spinner-position",
+              attrs: { role: "status" }
+            },
+            [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+          )
+        ])
+      ]
+    )
   }
 ]
 render._withStripped = true
@@ -45331,7 +45338,7 @@ var render = function() {
                     "div",
                     {
                       staticClass:
-                        "x-row x-justify-content-center x-text-center"
+                        "x-row x-justify-content-center x-text-center x-p-5"
                     },
                     [_vm._m(1)]
                   )
@@ -45627,7 +45634,7 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "x-col-md-12" }, [
+    return _c("div", { staticClass: "x-col-md-12 x-p-5" }, [
       _c(
         "div",
         {

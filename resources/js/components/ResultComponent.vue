@@ -10,8 +10,8 @@
                     
                     <!-- <div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div> -->
                     <div class="x-container">
-                        <div class="x-row x-justify-content-center x-text-center" v-if="sizeLoaded">
-                        <div class="x-col-md-12">
+                        <div class="x-row x-justify-content-center x-text-center x-p-5" v-if="sizeLoaded">
+                        <div class="x-col-md-12 x-p-5">
                                             <div class="spinner-border spinner-position" role="status">
                                                 <span class="sr-only">Loading...</span>
                                             </div>

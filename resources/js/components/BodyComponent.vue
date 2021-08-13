@@ -720,9 +720,15 @@ export default {
         back: function(num) {
             EventBus.$emit("hideloader",'ok')
             this.tabnumber = num - 1;
-            var w = $('.x-progress-bar').width()
-            var c = 100-w;
-            $('.x-progress-bar').css('width',c+'%')
+            
+            var obt = this.attributes.length+parseInt(2);
+            var total = 700;
+            var result=total/obt;
+            
+            var cw = $('.x-progress-bar').width();
+            var ww = cw - parseInt(result)
+            
+            $('.x-progress-bar').css('width',ww+'px');
         },
         restart: function() {
             EventBus.$emit("hideloader",'ok')
