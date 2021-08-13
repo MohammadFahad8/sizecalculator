@@ -765,6 +765,8 @@ export default {
             // this.form.bottom.name = "";
             // this.form.bottom.other = "";
             this.lastTab = false;
+
+           EventBus.$emit('refreshform',1)
             
 
             this.dev_reset();

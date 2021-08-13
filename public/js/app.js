@@ -2725,6 +2725,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       // this.form.bottom.other = "";
 
       this.lastTab = false;
+      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('refreshform', 1);
       this.dev_reset();
       this.nextStep(1);
     },
@@ -3384,7 +3385,19 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  mounted: function mounted() {},
+  mounted: function mounted() {
+    var _this2 = this;
+
+    _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('refreshform', function (check) {
+      _this2.container.form.heightfoot = '';
+      _this2.container.form.heightinch = '';
+      _this2.container.form.heightcm = '';
+      _this2.container.form.weight = '';
+      _this2.container.form.age = '';
+      _this2.container.form.convertedMeasurements = false;
+      _this2.container.form.conversionCount = '';
+    });
+  },
   watch: {
     "container.form.heightfoot": function containerFormHeightfoot() {
       this.validateHeight();

@@ -527,7 +527,19 @@ export default {
             }
         }
     },
-    mounted() {},
+    mounted() {
+
+        EventBus.$on('refreshform',check=>{
+            
+                this.container.form.heightfoot = '';
+                this.container.form.heightinch = '';
+                this.container.form.heightcm = '';
+                this.container.form.weight ='';
+                this.container.form.age = '';
+                this.container.form.convertedMeasurements = false;
+                this.container.form.conversionCount ='';
+        })
+    },
     watch: {
         "container.form.heightfoot": function() {
             this.validateHeight();
