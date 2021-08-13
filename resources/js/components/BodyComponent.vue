@@ -16,7 +16,7 @@
 </button>
   <span
                 id="finalsize"
-                v-if="finalsize != ''"
+                v-if="finalsize != '' && showBodyFitApp"
                 class="final-size-heading"
             >
                 <span class="final-size-label">Your Fit Size : </span>

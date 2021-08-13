@@ -3825,6 +3825,16 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
       axios.post(this.$appUrl + "/api/size-recommend", form).then(function (res) {
+        if (res.data.length == 1) {
+          res.data = res.data[0];
+        } else {
+          if (res.data[3] === undefined) {
+            res.data = res.data[6];
+          } else {
+            res.data = res.data[3];
+          }
+        }
+
         _this2.container.is_loading = false;
         _this2.container.showSelectedSizeSlider = true;
 
@@ -44354,7 +44364,7 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _vm.finalsize != ""
+    _vm.finalsize != "" && _vm.showBodyFitApp
       ? _c(
           "span",
           { staticClass: "final-size-heading", attrs: { id: "finalsize" } },

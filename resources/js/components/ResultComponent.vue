@@ -529,7 +529,28 @@ export default {
            axios
                 .post(this.$appUrl + "/api/size-recommend", form)
                 .then(res => {
-                  
+                    if(res.data.length == 1)
+                    {
+                        res.data = res.data[0]
+
+                    }else
+                    {
+                        
+
+                           if(res.data[3]=== undefined)
+                           {
+                               res.data = res.data[6]
+
+                           }
+                           else
+                           {
+                               res.data = res.data[3]
+                           }
+                           
+                          
+                    
+
+                    }
                     this.container.is_loading = false;
 
                     this.container.showSelectedSizeSlider = true;
