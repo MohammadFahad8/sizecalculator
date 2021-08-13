@@ -322,28 +322,7 @@ export default {
             
             $('.x-progress-bar').css('width',result+'px');
  
-// if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
-// {
 
-
-// if(res.data.scArray.length == 2)
-// {
-//    // console.log("first")
-//     this.getResultTwo(res.data.scArray)
-// }else if(res.data.scArray.length >3)
-// {
-//    // console.log("second")
-//      this.getResultMultiple(res.data.scArray)
-// }else
-// {
-//    // console.log("third")
-//     this.getResult(res.data.scArray)
-// }
-// }else
-// {
-    
-// this.attributesToShow = res.data
-// }
             
             })
         },
@@ -437,13 +416,7 @@ export default {
             ).show();
 
             this.restarted = true;
-          
-            // this.form.chest.name = "";
-            // this.form.chest.other = "";
-            // this.form.stomach.name = "";
-            // this.form.stomach.other = "";
-            // this.form.bottom.name = "";
-            // this.form.bottom.other = "";
+         
             this.lastTab = false;
 
            EventBus.$emit('refreshform',1)

@@ -2445,25 +2445,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         var obt = _this.attributes.length + parseInt(2);
         var total = 700;
         var result = total / obt;
-        $('.x-progress-bar').css('width', result + 'px'); // if(res.data.scArray!=null || typeof res.data.scArray != 'undefined')
-        // {
-        // if(res.data.scArray.length == 2)
-        // {
-        //    // console.log("first")
-        //     this.getResultTwo(res.data.scArray)
-        // }else if(res.data.scArray.length >3)
-        // {
-        //    // console.log("second")
-        //      this.getResultMultiple(res.data.scArray)
-        // }else
-        // {
-        //    // console.log("third")
-        //     this.getResult(res.data.scArray)
-        // }
-        // }else
-        // {
-        // this.attributesToShow = res.data
-        // }
+        $('.x-progress-bar').css('width', result + 'px');
       });
     },
     formSubmit: function formSubmit() {
@@ -2524,13 +2506,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       $("div.fit-advisor-selected-size:lt(" + localStorage.getItem("sizeindex") + ")").show();
       $("p.size_descriptions:gt(" + localStorage.getItem("sizeindex") + ")").show();
       $("p.size_descriptions:lt(" + localStorage.getItem("sizeindex") + ")").show();
-      this.restarted = true; // this.form.chest.name = "";
-      // this.form.chest.other = "";
-      // this.form.stomach.name = "";
-      // this.form.stomach.other = "";
-      // this.form.bottom.name = "";
-      // this.form.bottom.other = "";
-
+      this.restarted = true;
       this.lastTab = false;
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('refreshform', 1);
       this.dev_reset();
