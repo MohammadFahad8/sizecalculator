@@ -292,6 +292,7 @@ export default {
             nextcount: 0,
             ogArray:{},
             
+            
         };
     },
 
@@ -345,332 +346,7 @@ export default {
             
             })
         },
-         getResult: function(at){
-               
-    
-    
-              var count = 0;
-           var bcount = 0;
-           var scount = 0;
-           var nfcount = 0;
-                for( var i = 0; i < at.length; i++){ 
-    
-         if ( i == 0) {
-            
-             for(var k=0; k < at[i].attr_items.length; k++)
-             {
-                 this.fcount =at[i].attr_items.length;
-                
-                 if(at[i].id == at[i].attr_items[k].attribute_type_id )
-                 {
-                     count = count+parseInt(1);
-                     var popcount = at[i].attr_items.length - count;
-                    
-                 }
-            
-             }
-            
-             for(var pc=0; pc<popcount; pc++)
-             {
-                 at[i].attr_items.pop();
-             }
-             this.fscount = at[i].attr_items.length;
-             
-            
-         }
-         else if(i == 1)
-            {  var counte = 1
-                var bcou = 0;
-                for(var b=0; b < at[at.length-1].attr_items.length; b++)
-             {
-                 
-                 if(at[i].id == at[at.length-1].attr_items[b].attribute_type_id )
-                 {
-                       bcou = bcou+parseInt(1);
-                      
-                     var shiftcount = at[at.length-1].attr_items.length - bcou;
-   
-                 }
-            
-             }
-             
-
-             for(var sc=0; sc<shiftcount; sc++)
-             {
-                 at[at.length-1].attr_items.shift();
-             }
-             
-             var countOfLastScreen = at[at.length-1].attr_items.length + parseInt(1);
-            // console.log("countOfLastScreen"+countOfLastScreen)
-              
-              for(var se=0; se < this.fscount; se++)
-              {
-              at[i].attr_items.shift();
-              }
-              
-              for(var se=0; se < countOfLastScreen; se++)
-              {
-              at[i].attr_items.pop();
-              }
-                this.sscount = at[i].attr_items.length;
-                this.nextcount = this.fscount + parseInt(this.sscount);
-              
-              
-            
         
-         }
-             else if(i == at.length-1)
-         {
-             var bcou = 0;
-             var shiftcount=0;
-             //console.log("length of last screen after edited in second"+ this.ogArray[i])
-              for(var b=0; b < this.ogArray[i].attr_items.length; b++)
-             {
-               //  console.log("inside f0r")
-                 
-                 if(at[i].id == this.ogArray[i].attr_items[b].attribute_type_id )
-                 {
-                       bcou = bcou+parseInt(1);
-                      
-                      shiftcount = this.ogArray[i].attr_items.length - bcou;
-                   //   console.log("shiftcount"+shiftcount)
-  
-  
-                 }
-            
-             }
-             
-  
-             for(var sc=0; sc<shiftcount; sc++)
-             {
-                // console.log("shiftcount"+sc)
-                 this.ogArray[i].attr_items.shift();
-             }
-             
-             this.lscount = this.ogArray[i].attr_items.length;
-             
-             EventBus.$emit("lastcount",this.lscount);
-             
-              
-
-         }
-        
-        
-    
-     }
-     
-     this.attributesToShow = at;
-     
-  
-        },
-        getResultMultiple: function(at){
-               
-    
-    
-              var count = 0;
-           var bcount = 0;
-           var scount = 0;
-           var nfcount = 0;
-                for( var i = 0; i < at.length; i++){ 
-    
-         if ( i == 0) {
-            
-             for(var k=0; k < at[i].attr_items.length; k++)
-             {
-                 this.fcount =at[i].attr_items.length;
-                
-                 if(at[i].id == at[i].attr_items[k].attribute_type_id )
-                 {
-                     count = count+parseInt(1);
-                     var popcount = at[i].attr_items.length - count;
-                    
-                 }
-            
-             }
-            
-             for(var pc=0; pc<popcount; pc++)
-             {
-                 at[i].attr_items.pop();
-             }
-             this.fscount = at[i].attr_items.length;
-             
-            
-         }
-         else if(i == 1)
-         {var counte = 1
-
-              
-              for(var s=0; s < at[i].attr_items.length; s++)
-             {
-                if(at[i].id < at[i].attr_items[s].attribute_type_id )
-             {
-                 
-                 for(var pop=0; pop <at.length-1;pop++)
-                 {
-                      at[i].attr_items.pop();
-                   
-                 }
-                   
-             }
-                 
-                else if( at[i].id > at[i].attr_items[s].attribute_type_id)
-                    {
-                    
-                        // console.log(s)
-                                at[i].attr_items.splice(s,1);
-                 
-                    }
-                  else if(at[i].id == at[i].attr_items[s].attribute_type_id)
-                 {
-                    
-                        // console.log(s)
-                                at[i].attr_items.shift(s-1,1);
-                                
-                                
-                                // at[i].attr_items.splice(s+1,1);
-                    
-             }  
-              
-              
-          
-           
-         }
-         this.sscount = at[i].attr_items.length;
-       //  console.log("Length after editing:"+at[i].attr_items.length);
-         }
-             else if(i == at.length-1)
-         {
-             var bcou = 0;
-              for(var b=0; b < at[i].attr_items.length; b++)
-             {
-                 
-                 if(at[i].id == at[i].attr_items[b].attribute_type_id )
-                 {
-                       bcou = bcou+parseInt(1);
-                      
-                     var shiftcount = at[i].attr_items.length - bcou;
-   
-                 }
-            
-             }
-             
-
-             for(var sc=0; sc<shiftcount; sc++)
-             {
-                 at[i].attr_items.shift();
-             }
-             
-             this.lscount = at[i].attr_items.length;
-             
-              
-
-         }
-         else
-         {
-              var bcou = 0;
-              for(var b=0; b < at[at.length-1].attr_items.length; b++)
-             {
-                 
-                 if(at[i].id == at[at.length-1].attr_items[b].attribute_type_id )
-                 {
-                       bcou = bcou+parseInt(1);
-                      
-                     var shiftcount = at[at.length-1].attr_items.length - bcou;
-   
-                 }
-            
-             }
-             
-
-             for(var sc=0; sc<shiftcount; sc++)
-             {
-                 at[at.length-1].attr_items.shift();
-             }
-             
-             this.lscount = at[at.length-1].attr_items.length;
-            // console.log("Last count edit:"+this.lscount);
-             //test
-
-              
-              for(var s=0; s < this.fscount + parseInt(this.sscount); s++)
-             {
-                 at[i].attr_items.shift();
-                 
-         }
-         
-         //"Last count edit inside:"+at[at.length-1].attr_items.length);
-             for(var m=0; m < this.lscount;m++)
-             {
-                 at[i].attr_items.pop();
-                 
-         }
-
-         }
-        
-    
-     }
-     
-     this.attributesToShow = at;
-    // console.log(this.attributesToShow);
-  
-        },
-         getResultTwo: function(at){
-               
-    
-    
-              var count = 0;
-           var bcount = 0;
-           var scount = 0;
-           var nfcount = 0;
-                for( var i = 0; i < at.length; i++){ 
-    
-         if ( i == 0) {
-            
-             for(var k=0; k < at[i].attr_items.length; k++)
-             {
-                 this.fcount =at[i].attr_items.length;
-                
-                 if(at[i].id == at[i].attr_items[k].attribute_type_id )
-                 {
-                     count = count+parseInt(1);
-                     var popcount = at[i].attr_items.length - count;
-                    
-                 }
-            
-             }
-            
-             for(var pc=0; pc<popcount; pc++)
-             {
-                 at[i].attr_items.pop();
-             }
-            
-         } else
-         {
-              for(var b=0; b < at[i].attr_items.length; b++)
-             {
-                 
-                 if(at[i].id == at[i].attr_items[b].attribute_type_id )
-                 {
-                      bcount = bcount+parseInt(1);
-                     var shiftcount = at[i].attr_items.length - bcount;
-   
-                 }
-            
-             }
-
-             for(var sc=0; sc<shiftcount; sc++)
-             {
-                 at[i].attr_items.shift();
-             }
-
-         }
-        
-    
-     }
-     
-     this.attributesToShow = at;
-  
-        },
        
 
         formSubmit: function() {
@@ -690,6 +366,7 @@ export default {
                 this.getAttributesToHeightWeight(this.form, container.form.tabnumber);
             });
             EventBus.$on("attributeone", container => {
+              
                 this.chest = container;
                 this.lastTab = false;
                 
@@ -703,6 +380,7 @@ export default {
             $('.x-progress-bar').css('width',ww+'px');
                 this.tabnumber = container.tabnumber;
                 this.n = container.tabnumber;
+                
                 
                
                  
@@ -720,6 +398,7 @@ export default {
         back: function(num) {
             EventBus.$emit("hideloader",'ok')
             this.tabnumber = num - 1;
+            EventBus.$emit("backed",'ok')
             
             var obt = this.attributes.length+parseInt(2);
             var total = 700;
