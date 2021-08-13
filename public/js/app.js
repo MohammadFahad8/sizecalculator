@@ -1952,16 +1952,11 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     chest: function chest(n, scid) {
-      var _this = this;
-
       if (localStorage.getItem(this.attributes.name) == null) {
         localStorage.setItem(this.attributes.name.toLowerCase(), n);
         localStorage.setItem("sizechart_id_" + this.attributes.name.toLowerCase(), scid);
       }
 
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('backed', function (ok) {
-        _this.currentRecord - 1;
-      });
       this.nextStep(this.tabnum.count + 1);
     }
   },
@@ -2329,6 +2324,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2512,7 +2508,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     back: function back(num) {
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("hideloader", 'ok');
       this.tabnumber = num - 1;
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("backed", 'ok');
       var obt = this.attributes.length + parseInt(2);
       var total = 700;
       var result = total / obt;
@@ -44379,7 +44374,7 @@ var render = function() {
                               attrs: {
                                 attributes: row,
                                 tabnum: {
-                                  count: _vm.n
+                                  count: _vm.tabnumber
                                 },
                                 recordsLength: _vm.attributes.length,
                                 currentRecord: key + 1

@@ -115,9 +115,7 @@ export default {
                 localStorage.setItem("sizechart_id_"+this.attributes.name.toLowerCase(), scid);
                 
             }
-            EventBus.$on('backed',ok=>{
-                this.currentRecord-1;
-            })
+          
             
             this.nextStep(this.tabnum.count + 1);
         }

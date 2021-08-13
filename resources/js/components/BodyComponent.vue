@@ -112,9 +112,10 @@ display: inline-block;
                 </div>
       <div class="modal-body">
              <form id="regForm">
+                 
                         <!-- <p class="fit-advisor-intro text-center" id="intro1">
                         <span id="mark1">To get a size recommendation,</span> <br><span id="mark2">fill out the form below</span></p> -->
-
+                                                            <!-- REMOVED 'n' and placed 'tabnumber' in :tabnum property -->
                         <div v-switch="tabnumber">
                             <div v-case="1">
                                 <form-component></form-component>
@@ -128,7 +129,7 @@ display: inline-block;
                                 <attribute-one-component
                                     :attributes="row"
                                     :tabnum="{
-                                        count: n
+                                        count: tabnumber
                                     }"
                                     :recordsLength="attributes.length"
                                     :currentRecord="key + 1"
@@ -398,7 +399,7 @@ export default {
         back: function(num) {
             EventBus.$emit("hideloader",'ok')
             this.tabnumber = num - 1;
-            EventBus.$emit("backed",'ok')
+            
             
             var obt = this.attributes.length+parseInt(2);
             var total = 700;
