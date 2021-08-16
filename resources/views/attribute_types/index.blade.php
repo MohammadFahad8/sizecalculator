@@ -20,7 +20,7 @@
             <div class="col-md-9">
                 <a  href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
               
-                <a href="javascript:void(0)" v-on:click="viewAttributesOfAttributeTypes({{ $id }},{{ count($attrTypeOfProducts) }})"    class="btn btn-info btn-md button-add border border-light float-right ">View Sizes</a>
+                <a href="javascript:void(0)" v-on:click="viewAttributesOfAttributeTypes({{ $id }},{{ count($attrTypeOfProducts) }})"    class="btn btn-info btn-md button-add border border-light float-right mr-1 ">View Sizes</a>
               </div>
         </div>
        </div>
