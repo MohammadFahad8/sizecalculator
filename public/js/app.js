@@ -43781,10 +43781,13 @@ var render = function() {
       "div",
       { staticClass: "x-text-center x-pt-5", attrs: { id: "steps-mark" } },
       [
-        _c("span", { staticClass: "step active" }),
+        _c("span", { staticClass: "step" }),
         _vm._v(" "),
         _vm._l(_vm.recordsLength, function(row, key) {
-          return _c("span", { staticClass: "step" })
+          return _c("span", {
+            staticClass: "step",
+            class: _vm.tabnum.count == key + 2 ? "active" : ""
+          })
         }),
         _vm._v(" "),
         _c("span", { staticClass: "step" })
