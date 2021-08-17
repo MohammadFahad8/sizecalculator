@@ -3179,6 +3179,17 @@ __webpack_require__.r(__webpack_exports__);
       _this2.container.form.age = '';
       _this2.container.form.convertedMeasurements = false;
       _this2.container.form.conversionCount = '';
+      $('.input-border').removeClass("warning-place");
+      $("#age").attr("placeholder", "Years");
+      $("#height_ft").attr("placeholder", "Feet");
+      $("#height_in").attr("placeholder", "Inches");
+      $("#height_cm").attr("placeholder", "Cm");
+
+      if (_this2.container.countrycheck == false) {
+        $("#weight").attr("placeholder", "Lbs");
+      } else {
+        $("#weight").attr("placeholder", "Kg");
+      }
     });
   },
   watch: {

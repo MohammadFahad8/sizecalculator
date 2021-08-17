@@ -278,6 +278,7 @@ export default {
                
             },
              submitclicked:false,
+            
         };
     },
     methods: {
@@ -538,6 +539,19 @@ export default {
                 this.container.form.age = '';
                 this.container.form.convertedMeasurements = false;
                 this.container.form.conversionCount ='';
+                $('.input-border').removeClass("warning-place");
+                $("#age").attr("placeholder", "Years");
+                $("#height_ft").attr("placeholder", "Feet");
+                $("#height_in").attr("placeholder", "Inches");
+                $("#height_cm").attr("placeholder", "Cm");
+                if(this.container.countrycheck == false)
+                {
+                    $("#weight").attr("placeholder", "Lbs");
+                }else
+                {
+                    $("#weight").attr("placeholder", "Kg");
+                }
+                
         })
     },
     watch: {
