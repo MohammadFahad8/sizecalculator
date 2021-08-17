@@ -14,6 +14,7 @@ import JwPagination from 'jw-vue-pagination';
 import VSwitch from 'v-switch-case';
 
 
+
 Vue.prototype.$appUrl = 'https://bylt2fit.ystsol.com'
 
 

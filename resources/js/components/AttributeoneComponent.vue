@@ -62,8 +62,8 @@
         >
         
           
-            <span class="step active" ></span>
-          <span class="step" v-for="(row,key) in recordsLength" ></span>
+            <span class="step" ></span>
+          <span class="step" v-bind:class="tabnum.count==key+2?'active':''" v-for="(row,key) in recordsLength" ></span>
             <span class="step"></span>
         </div>
     </div>
