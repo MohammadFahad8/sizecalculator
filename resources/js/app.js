@@ -14,7 +14,7 @@ import JwPagination from 'jw-vue-pagination';
 import VSwitch from 'v-switch-case';
 
 
-Vue.prototype.$appUrl = 'https://43465795728f.ngrok.io'
+Vue.prototype.$appUrl = 'https://cccc-2400-adc7-91b-8900-842b-d4b8-9049-12a9.ngrok.io'
 
 
 Vue.component('jw-pagination', JwPagination);
