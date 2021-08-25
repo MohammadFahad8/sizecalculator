@@ -543,8 +543,8 @@ export default {
         this.showBodyFit();
         this.getAttributes();
         $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
-        $("sticky-header").removeClass("bylt-header", "1"); 
-        $("#shopify-section-announcement-bar").removeClass("bylt-header", "1");
+        $("sticky-header").removeClass("bylt-header"); 
+        $("#shopify-section-announcement-bar").removeClass("bylt-header");
 })
       
       
