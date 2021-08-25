@@ -47449,7 +47449,7 @@ var staticRenderFns = [
           attrs: {
             target: "_blank",
             rel: "noopener noreferrer nofollow",
-            href: "javascript:void(0)"
+            href: "https://byltbasics.com/pages/contact-us"
           }
         },
         [_vm._v("Learn More")]

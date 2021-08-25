@@ -119,7 +119,7 @@
                                     }}</strong></span>
                         </p>
                         </div>
-                        <p class="fit-advisor-header-desc ">The size we recommend is based on how we intended this item to suit your body. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="javascript:void(0)" class="learn-text">Learn More</a>
+                        <p class="fit-advisor-header-desc ">The size we recommend is based on how we intended this item to suit your body. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="https://byltbasics.com/pages/contact-us" class="learn-text">Learn More</a>
                         </p>
                     </div>
                 </div>
