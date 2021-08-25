@@ -40,7 +40,7 @@ Vue.component('attribute-one-component', require('./components/AttributeoneCompo
 Vue.component('attribute-two-component', require('./components/AttributetwoComponent.vue').default);
 Vue.component('attribute-three-component', require('./components/AttributethreeComponent.vue').default);
 Vue.component('result-component', require('./components/ResultComponent.vue').default);
-Vue.component('testcomponent', require('./components/TestComponent.vue').default);
+
 
 
 

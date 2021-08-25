@@ -3846,7 +3846,6 @@ Vue.component('attribute-one-component', __webpack_require__(/*! ./components/At
 Vue.component('attribute-two-component', __webpack_require__(/*! ./components/AttributetwoComponent.vue */ "./resources/js/components/AttributetwoComponent.vue").default);
 Vue.component('attribute-three-component', __webpack_require__(/*! ./components/AttributethreeComponent.vue */ "./resources/js/components/AttributethreeComponent.vue").default);
 Vue.component('result-component', __webpack_require__(/*! ./components/ResultComponent.vue */ "./resources/js/components/ResultComponent.vue").default);
-Vue.component('testcomponent', Object(function webpackMissingModule() { var e = new Error("Cannot find module './components/TestComponent.vue'"); e.code = 'MODULE_NOT_FOUND'; throw e; }()).default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
