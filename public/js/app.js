@@ -45756,22 +45756,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "x-row x-p-5 loadspin x-mr-md-5 x-mr-lg-5" },
-      [
-        _c("div", { staticClass: "x-col-md-12 x-p-5" }, [
-          _c(
-            "div",
-            {
-              staticClass: "spinner-border spinner-position",
-              attrs: { role: "status" }
-            },
-            [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-          )
-        ])
-      ]
-    )
+    return _c("div", { staticClass: "x-row x-p-5 loadspin " }, [
+      _c("div", { staticClass: "x-col-md-12 x-p-5" }, [
+        _c(
+          "div",
+          {
+            staticClass: "spinner-border spinner-position",
+            attrs: { role: "status" }
+          },
+          [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
+        )
+      ])
+    ])
   }
 ]
 render._withStripped = true
