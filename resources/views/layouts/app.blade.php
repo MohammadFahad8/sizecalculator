@@ -29,6 +29,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom-styling.css') }}" rel="stylesheet">
+    <script src="{{ asset('js/app.js') }}" defer></script>
 </head>
 <body>
     <div id="app">
@@ -90,6 +91,7 @@
 
         <main class="py-4 container">
             @yield('content')
+            
         </main>
     </div>
     <script>

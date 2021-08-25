@@ -3630,3 +3630,7 @@ input:focus {
     animation-delay: .6s;
     -webkit-animation-delay: .6s
 }
+.bylt-header
+{
+    display:none;
+}

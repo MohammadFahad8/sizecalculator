@@ -88,7 +88,13 @@
             </div>
         </div>
         <!-- v-if="!onfirstTab" removed it from the below div -->
-        <div class="x-row">
+        <div class = "x-row">
+            <div class="x-col"></div>
+            <div class="x-col"></div>
+            <div class="x-col"></div>
+            <div class="x-col"></div>
+        </div>
+        <div class="x-row" v-if="disabled">
             <input
                 v-on:change="countryval()"
                 class="countrycheck no-gutters x-mt-3 x-offset-c6"
@@ -278,7 +284,7 @@ export default {
                
             },
              submitclicked:false,
-            
+            disabled:false,
         };
     },
     methods: {

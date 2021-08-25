@@ -12,13 +12,14 @@ import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import JwPagination from 'jw-vue-pagination';
 import VSwitch from 'v-switch-case';
+import VueLazyload from 'vue-lazyload'
 
 
-Vue.prototype.$appUrl = 'https://cccc-2400-adc7-91b-8900-842b-d4b8-9049-12a9.ngrok.io'
+Vue.prototype.$appUrl = 'https://97df-2400-adc7-91b-8900-9d40-a9ec-365d-10d6.ngrok.io'
 
 
 Vue.component('jw-pagination', JwPagination);
-Vue.use(VSwitch)
+Vue.use(VSwitch,VueLazyload)
 
 /**
  * The following block of code may be used to automatically register your
@@ -38,6 +39,7 @@ Vue.component('attribute-one-component', require('./components/AttributeoneCompo
 Vue.component('attribute-two-component', require('./components/AttributetwoComponent.vue').default);
 Vue.component('attribute-three-component', require('./components/AttributethreeComponent.vue').default);
 Vue.component('result-component', require('./components/ResultComponent.vue').default);
+Vue.component('testcomponent', require('./components/TestComponent.vue').default);
 
 
 
@@ -48,9 +50,13 @@ Vue.component('result-component', require('./components/ResultComponent.vue').de
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
+var testcomponent = require('./components/TestComponent.vue').default
 
 
 const app = new Vue({
     el: '#app',
+    components:{
+        testcomponent
+    }
    
 });

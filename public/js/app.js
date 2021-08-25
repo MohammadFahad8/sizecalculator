@@ -2431,6 +2431,10 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     };
   },
   methods: {
+    fixHeader: function fixHeader() {
+      $("sticky-header").addClass("bylt-header");
+      $("#shopify-section-announcement-bar").addClass("bylt-header");
+    },
     getAttributesToHeightWeight: function getAttributesToHeightWeight(form, num) {
       var _this = this;
 
@@ -2608,9 +2612,9 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.getLocalData();
     this.showBodyFit();
     this.getAttributes();
-    $("#popup-trigger").on("click", function () {
-      $(".product-card").css("z-index", "-1");
-      $("#popup1").css("overflow", "scroll");
+    $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
+      $("sticky-header").removeClass("bylt-header", "1");
+      $("#shopify-section-announcement-bar").removeClass("bylt-header", "1");
     });
     _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('refreshSize', function (size) {
       _this5.finalsize = size;
@@ -2931,6 +2935,12 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -2950,7 +2960,8 @@ __webpack_require__.r(__webpack_exports__);
         valid: true,
         firstTab: false
       },
-      submitclicked: false
+      submitclicked: false,
+      disabled: false
     };
   },
   methods: {
@@ -3784,6 +3795,41 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TestComponent.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TestComponent.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      img_src: ''
+    };
+  },
+  mounted: function mounted() {
+    console.log("Hello Fahad");
+  }
+});
+
+/***/ }),
+
 /***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
@@ -3799,6 +3845,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2__);
 /* harmony import */ var v_switch_case__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! v-switch-case */ "./node_modules/v-switch-case/dist/v-switch.js");
 /* harmony import */ var v_switch_case__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(v_switch_case__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var vue_lazyload__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! vue-lazyload */ "./node_modules/vue-lazyload/vue-lazyload.esm.js");
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
@@ -3811,9 +3858,10 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://cccc-2400-adc7-91b-8900-842b-d4b8-9049-12a9.ngrok.io';
+
+Vue.prototype.$appUrl = 'https://97df-2400-adc7-91b-8900-9d40-a9ec-365d-10d6.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
-Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
+Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()), vue_lazyload__WEBPACK_IMPORTED_MODULE_4__.default);
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -3831,14 +3879,20 @@ Vue.component('attribute-one-component', __webpack_require__(/*! ./components/At
 Vue.component('attribute-two-component', __webpack_require__(/*! ./components/AttributetwoComponent.vue */ "./resources/js/components/AttributetwoComponent.vue").default);
 Vue.component('attribute-three-component', __webpack_require__(/*! ./components/AttributethreeComponent.vue */ "./resources/js/components/AttributethreeComponent.vue").default);
 Vue.component('result-component', __webpack_require__(/*! ./components/ResultComponent.vue */ "./resources/js/components/ResultComponent.vue").default);
+Vue.component('testcomponent', __webpack_require__(/*! ./components/TestComponent.vue */ "./resources/js/components/TestComponent.vue").default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+var testcomponent = __webpack_require__(/*! ./components/TestComponent.vue */ "./resources/js/components/TestComponent.vue").default;
+
 var app = new Vue({
-  el: '#app'
+  el: '#app',
+  components: {
+    testcomponent: testcomponent
+  }
 });
 
 /***/ }),
@@ -8418,7 +8472,7 @@ __webpack_require__.r(__webpack_exports__);
 var ___CSS_LOADER_EXPORT___ = _node_modules_css_loader_dist_runtime_api_js__WEBPACK_IMPORTED_MODULE_0___default()(function(i){return i[1]});
 ___CSS_LOADER_EXPORT___.push([module.id, "@import url(https://fonts.googleapis.com/css?family=Roboto);"]);
 // Module
-___CSS_LOADER_EXPORT___.push([module.id, ".bigsize {\r\n    grid-template-columns: 1fr 213px 1fr !important;\r\n}\r\n\r\n.big-size-margin {\r\n    margin-left: 35px !important;\r\n}\r\n\r\n.big-size-margin-recommend-size {\r\n    margin-left: 50px !important;\r\n}\r\n\r\n.final-size-label {\r\n    font-family: Karla;\r\n    font-weight: 600;\r\n    font-size: small !important;\r\n    /* margin-left: 10px; */\r\n    text-decoration: underline;\r\n}\r\n\r\n.final-size-heading {\r\n    font-family: 'Montserrat';\r\n    font-weight: 900;\r\n    font-size: small;\r\n    /* margin-left: 10px; */\r\n    margin-top: 20px;\r\n}\r\n\r\n.fit-advisor-header-desc-mt {\r\n    margin-top: 40px !important;\r\n}\r\n\r\n/* .dfOagu {\r\n    margin-left: 50px;\r\n    margin-top: 0px;\r\n} */\r\n\r\n/* .dfOagu-second {\r\n    margin-left: 10px;\r\n    margin-top: 0px ;\r\n} */\r\n\r\n.result-size {\r\n    width: 100%;\r\n    font-family: karla;\r\n    font-weight: 900;\r\n    font-size: 106px;\r\n}\r\n\r\n.introfirst {\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 15px !important;\r\n    word-spacing: 5px !important;\r\n}\r\n\r\n#intro1 {\r\n    display: block;\r\n}\r\n\r\n#intro2 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro3 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro4 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro5 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n.find-fit-header {\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    /* margin-top: 40px !important; */\r\n    word-spacing: 5px !important;\r\n}\r\n\r\n.fit-advisor-chest-tab-item:hover {\r\n    /* display: grid; */\r\n    /* justify-content: center; */\r\n    /* align-items: center; */\r\n    /* text-align: center; */\r\n    /* cursor: pointer; */\r\n    transform: scale(0.95) !important;\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked {\r\n    background: rgb(2, 2, 2);\r\n}\r\n\r\n\r\n.no-gutters {\r\n    margin-right: 0;\r\n    margin-left: 0;\r\n}\r\n\r\n.row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: 10px;\r\n    margin-left: 35px;\r\n    margin-top: 10px !important;\r\n}\r\n\r\n\r\n/* \r\n.col-xl,\r\n.col-xl-auto,\r\n.col-xl-12,\r\n.col-xl-11,\r\n.col-xl-10,\r\n.col-xl-9,\r\n.col-xl-8,\r\n.col-xl-7,\r\n.col-xl-6,\r\n.col-xl-5,\r\n.col-xl-4,\r\n.col-xl-3,\r\n.col-xl-2,\r\n.col-xl-1,\r\n.col-lg,\r\n.col-lg-auto,\r\n.col-lg-12,\r\n.col-lg-11,\r\n.col-lg-10,\r\n.col-lg-9,\r\n.col-lg-8,\r\n.col-lg-7,\r\n.col-lg-6,\r\n.col-lg-5,\r\n.col-lg-4,\r\n.col-lg-3,\r\n.col-lg-2,\r\n.col-lg-1,\r\n.col-md,\r\n.col-md-auto,\r\n.col-md-12,\r\n.col-md-11,\r\n.col-md-10,\r\n.col-md-9,\r\n.col-md-8,\r\n.col-md-7,\r\n.col-md-6,\r\n.col-md-5,\r\n.col-md-4,\r\n.col-md-3,\r\n.col-md-2,\r\n.col-md-1,\r\n.col-sm,\r\n.col-sm-auto,\r\n.col-sm-12,\r\n.col-sm-11,\r\n.col-sm-10,\r\n.col-sm-9,\r\n.col-sm-8,\r\n.col-sm-7,\r\n.col-sm-6,\r\n.col-sm-5,\r\n.col-sm-4,\r\n.col-sm-3,\r\n.col-sm-2,\r\n.col-sm-1,\r\n.col,\r\n.col-auto,\r\n.col-12,\r\n.col-11,\r\n.col-10,\r\n.col-9,\r\n.col-8,\r\n.col-7,\r\n.col-6,\r\n.col-5,\r\n.col-4,\r\n.col-3,\r\n.col-2,\r\n.col-1 {\r\n    position: relative;\r\n    width: 100%;\r\n    padding-right: 15px;\r\n    padding-left: 15px;\r\n} */\r\n\r\n.col-xl-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-xl-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-xl-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-xl-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-xl-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-xl-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-xl-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-xl-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-xl-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-xl-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-xl-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-xl-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-xl-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-lg-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-lg-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-lg-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-lg-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-lg-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-lg-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-lg-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-lg-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-lg-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-lg-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-lg-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-lg-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-lg-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n\r\n/* style for steps form */\r\n\r\ninput::-webkit-outer-spin-button,\r\ninput::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n* {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.size-position {\r\n    margin-left: -80px !important;\r\n    \r\n}\r\n\r\nbody {\r\n    background-color: #ffffff !important;\r\n}\r\n\r\n#regForm {\r\n    background-color: #ffffff;\r\n    /* margin: 100px auto; */\r\n    margin: 0px auto;\r\n    font-family: Raleway;\r\n    padding: 40px;\r\n    width: 70%;\r\n    /* min-width: 300px; */\r\n    /* margin-top: 135px !important; */\r\n}\r\n\r\n\r\n\r\ninput {\r\n    padding: 10px;\r\n    width: 100%;\r\n    font-size: 17px;\r\n    font-family: Raleway;\r\n    border: 1px solid #aaaaaa;\r\n}\r\n\r\n\r\n/* Mark input boxes that gets an error on validation: */\r\n\r\ninput.invalid {\r\n    border-bottom: 1px solid #fb6c6c !important;\r\n}\r\n\r\n\r\n/* Hide all steps by default: */\r\n\r\n.tab {\r\n    display: none;\r\n}\r\n\r\nbutton {\r\n    background-color: #04AA6D;\r\n    color: #ffffff;\r\n    border: none;\r\n    padding: 10px 20px;\r\n    font-size: 17px;\r\n    font-family: Raleway;\r\n    cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n#prevBtn {\r\n    background-color: #bbbbbb;\r\n}\r\n\r\n\r\n/* Make circles that indicate the steps of the form: */\r\n\r\n.step {\r\n    height: 10px;\r\n    width: 10px;\r\n    margin: 0px 7px;\r\n    background-color: #000000;\r\n    border: none;\r\n    border-radius: 50%;\r\n    display: inline-block;\r\n    opacity: 0.5;\r\n}\r\n\r\n.step.active {\r\n    opacity: 1;\r\n}\r\n\r\n\r\n/* Mark the steps that are finished and valid: */\r\n\r\n.step.finish {\r\n    background-color: #000000;\r\n}\r\n\r\n\r\n/*   END STYLE FOR STEPS FORM */\r\n\r\n.box {\r\n    background-color: #ffffff;\r\n}\r\n\r\n\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\r\n\r\n.overlay {\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: rgba(0, 0, 0, 0.7);\r\n    transition: opacity 500ms;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n.overlay:target {\r\n    visibility: visible;\r\n    opacity: 1;\r\n}\r\n\r\n.popup {\r\n    margin: 70px auto;\r\n    padding: 20px;\r\n    background: #fff;\r\n    border-radius: 5px;\r\n    width: 30%;\r\n    position: relative;\r\n    transition: all 5s ease-in-out;\r\n}\r\n\r\n.popup h2 {\r\n    margin-top: 0;\r\n    color: #333;\r\n    font-family: Tahoma, Arial, sans-serif;\r\n}\r\n\r\n.popup .close {\r\n    position: absolute;\r\n    /* top: 20px; */\r\n    right: 30px;\r\n    /* transition: all 200ms; */\r\n    font-size: 30px;\r\n    font-weight: normal;\r\n    text-decoration: none;\r\n    color: rgb(127, 127, 127);\r\n}\r\n\r\n.popup .close:hover {\r\n    color: #020202;\r\n}\r\n\r\n.popup .content {\r\n    max-height: 30%;\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\r\n\r\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\r\n}\r\n\r\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    user-select: none;\r\n}\r\n\r\n.continue-btn {\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color:white;\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n}\r\n\r\n.fit-advisor-intro {\r\n    text-align: center;\r\n    margin-bottom: 35px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    /* margin-top: -22px; */\r\n    font-family: karla !important;\r\n}\r\n\r\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\r\n}\r\n\r\n.lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n\r\n\r\n/* code for form */\r\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n    font-family: 'Roboto', sans-serif;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody::after,\r\nbody::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n    box-sizing: border-box;\r\n}\r\n/* \r\nh1 {\r\n    font-size: 2rem;\r\n    text-align: center;\r\n    margin: 0 0 2em;\r\n} */\r\n\r\n.container {\r\n    position: relative;\r\n    max-width: 40rem;\r\n    margin: 5rem auto;\r\n    background: #fff;\r\n    width: 100%;\r\n    padding: 3rem 5rem 0;\r\n    border-radius: 1px;\r\n}\r\n\r\n.container::before {\r\n    content: '';\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n    -webkit-transform: scale(0.98);\r\n    transform: scale(0.98);\r\n    -webkit-transition: -webkit-transform 0.28s ease-in-out;\r\n    transition: -webkit-transform 0.28s ease-in-out;\r\n    transition: transform 0.28s ease-in-out;\r\n    transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;\r\n    z-index: -1;\r\n}\r\n\r\n/* .container:hover::before {\r\n    -webkit-transform: scale(1);\r\n    transform: scale(1);\r\n} */\r\n\r\n.button-container {\r\n    text-align: center;\r\n}\r\n\r\nfieldset {\r\n    margin: 0 0 3rem;\r\n    padding: 0;\r\n    border: none;\r\n}\r\n\r\n.form-radio,\r\n.form-group {\r\n    position: relative;\r\n    margin-top: 2.25rem;\r\n    margin-bottom: 2.25rem;\r\n}\r\n\r\n.form-inline>.form-group,\r\n.form-inline>.btn {\r\n    display: inline-block;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.form-help {\r\n    margin-top: 0.125rem;\r\n    margin-left: 0.125rem;\r\n    color: #b3b3b3;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.checkbox .form-help,\r\n.form-radio .form-help,\r\n.form-group .form-help {\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.checkbox .form-help {\r\n    position: relative;\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.form-radio .form-help {\r\n    padding-top: 0.25rem;\r\n    margin-top: -1rem;\r\n}\r\n\r\n.form-group input {\r\n    height: 1.9rem;\r\n}\r\n\r\n.form-group textarea {\r\n    resize: none;\r\n}\r\n\r\n.form-group select {\r\n    width: 100%;\r\n    font-size: 1rem;\r\n    height: 1.6rem;\r\n    padding: 0.125rem 0.125rem 0.0625rem;\r\n    background: none;\r\n    border: none;\r\n    line-height: 1.6;\r\n    box-shadow: none;\r\n}\r\n\r\n.form-group .control-label {\r\n    position: absolute;\r\n    top: 0.25rem;\r\n    pointer-events: none;\r\n    padding-left: 0.125rem;\r\n    z-index: 1;\r\n    color: #b3b3b3;\r\n    font-size: 1rem;\r\n    font-weight: normal;\r\n    -webkit-transition: all 0.28s ease;\r\n    transition: all 0.28s ease;\r\n}\r\n\r\n.form-group .bar {\r\n    position: relative;\r\n    border-bottom: 0.0625rem solid #999;\r\n    display: block;\r\n}\r\n\r\n.form-group .bar::before {\r\n    content: '';\r\n    height: 0.125rem;\r\n    width: 0;\r\n    left: 50%;\r\n    bottom: -0.0625rem;\r\n    position: absolute;\r\n    background: #337ab7;\r\n    -webkit-transition: left 0.28s ease, width 0.28s ease;\r\n    transition: left 0.28s ease, width 0.28s ease;\r\n    z-index: 2;\r\n}\r\n\r\n.form-group input,\r\n.form-group textarea {\r\n    display: block;\r\n    background: none;\r\n    padding: 0.125rem 0.125rem 0.0625rem;\r\n    font-size: 1rem;\r\n    border-width: 0;\r\n    border-color: transparent;\r\n    line-height: 1.9;\r\n    width: 100%;\r\n    color: transparent;\r\n    -webkit-transition: all 0.28s ease;\r\n    transition: all 0.28s ease;\r\n    box-shadow: none;\r\n}\r\n\r\n.form-group input[type=\"file\"] {\r\n    line-height: 1;\r\n}\r\n\r\n.form-group input[type=\"file\"]~.bar {\r\n    display: none;\r\n}\r\n\r\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n    color: #333;\r\n}\r\n\r\n.form-group select~.control-label,\r\n.form-group input:focus~.control-label,\r\n.form-group input:valid~.control-label,\r\n.form-group input.form-file~.control-label,\r\n.form-group input.has-value~.control-label,\r\n.form-group textarea:focus~.control-label,\r\n.form-group textarea:valid~.control-label,\r\n.form-group textarea.form-file~.control-label,\r\n.form-group textarea.has-value~.control-label {\r\n    font-size: 0.8rem;\r\n    color: gray;\r\n    top: -1rem;\r\n    left: 0;\r\n}\r\n\r\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n    outline: none;\r\n}\r\n\r\n.form-group select:focus~.control-label,\r\n.form-group input:focus~.control-label,\r\n.form-group textarea:focus~.control-label {\r\n    color: #337ab7;\r\n}\r\n\r\n.form-group select:focus~.bar::before,\r\n.form-group input:focus~.bar::before,\r\n.form-group textarea:focus~.bar::before {\r\n    width: 100%;\r\n    left: 0;\r\n}\r\n\r\n.checkbox label,\r\n.form-radio label {\r\n    position: relative;\r\n    cursor: pointer;\r\n    padding-left: 2rem;\r\n    text-align: left;\r\n    color: #333;\r\n    display: block;\r\n}\r\n\r\n.checkbox input,\r\n.form-radio input {\r\n    width: auto;\r\n    opacity: 0.00000001;\r\n    position: absolute;\r\n    left: 0;\r\n}\r\n\r\n.radio {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.radio .helper {\r\n    position: absolute;\r\n    top: -0.25rem;\r\n    left: -0.25rem;\r\n    cursor: pointer;\r\n    display: block;\r\n    font-size: 1rem;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    color: #999;\r\n}\r\n\r\n.radio .helper::before,\r\n.radio .helper::after {\r\n    content: '';\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    margin: 0.25rem;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    -webkit-transition: -webkit-transform 0.28s ease;\r\n    transition: -webkit-transform 0.28s ease;\r\n    transition: transform 0.28s ease;\r\n    transition: transform 0.28s ease, -webkit-transform 0.28s ease;\r\n    border-radius: 50%;\r\n    border: 0.125rem solid currentColor;\r\n}\r\n\r\n.radio .helper::after {\r\n    -webkit-transform: scale(0);\r\n    transform: scale(0);\r\n    background-color: #337ab7;\r\n    border-color: #337ab7;\r\n}\r\n\r\n.radio label:hover .helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.radio input:checked~.helper::after {\r\n    -webkit-transform: scale(0.5);\r\n    transform: scale(0.5);\r\n}\r\n\r\n.radio input:checked~.helper::before {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox {\r\n    margin-top: 3rem;\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.checkbox .helper {\r\n    color: #999;\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 0;\r\n    border: 0.125rem solid currentColor;\r\n    border-radius: 0.0625rem;\r\n    -webkit-transition: border-color 0.28s ease;\r\n    transition: border-color 0.28s ease;\r\n}\r\n\r\n.checkbox .helper::before,\r\n.checkbox .helper::after {\r\n    position: absolute;\r\n    height: 0;\r\n    width: 0.2rem;\r\n    background-color: #337ab7;\r\n    display: block;\r\n    -webkit-transform-origin: left top;\r\n    transform-origin: left top;\r\n    border-radius: 0.25rem;\r\n    content: '';\r\n    -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    opacity: 0;\r\n}\r\n\r\n.checkbox .helper::before {\r\n    top: 0.65rem;\r\n    left: 0.38rem;\r\n    -webkit-transform: rotate(-135deg);\r\n    transform: rotate(-135deg);\r\n    box-shadow: 0 0 0 0.0625rem #fff;\r\n}\r\n\r\n.checkbox .helper::after {\r\n    top: 0.3rem;\r\n    left: 0;\r\n    -webkit-transform: rotate(-45deg);\r\n    transform: rotate(-45deg);\r\n}\r\n\r\n.checkbox label:hover .helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox input:checked~.helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox input:checked~.helper::after,\r\n.checkbox input:checked~.helper::before {\r\n    opacity: 1;\r\n    -webkit-transition: height 0.28s ease;\r\n    transition: height 0.28s ease;\r\n}\r\n\r\n.checkbox input:checked~.helper::after {\r\n    height: 0.5rem;\r\n}\r\n\r\n.checkbox input:checked~.helper::before {\r\n    height: 1.2rem;\r\n    -webkit-transition-delay: 0.28s;\r\n    transition-delay: 0.28s;\r\n}\r\n\r\n.radio+.radio,\r\n.checkbox+.checkbox {\r\n    margin-top: 1rem;\r\n}\r\n\r\n.has-error .legend.legend,\r\n.has-error.form-group .control-label.control-label {\r\n    color: #d9534f;\r\n}\r\n\r\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper,\r\n.has-error.checkbox .form-help,\r\n.has-error.checkbox .helper,\r\n.has-error.radio .form-help,\r\n.has-error.radio .helper,\r\n.has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n    color: #d9534f;\r\n}\r\n\r\n.has-error .bar::before {\r\n    background: #d9534f;\r\n    left: 0;\r\n    width: 100%;\r\n}\r\n\r\n.button {\r\n    position: relative;\r\n    border: 1px solid currentColor;\r\n    font-size: 1.1rem;\r\n    color: #000;\r\n    margin: 3rem 0;\r\n    padding: 0.75rem 3rem;\r\n    cursor: pointer;\r\n    -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n    transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n    overflow: hidden;\r\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.button span {\r\n    color: #fff;\r\n    position: relative;\r\n    z-index: 1;\r\n}\r\n\r\n.button::before {\r\n    content: '';\r\n    position: absolute;\r\n    background: #071017;\r\n    border: 50vh solid #1d4567;\r\n    width: 30vh;\r\n    height: 30vh;\r\n    border-radius: 50%;\r\n    display: block;\r\n    top: 50%;\r\n    left: 50%;\r\n    z-index: 0;\r\n    opacity: 1;\r\n    -webkit-transform: translate(-50%, -50%) scale(0);\r\n    transform: translate(-50%, -50%) scale(0);\r\n}\r\n\r\n.button:hover {\r\n    color: #337ab7;\r\n    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.button:active::before,\r\n.button:focus::before {\r\n    -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n    transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    -webkit-transform: translate(-50%, -50%) scale(1);\r\n    transform: translate(-50%, -50%) scale(1);\r\n    opacity: 0;\r\n}\r\n\r\n.button:focus {\r\n    outline: none;\r\n}\r\n\r\n.fit-advisor-hr {\r\n    margin-top: -15px !important;\r\n}\r\n\r\n\r\n/* input field design */\r\n\r\n ::-webkit-input-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n::-moz-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n:-ms-input-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n::placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n.fit-advisor-custom_row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -15px;\r\n    margin-left: -15px;\r\n}\r\n\r\n.fit-advisor-custom_input {\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;\r\n}\r\n\r\n.custom-offset {\r\n    margin-left: 43px !important;\r\n}\r\n\r\n.labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: karla !important;\r\n    /* line-height: 18px !important; works fit on previous stores*/\r\n    /* line-height: 5rem !important;  works fit on 2.0*/\r\n    font-weight: 400 !important;\r\n    font-style: normal;\r\n    font-size: medium;\r\n}\r\n\r\n.custom-offset-lg {\r\n    margin-left: 44%;\r\n}\r\n\r\n.adjust-label {\r\n    margin-left: 0%!important;\r\n}\r\n\r\n.adjust-label-age {\r\n    margin-left: 0%!important;\r\n}\r\n\r\ninput::placeholder {\r\n    font-size: 12px !important\r\n}\r\n\r\ntextarea:focus,\r\ninput:focus {\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255) !important;\r\n}\r\n\r\n.fit-advisor-custom_previous_btn {\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 0.5;\r\n}\r\n\r\n.fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px ;\r\n}\r\n\r\n.fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n\r\n.fit-advisor-options-img {\r\n    width: 265.667px;\r\n    height: 222.667px;\r\n}\r\n\r\n.fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\r\n}\r\n\r\n.product-card {\r\n    position: relative;\r\n    z-index: -1;\r\n}\r\n\r\n.fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n    margin-left: 35px !important;\r\n}\r\n\r\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n}\r\n\r\n.fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -40px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n\r\n/* .next {\r\n    margin-top: -10px !important;\r\n} */\r\n\r\n.fit-advisor-product-picture {\r\n    margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\r\n}\r\n\r\n.fit-advisor-popup-adjustments {\r\n    width: 50% !important;\r\n    overflow-y: scroll !important;\r\n}\r\n\r\n.gIdEkK p {\r\n    margin: unset;\r\n}\r\n\r\n.learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n\r\n.fit-advisor-header-desc {\r\n    padding: 10px;\r\n    text-align: center;\r\n    color: rgb(0 0 0);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\r\n    font-family: karla !important;\r\n}\r\n\r\n.gIdEkK p {\r\n    margin: unset;\r\n}\r\n\r\n.jjnwUS {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    /* margin-top: 50px; */\r\n}\r\n\r\n.fit-advisor-product-size-box {\r\n    padding: 0px;\r\n}\r\n\r\n.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin: 0 auto;\r\n    /* margin-left:50px; */\r\n    display: block;\r\n}\r\n\r\n.fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 198px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n\r\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right: 50px !important;\r\n}\r\n\r\n.selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n\r\n.fit-advisor-selected-size-container {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.fit-advisor-product-btn-to-cart {\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n\r\n.fit-advisor-inch {\r\n    margin-left: 73% !important;\r\n    margin-top: -27% !important;\r\n}\r\n\r\n.fit-advisor-agelabel {\r\n    margin-top: -26px !important;\r\n}\r\n\r\n.fit-advisor-agelabel-span {\r\n    margin-left: -68px !important;\r\n    margin-top: 6px !important;\r\n}\r\n\r\n.fit-advisor-age-input {\r\n    margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\r\n}\r\n\r\n.fit-advisor-logo {\r\n    margin-left: 43% !important;\r\n}\r\n\r\n\r\n/*   //responsiveness of bodyfit-modal */\r\n\r\n@media (min-width:320px) and (max-width:480px) {\r\n    /* .dfOagu{\r\n        margin-left: 50px;\r\n         margin-top: 0px  !important  ;\r\n    } */\r\n    .spinner-position{\r\n        width: 2rem !important;\r\n        height: 2rem !important;\r\n        margin-left:0px !important;\r\n        \r\n      }\r\n    /* smartphones, iPhone, portrait 480x320 phones */\r\n    .ml-xl-spinner\r\n    {\r\n        margin-left:12rem !important;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 1.4em;\r\n    }\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px !important;\r\n        visibility: visible ;\r\n        margin-bottom: 4.5em !important;\r\n        margin-right: 0px !important;\r\n    }\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 128px 1fr;\r\n        justify-self: flex-end;\r\n    }\r\n    .bigsize {\r\n        grid-template-columns: 1fr 150px 1fr !important;\r\n    }\r\n    .big-size-margin-recommend-size {\r\n        margin-left: 15px !important;\r\n    }\r\n    .big-size-margin {\r\n        margin-left: 35px !important;\r\n    }\r\n    .final-size-label {\r\n        font-family: Karla;\r\n        font-weight: 600;\r\n        font-size: small !important;\r\n        margin-left: 10px;\r\n        text-decoration: underline;\r\n    }\r\n    .final-size-heading {\r\n        font-family: 'Montserrat';\r\n        font-weight: 900;\r\n        font-size: x-large;\r\n        margin-left: 10px;\r\n    }\r\n    .row {\r\n        display: flex;\r\n        flex-wrap: wrap;\r\n        margin-right: -27px;\r\n        margin-left: -32px;\r\n        margin-top: 10px !important;\r\n        margin-bottom: 50px;\r\n    }\r\n    .adjust-label {\r\n        margin-left: 35%!important;\r\n    }\r\n    .adjust-label-5s {\r\n        margin-left: 10%!important;\r\n    }\r\n    .adjust-label-age {\r\n        margin-left: 40%!important;\r\n    }\r\n    .adjust-label-age-5s {\r\n        margin-left: 15%!important;\r\n    }\r\n    .fit-advisor-intro {\r\n        text-align: center;\r\n        margin-bottom: 35px !important;\r\n        letter-spacing: 0.04em;\r\n        color: rgb(0, 0, 0);\r\n        -webkit-user-select: none;\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        user-select: none;\r\n        font-style: normal !important;\r\n        font-weight: normal !important;\r\n        font-size: 14px !important;\r\n        line-height: 26px !important;\r\n        margin-top: -22px;\r\n        font-family: karla !important;\r\n    }\r\n    .fit-advisor-popup-adjustments {\r\n        width: 100% !important;\r\n        overflow: none;\r\n    }\r\n    .fit-advisor-custom_input {\r\n        display: block;\r\n        width: 50%;\r\n        margin: 0px;\r\n        padding: 10px 0px;\r\n        background: 0px center;\r\n        border-radius: 0px;\r\n        border-width: 0px 0px 1px;\r\n        border-top-style: initial;\r\n        border-right-style: initial;\r\n        border-left-style: initial;\r\n        border-top-color: initial;\r\n        border-right-color: initial;\r\n        border-left-color: initial;\r\n        border-image: initial;\r\n        border-bottom-style: solid;\r\n        border-bottom-color: rgb(175, 175, 175);\r\n        transition: border 0.2s ease-in-out 0s;\r\n        font-family: Lato !important;\r\n        font-size: 20px !important;\r\n        line-height: 24px !important;\r\n    }\r\n    .row-feet-inch {\r\n        display: grid;\r\n        gap: 30px;\r\n        grid-template-columns: 1fr 1fr;\r\n    }\r\n    .fit-advisor-inch {\r\n        margin-left: 143px !important;\r\n        margin-top: -64px!important;\r\n    }\r\n    .fit-advisor-agelabel {}\r\n    .fit-advisor-age-input {\r\n        margin-left: 14.5rem !important;\r\n        margin-top: -65px !important;\r\n        width: 50% !important;\r\n    }\r\n    input {\r\n        text-align: center;\r\n    }\r\n     ::-webkit-input-placeholder {\r\n        text-align: center;\r\n    }\r\n    .jjnwUS {\r\n        display: grid;\r\n        justify-content: center;\r\n        align-items: center;\r\n        background: white;\r\n        color: black;\r\n        border: 1px solid rgb(170, 170, 170);\r\n        border-radius: 50%;\r\n        cursor: pointer;\r\n        width: 22px;\r\n        height: 22px;\r\n        transition: opacity 0.2s ease-in-out 0s;\r\n        /* margin-left: 15px; */\r\n    }\r\n    .selected-product-arrow-left {\r\n        background: rgba(255, 255, 255, 0.5);\r\n        z-index: 30;\r\n        margin-right: 30px !important;\r\n    }\r\n     :-moz-placeholder {\r\n        text-align: center;\r\n    }\r\n    .custom-offset {\r\n        margin-left: -8% !important;\r\n    }\r\n    .fit-advisor-agelabel-span {\r\n        margin-left: 52px !important;\r\n        margin-top: 0px !important;\r\n    }\r\n    .fit-advisor-logo {\r\n        margin-left: 30% !important;\r\n    }\r\n    .continue-btn {\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        -webkit-user-select: none;\r\n        user-select: none;\r\n        -webkit-appearance: none;\r\n        -moz-appearance: none;\r\n        appearance: none;\r\n        display: inline-block;\r\n        width: auto;\r\n        text-decoration: none;\r\n        text-align: center;\r\n        vertical-align: middle;\r\n        cursor: pointer;\r\n        border: 1px solid transparent;\r\n        border-radius: 2px;\r\n        padding: 8px 15px;\r\n        background-color: #000000;\r\n        color: white;\r\n      \r\n        text-transform: uppercase;\r\n        letter-spacing: 0.08em;\r\n        white-space: normal;\r\n        font-size: 15px !important;\r\n        font-family: 'Karla';\r\n        right: 25% !important;\r\n        width: 50% !important;\r\n    }\r\n    .fit-advisor-product-btn-to-cart {\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        -webkit-user-select: none;\r\n        user-select: none;\r\n        -webkit-appearance: none;\r\n        -moz-appearance: none;\r\n        appearance: none;\r\n        display: inline-block;\r\n        width: auto;\r\n        text-decoration: none;\r\n        text-align: center;\r\n        vertical-align: middle;\r\n        cursor: pointer;\r\n        border: 1px solid transparent;\r\n        border-radius: 2px;\r\n        padding: 8px 15px;\r\n        background-color: #000000;\r\n        color: var(--color-btn-primary-text);\r\n        /* font-family: lato !important; */\r\n        /* font-style: var(--font-style-header); */\r\n        /* font-weight: var(--font-weight-header); */\r\n        text-transform: uppercase;\r\n        letter-spacing: 0.08em;\r\n        white-space: normal;\r\n        font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n        /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n    }\r\n    .fit-advisor-chest-tab {\r\n        display: block;\r\n        gap: 5px;\r\n        margin-left: -65px !important;\r\n        grid-template-columns: 1fr 1fr 1fr;\r\n        padding: 0px 10px 40px;\r\n    }\r\n    .fit-advisor-selected-product-grid {\r\n        /* display: block; */\r\n        grid-template-columns: 2fr 3fr;\r\n        gap: 50px;\r\n        -webkit-box-pack: center;\r\n        justify-content: center;\r\n        -webkit-box-align: center;\r\n        align-items: center;\r\n        padding: 0px 50px;\r\n        margin-left: 50px !important;\r\n        /* display: none; */\r\n    }\r\n    .fit-advisor-selected-product-image {\r\n        padding: 0px;\r\n        align-self: flex-start;\r\n        display: none;\r\n    }\r\n    .fit-advisor-fit-grid {\r\n        display: block;\r\n        grid-template-columns: 1fr 1fr;\r\n        -webkit-box-pack: center;\r\n        justify-content: center;\r\n        -webkit-box-align: center;\r\n        align-items: center;\r\n        text-align: center;\r\n        background: white;\r\n        border: none;\r\n        margin-bottom: 15px;\r\n        margin-left: -15px;\r\n        padding: 10px 20px;\r\n        box-shadow: none;\r\n    }\r\n}\r\n\r\n@media (min-width:481px) and (max-width:640px) {\r\n    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */\r\n}\r\n\r\n@media (min-width:641px) and (max-width:960px) {\r\n    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 100px 1fr !important;\r\n        justify-self: flex-end;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 55px;\r\n    }\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px;\r\n        visibility: visible;\r\n        margin-bottom: -5.5em !important;\r\n        /* margin-right: 50px; */\r\n    }\r\n}\r\n\r\n@media (min-width:961px) and (max-width:1024px) {\r\n    /* tablet, landscape iPad, lo-res laptops ands desktops */\r\n}\r\n\r\n@media (min-width:1025px) and (max-width:1280px) {\r\n    /* big landscape tablets, laptops, and desktops */\r\n}\r\n\r\n\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n\r\n\r\n/*   } / / */\r\n\r\n\r\n/* STYLE FOR LOADER */\r\n\r\n@-webkit-keyframes spinner-border {\r\n    to {\r\n        transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n@keyframes spinner-border {\r\n    to {\r\n        transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n.spinner-border {\r\n    display: inline-block;\r\n    width: 2rem;\r\n    height: 2rem;\r\n    vertical-align: text-bottom;\r\n    border: 0.25em solid currentColor;\r\n    border-right-color: transparent;\r\n    border-radius: 50%;\r\n    -webkit-animation: 0.75s linear infinite spinner-border;\r\n    animation: 0.75s linear infinite spinner-border;\r\n    border-width: 2px !important;\r\n}\r\n\r\n.spinner-border-sm {\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border-width: 0.2em;\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n    .spinner-border,\r\n    .spinner-grow {\r\n        -webkit-animation-duration: 1.5s;\r\n        animation-duration: 1.5s;\r\n    }\r\n}\r\n\r\n.sr-only {\r\n    position: absolute;\r\n    width: 1px;\r\n    height: 1px;\r\n    padding: 0;\r\n    margin: -1px;\r\n    overflow: hidden;\r\n    clip: rect(0, 0, 0, 0);\r\n    white-space: nowrap;\r\n    border: 0;\r\n}\r\n\r\n.sr-only-focusable:active,\r\n.sr-only-focusable:focus {\r\n    position: static;\r\n    width: auto;\r\n    height: auto;\r\n    overflow: visible;\r\n    clip: auto;\r\n    white-space: normal;\r\n}\r\n\r\n.warning-place::-webkit-input-placeholder {\r\n    color: #fc0000 !important;\r\n    opacity: 1;\r\n    font-weight: bold;\r\n    font-family: karla;\r\n    transition: ease-in-out 1s;\r\n}\r\n\r\n.on-excel-size-two {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 190px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n\r\n.on-excel-size {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -10px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n\r\n#chest1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#chest2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#chest3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n.col-xl,\r\n.col-xl-auto,\r\n.col-xl-12,\r\n.col-xl-11,\r\n.col-xl-10,\r\n.col-xl-9,\r\n.col-xl-8,\r\n.col-xl-7,\r\n.col-xl-6,\r\n.col-xl-5,\r\n.col-xl-4,\r\n.col-xl-3,\r\n.col-xl-2,\r\n.col-xl-1,\r\n.col-lg,\r\n.col-lg-auto,\r\n.col-lg-12,\r\n.col-lg-11,\r\n.col-lg-10,\r\n.col-lg-9,\r\n.col-lg-8,\r\n.col-lg-7,\r\n.col-lg-6,\r\n.col-lg-5,\r\n.col-lg-4,\r\n.col-lg-3,\r\n.col-lg-2,\r\n.col-lg-1,\r\n.col-md,\r\n.col-md-auto,\r\n.col-md-12,\r\n.col-md-11,\r\n.col-md-10,\r\n.col-md-9,\r\n.col-md-8,\r\n.col-md-7,\r\n.col-md-6,\r\n.col-md-5,\r\n.col-md-4,\r\n.col-md-3,\r\n.col-md-2,\r\n.col-md-1,\r\n.col-sm,\r\n.col-sm-auto,\r\n.col-sm-12,\r\n.col-sm-11,\r\n.col-sm-10,\r\n.col-sm-9,\r\n.col-sm-8,\r\n.col-sm-7,\r\n.col-sm-6,\r\n.col-sm-5,\r\n.col-sm-4,\r\n.col-sm-3,\r\n.col-sm-2,\r\n.col-sm-1,\r\n.col,\r\n.col-auto,\r\n.col-12,\r\n.col-11,\r\n.col-10,\r\n.col-9,\r\n.col-8,\r\n.col-7,\r\n.col-6,\r\n.col-5,\r\n.col-4,\r\n.col-3,\r\n.col-2,\r\n.col-1 {\r\n    position: relative;\r\n    width: 100%;\r\n    padding-right: 15px;\r\n    padding-left: 15px;\r\n}\r\n\r\n.col-sm-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-sm-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-sm-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-sm-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-sm-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-sm-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-sm-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-sm-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-sm-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-sm-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-sm-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-sm-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-sm-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.col {\r\n    flex-basis: 0;\r\n    flex-grow: 1;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-md-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-md-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-md-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-md-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-md-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-md-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-md-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-md-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-md-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-md-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-md-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-md-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-md-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.mt-0,\r\n.my-0 {\r\n    margin-top: 0 !important;\r\n}\r\n\r\n.mr-0,\r\n.mx-0 {\r\n    margin-right: 0 !important;\r\n}\r\n\r\n.mb-0,\r\n.my-0 {\r\n    margin-bottom: 0 !important;\r\n}\r\n\r\n.ml-0,\r\n.mx-0 {\r\n    margin-left: 0 !important;\r\n}\r\n\r\n.m-1 {\r\n    margin: 0.25rem !important;\r\n}\r\n\r\n.mt-1,\r\n.my-1 {\r\n    margin-top: 0.25rem !important;\r\n}\r\n\r\n.mr-1,\r\n.mx-1 {\r\n    margin-right: 0.25rem !important;\r\n}\r\n\r\n.mb-1,\r\n.my-1 {\r\n    margin-bottom: 0.25rem !important;\r\n}\r\n\r\n.ml-1,\r\n.mx-1 {\r\n    margin-left: 0.25rem !important;\r\n}\r\n\r\n.m-2 {\r\n    margin: 0.5rem !important;\r\n}\r\n\r\n.mt-2,\r\n.my-2 {\r\n    margin-top: 0.5rem !important;\r\n}\r\n\r\n.mr-2,\r\n.mx-2 {\r\n    margin-right: 0.5rem !important;\r\n}\r\n\r\n.mb-2,\r\n.my-2 {\r\n    margin-bottom: 0.5rem !important;\r\n}\r\n\r\n.ml-2,\r\n.mx-2 {\r\n    margin-left: 0.5rem !important;\r\n}\r\n\r\n.m-3 {\r\n    margin: 1rem !important;\r\n}\r\n\r\n.mt-3,\r\n.my-3 {\r\n    margin-top: 1rem !important;\r\n}\r\n.mtf-3,\r\n.myf-3 {\r\n    margin-top: 1.1rem !important;\r\n}\r\n.mr-3,\r\n.mx-3 {\r\n    margin-right: 1rem !important;\r\n}\r\n\r\n.mb-3,\r\n.my-3 {\r\n    margin-bottom: 1rem !important;\r\n}\r\n\r\n.ml-3,\r\n.mx-3 {\r\n    margin-left: 1rem !important;\r\n}\r\n\r\n.m-4 {\r\n    margin: 1.5rem !important;\r\n}\r\n\r\n.mt-4,\r\n.my-4 {\r\n    margin-top: 1.5rem !important;\r\n}\r\n\r\n.mtf-4,\r\n.myf-4 {\r\n    margin-top: 1.3rem !important;\r\n}\r\n\r\n.mr-4,\r\n.mx-4 {\r\n    margin-right: 1.5rem !important;\r\n}\r\n\r\n.mb-4,\r\n.my-4 {\r\n    margin-bottom: 1.5rem !important;\r\n}\r\n\r\n.ml-4,\r\n.mx-4 {\r\n    margin-left: 1.5rem !important;\r\n}\r\n\r\n.m-5 {\r\n    margin: 3rem !important;\r\n}\r\n\r\n.mt-5,\r\n.my-5 {\r\n    margin-top: 3rem !important;\r\n}\r\n\r\n.mtf-5,\r\n.myf-5 {\r\n    margin-top: 2rem !important;\r\n}\r\n\r\n\r\n\r\n.mr-5,\r\n.mx-5 {\r\n    margin-right: 3rem !important;\r\n}\r\n\r\n.mb-5,\r\n.my-5 {\r\n    margin-bottom: 3rem !important;\r\n}\r\n\r\n.ml-5,\r\n.mx-5 {\r\n    margin-left: 3rem !important;\r\n}\r\n\r\n.m-n1 {\r\n    margin: -0.25rem !important;\r\n}\r\n\r\n.mt-n1,\r\n.my-n1 {\r\n    margin-top: -0.25rem !important;\r\n}\r\n\r\n.mr-n1,\r\n.mx-n1 {\r\n    margin-right: -0.25rem !important;\r\n}\r\n\r\n.mb-n1,\r\n.my-n1 {\r\n    margin-bottom: -0.25rem !important;\r\n}\r\n\r\n.ml-n1,\r\n.mx-n1 {\r\n    margin-left: -0.25rem !important;\r\n}\r\n\r\n.m-n2 {\r\n    margin: -0.5rem !important;\r\n}\r\n\r\n.mt-n2,\r\n.my-n2 {\r\n    margin-top: -0.5rem !important;\r\n}\r\n\r\n.mr-n2,\r\n.mx-n2 {\r\n    margin-right: -0.5rem !important;\r\n}\r\n\r\n.mb-n2,\r\n.my-n2 {\r\n    margin-bottom: -0.5rem !important;\r\n}\r\n\r\n.ml-n2,\r\n.mx-n2 {\r\n    margin-left: -0.5rem !important;\r\n}\r\n\r\n.m-n3 {\r\n    margin: -1rem !important;\r\n}\r\n\r\n.mt-n3,\r\n.my-n3 {\r\n    margin-top: -1rem !important;\r\n}\r\n\r\n.mr-n3,\r\n.mx-n3 {\r\n    margin-right: -1rem !important;\r\n}\r\n\r\n.mb-n3,\r\n.my-n3 {\r\n    margin-bottom: -1rem !important;\r\n}\r\n\r\n.ml-n3,\r\n.mx-n3 {\r\n    margin-left: -1rem !important;\r\n}\r\n\r\n.m-n4 {\r\n    margin: -1.5rem !important;\r\n}\r\n\r\n.mt-n4,\r\n.my-n4 {\r\n    margin-top: -1.5rem !important;\r\n}\r\n\r\n.mr-n4,\r\n.mx-n4 {\r\n    margin-right: -1.5rem !important;\r\n}\r\n\r\n.mb-n4,\r\n.my-n4 {\r\n    margin-bottom: -1.5rem !important;\r\n}\r\n\r\n.ml-n4,\r\n.mx-n4 {\r\n    margin-left: -1.5rem !important;\r\n}\r\n\r\n.m-n5 {\r\n    margin: -3rem !important;\r\n}\r\n\r\n.mt-n5,\r\n.my-n5 {\r\n    margin-top: -3rem !important;\r\n}\r\n\r\n.mtf-n6,\r\n.myf-n6 {\r\n    margin-top: -6.5rem !important;\r\n}\r\n\r\n\r\n.mt-n6,\r\n.my-n6 {\r\n    margin-top: -3.8rem !important;\r\n}\r\n\r\n.mr-n5,\r\n.mx-n5 {\r\n    margin-right: -3rem !important;\r\n}\r\n\r\n.mb-n5,\r\n.my-n5 {\r\n    margin-bottom: -3rem !important;\r\n}\r\n\r\n.ml-n5,\r\n.mx-n5 {\r\n    margin-left: -3rem !important;\r\n}\r\n\r\n.offset-1 {\r\n    margin-left: 8.3333333333%;\r\n}\r\n\r\n.offset-2 {\r\n    margin-left: 16.6666666667%;\r\n}\r\n\r\n.offset-3 {\r\n    margin-left: 25%;\r\n}\r\n\r\n.offset-4 {\r\n    margin-left: 33.3333333333%;\r\n}\r\n\r\n.offset-5 {\r\n    margin-left: 41.6666666667%;\r\n}\r\n\r\n.offset-6 {\r\n    margin-left: 50%;\r\n}\r\n\r\n.offset-7 {\r\n    margin-left: 58.3333333333%;\r\n}\r\n\r\n.offset-8 {\r\n    margin-left: 66.6666666667%;\r\n}\r\n\r\n.offset-9 {\r\n    margin-left: 75%;\r\n}\r\n\r\n.offset-10 {\r\n    margin-left: 83.3333333333%;\r\n}\r\n\r\n.offset-11 {\r\n    margin-left: 91.6666666667%;\r\n}\r\n\r\n.form-control {\r\n    display: block;\r\n    width: 100%;\r\n    height: calc(1.6em + 0.75rem + 2px);\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 0.9rem;\r\n    font-weight: 400;\r\n    line-height: 1.6;\r\n    color: #495057;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.25rem;\r\n    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n}\r\n\r\n.form-control-lg {\r\n    height: calc(1.5em + 1rem + 2px);\r\n    padding: 0.5rem 1rem;\r\n    font-size: 1.125rem;\r\n    line-height: 1.5;\r\n    border-radius: 0.3rem;\r\n}\r\n\r\n.w-25 {\r\n    width: 25% !important;\r\n}\r\n\r\n.w-50 {\r\n    width: 50% !important;\r\n}\r\n\r\n.w-75 {\r\n    width: 75% !important;\r\n}\r\n\r\n.w-100 {\r\n    width: 100% !important;\r\n}\r\n\r\n.w-auto {\r\n    width: auto !important;\r\n}\r\n\r\n.h-25 {\r\n    height: 25% !important;\r\n}\r\n\r\n.h-50 {\r\n    height: 50% !important;\r\n}\r\n\r\n.h-75 {\r\n    height: 75% !important;\r\n}\r\n\r\n.h-100 {\r\n    height: 100% !important;\r\n}\r\n\r\n.input-border {\r\n    border-bottom: 1px solid lightgrey !important;\r\n    border-top: none;\r\n    border-left: none;\r\n    border-right: none;\r\n    border-radius: 0px;\r\n}\r\n\r\n.justify-content-center {\r\n    justify-content: center !important;\r\n}\r\n\r\n.d-flex {\r\n    display: flex !important;\r\n}\r\n\r\n.ml-n6 {\r\n    margin-left: -4rem !important;\r\n}\r\n\r\n.adjust-label-more {\r\n    margin-left: 35%!important;\r\n}\r\n\r\n.scrollbar-hidden::-webkit-scrollbar {\r\n    display: none;\r\n}\r\n\r\n\r\n/* Hide scrollbar for IE, Edge add Firefox */\r\n\r\n.scrollbar-hidden {\r\n    -ms-overflow-style: none;\r\n    scrollbar-width: none;\r\n    /* Firefox */\r\n}\r\n\r\n.m-result {\r\n    text-align: center;\r\n    margin-top: 0px;\r\n    visibility: visible;\r\n    margin-bottom: -8.5em;\r\n    /* margin-right: 50px; */\r\n}\r\n\r\n@media only screen and (max-width: 320px) and (min-width: 320px) {\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px !important;\r\n        visibility: visible ;\r\n        margin-bottom: -5.5em !important;\r\n        margin-right: 50px !important;\r\n    }\r\n    /* .dfOagu {\r\n        margin-left: 25px;\r\n        margin-top: 0px ;\r\n        margin-right: 40px !important;\r\n    } */\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 106px 1fr !important;\r\n        justify-self: flex-end;\r\n    }\r\n    .selected-product-arrow-left {\r\n        background: rgba(255, 255, 255, 0.5);\r\n        z-index: 30;\r\n        /* margin-right: -26px !important; */\r\n        margin-left: 38px;\r\n        margin-right: 28px !important;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 1.4em;\r\n    }\r\n}\r\n\r\n.float-left {\r\n    float: left !important;\r\n}\r\n\r\n.float-right {\r\n    float: right !important;\r\n}\r\n\r\n.float-none {\r\n    float: none !important;\r\n}\r\n\r\n.fit-advisor-fit-grid-s5 {\r\n    display: block;\r\n    grid-template-columns: 1fr 1fr;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border: none;\r\n    margin-bottom: 15px;\r\n    margin-left: -43px;\r\n    padding: 10px 20px;\r\n    box-shadow: none;\r\n}\r\n\r\n@media (min-width: 576px) {\r\n    .col-sm {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-sm-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-sm-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-sm-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-sm-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-sm-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-sm-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-sm-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-sm-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-sm-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-sm-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-sm-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-sm-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-sm-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-sm-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-sm-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-sm-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-sm-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-sm-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-sm-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-sm-first {\r\n        order: -1;\r\n    }\r\n    .order-sm-last {\r\n        order: 13;\r\n    }\r\n    .order-sm-0 {\r\n        order: 0;\r\n    }\r\n    .order-sm-1 {\r\n        order: 1;\r\n    }\r\n    .order-sm-2 {\r\n        order: 2;\r\n    }\r\n    .order-sm-3 {\r\n        order: 3;\r\n    }\r\n    .order-sm-4 {\r\n        order: 4;\r\n    }\r\n    .order-sm-5 {\r\n        order: 5;\r\n    }\r\n    .order-sm-6 {\r\n        order: 6;\r\n    }\r\n    .order-sm-7 {\r\n        order: 7;\r\n    }\r\n    .order-sm-8 {\r\n        order: 8;\r\n    }\r\n    .order-sm-9 {\r\n        order: 9;\r\n    }\r\n    .order-sm-10 {\r\n        order: 10;\r\n    }\r\n    .order-sm-11 {\r\n        order: 11;\r\n    }\r\n    .order-sm-12 {\r\n        order: 12;\r\n    }\r\n    .offset-sm-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-sm-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-sm-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-sm-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-sm-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-sm-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-sm-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-sm-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-sm-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-sm-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-sm-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-sm-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    .col-md {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-md-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-md-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-md-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-md-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-md-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-md-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-md-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-md-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-md-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-md-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-md-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-md-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-md-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-md-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-md-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-md-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-md-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-md-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-md-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-md-first {\r\n        order: -1;\r\n    }\r\n    .order-md-last {\r\n        order: 13;\r\n    }\r\n    .order-md-0 {\r\n        order: 0;\r\n    }\r\n    .order-md-1 {\r\n        order: 1;\r\n    }\r\n    .order-md-2 {\r\n        order: 2;\r\n    }\r\n    .order-md-3 {\r\n        order: 3;\r\n    }\r\n    .order-md-4 {\r\n        order: 4;\r\n    }\r\n    .order-md-5 {\r\n        order: 5;\r\n    }\r\n    .order-md-6 {\r\n        order: 6;\r\n    }\r\n    .order-md-7 {\r\n        order: 7;\r\n    }\r\n    .order-md-8 {\r\n        order: 8;\r\n    }\r\n    .order-md-9 {\r\n        order: 9;\r\n    }\r\n    .order-md-10 {\r\n        order: 10;\r\n    }\r\n    .order-md-11 {\r\n        order: 11;\r\n    }\r\n    .order-md-12 {\r\n        order: 12;\r\n    }\r\n    .offset-md-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-md-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-md-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-md-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-md-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-md-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-md-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-md-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-md-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-md-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-md-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-md-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n    .col-lg {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-lg-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-lg-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-lg-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-lg-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-lg-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-lg-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-lg-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-lg-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-lg-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-lg-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-lg-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-lg-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-lg-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-lg-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-lg-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-lg-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-lg-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-lg-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-lg-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-lg-first {\r\n        order: -1;\r\n    }\r\n    .order-lg-last {\r\n        order: 13;\r\n    }\r\n    .order-lg-0 {\r\n        order: 0;\r\n    }\r\n    .order-lg-1 {\r\n        order: 1;\r\n    }\r\n    .order-lg-2 {\r\n        order: 2;\r\n    }\r\n    .order-lg-3 {\r\n        order: 3;\r\n    }\r\n    .order-lg-4 {\r\n        order: 4;\r\n    }\r\n    .order-lg-5 {\r\n        order: 5;\r\n    }\r\n    .order-lg-6 {\r\n        order: 6;\r\n    }\r\n    .order-lg-7 {\r\n        order: 7;\r\n    }\r\n    .order-lg-8 {\r\n        order: 8;\r\n    }\r\n    .order-lg-9 {\r\n        order: 9;\r\n    }\r\n    .order-lg-10 {\r\n        order: 10;\r\n    }\r\n    .order-lg-11 {\r\n        order: 11;\r\n    }\r\n    .order-lg-12 {\r\n        order: 12;\r\n    }\r\n    .offset-lg-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-lg-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-lg-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-lg-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-lg-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-lg-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-lg-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-lg-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-lg-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-lg-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-lg-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-lg-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n    .col-xl {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-xl-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-xl-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-xl-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-xl-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-xl-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-xl-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-xl-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-xl-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-xl-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-xl-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-xl-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-xl-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-xl-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-xl-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-xl-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-xl-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-xl-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-xl-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-xl-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-xl-first {\r\n        order: -1;\r\n    }\r\n    .order-xl-last {\r\n        order: 13;\r\n    }\r\n    .order-xl-0 {\r\n        order: 0;\r\n    }\r\n    .order-xl-1 {\r\n        order: 1;\r\n    }\r\n    .order-xl-2 {\r\n        order: 2;\r\n    }\r\n    .order-xl-3 {\r\n        order: 3;\r\n    }\r\n    .order-xl-4 {\r\n        order: 4;\r\n    }\r\n    .order-xl-5 {\r\n        order: 5;\r\n    }\r\n    .order-xl-6 {\r\n        order: 6;\r\n    }\r\n    .order-xl-7 {\r\n        order: 7;\r\n    }\r\n    .order-xl-8 {\r\n        order: 8;\r\n    }\r\n    .order-xl-9 {\r\n        order: 9;\r\n    }\r\n    .order-xl-10 {\r\n        order: 10;\r\n    }\r\n    .order-xl-11 {\r\n        order: 11;\r\n    }\r\n    .order-xl-12 {\r\n        order: 12;\r\n    }\r\n    .offset-xl-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-xl-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-xl-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-xl-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-xl-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-xl-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-xl-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-xl-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-xl-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-xl-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-xl-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-xl-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n.text-center {\r\n    text-align: center !important;\r\n}\r\n.text-truncate {\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.text-left {\r\n    text-align: left !important;\r\n}\r\n\r\n.text-right {\r\n    text-align: right !important;\r\n}\r\n.ml-xl-6,\r\n    .mx-xl-6 {\r\n        margin-left: 6rem !important;\r\n    }.ml-xl-11,\r\n    .mx-xl-11 {\r\n        margin-left: 11rem !important;\r\n    }\r\n    .ml-xl-12,\r\n    .mx-xl-12 {\r\n        margin-left: 12rem !important;\r\n    }\r\n    .center-force {\r\n        margin: 0;\r\n        position: sticky;\r\n        top: 50%;\r\n        left: 50%;\r\n        -ms-transform: translate(-50%, -50%);\r\n        transform: translate(-50%, -50%);\r\n      }\r\n      .spinner-position{\r\n        width: 3rem;\r\n        height: 3rem;\r\n        margin-left: 0px;\r\n      }\r\n      /* .dfOagu-411w {\r\n        margin-left: 50px;\r\n        margin-top: 5px;\r\n    } */\r\n    .someclass {\r\n        cursor: default\r\n     }\r\n\r\n                                                                                            /* bodyfit-modal */\r\n\r\n                                                                                            \r\n.bodyfit-modal-open {\r\n    overflow: hidden;\r\n  }\r\n  .bodyfit-modal-open .bodyfit-modal {\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n  }\r\n  \r\n  .bodyfit-modal {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1050;\r\n    display: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: hidden;\r\n    outline: 0;\r\n  }\r\n  \r\n  .bodyfit-modal-dialog {\r\n    position: relative;\r\n    width: auto;\r\n    margin: 0.5rem;\r\n    pointer-events: none;\r\n  }\r\n  .bodyfit-modal.fade .bodyfit-modal-dialog {\r\n    transition: transform 0.3s ease-out;\r\n    transform: translate(0, -50px);\r\n  }\r\n  @media (prefers-reduced-motion: reduce) {\r\n    .bodyfit-modal.fade .bodyfit-modal-dialog {\r\n      transition: none;\r\n    }\r\n  }\r\n  .bodyfit-modal.show .bodyfit-modal-dialog {\r\n    transform: none;\r\n  }\r\n  .bodyfit-modal.bodyfit-modal-static .bodyfit-modal-dialog {\r\n    transform: scale(1.02);\r\n  }\r\n  \r\n  .bodyfit-modal-dialog-scrollable {\r\n    display: flex;\r\n    max-height: calc(100% - 1rem);\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n    max-height: calc(100vh - 1rem);\r\n    overflow: hidden;\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-header,\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-footer {\r\n    flex-shrink: 0;\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-body {\r\n    overflow-y: auto;\r\n  }\r\n  \r\n  .bodyfit-modal-dialog-centered {\r\n    display: flex;\r\n    align-items: center;\r\n    min-height: calc(100% - 1rem);\r\n  }\r\n  .bodyfit-modal-dialog-centered::before {\r\n    display: block;\r\n    height: calc(100vh - 1rem);\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n    content: \"\";\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable {\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n    max-height: none;\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable::before {\r\n    content: none;\r\n  }\r\n  \r\n  .bodyfit-modal-content {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n    pointer-events: auto;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid rgba(0, 0, 0, 0.2);\r\n    border-radius: 0.3rem;\r\n    outline: 0;\r\n  }\r\n  \r\n  .bodyfit-modal-backdrop {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1040;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: #000;\r\n  }\r\n  .bodyfit-modal-backdrop.fade {\r\n    opacity: 0;\r\n  }\r\n  .bodyfit-modal-backdrop.show {\r\n    opacity: 0.5;\r\n  }\r\n  \r\n  .bodyfit-modal-header {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    justify-content: space-between;\r\n    padding: 1rem 1rem;\r\n    border-bottom: 1px solid #dee2e6;\r\n    border-top-left-radius: calc(0.3rem - 1px);\r\n    border-top-right-radius: calc(0.3rem - 1px);\r\n  }\r\n  .bodyfit-modal-header .close {\r\n    padding: 1rem 1rem;\r\n    margin: -1rem -1rem -1rem auto;\r\n  }\r\n  \r\n  .bodyfit-modal-title {\r\n    margin-bottom: 0;\r\n    line-height: 1.6;\r\n  }\r\n  \r\n  .bodyfit-modal-body {\r\n    position: relative;\r\n    flex: 1 1 auto;\r\n    padding: 1rem;\r\n  }\r\n  \r\n  .bodyfit-modal-footer {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    padding: 0.75rem;\r\n    border-top: 1px solid #dee2e6;\r\n    border-bottom-right-radius: calc(0.3rem - 1px);\r\n    border-bottom-left-radius: calc(0.3rem - 1px);\r\n  }\r\n  .bodyfit-modal-footer > * {\r\n    margin: 0.25rem;\r\n  }\r\n  \r\n  .bodyfit-modal-scrollbar-measure {\r\n    position: absolute;\r\n    top: -9999px;\r\n    width: 50px;\r\n    height: 50px;\r\n    overflow: scroll;\r\n  }\r\n  \r\n  @media (min-width: 576px) {\r\n    .bodyfit-modal-dialog {\r\n      max-width: 500px;\r\n      margin: 1.75rem auto;\r\n    }\r\n  \r\n    .bodyfit-modal-dialog-scrollable {\r\n      max-height: calc(100% - 3.5rem);\r\n    }\r\n    .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n      max-height: calc(100vh - 3.5rem);\r\n    }\r\n  \r\n    .bodyfit-modal-dialog-centered {\r\n      min-height: calc(100% - 3.5rem);\r\n    }\r\n    .bodyfit-modal-dialog-centered::before {\r\n      height: calc(100vh - 3.5rem);\r\n      height: -webkit-min-content;\r\n      height: -moz-min-content;\r\n      height: min-content;\r\n    }\r\n  \r\n    .bodyfit-modal-sm {\r\n      max-width: 300px;\r\n    }\r\n  }\r\n  @media (min-width: 992px) {\r\n    .bodyfit-modal-lg,\r\n  .bodyfit-modal-xl {\r\n      max-width: 800px;\r\n    }\r\n  }\r\n  @media (min-width: 1200px) {\r\n    .bodyfit-modal-xl {\r\n      max-width: 1140px;\r\n    }\r\n  }\r\n  .text-size-input\r\n  {\r\n      font-size:medium !important;\r\n  }\r\n \r\n \r\n /* This will style any <img> element in .parent div */\r\n \r\n .x-custom-container\r\n {\r\n    position: relative;\r\n    max-width: 53rem;\r\n    margin-left: -7.5rem !important;\r\n    background: #fff;\r\n    width: 170%;\r\n    padding: 3rem 5rem 0;\r\n    border-radius: 1px;\r\n }\r\n.close-custom\r\n{\r\n    color:#000;\r\n    font-size: 2em;\r\n    text-decoration: none;\r\n}\r\n.close-custom:hover,\r\n.close-custom:visited\r\n{\r\n    font-size: 2em;\r\n    text-decoration: none;\r\n    color:#000;\r\n}\r\n\r\n/* //spinner new */\r\n\r\n\r\n.blueBg {\r\n    background-image: linear-gradient(90deg, #979494, #f3f3f3);\r\n}\r\n\r\n.intro-banner-vdo-play-btn {\r\n    height: 24px;\r\n    width: 24px;\r\n    position: absolute;\r\n    top: 40%;\r\n    left: 49%;\r\n    text-align: center;\r\n    margin-left: 0px !important;\r\n    border-radius: 100px;\r\n    z-index: 1;\r\n}\r\n\r\n.intro-banner-vdo-play-btn i {\r\n    line-height: 56px;\r\n    font-size: 30px\r\n}\r\n\r\n.intro-banner-vdo-play-btn .ripple {\r\n    position: absolute;\r\n    width: 50px;\r\n    height: 50px;\r\n    z-index: -1;\r\n    /* left: 0%; */\r\n    /* top: 0%; */\r\n    opacity: 0;\r\n    margin-left: -25px !important;\r\n    border-radius: 100px;\r\n    -webkit-animation: ripple 1.8s infinite;\r\n    animation: ripple 1.9s infinite;\r\n    margin-top: -12px;\r\n}\r\n\r\n@-webkit-keyframes ripple {\r\n    0% {\r\n        opacity: 1;\r\n        -webkit-transform: scale(0);\r\n        transform: scale(0)\r\n    }\r\n\r\n    100% {\r\n        opacity: 0;\r\n        -webkit-transform: scale(1);\r\n        transform: scale(1)\r\n    }\r\n}\r\n\r\n@keyframes ripple {\r\n    0% {\r\n        opacity: 1;\r\n        -webkit-transform: scale(0);\r\n        transform: scale(0)\r\n    }\r\n\r\n    100% {\r\n        opacity: 0;\r\n        -webkit-transform: scale(1);\r\n        transform: scale(1)\r\n    }\r\n}\r\n\r\n.intro-banner-vdo-play-btn .ripple:nth-child(2) {\r\n    animation-delay: .3s;\r\n    -webkit-animation-delay: .3s\r\n}\r\n\r\n.intro-banner-vdo-play-btn .ripple:nth-child(3) {\r\n    animation-delay: .6s;\r\n    -webkit-animation-delay: .6s\r\n}\r\n\r\n.intro-banner-vdo-play-btn .ripple:nth-child(4) {\r\n    animation-delay: .6s;\r\n    -webkit-animation-delay: .6s\r\n}", ""]);
+___CSS_LOADER_EXPORT___.push([module.id, ".bigsize {\r\n    grid-template-columns: 1fr 213px 1fr !important;\r\n}\r\n\r\n.big-size-margin {\r\n    margin-left: 35px !important;\r\n}\r\n\r\n.big-size-margin-recommend-size {\r\n    margin-left: 50px !important;\r\n}\r\n\r\n.final-size-label {\r\n    font-family: Karla;\r\n    font-weight: 600;\r\n    font-size: small !important;\r\n    /* margin-left: 10px; */\r\n    text-decoration: underline;\r\n}\r\n\r\n.final-size-heading {\r\n    font-family: 'Montserrat';\r\n    font-weight: 900;\r\n    font-size: small;\r\n    /* margin-left: 10px; */\r\n    margin-top: 20px;\r\n}\r\n\r\n.fit-advisor-header-desc-mt {\r\n    margin-top: 40px !important;\r\n}\r\n\r\n/* .dfOagu {\r\n    margin-left: 50px;\r\n    margin-top: 0px;\r\n} */\r\n\r\n/* .dfOagu-second {\r\n    margin-left: 10px;\r\n    margin-top: 0px ;\r\n} */\r\n\r\n.result-size {\r\n    width: 100%;\r\n    font-family: karla;\r\n    font-weight: 900;\r\n    font-size: 106px;\r\n}\r\n\r\n.introfirst {\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    margin-top: 15px !important;\r\n    word-spacing: 5px !important;\r\n}\r\n\r\n#intro1 {\r\n    display: block;\r\n}\r\n\r\n#intro2 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro3 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro4 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n#intro5 {\r\n    display: none;\r\n    margin-top: 20px;\r\n}\r\n\r\n.find-fit-header {\r\n    font-family: 'Montserrat';\r\n    font-size: 19px;\r\n    font-weight: 600;\r\n    text-align: center !important;\r\n    margin: 0 auto;\r\n    display: block;\r\n    /* margin-top: 40px !important; */\r\n    word-spacing: 5px !important;\r\n}\r\n\r\n.fit-advisor-chest-tab-item:hover {\r\n    /* display: grid; */\r\n    /* justify-content: center; */\r\n    /* align-items: center; */\r\n    /* text-align: center; */\r\n    /* cursor: pointer; */\r\n    transform: scale(0.95) !important;\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n\r\ninput[type=\"checkbox\"]:checked {\r\n    background: rgb(2, 2, 2);\r\n}\r\n\r\n\r\n.no-gutters {\r\n    margin-right: 0;\r\n    margin-left: 0;\r\n}\r\n\r\n.row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: 10px;\r\n    margin-left: 35px;\r\n    margin-top: 10px !important;\r\n}\r\n\r\n\r\n/* \r\n.col-xl,\r\n.col-xl-auto,\r\n.col-xl-12,\r\n.col-xl-11,\r\n.col-xl-10,\r\n.col-xl-9,\r\n.col-xl-8,\r\n.col-xl-7,\r\n.col-xl-6,\r\n.col-xl-5,\r\n.col-xl-4,\r\n.col-xl-3,\r\n.col-xl-2,\r\n.col-xl-1,\r\n.col-lg,\r\n.col-lg-auto,\r\n.col-lg-12,\r\n.col-lg-11,\r\n.col-lg-10,\r\n.col-lg-9,\r\n.col-lg-8,\r\n.col-lg-7,\r\n.col-lg-6,\r\n.col-lg-5,\r\n.col-lg-4,\r\n.col-lg-3,\r\n.col-lg-2,\r\n.col-lg-1,\r\n.col-md,\r\n.col-md-auto,\r\n.col-md-12,\r\n.col-md-11,\r\n.col-md-10,\r\n.col-md-9,\r\n.col-md-8,\r\n.col-md-7,\r\n.col-md-6,\r\n.col-md-5,\r\n.col-md-4,\r\n.col-md-3,\r\n.col-md-2,\r\n.col-md-1,\r\n.col-sm,\r\n.col-sm-auto,\r\n.col-sm-12,\r\n.col-sm-11,\r\n.col-sm-10,\r\n.col-sm-9,\r\n.col-sm-8,\r\n.col-sm-7,\r\n.col-sm-6,\r\n.col-sm-5,\r\n.col-sm-4,\r\n.col-sm-3,\r\n.col-sm-2,\r\n.col-sm-1,\r\n.col,\r\n.col-auto,\r\n.col-12,\r\n.col-11,\r\n.col-10,\r\n.col-9,\r\n.col-8,\r\n.col-7,\r\n.col-6,\r\n.col-5,\r\n.col-4,\r\n.col-3,\r\n.col-2,\r\n.col-1 {\r\n    position: relative;\r\n    width: 100%;\r\n    padding-right: 15px;\r\n    padding-left: 15px;\r\n} */\r\n\r\n.col-xl-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-xl-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-xl-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-xl-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-xl-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-xl-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-xl-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-xl-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-xl-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-xl-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-xl-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-xl-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-xl-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-lg-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-lg-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-lg-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-lg-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-lg-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-lg-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-lg-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-lg-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-lg-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-lg-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-lg-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-lg-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-lg-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n\r\n/* style for steps form */\r\n\r\ninput::-webkit-outer-spin-button,\r\ninput::-webkit-inner-spin-button {\r\n    -webkit-appearance: none;\r\n    margin: 0;\r\n}\r\n\r\n* {\r\n    box-sizing: border-box;\r\n}\r\n\r\n.size-position {\r\n    margin-left: -80px !important;\r\n    \r\n}\r\n\r\nbody {\r\n    background-color: #ffffff !important;\r\n}\r\n\r\n#regForm {\r\n    background-color: #ffffff;\r\n    /* margin: 100px auto; */\r\n    margin: 0px auto;\r\n    font-family: Raleway;\r\n    padding: 40px;\r\n    width: 70%;\r\n    /* min-width: 300px; */\r\n    /* margin-top: 135px !important; */\r\n}\r\n\r\n\r\n\r\ninput {\r\n    padding: 10px;\r\n    width: 100%;\r\n    font-size: 17px;\r\n    font-family: Raleway;\r\n    border: 1px solid #aaaaaa;\r\n}\r\n\r\n\r\n/* Mark input boxes that gets an error on validation: */\r\n\r\ninput.invalid {\r\n    border-bottom: 1px solid #fb6c6c !important;\r\n}\r\n\r\n\r\n/* Hide all steps by default: */\r\n\r\n.tab {\r\n    display: none;\r\n}\r\n\r\nbutton {\r\n    background-color: #04AA6D;\r\n    color: #ffffff;\r\n    border: none;\r\n    padding: 10px 20px;\r\n    font-size: 17px;\r\n    font-family: Raleway;\r\n    cursor: pointer;\r\n}\r\n\r\nbutton:hover {\r\n    opacity: 0.8;\r\n}\r\n\r\n#prevBtn {\r\n    background-color: #bbbbbb;\r\n}\r\n\r\n\r\n/* Make circles that indicate the steps of the form: */\r\n\r\n.step {\r\n    height: 10px;\r\n    width: 10px;\r\n    margin: 0px 7px;\r\n    background-color: #000000;\r\n    border: none;\r\n    border-radius: 50%;\r\n    display: inline-block;\r\n    opacity: 0.5;\r\n}\r\n\r\n.step.active {\r\n    opacity: 1;\r\n}\r\n\r\n\r\n/* Mark the steps that are finished and valid: */\r\n\r\n.step.finish {\r\n    background-color: #000000;\r\n}\r\n\r\n\r\n/*   END STYLE FOR STEPS FORM */\r\n\r\n.box {\r\n    background-color: #ffffff;\r\n}\r\n\r\n\r\n/* .box {\r\n  width: 40%;\r\n  margin: 0 auto;\r\n  background: rgba(255,255,255,0.2);\r\n  padding: 35px;\r\n  border: 2px solid #fff;\r\n  border-radius: 20px/50px;\r\n  background-clip: padding-box;\r\n  text-align: center;\r\n}\r\n */\r\n\r\n.overlay {\r\n    position: fixed;\r\n    top: 0;\r\n    bottom: 0;\r\n    left: 0;\r\n    right: 0;\r\n    background: rgba(0, 0, 0, 0.7);\r\n    transition: opacity 500ms;\r\n    visibility: hidden;\r\n    opacity: 0;\r\n}\r\n\r\n.overlay:target {\r\n    visibility: visible;\r\n    opacity: 1;\r\n}\r\n\r\n.popup {\r\n    margin: 70px auto;\r\n    padding: 20px;\r\n    background: #fff;\r\n    border-radius: 5px;\r\n    width: 30%;\r\n    position: relative;\r\n    transition: all 5s ease-in-out;\r\n}\r\n\r\n.popup h2 {\r\n    margin-top: 0;\r\n    color: #333;\r\n    font-family: Tahoma, Arial, sans-serif;\r\n}\r\n\r\n.popup .close {\r\n    position: absolute;\r\n    /* top: 20px; */\r\n    right: 30px;\r\n    /* transition: all 200ms; */\r\n    font-size: 30px;\r\n    font-weight: normal;\r\n    text-decoration: none;\r\n    color: rgb(127, 127, 127);\r\n}\r\n\r\n.popup .close:hover {\r\n    color: #020202;\r\n}\r\n\r\n.popup .content {\r\n    max-height: 30%;\r\n    overflow-x: hidden;\r\n}\r\n\r\n\r\n/* @media screen and (max-width: 700px){\r\n  .box{\r\n    width: 70%;\r\n  }\r\n  .popup{\r\n    width: 70%;\r\n  }\r\n} */\r\n\r\n.ctuMzF {\r\n    width: 24px;\r\n    vertical-align: middle;\r\n    margin: -2px 6px 0px 0px;\r\n}\r\n\r\n.fit-advisor-header {\r\n    position: relative;\r\n    padding: 10px 5px;\r\n    height: 50px;\r\n    overflow: hidden;\r\n    display: grid;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    -webkit-box-pack: justify;\r\n    justify-content: space-between;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    border-bottom: 1px solid whitesmoke;\r\n    user-select: none;\r\n}\r\n\r\n.continue-btn {\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color:white;\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: 15px !important;\r\n    font-family: 'Karla';\r\n}\r\n\r\n.fit-advisor-intro {\r\n    text-align: center;\r\n    margin-bottom: 35px !important;\r\n    letter-spacing: 0.04em;\r\n    color: rgb(0, 0, 0);\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 15px !important;\r\n    line-height: 26px !important;\r\n    /* margin-top: -22px; */\r\n    font-family: karla !important;\r\n}\r\n\r\n.fit-advisor-header-box {\r\n    position: relative;\r\n    height: 50px;\r\n}\r\n\r\n.lnWGiW.lnWGiW.lnWGiW {\r\n    text-decoration: none;\r\n    opacity: 1;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n\r\n\r\n/* code for form */\r\nbody,\r\ninput,\r\nselect,\r\ntextarea,\r\nbody * {\r\n    font-family: 'Roboto', sans-serif;\r\n    box-sizing: border-box;\r\n}\r\n\r\nbody::after,\r\nbody::before,\r\ninput::after,\r\ninput::before,\r\nselect::after,\r\nselect::before,\r\ntextarea::after,\r\ntextarea::before,\r\nbody *::after,\r\nbody *::before {\r\n    box-sizing: border-box;\r\n}\r\n/* \r\nh1 {\r\n    font-size: 2rem;\r\n    text-align: center;\r\n    margin: 0 0 2em;\r\n} */\r\n\r\n.container {\r\n    position: relative;\r\n    max-width: 40rem;\r\n    margin: 5rem auto;\r\n    background: #fff;\r\n    width: 100%;\r\n    padding: 3rem 5rem 0;\r\n    border-radius: 1px;\r\n}\r\n\r\n.container::before {\r\n    content: '';\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    right: 0;\r\n    bottom: 0;\r\n    box-shadow: 0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12), 0 5px 5px -3px rgba(0, 0, 0, 0.2);\r\n    -webkit-transform: scale(0.98);\r\n    transform: scale(0.98);\r\n    -webkit-transition: -webkit-transform 0.28s ease-in-out;\r\n    transition: -webkit-transform 0.28s ease-in-out;\r\n    transition: transform 0.28s ease-in-out;\r\n    transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;\r\n    z-index: -1;\r\n}\r\n\r\n/* .container:hover::before {\r\n    -webkit-transform: scale(1);\r\n    transform: scale(1);\r\n} */\r\n\r\n.button-container {\r\n    text-align: center;\r\n}\r\n\r\nfieldset {\r\n    margin: 0 0 3rem;\r\n    padding: 0;\r\n    border: none;\r\n}\r\n\r\n.form-radio,\r\n.form-group {\r\n    position: relative;\r\n    margin-top: 2.25rem;\r\n    margin-bottom: 2.25rem;\r\n}\r\n\r\n.form-inline>.form-group,\r\n.form-inline>.btn {\r\n    display: inline-block;\r\n    margin-bottom: 0;\r\n}\r\n\r\n.form-help {\r\n    margin-top: 0.125rem;\r\n    margin-left: 0.125rem;\r\n    color: #b3b3b3;\r\n    font-size: 0.8rem;\r\n}\r\n\r\n.checkbox .form-help,\r\n.form-radio .form-help,\r\n.form-group .form-help {\r\n    position: absolute;\r\n    width: 100%;\r\n}\r\n\r\n.checkbox .form-help {\r\n    position: relative;\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.form-radio .form-help {\r\n    padding-top: 0.25rem;\r\n    margin-top: -1rem;\r\n}\r\n\r\n.form-group input {\r\n    height: 1.9rem;\r\n}\r\n\r\n.form-group textarea {\r\n    resize: none;\r\n}\r\n\r\n.form-group select {\r\n    width: 100%;\r\n    font-size: 1rem;\r\n    height: 1.6rem;\r\n    padding: 0.125rem 0.125rem 0.0625rem;\r\n    background: none;\r\n    border: none;\r\n    line-height: 1.6;\r\n    box-shadow: none;\r\n}\r\n\r\n.form-group .control-label {\r\n    position: absolute;\r\n    top: 0.25rem;\r\n    pointer-events: none;\r\n    padding-left: 0.125rem;\r\n    z-index: 1;\r\n    color: #b3b3b3;\r\n    font-size: 1rem;\r\n    font-weight: normal;\r\n    -webkit-transition: all 0.28s ease;\r\n    transition: all 0.28s ease;\r\n}\r\n\r\n.form-group .bar {\r\n    position: relative;\r\n    border-bottom: 0.0625rem solid #999;\r\n    display: block;\r\n}\r\n\r\n.form-group .bar::before {\r\n    content: '';\r\n    height: 0.125rem;\r\n    width: 0;\r\n    left: 50%;\r\n    bottom: -0.0625rem;\r\n    position: absolute;\r\n    background: #337ab7;\r\n    -webkit-transition: left 0.28s ease, width 0.28s ease;\r\n    transition: left 0.28s ease, width 0.28s ease;\r\n    z-index: 2;\r\n}\r\n\r\n.form-group input,\r\n.form-group textarea {\r\n    display: block;\r\n    background: none;\r\n    padding: 0.125rem 0.125rem 0.0625rem;\r\n    font-size: 1rem;\r\n    border-width: 0;\r\n    border-color: transparent;\r\n    line-height: 1.9;\r\n    width: 100%;\r\n    color: transparent;\r\n    -webkit-transition: all 0.28s ease;\r\n    transition: all 0.28s ease;\r\n    box-shadow: none;\r\n}\r\n\r\n.form-group input[type=\"file\"] {\r\n    line-height: 1;\r\n}\r\n\r\n.form-group input[type=\"file\"]~.bar {\r\n    display: none;\r\n}\r\n\r\n.form-group select,\r\n.form-group input:focus,\r\n.form-group input:valid,\r\n.form-group input.form-file,\r\n.form-group input.has-value,\r\n.form-group textarea:focus,\r\n.form-group textarea:valid,\r\n.form-group textarea.form-file,\r\n.form-group textarea.has-value {\r\n    color: #333;\r\n}\r\n\r\n.form-group select~.control-label,\r\n.form-group input:focus~.control-label,\r\n.form-group input:valid~.control-label,\r\n.form-group input.form-file~.control-label,\r\n.form-group input.has-value~.control-label,\r\n.form-group textarea:focus~.control-label,\r\n.form-group textarea:valid~.control-label,\r\n.form-group textarea.form-file~.control-label,\r\n.form-group textarea.has-value~.control-label {\r\n    font-size: 0.8rem;\r\n    color: gray;\r\n    top: -1rem;\r\n    left: 0;\r\n}\r\n\r\n.form-group select:focus,\r\n.form-group input:focus,\r\n.form-group textarea:focus {\r\n    outline: none;\r\n}\r\n\r\n.form-group select:focus~.control-label,\r\n.form-group input:focus~.control-label,\r\n.form-group textarea:focus~.control-label {\r\n    color: #337ab7;\r\n}\r\n\r\n.form-group select:focus~.bar::before,\r\n.form-group input:focus~.bar::before,\r\n.form-group textarea:focus~.bar::before {\r\n    width: 100%;\r\n    left: 0;\r\n}\r\n\r\n.checkbox label,\r\n.form-radio label {\r\n    position: relative;\r\n    cursor: pointer;\r\n    padding-left: 2rem;\r\n    text-align: left;\r\n    color: #333;\r\n    display: block;\r\n}\r\n\r\n.checkbox input,\r\n.form-radio input {\r\n    width: auto;\r\n    opacity: 0.00000001;\r\n    position: absolute;\r\n    left: 0;\r\n}\r\n\r\n.radio {\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.radio .helper {\r\n    position: absolute;\r\n    top: -0.25rem;\r\n    left: -0.25rem;\r\n    cursor: pointer;\r\n    display: block;\r\n    font-size: 1rem;\r\n    -webkit-user-select: none;\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    user-select: none;\r\n    color: #999;\r\n}\r\n\r\n.radio .helper::before,\r\n.radio .helper::after {\r\n    content: '';\r\n    position: absolute;\r\n    left: 0;\r\n    top: 0;\r\n    margin: 0.25rem;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    -webkit-transition: -webkit-transform 0.28s ease;\r\n    transition: -webkit-transform 0.28s ease;\r\n    transition: transform 0.28s ease;\r\n    transition: transform 0.28s ease, -webkit-transform 0.28s ease;\r\n    border-radius: 50%;\r\n    border: 0.125rem solid currentColor;\r\n}\r\n\r\n.radio .helper::after {\r\n    -webkit-transform: scale(0);\r\n    transform: scale(0);\r\n    background-color: #337ab7;\r\n    border-color: #337ab7;\r\n}\r\n\r\n.radio label:hover .helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.radio input:checked~.helper::after {\r\n    -webkit-transform: scale(0.5);\r\n    transform: scale(0.5);\r\n}\r\n\r\n.radio input:checked~.helper::before {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox {\r\n    margin-top: 3rem;\r\n    margin-bottom: 1rem;\r\n}\r\n\r\n.checkbox .helper {\r\n    color: #999;\r\n    position: absolute;\r\n    top: 0;\r\n    left: 0;\r\n    width: 1rem;\r\n    height: 1rem;\r\n    z-index: 0;\r\n    border: 0.125rem solid currentColor;\r\n    border-radius: 0.0625rem;\r\n    -webkit-transition: border-color 0.28s ease;\r\n    transition: border-color 0.28s ease;\r\n}\r\n\r\n.checkbox .helper::before,\r\n.checkbox .helper::after {\r\n    position: absolute;\r\n    height: 0;\r\n    width: 0.2rem;\r\n    background-color: #337ab7;\r\n    display: block;\r\n    -webkit-transform-origin: left top;\r\n    transform-origin: left top;\r\n    border-radius: 0.25rem;\r\n    content: '';\r\n    -webkit-transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    transition: opacity 0.28s ease, height 0s linear 0.28s;\r\n    opacity: 0;\r\n}\r\n\r\n.checkbox .helper::before {\r\n    top: 0.65rem;\r\n    left: 0.38rem;\r\n    -webkit-transform: rotate(-135deg);\r\n    transform: rotate(-135deg);\r\n    box-shadow: 0 0 0 0.0625rem #fff;\r\n}\r\n\r\n.checkbox .helper::after {\r\n    top: 0.3rem;\r\n    left: 0;\r\n    -webkit-transform: rotate(-45deg);\r\n    transform: rotate(-45deg);\r\n}\r\n\r\n.checkbox label:hover .helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox input:checked~.helper {\r\n    color: #337ab7;\r\n}\r\n\r\n.checkbox input:checked~.helper::after,\r\n.checkbox input:checked~.helper::before {\r\n    opacity: 1;\r\n    -webkit-transition: height 0.28s ease;\r\n    transition: height 0.28s ease;\r\n}\r\n\r\n.checkbox input:checked~.helper::after {\r\n    height: 0.5rem;\r\n}\r\n\r\n.checkbox input:checked~.helper::before {\r\n    height: 1.2rem;\r\n    -webkit-transition-delay: 0.28s;\r\n    transition-delay: 0.28s;\r\n}\r\n\r\n.radio+.radio,\r\n.checkbox+.checkbox {\r\n    margin-top: 1rem;\r\n}\r\n\r\n.has-error .legend.legend,\r\n.has-error.form-group .control-label.control-label {\r\n    color: #d9534f;\r\n}\r\n\r\n.has-error.form-group .form-help,\r\n.has-error.form-group .helper,\r\n.has-error.checkbox .form-help,\r\n.has-error.checkbox .helper,\r\n.has-error.radio .form-help,\r\n.has-error.radio .helper,\r\n.has-error.form-radio .form-help,\r\n.has-error.form-radio .helper {\r\n    color: #d9534f;\r\n}\r\n\r\n.has-error .bar::before {\r\n    background: #d9534f;\r\n    left: 0;\r\n    width: 100%;\r\n}\r\n\r\n.button {\r\n    position: relative;\r\n    border: 1px solid currentColor;\r\n    font-size: 1.1rem;\r\n    color: #000;\r\n    margin: 3rem 0;\r\n    padding: 0.75rem 3rem;\r\n    cursor: pointer;\r\n    -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n    transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;\r\n    overflow: hidden;\r\n    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);\r\n}\r\n\r\n.button span {\r\n    color: #fff;\r\n    position: relative;\r\n    z-index: 1;\r\n}\r\n\r\n.button::before {\r\n    content: '';\r\n    position: absolute;\r\n    background: #071017;\r\n    border: 50vh solid #1d4567;\r\n    width: 30vh;\r\n    height: 30vh;\r\n    border-radius: 50%;\r\n    display: block;\r\n    top: 50%;\r\n    left: 50%;\r\n    z-index: 0;\r\n    opacity: 1;\r\n    -webkit-transform: translate(-50%, -50%) scale(0);\r\n    transform: translate(-50%, -50%) scale(0);\r\n}\r\n\r\n.button:hover {\r\n    color: #337ab7;\r\n    box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);\r\n}\r\n\r\n.button:active::before,\r\n.button:focus::before {\r\n    -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    transition: transform 1.12s ease, opacity 0.28s ease 0.364s;\r\n    transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;\r\n    -webkit-transform: translate(-50%, -50%) scale(1);\r\n    transform: translate(-50%, -50%) scale(1);\r\n    opacity: 0;\r\n}\r\n\r\n.button:focus {\r\n    outline: none;\r\n}\r\n\r\n.fit-advisor-hr {\r\n    margin-top: -15px !important;\r\n}\r\n\r\n\r\n/* input field design */\r\n\r\n ::-webkit-input-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n::-moz-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n:-ms-input-placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n::placeholder {\r\n    font-family: karla !important;\r\n    font-weight: normal !important;\r\n    font-size: 19px !important;\r\n}\r\n\r\n.fit-advisor-custom_row {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    margin-right: -15px;\r\n    margin-left: -15px;\r\n}\r\n\r\n.fit-advisor-custom_input {\r\n    display: block;\r\n    width: 60%;\r\n    margin: 0px;\r\n    padding: 10px 0px;\r\n    background: 0px center;\r\n    border-radius: 0px;\r\n    border-width: 0px 0px 1px;\r\n    border-top-style: initial;\r\n    border-right-style: initial;\r\n    border-left-style: initial;\r\n    border-top-color: initial;\r\n    border-right-color: initial;\r\n    border-left-color: initial;\r\n    border-image: initial;\r\n    border-bottom-style: solid;\r\n    border-bottom-color: rgb(175, 175, 175);\r\n    transition: border 0.2s ease-in-out 0s;\r\n    font-family: Lato !important;\r\n    font-size: 20px !important;\r\n    line-height: 24px !important;\r\n}\r\n\r\n.custom-offset {\r\n    margin-left: 43px !important;\r\n}\r\n\r\n.labels-tab1 {\r\n    text-transform: capitalize;\r\n    display: block;\r\n    width: 100%;\r\n    color: rgba(0, 0, 0, 0.9);\r\n    letter-spacing: 0.04em;\r\n    margin: 0px;\r\n    font-family: karla !important;\r\n    /* line-height: 18px !important; works fit on previous stores*/\r\n    /* line-height: 5rem !important;  works fit on 2.0*/\r\n    font-weight: 400 !important;\r\n    font-style: normal;\r\n    font-size: medium;\r\n}\r\n\r\n.custom-offset-lg {\r\n    margin-left: 44%;\r\n}\r\n\r\n.adjust-label {\r\n    margin-left: 0%!important;\r\n}\r\n\r\n.adjust-label-age {\r\n    margin-left: 0%!important;\r\n}\r\n\r\ninput::placeholder {\r\n    font-size: 12px !important\r\n}\r\n\r\ntextarea:focus,\r\ninput:focus {\r\n    outline: none;\r\n    border-bottom: 1px solid rgb(138, 171, 255) !important;\r\n}\r\n\r\n.fit-advisor-custom_previous_btn {\r\n    visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: black;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: auto;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 0.5;\r\n}\r\n\r\n.fit-advisor-chest-tab {\r\n    display: grid;\r\n    margin-left: -80px important;\r\n    width: 150% !important;\r\n    gap: 5px;\r\n    grid-template-columns: 1fr 1fr 1fr;\r\n    padding: 0px 10px ;\r\n}\r\n\r\n.fit-advisor-chest-tab-item {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    cursor: pointer;\r\n    transform: scale(0.95);\r\n    transition: transform 0.2s ease-in-out 0s;\r\n}\r\n\r\n.fit-advisor-options-img {\r\n    width: 265.667px;\r\n    height: 222.667px;\r\n}\r\n\r\n.fit-advisor-options-text {\r\n    letter-spacing: 0.04em;\r\n    color: black;\r\n    cursor: pointer;\r\n    padding: 0px 0px 5px;\r\n    display: inline-block;\r\n    opacity: 0.7;\r\n    transition: opacity 0.2s ease-in-out 0s, border 0.2s ease-in-out 0s;\r\n    font-style: normal !important;\r\n    font-weight: 400 !important;\r\n    font-size: 18px !important;\r\n    line-height: 22px !important;\r\n}\r\n\r\n.product-card {\r\n    position: relative;\r\n    z-index: -1;\r\n}\r\n\r\n.fit-advisor-selected-product-grid {\r\n    display: grid;\r\n    grid-template-columns: 2fr 3fr;\r\n    gap: 50px;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    padding: 0px 50px;\r\n    margin-left: 35px !important;\r\n}\r\n\r\n.fit-advisor-selected-product-image {\r\n    padding: 0px;\r\n    align-self: flex-start;\r\n}\r\n\r\n.fit-advisor-fit-grid {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -40px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n\r\n/* .next {\r\n    margin-top: -10px !important;\r\n} */\r\n\r\n.fit-advisor-product-picture {\r\n    margin: 0px auto 20px;\r\n    display: block;\r\n    border: 1px solid rgb(221, 221, 221);\r\n    border-radius: 2px;\r\n    box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px;\r\n    width: 100% !important;\r\n}\r\n\r\n.fit-advisor-popup-adjustments {\r\n    width: 50% !important;\r\n    overflow-y: scroll !important;\r\n}\r\n\r\n.gIdEkK p {\r\n    margin: unset;\r\n}\r\n\r\n.learn-text.learn-text.learn-text {\r\n    text-decoration: underline;\r\n    transition: color 0.2s ease-in-out 0s;\r\n    color: rgb(0, 0, 0) !important;\r\n}\r\n\r\n.fit-advisor-header-desc {\r\n    padding: 10px;\r\n    text-align: center;\r\n    color: rgb(0 0 0);\r\n    font-style: normal !important;\r\n    font-weight: normal !important;\r\n    font-size: 14px !important;\r\n    line-height: 20px !important;\r\n    letter-spacing: 0.04em !important;\r\n    font-family: karla !important;\r\n}\r\n\r\n.gIdEkK p {\r\n    margin: unset;\r\n}\r\n\r\n.jjnwUS {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    background: white;\r\n    color: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 50%;\r\n    cursor: pointer;\r\n    width: 22px;\r\n    height: 22px;\r\n    transition: opacity 0.2s ease-in-out 0s;\r\n    /* margin-top: 50px; */\r\n}\r\n\r\n.fit-advisor-product-size-box {\r\n    padding: 0px;\r\n}\r\n\r\n.fit-advisor-selected-size {\r\n    text-align: center;\r\n    font-weight: 700;\r\n    font-size: 40px;\r\n    line-height: 1.2em;\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin: 0 auto;\r\n    /* margin-left:50px; */\r\n    display: block;\r\n}\r\n\r\n.fit-advisor-selected-size-arrow-box {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 198px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n\r\n.selected-product-arrow-left {\r\n    background: rgba(255, 255, 255, 0.5);\r\n    z-index: 30;\r\n    margin-right: 50px !important;\r\n}\r\n\r\n.selected-product-arrow-left-pointer {\r\n    opacity: 1;\r\n    cursor: pointer;\r\n}\r\n\r\n.fit-advisor-selected-size-container {\r\n    display: grid;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n}\r\n\r\n.fit-advisor-product-btn-to-cart {\r\n    -moz-user-select: none;\r\n    -ms-user-select: none;\r\n    -webkit-user-select: none;\r\n    user-select: none;\r\n    -webkit-appearance: none;\r\n    -moz-appearance: none;\r\n    appearance: none;\r\n    display: inline-block;\r\n    width: auto;\r\n    text-decoration: none;\r\n    text-align: center;\r\n    vertical-align: middle;\r\n    cursor: pointer;\r\n    border: 1px solid transparent;\r\n    border-radius: 2px;\r\n    padding: 8px 15px;\r\n    background-color: #000000;\r\n    color: var(--color-btn-primary-text);\r\n    /* font-family: lato !important; */\r\n    /* font-style: var(--font-style-header); */\r\n    /* font-weight: var(--font-weight-header); */\r\n    text-transform: uppercase;\r\n    letter-spacing: 0.08em;\r\n    white-space: normal;\r\n    font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n    /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n}\r\n\r\n.fit-advisor-inch {\r\n    margin-left: 73% !important;\r\n    margin-top: -27% !important;\r\n}\r\n\r\n.fit-advisor-agelabel {\r\n    margin-top: -26px !important;\r\n}\r\n\r\n.fit-advisor-agelabel-span {\r\n    margin-left: -68px !important;\r\n    margin-top: 6px !important;\r\n}\r\n\r\n.fit-advisor-age-input {\r\n    margin-left: 17.5rem !important;\r\n    margin-top: -64px;\r\n    width: 150px !important;\r\n}\r\n\r\n.fit-advisor-logo {\r\n    margin-left: 43% !important;\r\n}\r\n\r\n\r\n/*   //responsiveness of bodyfit-modal */\r\n\r\n@media (min-width:320px) and (max-width:480px) {\r\n    /* .dfOagu{\r\n        margin-left: 50px;\r\n         margin-top: 0px  !important  ;\r\n    } */\r\n    .spinner-position{\r\n        width: 2rem !important;\r\n        height: 2rem !important;\r\n        margin-left:0px !important;\r\n        \r\n      }\r\n    /* smartphones, iPhone, portrait 480x320 phones */\r\n    .ml-xl-spinner\r\n    {\r\n        margin-left:12rem !important;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 1.4em;\r\n    }\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px !important;\r\n        visibility: visible ;\r\n        margin-bottom: 4.5em !important;\r\n        margin-right: 0px !important;\r\n    }\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 128px 1fr;\r\n        justify-self: flex-end;\r\n    }\r\n    .bigsize {\r\n        grid-template-columns: 1fr 150px 1fr !important;\r\n    }\r\n    .big-size-margin-recommend-size {\r\n        margin-left: 15px !important;\r\n    }\r\n    .big-size-margin {\r\n        margin-left: 35px !important;\r\n    }\r\n    .final-size-label {\r\n        font-family: Karla;\r\n        font-weight: 600;\r\n        font-size: small !important;\r\n        margin-left: 10px;\r\n        text-decoration: underline;\r\n    }\r\n    .final-size-heading {\r\n        font-family: 'Montserrat';\r\n        font-weight: 900;\r\n        font-size: x-large;\r\n        margin-left: 10px;\r\n    }\r\n    .row {\r\n        display: flex;\r\n        flex-wrap: wrap;\r\n        margin-right: -27px;\r\n        margin-left: -32px;\r\n        margin-top: 10px !important;\r\n        margin-bottom: 50px;\r\n    }\r\n    .adjust-label {\r\n        margin-left: 35%!important;\r\n    }\r\n    .adjust-label-5s {\r\n        margin-left: 10%!important;\r\n    }\r\n    .adjust-label-age {\r\n        margin-left: 40%!important;\r\n    }\r\n    .adjust-label-age-5s {\r\n        margin-left: 15%!important;\r\n    }\r\n    .fit-advisor-intro {\r\n        text-align: center;\r\n        margin-bottom: 35px !important;\r\n        letter-spacing: 0.04em;\r\n        color: rgb(0, 0, 0);\r\n        -webkit-user-select: none;\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        user-select: none;\r\n        font-style: normal !important;\r\n        font-weight: normal !important;\r\n        font-size: 14px !important;\r\n        line-height: 26px !important;\r\n        margin-top: -22px;\r\n        font-family: karla !important;\r\n    }\r\n    .fit-advisor-popup-adjustments {\r\n        width: 100% !important;\r\n        overflow: none;\r\n    }\r\n    .fit-advisor-custom_input {\r\n        display: block;\r\n        width: 50%;\r\n        margin: 0px;\r\n        padding: 10px 0px;\r\n        background: 0px center;\r\n        border-radius: 0px;\r\n        border-width: 0px 0px 1px;\r\n        border-top-style: initial;\r\n        border-right-style: initial;\r\n        border-left-style: initial;\r\n        border-top-color: initial;\r\n        border-right-color: initial;\r\n        border-left-color: initial;\r\n        border-image: initial;\r\n        border-bottom-style: solid;\r\n        border-bottom-color: rgb(175, 175, 175);\r\n        transition: border 0.2s ease-in-out 0s;\r\n        font-family: Lato !important;\r\n        font-size: 20px !important;\r\n        line-height: 24px !important;\r\n    }\r\n    .row-feet-inch {\r\n        display: grid;\r\n        gap: 30px;\r\n        grid-template-columns: 1fr 1fr;\r\n    }\r\n    .fit-advisor-inch {\r\n        margin-left: 143px !important;\r\n        margin-top: -64px!important;\r\n    }\r\n    .fit-advisor-agelabel {}\r\n    .fit-advisor-age-input {\r\n        margin-left: 14.5rem !important;\r\n        margin-top: -65px !important;\r\n        width: 50% !important;\r\n    }\r\n    input {\r\n        text-align: center;\r\n    }\r\n     ::-webkit-input-placeholder {\r\n        text-align: center;\r\n    }\r\n    .jjnwUS {\r\n        display: grid;\r\n        justify-content: center;\r\n        align-items: center;\r\n        background: white;\r\n        color: black;\r\n        border: 1px solid rgb(170, 170, 170);\r\n        border-radius: 50%;\r\n        cursor: pointer;\r\n        width: 22px;\r\n        height: 22px;\r\n        transition: opacity 0.2s ease-in-out 0s;\r\n        /* margin-left: 15px; */\r\n    }\r\n    .selected-product-arrow-left {\r\n        background: rgba(255, 255, 255, 0.5);\r\n        z-index: 30;\r\n        margin-right: 30px !important;\r\n    }\r\n     :-moz-placeholder {\r\n        text-align: center;\r\n    }\r\n    .custom-offset {\r\n        margin-left: -8% !important;\r\n    }\r\n    .fit-advisor-agelabel-span {\r\n        margin-left: 52px !important;\r\n        margin-top: 0px !important;\r\n    }\r\n    .fit-advisor-logo {\r\n        margin-left: 30% !important;\r\n    }\r\n    .continue-btn {\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        -webkit-user-select: none;\r\n        user-select: none;\r\n        -webkit-appearance: none;\r\n        -moz-appearance: none;\r\n        appearance: none;\r\n        display: inline-block;\r\n        width: auto;\r\n        text-decoration: none;\r\n        text-align: center;\r\n        vertical-align: middle;\r\n        cursor: pointer;\r\n        border: 1px solid transparent;\r\n        border-radius: 2px;\r\n        padding: 8px 15px;\r\n        background-color: #000000;\r\n        color: white;\r\n      \r\n        text-transform: uppercase;\r\n        letter-spacing: 0.08em;\r\n        white-space: normal;\r\n        font-size: 15px !important;\r\n        font-family: 'Karla';\r\n        right: 25% !important;\r\n        width: 50% !important;\r\n    }\r\n    .fit-advisor-product-btn-to-cart {\r\n        -moz-user-select: none;\r\n        -ms-user-select: none;\r\n        -webkit-user-select: none;\r\n        user-select: none;\r\n        -webkit-appearance: none;\r\n        -moz-appearance: none;\r\n        appearance: none;\r\n        display: inline-block;\r\n        width: auto;\r\n        text-decoration: none;\r\n        text-align: center;\r\n        vertical-align: middle;\r\n        cursor: pointer;\r\n        border: 1px solid transparent;\r\n        border-radius: 2px;\r\n        padding: 8px 15px;\r\n        background-color: #000000;\r\n        color: var(--color-btn-primary-text);\r\n        /* font-family: lato !important; */\r\n        /* font-style: var(--font-style-header); */\r\n        /* font-weight: var(--font-weight-header); */\r\n        text-transform: uppercase;\r\n        letter-spacing: 0.08em;\r\n        white-space: normal;\r\n        font-size: calc(((var(--font-size-base) - 2) / (var(--font-size-base))) * 1em);\r\n        /* visibility: visible;\r\n    font-family: Lato;\r\n    font-size: 16px;\r\n    font-weight: 400;\r\n    display: inline-block;\r\n    padding: 10px 30px;\r\n    color: white;\r\n    background: black;\r\n    border: 1px solid rgb(170, 170, 170);\r\n    border-radius: 35px;\r\n    box-shadow: none;\r\n    cursor: pointer;\r\n  \tleft:41%!important;\r\n    transition: border 0.2s ease-in-out 0s, background 0.2s ease-in-out 0s;\r\n    user-select: none;\r\n    opacity: 1; */\r\n    }\r\n    .fit-advisor-chest-tab {\r\n        display: block;\r\n        gap: 5px;\r\n        margin-left: -65px !important;\r\n        grid-template-columns: 1fr 1fr 1fr;\r\n        padding: 0px 10px 40px;\r\n    }\r\n    .fit-advisor-selected-product-grid {\r\n        /* display: block; */\r\n        grid-template-columns: 2fr 3fr;\r\n        gap: 50px;\r\n        -webkit-box-pack: center;\r\n        justify-content: center;\r\n        -webkit-box-align: center;\r\n        align-items: center;\r\n        padding: 0px 50px;\r\n        margin-left: 50px !important;\r\n        /* display: none; */\r\n    }\r\n    .fit-advisor-selected-product-image {\r\n        padding: 0px;\r\n        align-self: flex-start;\r\n        display: none;\r\n    }\r\n    .fit-advisor-fit-grid {\r\n        display: block;\r\n        grid-template-columns: 1fr 1fr;\r\n        -webkit-box-pack: center;\r\n        justify-content: center;\r\n        -webkit-box-align: center;\r\n        align-items: center;\r\n        text-align: center;\r\n        background: white;\r\n        border: none;\r\n        margin-bottom: 15px;\r\n        margin-left: -15px;\r\n        padding: 10px 20px;\r\n        box-shadow: none;\r\n    }\r\n}\r\n\r\n@media (min-width:481px) and (max-width:640px) {\r\n    /* portrait e-readers (Nook/Kindle), smaller tablets @ 600 or @ 640 wide. */\r\n}\r\n\r\n@media (min-width:641px) and (max-width:960px) {\r\n    /* portrait tablets, portrait iPad, landscape e-readers, landscape 800x480 or 854x480 phones */\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 100px 1fr !important;\r\n        justify-self: flex-end;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 55px;\r\n    }\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px;\r\n        visibility: visible;\r\n        margin-bottom: -5.5em !important;\r\n        /* margin-right: 50px; */\r\n    }\r\n}\r\n\r\n@media (min-width:961px) and (max-width:1024px) {\r\n    /* tablet, landscape iPad, lo-res laptops ands desktops */\r\n}\r\n\r\n@media (min-width:1025px) and (max-width:1280px) {\r\n    /* big landscape tablets, laptops, and desktops */\r\n}\r\n\r\n\r\n/* /* @media (min-width:1281px) { /* hi-res laptops and desktops */\r\n\r\n\r\n/*   } / / */\r\n\r\n\r\n/* STYLE FOR LOADER */\r\n\r\n@-webkit-keyframes spinner-border {\r\n    to {\r\n        transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n@keyframes spinner-border {\r\n    to {\r\n        transform: rotate(360deg);\r\n    }\r\n}\r\n\r\n.spinner-border {\r\n    display: inline-block;\r\n    width: 2rem;\r\n    height: 2rem;\r\n    vertical-align: text-bottom;\r\n    border: 0.25em solid currentColor;\r\n    border-right-color: transparent;\r\n    border-radius: 50%;\r\n    -webkit-animation: 0.75s linear infinite spinner-border;\r\n    animation: 0.75s linear infinite spinner-border;\r\n    border-width: 2px !important;\r\n}\r\n\r\n.spinner-border-sm {\r\n    width: 1rem;\r\n    height: 1rem;\r\n    border-width: 0.2em;\r\n}\r\n\r\n@media (prefers-reduced-motion: reduce) {\r\n    .spinner-border,\r\n    .spinner-grow {\r\n        -webkit-animation-duration: 1.5s;\r\n        animation-duration: 1.5s;\r\n    }\r\n}\r\n\r\n.sr-only {\r\n    position: absolute;\r\n    width: 1px;\r\n    height: 1px;\r\n    padding: 0;\r\n    margin: -1px;\r\n    overflow: hidden;\r\n    clip: rect(0, 0, 0, 0);\r\n    white-space: nowrap;\r\n    border: 0;\r\n}\r\n\r\n.sr-only-focusable:active,\r\n.sr-only-focusable:focus {\r\n    position: static;\r\n    width: auto;\r\n    height: auto;\r\n    overflow: visible;\r\n    clip: auto;\r\n    white-space: normal;\r\n}\r\n\r\n.warning-place::-webkit-input-placeholder {\r\n    color: #fc0000 !important;\r\n    opacity: 1;\r\n    font-weight: bold;\r\n    font-family: karla;\r\n    transition: ease-in-out 1s;\r\n}\r\n\r\n.on-excel-size-two {\r\n    position: relative;\r\n    z-index: 40;\r\n    padding: 5px 0px;\r\n    grid-template-columns: 1fr 190px 1fr;\r\n    justify-self: flex-end;\r\n}\r\n\r\n.on-excel-size {\r\n    display: grid;\r\n    grid-template-columns: 1fr 1fr;\r\n    justify-content: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    /* border: 1px solid rgb(221, 221, 221); */\r\n    border-radius: 2px;\r\n    margin-bottom: 15px;\r\n    margin-left: -10px;\r\n    padding: 10px 20px;\r\n    /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */\r\n}\r\n\r\n#chest1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#chest2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#chest3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#stomach3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom1:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom2:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n#bottom3:hover {\r\n    transform: scale(1.1) !important;\r\n    transition: ease-in-out 0.4s !important;\r\n}\r\n\r\n.col-xl,\r\n.col-xl-auto,\r\n.col-xl-12,\r\n.col-xl-11,\r\n.col-xl-10,\r\n.col-xl-9,\r\n.col-xl-8,\r\n.col-xl-7,\r\n.col-xl-6,\r\n.col-xl-5,\r\n.col-xl-4,\r\n.col-xl-3,\r\n.col-xl-2,\r\n.col-xl-1,\r\n.col-lg,\r\n.col-lg-auto,\r\n.col-lg-12,\r\n.col-lg-11,\r\n.col-lg-10,\r\n.col-lg-9,\r\n.col-lg-8,\r\n.col-lg-7,\r\n.col-lg-6,\r\n.col-lg-5,\r\n.col-lg-4,\r\n.col-lg-3,\r\n.col-lg-2,\r\n.col-lg-1,\r\n.col-md,\r\n.col-md-auto,\r\n.col-md-12,\r\n.col-md-11,\r\n.col-md-10,\r\n.col-md-9,\r\n.col-md-8,\r\n.col-md-7,\r\n.col-md-6,\r\n.col-md-5,\r\n.col-md-4,\r\n.col-md-3,\r\n.col-md-2,\r\n.col-md-1,\r\n.col-sm,\r\n.col-sm-auto,\r\n.col-sm-12,\r\n.col-sm-11,\r\n.col-sm-10,\r\n.col-sm-9,\r\n.col-sm-8,\r\n.col-sm-7,\r\n.col-sm-6,\r\n.col-sm-5,\r\n.col-sm-4,\r\n.col-sm-3,\r\n.col-sm-2,\r\n.col-sm-1,\r\n.col,\r\n.col-auto,\r\n.col-12,\r\n.col-11,\r\n.col-10,\r\n.col-9,\r\n.col-8,\r\n.col-7,\r\n.col-6,\r\n.col-5,\r\n.col-4,\r\n.col-3,\r\n.col-2,\r\n.col-1 {\r\n    position: relative;\r\n    width: 100%;\r\n    padding-right: 15px;\r\n    padding-left: 15px;\r\n}\r\n\r\n.col-sm-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-sm-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-sm-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-sm-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-sm-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-sm-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-sm-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-sm-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-sm-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-sm-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-sm-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-sm-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-sm-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.col {\r\n    flex-basis: 0;\r\n    flex-grow: 1;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-md-auto {\r\n    flex: 0 0 auto;\r\n    width: auto;\r\n    max-width: 100%;\r\n}\r\n\r\n.col-md-1 {\r\n    flex: 0 0 8.3333333333%;\r\n    max-width: 8.3333333333%;\r\n}\r\n\r\n.col-md-2 {\r\n    flex: 0 0 16.6666666667%;\r\n    max-width: 16.6666666667%;\r\n}\r\n\r\n.col-md-3 {\r\n    flex: 0 0 25%;\r\n    max-width: 25%;\r\n}\r\n\r\n.col-md-4 {\r\n    flex: 0 0 33.3333333333%;\r\n    max-width: 33.3333333333%;\r\n}\r\n\r\n.col-md-5 {\r\n    flex: 0 0 41.6666666667%;\r\n    max-width: 41.6666666667%;\r\n}\r\n\r\n.col-md-6 {\r\n    flex: 0 0 50%;\r\n    max-width: 50%;\r\n}\r\n\r\n.col-md-7 {\r\n    flex: 0 0 58.3333333333%;\r\n    max-width: 58.3333333333%;\r\n}\r\n\r\n.col-md-8 {\r\n    flex: 0 0 66.6666666667%;\r\n    max-width: 66.6666666667%;\r\n}\r\n\r\n.col-md-9 {\r\n    flex: 0 0 75%;\r\n    max-width: 75%;\r\n}\r\n\r\n.col-md-10 {\r\n    flex: 0 0 83.3333333333%;\r\n    max-width: 83.3333333333%;\r\n}\r\n\r\n.col-md-11 {\r\n    flex: 0 0 91.6666666667%;\r\n    max-width: 91.6666666667%;\r\n}\r\n\r\n.col-md-12 {\r\n    flex: 0 0 100%;\r\n    max-width: 100%;\r\n}\r\n\r\n.mt-0,\r\n.my-0 {\r\n    margin-top: 0 !important;\r\n}\r\n\r\n.mr-0,\r\n.mx-0 {\r\n    margin-right: 0 !important;\r\n}\r\n\r\n.mb-0,\r\n.my-0 {\r\n    margin-bottom: 0 !important;\r\n}\r\n\r\n.ml-0,\r\n.mx-0 {\r\n    margin-left: 0 !important;\r\n}\r\n\r\n.m-1 {\r\n    margin: 0.25rem !important;\r\n}\r\n\r\n.mt-1,\r\n.my-1 {\r\n    margin-top: 0.25rem !important;\r\n}\r\n\r\n.mr-1,\r\n.mx-1 {\r\n    margin-right: 0.25rem !important;\r\n}\r\n\r\n.mb-1,\r\n.my-1 {\r\n    margin-bottom: 0.25rem !important;\r\n}\r\n\r\n.ml-1,\r\n.mx-1 {\r\n    margin-left: 0.25rem !important;\r\n}\r\n\r\n.m-2 {\r\n    margin: 0.5rem !important;\r\n}\r\n\r\n.mt-2,\r\n.my-2 {\r\n    margin-top: 0.5rem !important;\r\n}\r\n\r\n.mr-2,\r\n.mx-2 {\r\n    margin-right: 0.5rem !important;\r\n}\r\n\r\n.mb-2,\r\n.my-2 {\r\n    margin-bottom: 0.5rem !important;\r\n}\r\n\r\n.ml-2,\r\n.mx-2 {\r\n    margin-left: 0.5rem !important;\r\n}\r\n\r\n.m-3 {\r\n    margin: 1rem !important;\r\n}\r\n\r\n.mt-3,\r\n.my-3 {\r\n    margin-top: 1rem !important;\r\n}\r\n.mtf-3,\r\n.myf-3 {\r\n    margin-top: 1.1rem !important;\r\n}\r\n.mr-3,\r\n.mx-3 {\r\n    margin-right: 1rem !important;\r\n}\r\n\r\n.mb-3,\r\n.my-3 {\r\n    margin-bottom: 1rem !important;\r\n}\r\n\r\n.ml-3,\r\n.mx-3 {\r\n    margin-left: 1rem !important;\r\n}\r\n\r\n.m-4 {\r\n    margin: 1.5rem !important;\r\n}\r\n\r\n.mt-4,\r\n.my-4 {\r\n    margin-top: 1.5rem !important;\r\n}\r\n\r\n.mtf-4,\r\n.myf-4 {\r\n    margin-top: 1.3rem !important;\r\n}\r\n\r\n.mr-4,\r\n.mx-4 {\r\n    margin-right: 1.5rem !important;\r\n}\r\n\r\n.mb-4,\r\n.my-4 {\r\n    margin-bottom: 1.5rem !important;\r\n}\r\n\r\n.ml-4,\r\n.mx-4 {\r\n    margin-left: 1.5rem !important;\r\n}\r\n\r\n.m-5 {\r\n    margin: 3rem !important;\r\n}\r\n\r\n.mt-5,\r\n.my-5 {\r\n    margin-top: 3rem !important;\r\n}\r\n\r\n.mtf-5,\r\n.myf-5 {\r\n    margin-top: 2rem !important;\r\n}\r\n\r\n\r\n\r\n.mr-5,\r\n.mx-5 {\r\n    margin-right: 3rem !important;\r\n}\r\n\r\n.mb-5,\r\n.my-5 {\r\n    margin-bottom: 3rem !important;\r\n}\r\n\r\n.ml-5,\r\n.mx-5 {\r\n    margin-left: 3rem !important;\r\n}\r\n\r\n.m-n1 {\r\n    margin: -0.25rem !important;\r\n}\r\n\r\n.mt-n1,\r\n.my-n1 {\r\n    margin-top: -0.25rem !important;\r\n}\r\n\r\n.mr-n1,\r\n.mx-n1 {\r\n    margin-right: -0.25rem !important;\r\n}\r\n\r\n.mb-n1,\r\n.my-n1 {\r\n    margin-bottom: -0.25rem !important;\r\n}\r\n\r\n.ml-n1,\r\n.mx-n1 {\r\n    margin-left: -0.25rem !important;\r\n}\r\n\r\n.m-n2 {\r\n    margin: -0.5rem !important;\r\n}\r\n\r\n.mt-n2,\r\n.my-n2 {\r\n    margin-top: -0.5rem !important;\r\n}\r\n\r\n.mr-n2,\r\n.mx-n2 {\r\n    margin-right: -0.5rem !important;\r\n}\r\n\r\n.mb-n2,\r\n.my-n2 {\r\n    margin-bottom: -0.5rem !important;\r\n}\r\n\r\n.ml-n2,\r\n.mx-n2 {\r\n    margin-left: -0.5rem !important;\r\n}\r\n\r\n.m-n3 {\r\n    margin: -1rem !important;\r\n}\r\n\r\n.mt-n3,\r\n.my-n3 {\r\n    margin-top: -1rem !important;\r\n}\r\n\r\n.mr-n3,\r\n.mx-n3 {\r\n    margin-right: -1rem !important;\r\n}\r\n\r\n.mb-n3,\r\n.my-n3 {\r\n    margin-bottom: -1rem !important;\r\n}\r\n\r\n.ml-n3,\r\n.mx-n3 {\r\n    margin-left: -1rem !important;\r\n}\r\n\r\n.m-n4 {\r\n    margin: -1.5rem !important;\r\n}\r\n\r\n.mt-n4,\r\n.my-n4 {\r\n    margin-top: -1.5rem !important;\r\n}\r\n\r\n.mr-n4,\r\n.mx-n4 {\r\n    margin-right: -1.5rem !important;\r\n}\r\n\r\n.mb-n4,\r\n.my-n4 {\r\n    margin-bottom: -1.5rem !important;\r\n}\r\n\r\n.ml-n4,\r\n.mx-n4 {\r\n    margin-left: -1.5rem !important;\r\n}\r\n\r\n.m-n5 {\r\n    margin: -3rem !important;\r\n}\r\n\r\n.mt-n5,\r\n.my-n5 {\r\n    margin-top: -3rem !important;\r\n}\r\n\r\n.mtf-n6,\r\n.myf-n6 {\r\n    margin-top: -6.5rem !important;\r\n}\r\n\r\n\r\n.mt-n6,\r\n.my-n6 {\r\n    margin-top: -3.8rem !important;\r\n}\r\n\r\n.mr-n5,\r\n.mx-n5 {\r\n    margin-right: -3rem !important;\r\n}\r\n\r\n.mb-n5,\r\n.my-n5 {\r\n    margin-bottom: -3rem !important;\r\n}\r\n\r\n.ml-n5,\r\n.mx-n5 {\r\n    margin-left: -3rem !important;\r\n}\r\n\r\n.offset-1 {\r\n    margin-left: 8.3333333333%;\r\n}\r\n\r\n.offset-2 {\r\n    margin-left: 16.6666666667%;\r\n}\r\n\r\n.offset-3 {\r\n    margin-left: 25%;\r\n}\r\n\r\n.offset-4 {\r\n    margin-left: 33.3333333333%;\r\n}\r\n\r\n.offset-5 {\r\n    margin-left: 41.6666666667%;\r\n}\r\n\r\n.offset-6 {\r\n    margin-left: 50%;\r\n}\r\n\r\n.offset-7 {\r\n    margin-left: 58.3333333333%;\r\n}\r\n\r\n.offset-8 {\r\n    margin-left: 66.6666666667%;\r\n}\r\n\r\n.offset-9 {\r\n    margin-left: 75%;\r\n}\r\n\r\n.offset-10 {\r\n    margin-left: 83.3333333333%;\r\n}\r\n\r\n.offset-11 {\r\n    margin-left: 91.6666666667%;\r\n}\r\n\r\n.form-control {\r\n    display: block;\r\n    width: 100%;\r\n    height: calc(1.6em + 0.75rem + 2px);\r\n    padding: 0.375rem 0.75rem;\r\n    font-size: 0.9rem;\r\n    font-weight: 400;\r\n    line-height: 1.6;\r\n    color: #495057;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid #ced4da;\r\n    border-radius: 0.25rem;\r\n    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;\r\n}\r\n\r\n.form-control-lg {\r\n    height: calc(1.5em + 1rem + 2px);\r\n    padding: 0.5rem 1rem;\r\n    font-size: 1.125rem;\r\n    line-height: 1.5;\r\n    border-radius: 0.3rem;\r\n}\r\n\r\n.w-25 {\r\n    width: 25% !important;\r\n}\r\n\r\n.w-50 {\r\n    width: 50% !important;\r\n}\r\n\r\n.w-75 {\r\n    width: 75% !important;\r\n}\r\n\r\n.w-100 {\r\n    width: 100% !important;\r\n}\r\n\r\n.w-auto {\r\n    width: auto !important;\r\n}\r\n\r\n.h-25 {\r\n    height: 25% !important;\r\n}\r\n\r\n.h-50 {\r\n    height: 50% !important;\r\n}\r\n\r\n.h-75 {\r\n    height: 75% !important;\r\n}\r\n\r\n.h-100 {\r\n    height: 100% !important;\r\n}\r\n\r\n.input-border {\r\n    border-bottom: 1px solid lightgrey !important;\r\n    border-top: none;\r\n    border-left: none;\r\n    border-right: none;\r\n    border-radius: 0px;\r\n}\r\n\r\n.justify-content-center {\r\n    justify-content: center !important;\r\n}\r\n\r\n.d-flex {\r\n    display: flex !important;\r\n}\r\n\r\n.ml-n6 {\r\n    margin-left: -4rem !important;\r\n}\r\n\r\n.adjust-label-more {\r\n    margin-left: 35%!important;\r\n}\r\n\r\n.scrollbar-hidden::-webkit-scrollbar {\r\n    display: none;\r\n}\r\n\r\n\r\n/* Hide scrollbar for IE, Edge add Firefox */\r\n\r\n.scrollbar-hidden {\r\n    -ms-overflow-style: none;\r\n    scrollbar-width: none;\r\n    /* Firefox */\r\n}\r\n\r\n.m-result {\r\n    text-align: center;\r\n    margin-top: 0px;\r\n    visibility: visible;\r\n    margin-bottom: -8.5em;\r\n    /* margin-right: 50px; */\r\n}\r\n\r\n@media only screen and (max-width: 320px) and (min-width: 320px) {\r\n    .m-result {\r\n        text-align: center !important;\r\n        margin-top: 0px !important;\r\n        visibility: visible ;\r\n        margin-bottom: -5.5em !important;\r\n        margin-right: 50px !important;\r\n    }\r\n    /* .dfOagu {\r\n        margin-left: 25px;\r\n        margin-top: 0px ;\r\n        margin-right: 40px !important;\r\n    } */\r\n    .fit-advisor-selected-size-arrow-box {\r\n        position: relative;\r\n        z-index: 40;\r\n        padding: 5px 0px;\r\n        grid-template-columns: 1fr 106px 1fr !important;\r\n        justify-self: flex-end;\r\n    }\r\n    .selected-product-arrow-left {\r\n        background: rgba(255, 255, 255, 0.5);\r\n        z-index: 30;\r\n        /* margin-right: -26px !important; */\r\n        margin-left: 38px;\r\n        margin-right: 28px !important;\r\n    }\r\n    .result-size {\r\n        width: 100%;\r\n        font-family: karla;\r\n        font-weight: 900;\r\n        font-size: 1.4em;\r\n    }\r\n}\r\n\r\n.float-left {\r\n    float: left !important;\r\n}\r\n\r\n.float-right {\r\n    float: right !important;\r\n}\r\n\r\n.float-none {\r\n    float: none !important;\r\n}\r\n\r\n.fit-advisor-fit-grid-s5 {\r\n    display: block;\r\n    grid-template-columns: 1fr 1fr;\r\n    -webkit-box-pack: center;\r\n    justify-content: center;\r\n    -webkit-box-align: center;\r\n    align-items: center;\r\n    text-align: center;\r\n    background: white;\r\n    border: none;\r\n    margin-bottom: 15px;\r\n    margin-left: -43px;\r\n    padding: 10px 20px;\r\n    box-shadow: none;\r\n}\r\n\r\n@media (min-width: 576px) {\r\n    .col-sm {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-sm-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-sm-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-sm-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-sm-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-sm-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-sm-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-sm-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-sm-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-sm-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-sm-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-sm-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-sm-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-sm-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-sm-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-sm-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-sm-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-sm-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-sm-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-sm-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-sm-first {\r\n        order: -1;\r\n    }\r\n    .order-sm-last {\r\n        order: 13;\r\n    }\r\n    .order-sm-0 {\r\n        order: 0;\r\n    }\r\n    .order-sm-1 {\r\n        order: 1;\r\n    }\r\n    .order-sm-2 {\r\n        order: 2;\r\n    }\r\n    .order-sm-3 {\r\n        order: 3;\r\n    }\r\n    .order-sm-4 {\r\n        order: 4;\r\n    }\r\n    .order-sm-5 {\r\n        order: 5;\r\n    }\r\n    .order-sm-6 {\r\n        order: 6;\r\n    }\r\n    .order-sm-7 {\r\n        order: 7;\r\n    }\r\n    .order-sm-8 {\r\n        order: 8;\r\n    }\r\n    .order-sm-9 {\r\n        order: 9;\r\n    }\r\n    .order-sm-10 {\r\n        order: 10;\r\n    }\r\n    .order-sm-11 {\r\n        order: 11;\r\n    }\r\n    .order-sm-12 {\r\n        order: 12;\r\n    }\r\n    .offset-sm-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-sm-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-sm-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-sm-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-sm-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-sm-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-sm-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-sm-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-sm-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-sm-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-sm-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-sm-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 768px) {\r\n    .col-md {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-md-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-md-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-md-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-md-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-md-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-md-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-md-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-md-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-md-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-md-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-md-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-md-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-md-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-md-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-md-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-md-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-md-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-md-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-md-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-md-first {\r\n        order: -1;\r\n    }\r\n    .order-md-last {\r\n        order: 13;\r\n    }\r\n    .order-md-0 {\r\n        order: 0;\r\n    }\r\n    .order-md-1 {\r\n        order: 1;\r\n    }\r\n    .order-md-2 {\r\n        order: 2;\r\n    }\r\n    .order-md-3 {\r\n        order: 3;\r\n    }\r\n    .order-md-4 {\r\n        order: 4;\r\n    }\r\n    .order-md-5 {\r\n        order: 5;\r\n    }\r\n    .order-md-6 {\r\n        order: 6;\r\n    }\r\n    .order-md-7 {\r\n        order: 7;\r\n    }\r\n    .order-md-8 {\r\n        order: 8;\r\n    }\r\n    .order-md-9 {\r\n        order: 9;\r\n    }\r\n    .order-md-10 {\r\n        order: 10;\r\n    }\r\n    .order-md-11 {\r\n        order: 11;\r\n    }\r\n    .order-md-12 {\r\n        order: 12;\r\n    }\r\n    .offset-md-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-md-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-md-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-md-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-md-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-md-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-md-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-md-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-md-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-md-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-md-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-md-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 992px) {\r\n    .col-lg {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-lg-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-lg-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-lg-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-lg-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-lg-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-lg-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-lg-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-lg-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-lg-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-lg-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-lg-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-lg-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-lg-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-lg-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-lg-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-lg-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-lg-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-lg-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-lg-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-lg-first {\r\n        order: -1;\r\n    }\r\n    .order-lg-last {\r\n        order: 13;\r\n    }\r\n    .order-lg-0 {\r\n        order: 0;\r\n    }\r\n    .order-lg-1 {\r\n        order: 1;\r\n    }\r\n    .order-lg-2 {\r\n        order: 2;\r\n    }\r\n    .order-lg-3 {\r\n        order: 3;\r\n    }\r\n    .order-lg-4 {\r\n        order: 4;\r\n    }\r\n    .order-lg-5 {\r\n        order: 5;\r\n    }\r\n    .order-lg-6 {\r\n        order: 6;\r\n    }\r\n    .order-lg-7 {\r\n        order: 7;\r\n    }\r\n    .order-lg-8 {\r\n        order: 8;\r\n    }\r\n    .order-lg-9 {\r\n        order: 9;\r\n    }\r\n    .order-lg-10 {\r\n        order: 10;\r\n    }\r\n    .order-lg-11 {\r\n        order: 11;\r\n    }\r\n    .order-lg-12 {\r\n        order: 12;\r\n    }\r\n    .offset-lg-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-lg-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-lg-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-lg-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-lg-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-lg-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-lg-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-lg-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-lg-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-lg-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-lg-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-lg-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n@media (min-width: 1200px) {\r\n    .col-xl {\r\n        flex-basis: 0;\r\n        flex-grow: 1;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-xl-1>* {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .row-cols-xl-2>* {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .row-cols-xl-3>* {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .row-cols-xl-4>* {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .row-cols-xl-5>* {\r\n        flex: 0 0 20%;\r\n        max-width: 20%;\r\n    }\r\n    .row-cols-xl-6>* {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-xl-auto {\r\n        flex: 0 0 auto;\r\n        width: auto;\r\n        max-width: 100%;\r\n    }\r\n    .col-xl-1 {\r\n        flex: 0 0 8.3333333333%;\r\n        max-width: 8.3333333333%;\r\n    }\r\n    .col-xl-2 {\r\n        flex: 0 0 16.6666666667%;\r\n        max-width: 16.6666666667%;\r\n    }\r\n    .col-xl-3 {\r\n        flex: 0 0 25%;\r\n        max-width: 25%;\r\n    }\r\n    .col-xl-4 {\r\n        flex: 0 0 33.3333333333%;\r\n        max-width: 33.3333333333%;\r\n    }\r\n    .col-xl-5 {\r\n        flex: 0 0 41.6666666667%;\r\n        max-width: 41.6666666667%;\r\n    }\r\n    .col-xl-6 {\r\n        flex: 0 0 50%;\r\n        max-width: 50%;\r\n    }\r\n    .col-xl-7 {\r\n        flex: 0 0 58.3333333333%;\r\n        max-width: 58.3333333333%;\r\n    }\r\n    .col-xl-8 {\r\n        flex: 0 0 66.6666666667%;\r\n        max-width: 66.6666666667%;\r\n    }\r\n    .col-xl-9 {\r\n        flex: 0 0 75%;\r\n        max-width: 75%;\r\n    }\r\n    .col-xl-10 {\r\n        flex: 0 0 83.3333333333%;\r\n        max-width: 83.3333333333%;\r\n    }\r\n    .col-xl-11 {\r\n        flex: 0 0 91.6666666667%;\r\n        max-width: 91.6666666667%;\r\n    }\r\n    .col-xl-12 {\r\n        flex: 0 0 100%;\r\n        max-width: 100%;\r\n    }\r\n    .order-xl-first {\r\n        order: -1;\r\n    }\r\n    .order-xl-last {\r\n        order: 13;\r\n    }\r\n    .order-xl-0 {\r\n        order: 0;\r\n    }\r\n    .order-xl-1 {\r\n        order: 1;\r\n    }\r\n    .order-xl-2 {\r\n        order: 2;\r\n    }\r\n    .order-xl-3 {\r\n        order: 3;\r\n    }\r\n    .order-xl-4 {\r\n        order: 4;\r\n    }\r\n    .order-xl-5 {\r\n        order: 5;\r\n    }\r\n    .order-xl-6 {\r\n        order: 6;\r\n    }\r\n    .order-xl-7 {\r\n        order: 7;\r\n    }\r\n    .order-xl-8 {\r\n        order: 8;\r\n    }\r\n    .order-xl-9 {\r\n        order: 9;\r\n    }\r\n    .order-xl-10 {\r\n        order: 10;\r\n    }\r\n    .order-xl-11 {\r\n        order: 11;\r\n    }\r\n    .order-xl-12 {\r\n        order: 12;\r\n    }\r\n    .offset-xl-0 {\r\n        margin-left: 0;\r\n    }\r\n    .offset-xl-1 {\r\n        margin-left: 8.3333333333%;\r\n    }\r\n    .offset-xl-2 {\r\n        margin-left: 16.6666666667%;\r\n    }\r\n    .offset-xl-3 {\r\n        margin-left: 25%;\r\n    }\r\n    .offset-xl-4 {\r\n        margin-left: 33.3333333333%;\r\n    }\r\n    .offset-xl-5 {\r\n        margin-left: 41.6666666667%;\r\n    }\r\n    .offset-xl-6 {\r\n        margin-left: 50%;\r\n    }\r\n    .offset-xl-7 {\r\n        margin-left: 58.3333333333%;\r\n    }\r\n    .offset-xl-8 {\r\n        margin-left: 66.6666666667%;\r\n    }\r\n    .offset-xl-9 {\r\n        margin-left: 75%;\r\n    }\r\n    .offset-xl-10 {\r\n        margin-left: 83.3333333333%;\r\n    }\r\n    .offset-xl-11 {\r\n        margin-left: 91.6666666667%;\r\n    }\r\n}\r\n\r\n.text-center {\r\n    text-align: center !important;\r\n}\r\n.text-truncate {\r\n    overflow: hidden;\r\n    text-overflow: ellipsis;\r\n    white-space: nowrap;\r\n}\r\n\r\n.text-left {\r\n    text-align: left !important;\r\n}\r\n\r\n.text-right {\r\n    text-align: right !important;\r\n}\r\n.ml-xl-6,\r\n    .mx-xl-6 {\r\n        margin-left: 6rem !important;\r\n    }.ml-xl-11,\r\n    .mx-xl-11 {\r\n        margin-left: 11rem !important;\r\n    }\r\n    .ml-xl-12,\r\n    .mx-xl-12 {\r\n        margin-left: 12rem !important;\r\n    }\r\n    .center-force {\r\n        margin: 0;\r\n        position: sticky;\r\n        top: 50%;\r\n        left: 50%;\r\n        -ms-transform: translate(-50%, -50%);\r\n        transform: translate(-50%, -50%);\r\n      }\r\n      .spinner-position{\r\n        width: 3rem;\r\n        height: 3rem;\r\n        margin-left: 0px;\r\n      }\r\n      /* .dfOagu-411w {\r\n        margin-left: 50px;\r\n        margin-top: 5px;\r\n    } */\r\n    .someclass {\r\n        cursor: default\r\n     }\r\n\r\n                                                                                            /* bodyfit-modal */\r\n\r\n                                                                                            \r\n.bodyfit-modal-open {\r\n    overflow: hidden;\r\n  }\r\n  .bodyfit-modal-open .bodyfit-modal {\r\n    overflow-x: hidden;\r\n    overflow-y: auto;\r\n  }\r\n  \r\n  .bodyfit-modal {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1050;\r\n    display: none;\r\n    width: 100%;\r\n    height: 100%;\r\n    overflow: hidden;\r\n    outline: 0;\r\n  }\r\n  \r\n  .bodyfit-modal-dialog {\r\n    position: relative;\r\n    width: auto;\r\n    margin: 0.5rem;\r\n    pointer-events: none;\r\n  }\r\n  .bodyfit-modal.fade .bodyfit-modal-dialog {\r\n    transition: transform 0.3s ease-out;\r\n    transform: translate(0, -50px);\r\n  }\r\n  @media (prefers-reduced-motion: reduce) {\r\n    .bodyfit-modal.fade .bodyfit-modal-dialog {\r\n      transition: none;\r\n    }\r\n  }\r\n  .bodyfit-modal.show .bodyfit-modal-dialog {\r\n    transform: none;\r\n  }\r\n  .bodyfit-modal.bodyfit-modal-static .bodyfit-modal-dialog {\r\n    transform: scale(1.02);\r\n  }\r\n  \r\n  .bodyfit-modal-dialog-scrollable {\r\n    display: flex;\r\n    max-height: calc(100% - 1rem);\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n    max-height: calc(100vh - 1rem);\r\n    overflow: hidden;\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-header,\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-footer {\r\n    flex-shrink: 0;\r\n  }\r\n  .bodyfit-modal-dialog-scrollable .bodyfit-modal-body {\r\n    overflow-y: auto;\r\n  }\r\n  \r\n  .bodyfit-modal-dialog-centered {\r\n    display: flex;\r\n    align-items: center;\r\n    min-height: calc(100% - 1rem);\r\n  }\r\n  .bodyfit-modal-dialog-centered::before {\r\n    display: block;\r\n    height: calc(100vh - 1rem);\r\n    height: -webkit-min-content;\r\n    height: -moz-min-content;\r\n    height: min-content;\r\n    content: \"\";\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable {\r\n    flex-direction: column;\r\n    justify-content: center;\r\n    height: 100%;\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n    max-height: none;\r\n  }\r\n  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable::before {\r\n    content: none;\r\n  }\r\n  \r\n  .bodyfit-modal-content {\r\n    position: relative;\r\n    display: flex;\r\n    flex-direction: column;\r\n    width: 100%;\r\n    pointer-events: auto;\r\n    background-color: #fff;\r\n    background-clip: padding-box;\r\n    border: 1px solid rgba(0, 0, 0, 0.2);\r\n    border-radius: 0.3rem;\r\n    outline: 0;\r\n  }\r\n  \r\n  .bodyfit-modal-backdrop {\r\n    position: fixed;\r\n    top: 0;\r\n    left: 0;\r\n    z-index: 1040;\r\n    width: 100vw;\r\n    height: 100vh;\r\n    background-color: #000;\r\n  }\r\n  .bodyfit-modal-backdrop.fade {\r\n    opacity: 0;\r\n  }\r\n  .bodyfit-modal-backdrop.show {\r\n    opacity: 0.5;\r\n  }\r\n  \r\n  .bodyfit-modal-header {\r\n    display: flex;\r\n    align-items: flex-start;\r\n    justify-content: space-between;\r\n    padding: 1rem 1rem;\r\n    border-bottom: 1px solid #dee2e6;\r\n    border-top-left-radius: calc(0.3rem - 1px);\r\n    border-top-right-radius: calc(0.3rem - 1px);\r\n  }\r\n  .bodyfit-modal-header .close {\r\n    padding: 1rem 1rem;\r\n    margin: -1rem -1rem -1rem auto;\r\n  }\r\n  \r\n  .bodyfit-modal-title {\r\n    margin-bottom: 0;\r\n    line-height: 1.6;\r\n  }\r\n  \r\n  .bodyfit-modal-body {\r\n    position: relative;\r\n    flex: 1 1 auto;\r\n    padding: 1rem;\r\n  }\r\n  \r\n  .bodyfit-modal-footer {\r\n    display: flex;\r\n    flex-wrap: wrap;\r\n    align-items: center;\r\n    justify-content: flex-end;\r\n    padding: 0.75rem;\r\n    border-top: 1px solid #dee2e6;\r\n    border-bottom-right-radius: calc(0.3rem - 1px);\r\n    border-bottom-left-radius: calc(0.3rem - 1px);\r\n  }\r\n  .bodyfit-modal-footer > * {\r\n    margin: 0.25rem;\r\n  }\r\n  \r\n  .bodyfit-modal-scrollbar-measure {\r\n    position: absolute;\r\n    top: -9999px;\r\n    width: 50px;\r\n    height: 50px;\r\n    overflow: scroll;\r\n  }\r\n  \r\n  @media (min-width: 576px) {\r\n    .bodyfit-modal-dialog {\r\n      max-width: 500px;\r\n      margin: 1.75rem auto;\r\n    }\r\n  \r\n    .bodyfit-modal-dialog-scrollable {\r\n      max-height: calc(100% - 3.5rem);\r\n    }\r\n    .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {\r\n      max-height: calc(100vh - 3.5rem);\r\n    }\r\n  \r\n    .bodyfit-modal-dialog-centered {\r\n      min-height: calc(100% - 3.5rem);\r\n    }\r\n    .bodyfit-modal-dialog-centered::before {\r\n      height: calc(100vh - 3.5rem);\r\n      height: -webkit-min-content;\r\n      height: -moz-min-content;\r\n      height: min-content;\r\n    }\r\n  \r\n    .bodyfit-modal-sm {\r\n      max-width: 300px;\r\n    }\r\n  }\r\n  @media (min-width: 992px) {\r\n    .bodyfit-modal-lg,\r\n  .bodyfit-modal-xl {\r\n      max-width: 800px;\r\n    }\r\n  }\r\n  @media (min-width: 1200px) {\r\n    .bodyfit-modal-xl {\r\n      max-width: 1140px;\r\n    }\r\n  }\r\n  .text-size-input\r\n  {\r\n      font-size:medium !important;\r\n  }\r\n \r\n \r\n /* This will style any <img> element in .parent div */\r\n \r\n .x-custom-container\r\n {\r\n    position: relative;\r\n    max-width: 53rem;\r\n    margin-left: -7.5rem !important;\r\n    background: #fff;\r\n    width: 170%;\r\n    padding: 3rem 5rem 0;\r\n    border-radius: 1px;\r\n }\r\n.close-custom\r\n{\r\n    color:#000;\r\n    font-size: 2em;\r\n    text-decoration: none;\r\n}\r\n.close-custom:hover,\r\n.close-custom:visited\r\n{\r\n    font-size: 2em;\r\n    text-decoration: none;\r\n    color:#000;\r\n}\r\n\r\n/* //spinner new */\r\n\r\n\r\n.blueBg {\r\n    background-image: linear-gradient(90deg, #979494, #f3f3f3);\r\n}\r\n\r\n.intro-banner-vdo-play-btn {\r\n    height: 24px;\r\n    width: 24px;\r\n    position: absolute;\r\n    top: 40%;\r\n    left: 49%;\r\n    text-align: center;\r\n    margin-left: 0px !important;\r\n    border-radius: 100px;\r\n    z-index: 1;\r\n}\r\n\r\n.intro-banner-vdo-play-btn i {\r\n    line-height: 56px;\r\n    font-size: 30px\r\n}\r\n\r\n.intro-banner-vdo-play-btn .ripple {\r\n    position: absolute;\r\n    width: 50px;\r\n    height: 50px;\r\n    z-index: -1;\r\n    /* left: 0%; */\r\n    /* top: 0%; */\r\n    opacity: 0;\r\n    margin-left: -25px !important;\r\n    border-radius: 100px;\r\n    -webkit-animation: ripple 1.8s infinite;\r\n    animation: ripple 1.9s infinite;\r\n    margin-top: -12px;\r\n}\r\n\r\n@-webkit-keyframes ripple {\r\n    0% {\r\n        opacity: 1;\r\n        -webkit-transform: scale(0);\r\n        transform: scale(0)\r\n    }\r\n\r\n    100% {\r\n        opacity: 0;\r\n        -webkit-transform: scale(1);\r\n        transform: scale(1)\r\n    }\r\n}\r\n\r\n@keyframes ripple {\r\n    0% {\r\n        opacity: 1;\r\n        -webkit-transform: scale(0);\r\n        transform: scale(0)\r\n    }\r\n\r\n    100% {\r\n        opacity: 0;\r\n        -webkit-transform: scale(1);\r\n        transform: scale(1)\r\n    }\r\n}\r\n\r\n.intro-banner-vdo-play-btn .ripple:nth-child(2) {\r\n    animation-delay: .3s;\r\n    -webkit-animation-delay: .3s\r\n}\r\n\r\n.intro-banner-vdo-play-btn .ripple:nth-child(3) {\r\n    animation-delay: .6s;\r\n    -webkit-animation-delay: .6s\r\n}\r\n\r\n.intro-banner-vdo-play-btn .ripple:nth-child(4) {\r\n    animation-delay: .6s;\r\n    -webkit-animation-delay: .6s\r\n}\r\n.bylt-header\r\n{\r\n    display:none;\r\n}", ""]);
 // Exports
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -43133,6 +43187,1826 @@ module.exports=function(t){var e={};function n(r){if(e[r])return e[r].exports;va
 
 /***/ }),
 
+/***/ "./node_modules/vue-lazyload/vue-lazyload.esm.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/vue-lazyload/vue-lazyload.esm.js ***!
+  \*******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/*!
+ * Vue-Lazyload.js v1.3.3
+ * (c) 2019 Awe <hilongjw@gmail.com>
+ * Released under the MIT License.
+ */
+var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) {
+  return typeof obj;
+} : function (obj) {
+  return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+};
+
+
+
+
+
+
+
+
+
+
+
+var classCallCheck = function (instance, Constructor) {
+  if (!(instance instanceof Constructor)) {
+    throw new TypeError("Cannot call a class as a function");
+  }
+};
+
+var createClass = function () {
+  function defineProperties(target, props) {
+    for (var i = 0; i < props.length; i++) {
+      var descriptor = props[i];
+      descriptor.enumerable = descriptor.enumerable || false;
+      descriptor.configurable = true;
+      if ("value" in descriptor) descriptor.writable = true;
+      Object.defineProperty(target, descriptor.key, descriptor);
+    }
+  }
+
+  return function (Constructor, protoProps, staticProps) {
+    if (protoProps) defineProperties(Constructor.prototype, protoProps);
+    if (staticProps) defineProperties(Constructor, staticProps);
+    return Constructor;
+  };
+}();
+
+/*!
+ * is-primitive <https://github.com/jonschlinkert/is-primitive>
+ *
+ * Copyright (c) 2014-2015, Jon Schlinkert.
+ * Licensed under the MIT License.
+ */
+
+// see http://jsperf.com/testing-value-is-primitive/7
+
+var isPrimitive = function isPrimitive(value) {
+  return value == null || typeof value !== 'function' && (typeof value === 'undefined' ? 'undefined' : _typeof(value)) !== 'object';
+};
+
+/*!
+ * assign-symbols <https://github.com/jonschlinkert/assign-symbols>
+ *
+ * Copyright (c) 2015, Jon Schlinkert.
+ * Licensed under the MIT License.
+ */
+
+var assignSymbols = function assignSymbols(receiver, objects) {
+  if (receiver === null || typeof receiver === 'undefined') {
+    throw new TypeError('expected first argument to be an object.');
+  }
+
+  if (typeof objects === 'undefined' || typeof Symbol === 'undefined') {
+    return receiver;
+  }
+
+  if (typeof Object.getOwnPropertySymbols !== 'function') {
+    return receiver;
+  }
+
+  var isEnumerable = Object.prototype.propertyIsEnumerable;
+  var target = Object(receiver);
+  var len = arguments.length,
+      i = 0;
+
+  while (++i < len) {
+    var provider = Object(arguments[i]);
+    var names = Object.getOwnPropertySymbols(provider);
+
+    for (var j = 0; j < names.length; j++) {
+      var key = names[j];
+
+      if (isEnumerable.call(provider, key)) {
+        target[key] = provider[key];
+      }
+    }
+  }
+  return target;
+};
+
+var toString = Object.prototype.toString;
+
+/**
+ * Get the native `typeof` a value.
+ *
+ * @param  {*} `val`
+ * @return {*} Native javascript type
+ */
+
+var kindOf = function kindOf(val) {
+  var type = typeof val === 'undefined' ? 'undefined' : _typeof(val);
+
+  // primitivies
+  if (type === 'undefined') {
+    return 'undefined';
+  }
+  if (val === null) {
+    return 'null';
+  }
+  if (val === true || val === false || val instanceof Boolean) {
+    return 'boolean';
+  }
+  if (type === 'string' || val instanceof String) {
+    return 'string';
+  }
+  if (type === 'number' || val instanceof Number) {
+    return 'number';
+  }
+
+  // functions
+  if (type === 'function' || val instanceof Function) {
+    if (typeof val.constructor.name !== 'undefined' && val.constructor.name.slice(0, 9) === 'Generator') {
+      return 'generatorfunction';
+    }
+    return 'function';
+  }
+
+  // array
+  if (typeof Array.isArray !== 'undefined' && Array.isArray(val)) {
+    return 'array';
+  }
+
+  // check for instances of RegExp and Date before calling `toString`
+  if (val instanceof RegExp) {
+    return 'regexp';
+  }
+  if (val instanceof Date) {
+    return 'date';
+  }
+
+  // other objects
+  type = toString.call(val);
+
+  if (type === '[object RegExp]') {
+    return 'regexp';
+  }
+  if (type === '[object Date]') {
+    return 'date';
+  }
+  if (type === '[object Arguments]') {
+    return 'arguments';
+  }
+  if (type === '[object Error]') {
+    return 'error';
+  }
+  if (type === '[object Promise]') {
+    return 'promise';
+  }
+
+  // buffer
+  if (isBuffer(val)) {
+    return 'buffer';
+  }
+
+  // es6: Map, WeakMap, Set, WeakSet
+  if (type === '[object Set]') {
+    return 'set';
+  }
+  if (type === '[object WeakSet]') {
+    return 'weakset';
+  }
+  if (type === '[object Map]') {
+    return 'map';
+  }
+  if (type === '[object WeakMap]') {
+    return 'weakmap';
+  }
+  if (type === '[object Symbol]') {
+    return 'symbol';
+  }
+
+  if (type === '[object Map Iterator]') {
+    return 'mapiterator';
+  }
+  if (type === '[object Set Iterator]') {
+    return 'setiterator';
+  }
+  if (type === '[object String Iterator]') {
+    return 'stringiterator';
+  }
+  if (type === '[object Array Iterator]') {
+    return 'arrayiterator';
+  }
+
+  // typed arrays
+  if (type === '[object Int8Array]') {
+    return 'int8array';
+  }
+  if (type === '[object Uint8Array]') {
+    return 'uint8array';
+  }
+  if (type === '[object Uint8ClampedArray]') {
+    return 'uint8clampedarray';
+  }
+  if (type === '[object Int16Array]') {
+    return 'int16array';
+  }
+  if (type === '[object Uint16Array]') {
+    return 'uint16array';
+  }
+  if (type === '[object Int32Array]') {
+    return 'int32array';
+  }
+  if (type === '[object Uint32Array]') {
+    return 'uint32array';
+  }
+  if (type === '[object Float32Array]') {
+    return 'float32array';
+  }
+  if (type === '[object Float64Array]') {
+    return 'float64array';
+  }
+
+  // must be a plain object
+  return 'object';
+};
+
+/**
+ * If you need to support Safari 5-7 (8-10 yr-old browser),
+ * take a look at https://github.com/feross/is-buffer
+ */
+
+function isBuffer(val) {
+  return val.constructor && typeof val.constructor.isBuffer === 'function' && val.constructor.isBuffer(val);
+}
+
+function assign(target /*, objects*/) {
+  target = target || {};
+  var len = arguments.length,
+      i = 0;
+  if (len === 1) {
+    return target;
+  }
+  while (++i < len) {
+    var val = arguments[i];
+    if (isPrimitive(target)) {
+      target = val;
+    }
+    if (isObject$1(val)) {
+      extend(target, val);
+    }
+  }
+  return target;
+}
+
+/**
+ * Shallow extend
+ */
+
+function extend(target, obj) {
+  assignSymbols(target, obj);
+
+  for (var key in obj) {
+    if (key !== '__proto__' && hasOwn(obj, key)) {
+      var val = obj[key];
+      if (isObject$1(val)) {
+        if (kindOf(target[key]) === 'undefined' && kindOf(val) === 'function') {
+          target[key] = val;
+        }
+        target[key] = assign(target[key] || {}, val);
+      } else {
+        target[key] = val;
+      }
+    }
+  }
+  return target;
+}
+
+/**
+ * Returns true if the object is a plain object or a function.
+ */
+
+function isObject$1(obj) {
+  return kindOf(obj) === 'object' || kindOf(obj) === 'function';
+}
+
+/**
+ * Returns true if the given `key` is an own property of `obj`.
+ */
+
+function hasOwn(obj, key) {
+  return Object.prototype.hasOwnProperty.call(obj, key);
+}
+
+/**
+ * Expose `assign`
+ */
+
+var assignDeep = assign;
+
+var inBrowser = typeof window !== 'undefined';
+var hasIntersectionObserver = checkIntersectionObserver();
+
+function checkIntersectionObserver() {
+  if (inBrowser && 'IntersectionObserver' in window && 'IntersectionObserverEntry' in window && 'intersectionRatio' in window.IntersectionObserverEntry.prototype) {
+    // Minimal polyfill for Edge 15's lack of `isIntersecting`
+    // See: https://github.com/w3c/IntersectionObserver/issues/211
+    if (!('isIntersecting' in window.IntersectionObserverEntry.prototype)) {
+      Object.defineProperty(window.IntersectionObserverEntry.prototype, 'isIntersecting', {
+        get: function get$$1() {
+          return this.intersectionRatio > 0;
+        }
+      });
+    }
+    return true;
+  }
+  return false;
+}
+
+var modeType = {
+  event: 'event',
+  observer: 'observer'
+
+  // CustomEvent polyfill
+};var CustomEvent = function () {
+  if (!inBrowser) return;
+  if (typeof window.CustomEvent === 'function') return window.CustomEvent;
+  function CustomEvent(event, params) {
+    params = params || { bubbles: false, cancelable: false, detail: undefined };
+    var evt = document.createEvent('CustomEvent');
+    evt.initCustomEvent(event, params.bubbles, params.cancelable, params.detail);
+    return evt;
+  }
+  CustomEvent.prototype = window.Event.prototype;
+  return CustomEvent;
+}();
+
+function remove(arr, item) {
+  if (!arr.length) return;
+  var index = arr.indexOf(item);
+  if (index > -1) return arr.splice(index, 1);
+}
+
+function some(arr, fn) {
+  var has = false;
+  for (var i = 0, len = arr.length; i < len; i++) {
+    if (fn(arr[i])) {
+      has = true;
+      break;
+    }
+  }
+  return has;
+}
+
+function getBestSelectionFromSrcset(el, scale) {
+  if (el.tagName !== 'IMG' || !el.getAttribute('data-srcset')) return;
+
+  var options = el.getAttribute('data-srcset');
+  var result = [];
+  var container = el.parentNode;
+  var containerWidth = container.offsetWidth * scale;
+
+  var spaceIndex = void 0;
+  var tmpSrc = void 0;
+  var tmpWidth = void 0;
+
+  options = options.trim().split(',');
+
+  options.map(function (item) {
+    item = item.trim();
+    spaceIndex = item.lastIndexOf(' ');
+    if (spaceIndex === -1) {
+      tmpSrc = item;
+      tmpWidth = 999998;
+    } else {
+      tmpSrc = item.substr(0, spaceIndex);
+      tmpWidth = parseInt(item.substr(spaceIndex + 1, item.length - spaceIndex - 2), 10);
+    }
+    result.push([tmpWidth, tmpSrc]);
+  });
+
+  result.sort(function (a, b) {
+    if (a[0] < b[0]) {
+      return 1;
+    }
+    if (a[0] > b[0]) {
+      return -1;
+    }
+    if (a[0] === b[0]) {
+      if (b[1].indexOf('.webp', b[1].length - 5) !== -1) {
+        return 1;
+      }
+      if (a[1].indexOf('.webp', a[1].length - 5) !== -1) {
+        return -1;
+      }
+    }
+    return 0;
+  });
+  var bestSelectedSrc = '';
+  var tmpOption = void 0;
+
+  for (var i = 0; i < result.length; i++) {
+    tmpOption = result[i];
+    bestSelectedSrc = tmpOption[1];
+    var next = result[i + 1];
+    if (next && next[0] < containerWidth) {
+      bestSelectedSrc = tmpOption[1];
+      break;
+    } else if (!next) {
+      bestSelectedSrc = tmpOption[1];
+      break;
+    }
+  }
+
+  return bestSelectedSrc;
+}
+
+function find(arr, fn) {
+  var item = void 0;
+  for (var i = 0, len = arr.length; i < len; i++) {
+    if (fn(arr[i])) {
+      item = arr[i];
+      break;
+    }
+  }
+  return item;
+}
+
+var getDPR = function getDPR() {
+  var scale = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+  return inBrowser ? window.devicePixelRatio || scale : scale;
+};
+
+function supportWebp() {
+  if (!inBrowser) return false;
+
+  var support = true;
+  var d = document;
+
+  try {
+    var el = d.createElement('object');
+    el.type = 'image/webp';
+    el.style.visibility = 'hidden';
+    el.innerHTML = '!';
+    d.body.appendChild(el);
+    support = !el.offsetWidth;
+    d.body.removeChild(el);
+  } catch (err) {
+    support = false;
+  }
+
+  return support;
+}
+
+function throttle(action, delay) {
+  var timeout = null;
+  var lastRun = 0;
+  return function () {
+    if (timeout) {
+      return;
+    }
+    var elapsed = Date.now() - lastRun;
+    var context = this;
+    var args = arguments;
+    var runCallback = function runCallback() {
+      lastRun = Date.now();
+      timeout = false;
+      action.apply(context, args);
+    };
+    if (elapsed >= delay) {
+      runCallback();
+    } else {
+      timeout = setTimeout(runCallback, delay);
+    }
+  };
+}
+
+function testSupportsPassive() {
+  if (!inBrowser) return;
+  var support = false;
+  try {
+    var opts = Object.defineProperty({}, 'passive', {
+      get: function get$$1() {
+        support = true;
+      }
+    });
+    window.addEventListener('test', null, opts);
+  } catch (e) {}
+  return support;
+}
+
+var supportsPassive = testSupportsPassive();
+
+var _ = {
+  on: function on(el, type, func) {
+    var capture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+    if (supportsPassive) {
+      el.addEventListener(type, func, {
+        capture: capture,
+        passive: true
+      });
+    } else {
+      el.addEventListener(type, func, capture);
+    }
+  },
+  off: function off(el, type, func) {
+    var capture = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : false;
+
+    el.removeEventListener(type, func, capture);
+  }
+};
+
+var loadImageAsync = function loadImageAsync(item, resolve, reject) {
+  var image = new Image();
+  if (!item || !item.src) {
+    var err = new Error('image src is required');
+    return reject(err);
+  }
+
+  image.src = item.src;
+
+  image.onload = function () {
+    resolve({
+      naturalHeight: image.naturalHeight,
+      naturalWidth: image.naturalWidth,
+      src: image.src
+    });
+  };
+
+  image.onerror = function (e) {
+    reject(e);
+  };
+};
+
+var style = function style(el, prop) {
+  return typeof getComputedStyle !== 'undefined' ? getComputedStyle(el, null).getPropertyValue(prop) : el.style[prop];
+};
+
+var overflow = function overflow(el) {
+  return style(el, 'overflow') + style(el, 'overflow-y') + style(el, 'overflow-x');
+};
+
+var scrollParent = function scrollParent(el) {
+  if (!inBrowser) return;
+  if (!(el instanceof HTMLElement)) {
+    return window;
+  }
+
+  var parent = el;
+
+  while (parent) {
+    if (parent === document.body || parent === document.documentElement) {
+      break;
+    }
+
+    if (!parent.parentNode) {
+      break;
+    }
+
+    if (/(scroll|auto)/.test(overflow(parent))) {
+      return parent;
+    }
+
+    parent = parent.parentNode;
+  }
+
+  return window;
+};
+
+function isObject(obj) {
+  return obj !== null && (typeof obj === 'undefined' ? 'undefined' : _typeof(obj)) === 'object';
+}
+
+function ObjectKeys(obj) {
+  if (!(obj instanceof Object)) return [];
+  if (Object.keys) {
+    return Object.keys(obj);
+  } else {
+    var keys = [];
+    for (var key in obj) {
+      if (obj.hasOwnProperty(key)) {
+        keys.push(key);
+      }
+    }
+    return keys;
+  }
+}
+
+function ArrayFrom(arrLike) {
+  var len = arrLike.length;
+  var list = [];
+  for (var i = 0; i < len; i++) {
+    list.push(arrLike[i]);
+  }
+  return list;
+}
+
+function noop() {}
+
+var ImageCache = function () {
+  function ImageCache(_ref) {
+    var max = _ref.max;
+    classCallCheck(this, ImageCache);
+
+    this.options = {
+      max: max || 100
+    };
+    this._caches = [];
+  }
+
+  createClass(ImageCache, [{
+    key: 'has',
+    value: function has(key) {
+      return this._caches.indexOf(key) > -1;
+    }
+  }, {
+    key: 'add',
+    value: function add(key) {
+      if (this.has(key)) return;
+      this._caches.push(key);
+      if (this._caches.length > this.options.max) {
+        this.free();
+      }
+    }
+  }, {
+    key: 'free',
+    value: function free() {
+      this._caches.shift();
+    }
+  }]);
+  return ImageCache;
+}();
+
+// el: {
+//     state,
+//     src,
+//     error,
+//     loading
+// }
+
+var ReactiveListener = function () {
+  function ReactiveListener(_ref) {
+    var el = _ref.el,
+        src = _ref.src,
+        error = _ref.error,
+        loading = _ref.loading,
+        bindType = _ref.bindType,
+        $parent = _ref.$parent,
+        options = _ref.options,
+        elRenderer = _ref.elRenderer,
+        imageCache = _ref.imageCache;
+    classCallCheck(this, ReactiveListener);
+
+    this.el = el;
+    this.src = src;
+    this.error = error;
+    this.loading = loading;
+    this.bindType = bindType;
+    this.attempt = 0;
+
+    this.naturalHeight = 0;
+    this.naturalWidth = 0;
+
+    this.options = options;
+
+    this.rect = null;
+
+    this.$parent = $parent;
+    this.elRenderer = elRenderer;
+    this._imageCache = imageCache;
+    this.performanceData = {
+      init: Date.now(),
+      loadStart: 0,
+      loadEnd: 0
+    };
+
+    this.filter();
+    this.initState();
+    this.render('loading', false);
+  }
+
+  /*
+   * init listener state
+   * @return
+   */
+
+
+  createClass(ReactiveListener, [{
+    key: 'initState',
+    value: function initState() {
+      if ('dataset' in this.el) {
+        this.el.dataset.src = this.src;
+      } else {
+        this.el.setAttribute('data-src', this.src);
+      }
+
+      this.state = {
+        loading: false,
+        error: false,
+        loaded: false,
+        rendered: false
+      };
+    }
+
+    /*
+     * record performance
+     * @return
+     */
+
+  }, {
+    key: 'record',
+    value: function record(event) {
+      this.performanceData[event] = Date.now();
+    }
+
+    /*
+     * update image listener data
+     * @param  {String} image uri
+     * @param  {String} loading image uri
+     * @param  {String} error image uri
+     * @return
+     */
+
+  }, {
+    key: 'update',
+    value: function update(_ref2) {
+      var src = _ref2.src,
+          loading = _ref2.loading,
+          error = _ref2.error;
+
+      var oldSrc = this.src;
+      this.src = src;
+      this.loading = loading;
+      this.error = error;
+      this.filter();
+      if (oldSrc !== this.src) {
+        this.attempt = 0;
+        this.initState();
+      }
+    }
+
+    /*
+     * get el node rect
+     * @return
+     */
+
+  }, {
+    key: 'getRect',
+    value: function getRect() {
+      this.rect = this.el.getBoundingClientRect();
+    }
+
+    /*
+     *  check el is in view
+     * @return {Boolean} el is in view
+     */
+
+  }, {
+    key: 'checkInView',
+    value: function checkInView() {
+      this.getRect();
+      return this.rect.top < window.innerHeight * this.options.preLoad && this.rect.bottom > this.options.preLoadTop && this.rect.left < window.innerWidth * this.options.preLoad && this.rect.right > 0;
+    }
+
+    /*
+     * listener filter
+     */
+
+  }, {
+    key: 'filter',
+    value: function filter() {
+      var _this = this;
+
+      ObjectKeys(this.options.filter).map(function (key) {
+        _this.options.filter[key](_this, _this.options);
+      });
+    }
+
+    /*
+     * render loading first
+     * @params cb:Function
+     * @return
+     */
+
+  }, {
+    key: 'renderLoading',
+    value: function renderLoading(cb) {
+      var _this2 = this;
+
+      this.state.loading = true;
+      loadImageAsync({
+        src: this.loading
+      }, function (data) {
+        _this2.render('loading', false);
+        _this2.state.loading = false;
+        cb();
+      }, function () {
+        // handler `loading image` load failed
+        cb();
+        _this2.state.loading = false;
+        if (!_this2.options.silent) console.warn('VueLazyload log: load failed with loading image(' + _this2.loading + ')');
+      });
+    }
+
+    /*
+     * try load image and  render it
+     * @return
+     */
+
+  }, {
+    key: 'load',
+    value: function load() {
+      var _this3 = this;
+
+      var onFinish = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+
+      if (this.attempt > this.options.attempt - 1 && this.state.error) {
+        if (!this.options.silent) console.log('VueLazyload log: ' + this.src + ' tried too more than ' + this.options.attempt + ' times');
+        onFinish();
+        return;
+      }
+      if (this.state.rendered && this.state.loaded) return;
+      if (this._imageCache.has(this.src)) {
+        this.state.loaded = true;
+        this.render('loaded', true);
+        this.state.rendered = true;
+        return onFinish();
+      }
+
+      this.renderLoading(function () {
+        _this3.attempt++;
+
+        _this3.options.adapter['beforeLoad'] && _this3.options.adapter['beforeLoad'](_this3, _this3.options);
+        _this3.record('loadStart');
+
+        loadImageAsync({
+          src: _this3.src
+        }, function (data) {
+          _this3.naturalHeight = data.naturalHeight;
+          _this3.naturalWidth = data.naturalWidth;
+          _this3.state.loaded = true;
+          _this3.state.error = false;
+          _this3.record('loadEnd');
+          _this3.render('loaded', false);
+          _this3.state.rendered = true;
+          _this3._imageCache.add(_this3.src);
+          onFinish();
+        }, function (err) {
+          !_this3.options.silent && console.error(err);
+          _this3.state.error = true;
+          _this3.state.loaded = false;
+          _this3.render('error', false);
+        });
+      });
+    }
+
+    /*
+     * render image
+     * @param  {String} state to render // ['loading', 'src', 'error']
+     * @param  {String} is form cache
+     * @return
+     */
+
+  }, {
+    key: 'render',
+    value: function render(state, cache) {
+      this.elRenderer(this, state, cache);
+    }
+
+    /*
+     * output performance data
+     * @return {Object} performance data
+     */
+
+  }, {
+    key: 'performance',
+    value: function performance() {
+      var state = 'loading';
+      var time = 0;
+
+      if (this.state.loaded) {
+        state = 'loaded';
+        time = (this.performanceData.loadEnd - this.performanceData.loadStart) / 1000;
+      }
+
+      if (this.state.error) state = 'error';
+
+      return {
+        src: this.src,
+        state: state,
+        time: time
+      };
+    }
+
+    /*
+     * $destroy
+     * @return
+     */
+
+  }, {
+    key: '$destroy',
+    value: function $destroy() {
+      this.el = null;
+      this.src = null;
+      this.error = null;
+      this.loading = null;
+      this.bindType = null;
+      this.attempt = 0;
+    }
+  }]);
+  return ReactiveListener;
+}();
+
+var DEFAULT_URL = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
+var DEFAULT_EVENTS = ['scroll', 'wheel', 'mousewheel', 'resize', 'animationend', 'transitionend', 'touchmove'];
+var DEFAULT_OBSERVER_OPTIONS = {
+  rootMargin: '0px',
+  threshold: 0
+};
+
+var Lazy = function (Vue) {
+  return function () {
+    function Lazy(_ref) {
+      var preLoad = _ref.preLoad,
+          error = _ref.error,
+          throttleWait = _ref.throttleWait,
+          preLoadTop = _ref.preLoadTop,
+          dispatchEvent = _ref.dispatchEvent,
+          loading = _ref.loading,
+          attempt = _ref.attempt,
+          _ref$silent = _ref.silent,
+          silent = _ref$silent === undefined ? true : _ref$silent,
+          scale = _ref.scale,
+          listenEvents = _ref.listenEvents,
+          hasbind = _ref.hasbind,
+          filter = _ref.filter,
+          adapter = _ref.adapter,
+          observer = _ref.observer,
+          observerOptions = _ref.observerOptions;
+      classCallCheck(this, Lazy);
+
+      this.version = '1.3.3';
+      this.mode = modeType.event;
+      this.ListenerQueue = [];
+      this.TargetIndex = 0;
+      this.TargetQueue = [];
+      this.options = {
+        silent: silent,
+        dispatchEvent: !!dispatchEvent,
+        throttleWait: throttleWait || 200,
+        preLoad: preLoad || 1.3,
+        preLoadTop: preLoadTop || 0,
+        error: error || DEFAULT_URL,
+        loading: loading || DEFAULT_URL,
+        attempt: attempt || 3,
+        scale: scale || getDPR(scale),
+        ListenEvents: listenEvents || DEFAULT_EVENTS,
+        hasbind: false,
+        supportWebp: supportWebp(),
+        filter: filter || {},
+        adapter: adapter || {},
+        observer: !!observer,
+        observerOptions: observerOptions || DEFAULT_OBSERVER_OPTIONS
+      };
+      this._initEvent();
+      this._imageCache = new ImageCache({ max: 200 });
+      this.lazyLoadHandler = throttle(this._lazyLoadHandler.bind(this), this.options.throttleWait);
+
+      this.setMode(this.options.observer ? modeType.observer : modeType.event);
+    }
+
+    /**
+     * update config
+     * @param  {Object} config params
+     * @return
+     */
+
+
+    createClass(Lazy, [{
+      key: 'config',
+      value: function config() {
+        var options = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {};
+
+        assignDeep(this.options, options);
+      }
+
+      /**
+       * output listener's load performance
+       * @return {Array}
+       */
+
+    }, {
+      key: 'performance',
+      value: function performance() {
+        var list = [];
+
+        this.ListenerQueue.map(function (item) {
+          list.push(item.performance());
+        });
+
+        return list;
+      }
+
+      /*
+       * add lazy component to queue
+       * @param  {Vue} vm lazy component instance
+       * @return
+       */
+
+    }, {
+      key: 'addLazyBox',
+      value: function addLazyBox(vm) {
+        this.ListenerQueue.push(vm);
+        if (inBrowser) {
+          this._addListenerTarget(window);
+          this._observer && this._observer.observe(vm.el);
+          if (vm.$el && vm.$el.parentNode) {
+            this._addListenerTarget(vm.$el.parentNode);
+          }
+        }
+      }
+
+      /*
+       * add image listener to queue
+       * @param  {DOM} el
+       * @param  {object} binding vue directive binding
+       * @param  {vnode} vnode vue directive vnode
+       * @return
+       */
+
+    }, {
+      key: 'add',
+      value: function add(el, binding, vnode) {
+        var _this = this;
+
+        if (some(this.ListenerQueue, function (item) {
+          return item.el === el;
+        })) {
+          this.update(el, binding);
+          return Vue.nextTick(this.lazyLoadHandler);
+        }
+
+        var _valueFormatter2 = this._valueFormatter(binding.value),
+            src = _valueFormatter2.src,
+            loading = _valueFormatter2.loading,
+            error = _valueFormatter2.error;
+
+        Vue.nextTick(function () {
+          src = getBestSelectionFromSrcset(el, _this.options.scale) || src;
+          _this._observer && _this._observer.observe(el);
+
+          var container = Object.keys(binding.modifiers)[0];
+          var $parent = void 0;
+
+          if (container) {
+            $parent = vnode.context.$refs[container];
+            // if there is container passed in, try ref first, then fallback to getElementById to support the original usage
+            $parent = $parent ? $parent.$el || $parent : document.getElementById(container);
+          }
+
+          if (!$parent) {
+            $parent = scrollParent(el);
+          }
+
+          var newListener = new ReactiveListener({
+            bindType: binding.arg,
+            $parent: $parent,
+            el: el,
+            loading: loading,
+            error: error,
+            src: src,
+            elRenderer: _this._elRenderer.bind(_this),
+            options: _this.options,
+            imageCache: _this._imageCache
+          });
+
+          _this.ListenerQueue.push(newListener);
+
+          if (inBrowser) {
+            _this._addListenerTarget(window);
+            _this._addListenerTarget($parent);
+          }
+
+          _this.lazyLoadHandler();
+          Vue.nextTick(function () {
+            return _this.lazyLoadHandler();
+          });
+        });
+      }
+
+      /**
+      * update image src
+      * @param  {DOM} el
+      * @param  {object} vue directive binding
+      * @return
+      */
+
+    }, {
+      key: 'update',
+      value: function update(el, binding, vnode) {
+        var _this2 = this;
+
+        var _valueFormatter3 = this._valueFormatter(binding.value),
+            src = _valueFormatter3.src,
+            loading = _valueFormatter3.loading,
+            error = _valueFormatter3.error;
+
+        src = getBestSelectionFromSrcset(el, this.options.scale) || src;
+
+        var exist = find(this.ListenerQueue, function (item) {
+          return item.el === el;
+        });
+        if (!exist) {
+          this.add(el, binding, vnode);
+        } else {
+          exist.update({
+            src: src,
+            loading: loading,
+            error: error
+          });
+        }
+        if (this._observer) {
+          this._observer.unobserve(el);
+          this._observer.observe(el);
+        }
+        this.lazyLoadHandler();
+        Vue.nextTick(function () {
+          return _this2.lazyLoadHandler();
+        });
+      }
+
+      /**
+      * remove listener form list
+      * @param  {DOM} el
+      * @return
+      */
+
+    }, {
+      key: 'remove',
+      value: function remove$$1(el) {
+        if (!el) return;
+        this._observer && this._observer.unobserve(el);
+        var existItem = find(this.ListenerQueue, function (item) {
+          return item.el === el;
+        });
+        if (existItem) {
+          this._removeListenerTarget(existItem.$parent);
+          this._removeListenerTarget(window);
+          remove(this.ListenerQueue, existItem);
+          existItem.$destroy();
+        }
+      }
+
+      /*
+       * remove lazy components form list
+       * @param  {Vue} vm Vue instance
+       * @return
+       */
+
+    }, {
+      key: 'removeComponent',
+      value: function removeComponent(vm) {
+        if (!vm) return;
+        remove(this.ListenerQueue, vm);
+        this._observer && this._observer.unobserve(vm.el);
+        if (vm.$parent && vm.$el.parentNode) {
+          this._removeListenerTarget(vm.$el.parentNode);
+        }
+        this._removeListenerTarget(window);
+      }
+    }, {
+      key: 'setMode',
+      value: function setMode(mode) {
+        var _this3 = this;
+
+        if (!hasIntersectionObserver && mode === modeType.observer) {
+          mode = modeType.event;
+        }
+
+        this.mode = mode; // event or observer
+
+        if (mode === modeType.event) {
+          if (this._observer) {
+            this.ListenerQueue.forEach(function (listener) {
+              _this3._observer.unobserve(listener.el);
+            });
+            this._observer = null;
+          }
+
+          this.TargetQueue.forEach(function (target) {
+            _this3._initListen(target.el, true);
+          });
+        } else {
+          this.TargetQueue.forEach(function (target) {
+            _this3._initListen(target.el, false);
+          });
+          this._initIntersectionObserver();
+        }
+      }
+
+      /*
+      *** Private functions ***
+      */
+
+      /*
+       * add listener target
+       * @param  {DOM} el listener target
+       * @return
+       */
+
+    }, {
+      key: '_addListenerTarget',
+      value: function _addListenerTarget(el) {
+        if (!el) return;
+        var target = find(this.TargetQueue, function (target) {
+          return target.el === el;
+        });
+        if (!target) {
+          target = {
+            el: el,
+            id: ++this.TargetIndex,
+            childrenCount: 1,
+            listened: true
+          };
+          this.mode === modeType.event && this._initListen(target.el, true);
+          this.TargetQueue.push(target);
+        } else {
+          target.childrenCount++;
+        }
+        return this.TargetIndex;
+      }
+
+      /*
+       * remove listener target or reduce target childrenCount
+       * @param  {DOM} el or window
+       * @return
+       */
+
+    }, {
+      key: '_removeListenerTarget',
+      value: function _removeListenerTarget(el) {
+        var _this4 = this;
+
+        this.TargetQueue.forEach(function (target, index) {
+          if (target.el === el) {
+            target.childrenCount--;
+            if (!target.childrenCount) {
+              _this4._initListen(target.el, false);
+              _this4.TargetQueue.splice(index, 1);
+              target = null;
+            }
+          }
+        });
+      }
+
+      /*
+       * add or remove eventlistener
+       * @param  {DOM} el DOM or Window
+       * @param  {boolean} start flag
+       * @return
+       */
+
+    }, {
+      key: '_initListen',
+      value: function _initListen(el, start) {
+        var _this5 = this;
+
+        this.options.ListenEvents.forEach(function (evt) {
+          return _[start ? 'on' : 'off'](el, evt, _this5.lazyLoadHandler);
+        });
+      }
+    }, {
+      key: '_initEvent',
+      value: function _initEvent() {
+        var _this6 = this;
+
+        this.Event = {
+          listeners: {
+            loading: [],
+            loaded: [],
+            error: []
+          }
+        };
+
+        this.$on = function (event, func) {
+          if (!_this6.Event.listeners[event]) _this6.Event.listeners[event] = [];
+          _this6.Event.listeners[event].push(func);
+        };
+
+        this.$once = function (event, func) {
+          var vm = _this6;
+          function on() {
+            vm.$off(event, on);
+            func.apply(vm, arguments);
+          }
+          _this6.$on(event, on);
+        };
+
+        this.$off = function (event, func) {
+          if (!func) {
+            if (!_this6.Event.listeners[event]) return;
+            _this6.Event.listeners[event].length = 0;
+            return;
+          }
+          remove(_this6.Event.listeners[event], func);
+        };
+
+        this.$emit = function (event, context, inCache) {
+          if (!_this6.Event.listeners[event]) return;
+          _this6.Event.listeners[event].forEach(function (func) {
+            return func(context, inCache);
+          });
+        };
+      }
+
+      /**
+       * find nodes which in viewport and trigger load
+       * @return
+       */
+
+    }, {
+      key: '_lazyLoadHandler',
+      value: function _lazyLoadHandler() {
+        var _this7 = this;
+
+        var freeList = [];
+        this.ListenerQueue.forEach(function (listener, index) {
+          if (!listener.el || !listener.el.parentNode) {
+            freeList.push(listener);
+          }
+          var catIn = listener.checkInView();
+          if (!catIn) return;
+          listener.load();
+        });
+        freeList.forEach(function (item) {
+          remove(_this7.ListenerQueue, item);
+          item.$destroy();
+        });
+      }
+      /**
+      * init IntersectionObserver
+      * set mode to observer
+      * @return
+      */
+
+    }, {
+      key: '_initIntersectionObserver',
+      value: function _initIntersectionObserver() {
+        var _this8 = this;
+
+        if (!hasIntersectionObserver) return;
+        this._observer = new IntersectionObserver(this._observerHandler.bind(this), this.options.observerOptions);
+        if (this.ListenerQueue.length) {
+          this.ListenerQueue.forEach(function (listener) {
+            _this8._observer.observe(listener.el);
+          });
+        }
+      }
+
+      /**
+      * init IntersectionObserver
+      * @return
+      */
+
+    }, {
+      key: '_observerHandler',
+      value: function _observerHandler(entries, observer) {
+        var _this9 = this;
+
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            _this9.ListenerQueue.forEach(function (listener) {
+              if (listener.el === entry.target) {
+                if (listener.state.loaded) return _this9._observer.unobserve(listener.el);
+                listener.load();
+              }
+            });
+          }
+        });
+      }
+
+      /**
+      * set element attribute with image'url and state
+      * @param  {object} lazyload listener object
+      * @param  {string} state will be rendered
+      * @param  {bool} inCache  is rendered from cache
+      * @return
+      */
+
+    }, {
+      key: '_elRenderer',
+      value: function _elRenderer(listener, state, cache) {
+        if (!listener.el) return;
+        var el = listener.el,
+            bindType = listener.bindType;
+
+
+        var src = void 0;
+        switch (state) {
+          case 'loading':
+            src = listener.loading;
+            break;
+          case 'error':
+            src = listener.error;
+            break;
+          default:
+            src = listener.src;
+            break;
+        }
+
+        if (bindType) {
+          el.style[bindType] = 'url("' + src + '")';
+        } else if (el.getAttribute('src') !== src) {
+          el.setAttribute('src', src);
+        }
+
+        el.setAttribute('lazy', state);
+
+        this.$emit(state, listener, cache);
+        this.options.adapter[state] && this.options.adapter[state](listener, this.options);
+
+        if (this.options.dispatchEvent) {
+          var event = new CustomEvent(state, {
+            detail: listener
+          });
+          el.dispatchEvent(event);
+        }
+      }
+
+      /**
+      * generate loading loaded error image url
+      * @param {string} image's src
+      * @return {object} image's loading, loaded, error url
+      */
+
+    }, {
+      key: '_valueFormatter',
+      value: function _valueFormatter(value) {
+        var src = value;
+        var loading = this.options.loading;
+        var error = this.options.error;
+
+        // value is object
+        if (isObject(value)) {
+          if (!value.src && !this.options.silent) console.error('Vue Lazyload warning: miss src with ' + value);
+          src = value.src;
+          loading = value.loading || this.options.loading;
+          error = value.error || this.options.error;
+        }
+        return {
+          src: src,
+          loading: loading,
+          error: error
+        };
+      }
+    }]);
+    return Lazy;
+  }();
+};
+
+var LazyComponent = (function (lazy) {
+  return {
+    props: {
+      tag: {
+        type: String,
+        default: 'div'
+      }
+    },
+    render: function render(h) {
+      if (this.show === false) {
+        return h(this.tag);
+      }
+      return h(this.tag, null, this.$slots.default);
+    },
+    data: function data() {
+      return {
+        el: null,
+        state: {
+          loaded: false
+        },
+        rect: {},
+        show: false
+      };
+    },
+    mounted: function mounted() {
+      this.el = this.$el;
+      lazy.addLazyBox(this);
+      lazy.lazyLoadHandler();
+    },
+    beforeDestroy: function beforeDestroy() {
+      lazy.removeComponent(this);
+    },
+
+    methods: {
+      getRect: function getRect() {
+        this.rect = this.$el.getBoundingClientRect();
+      },
+      checkInView: function checkInView() {
+        this.getRect();
+        return inBrowser && this.rect.top < window.innerHeight * lazy.options.preLoad && this.rect.bottom > 0 && this.rect.left < window.innerWidth * lazy.options.preLoad && this.rect.right > 0;
+      },
+      load: function load() {
+        this.show = true;
+        this.state.loaded = true;
+        this.$emit('show', this);
+      },
+      destroy: function destroy() {
+        return this.$destroy;
+      }
+    }
+  };
+});
+
+var LazyContainerMananger = function () {
+  function LazyContainerMananger(_ref) {
+    var lazy = _ref.lazy;
+    classCallCheck(this, LazyContainerMananger);
+
+    this.lazy = lazy;
+    lazy.lazyContainerMananger = this;
+    this._queue = [];
+  }
+
+  createClass(LazyContainerMananger, [{
+    key: 'bind',
+    value: function bind(el, binding, vnode) {
+      var container = new LazyContainer$1({ el: el, binding: binding, vnode: vnode, lazy: this.lazy });
+      this._queue.push(container);
+    }
+  }, {
+    key: 'update',
+    value: function update(el, binding, vnode) {
+      var container = find(this._queue, function (item) {
+        return item.el === el;
+      });
+      if (!container) return;
+      container.update({ el: el, binding: binding, vnode: vnode });
+    }
+  }, {
+    key: 'unbind',
+    value: function unbind(el, binding, vnode) {
+      var container = find(this._queue, function (item) {
+        return item.el === el;
+      });
+      if (!container) return;
+      container.clear();
+      remove(this._queue, container);
+    }
+  }]);
+  return LazyContainerMananger;
+}();
+
+var defaultOptions = {
+  selector: 'img'
+};
+
+var LazyContainer$1 = function () {
+  function LazyContainer(_ref2) {
+    var el = _ref2.el,
+        binding = _ref2.binding,
+        vnode = _ref2.vnode,
+        lazy = _ref2.lazy;
+    classCallCheck(this, LazyContainer);
+
+    this.el = null;
+    this.vnode = vnode;
+    this.binding = binding;
+    this.options = {};
+    this.lazy = lazy;
+
+    this._queue = [];
+    this.update({ el: el, binding: binding });
+  }
+
+  createClass(LazyContainer, [{
+    key: 'update',
+    value: function update(_ref3) {
+      var _this = this;
+
+      var el = _ref3.el,
+          binding = _ref3.binding;
+
+      this.el = el;
+      this.options = assignDeep({}, defaultOptions, binding.value);
+
+      var imgs = this.getImgs();
+      imgs.forEach(function (el) {
+        _this.lazy.add(el, assignDeep({}, _this.binding, {
+          value: {
+            src: 'dataset' in el ? el.dataset.src : el.getAttribute('data-src'),
+            error: ('dataset' in el ? el.dataset.error : el.getAttribute('data-error')) || _this.options.error,
+            loading: ('dataset' in el ? el.dataset.loading : el.getAttribute('data-loading')) || _this.options.loading
+          }
+        }), _this.vnode);
+      });
+    }
+  }, {
+    key: 'getImgs',
+    value: function getImgs() {
+      return ArrayFrom(this.el.querySelectorAll(this.options.selector));
+    }
+  }, {
+    key: 'clear',
+    value: function clear() {
+      var _this2 = this;
+
+      var imgs = this.getImgs();
+      imgs.forEach(function (el) {
+        return _this2.lazy.remove(el);
+      });
+
+      this.vnode = null;
+      this.binding = null;
+      this.lazy = null;
+    }
+  }]);
+  return LazyContainer;
+}();
+
+var LazyImage = (function (lazyManager) {
+  return {
+    props: {
+      src: [String, Object],
+      tag: {
+        type: String,
+        default: 'img'
+      }
+    },
+    render: function render(h) {
+      return h(this.tag, {
+        attrs: {
+          src: this.renderSrc
+        }
+      }, this.$slots.default);
+    },
+    data: function data() {
+      return {
+        el: null,
+        options: {
+          src: '',
+          error: '',
+          loading: '',
+          attempt: lazyManager.options.attempt
+        },
+        state: {
+          loaded: false,
+          error: false,
+          attempt: 0
+        },
+        rect: {},
+        renderSrc: ''
+      };
+    },
+
+    watch: {
+      src: function src() {
+        this.init();
+        lazyManager.addLazyBox(this);
+        lazyManager.lazyLoadHandler();
+      }
+    },
+    created: function created() {
+      this.init();
+      this.renderSrc = this.options.loading;
+    },
+    mounted: function mounted() {
+      this.el = this.$el;
+      lazyManager.addLazyBox(this);
+      lazyManager.lazyLoadHandler();
+    },
+    beforeDestroy: function beforeDestroy() {
+      lazyManager.removeComponent(this);
+    },
+
+    methods: {
+      init: function init() {
+        var _lazyManager$_valueFo = lazyManager._valueFormatter(this.src),
+            src = _lazyManager$_valueFo.src,
+            loading = _lazyManager$_valueFo.loading,
+            error = _lazyManager$_valueFo.error;
+
+        this.state.loaded = false;
+        this.options.src = src;
+        this.options.error = error;
+        this.options.loading = loading;
+        this.renderSrc = this.options.loading;
+      },
+      getRect: function getRect() {
+        this.rect = this.$el.getBoundingClientRect();
+      },
+      checkInView: function checkInView() {
+        this.getRect();
+        return inBrowser && this.rect.top < window.innerHeight * lazyManager.options.preLoad && this.rect.bottom > 0 && this.rect.left < window.innerWidth * lazyManager.options.preLoad && this.rect.right > 0;
+      },
+      load: function load() {
+        var _this = this;
+
+        var onFinish = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : noop;
+
+        if (this.state.attempt > this.options.attempt - 1 && this.state.error) {
+          if (!lazyManager.options.silent) console.log('VueLazyload log: ' + this.options.src + ' tried too more than ' + this.options.attempt + ' times');
+          onFinish();
+          return;
+        }
+        var src = this.options.src;
+        loadImageAsync({ src: src }, function (_ref) {
+          var src = _ref.src;
+
+          _this.renderSrc = src;
+          _this.state.loaded = true;
+        }, function (e) {
+          _this.state.attempt++;
+          _this.renderSrc = _this.options.error;
+          _this.state.error = true;
+        });
+      }
+    }
+  };
+});
+
+var index = {
+  /*
+  * install function
+  * @param  {Vue} Vue
+  * @param  {object} options  lazyload options
+  */
+  install: function install(Vue) {
+    var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
+
+    var LazyClass = Lazy(Vue);
+    var lazy = new LazyClass(options);
+    var lazyContainer = new LazyContainerMananger({ lazy: lazy });
+
+    var isVue2 = Vue.version.split('.')[0] === '2';
+
+    Vue.prototype.$Lazyload = lazy;
+
+    if (options.lazyComponent) {
+      Vue.component('lazy-component', LazyComponent(lazy));
+    }
+
+    if (options.lazyImage) {
+      Vue.component('lazy-image', LazyImage(lazy));
+    }
+
+    if (isVue2) {
+      Vue.directive('lazy', {
+        bind: lazy.add.bind(lazy),
+        update: lazy.update.bind(lazy),
+        componentUpdated: lazy.lazyLoadHandler.bind(lazy),
+        unbind: lazy.remove.bind(lazy)
+      });
+      Vue.directive('lazy-container', {
+        bind: lazyContainer.bind.bind(lazyContainer),
+        componentUpdated: lazyContainer.update.bind(lazyContainer),
+        unbind: lazyContainer.unbind.bind(lazyContainer)
+      });
+    } else {
+      Vue.directive('lazy', {
+        bind: lazy.lazyLoadHandler.bind(lazy),
+        update: function update(newValue, oldValue) {
+          assignDeep(this.vm.$refs, this.vm.$els);
+          lazy.add(this.el, {
+            modifiers: this.modifiers || {},
+            arg: this.arg,
+            value: newValue,
+            oldValue: oldValue
+          }, {
+            context: this.vm
+          });
+        },
+        unbind: function unbind() {
+          lazy.remove(this.el);
+        }
+      });
+
+      Vue.directive('lazy-container', {
+        update: function update(newValue, oldValue) {
+          lazyContainer.update(this.el, {
+            modifiers: this.modifiers || {},
+            arg: this.arg,
+            value: newValue,
+            oldValue: oldValue
+          }, {
+            context: this.vm
+          });
+        },
+        unbind: function unbind() {
+          lazyContainer.unbind(this.el);
+        }
+      });
+    }
+  }
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (index);
+
+
+/***/ }),
+
 /***/ "./resources/js/components/AttributeoneComponent.vue":
 /*!***********************************************************!*\
   !*** ./resources/js/components/AttributeoneComponent.vue ***!
@@ -43408,6 +45282,45 @@ component.options.__file = "resources/js/components/ResultComponent.vue"
 
 /***/ }),
 
+/***/ "./resources/js/components/TestComponent.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/TestComponent.vue ***!
+  \***************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _TestComponent_vue_vue_type_template_id_70d64aa0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./TestComponent.vue?vue&type=template&id=70d64aa0& */ "./resources/js/components/TestComponent.vue?vue&type=template&id=70d64aa0&");
+/* harmony import */ var _TestComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./TestComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/TestComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+;
+var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__.default)(
+  _TestComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__.default,
+  _TestComponent_vue_vue_type_template_id_70d64aa0___WEBPACK_IMPORTED_MODULE_0__.render,
+  _TestComponent_vue_vue_type_template_id_70d64aa0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/TestComponent.vue"
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
+
+/***/ }),
+
 /***/ "./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js&":
 /*!************************************************************************************!*\
   !*** ./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js& ***!
@@ -43517,6 +45430,22 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResultComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ResultComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResultComponent.vue?vue&type=script&lang=js&");
  /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ResultComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+
+/***/ }),
+
+/***/ "./resources/js/components/TestComponent.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/TestComponent.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TestComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TestComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TestComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_TestComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
 
 /***/ }),
 
@@ -43635,6 +45564,23 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResultComponent_vue_vue_type_template_id_057ebc76___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
 /* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ResultComponent_vue_vue_type_template_id_057ebc76___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ResultComponent.vue?vue&type=template&id=057ebc76& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ResultComponent.vue?vue&type=template&id=057ebc76&");
+
+
+/***/ }),
+
+/***/ "./resources/js/components/TestComponent.vue?vue&type=template&id=70d64aa0&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/TestComponent.vue?vue&type=template&id=70d64aa0& ***!
+  \**********************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestComponent_vue_vue_type_template_id_70d64aa0___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestComponent_vue_vue_type_template_id_70d64aa0___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */ });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_TestComponent_vue_vue_type_template_id_70d64aa0___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./TestComponent.vue?vue&type=template&id=70d64aa0& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TestComponent.vue?vue&type=template&id=70d64aa0&");
 
 
 /***/ }),
@@ -44168,12 +46114,13 @@ var render = function() {
       ? _c(
           "button",
           {
-            staticClass: "x-btn x-btn-dark",
+            staticClass: "x-btn x-btn-dark openModalApp",
             attrs: {
               type: "button",
               "data-toggle": "modal",
               "data-target": "#exampleModalCenter"
-            }
+            },
+            on: { click: _vm.fixHeader }
           },
           [_vm._v("\n  Find fit\n")]
         )
@@ -44820,233 +46767,241 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", { staticClass: "x-row" }, [
-      _c("input", {
-        directives: [
-          {
-            name: "model",
-            rawName: "v-model",
-            value: _vm.container.countrycheck,
-            expression: "container.countrycheck"
-          }
-        ],
-        staticClass: "countrycheck no-gutters x-mt-3 x-offset-c6",
-        attrs: { type: "checkbox", name: "countrycheck" },
-        domProps: {
-          checked: Array.isArray(_vm.container.countrycheck)
-            ? _vm._i(_vm.container.countrycheck, null) > -1
-            : _vm.container.countrycheck
-        },
-        on: {
-          change: [
-            function($event) {
-              var $$a = _vm.container.countrycheck,
-                $$el = $event.target,
-                $$c = $$el.checked ? true : false
-              if (Array.isArray($$a)) {
-                var $$v = null,
-                  $$i = _vm._i($$a, $$v)
-                if ($$el.checked) {
-                  $$i < 0 &&
-                    _vm.$set(_vm.container, "countrycheck", $$a.concat([$$v]))
-                } else {
-                  $$i > -1 &&
-                    _vm.$set(
-                      _vm.container,
-                      "countrycheck",
-                      $$a.slice(0, $$i).concat($$a.slice($$i + 1))
-                    )
+    _vm._m(2),
+    _vm._v(" "),
+    _vm.disabled
+      ? _c("div", { staticClass: "x-row" }, [
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.container.countrycheck,
+                expression: "container.countrycheck"
+              }
+            ],
+            staticClass: "countrycheck no-gutters x-mt-3 x-offset-c6",
+            attrs: { type: "checkbox", name: "countrycheck" },
+            domProps: {
+              checked: Array.isArray(_vm.container.countrycheck)
+                ? _vm._i(_vm.container.countrycheck, null) > -1
+                : _vm.container.countrycheck
+            },
+            on: {
+              change: [
+                function($event) {
+                  var $$a = _vm.container.countrycheck,
+                    $$el = $event.target,
+                    $$c = $$el.checked ? true : false
+                  if (Array.isArray($$a)) {
+                    var $$v = null,
+                      $$i = _vm._i($$a, $$v)
+                    if ($$el.checked) {
+                      $$i < 0 &&
+                        _vm.$set(
+                          _vm.container,
+                          "countrycheck",
+                          $$a.concat([$$v])
+                        )
+                    } else {
+                      $$i > -1 &&
+                        _vm.$set(
+                          _vm.container,
+                          "countrycheck",
+                          $$a.slice(0, $$i).concat($$a.slice($$i + 1))
+                        )
+                    }
+                  } else {
+                    _vm.$set(_vm.container, "countrycheck", $$c)
+                  }
+                },
+                function($event) {
+                  return _vm.countryval()
                 }
-              } else {
-                _vm.$set(_vm.container, "countrycheck", $$c)
+              ]
+            }
+          }),
+          _vm._v(" "),
+          _c(
+            "svg",
+            {
+              staticClass: "img_country",
+              staticStyle: { "enable-background": "new 0 0 512 512" },
+              attrs: {
+                version: "1.1",
+                id: "Capa_1",
+                xmlns: "http://www.w3.org/2000/svg",
+                "xmlns:xlink": "http://www.w3.org/1999/xlink",
+                x: "0px",
+                y: "0px",
+                viewBox: "0 0 512 512",
+                "xml:space": "preserve"
               }
             },
-            function($event) {
-              return _vm.countryval()
-            }
-          ]
-        }
-      }),
-      _vm._v(" "),
-      _c(
-        "svg",
-        {
-          staticClass: "img_country",
-          staticStyle: { "enable-background": "new 0 0 512 512" },
-          attrs: {
-            version: "1.1",
-            id: "Capa_1",
-            xmlns: "http://www.w3.org/2000/svg",
-            "xmlns:xlink": "http://www.w3.org/1999/xlink",
-            x: "0px",
-            y: "0px",
-            viewBox: "0 0 512 512",
-            "xml:space": "preserve"
-          }
-        },
-        [
-          _c("rect", {
-            staticStyle: { fill: "#F0F0F0" },
-            attrs: { y: "85.331", width: "512", height: "341.337" }
-          }),
-          _vm._v(" "),
-          _c("g", [
-            _c("rect", {
-              staticStyle: { fill: "#D80027" },
-              attrs: { y: "127.994", width: "512", height: "42.663" }
-            }),
-            _vm._v(" "),
-            _c("rect", {
-              staticStyle: { fill: "#D80027" },
-              attrs: { y: "213.331", width: "512", height: "42.663" }
-            }),
-            _vm._v(" "),
-            _c("rect", {
-              staticStyle: { fill: "#D80027" },
-              attrs: { y: "298.657", width: "512", height: "42.663" }
-            }),
-            _vm._v(" "),
-            _c("rect", {
-              staticStyle: { fill: "#D80027" },
-              attrs: { y: "383.994", width: "512", height: "42.663" }
-            })
-          ]),
-          _vm._v(" "),
-          _c("rect", {
-            staticStyle: { fill: "#2E52B2" },
-            attrs: { y: "85.331", width: "256", height: "183.797" }
-          }),
-          _vm._v(" "),
-          _c("g", [
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \n\n99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \n\n99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \n\n43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \n\n54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \n\n99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \n\n54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \n\n156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \n\n145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \n\n201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \n\n212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \n\n156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
-              }
-            }),
-            _vm._v(" "),
-            _c("polygon", {
-              staticStyle: { fill: "#F0F0F0" },
-              attrs: {
-                points:
-                  "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \n\n212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
-              }
-            })
-          ]),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g"),
-          _vm._v(" "),
-          _c("g")
-        ]
-      )
-    ]),
+            [
+              _c("rect", {
+                staticStyle: { fill: "#F0F0F0" },
+                attrs: { y: "85.331", width: "512", height: "341.337" }
+              }),
+              _vm._v(" "),
+              _c("g", [
+                _c("rect", {
+                  staticStyle: { fill: "#D80027" },
+                  attrs: { y: "127.994", width: "512", height: "42.663" }
+                }),
+                _vm._v(" "),
+                _c("rect", {
+                  staticStyle: { fill: "#D80027" },
+                  attrs: { y: "213.331", width: "512", height: "42.663" }
+                }),
+                _vm._v(" "),
+                _c("rect", {
+                  staticStyle: { fill: "#D80027" },
+                  attrs: { y: "298.657", width: "512", height: "42.663" }
+                }),
+                _vm._v(" "),
+                _c("rect", {
+                  staticStyle: { fill: "#D80027" },
+                  attrs: { y: "383.994", width: "512", height: "42.663" }
+                })
+              ]),
+              _vm._v(" "),
+              _c("rect", {
+                staticStyle: { fill: "#2E52B2" },
+                attrs: { y: "85.331", width: "256", height: "183.797" }
+              }),
+              _vm._v(" "),
+              _c("g", [
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \n\n99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \n\n99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \n\n43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \n\n54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \n\n99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \n\n54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \n\n156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \n\n145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \n\n201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \n\n212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \n\n156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
+                  }
+                }),
+                _vm._v(" "),
+                _c("polygon", {
+                  staticStyle: { fill: "#F0F0F0" },
+                  attrs: {
+                    points:
+                      "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \n\n212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
+                  }
+                })
+              ]),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g"),
+              _vm._v(" "),
+              _c("g")
+            ]
+          )
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "x-mt-5 x-text-center x-pb-5" }, [
       _c(
@@ -45108,6 +47063,20 @@ var staticRenderFns = [
         },
         [_vm._v("Age")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "x-row" }, [
+      _c("div", { staticClass: "x-col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "x-col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "x-col" }),
+      _vm._v(" "),
+      _c("div", { staticClass: "x-col" })
     ])
   }
 ]
@@ -45489,6 +47458,42 @@ var staticRenderFns = [
         },
         [_vm._v("Learn More")]
       )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TestComponent.vue?vue&type=template&id=70d64aa0&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/TestComponent.vue?vue&type=template&id=70d64aa0& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "render": () => (/* binding */ render),
+/* harmony export */   "staticRenderFns": () => (/* binding */ staticRenderFns)
+/* harmony export */ });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _vm._m(0)
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("div", { staticClass: "card" }, [
+        _c("div", { staticClass: "card-body w-25" })
+      ])
     ])
   }
 ]

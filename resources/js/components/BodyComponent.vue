@@ -11,7 +11,7 @@
         />
        
 <!-- Button trigger modal -->
-<button  v-if="showBodyFitApp" type="button" class="x-btn x-btn-dark" data-toggle="modal" data-target="#exampleModalCenter">
+<button  v-if="showBodyFitApp" type="button" @click="fixHeader" class="x-btn x-btn-dark openModalApp" data-toggle="modal" data-target="#exampleModalCenter">
   Find fit
 </button>
   <span
@@ -298,6 +298,15 @@ export default {
     },
 
     methods: {
+        fixHeader:function(){
+         
+          
+            $("sticky-header").addClass("bylt-header");
+            $("#shopify-section-announcement-bar").addClass("bylt-header");
+            
+        
+        },
+      
        
         getAttributesToHeightWeight: function(form,num)
         {
@@ -532,11 +541,12 @@ export default {
         this.getLocalData();
         this.showBodyFit();
         this.getAttributes();
-
-        $("#popup-trigger").on("click", function() {
-            $(".product-card").css("z-index", "-1");
-            $("#popup1").css("overflow", "scroll");
-        });
+        $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
+        $("sticky-header").removeClass("bylt-header", "1"); 
+        $("#shopify-section-announcement-bar").removeClass("bylt-header", "1");
+})
+      
+      
 
         EventBus.$on('refreshSize',size=>{
             this.finalsize = size
