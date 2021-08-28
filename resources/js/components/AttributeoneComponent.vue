@@ -38,7 +38,7 @@
             </div>
              <div class=" x-row x-justify-content-center queryattr x-d-none x-pb-5"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
                 <div
-                    class="x-col-md-4  x-col x-mb-5 "
+                    class="x-col-md-4  x-col-12 x-mb-5 "
                     v-for="row in attributes.attr_items" v-if="attributes.id == row.attribute_type_id"
                         
                     

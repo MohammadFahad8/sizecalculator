@@ -9042,5 +9042,5 @@ label:focus,
 
 .img_attr_get
 {
-  width: -webkit-fill-available;
+  width: 100%;
 }
