@@ -1838,136 +1838,9 @@ module.exports = {
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js& ***!
   \****************************************************************************************************************************************************************************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+/***/ (() => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
-/* harmony export */ });
-/* harmony import */ var _event_bus__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../event-bus */ "./resources/js/event-bus.js");
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {
-    attributes: Object,
-    tabnum: Object,
-    recordsLength: Number,
-    currentRecord: Number
-  },
-  data: function data() {
-    return {
-      container: {
-        tabnumber: "",
-        attr_first: true,
-        chestSizeOne: "1",
-        chestSizeTwo: "2",
-        chestSizeThree: "3",
-        chest: [],
-        attributeDetails: [],
-        arraytitle: {},
-        arrayval: {}
-      },
-      is_loading: true,
-      leng: 0
-    };
-  },
-  methods: {
-    nextStep: function nextStep(n) {
-      this.container.tabnumber = n;
-      _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("attributeone", this.container);
-
-      if (this.currentRecord == this.recordsLength) {
-        _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("sizeCalculate", n);
-      }
-    },
-    chest: function chest(n, scid) {
-      if (localStorage.getItem(this.attributes.name) == null) {
-        localStorage.setItem(this.attributes.name.toLowerCase(), n);
-        localStorage.setItem("sizechart_id_" + this.attributes.name.toLowerCase(), scid); //change to commit just adding a text
-      }
-
-      this.nextStep(this.tabnum.count + 1);
-    }
-  },
-  mounted: function mounted() {
-    setTimeout(function () {
-      $('.loadspin').addClass('x-d-none');
-      $('.allattr').removeClass('x-d-none');
-      $('.queryattr').removeClass('x-d-none');
-    }, 1000);
-  }
-});
+throw new Error("Module build failed (from ./node_modules/babel-loader/lib/index.js):\nSyntaxError: C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\resources\\js\\components\\AttributeoneComponent.vue: Unexpected token, expected \",\" (124:12)\n\n\u001b[0m \u001b[90m 122 |\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 123 |\u001b[39m\u001b[0m\n\u001b[0m\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 124 |\u001b[39m             \u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mnextStep(\u001b[36mthis\u001b[39m\u001b[33m.\u001b[39mtabnum\u001b[33m.\u001b[39mcount \u001b[33m+\u001b[39m \u001b[35m1\u001b[39m)\u001b[33m;\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m     |\u001b[39m             \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 125 |\u001b[39m         }\u001b[0m\n\u001b[0m \u001b[90m 126 |\u001b[39m     }\u001b[33m,\u001b[39m\u001b[0m\n\u001b[0m \u001b[90m 127 |\u001b[39m     mounted() {\u001b[0m\n    at Parser._raise (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:810:17)\n    at Parser.raiseWithData (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:803:17)\n    at Parser.raise (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:764:17)\n    at Parser.unexpected (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:9980:16)\n    at Parser.expect (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:9954:28)\n    at Parser.parseObjectLike (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:11770:14)\n    at Parser.parseExprAtom (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:11298:23)\n    at Parser.parseExprSubscripts (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:10954:23)\n    at Parser.parseUpdate (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:10934:21)\n    at Parser.parseMaybeUnary (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:10912:23)\n    at Parser.parseExprOps (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:10769:23)\n    at Parser.parseMaybeConditional (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:10743:23)\n    at Parser.parseMaybeAssign (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:10706:21)\n    at C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:10673:39\n    at Parser.allowInAnd (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:12396:12)\n    at Parser.parseMaybeAssignAllowIn (C:\\xampp\\htdocs\\sizecalculatorshopify\\sizecalculator\\node_modules\\@babel\\parser\\lib\\index.js:10673:17)");
 
 /***/ }),
 
@@ -2596,8 +2469,17 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this4.attributes = res.data;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
           _this4.lastTab = true;
-        }); //Start removed part that loads last screen if session is set
-        //End removed part that loads last screen if session is set
+        }); //following commented part tells us about if screen should be last when size is already calculated
+        // if (localStorage.getItem("recommended_size") != null) {
+        //     if(this.newapp == true)
+        //     {
+        //         this.tabnumber = 1;
+        //     }else
+        //     {
+        //         this.tabnumber = parseInt(this.attributes.length) + 2;
+        //     this.lastTab = true;    
+        //     }
+        // }
       });
     }
   },
@@ -3636,12 +3518,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       this.container.is_loading = true;
-      var a = ""; // if (this.container.restarted == false) {
-      //     if (localStorage.getItem("sizeindex") != null) {
-      //         this.setSlides(localStorage.getItem("sizeindex"));
-      //     }
-      // }
-
+      var a = "";
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
       axios.post(this.$appUrl + "/api/size-recommend", form).then(function (res) {
@@ -3774,7 +3651,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this3 = this;
 
     // console.log = function(){};
-    this.is_loading = true; //   this.setupProduct();
+    this.is_loading = true; //this.setupProduct();
     // this.getProductDetails();
 
     this.form.conversionCount = this.product.id;
@@ -44981,6 +44858,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _AttributeoneComponent_vue_vue_type_template_id_42be9ef8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./AttributeoneComponent.vue?vue&type=template&id=42be9ef8& */ "./resources/js/components/AttributeoneComponent.vue?vue&type=template&id=42be9ef8&");
 /* harmony import */ var _AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./AttributeoneComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -45255,7 +45135,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./AttributeoneComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/AttributeoneComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__.default); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ var __WEBPACK_REEXPORT_OBJECT__ = {};
+/* harmony reexport (unknown) */ for(const __WEBPACK_IMPORT_KEY__ in _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== "default") __WEBPACK_REEXPORT_OBJECT__[__WEBPACK_IMPORT_KEY__] = () => _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__[__WEBPACK_IMPORT_KEY__]
+/* harmony reexport (unknown) */ __webpack_require__.d(__webpack_exports__, __WEBPACK_REEXPORT_OBJECT__);
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ((_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_AttributeoneComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0___default())); 
 
 /***/ }),
 

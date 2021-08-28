@@ -108,22 +108,21 @@ export default {
             }
         },
 
-        chest: function(n,scid) {
+       chest: function(n,scid) {
             
-                localStorage.setItem(this.attributes.name.toLowerCase(), n);
+            if (localStorage.getItem(this.attributes.name) == null) {
 
+                localStorage.setItem(this.attributes.name.toLowerCase(), n);
                 localStorage.setItem("sizechart_id_"+this.attributes.name.toLowerCase(), scid);
                 //change to commit just adding a text
                 
             }
           
-
             
-
-
             this.nextStep(this.tabnum.count + 1);
         }
-    },
+        },
+    
     mounted() {
         
         
