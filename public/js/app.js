@@ -1954,7 +1954,7 @@ __webpack_require__.r(__webpack_exports__);
     chest: function chest(n, scid) {
       if (localStorage.getItem(this.attributes.name) == null) {
         localStorage.setItem(this.attributes.name.toLowerCase(), n);
-        localStorage.setItem("sizechart_id_" + this.attributes.name.toLowerCase(), scid);
+        localStorage.setItem("sizechart_id_" + this.attributes.name.toLowerCase(), scid); //change to commit just adding a text
       }
 
       this.nextStep(this.tabnum.count + 1);

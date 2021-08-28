@@ -113,6 +113,7 @@ export default {
 
                 localStorage.setItem(this.attributes.name.toLowerCase(), n);
                 localStorage.setItem("sizechart_id_"+this.attributes.name.toLowerCase(), scid);
+                //change to commit just adding a text
                 
             }
           
