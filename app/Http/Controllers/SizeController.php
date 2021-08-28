@@ -5,9 +5,13 @@ namespace App\Http\Controllers;
 use api;
 use App\Models\Size;
 use App\Models\Products;
+use App\Models\Variants;
+use App\Models\Sizechart;
+use App\Models\Bodyfeature;
 use Illuminate\Http\Request;
 use App\Models\Attributetypes;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class SizeController extends Controller
 {
@@ -16,18 +20,15 @@ class SizeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+   public function sizeChartIndex($id)
     {
-        //
-        $sizes = Size::latest()->with('attribute')->get();
-        
-        return view('sizes.index',
-        [
-            'sizes'=>$sizes
-            
-        ]
-    );
+        $sizeChart = Sizechart::with('product', 'bodyFeature')->where([['product_id', '=', trim($id)], ['status', '>', 0]])->get();
 
+        return view('size-charts.index', [
+            'current_product_id' => $id,
+            'sizeChart' => $sizeChart
+
+        ]);
     }
 
     /**
@@ -35,43 +36,90 @@ class SizeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function createSizeChart($id)
     {
-        //
-        $attr = Attributetypes::latest()->get();
-        return view('sizes.create',
-        [
-            'attributes'=>$attr
+        $variants = Variants::where([['product_id', '=', trim($id)]])->get();
+        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', trim($id)], ['status', '>', 0]])->get();
+
+
+        return view('size-charts.create', [
+            'product_id' => trim($id),
+            'variantsOfAttributes' => $variantsOfAttributes,
+            'variants' => $variants
         ]);
     }
 
+    public function searchProduct($query)
+    {
+        $shop = Auth::user();
+        
+        $product = $shop->api()->rest('GET','/admin/api/2021-01/products/'.$query.'.json')['body'];
+       return $product;
+
+    }
     /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function sizeChartPost(Request $request)
     {
-        //
-        $this->validate($request, [
-            "size" => "required",
-            "alias" => "required",
-            "attribute_type" => "required",
-            
-            
-        ], [
-            "size.required" => "Please Enter Size",
-            "alias.required" => "Please Select Alias",
-            "attribute_type.required" => "Please Select one",
-          
-        ]);
-    $attr = new Size();
-    $attr->name = $request->get('size');
-    $attr->alias = $request->get('alias');
-    $attr->attr_id = $request->get('attribute_type');
-    $attr->save();
-    return $this->create();
+
+        try {
+            $this->validate($request, [
+                'weight_start' => 'required|min:10|max:999|numeric',
+                'weight_end' => 'required|min:10|max:999|numeric',
+                'height_start' => 'required|min:10|max:999|numeric',
+                'height_end' => 'required|min:10|max:999|numeric',
+                // 'body_measurement_start.*'=>'required|array|numeric',
+                // 'body_measurement_end.*'=>'required|array|numeric',
+                'predicted_size' => 'required|min:2|alpha',
+
+            ], [
+                'weight_start.required' => "Enter Value for Weight Start Range",
+                'weight_end.required' => "Enter Value for Weight End Range",
+                'height_start.required' => "Enter Value for Height Start Range",
+                'height_end.required' => "Enter Value for Height End Range",
+                // 'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
+                // 'body_measurement_end.required'=>"Enter Value for Attribute End Range",
+                'predicted_size.required' => "Enter Value for Predicted Size",
+                'predicted_size.alpha' => "Input must be Letters i.e (A-Z,a-z)",
+                'weight_start.numeric' => "Entered Value must be Numeric",
+                'weight_end.numeric' => "Entered Value must be Numeric",
+                'height_start.numeric' => "Entered Value must be Numeric",
+                'height_end.numeric' => "Entered Value must be Numeric",
+                // 'body_measurement_start.numeric'=>"Entered Value must be Numeric",
+                // 'body_measurement_end.numeric'=>"Entered Value must be Numeric",
+
+
+            ]);
+
+
+            $sizeChartLastId = Sizechart::create($request->all());
+
+
+            for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
+
+
+
+                $attrBody = Attributetypes::find($request->get('attribute_type')[$i]);
+                $body = new Bodyfeature();
+                $body->sizechart_id = trim($sizeChartLastId->id);
+                $body->attr_measurement_start = $request->get('body_measurement_start')[$i];
+                $body->attr_measurement_end = $request->get('body_measurement_end')[$i];
+                $body->predicted_size = $request->get('predicted_size');
+                $body->attr_id = trim($attrBody->id);
+                $body->attr_name = strtolower($request->get('attribute_type_name')[$i]);
+                $body->save();
+            }
+            Session::flash('success', 'Added Successfully');
+
+            return   redirect()->route('sizechart.home', ['id' => $request->get('product_id')]);
+        } catch (\Exception $e) {
+            Session::flash('error', '*Invalid form missing attribute');
+            return back();
+        }
     }
 
     /**
@@ -91,24 +139,33 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function sizeChartEdit(Request $request)
     {
-        //
+
+
+        $sizechart = Sizechart::with('bodyFeature', 'product')->find(trim($request->get('id')));
+        $variants = Variants::where('product_id', '=', trim($request->get('product_id')))->get();
+
+
+
+        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=',trim($request->get('product_id')) ], ['status', '>', 0]])->get();
+        //$variantsOfAttributes= Bodyfeature::where([['attr_id', '=', $request->get('id')], ['status', '>', 0]])->get();
+
+        return view('size-charts.edit', [
+            'sizechart' => $sizechart,
+            'current_product_id' => trim($request->get('product_id')),
+            'id' => trim($request->get('id')),
+            'variantsOfAttributes' => $variantsOfAttributes,
+            'variants' => $variants
+
+        ]);
+    }
+    public function getAllProducts()
+    {
         $shop = Auth::user();
         
         $products = $shop->api()->rest('GET', '/admin/api/2021-01/products.json')['body']['container'];
-       
-        
-        $sizes = Size::find($id);
-        $attrtypes = Attributetypes::latest()->get();
-        return view('sizes.edit',[
-            'sizes'=>$sizes,
-            'attributetypes'=>$attrtypes,
-            'id'=>$id,
-            'products'=>$products,
-
-
-        ]);
+      return $products;
     }
 
     /**
@@ -118,16 +175,65 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Size $size)
+    public function sizeChartUpdatePost(Request $request)
     {
-        //
-        $data = $request->all();
-        $attr = Size::find($data['edit_id']);
-        $attr->name = $data['size'];
-        $attr->alias = $data['alias'];
-        $attr->attr_id = $data['attribute_type'];
-        $attr->save();
-        return $this->index();
+        try {
+            $this->validate($request, [
+                'weight_start' => 'required|min:10|max:999|numeric',
+                'weight_end' => 'required|min:10|max:999|numeric',
+                'height_start' => 'required|min:10|max:999|numeric',
+                'height_end' => 'required|min:10|max:999|numeric',
+                // 'body_measurement_start'=>'required|min:10|max:999|numeric',
+                // 'body_measurement_end'=>'required|min:10|max:999|numeric',
+                'predicted_size' => 'required|min:2|alpha',
+
+            ], [
+                'weight_start.required' => "Enter Value for Weight Start Range",
+                'weight_end.required' => "Enter Value for Weight End Range",
+                'height_start.required' => "Enter Value for Height Start Range",
+                'height_end.required' => "Enter Value for Height End Range",
+                // 'body_measurement_start.required'=>"Enter Value for Attribute Start Range",
+                // 'body_measurement_end.required'=>"Enter Value for Attribute End Range",
+                'predicted_size.required' => "Enter Value for Predicted Size",
+                'predicted_size.alpha' => "Input must be Letters i.e (A-Z,a-z)",
+                'weight_start.numeric' => "Entered Value must be Numeric",
+                'weight_end.numeric' => "Entered Value must be Numeric",
+                'height_start.numeric' => "Entered Value must be Numeric",
+                'height_end.numeric' => "Entered Value must be Numeric",
+                // 'body_measurement_start.numeric'=>"Entered Value must be Numeric",
+                // 'body_measurement_end.numeric'=>"Entered Value must be Numeric",
+
+
+            ]);
+
+
+            $sizeChart = Sizechart::find(trim($request->get('id')));
+
+            $sizeChart->weight_start = $request->get('weight_start');
+            $sizeChart->weight_end = $request->get('weight_end');
+            $sizeChart->height_start = $request->get('height_start');
+            $sizeChart->height_end = $request->get('height_end');
+            $sizeChart->product_id = $request->get('product_id');
+            $sizeChart->save();
+
+            for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
+                
+                $b = Bodyfeature::where('sizechart_id', '=', trim($request->get('id')) )->get();
+                $b[$i]['sizechart_id'] = trim($sizeChart->id);
+                $b[$i]['attr_measurement_start'] = $request->get('body_measurement_start')[$i];
+                $b[$i]['attr_measurement_end'] = $request->get('body_measurement_end')[$i];
+                $b[$i]['predicted_size'] = $request->get('predicted_size');
+                // commented as the attr_id was to be store id of attribute_Types folder but it was storing id of body_feature table
+                // $b[$i]['attr_id'] = $request->get('attribute_type')[$i];
+                $b[$i]['attr_name'] = strtolower($request->get('attribute_type_name')[$i]);
+                $b[$i]->save();
+            }
+            Session::flash('success', 'Updated Successfully');
+            return   redirect()->route('sizechart.home', ['id' => trim($request->get('product_id'))]);
+        } catch (\Exception $e) {
+            Session::flash('error', '*Invalid form missing attribute');
+            return back();
+        }
     }
 
     /**
@@ -136,12 +242,21 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function sizeChartDelete(Request $request)
     {
-        //
-        $attr = Size::find($id);
-        $attr->delete();
-        return $this->index();
+
+        $sizechart = Sizechart::find(trim($request->get('id')));
+        $p_id = intval($sizechart->product_id);
+        $sizechart->status = 0;
+        $sizechart->save();
+
+        $body = Bodyfeature::where('sizechart_id', '=', trim($request->get('id')))->first();
+        if ($body) {
+
+            $body->status = 0;
+            $body->save();
+        }
+        return   redirect()->route('sizechart.home', ['id' => trim($p_id)]);
     }
 
     public function selectProduct(Request $data)
@@ -204,5 +319,12 @@ class SizeController extends Controller
     public function testpage()
     {
         return view('attributes.testpage');
+    }
+    public function sizeOfSpecificRange($id)
+    {
+
+        $bodySpecs = Bodyfeature::where('sizechart_id', '=',trim($id))->get();
+
+        return $bodySpecs;
     }
 }

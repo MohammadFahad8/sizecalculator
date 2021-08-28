@@ -1,13 +1,18 @@
 @extends('shopify-app::layouts.default')
 @section('content')
+@include('partials_attributes.style')
+
 <div class="row mt-5 p-5">
     @include('partials_sizes.sidebar')
     <div class="col-md-9">
 <div class="card">
-    <div class="card-header "><span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Sizes') }}</span> <a
-        href="{{ route('sizes.create') }}" class="btn btn-info btn-md button-add border border-light offset-11 ">
-        <i class="fas fa-plus"></i>Size
-    </a></div>
+    <div class="card-header ">
+        <div class="row">
+            <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Sizes') }}</span> </div>
+            <div class="col-md-9"><a
+                href="{{ route('sizes.create') }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Size</span></a></div>
+        </div>
+       </div>
     <div class="card-body">
         
 <table class="table table-bordered  " style="width:100% !important;">
@@ -36,6 +41,8 @@
 
     </tbody>
 </table>
+{{-- {{ $sizes->render() }} --}}
+
     </div>
 </div>
 </div>

@@ -1,5 +1,7 @@
-@extends('shopify-app::layouts.default')
+{{-- @extends('shopify-app::layouts.default') --}}
+@extends('layouts.app')
 @section('content')
+@include('partials_attributes.style')
 
 <div class="row mt-5 offset-3 ml-5 " style="10px !important">
     @include('partials_attributes.sidebar')

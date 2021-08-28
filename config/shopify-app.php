@@ -1,5 +1,7 @@
 <?php
 
+
+
 return [
     /*
     |--------------------------------------------------------------------------
@@ -170,7 +172,7 @@ return [
     |
     */
 
-    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,read_orders,write_orders,read_themes,write_themes,read_customers,write_customers,read_script_tags,write_script_tags'),
+    'api_scopes' => env('SHOPIFY_API_SCOPES', 'read_products,write_products,read_themes,write_themes,read_script_tags,write_script_tags'),
 
     /*
     |--------------------------------------------------------------------------
@@ -332,6 +334,8 @@ return [
             ],
             ...
         */
+        
+
     ],
 
     /*
@@ -391,7 +395,7 @@ return [
     'scripttags' => [
       
         [
-            'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', env('APP_URL') . '/scripttags/index.js'),
+            'src' => env('SHOPIFY_SCRIPTTAG_1_SRC', env('APP_URL') . '/js/app.js'),
             'event' => env('SHOPIFY_SCRIPTTAG_1_EVENT', 'onload'),
             'display_scope' => env('SHOPIFY_SCRIPTTAG_1_DISPLAY_SCOPE', 'online_store')
         ]
