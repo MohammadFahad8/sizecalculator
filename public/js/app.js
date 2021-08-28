@@ -1951,17 +1951,8 @@ __webpack_require__.r(__webpack_exports__);
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("sizeCalculate", n);
       }
     },
-<<<<<<< HEAD
     chest: function chest(n) {
       localStorage.setItem(this.attributes.name.toLowerCase(), n);
-=======
-    chest: function chest(n, scid) {
-      if (localStorage.getItem(this.attributes.name) == null) {
-        localStorage.setItem(this.attributes.name.toLowerCase(), n);
-        localStorage.setItem("sizechart_id_" + this.attributes.name.toLowerCase(), scid);
-      }
-
->>>>>>> f9de43fc74b61f2c5796787a8a28a1351b0f7338
       this.nextStep(this.tabnum.count + 1);
     }
   },
@@ -2600,8 +2591,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       axios.get(this.$appUrl + "/api/get-attrbutes/" + this.product.id).then(function (res) {
         _this4.attributes = res.data;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
-<<<<<<< HEAD
-          _this3.lastTab = true;
+          _this4.lastTab = true;
         }); //following commented part tells us about if screen should be last when size is already calculated
         // if (localStorage.getItem("recommended_size") != null) {
         //     if(this.newapp == true)
@@ -2613,11 +2603,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         //     this.lastTab = true;    
         //     }
         // }
-=======
-          _this4.lastTab = true;
-        }); //Start removed part that loads last screen if session is set
-        //End removed part that loads last screen if session is set
->>>>>>> f9de43fc74b61f2c5796787a8a28a1351b0f7338
       });
     }
   },
@@ -3656,20 +3641,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       this.container.is_loading = true;
-<<<<<<< HEAD
       var a = "";
-      this.container.showSelectedSizeSlider = false;
-      this.container.conversionCount = this.product.id;
-      axios.post(this.$appUrl + "/api/size-recommend", form).then(function (res) {
-        _this3.container.is_loading = false;
-        _this3.container.showSelectedSizeSlider = true;
-=======
-      var a = ""; // if (this.container.restarted == false) {
-      //     if (localStorage.getItem("sizeindex") != null) {
-      //         this.setSlides(localStorage.getItem("sizeindex"));
-      //     }
-      // }
-
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
       axios.post(this.$appUrl + "/api/size-recommend", form).then(function (res) {
@@ -3685,7 +3657,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         _this2.container.is_loading = false;
         _this2.container.showSelectedSizeSlider = true;
->>>>>>> f9de43fc74b61f2c5796787a8a28a1351b0f7338
 
         if (res.data == "XL" || res.data == "Xl" || res.data == "xL" || res.data == "xl" || res.data == "XS" || res.data == "Xs" || res.data == "xS" || res.data == "xs") {
           _this2.container.recommended_size = res.data.toUpperCase().substr(0, 2);
@@ -3802,12 +3773,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     var _this3 = this;
 
-<<<<<<< HEAD
-    this.is_loading = true; //this.setupProduct();
-=======
     // console.log = function(){};
-    this.is_loading = true; //   this.setupProduct();
->>>>>>> f9de43fc74b61f2c5796787a8a28a1351b0f7338
+    this.is_loading = true; //this.setupProduct();
     // this.getProductDetails();
 
     this.form.conversionCount = this.product.id;
@@ -3857,10 +3824,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-<<<<<<< HEAD
-=======
 
->>>>>>> f9de43fc74b61f2c5796787a8a28a1351b0f7338
 Vue.prototype.$appUrl = 'https://bylt2fit.ystsol.com';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
