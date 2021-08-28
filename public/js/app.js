@@ -1951,8 +1951,12 @@ __webpack_require__.r(__webpack_exports__);
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit("sizeCalculate", n);
       }
     },
-    chest: function chest(n) {
-      localStorage.setItem(this.attributes.name.toLowerCase(), n);
+    chest: function chest(n, scid) {
+      if (localStorage.getItem(this.attributes.name) == null) {
+        localStorage.setItem(this.attributes.name.toLowerCase(), n);
+        localStorage.setItem("sizechart_id_" + this.attributes.name.toLowerCase(), scid); //change to commit just adding a text
+      }
+
       this.nextStep(this.tabnum.count + 1);
     }
   },
@@ -2592,17 +2596,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this4.attributes = res.data;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
           _this4.lastTab = true;
-        }); //following commented part tells us about if screen should be last when size is already calculated
-        // if (localStorage.getItem("recommended_size") != null) {
-        //     if(this.newapp == true)
-        //     {
-        //         this.tabnumber = 1;
-        //     }else
-        //     {
-        //         this.tabnumber = parseInt(this.attributes.length) + 2;
-        //     this.lastTab = true;    
-        //     }
-        // }
+        }); //Start removed part that loads last screen if session is set
+        //End removed part that loads last screen if session is set
       });
     }
   },
@@ -3641,7 +3636,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this2 = this;
 
       this.container.is_loading = true;
-      var a = "";
+      var a = ""; // if (this.container.restarted == false) {
+      //     if (localStorage.getItem("sizeindex") != null) {
+      //         this.setSlides(localStorage.getItem("sizeindex"));
+      //     }
+      // }
+
       this.container.showSelectedSizeSlider = false;
       this.container.conversionCount = this.product.id;
       axios.post(this.$appUrl + "/api/size-recommend", form).then(function (res) {
@@ -3774,7 +3774,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     var _this3 = this;
 
     // console.log = function(){};
-    this.is_loading = true; //this.setupProduct();
+    this.is_loading = true; //   this.setupProduct();
     // this.getProductDetails();
 
     this.form.conversionCount = this.product.id;
