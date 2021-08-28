@@ -375,6 +375,7 @@ class AttributeController extends Controller
         $sizes = array();
         
         $sizeChartList = Sizechart::with('bodyFeature')->where('product_id', '=', $data['conversionCount'])->get();
+        dd($data);
 
         $height_cm = 0;
         if ($data['convertedMeasurements'] == true) {
