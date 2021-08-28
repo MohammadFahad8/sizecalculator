@@ -1,5 +1,6 @@
 <template>
     <div>
+        
     
         <link
             href="https://fonts.googleapis.com/css?family=Karla"
@@ -10,33 +11,26 @@
             rel="stylesheet"
         />
        
-
-        <div v-if="showBodyFitApp" class="box">
-            <a
-                class="x-btn x-btn-dark"
-                id="popup-trigger"
-                href="#popup1"
-                style="margin-left: 1% !important; margin-bottom: 20px !important; border: none"
-                >Find Fit</a
-            >
-            <span
+<!-- Button trigger modal -->
+<button  v-if="showBodyFitApp" type="button" @click="fixHeader" class="x-btn x-btn-dark openModalApp" data-toggle="modal" data-target="#exampleModalCenter">
+  Find fit
+</button>
+  <span
                 id="finalsize"
-                v-if="finalsize != ''"
+                v-if="finalsize != '' && showBodyFitApp"
                 class="final-size-heading"
             >
                 <span class="final-size-label">Your Fit Size : </span>
-                {{ finalsize }}</span
-            >
-        </div>
-        <div id="popup1" class="overlay" style="z-index: 999 !important">
-            <div
-                class="popup fit-advisor-popup-adjustments"
-                style="margin-top: 20px"
-            >
-                <div class="x-row x-mb-5" >
-                    
-                        
-                        <div class="x-col-md-6 mt-2 x-col-6">
+                {{ finalsize }} </span
+            >   
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" style="background: rgba(0, 0, 0, 0.5); " aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-mdlg" role="document">
+    <div class="modal-content">
+      <div class="modal-header x-border-0">
+         <div class="x-col-md-6 mt-2 x-col-6 modal-title">
+                          <!-- backbtn svg -->
                             <svg
                                 v-if="tabnumber > 1 && lastTab != true"
                                 v-on:click="back(tabnumber)"
@@ -62,6 +56,7 @@ display: inline-block;
                                     points="328 112 184 256 328 400"
                                 ></polyline>
                             </svg>
+                            <!-- restart tbn svg -->
                             <svg
                                 style="cursor: pointer"
                                 v-if="lastTab"
@@ -91,22 +86,19 @@ display: inline-block;
                                     stroke-width="32"
                                     points="256 58 336 138 256 218"
                                 ></polyline>
-                            </svg></div>
-                            <div class="x-col-md-6 x-col-6">
-                            <a class="x-float-right close-custom mt-n2" id="closeApp" href="#">&times;</a>
-                            </div>
-                        
-                    
-                    <!-- <div class="predict__sc-1a4an9n-8 dCmgSk">
-                        <div
-                            width="0"
-                            class="predict__sc-1a4an9n-9 eygAJd"
-                        ></div>
-                    </div> -->
-                </div>
-                <!-- close modal btn -->
-                
-                <div>
+                            </svg> 
+        
+        </div>
+        <button type="button" class="close" data-dismiss="modal" style="color:black !important;background-color:#0f8c5e00 !important;font-size:23px " aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+          <div class="x-progress x-rounded-0 x-mb-5" style="height:1px;opacity:0.4;"  >
+    <div id="pb" class="x-progress-bar bg-danger" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0px;background-color:black">
+      <span class="sr-only">70% Complete</span>
+    </div>
+  </div>
+  <div>
                     <div class="x-row">
                         <div class="x-col"></div>
                         <div class="x-col"></div>
@@ -119,31 +111,30 @@ display: inline-block;
                         >FIND YOUR FIT</span
                     >
                 </div>
-                <div
-                    class="content"
-                    style="margin-top: -155px !important; margin-bottom: -120px !important"
-                >
-                    <form id="regForm">
+      <div class="modal-body">
+             <form id="regForm">
+                 
                         <!-- <p class="fit-advisor-intro text-center" id="intro1">
                         <span id="mark1">To get a size recommendation,</span> <br><span id="mark2">fill out the form below</span></p> -->
-
+                                                            <!-- REMOVED 'n' and placed 'tabnumber' in :tabnum property -->
                         <div v-switch="tabnumber">
                             <div v-case="1">
                                 <form-component></form-component>
                             </div>
 
                             <div
-                                v-for="(row, key) in attributes"
+                                v-for="(row, key) in attributesToShow"
                                 :key="row.id"
                                 v-case="key + 2"
                             >
                                 <attribute-one-component
                                     :attributes="row"
                                     :tabnum="{
-                                        count: n
+                                        count: tabnumber
                                     }"
                                     :recordsLength="attributes.length"
                                     :currentRecord="key + 1"
+                                    
                                 ></attribute-one-component>
                             </div>
 
@@ -151,6 +142,8 @@ display: inline-block;
                                 <result-component
                                     :product="product"
                                     :form="form"
+                                    :recordsLength="attributes.length"
+                                    :attrscall="attributes"
                                 ></result-component>
                             </div>
                         </div>
@@ -172,9 +165,14 @@ display: inline-block;
                         <!-- </p> -->
                         <!-- Steps marks was here -->
                     </form>
-                </div>
-            </div>
-        </div>
+      </div>
+     
+    </div>
+  </div>
+</div>
+
+                                                                    <!-- OLD MODAL CODE BELOW ME -->
+                                                                    <!-- OLD MODAL CODE WAS ABOVE ME -->
     </div>
 
     <!-- </div> -->
@@ -196,6 +194,7 @@ export default {
                 // weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
                 // age: localStorage.getItem("age"),
                 bodyMeasure: [],
+                sz: [],
                 heightfoot: "",
                 heightinch: "",
                 heightcm: "",
@@ -234,7 +233,7 @@ export default {
                     title: "Very Relaxed"
                 }
             ],
-            attributes: {},
+            attributes: [],
             n: "",
 
             countrycheck: "",
@@ -284,11 +283,62 @@ export default {
             newapp:false,
 
             image_us: this.$appUrl + "/images/us.png",
-            image_uk: this.$appUrl + "/images/uk.png"
+            image_uk: this.$appUrl + "/images/uk.png",
+            attributesToShow:{},
+            fcount:0,
+            lcount:0,
+            fscount:0,
+            sscount:0,
+            lscount:0,
+            ogLength: 0,
+            nextcount: 0,
+            ogArray:{},
+            
+            
         };
     },
 
     methods: {
+        fixHeader:function(){
+         
+          
+            $("sticky-header").addClass("bylt-header");
+            $("#shopify-section-announcement-bar").addClass("bylt-header");
+            
+        
+        },
+      
+       
+        getAttributesToHeightWeight: function(form,num)
+        {
+            form.productkey =  this.product.id
+         
+         
+           
+            axios.post(this.$appUrl+'/api/get-attributes-to-height-weight',form)
+            .then((res)=>{
+             
+               this.ogLength = res.data.length;
+
+               this.ogArray = res.data.ogArray;
+              // to change screen
+              this.tabnumber =  num
+              //end to change screen
+            this.attributesToShow = res.data;
+            
+            var obt = this.attributes.length+parseInt(2);
+            var total = 700;
+            var result=total/obt;
+            
+            $('.x-progress-bar').css('width',result+'px');
+ 
+
+            
+            })
+        },
+        
+       
+
         formSubmit: function() {
             EventBus.$on("formsubmit", container => {
                 this.form.heightfoot = container.form.heightfoot;
@@ -296,19 +346,34 @@ export default {
                 this.form.heightcm = container.form.heightcm;
                 this.form.weight = container.form.weight;
                 this.form.age = container.form.age;
-                this.tabnumber = container.form.tabnumber;
+                // this.tabnumber = container.form.tabnumber;
                 this.n = container.form.tabnumber;
 
                 this.form.convertedMeasurements =
                     container.form.convertedMeasurements;
                 this.conversionCount = container.form.conversionCount;
                 this.firstTab = container.firstTab;
+                this.getAttributesToHeightWeight(this.form, container.form.tabnumber);
             });
             EventBus.$on("attributeone", container => {
+              
                 this.chest = container;
                 this.lastTab = false;
+                
+                 var obt = this.attributes.length+parseInt(2);
+            var total = 700;
+            var result=total/obt;
+            
+            var cw = $('.x-progress-bar').width();
+            var ww = cw+parseInt(result)
+            
+            $('.x-progress-bar').css('width',ww+'px');
                 this.tabnumber = container.tabnumber;
                 this.n = container.tabnumber;
+                
+                
+               
+                 
             });
 
             EventBus.$on("resetForm", tabnum => {
@@ -321,9 +386,24 @@ export default {
             this.tabnumber = n;
         },
         back: function(num) {
+            EventBus.$emit("hideloader",'ok')
             this.tabnumber = num - 1;
+            
+            
+            var obt = this.attributes.length+parseInt(2);
+            var total = 700;
+            var result=total/obt;
+            
+            var cw = $('.x-progress-bar').width();
+            var ww = cw - parseInt(result)
+            
+            $('.x-progress-bar').css('width',ww+'px');
         },
         restart: function() {
+            EventBus.$emit("hideloader",'ok')
+             var w = $('.x-progress-bar').width()
+            var c = 0;
+            $('.x-progress-bar').css('width',c+'%')
             $(
                 "div.fit-advisor-selected-size:gt(" +
                     localStorage.getItem("sizeindex") +
@@ -346,14 +426,10 @@ export default {
             ).show();
 
             this.restarted = true;
-          
-            // this.form.chest.name = "";
-            // this.form.chest.other = "";
-            // this.form.stomach.name = "";
-            // this.form.stomach.other = "";
-            // this.form.bottom.name = "";
-            // this.form.bottom.other = "";
+         
             this.lastTab = false;
+
+           EventBus.$emit('refreshform',1)
             
 
             this.dev_reset();
@@ -447,6 +523,7 @@ export default {
                     EventBus.$on("mount", num => {
                         this.lastTab = true;
                     });
+
 //following commented part tells us about if screen should be last when size is already calculated
                     // if (localStorage.getItem("recommended_size") != null) {
                         
@@ -465,10 +542,14 @@ export default {
                     //     }
                         
                     // }
+
                 });
-        }
+        },
+        
     },
     mounted() {
+        
+       
         this.form.tags = this.product.tags;
         localStorage.setItem("tags", JSON.stringify(this.product.tags));
 
@@ -479,13 +560,19 @@ export default {
         this.getLocalData();
         this.showBodyFit();
         this.getAttributes();
+        $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
+        $("sticky-header").removeClass("bylt-header"); 
+        $("#shopify-section-announcement-bar").removeClass("bylt-header");
+})
+      
+      
 
-        $("#popup-trigger").on("click", function() {
-            $(".product-card").css("z-index", "-1");
-            $("#popup1").css("overflow", "scroll");
-        });
-    }
+        EventBus.$on('refreshSize',size=>{
+            this.finalsize = size
+        })
+    },
     //    Took watch from here
+    
 };
 </script>
 

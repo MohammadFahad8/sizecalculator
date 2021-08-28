@@ -40,7 +40,7 @@
                 <img id="product-id-specific" v-on:click="productFix({{ $row->product_id }})" style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter" src="{{ ($row->image_link == null) ?  env('APP_URL').'/images/download.png'  : $row->image_link}}" class="img-thumbnail" width="50">
               </div>
               <div class="col-md-10" style="cursor: pointer;">
-              <a href="javascript:void(0)" class="text-dark" >{{ $row->name }}</a></div></div></td>
+              <a href="javascript:void(0)" v-on:click="productFix({{ $row->product_id }})" style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter"  class="text-dark" >{{ $row->name }}</a></div></div></td>
             <td>
             
             <label class="switch">
@@ -131,7 +131,7 @@
 <tr v-if="!isLoading" >
   <td>
     
-     <img id="single-product" :src="product.image_link" width="50" height="50"  alt="" class="img-thumbnail"> 
+     <img id="single-product" v-on:click="zoomImage(product.image_link)" :src="product.image_link" width="50" height="50"  alt="" class="img-thumbnail"> 
     </td>
 
   <td>@{{ product.name }}</td>
@@ -190,7 +190,9 @@
         
     },
     methods:{
-
+      zoomImage:function($img){
+        window.open($img,"_blank");
+      },
       viewAttributes:function($id)
       {
         window.location.href = "attributetypes-all/view/"+$id;

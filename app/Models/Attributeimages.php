@@ -21,4 +21,9 @@ class Attributeimages extends Model
     {
         return $this->belongsTo(Attributetypes::class, 'attribute_type_id', 'id');
     }
+
+    public function sizechart(): BelongsTo
+        {
+            return $this->belongsTo(Sizechart::class, 'product_id', 'product_id');
+        }
 }

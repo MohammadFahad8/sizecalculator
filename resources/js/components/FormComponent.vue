@@ -88,10 +88,16 @@
             </div>
         </div>
         <!-- v-if="!onfirstTab" removed it from the below div -->
-        <div class="row">
+        <div class = "x-row">
+            <div class="x-col"></div>
+            <div class="x-col"></div>
+            <div class="x-col"></div>
+            <div class="x-col"></div>
+        </div>
+        <div class="x-row" v-if="disabled">
             <input
                 v-on:change="countryval()"
-                class="countrycheck no-gutters"
+                class="countrycheck no-gutters x-mt-3 x-offset-c6"
                 type="checkbox"
                 name="countrycheck"
                 v-model="container.countrycheck"
@@ -238,16 +244,19 @@
                 <g></g>
             </svg>
         </div>
-
+<div class="x-mt-5 x-text-center x-pb-5">
         <button
             class="continue-btn"
-            style="position: absolute;right: 30%;width: 33%;bottom: -50px"
+            style="position: absolute;right: 30%;width: 33%;"
             type="button"
             id="nextBtn"
             v-on:click="nextStep(2)"
         >
-            Get Started
+            <span v-if="!submitclicked">Get Started</span>
+            <span v-if="submitclicked" class="spinner-border spinner-border text-white" role="status" aria-hidden="true"></span>
+            
         </button>
+        </div>
         <!-- <button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 32%;width: 33%;bottom: 90px;display:none !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button> -->
     </div>
 </template>
@@ -271,20 +280,31 @@ export default {
                 countrycheck: "",
                 is_loading: false,
                 valid: true,
-                firstTab: false
-            }
+                firstTab: false,
+               
+            },
+             submitclicked:false,
+            disabled:false,
         };
     },
     methods: {
         nextStep: function(n) {
+
+            this.submitclicked = true;
+            EventBus.$on("hideloader",msg=>{
+                this.submitclicked = false;
+            })
             this.validateForm();
             if (this.container.valid == true) {
                 this.container.form.tabnumber = n;
+                this.submitclicked = true;
+                
                 EventBus.$emit("formsubmit", this.container);
                 
             }
         },
         validateForm: function() {
+            this.submitclicked = false;
             if (
                 this.container.countrycheck == false ||
                 this.container.countrycheck == ""
@@ -315,6 +335,7 @@ export default {
                 }
                 if ($("#age").val().length == 0) {
                     $("#age").addClass("invalid");
+                    this.container.valid = false;
                 }
             }
         },
@@ -352,6 +373,7 @@ export default {
             }
         },
         validateHeight: function(event) {
+            
             $("#height_ft").keydown(function(e) {
                 if (e.keyCode === 190 || e.keyCode === 110) {
                     e.preventDefault();
@@ -512,7 +534,32 @@ export default {
             }
         }
     },
-    mounted() {},
+    mounted() {
+
+        EventBus.$on('refreshform',check=>{
+            
+                this.container.form.heightfoot = '';
+                this.container.form.heightinch = '';
+                this.container.form.heightcm = '';
+                this.container.form.weight ='';
+                this.container.form.age = '';
+                this.container.form.convertedMeasurements = false;
+                this.container.form.conversionCount ='';
+                $('.input-border').removeClass("warning-place");
+                $("#age").attr("placeholder", "Years");
+                $("#height_ft").attr("placeholder", "Feet");
+                $("#height_in").attr("placeholder", "Inches");
+                $("#height_cm").attr("placeholder", "Cm");
+                if(this.container.countrycheck == false)
+                {
+                    $("#weight").attr("placeholder", "Lbs");
+                }else
+                {
+                    $("#weight").attr("placeholder", "Kg");
+                }
+                
+        })
+    },
     watch: {
         "container.form.heightfoot": function() {
             this.validateHeight();

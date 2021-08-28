@@ -7,14 +7,24 @@
 require('./bootstrap');
 
 window.Vue = require('vue').default;
+
 import VueSweetalert2 from 'vue-sweetalert2';
 import 'sweetalert2/dist/sweetalert2.min.css';
 import JwPagination from 'jw-vue-pagination';
-import VSwitch from 'v-switch-case'
+import VSwitch from 'v-switch-case';
+import VueLazyload from 'vue-lazyload';
+
+
+
+
+
 
 Vue.prototype.$appUrl = 'https://bylt2fit.ystsol.com';
+
+
 Vue.component('jw-pagination', JwPagination);
 Vue.use(VSwitch)
+Vue.use(VueLazyload)
 
 /**
  * The following block of code may be used to automatically register your
@@ -39,6 +49,7 @@ Vue.component('result-component', require('./components/ResultComponent.vue').de
 
 
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -46,7 +57,9 @@ Vue.component('result-component', require('./components/ResultComponent.vue').de
  */
 
 
+
 const app = new Vue({
     el: '#app',
+  
    
 });

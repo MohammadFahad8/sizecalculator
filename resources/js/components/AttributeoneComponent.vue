@@ -1,6 +1,7 @@
 <template>
     <div>
         <div></div>
+       
         <p class="fit-advisor-intro">
             <span id="mark1">Choose the option that best</span> <br /><span
                 id="mark2"
@@ -8,19 +9,46 @@
             >
         </p>
 
-        <div class="x-custom-container x-text-center x-mb-5">
-            <div class=" x-row">
+        <div class="x-container x-text-center x-mb-5">
+           
+            <div class="x-row x-p-5 loadspin " >
+                  <div class="x-col-md-12 x-p-5">
+                                            <div class="spinner-border spinner-position" role="status">
+                                                <span class="sr-only">Loading...</span>
+                                            </div>
+                                        </div>
+            </div>
+            <div class=" x-row allattr x-d-none x-pb-5 " v-if="attributes.attr_items.length==0 || typeof attributes.attr_items == 'undefined' && is_loading==false">
                 <div
                     class="col-md-4 parent "
                     v-for="row in attributes.attr_details"
                     :key="row.id"
+                    
                 >
                     <img
                         id="chest1"
                         :src="$appUrl+'/'+row.attr_image_src"
-                        v-on:click="chest(row.attr_size_value)"
+                        v-on:click="chest(row.attr_size_value,row.sizechart_id)"
                     />
-                    <p class=" fit-advisor-options-text">
+                    <p :title="row.attr_size_value" class=" fit-advisor-options-text">
+                        {{ row.attribute_size_name }}
+                    </p>
+                </div>
+            </div>
+             <div class=" x-row queryattr x-d-none x-pb-5"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
+                <div
+                    class="x-col-md-4 parent x-col x-mb-5 "
+                    v-for="row in attributes.attr_items" v-if="attributes.id == row.attribute_type_id"
+                        
+                    
+                >
+                    <img
+                    v-if="attributes.id == row.attribute_type_id"
+                        id="chest1"
+                        :src="$appUrl+'/'+row.attr_image_src"
+                        v-on:click="chest(row.attr_size_value,row.sizechart_id)"
+                    />
+                    <p v-if="attributes.id == row.attribute_type_id" :title="row.attr_size_value" class=" fit-advisor-options-text">
                         {{ row.attribute_size_name }}
                     </p>
                 </div>
@@ -29,13 +57,13 @@
 
         <div
             id="steps-mark"
-            style="position:fixed"
-            class="m-result  x-offset-2 x-offset-sm-1 x-offset-md-1 x-offset-lg-1 x-offset-xl-1"
+            
+             class="x-text-center x-pt-5"
         >
-            <span class="step"></span>
-            <span class="step active" ></span>
-            <span class="step"></span>
-            <span class="step"></span>
+        
+          
+            <span class="step" ></span>
+          <span class="step" v-bind:class="tabnum.count==key+2?'active':''" v-for="(row,key) in recordsLength" ></span>
             <span class="step"></span>
         </div>
     </div>
@@ -59,12 +87,16 @@ export default {
                 chestSizeOne: "1",
                 chestSizeTwo: "2",
                 chestSizeThree: "3",
-                is_loading: false,
+                
                 chest: [],
                 attributeDetails: [],
                 arraytitle: {},
                 arrayval: {}
-            }
+            },
+            is_loading: true,
+            
+            leng:0,
+
         };
     },
     methods: {
@@ -75,14 +107,27 @@ export default {
                 EventBus.$emit("sizeCalculate", n);
             }
         },
+
         chest: function(n) {
             
                 localStorage.setItem(this.attributes.name.toLowerCase(), n);
             
 
+
             this.nextStep(this.tabnum.count + 1);
         }
     },
-    mounted() {}
+    mounted() {
+        
+        
+    setTimeout(function(){
+ 	
+     $('.loadspin').addClass('x-d-none');
+     $('.allattr').removeClass('x-d-none');
+     $('.queryattr').removeClass('x-d-none');
+}, 1000);
+
+        
+    }
 };
 </script>

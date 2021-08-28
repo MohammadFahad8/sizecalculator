@@ -18,15 +18,17 @@
             <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Attribute Types') }}</span> </div>
             
             <div class="col-md-9">
-                <a href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
+                <a  href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
               
-                <a href="{{ route('sizechart.home',['id'=>$id]) }}" v-on:click="viewAttributesOfAttributeTypes({{ $id }},{{ count($attrTypeOfProducts) }})"  class="btn btn-info btn-md button-add border border-light float-right ">View Sizes</a>
+
+                <a href="javascript:void(0)" v-on:click="viewAttributesOfAttributeTypes({{ $id }},{{ count($attrTypeOfProducts) }})"    class="btn btn-info btn-md button-add border border-light float-right mr-1 ">View Sizes</a>
+
               </div>
         </div>
        </div>
     <div class="card-body">
         
-<table class="table table-bordered  " style="width:100% !important;">
+<table class="table table-bordered" style="width:100% !important;">
     <thead>
 <tr>
     <th>Attribute Type Name</th>
@@ -34,7 +36,9 @@
     
     <th>Status</th>
     <th>Sizes of Product</th>
-    <th colspan="3" > <span>Action</span></th>
+
+    <th colspan="3" > <span >Action</span></th>
+
 </tr>
     </thead>
        <tbody>
@@ -187,17 +191,18 @@
             viewAttributesOfAttributeTypes:function($id,count)
             {
 
-              if(count== 0)
-              {
-                toastr.info('create attribute types first to proceed')
 
-              }else{
-                
-                axios.get('sizechart/home/'+$id).then((res)=>{
+                if(count == 0)
+                {
+                  toastr.info('Create attributes first to proceed');
+
+                }else{
+                  axios.get('/sizechart/home/'+$id).then((res)=>{
                   window.location.href="/sizechart/home/"+$id;
 
-                })
-              }
+                })}
+                
+
 
             }
         },

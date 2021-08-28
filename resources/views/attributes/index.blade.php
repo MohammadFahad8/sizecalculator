@@ -24,6 +24,7 @@
         <div class="text-left">
              <p>Welcome to Body Fit Application</p>
              
+             
         </div>
        
     </div>

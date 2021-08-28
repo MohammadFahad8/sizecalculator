@@ -39,11 +39,11 @@ class Sizechart extends Model
         /**
          * Get the user that owns the Sizechart
          *
-         * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+         * @return \Illuminate\Database\Eloquent\Relations\HasMany
          */
-        public function attributecsb(): BelongsToMany
+        public function attributecsb(): HasMany
         {
-            return $this->belongsToMany(Attributetypes::class, 'product_id', 'product_id');
+            return $this->hasMany(Attributeimages::class, 'product_id', 'product_id');
         }
     
 }

@@ -80,15 +80,16 @@ Route::get('/shop_config',[App\Http\Controllers\AttributeController::class,'shop
                                                 //Size Chart
 
 Route::group(['prefix'=>'sizechart'],function(){
-    Route::get('/home/{id}',[App\Http\Controllers\AttributeController::class,'sizeChartIndex'])->name('sizechart.home');
-    Route::get('/bodysizes/{id}',[App\Http\Controllers\AttributeController::class,'sizeOfSpecificRange'])->name('sizechart.range');
-    Route::get('/sizechart/delete',[App\Http\Controllers\AttributeController::class,'sizeChartDelete'])->name('sizechart.delete');
-    Route::get('/sizechart/edit',[App\Http\Controllers\AttributeController::class,'sizeChartEdit'])->name('sizechart.edit');
-    Route::get('/add/{id}',[App\Http\Controllers\AttributeController::class,'createSizeChart'])->name('sizechart.create');
-    Route::post('sizechart/post',[App\Http\Controllers\AttributeController::class,'sizeChartPost'])->name('sizechart.add');
-    Route::post('sizechart/update/post',[App\Http\Controllers\AttributeController::class,'sizeChartUpdatePost'])->name('sizechart.update');
+    Route::get('/home/{id}',[App\Http\Controllers\SizeController::class,'sizeChartIndex'])->name('sizechart.home');
+    Route::get('/bodysizes/{id}',[App\Http\Controllers\SizeController::class,'sizeOfSpecificRange'])->name('sizechart.range');
+    Route::get('/sizechart/delete',[App\Http\Controllers\SizeController::class,'sizeChartDelete'])->name('sizechart.delete');
+    Route::get('/sizechart/edit',[App\Http\Controllers\SizeController::class,'sizeChartEdit'])->name('sizechart.edit');
+    Route::get('/add/{id}',[App\Http\Controllers\SizeController::class,'createSizeChart'])->name('sizechart.create');
+    Route::post('sizechart/post',[App\Http\Controllers\SizeController::class,'sizeChartPost'])->name('sizechart.add');
+    Route::post('sizechart/update/post',[App\Http\Controllers\SizeController::class,'sizeChartUpdatePost'])->name('sizechart.update');
 });                                                
 });
+
 
 ROute::get('/loginshop',[App\Http\Controllers\AttributeController::class,'loginshop'])->name('loginshop');
 Route::get('/greeting', function () {
@@ -111,6 +112,7 @@ Route::get('/greeting', function () {
     //     'website_name' => "58318782618",
     // ]);
 }); 
+
 
 // Auth::routes();
 
