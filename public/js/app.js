@@ -2614,8 +2614,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     this.showBodyFit();
     this.getAttributes();
     $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
-      $("sticky-header").removeClass("bylt-header", "1");
-      $("#shopify-section-announcement-bar").removeClass("bylt-header", "1");
+      $("sticky-header").removeClass("bylt-header");
+      $("#shopify-section-announcement-bar").removeClass("bylt-header");
     });
     _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('refreshSize', function (size) {
       _this5.finalsize = size;
@@ -3825,7 +3825,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://97df-2400-adc7-91b-8900-9d40-a9ec-365d-10d6.ngrok.io';
+Vue.prototype.$appUrl = 'https://bylt2fit.ystsol.com';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 Vue.use(vue_lazyload__WEBPACK_IMPORTED_MODULE_4__.default);

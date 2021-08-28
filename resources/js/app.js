@@ -15,7 +15,7 @@ import VSwitch from 'v-switch-case';
 import VueLazyload from 'vue-lazyload';
 
 
-Vue.prototype.$appUrl = 'https://97df-2400-adc7-91b-8900-9d40-a9ec-365d-10d6.ngrok.io'
+Vue.prototype.$appUrl = 'https://bylt2fit.ystsol.com'
 
 
 Vue.component('jw-pagination', JwPagination);
