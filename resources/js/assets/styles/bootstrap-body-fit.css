@@ -9039,3 +9039,8 @@ label:focus,
     /* -webkit-appearance:none; */
     box-shadow: none !important;
 }
+
+.img_attr_get
+{
+  width: -webkit-fill-available;
+}

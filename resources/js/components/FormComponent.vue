@@ -6,9 +6,9 @@
                 >fill out the form below</span
             >
         </p>
-        <div id="fields" class="tab x-row form-group x-offset-sm-2 x-offset-md-2 x-offset-lg-2 x-offset-xl-2 ">
-            <div class="x-row" v-if="!container.countrycheck">
-                <div class="col-md-6 x-text-lg-left x-text-center">
+        <div id="fields" class=" x-justify-content-center  tab x-row form-group ">
+            <div class="x-row x-justify-content-center" v-if="!container.countrycheck">
+                <div class="col-md-5 x-text-lg-left x-text-center">
                     <label class=" labels-tab1 height_weight" for="height_ft"
                         >Height</label
                     >
@@ -21,7 +21,7 @@
                         name="heightfoot"
                     />
                 </div>
-                <div class="col-md-6 x-text-lg-left x-text-center">
+                <div class="col-md-5 x-text-lg-left x-text-center">
                     <label
                         class=" labels-tab1 height_weight"
                         for="height_ft"
@@ -54,8 +54,8 @@
                 </div>
             </div>
 
-            <div class="x-row mtf-5">
-                <div class="col-md-6 x-text-lg-left x-text-center">
+            <div class="x-row x-justify-content-center mtf-5">
+                <div class="col-md-5 x-text-lg-left x-text-center">
                     <label class=" labels-tab1 height_weight " for="weight"
                         >Weight</label
                     >
@@ -68,7 +68,7 @@
                         name="weight"
                     />
                 </div>
-                <div class="col-md-6 x-text-lg-left x-text-center">
+                <div class="col-md-5 x-text-lg-left x-text-center">
                     <label for="age"
                         ><span
                             class="text-center labels-tab1 "
@@ -247,7 +247,7 @@
 <div class="x-mt-5 x-text-center x-pb-5">
         <button
             class="continue-btn"
-            style="position: absolute;right: 30%;width: 33%;"
+            style="position: absolute;right: 33%;width: 33%;"
             type="button"
             id="nextBtn"
             v-on:click="nextStep(2)"

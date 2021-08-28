@@ -18,9 +18,9 @@
                                             </div>
                                         </div>
             </div>
-            <div class=" x-row allattr x-d-none x-pb-5 " v-if="attributes.attr_items.length==0 || typeof attributes.attr_items == 'undefined' && is_loading==false">
+            <div class=" x-row x-justify-content-center allattr x-d-none x-pb-5 " v-if="attributes.attr_items.length==0 || typeof attributes.attr_items == 'undefined' && is_loading==false">
                 <div
-                    class="col-md-4 parent "
+                    class="col-md-4  "
                     v-for="row in attributes.attr_details"
                     :key="row.id"
                     
@@ -29,15 +29,16 @@
                         id="chest1"
                         :src="$appUrl+'/'+row.attr_image_src"
                         v-on:click="chest(row.attr_size_value,row.sizechart_id)"
+                        class="img_attr_get"
                     />
                     <p :title="row.attr_size_value" class=" fit-advisor-options-text">
                         {{ row.attribute_size_name }}
                     </p>
                 </div>
             </div>
-             <div class=" x-row queryattr x-d-none x-pb-5"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
+             <div class=" x-row x-justify-content-center queryattr x-d-none x-pb-5"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
                 <div
-                    class="x-col-md-4 parent x-col x-mb-5 "
+                    class="x-col-md-4  x-col x-mb-5 "
                     v-for="row in attributes.attr_items" v-if="attributes.id == row.attribute_type_id"
                         
                     
@@ -47,6 +48,8 @@
                         id="chest1"
                         :src="$appUrl+'/'+row.attr_image_src"
                         v-on:click="chest(row.attr_size_value,row.sizechart_id)"
+                        class="img_attr_get"
+                        
                     />
                     <p v-if="attributes.id == row.attribute_type_id" :title="row.attr_size_value" class=" fit-advisor-options-text">
                         {{ row.attribute_size_name }}
