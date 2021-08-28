@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
+use App\Models\Products;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,7 +91,26 @@ Route::group(['prefix'=>'sizechart'],function(){
 });
 
 ROute::get('/loginshop',[App\Http\Controllers\AttributeController::class,'loginshop'])->name('loginshop');
+Route::get('/greeting', function () {
 
+    $pro = new Products();
+    $pro->product_id = $_GET['product_id'];
+    $pro->name = $_GET['name'];
+    $pro->image_link = $_GET['image_link'];
+    $pro->status = $_GET['status'];
+    $pro->is_deleted = 0;
+    $pro->website_name = "58318782618";
+    $pr = $pro->save();
+    return $pro;
+    // return $pro::create([
+    //     'product_id' => $_GET['product_id'],   
+    //     'name' => $_GET['name'],
+    //     'image_link' =>$_GET['image_link'],
+    //     'status' => $_GET['status'],
+    //     'is_deleted' => "0",
+    //     'website_name' => "58318782618",
+    // ]);
+}); 
 
 // Auth::routes();
 

@@ -34,7 +34,7 @@
     
     <th>Status</th>
     <th>Sizes of Product</th>
-    <th colspan="3" > <span class="offset-5">Action</span></th>
+    <th colspan="3" > <span>Action</span></th>
 </tr>
     </thead>
        <tbody>
