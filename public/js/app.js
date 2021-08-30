@@ -2510,10 +2510,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var w = $('.x-progress-bar').width();
       var c = 0;
       $('.x-progress-bar').css('width', c + '%');
-      $("div.fit-advisor-selected-size:gt(" + localStorage.getItem("sizeindex") + ")").show();
-      $("div.fit-advisor-selected-size:lt(" + localStorage.getItem("sizeindex") + ")").show();
-      $("p.size_descriptions:gt(" + localStorage.getItem("sizeindex") + ")").show();
-      $("p.size_descriptions:lt(" + localStorage.getItem("sizeindex") + ")").show();
+      $("div.fit-advisor-selected-size").show();
+      $("p.size_descriptions").show();
       this.restarted = true;
       this.lastTab = false;
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('refreshform', 1);

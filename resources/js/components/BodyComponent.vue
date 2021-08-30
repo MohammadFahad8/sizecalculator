@@ -405,25 +405,13 @@ export default {
             var c = 0;
             $('.x-progress-bar').css('width',c+'%')
             $(
-                "div.fit-advisor-selected-size:gt(" +
-                    localStorage.getItem("sizeindex") +
-                    ")"
+                "div.fit-advisor-selected-size"
             ).show();
+          
             $(
-                "div.fit-advisor-selected-size:lt(" +
-                    localStorage.getItem("sizeindex") +
-                    ")"
+                "p.size_descriptions"
             ).show();
-            $(
-                "p.size_descriptions:gt(" +
-                    localStorage.getItem("sizeindex") +
-                    ")"
-            ).show();
-            $(
-                "p.size_descriptions:lt(" +
-                    localStorage.getItem("sizeindex") +
-                    ")"
-            ).show();
+          
 
             this.restarted = true;
          
