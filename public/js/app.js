@@ -1920,13 +1920,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
     attributes: Object,
     tabnum: Object,
     recordsLength: Number,
-    currentRecord: Number
+    currentRecord: Number,
+    spinit: Boolean
   },
   data: function data() {
     return {
@@ -1961,14 +1966,30 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       this.nextStep(this.tabnum.count + 1);
+    },
+    checkForData: function checkForData(check) {
+      if (check == true) {
+        $('.loadspin').removeClass('x-d-none');
+        $('.allattr').addClass('x-d-none');
+        $('.queryattr').addClass('x-d-none');
+      } else {
+        console.log('should display attrs');
+        setTimeout(function () {
+          $('.loadspin').addClass('x-d-none');
+          $('.allattr').removeClass('x-d-none');
+          $('.queryattr').removeClass('x-d-none');
+        }, 1000);
+      }
     }
   },
   mounted: function mounted() {
-    setTimeout(function () {
-      $('.loadspin').addClass('x-d-none');
-      $('.allattr').removeClass('x-d-none');
-      $('.queryattr').removeClass('x-d-none');
-    }, 1000);
+    this.checkForData(this.spinit);
+  },
+  watch: {
+    'spinit': function spinit() {
+      console.log(this.spinit);
+      this.checkForData(this.spinit);
+    }
   }
 });
 
@@ -2329,6 +2350,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2431,7 +2453,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       lscount: 0,
       ogLength: 0,
       nextcount: 0,
-      ogArray: {}
+      ogArray: {},
+      shouldSpin: true
     };
   },
   methods: {
@@ -2450,6 +2473,13 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this.tabnumber = num; //end to change screen
 
         _this.attributesToShow = res.data;
+
+        if (_this.attributesToShow[0].attr_items.length == 0) {
+          _this.shouldSpin = true;
+        } else {
+          _this.shouldSpin = false;
+        }
+
         var obt = _this.attributes.length + parseInt(2);
         var total = 700;
         var result = total / obt;
@@ -45515,110 +45545,86 @@ var render = function() {
   return _c("div", [
     _c("div"),
     _vm._v(" "),
-    _c("p", { staticClass: "fit-advisor-intro" }, [
-      _c("span", { attrs: { id: "mark1" } }, [
-        _vm._v("Choose the option that best")
-      ]),
-      _vm._v(" "),
-      _c("br"),
-      _c("span", { attrs: { id: "mark2" } }, [
-        _vm._v("describes your " + _vm._s(_vm.attributes.name))
-      ])
-    ]),
+    !_vm.spinit
+      ? _c("p", { staticClass: "fit-advisor-intro" }, [
+          _c("span", { attrs: { id: "mark1" } }, [
+            _vm._v("Choose the option that best")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("span", { attrs: { id: "mark2" } }, [
+            _vm._v("describes your " + _vm._s(_vm.attributes.name))
+          ])
+        ])
+      : _vm._e(),
+    _vm.spinit
+      ? _c("p", { staticClass: "fit-advisor-intro" }, [
+          _c("span", { attrs: { id: "mark1" } }, [
+            _vm._v("Hmmm, we couldn't find your fit")
+          ]),
+          _vm._v(" "),
+          _c("br"),
+          _c("span", { attrs: { id: "mark2" } }, [
+            _vm._v("Try to be specific with your measurements")
+          ])
+        ])
+      : _vm._e(),
     _vm._v(" "),
     _c("div", { staticClass: "x-container x-text-center x-mb-5" }, [
       _vm._m(0),
-      _vm._v(" "),
-      _vm.attributes.attr_items.length == 0 ||
-      (typeof _vm.attributes.attr_items == "undefined" &&
-        _vm.is_loading == false)
-        ? _c(
-            "div",
-            {
-              staticClass:
-                " x-row x-justify-content-center allattr x-d-none x-pb-5 "
-            },
-            _vm._l(_vm.attributes.attr_details, function(row) {
-              return _c("div", { key: row.id, staticClass: "col-md-4  " }, [
-                _c("img", {
-                  staticClass: "img_attr_get",
-                  attrs: {
-                    id: "chest1",
-                    src: _vm.$appUrl + "/" + row.attr_image_src
-                  },
-                  on: {
-                    click: function($event) {
-                      return _vm.chest(row.attr_size_value, row.sizechart_id)
-                    }
-                  }
-                }),
-                _vm._v(" "),
-                _c(
-                  "p",
-                  {
-                    staticClass: " fit-advisor-options-text",
-                    attrs: { title: row.attr_size_value }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    " +
-                        _vm._s(row.attribute_size_name) +
-                        "\n                "
-                    )
-                  ]
-                )
-              ])
-            }),
-            0
-          )
-        : _vm._e(),
       _vm._v(" "),
       typeof _vm.attributes.attr_items != "undefined" ||
       (_vm.attributes.attr_items.length > 0 && _vm.is_loading == false)
         ? _c(
             "div",
             {
-              staticClass:
-                " x-row x-justify-content-center queryattr x-d-none x-pb-5"
+              staticClass: " x-row x-justify-content-center queryattr x-d-none "
             },
             _vm._l(_vm.attributes.attr_items, function(row) {
               return _vm.attributes.id == row.attribute_type_id
-                ? _c("div", { staticClass: "x-col-md-4  x-col-12 x-mb-5 " }, [
-                    _vm.attributes.id == row.attribute_type_id
-                      ? _c("img", {
-                          staticClass: "img_attr_get",
-                          attrs: {
-                            id: "chest1",
-                            src: _vm.$appUrl + "/" + row.attr_image_src
-                          },
-                          on: {
-                            click: function($event) {
-                              return _vm.chest(
-                                row.attr_size_value,
-                                row.sizechart_id
-                              )
+                ? _c(
+                    "div",
+                    {
+                      staticClass:
+                        "x-col-md-4  x-col-12 x-mb-5 x-mb-sm-0 x-mb-md-0 x-mb-lg-0 x-mb-lg-0"
+                    },
+                    [
+                      _vm.attributes.id == row.attribute_type_id
+                        ? _c("img", {
+                            staticClass: "img_attr_get",
+                            attrs: {
+                              id: "chest1",
+                              src: _vm.$appUrl + "/" + row.attr_image_src
+                            },
+                            on: {
+                              click: function($event) {
+                                return _vm.chest(
+                                  row.attr_size_value,
+                                  row.sizechart_id
+                                )
+                              }
                             }
-                          }
-                        })
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _vm.attributes.id == row.attribute_type_id
-                      ? _c(
-                          "p",
-                          {
-                            staticClass: " fit-advisor-options-text",
-                            attrs: { title: row.attr_size_value }
-                          },
-                          [
-                            _vm._v(
-                              "\n                    " +
-                                _vm._s(row.attribute_size_name) +
-                                "\n                "
-                            )
-                          ]
-                        )
-                      : _vm._e()
-                  ])
+                          })
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _vm.attributes.id == row.attribute_type_id
+                        ? _c(
+                            "p",
+                            {
+                              staticClass: " fit-advisor-options-text",
+                              attrs: { title: row.attr_size_value }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(row.attribute_size_name) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        : _vm._e()
+                    ]
+                  )
                 : _vm._e()
             }),
             0
@@ -46202,7 +46208,8 @@ var render = function() {
                                   count: _vm.tabnumber
                                 },
                                 recordsLength: _vm.attributes.length,
-                                currentRecord: key + 1
+                                currentRecord: key + 1,
+                                spinit: _vm.shouldSpin
                               }
                             })
                           ],

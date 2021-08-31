@@ -2,10 +2,15 @@
     <div>
         <div></div>
        
-        <p class="fit-advisor-intro">
+        <p class="fit-advisor-intro" v-if="!spinit" >
             <span id="mark1">Choose the option that best</span> <br /><span
                 id="mark2"
                 >describes your {{ attributes.name }}</span
+            >
+        </p><p class="fit-advisor-intro" v-if="spinit" >
+            <span id="mark1">Hmmm, we couldn't find your fit</span> <br /><span
+                id="mark2"
+                >Try to be specific with your measurements</span
             >
         </p>
 
@@ -18,27 +23,26 @@
                                             </div>
                                         </div>
             </div>
-            <div class=" x-row x-justify-content-center allattr x-d-none x-pb-5 " v-if="attributes.attr_items.length==0 || typeof attributes.attr_items == 'undefined' && is_loading==false">
-                <div
-                    class="col-md-4  "
-                    v-for="row in attributes.attr_details"
-                    :key="row.id"
-                    
-                >
-                    <img
-                        id="chest1"
-                        :src="$appUrl+'/'+row.attr_image_src"
-                        v-on:click="chest(row.attr_size_value,row.sizechart_id)"
-                        class="img_attr_get"
-                    />
-                    <p :title="row.attr_size_value" class=" fit-advisor-options-text">
-                        {{ row.attribute_size_name }}
-                    </p>
+            <!-- <div class=" x-row x-justify-content-center  x-pb-5 ">
+            <div class="x-row x-justify-content-center x-p-5">
+                <div class="x-col-md-12 x-col-12 x-p-5">
+                        <div class="spinner-border spinner-position" role="status">
+                            <span class="sr-only">Loading...</span>
+                        </div>
+                        <div class="x-text-center x-row x-justify-content-center x-mt-3">
+                            <div class="x-col-12">
+                        <p>Hmmm, we couldn't find your match <br>Try specifying your measurements </p>
+                        
+                        </div>
+                        </div>
+
+
                 </div>
             </div>
-             <div class=" x-row x-justify-content-center queryattr x-d-none x-pb-5"  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
+            </div> -->
+             <div class=" x-row x-justify-content-center queryattr x-d-none "  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false"> 
                 <div
-                    class="x-col-md-4  x-col-12 x-mb-5 "
+                    class="x-col-md-4  x-col-12 x-mb-5 x-mb-sm-0 x-mb-md-0 x-mb-lg-0 x-mb-lg-0"
                     v-for="row in attributes.attr_items" v-if="attributes.id == row.attribute_type_id"
                         
                     
@@ -80,7 +84,8 @@ export default {
         attributes: Object,
         tabnum: Object,
         recordsLength: Number,
-        currentRecord: Number
+        currentRecord: Number,
+        spinit:Boolean,
     },
     data() {
         return {
@@ -99,6 +104,7 @@ export default {
             is_loading: true,
             
             leng:0,
+            
 
         };
     },
@@ -110,6 +116,7 @@ export default {
                 EventBus.$emit("sizeCalculate", n);
             }
         },
+       
 
        chest: function(n,scid) {
             
@@ -123,20 +130,50 @@ export default {
           
             
             this.nextStep(this.tabnum.count + 1);
-        }
         },
-    
-    mounted() {
-        
-        
-    setTimeout(function(){
+        checkForData:function(check){
+             if(check == true)
+        {
+             
+ 	
+     $('.loadspin').removeClass('x-d-none');
+     $('.allattr').addClass('x-d-none');
+     $('.queryattr').addClass('x-d-none');
+   
+     
+
+        }
+        else
+        {
+            console.log('should display attrs')
+             setTimeout(()=>{
  	
      $('.loadspin').addClass('x-d-none');
      $('.allattr').removeClass('x-d-none');
      $('.queryattr').removeClass('x-d-none');
+   
+     
 }, 1000);
 
+        }
+        }
+       
+       
+        },
+    
+    mounted() {
         
+        this.checkForData(this.spinit)
+       
+        
+   
+
+        
+    }, watch:{
+        'spinit':function(){
+            console.log(this.spinit)
+            this.checkForData(this.spinit)
+        }
     }
 };
 </script>

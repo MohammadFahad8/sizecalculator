@@ -134,6 +134,7 @@ display: inline-block;
                                     }"
                                     :recordsLength="attributes.length"
                                     :currentRecord="key + 1"
+                                    :spinit="shouldSpin"
                                     
                                 ></attribute-one-component>
                             </div>
@@ -293,7 +294,7 @@ export default {
             ogLength: 0,
             nextcount: 0,
             ogArray:{},
-            
+            shouldSpin:true,
             
         };
     },
@@ -325,6 +326,17 @@ export default {
               this.tabnumber =  num
               //end to change screen
             this.attributesToShow = res.data;
+           
+           if(this.attributesToShow[0].attr_items.length == 0){
+               
+               this.shouldSpin = true
+               
+               }else{
+                   this.shouldSpin = false
+                   
+                   }
+                   
+           
             
             var obt = this.attributes.length+parseInt(2);
             var total = 700;
