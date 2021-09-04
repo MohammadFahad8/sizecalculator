@@ -71,4 +71,19 @@ input:checked + .slider:before {
 .slider.round:before {
   border-radius: 50%;
 }
-     </style>  
+.appear
+{
+    animation: appearlate 4s linear ;
+}
+@keyframes appearlate {
+    from{
+        background: #7f7575;
+
+    }
+    to{
+        background: white;
+
+    }
+
+}
+     </style>

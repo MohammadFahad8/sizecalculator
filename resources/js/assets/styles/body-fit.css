@@ -122,7 +122,7 @@ input[type="checkbox"]:checked {
 }
 
 
-/* 
+/*
 .col-xl,
 .col-xl-auto,
 .col-xl-12,
@@ -346,7 +346,7 @@ input::-webkit-inner-spin-button {
 
 .size-position {
     margin-left: -80px !important;
-    
+
 }
 
 body {
@@ -615,7 +615,7 @@ body *::after,
 body *::before {
     box-sizing: border-box;
 }
-/* 
+/*
 h1 {
     font-size: 2rem;
     text-align: center;
@@ -1435,7 +1435,7 @@ input:focus {
         width: 2rem !important;
         height: 2rem !important;
         margin-left:0px !important;
-        
+
       }
     /* smartphones, iPhone, portrait 480x320 phones */
     .ml-xl-spinner
@@ -1618,7 +1618,7 @@ input:focus {
         padding: 8px 15px;
         background-color: #000000;
         color: white;
-      
+
         text-transform: uppercase;
         letter-spacing: 0.08em;
         white-space: normal;
@@ -3319,7 +3319,7 @@ input:focus {
 
                                                                                             /* bodyfit-modal */
 
-                                                                                            
+
 .bodyfit-modal-open {
     overflow: hidden;
   }
@@ -3327,7 +3327,7 @@ input:focus {
     overflow-x: hidden;
     overflow-y: auto;
   }
-  
+
   .bodyfit-modal {
     position: fixed;
     top: 0;
@@ -3339,7 +3339,7 @@ input:focus {
     overflow: hidden;
     outline: 0;
   }
-  
+
   .bodyfit-modal-dialog {
     position: relative;
     width: auto;
@@ -3361,7 +3361,7 @@ input:focus {
   .bodyfit-modal.bodyfit-modal-static .bodyfit-modal-dialog {
     transform: scale(1.02);
   }
-  
+
   .bodyfit-modal-dialog-scrollable {
     display: flex;
     max-height: calc(100% - 1rem);
@@ -3377,7 +3377,7 @@ input:focus {
   .bodyfit-modal-dialog-scrollable .bodyfit-modal-body {
     overflow-y: auto;
   }
-  
+
   .bodyfit-modal-dialog-centered {
     display: flex;
     align-items: center;
@@ -3402,7 +3402,7 @@ input:focus {
   .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable::before {
     content: none;
   }
-  
+
   .bodyfit-modal-content {
     position: relative;
     display: flex;
@@ -3415,7 +3415,7 @@ input:focus {
     border-radius: 0.3rem;
     outline: 0;
   }
-  
+
   .bodyfit-modal-backdrop {
     position: fixed;
     top: 0;
@@ -3431,7 +3431,7 @@ input:focus {
   .bodyfit-modal-backdrop.show {
     opacity: 0.5;
   }
-  
+
   .bodyfit-modal-header {
     display: flex;
     align-items: flex-start;
@@ -3445,18 +3445,18 @@ input:focus {
     padding: 1rem 1rem;
     margin: -1rem -1rem -1rem auto;
   }
-  
+
   .bodyfit-modal-title {
     margin-bottom: 0;
     line-height: 1.6;
   }
-  
+
   .bodyfit-modal-body {
     position: relative;
     flex: 1 1 auto;
     padding: 1rem;
   }
-  
+
   .bodyfit-modal-footer {
     display: flex;
     flex-wrap: wrap;
@@ -3470,7 +3470,7 @@ input:focus {
   .bodyfit-modal-footer > * {
     margin: 0.25rem;
   }
-  
+
   .bodyfit-modal-scrollbar-measure {
     position: absolute;
     top: -9999px;
@@ -3478,20 +3478,20 @@ input:focus {
     height: 50px;
     overflow: scroll;
   }
-  
+
   @media (min-width: 576px) {
     .bodyfit-modal-dialog {
       max-width: 500px;
       margin: 1.75rem auto;
     }
-  
+
     .bodyfit-modal-dialog-scrollable {
       max-height: calc(100% - 3.5rem);
     }
     .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {
       max-height: calc(100vh - 3.5rem);
     }
-  
+
     .bodyfit-modal-dialog-centered {
       min-height: calc(100% - 3.5rem);
     }
@@ -3501,7 +3501,7 @@ input:focus {
       height: -moz-min-content;
       height: min-content;
     }
-  
+
     .bodyfit-modal-sm {
       max-width: 300px;
     }
@@ -3521,10 +3521,10 @@ input:focus {
   {
       font-size:medium !important;
   }
- 
- 
+
+
  /* This will style any <img> element in .parent div */
- 
+
  .x-custom-container
  {
     position: relative;
@@ -3633,4 +3633,64 @@ input:focus {
 .bylt-header
 {
     display:none;
+}
+.backbtnattr:hover{
+color:white;
+background-color: #000000;
+    text-decoration: none;
+
+}.backbtnattr:focus{
+color:white;
+background-color: #000000;
+     text-decoration: none;
+
+}
+ .backbtnattr{
+     text-decoration: none;
+ }
+.fade-in-image {
+    animation: fadeIn 2s;
+    -webkit-animation: fadeIn 2s;
+    -moz-animation: fadeIn 2s;
+    -o-animation: fadeIn 2s;
+    -ms-animation: fadeIn 2s;
+}
+@keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-moz-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-webkit-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-o-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+
+@-ms-keyframes fadeIn {
+    0% {opacity:0;}
+    100% {opacity:1;}
+}
+/* Just add .fade-out class to element */
+
+.fade-out {
+    animation: fadeOut 2s;
+    opacity: 0;
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
 }

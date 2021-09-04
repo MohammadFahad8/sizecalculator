@@ -1,7 +1,7 @@
 <template>
     <div>
-        
-    
+
+
         <link
             href="https://fonts.googleapis.com/css?family=Karla"
             rel="stylesheet"
@@ -10,7 +10,7 @@
             href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
             rel="stylesheet"
         />
-       
+
 <!-- Button trigger modal -->
 <button  v-if="showBodyFitApp" type="button" @click="fixHeader" class="x-btn x-btn-dark openModalApp" data-toggle="modal" data-target="#exampleModalCenter">
   Find fit
@@ -22,7 +22,7 @@
             >
                 <span class="final-size-label">Your Fit Size : </span>
                 {{ finalsize }} </span
-            >   
+            >
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" style="background: rgba(0, 0, 0, 0.5); " aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -86,8 +86,8 @@ display: inline-block;
                                     stroke-width="32"
                                     points="256 58 336 138 256 218"
                                 ></polyline>
-                            </svg> 
-        
+                            </svg>
+
         </div>
         <button type="button" class="close" data-dismiss="modal" style="color:black !important;background-color:#0f8c5e00 !important;font-size:23px " aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -113,7 +113,7 @@ display: inline-block;
                 </div>
       <div class="modal-body">
              <form id="regForm">
-                 
+
                         <!-- <p class="fit-advisor-intro text-center" id="intro1">
                         <span id="mark1">To get a size recommendation,</span> <br><span id="mark2">fill out the form below</span></p> -->
                                                             <!-- REMOVED 'n' and placed 'tabnumber' in :tabnum property -->
@@ -135,7 +135,10 @@ display: inline-block;
                                     :recordsLength="attributes.length"
                                     :currentRecord="key + 1"
                                     :spinit="shouldSpin"
-                                    
+
+
+
+
                                 ></attribute-one-component>
                             </div>
 
@@ -167,7 +170,7 @@ display: inline-block;
                         <!-- Steps marks was here -->
                     </form>
       </div>
-     
+
     </div>
   </div>
 </div>
@@ -295,30 +298,34 @@ export default {
             nextcount: 0,
             ogArray:{},
             shouldSpin:true,
-            
+            showPlaceholder:false,
+            attrcountinc:1,
+
+
+
         };
     },
 
     methods: {
         fixHeader:function(){
-         
-          
+
+
             $("sticky-header").addClass("bylt-header");
             $("#shopify-section-announcement-bar").addClass("bylt-header");
-            
-        
+
+
         },
-      
-       
+
+
         getAttributesToHeightWeight: function(form,num)
         {
             form.productkey =  this.product.id
-         
-         
-           
+
+
+
             axios.post(this.$appUrl+'/api/get-attributes-to-height-weight',form)
             .then((res)=>{
-             
+
                this.ogLength = res.data.length;
 
                this.ogArray = res.data.ogArray;
@@ -326,30 +333,32 @@ export default {
               this.tabnumber =  num
               //end to change screen
             this.attributesToShow = res.data;
-           
+
+        EventBus.$emit("resettext",0)
            if(this.attributesToShow[0].attr_items.length == 0){
-               
+
                this.shouldSpin = true
-               
+
                }else{
                    this.shouldSpin = false
-                   
+
                    }
-                   
-           
-            
+
+
+
+
             var obt = this.attributes.length+parseInt(2);
             var total = 700;
             var result=total/obt;
-            
-            $('.x-progress-bar').css('width',result+'px');
- 
 
-            
+            $('.x-progress-bar').css('width',result+'px');
+
+
+
             })
         },
-        
-       
+
+
 
         formSubmit: function() {
             EventBus.$on("formsubmit", container => {
@@ -368,24 +377,24 @@ export default {
                 this.getAttributesToHeightWeight(this.form, container.form.tabnumber);
             });
             EventBus.$on("attributeone", container => {
-              
+
                 this.chest = container;
                 this.lastTab = false;
-                
+
                  var obt = this.attributes.length+parseInt(2);
             var total = 700;
             var result=total/obt;
-            
+
             var cw = $('.x-progress-bar').width();
             var ww = cw+parseInt(result)
-            
+
             $('.x-progress-bar').css('width',ww+'px');
                 this.tabnumber = container.tabnumber;
                 this.n = container.tabnumber;
-                
-                
-               
-                 
+
+
+
+
             });
 
             EventBus.$on("resetForm", tabnum => {
@@ -399,38 +408,40 @@ export default {
         },
         back: function(num) {
             EventBus.$emit("hideloader",'ok')
+            EventBus.$emit("hidePlaceholder","ok")
             this.tabnumber = num - 1;
-            
-            
+
+
             var obt = this.attributes.length+parseInt(2);
             var total = 700;
             var result=total/obt;
-            
+
             var cw = $('.x-progress-bar').width();
             var ww = cw - parseInt(result)
-            
+
             $('.x-progress-bar').css('width',ww+'px');
         },
         restart: function() {
             EventBus.$emit("hideloader",'ok')
+            EventBus.$emit("hidePlaceholder","ok")
              var w = $('.x-progress-bar').width()
             var c = 0;
             $('.x-progress-bar').css('width',c+'%')
             $(
                 "div.fit-advisor-selected-size"
             ).show();
-          
+
             $(
                 "p.size_descriptions"
             ).show();
-          
+
 
             this.restarted = true;
-         
+
             this.lastTab = false;
 
            EventBus.$emit('refreshform',1)
-            
+
 
             this.dev_reset();
             this.nextStep(1);
@@ -526,30 +537,36 @@ export default {
 
 //following commented part tells us about if screen should be last when size is already calculated
                     // if (localStorage.getItem("recommended_size") != null) {
-                        
+
                     //     if(this.newapp == true)
                     //     {
                     //         this.tabnumber = 1;
 
-                        
+
 
                     //     }else
                     //     {
-                            
+
                     //         this.tabnumber = parseInt(this.attributes.length) + 2;
 
-                    //     this.lastTab = true;    
+                    //     this.lastTab = true;
                     //     }
-                        
+
                     // }
 
                 });
         },
-        
+        goToHome:function ()
+        {
+            EventBus.$on('hometab',num=>{
+                this.restart()
+            })
+        }
+
     },
     mounted() {
-        
-       
+
+
         this.form.tags = this.product.tags;
         localStorage.setItem("tags", JSON.stringify(this.product.tags));
 
@@ -561,18 +578,19 @@ export default {
         this.showBodyFit();
         this.getAttributes();
         $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
-        $("sticky-header").removeClass("bylt-header"); 
+        $("sticky-header").removeClass("bylt-header");
         $("#shopify-section-announcement-bar").removeClass("bylt-header");
 })
-      
-      
+
+
 
         EventBus.$on('refreshSize',size=>{
             this.finalsize = size
         })
+        this.goToHome();
     },
     //    Took watch from here
-    
+
 };
 </script>
 

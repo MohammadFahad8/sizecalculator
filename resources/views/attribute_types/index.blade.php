@@ -16,10 +16,10 @@
     <div class="card-header ">
         <div class="row">
             <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Attribute Types') }}</span> </div>
-            
+
             <div class="col-md-9">
                 <a  href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
-              
+
 
                 <a href="javascript:void(0)" v-on:click="viewAttributesOfAttributeTypes({{ $id }},{{ count($attrTypeOfProducts) }})"    class="btn btn-info btn-md button-add border border-light float-right mr-1 ">View Sizes</a>
 
@@ -27,13 +27,13 @@
         </div>
        </div>
     <div class="card-body">
-        
+
 <table class="table table-bordered" style="width:100% !important;">
     <thead>
 <tr>
     <th>Attribute Type Name</th>
     <th>Product Name</th>
-    
+
     <th>Status</th>
     <th>Sizes of Product</th>
 
@@ -42,13 +42,13 @@
 </tr>
     </thead>
        <tbody>
-           
+
     @forelse($attrTypeOfProducts as $attr)
     <tr>
-      
+
             <td>{{ $attr->name }}</td>
             <td>{{ $attr->product->name }}</td>
-            
+
             <td>{{ $attr->status }}</td>
             <td>
               <select class="form-control btn" name="" id=""  required="required" readonly=""  >
@@ -60,7 +60,7 @@
             @empty
             <option >*Nothing</option>
             @endforelse
-           
+
             </select></td>
             {{-- <td><a href="{{ route('sizechart.home',['id'=>$attrTypeOfProducts[0]['product']->product_id ]) }}"  class="">View Sizes</a></td> --}}
             <td><a href="{{ route('attributesTypes.edit', ['id'=>$attr->id]) }}" class="btn btn-info">Edit</a></td>
@@ -78,9 +78,9 @@
           </a>
         </td>
       </tr>
-    
+
     @endforelse
- 
+
 
     </tbody>
 </table>
@@ -88,7 +88,7 @@
 </div>
 </div>
 
-{{-- 
+{{--
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
       <div class="modal-content">
@@ -99,12 +99,12 @@
           </button>
         </div>
         <div class="modal-body">
-          
-            
-            
-              
-                
-             
+
+
+
+
+
+
   <table class="table table-bordered table-responsive-lg " >
     <thead>
   <tr>
@@ -112,11 +112,11 @@
     <th>Name</th>
     <th :colspan="variant_count" class="text-center">variants</th>
     <th>Predicted Size</th>
-    
+
   </tr>
     </thead>
        <tbody>
-       <tr v-if="isLoading"  > 
+       <tr v-if="isLoading"  >
       <td><div class="text-center"><div class="spinner-grow spinner-grow-sm" role="status">
     <span class="sr-only">Loading...</span>
   </div>
@@ -126,38 +126,38 @@
   <div class="spinner-grow spinner-grow-sm" role="status">
     <span class="sr-only">Loading...</span>
   </div>
-  </div></td> 
+  </div></td>
   <td> <div class="text-center"><div class="spinner-grow spinner-grow-sm" role="status">
     <span class="sr-only">Loading...</span>
   </div></div></td>
   <td><div class="text-center"> <div class="spinner-grow spinner-grow-sm" role="status">
     <span class="sr-only">Loading...</span>
   </div></div></td>
-  </tr>  
+  </tr>
   <tr v-if="!isLoading" >
     <td>
-      
-       <img id="single-product" :src="product.image_link" width="50" height="50"  alt="" class="img-thumbnail"> 
+
+       <img id="single-product" :src="product.image_link" width="50" height="50"  alt="" class="img-thumbnail">
       </td>
-  
+
     <td>@{{ product.name }}</td>
-    
+
     <td v-for="(row,index) in product.variants" :key="row.id">
-      
+
       @{{ row.size }}
     </td>
-    
+
     <td> <a href="javascript:void(0)" v-on:click="viewAttributes(product.product_id)">View Attributes</a> </td>
   </tr>
-  
-  
+
+
     </tbody>
-      
-  </table>  
-  
-          
-        
-        
+
+  </table>
+
+
+
+
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -185,7 +185,7 @@
     var attributetypes = new Vue({
         el:'#attribute-types',
         data:{
-            
+
         },
         methods:{
             viewAttributesOfAttributeTypes:function($id,count)
@@ -201,12 +201,12 @@
                   window.location.href="/sizechart/home/"+$id;
 
                 })}
-                
+
 
 
             }
         },
-       
+
     })
 </script>
 <script>
@@ -214,9 +214,9 @@
     $("#loader").fadeOut("slow", function() {
                 // will fade out the whole DIV that covers the website.
                 $("#preloader").delay(300).fadeOut("slow");
-            }); 
+            });
   })
-  
+
 </script>
 
 @endsection

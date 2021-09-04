@@ -146,7 +146,7 @@ class AttributeController extends Controller
     public function show()
     {
         //
-        
+
     }
 
     /**
@@ -244,10 +244,14 @@ class AttributeController extends Controller
         $productsall = $shop->api()->rest('GET', '/admin/api/2021-07/products.json')['body']['container'];
 
 
+
         $prod = $productsall['products'];
 
 
+
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
+
+
 
         $shop_config = $shop_cfg['shop'];
 
@@ -263,23 +267,25 @@ class AttributeController extends Controller
                 $product->product_id =  trim($row['id']);
                 $product->name =   $row['title'];
                 $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
+                $product->tags = ($row['tags'] == null) ? null : $row['tags'];
                 $product->website_name = trim($shop_config['id']);
 
                 $product->save();
-                
-                
+
+
             } else {
 
 
                 $product->product_id =  trim($row['id']);
                 $product->name =   $row['title'];
                 $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
+                $product->tags = ($row['tags'] == null) ? null : $row['tags'];
                 $product->website_name =  trim($shop_config['id']);
 
                 $product->save();
-                
-                
-                
+
+
+
                 // Attributetypes::where('product_id','=',$product->product_id)->get();
             }
 
@@ -323,7 +329,7 @@ class AttributeController extends Controller
 
         // dd($products);
 
-         
+
 
         return view('products.index', [
             'other' => $products,
@@ -338,7 +344,7 @@ class AttributeController extends Controller
     }
     public function permissionToShowBodyFit(Request $request)
     {
-        
+
 
         $products = Products::where('product_id', '=', trim($request['id']))->first();
 
@@ -370,12 +376,12 @@ class AttributeController extends Controller
     public function calculateSize(Request $request)
     {
 
-        
+
         $data = $request->all();
         $sizes = array();
-        
+
         $sizeChartList = Sizechart::with('bodyFeature')->where('product_id', '=', trim($data['conversionCount']))->where('status','=',1)->get();
-        
+
 
         $height_cm = 0;
         if ($data['convertedMeasurements'] == true) {
@@ -386,27 +392,27 @@ class AttributeController extends Controller
         }
         foreach ($sizeChartList as $s) {
                 foreach ($s['bodyFeature'] as  $b) {
-                    
-                    foreach ($data['bodyMeasure'] as $key=> $bm) 
+
+                    foreach ($data['bodyMeasure'] as $key=> $bm)
                     {
-                        
+
                         if ($bm >= $b['attr_measurement_start'] && $bm <= $b['attr_measurement_end'] && $data['sz'][$key] == $b['sizechart_id'])
                         {
                             //    return $b['predicted_size'];
                               //getting all results based upon calculations
                              $sizes[]= $b['predicted_size'];
-                               
-                               
-                        }                   
+
+
+                        }
                     }
                 }
-            
+
         }
-        
+
         return array_unique($sizes);
 
     }
-    
+
     public function getSizeCount($predictedSize)
     {
         $variants = Variants::where([['product_id', '=', trim(session('product'))], ['size', '=', strtolower($predictedSize)]])->pluck('size');
@@ -569,7 +575,7 @@ class AttributeController extends Controller
 
     public function storeAttributeUpdate(Request $request)
     {
-       
+
         $data = $request->all();
         $attr = AttributeTypes::find($data['product_id']);
         $attr->name = $data['attribute_name'];
@@ -584,7 +590,7 @@ class AttributeController extends Controller
                 $this->validate($request, [
                     'thumb.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
                 ]);
-               
+
                 $path = 'files/upload/admin/';
 
 
@@ -625,13 +631,13 @@ class AttributeController extends Controller
     }
     public function getAttributesOnHeightWeight(Request $request)
     {
-        
+
          $data = $request->all();
-         
+
         //$data['productkey'] = '6925368524956';
         $h = 0;
         $w = 0;
-        
+
         $response = array();
         $container = array();
 
@@ -659,7 +665,7 @@ class AttributeController extends Controller
             ->get();
 
             foreach($attributesjoined as $key => $aj) {
-                
+
                 foreach($aj['bodyFeature'] as $i => $aj_bf){
 
                 foreach ($aj['attributecsb'] as $j=> $aj_csb) {
@@ -682,10 +688,10 @@ class AttributeController extends Controller
             foreach ($attributeTypeOfProducts as $at) {
                 $at['attr_items'] = $container;
             }
-            
+
 
             return $attributeTypeOfProducts;
-           //took code which was used earlier to append to populate the $attributeTypeOfProducts array 
-       
+           //took code which was used earlier to append to populate the $attributeTypeOfProducts array
+
     }
 }

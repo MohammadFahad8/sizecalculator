@@ -18,7 +18,7 @@ use App\Models\Products;
 
 Auth::routes();
 
-        
+
     Route::middleware(['auth.shopify'])->group(function () {
 
 
@@ -29,7 +29,9 @@ Route::get('/edit/{id}',[App\Http\Controllers\AttributeController::class,'edit']
 Route::post('/update',[App\Http\Controllers\AttributeController::class,'update'])->name('attributes.update');
 Route::get('/add/type',[App\Http\Controllers\AttributeController::class,'create'])->name('attributes.create');
 Route::get('/get/all-products',[App\Http\Controllers\AttributeController::class,'getAllProducts'])->name('attributes.products');
+Route::get('/get/all-tags',[App\Http\Controllers\TagsController::class,'getAllTags'])->name('attributes.tags');
 Route::get('/product/edit/',[App\Http\Controllers\AttributeController::class,'editProduct'])->name('products.edit');
+Route::get('/tags/edit/',[App\Http\Controllers\TagsController::class,'editProductOnTags'])->name('tags.edit');
 //attribute type routes
 Route::get('get/attributetypes-all/view/{id}',[App\Http\Controllers\AttributeController::class,'attributeType'])->name('attributetypes.home');
 Route::get('attributes/create',[App\Http\Controllers\AttributeController::class,'attributeTypeCreate'])->name('attributestypes.create');
@@ -87,7 +89,7 @@ Route::group(['prefix'=>'sizechart'],function(){
     Route::get('/add/{id}',[App\Http\Controllers\SizeController::class,'createSizeChart'])->name('sizechart.create');
     Route::post('sizechart/post',[App\Http\Controllers\SizeController::class,'sizeChartPost'])->name('sizechart.add');
     Route::post('sizechart/update/post',[App\Http\Controllers\SizeController::class,'sizeChartUpdatePost'])->name('sizechart.update');
-});                                                
+});
 });
 
 
@@ -104,14 +106,14 @@ Route::get('/greeting', function () {
     $pr = $pro->save();
     return $pro;
     // return $pro::create([
-    //     'product_id' => $_GET['product_id'],   
+    //     'product_id' => $_GET['product_id'],
     //     'name' => $_GET['name'],
     //     'image_link' =>$_GET['image_link'],
     //     'status' => $_GET['status'],
     //     'is_deleted' => "0",
     //     'website_name' => "58318782618",
     // ]);
-}); 
+});
 
 
 // Auth::routes();

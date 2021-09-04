@@ -18,11 +18,12 @@ class CreateProductsTable extends Migration
             $table->bigInteger('product_id')->default(12)->unique();
             $table->text('name')->default('nothing');
             $table->text('image_link')->nullable();
+            $table->string('tags')->nullable();
             $table->boolean('status')->default(0);
             $table->boolean('is_deleted')->default(0);
             $table->bigInteger('website_name')->default('123321');
-            
-            
+
+
             $table->timestamps();
         });
     }

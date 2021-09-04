@@ -19,12 +19,14 @@ import VueLazyload from 'vue-lazyload';
 
 
 
-Vue.prototype.$appUrl = 'https://bylt2fit.ystsol.com';
+
+Vue.prototype.$appUrl = 'https://4d10-2400-adc7-91b-8900-a1cf-9371-b6ba-ffd3.ngrok.io';
 
 
 Vue.component('jw-pagination', JwPagination);
 Vue.use(VSwitch)
 Vue.use(VueLazyload)
+
 
 /**
  * The following block of code may be used to automatically register your
@@ -44,6 +46,9 @@ Vue.component('attribute-one-component', require('./components/AttributeoneCompo
 Vue.component('attribute-two-component', require('./components/AttributetwoComponent.vue').default);
 Vue.component('attribute-three-component', require('./components/AttributethreeComponent.vue').default);
 Vue.component('result-component', require('./components/ResultComponent.vue').default);
+Vue.component('dummy-result',require('./components/Errorplaceholder').default)
+Vue.component('placeholder-text',require('./components/Errorplaceholdertext').default)
+// Vue.component('sekeleton',require('./components/Sekeleton').default)
 
 
 
@@ -57,9 +62,9 @@ Vue.component('result-component', require('./components/ResultComponent.vue').de
  */
 
 
-
 const app = new Vue({
     el: '#app',
-  
-   
+
+
+
 });

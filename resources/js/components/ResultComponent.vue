@@ -6,8 +6,8 @@
     <div>
         <div class="x-row">
             <div class="col-md-12">
-                <div > 
-                    
+                <div >
+
                     <!-- <div class=" fit-advisor-selected-product-image"><img id="featured_image" class=" fit-advisor-product-picture" v-bind:src=this.product.featured_image alt="image" style="opacity: 1;"></div> -->
                     <div class="x-container">
                         <div class="x-row x-justify-content-center x-text-center x-p-5" v-if="sizeLoaded">
@@ -16,9 +16,9 @@
                                                 <span class="sr-only">Loading...</span>
                                             </div>
                                         </div>
-                        </div>  
+                        </div>
                         <div class="x-row x-justify-content-center resultant-all x-d-none">
-                            
+
                                 <div class="x-col-md-1 x-col-3">
                                     <div class="dfOagu x-float-left x-mt-4 x-mt-sm-6 x-mt-md-6 x-mt-lg-6 x-mt-xl-6" style="z-index: 30" v-if="!container.is_loading">
                                         <span size="10" id="arrow-left" class=" jjnwUS selected-product-arrow-left-pointer prev" @click="changesize(0)">
@@ -27,11 +27,11 @@
                                             </svg>
                                         </span>
                                     </div>
-                                    
+
                                     </div>
 
                                     <!-- LIST OF ALL VARIANTS -->
-                                    
+
                                     <div class="fit-advisor-custom_row center-force" v-if="container.is_loading">
                                         <div class="col-md-12">
                                             <div class="spinner-border spinner-position" role="status">
@@ -51,7 +51,7 @@
 
                                     <div class="x-col-md-6 x-col-6">
 
-                                    
+
                                         <div id="fit-advisor-sizes-slider" font-size="40" v-for="(row,
                                                 key,
                                                 index) in product.variants" :key="row.id" class="fit-advisor-selected-size" style="opacity: 1">
@@ -67,18 +67,22 @@
                                                         <span v-if="
                                                                     row.option1
                                                                         .toUpperCase()
-                                                                        .substring(
-                                                                            0,
-                                                                            2
-                                                                        ) ==
+                                                                        ==
                                                                         'XL' ||
                                                                         row.option1
                                                                             .toUpperCase()
-                                                                            .substring(
-                                                                                0,
-                                                                                2
-                                                                            ) ==
+                                                                             ==
                                                                             'XS'
+                                                                            ||
+                                                                        row.option1
+                                                                            .toUpperCase()
+                                                                             ==
+                                                                            'XXL'
+                                                                            ||
+                                                                        row.option1
+                                                                            .toUpperCase()
+                                                                             ==
+                                                                            'XXXL'
                                                                 ">
                                                             <span>{{
                                                                     row.option1.toUpperCase()
@@ -88,6 +92,12 @@
                                                                         'XS' &&
                                                                         row.option1.toUpperCase() !=
                                                                             'XL'
+                                                                            &&
+                                                                        row.option1.toUpperCase() !=
+                                                                            'XXL'
+                                                                            &&
+                                                                        row.option1.toUpperCase() !=
+                                                                            'XXXL'
                                                                 ">{{
                                                                     row.option1
                                                                         .toUpperCase()
@@ -98,7 +108,7 @@
                                                 </h4>
                                             </span>
                                         </div>
-                                    
+
                                     </div>
                                     <div class="x-col-md-1 x-col-3">
 
@@ -109,8 +119,8 @@
                                             </svg></span>
                                     </div>
                                     </div>
-                                
-                            
+
+
                         </div>
                         <div class="descriptions-all x-d-none">
                         <p class="fit-advisor-header-desc size_descriptions" v-for="(row, key, index) in product.variants" :key="row.id">
@@ -132,7 +142,7 @@
             <span class="step " ></span>
           <span class="step" v-for="(row,key) in recordsLength" ></span>
             <span class="step active"></span>
-        
+
     </div>
 </div>
 </template>
@@ -146,7 +156,7 @@ export default {
         form: Object,
         recordsLength:Number,
         attrscall:Array,
-        
+
     },
     data() {
         return {
@@ -174,6 +184,11 @@ export default {
                     },
                     {
                         title: "Very Relaxed"
+                    },
+                    {
+                        title: "Very Relaxed"
+                    },{
+                        title: "Very Relaxed"
                     }
                 ]
             },
@@ -192,46 +207,46 @@ export default {
     },
     methods: {
         getAttributes: function () {
-           
+
                     this.attributes = this.attrscall;
 
                     for (var i = 0; i < this.attrscall.length; i++) {
-                        
-                      
+
+
                         this.form.sz[i] = localStorage.getItem("sizechart_id_"+this.attrscall[i].name.toLowerCase());
 
-                            
+
 
                         this.form.bodyMeasure[i] = localStorage.getItem(
                             this.attrscall[i].name.toLowerCase()
-                            
-                        );
-                                        
-                      
-                    }
-                    
-                    this.form.conversionCount = this.product.id;
-                   
 
-                    
+                        );
+
+
+                    }
+
+                    this.form.conversionCount = this.product.id;
+
+
+
                     this.form.heightfoot = localStorage.getItem("foot");
                     this.form.heightinch = localStorage.getItem("inch");
                     this.form.heightcm = localStorage.getItem("cm");
                     this.form.age = localStorage.getItem("age");
                     this.form.weight = localStorage.getItem("weight");
-                    
-                    this.form.tags = JSON.parse(localStorage.getItem("tags"));
-                    
-                    // this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
-                    
-                    this.getProductDetails(this.form)
-                   
-                    
-                    
-                     
 
-                    
-                
+                    this.form.tags = JSON.parse(localStorage.getItem("tags"));
+
+                    // this.form.convertedMeasurements = localStorage.getItem("convertedMeasurements");
+
+                    this.getProductDetails(this.form)
+
+
+
+
+
+
+
         },
         setupProduct: function () {
             this.product.variants = this.product.variants.map(v => ({
@@ -247,12 +262,12 @@ export default {
             // })
         },
         setSlides: function (sizeposition) {
-           
+
             $("div.fit-advisor-selected-size:gt(" + sizeposition + ")").hide();
             $("div.fit-advisor-selected-size:lt(" + sizeposition + ")").hide();
             $("p.size_descriptions:gt(" + sizeposition + ")").hide();
             $("p.size_descriptions:lt(" + sizeposition + ")").hide();
-            
+
             //Hide all but the Predicted Size
 
             this.$allSlides = $("div.fit-advisor-selected-size"),
@@ -264,7 +279,8 @@ export default {
             this.product.variants.forEach((el, index) => {
                 if (sizecheck == true) {
                     if (el.option1.toUpperCase() == size) {
-                        
+
+
                         this.container.sizeIndex = index;
                         this.array_move(
                             this.container.size_descriptions,
@@ -354,18 +370,72 @@ export default {
                                         "Recommended";
                                 }
                                 if (
-                                    i ==
-                                    this.product.variants.indexOf(
-                                        this.product.variants[
-                                            this.product.variants.length - 2
-                                        ]
-                                    )
+                                    i > this.container.sizeIndex &&
+                                    i < this.product.variants.length
                                 ) {
                                     this.product.variants[i].desc_title =
-                                        "Slightly Snugged";
+                                        "Slighty Relaxed";
                                 }
+                                    // if (
+                                    //     i ==
+                                    //     this.product.variants.indexOf(
+                                    //         this.product.variants[
+                                    //             this.product.variants.length - 2
+                                    //         ]
+                                    //     )
+                                    // ) {
+                                    //     this.product.variants[i].desc_title =
+                                    //         "Slightly Snugged";
+                                    // }
                             }
                             break;
+                            case 'XXL':
+
+                                console.log(size +" " +this.container.sizeIndex)
+                                var counter = 1;
+                                for (
+                                    var i = 0; i <= this.product.variants.length; i++
+                                ) {
+
+                                    //DEBUG FROM HERE
+                                    if (i < this.container.sizeIndex) {
+                                        this.product.variants[i].desc_title =
+                                            "Very Snug";
+
+                                        if (
+                                            i < this.container.sizeIndex &&
+                                            i >= counter
+                                        ) {
+                                            counter++;
+
+                                            this.product.variants[i].desc_title =
+                                                "Snug";
+                                        }
+                                    }
+
+                                    if (i == this.container.sizeIndex) {
+                                        this.product.variants[i].desc_title =
+                                            "Recommended";
+                                    }
+                                    if (
+                                        i > this.container.sizeIndex &&
+                                        i < this.product.variants.length
+                                    ) {
+                                        this.product.variants[i].desc_title =
+                                            "Slighty Relaxed";
+                                    }
+                                    // if (
+                                    //     i ==
+                                    //     this.product.variants.indexOf(
+                                    //         this.product.variants[
+                                    //             this.product.variants.length - 2
+                                    //         ]
+                                    //     )
+                                    // ) {
+                                    //     this.product.variants[i].desc_title =
+                                    //         "Slightly Snugged";
+                                    // }
+                                }
                             default:
                             console.log('Recommendations failed')
 
@@ -376,11 +446,11 @@ export default {
                             this.container.sizeIndex
                         );
 
-                        
+
                     }
                 } else if (sizecheck == false) {
                     if (el.option1.toUpperCase().charAt(0) == size) {
-                        
+
                         this.container.sizeIndex = index;
 
                         this.array_move(
@@ -468,7 +538,7 @@ export default {
     break;
     case "L":
     console.log(size +" " +this.container.sizeIndex)
-    
+
                             for (
                                 var i = 0; i <= this.product.variants.length; i++
                             ) {
@@ -506,18 +576,18 @@ export default {
                             this.container.sizeIndex
                         );
 
-                        
+
                     }
                 }
             });
         },
 
         getProductDetails: function (form) {
-        
+
             this.container.is_loading = true;
             var a = "";
 
-          
+
 
             this.container.showSelectedSizeSlider = false;
             this.container.conversionCount = this.product.id;
@@ -531,7 +601,7 @@ export default {
 
                     }else
                     {
-                        
+
 
                            if(res.data[3]=== undefined)
                            {
@@ -542,9 +612,9 @@ export default {
                            {
                                res.data = res.data[3]
                            }
-                           
-                          
-                    
+
+
+
 
                     }
                     this.container.is_loading = false;
@@ -559,19 +629,21 @@ export default {
                         res.data == "XS" ||
                         res.data == "Xs" ||
                         res.data == "xS" ||
-                        res.data == "xs"
-                    ) {
+                        res.data == "xs" ||
+                        res.data == "xxl" ||
+                        res.data == "XXL" ) {
                         this.container.recommended_size = res.data
-                            .toUpperCase()
-                            .substr(0, 2);
+                            .toUpperCase();
+                        //.substr(0, 2) took from above line
                             EventBus.$emit('refreshSize',res.data
-                            .toUpperCase()
-                            .substr(0, 2))
+                            .toUpperCase())
+                        //.substr(0, 2) took from above it was with .toUpperCase function
                         this.container.sizecheck = true;
                         this.setSelectedSizeFromList(
-                            res.data.toUpperCase().substr(0, 2),
+                            res.data.toUpperCase(),
                             this.container.sizecheck
                         );
+                        //.substr(0, 2)  took from above it was with .toUpeprCase function
                         a = this.container.recommended_size;
                         $(".fit-advisor-selected-size-arrow-box").addClass(
                             "bigsize"
@@ -622,7 +694,7 @@ export default {
 
             var traverse = this.traverseDefault,
                 action = this.actionDefault;
-                
+
 
             if (trigger == 0) {
                 //if action is prev
@@ -642,16 +714,16 @@ export default {
             if (!$nxtTarget.length) {
                 //if no next
                 $time = 1;
-                
+
 
                 if (trigger == 0) {
-                    
+
                     $nxtTarget = this.$allSlides["first"]();
-                    
+
                 } else {
-                    
-                    
-                    
+
+
+
                     $nxtTarget = this.$allSlides["last"](); //based on traverse pick the next one
                     //added following line of code as when reached end it wasnt stoping at last size
                     $curr
@@ -659,8 +731,8 @@ export default {
                 .fadeIn($time)
                 .addClass("active")
                 .show();
-                    
-                       
+
+
                 }
             }
 
@@ -684,7 +756,7 @@ export default {
                 if (trigger == 0) {
                     $nxtTarget = this.$allSlidesSize["first"]();
                 } else {
-                    
+
                     $nxtTarget = this.$allSlidesSize["last"](); //based on traverse pick the next one
                     //added following line of code as when reached end it wasnt stoping at last size
                       $curr
@@ -692,7 +764,7 @@ export default {
                 .fadeIn($time)
                 .addClass("active")
                 .show();
-                    
+
                 }
             }
 //added show method to following line of code as when reached end it wasnt stoping at last size
@@ -719,14 +791,14 @@ export default {
             //                $('.fit-advisor-selected-product-grid').css('display', 'none');
 
             this.tabnumber = 1;
-            
+
             EventBus.$emit("home", this.tabnumber);
         }
     },
     mounted() {
         // console.log = function(){};
         this.is_loading=true;
-        
+
 
         //this.setupProduct();
 
@@ -734,22 +806,22 @@ export default {
         this.form.conversionCount = this.product.id;
 
         EventBus.$on("sizeCalculate", num => {
-            
+
             var a = 1;
             this.sizeLoaded=true;
             $('.x-progress-bar').css('width','700px');
             $('.resultant-all').addClass('x-d-none');
             $('.descriptions-all').addClass('x-d-none');
-            
+
             this.setupProduct();
             //this.getProductDetails();
             this.form.conversionCount = this.product.id;
             EventBus.$emit("mount", a);
-            
-            
-           
+
+
+
         });
     },
-     
+
 };
 </script>
