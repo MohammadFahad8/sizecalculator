@@ -87,7 +87,125 @@ class TagsController extends Controller
     {
         //
     }
+    public function getAllProducts($tname,$tid)
+    {
 
+
+        $shop = Auth::user();
+
+
+        $productsall = $shop->api()->rest('GET', '/admin/api/2021-07/products.json')['body']['container'];
+
+
+
+        $prod = $productsall['products'];
+
+
+
+        $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
+
+
+
+        $shop_config = $shop_cfg['shop'];
+
+        Variants::truncate();
+        // Products::truncate();
+
+        foreach ($prod as $row) {
+
+            $product = Products::where('product_id', '=', trim($row['id']))->first();
+
+
+            if ($product == null) {
+
+                $product = new Products();
+                $product->product_id =  trim($row['id']);
+                $product->name =   $row['title'];
+                $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
+                $product->tags = ($row['tags'] == null) ? null : $row['tags'];
+
+                $product->website_name = trim($shop_config['id']);
+
+                $product->save();
+                $tagProduct = Products::where('product_id','=',$product->product_id)->first();
+                $tagProduct->tag_id = $tid;
+                $tagProduct->save();
+
+
+            } else {
+
+
+                $product->product_id =  trim($row['id']);
+                $product->name =   $row['title'];
+                $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
+                $product->tags = ($row['tags'] == null) ? null : $row['tags'];
+
+                $product->website_name =  trim($shop_config['id']);
+
+                $product->save();
+                echo $product->product_id;
+                echo $tname;
+                $tagProduct = Products::where('product_id','=',$product->product_id)->where('tags','=',trim($tname))->first();
+                if($tagProduct!=null)
+                {
+
+                    $tagProduct->tag_id = $tid;
+                    $tagProduct->save();
+
+                }
+
+
+
+                // Attributetypes::where('product_id','=',$product->product_id)->get();
+            }
+
+
+            if ($row['variants'] != null) {
+
+                foreach ($row['variants'] as $variant) {
+
+
+                    $vari = new Variants();
+                    $vari->variant_id = trim($variant['id']);
+
+                    $vari->size = (strtolower($variant['option1']) == 'default title') ? 0 : strtolower($variant['option1']);
+                    $vari->price = ($variant['price'] == null) ? null : $variant['price'];
+                    $vari->product_id = trim($variant['product_id']);
+                    $vari->save();
+                }
+            } else {
+                echo 'no variants';
+            }
+        }
+        //DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
+        $checkInApiResponse = Products::latest()->get();
+
+        foreach ($checkInApiResponse as $resp) {
+
+
+            $productCheckIfDeletedFromStore = Auth::user()->api()->rest('GET', '/admin/api/2021-04/products/' . trim($resp['product_id']) . '.json')['body'];
+
+
+            if ($productCheckIfDeletedFromStore == "Not Found") {
+                $product = Products::where('product_id', '=', trim($resp['product_id']))->first();
+
+                $product->is_deleted =  1;
+                $product->save();
+            }
+        }
+
+        //END DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
+        $products = Products::where([['website_name', '=', trim($shop_config['id'])], ['is_deleted', '=', 0]])->paginate(5);
+
+
+
+
+
+//        return view('products.index', [
+//            'other' => $products,
+//
+//        ]);
+    }
     public function getAllTags()
     {
 
@@ -107,24 +225,26 @@ class TagsController extends Controller
 }')['body']['container']['data']['shop']['productTags']['edges'];
 
 
-foreach ($tags as $row)
-{
+        foreach ($tags as $row)
+        {
 
-    $tagsall = Tags::where('tagname','=',trim($row['node']))->first();
-    if($tagsall == null)
-    {
-        $tag = new Tags();
-        $tag->tagname = $row['node'];
-        $tag->status = 0;
-        $tag->save();
-    }
-    else{
-        $tagsall->tagname = $row['node'];
+            $tagsall = Tags::where('tagname','=',trim($row['node']))->first();
+            if($tagsall == null)
+            {
+                $tag = new Tags();
+                $tag->tagname = $row['node'];
+                $tag->status = 0;
+                $tag->save();
+                $this->getAllProducts(trim($row['node']),$tag->id);
+            }
+            else{
+                $tagsall->tagname = $row['node'];
 
-        $tagsall->save();
-    }
-}
-$tags = Tags::latest()->get();
+                $tagsall->save();
+                $this->getAllProducts(trim($row['node']),$tagsall->id);
+            }
+        }
+        $tags = Tags::latest()->get();
 
         return view('tags.index', [
             'other' => $tags,
@@ -138,20 +258,20 @@ $tags = Tags::latest()->get();
         $request['tagname'] = trim($request['tagname']);
         $messageContainer = array(
             'error_msg' => 'Configure Product First Make Variants in Admin',
-            );
+        );
         $emptyContainer = array(
             'empty_msg' => 'No products attached with this tag',
-            );
+        );
         $data = array();
 
 
         $product = Products::where('tags', 'LIKE', '%' . trim($request['tagname']) . '%')->get();
 
-    if($product == null || count($product)==0)
-    {
+        if($product == null || count($product)==0)
+        {
 
-        return $emptyContainer;
-    }
+            return $emptyContainer;
+        }
 
         foreach ($product as $p) {
 
@@ -163,7 +283,7 @@ $tags = Tags::latest()->get();
 
             if (count($sizeChartCount) == 0 || count($sizeChartCount) == null || isset($checkVariantExists[0]['size']) == false) {
 
-                 $messageContainer['product']=$p;
+                $messageContainer['product']=$p;
                 return $messageContainer;
             } else {
 
@@ -176,10 +296,10 @@ $tags = Tags::latest()->get();
 
                 $p->status = $request['status'];
                 $tagg = Tags::where('tagname','=',trim($request['tagname']))->first();
-                 if($tagg != null){
+                if($tagg != null){
                     $tagg->status = $request['status'];
                     $tagg->save();
-                 }
+                }
 
                 $p->save();
 
