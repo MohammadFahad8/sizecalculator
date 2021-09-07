@@ -129,6 +129,7 @@ display: inline-block;
                             >
                                 <attribute-one-component
                                     :attributes="row"
+                                    :attritems="row.attr_items"
                                     :tabnum="{
                                         count: tabnumber
                                     }"

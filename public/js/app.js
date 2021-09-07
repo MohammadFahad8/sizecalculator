@@ -1925,7 +1925,8 @@ __webpack_require__.r(__webpack_exports__);
     tabnum: Object,
     recordsLength: Number,
     currentRecord: Number,
-    spinit: Boolean
+    spinit: Boolean,
+    attritems: Array
   },
   data: function data() {
     return {
@@ -1946,6 +1947,15 @@ __webpack_require__.r(__webpack_exports__);
       attrcountinc: 1,
       txt: ''
     };
+  },
+  computed: {
+    attritemsarr: function attritemsarr() {
+      var _this = this;
+
+      return this.attritems.filter(function (row) {
+        return _this.attributes.id == row.attribute_type_id;
+      });
+    }
   },
   methods: {
     nextStep: function nextStep(n) {
@@ -1984,11 +1994,11 @@ __webpack_require__.r(__webpack_exports__);
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$emit('hometab', 2);
     },
     resetText: function resetText() {
-      var _this = this;
+      var _this2 = this;
 
       this.txt = '';
       _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on('resettext', function (val) {
-        _this.txt = '';
+        _this2.txt = '';
       });
     }
   },
@@ -2180,6 +2190,7 @@ function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { va
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
+//
 //
 //
 //
@@ -45928,78 +45939,72 @@ var render = function() {
                   staticClass:
                     " x-row x-justify-content-center queryattr x-d-none "
                 },
-                _vm._l(_vm.attributes.attr_items, function(row) {
-                  return _vm.attributes.id == row.attribute_type_id
-                    ? _c(
-                        "div",
+                _vm._l(_vm.attritemsarr, function(row) {
+                  return _c(
+                    "div",
+                    {
+                      staticClass:
+                        "x-col-md-4  x-col-12 x-mb-5 x-mb-sm-0 x-mb-md-0 x-mb-lg-0 x-mb-lg-0"
+                    },
+                    [
+                      _c(
+                        "span",
                         {
-                          staticClass:
-                            "x-col-md-4  x-col-12 x-mb-5 x-mb-sm-0 x-mb-md-0 x-mb-lg-0 x-mb-lg-0"
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.txt == "show",
+                              expression: "txt=='show'"
+                            }
+                          ]
                         },
                         [
-                          _c(
-                            "span",
-                            {
-                              directives: [
-                                {
-                                  name: "show",
-                                  rawName: "v-show",
-                                  value: _vm.txt == "show",
-                                  expression: "txt=='show'"
-                                }
-                              ]
-                            },
-                            [
-                              _vm._v(
-                                _vm._s(
-                                  _vm.attributes.id == row.attribute_type_id
-                                    ? (_vm.txt = "List of available sizes")
-                                    : (_vm.txt = "showerror")
-                                )
-                              )
-                            ]
-                          ),
-                          _vm._v(" "),
-                          _vm.attributes.id == row.attribute_type_id
-                            ? _c("img", {
-                                staticClass: "img_attr_get",
-                                attrs: {
-                                  id: "chest1",
-                                  src: _vm.$appUrl + "/" + row.attr_image_src
-                                },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.chest(
-                                      row.attr_size_value,
-                                      row.sizechart_id
-                                    )
-                                  }
-                                }
-                              })
-                            : _vm._e(),
-                          _vm._v(" "),
-                          _vm.attributes.id == row.attribute_type_id
-                            ? _c(
-                                "p",
-                                {
-                                  staticClass: " fit-advisor-options-text",
-                                  attrs: {
-                                    title: row.attr_size_value,
-                                    "data-atname": row.attribute_size_name
-                                  }
-                                },
-                                [
-                                  _vm._v(
-                                    "\n                        " +
-                                      _vm._s(row.attribute_size_name) +
-                                      "\n\n                    "
-                                  )
-                                ]
-                              )
-                            : _vm._e()
+                          _vm._v(
+                            _vm._s(
+                              _vm.attributes.id == row.attribute_type_id
+                                ? (_vm.txt = "List of available sizes")
+                                : (_vm.txt = "showerror")
+                            )
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("img", {
+                        staticClass: "img_attr_get",
+                        attrs: {
+                          id: "chest1",
+                          src: _vm.$appUrl + "/" + row.attr_image_src
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.chest(
+                              row.attr_size_value,
+                              row.sizechart_id
+                            )
+                          }
+                        }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "p",
+                        {
+                          staticClass: " fit-advisor-options-text",
+                          attrs: {
+                            title: row.attr_size_value,
+                            "data-atname": row.attribute_size_name
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        " +
+                              _vm._s(row.attribute_size_name) +
+                              "\n\n                    "
+                          )
                         ]
                       )
-                    : _vm._e()
+                    ]
+                  )
                 }),
                 0
               )
@@ -46582,6 +46587,7 @@ var render = function() {
                             _c("attribute-one-component", {
                               attrs: {
                                 attributes: row,
+                                attritems: row.attr_items,
                                 tabnum: {
                                   count: _vm.tabnumber
                                 },

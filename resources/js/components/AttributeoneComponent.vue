@@ -34,20 +34,20 @@
              <div class=" x-row x-justify-content-center queryattr x-d-none "  v-if=" typeof attributes.attr_items != 'undefined' || attributes.attr_items.length>0 && is_loading==false">
                 <div
                     class="x-col-md-4  x-col-12 x-mb-5 x-mb-sm-0 x-mb-md-0 x-mb-lg-0 x-mb-lg-0"
-                    v-for="row in attributes.attr_items" v-if="attributes.id == row.attribute_type_id"
+                    v-for="row in attritemsarr"
 
 
                 >
                     <span v-show="txt=='show'">{{ attributes.id == row.attribute_type_id ?txt="List of available sizes":txt="showerror"}}</span>
                     <img
-                    v-if="attributes.id == row.attribute_type_id"
+
                         id="chest1"
                         :src="$appUrl+'/'+row.attr_image_src"
                         v-on:click="chest(row.attr_size_value,row.sizechart_id)"
                         class="img_attr_get"
 
                     />
-                    <p v-if="attributes.id == row.attribute_type_id" :title="row.attr_size_value" class=" fit-advisor-options-text" :data-atname="row.attribute_size_name">
+                    <p :title="row.attr_size_value" class=" fit-advisor-options-text" :data-atname="row.attribute_size_name">
                         {{ row.attribute_size_name }}
 
                     </p>
@@ -80,6 +80,7 @@ export default {
         recordsLength: Number,
         currentRecord: Number,
         spinit:Boolean,
+        attritems:Array,
 
 
     },
@@ -108,7 +109,13 @@ export default {
 
         };
     },
+computed:{
+        attritemsarr:function()
+{
+        return this.attritems.filter(row=> this.attributes.id == row.attribute_type_id )
+}
 
+},
     methods: {
         nextStep: function(n) {
             this.container.tabnumber = n;

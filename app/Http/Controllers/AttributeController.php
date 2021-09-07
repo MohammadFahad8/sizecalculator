@@ -500,7 +500,7 @@ class AttributeController extends Controller
     {
 
         // $attributeTypeOfProducts = Attributetypes::with('product')->where('product_id','=',$request['id'])->get();
-//        $attributeTypeOfProducts = Products::with('attributetypes')->where('product_id', '=', trim($request['id']))->get();
+        //$attributeTypeOfProducts = Products::with('attributetypes')->where('product_id', '=', trim($request['id']))->get();
         $attributeTypeOfProducts =  Tags::with('attributetypes')->where('id','=',trim($request['id']))->get();
 
         return view(
