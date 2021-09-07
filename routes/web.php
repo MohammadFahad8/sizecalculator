@@ -53,7 +53,8 @@ Route::get('/add/type',[App\Http\Controllers\SizeController::class,'create'])->n
 Route::post('/add',[App\Http\Controllers\SizeController::class,'store'])->name('sizes.add');
 });
 Route::get('/get/products',[App\Http\Controllers\ProductsController::class,'getProducts'])->name('products.collection');
-Route::get('get/product-details/{id}',[App\Http\Controllers\AttributeController::class,'getSpecificProducts'])->name('products.specific');
+//Route::get('get/product-details/{id}',[App\Http\Controllers\AttributeController::class,'getSpecificProducts'])->name('products.specific');
+Route::get('get/product-details/{id}',[App\Http\Controllers\TagsController::class,'getSpecificProducts'])->name('products.specific');
 
 Route::get('/selected/products',[App\Http\Controllers\SizeController::class,'selectedProducts'])->name('products.selectedbox');
 Route::get('/all/products',[App\Http\Controllers\SizeController::class,'getAllProducts'])->name('products.getAllProducts');
@@ -86,7 +87,7 @@ Route::group(['prefix'=>'sizechart'],function(){
     Route::get('/bodysizes/{id}',[App\Http\Controllers\SizeController::class,'sizeOfSpecificRange'])->name('sizechart.range');
     Route::get('/sizechart/delete',[App\Http\Controllers\SizeController::class,'sizeChartDelete'])->name('sizechart.delete');
     Route::get('/sizechart/edit',[App\Http\Controllers\SizeController::class,'sizeChartEdit'])->name('sizechart.edit');
-    Route::get('/add/{id}',[App\Http\Controllers\SizeController::class,'createSizeChart'])->name('sizechart.create');
+    Route::get('/add/',[App\Http\Controllers\SizeController::class,'createSizeChart'])->name('sizechart.create');
     Route::post('sizechart/post',[App\Http\Controllers\SizeController::class,'sizeChartPost'])->name('sizechart.add');
     Route::post('sizechart/update/post',[App\Http\Controllers\SizeController::class,'sizeChartUpdatePost'])->name('sizechart.update');
 });

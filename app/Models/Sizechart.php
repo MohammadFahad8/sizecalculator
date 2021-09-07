@@ -43,7 +43,7 @@ class Sizechart extends Model
          */
         public function attributecsb(): HasMany
         {
-            return $this->hasMany(Attributeimages::class, 'product_id', 'product_id');
+            return $this->hasMany(Attributeimages::class, 'tag_id', 'product_id');
         }
-    
+
 }

@@ -32,7 +32,7 @@
     <thead>
 <tr>
     <th>Attribute Type Name</th>
-    <th>Product Name</th>
+    <th>Tag Name</th>
 
     <th>Status</th>
     <th>Sizes of Product</th>
@@ -47,7 +47,7 @@
     <tr>
 
             <td>{{ $attr->name }}</td>
-            <td>{{ $attr->product->name }}</td>
+            <td>{{ $attr->tags->tagname }}</td>
 
             <td>{{ $attr->status }}</td>
             <td>

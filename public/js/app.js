@@ -4043,7 +4043,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://4d10-2400-adc7-91b-8900-a1cf-9371-b6ba-ffd3.ngrok.io';
+Vue.prototype.$appUrl = 'https://3dbe-2400-adc7-91b-8900-f034-2769-e76f-72b3.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 Vue.use(vue_lazyload__WEBPACK_IMPORTED_MODULE_4__.default);

@@ -11,22 +11,22 @@
             @endif
             @if (session('error'))
                 <div class="alert alert-danger" role="alert">
-                   <span class="is-invalid">{{ session('error') }}</span> 
+                   <span class="is-invalid">{{ session('error') }}</span>
                 </div>
             @endif
         </div>
     </div>
 <div class="row mt-5 " >
-   
+
     @include('partials_sizes.sidebar')
     <div class="col-md-9 ">
 <div class="card  ">
     <div class="card-header">@include('snippets.buttonback'){{ __('Add Size') }}</div>
     <div class="card-body">
-        
+
         <form id="sizechartform" method="POST" action="{{ route('sizechart.add',['product_id'=> $product_id ]) }}" enctype="multipart/form-data">
             @csrf
-            
+
             <div class="form-group row">
                 <label for="weight_start"
                        class="col-md-4 col-form-label text-md-right">{{ __('Weight Start') }}</label>
@@ -95,17 +95,17 @@
                     @enderror
                 </div>
             </div>
-           
+
             @foreach($variantsOfAttributes as $key => $attr)
-                            
-            
-    
-            
+
+
+
+
             <div class="form-group row " >
                 <input type="hidden" value="{{ $attr->id }}" name="attribute_type[]">
                 <input for="body_measurement_start"
                        class="col-md-4 col-form-label text-md-right border-0 size-name" name="attribute_type_name[]" value="{{ $attr->name }}" readonly/>
- 
+
                 <div class="col-3">
                     <input tabindex="{{ $key + 5 }}" id="body_measurement_start" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_start') is-invalid @enderror"
@@ -117,7 +117,7 @@
                     </span>
                     @enderror
                 </div>
-                
+
                 <div class="col-3">
                     <input tabindex="{{ $key + 6 }}" id="body_measurement_end" type="number" max="99999" step="1" min="0"
                            class="form-control @error('body_measurement_end') is-invalid @enderror"
@@ -130,9 +130,9 @@
                     @enderror
                 </div>
             </div>
-           
+
             @endforeach
-             
+
             {{-- checked --}}
             <div class="form-group row">
                 <label for="predicted_size"
@@ -143,12 +143,12 @@
 
                         <option value=""> Please Select Size</option>
 
-                        
+
                         @foreach($variants as $v)
 
 
                             {{-- <option value="{{ $v['id'] }}" @if($role['id'] == $user->userrole->id) selected @endif > {{ $role->role }}</option> --}}
-                            <option value="{{ $v['size'] }}"  > {{ $v->size }}</option>
+                            <option value="{{ $v }}"  > {{ $v }}</option>
                         @endforeach
                     </select>
 
@@ -160,7 +160,7 @@
                 </div>
             </div>
             {{-- checled --}}
-           
+
             <div class="form-group row mb-0">
                 <div class="col-md-6 offset-md-4">
                     <button type="submit" class="btn btn-primary" >
@@ -186,7 +186,7 @@ $("#sizechartform").validate({
     });
     $('.attributes-types').change(function () {
         var role = $(this).find('option:selected').text();
-        
+
         $("input[name=body_measurement_start]").attr("placeholder",role+" Measurement Start");
         $("input[name=body_measurement_end]").attr("placeholder",role+" Measurement End");
     });

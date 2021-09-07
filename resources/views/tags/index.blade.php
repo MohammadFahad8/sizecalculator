@@ -37,17 +37,21 @@
 
                             <tr>
                                 <td>
-                                    <span class="badge badge-dark p-2 m-1">{{$row->tagname}}</span>
+                                    <a href="javascript:void(0)" v-on:click="productFix({{ $row->id }})" style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter"  class="badge  p-2 m-1 {{$row->status==1?'badge-success':'badge-secondary'}}" >{{ $row->tagname }}</a>
                                 </td>
                                 <td>
                                     <div class="dropdown">
-                                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Dropdown
+                                        <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Products
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            <button class="dropdown-item" type="button">Action</button>
-                                            <button class="dropdown-item" type="button">Another action</button>
-                                            <button class="dropdown-item" type="button">Something else here</button>
+                                            @forelse($row->tagProducts as $productOf)
+                                                <button class="dropdown-item" type="button">{{$productOf->name}}</button>
+
+                                            @empty
+                                                *No Products with this tag
+                                            @endforelse
+
                                         </div>
                                     </div>
                                 </td>
@@ -89,10 +93,12 @@
 
 
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-xl" role="document">
+            <div class="modal-dialog modal-dialog-centered " role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalCenterTitle">Product Details</h5>
+                        <h5 v-if="!isLoading" class="modal-title" id="exampleModalCenterTitle">Create Tags Attributes</h5>
+                        <h5 v-if="isLoading" class="skeleton skeleton-heading" ></h5>
+
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -107,46 +113,26 @@
                         <table class="table table-bordered table-responsive-lg " >
                             <thead>
                             <tr>
-                                <th>Picture</th>
-                                <th>Name</th>
-                                <th :colspan="variant_count" class="text-center">variants</th>
-                                <th>Predicted Size</th>
+
+                                <th v-if="!isLoading">Tag Name</th>
+                                <th v-if="isLoading"><div class="skeleton skeleton-text"></div></th >
+
+                                <th v-if="!isLoading">Predicted Size</th>
+                                <th v-if="isLoading"><div class="skeleton skeleton-text"></div></th >
 
                             </tr>
                             </thead>
                             <tbody>
-                            <tr v-if="isLoading"  >
-                                <td><div class="text-center"><div class="spinner-grow spinner-grow-sm" role="status">
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
-                                    </div>
-                                </td>
-                                <td><div class="d-flex justify-content-center text-center">
-                                        <div class="spinner-grow spinner-grow-sm" role="status">
-                                            <span class="sr-only">Loading...</span>
-                                        </div>
-                                    </div></td>
-                                <td> <div class="text-center"><div class="spinner-grow spinner-grow-sm" role="status">
-                                            <span class="sr-only">Loading...</span>
-                                        </div></div></td>
-                                <td><div class="text-center"> <div class="spinner-grow spinner-grow-sm" role="status">
-                                            <span class="sr-only">Loading...</span>
-                                        </div></div></td>
-                            </tr>
-                            <tr v-if="!isLoading" >
-                                <td>
+                            <tr  >
 
-                                    <img id="single-product" v-on:click="zoomImage(product.image_link)" :src="product.image_link" width="50" height="50"  alt="" class="img-thumbnail">
-                                </td>
 
-                                <td>@{{ product.name }}</td>
+                                <td v-if="!isLoading">@{{ product.tagname }}</td>
+                                <td v-if="isLoading"><div class="skeleton skeleton-text"></div></td >
 
-                                <td v-for="(row,index) in product.variants" :key="row.id">
 
-                                    @{{ row.size }}
-                                </td>
 
-                                <td> <a href="javascript:void(0)" v-on:click="viewAttributes(product.product_id)">View Details</a> </td>
+                                <td v-if="!isLoading"> <a href="javascript:void(0)" v-on:click="viewAttributes(product.id)">View Details</a> </td>
+                                <td v-if="isLoading"><div class="skeleton skeleton-text"></div></td >
                             </tr>
 
 
@@ -263,6 +249,7 @@
                 var status = $(this).prop('checked') == true ? 1 : 0;
                 var tagname = $(this).data('id');
                 var tag_id = $(this).prop('id');
+                $("#"+tag_id).parent().parent().siblings().children(".badge").addClass("badge-success");
 
 
                 $.ajax({
@@ -275,6 +262,8 @@
                         {
                             toastr.info(data.empty_msg)
                             $("#"+tag_id).prop("checked", false);
+                            $("#"+tag_id).parent().parent().siblings().children(".badge").removeClass("badge-success");
+
 
                         }
 
@@ -289,27 +278,37 @@
                                 imageHeight: 200,
                                 imageAlt: 'Custom image',
                             }).then((result)=>{
+                                if(result.isConfirmed){
                                 var link = "{{env("APP_URL")}}"
-                                console.log(link)
-
-                                window.location.href=link+"/get/attributetypes-all/view/"+data.product.product_id
+                                // console.log(link)
+                                //
+                                // window.location.href=link+"/get/attributetypes-all/view/"+data.product.product_id
+                                }
                             })
 
                             $("#"+tag_id).prop("checked", false);
+                            $("#"+tag_id).parent().parent().siblings().children(".badge").removeClass("badge-success");
+
                         }
 
                         else
-                        { data.product.forEach((row,index)=>{
+                        {
+
+                            data.product.forEach((row,index)=>{
                              if(row.status==1)
                             {
 
                                 toastr.options.progressBar = true;
 
                                 toastr.success('Widget Permission granted for Product with TAG: '+tagname)
+
+
                             }
                             else{
 
                                 toastr.warning('Widget removed for Product with TAG: '+tagname)
+                                 $("#"+tag_id).parent().parent().siblings().children(".badge").removeClass("badge-success");
+                                 $("#"+tag_id).parent().parent().siblings().children(".badge").addClass("badge-secondary");
                             }
                         })
 

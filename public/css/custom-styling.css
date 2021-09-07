@@ -1,13 +1,13 @@
 
 
 /* -------------------------------------------------------------------
- * ## pagination 
+ * ## pagination
  * ------------------------------------------------------------------- */
  .pgn {
     margin: 3rem auto;
     text-align: center;
   }
-  
+
   .pgn ul {
     display: inline-block;
     list-style: none;
@@ -15,13 +15,13 @@
     position: relative;
     padding: 0 6rem;
   }
-  
+
   .pgn ul li {
     display: inline-block;
     margin: 0;
     padding: 0;
   }
-  
+
   .pgn__num {
     font-family: "metropolis-bold", sans-serif;
     font-size: 1.5rem;
@@ -35,22 +35,22 @@
     -webkit-transition: all 0.3s ease-in-out;
     transition: all 0.3s ease-in-out;
   }
-  
+
   .pgn__num:hover {
     background: #c4c4c4;
     color: #151515;
   }
-  
+
   .pgn .current, .pgn .current:hover {
     background-color: #151515;
     color: #FFFFFF;
   }
-  
+
   .pgn .inactive, .pgn .inactive:hover {
     color: #888888;
     cursor: default;
   }
-  
+
   .pgn__prev, .pgn__next {
     display: block;
     background-color: #FFFFFF;
@@ -75,7 +75,7 @@
     -ms-transform: translateY(-50%);
     transform: translateY(-50%);
   }
-  
+
   .pgn__prev:hover, .pgn__next:hover {
     background-color: #151515;
     color: #FFFFFF;
@@ -83,40 +83,40 @@
     background-repeat: no-repeat;
     background-position: center;
   }
-  
+
   .pgn__prev {
     background-image: url("../images/icons/icon-arrow-left.svg");
     left: 50px ;
   }
-  
+
   .pgn__prev:hover {
     background-image: url("../images/icons/icon-arrow-left-w.svg");
   }
-  
+
   .pgn__next {
     background-image: url("../images/icons/icon-arrow-right.svg");
     right: 50px;
   }
-  
+
   .pgn__next:hover {
     background-image: url("../images/icons/icon-arrow-right-w.svg");
   }
-  
+
   .pgn__prev.inactive, .pgn__next.inactive {
     background-color: #ffffff;
     opacity: 0.5;
     cursor: default;
   }
-  
+
   .pgn__prev.inactive:hover {
     background-image: url("../images/icons/icon-arrow-left.svg");
   }
-  
+
   .pgn__next.inactive:hover {
     background-image: url("../images/icons/icon-arrow-right.svg");
   }
-  
-  /* ------------------------------------------------------------------- 
+
+  /* -------------------------------------------------------------------
   * responsive:
   * pagination
   * ------------------------------------------------------------------- */
@@ -124,19 +124,43 @@
     .pgn ul {
        padding: 0 5rem;
     }
-  
+
     .pgn__prev, .pgn__next {
        height: 1.6rem;
        width: 1.6rem;
        line-height: 3.6rem;
        background-size: 12px 8px;
-     
+
     }
-  
+
   }
 
-  
+
   .tr-disabled
   {
     background-color:darkgrey;
   }
+.skeleton {
+    opacity: .7;
+    animation: skeleton-loading 1s linear infinite alternate;
+}
+.skeleton-text {
+    width: 100%;
+    height: 1.2rem;
+    margin-bottom: .25rem;
+    border-radius: .125rem;
+}.skeleton-heading {
+    width: 30%;
+    height: 1.2rem;
+    margin-bottom: .25rem;
+    border-radius: .125rem;
+}
+@keyframes skeleton-loading{
+    0% {
+        background-color: hsl(200, 20%, 70%);
+    }
+
+    100% {
+        background-color: hsl(200, 20%, 95%);
+    }
+}

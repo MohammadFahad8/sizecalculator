@@ -16,9 +16,10 @@ class CreateAttributetypesTable extends Migration
         Schema::create('attributetypes', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->bigInteger('product_id');
+//            $table->bigInteger('product_id');
+            $table->Integer('tag_id');
             $table->boolean('status')->default(1);
-            
+
             $table->timestamps();
         });
     }

@@ -143,8 +143,7 @@ class TagsController extends Controller
                 $product->website_name =  trim($shop_config['id']);
 
                 $product->save();
-                echo $product->product_id;
-                echo $tname;
+
                 $tagProduct = Products::where('product_id','=',$product->product_id)->where('tags','=',trim($tname))->first();
                 if($tagProduct!=null)
                 {
@@ -244,7 +243,7 @@ class TagsController extends Controller
                 $this->getAllProducts(trim($row['node']),$tagsall->id);
             }
         }
-        $tags = Tags::latest()->get();
+        $tags = Tags::latest()->with('tagProducts')->get();
 
         return view('tags.index', [
             'other' => $tags,
@@ -277,7 +276,7 @@ class TagsController extends Controller
 
 
 
-            $sizeChartCount = Sizechart::where('product_id', '=', trim($p->product_id))->get();
+            $sizeChartCount = Sizechart::where('product_id', '=', trim($p->tag_id))->get();
             $checkVariantExists = Variants::where('product_id', '=', trim($p->product_id))->get();
 
 
@@ -308,5 +307,11 @@ class TagsController extends Controller
         $data['product'] = $product;
         $data['tagstatus'] = $tagg;
         return $data;
+    }
+    public function getSpecificProducts($id)
+    {
+        $product = Tags::with('tagProducts')->find($id);
+
+        return $product;
     }
 }

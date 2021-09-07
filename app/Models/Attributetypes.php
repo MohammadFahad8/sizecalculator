@@ -17,7 +17,7 @@ class Attributetypes extends Model
     {
         return $this->hasOne(Attribute::class,'attribute_type','id');
     }
-    
+
     /**
      * Get the user that owns the Attributetypes
      *
@@ -26,6 +26,10 @@ class Attributetypes extends Model
     public function product(): BelongsTo
     {
         return $this->belongsTo(Products::class, 'product_id', 'product_id');
+    }
+    public function tags(): BelongsTo
+    {
+        return $this->belongsTo(Tags::class,'tag_id','id');
     }
 
 
@@ -61,4 +65,5 @@ class Attributetypes extends Model
     {
         return $this->hasMany(Attributeimages::class, 'attribute_type_id', 'id');
     }
+
 }

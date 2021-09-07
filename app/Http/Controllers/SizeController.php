@@ -36,14 +36,20 @@ class SizeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function createSizeChart($id)
+    public function createSizeChart(Request $id)
     {
-        $variants = Variants::where([['product_id', '=', trim($id)]])->get();
-        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=', trim($id)], ['status', '>', 0]])->get();
+        $product = Products::where('tag_id','=',$id['total_tags'])->get();
+
+        $variants = Variants::pluck('size');
+        $variants = array_unique($variants->toArray());
+
+
+        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['tag_id', '=', trim($id['total_tags'])], ['status', '>', 0]])->get();
+
 
 
         return view('size-charts.create', [
-            'product_id' => trim($id),
+            'product_id' => trim($id['total_tags']),
             'variantsOfAttributes' => $variantsOfAttributes,
             'variants' => $variants
         ]);
@@ -52,7 +58,7 @@ class SizeController extends Controller
     public function searchProduct($query)
     {
         $shop = Auth::user();
-        
+
         $product = $shop->api()->rest('GET','/admin/api/2021-01/products/'.$query.'.json')['body'];
        return $product;
 
@@ -143,18 +149,19 @@ class SizeController extends Controller
     {
 
 
-        $sizechart = Sizechart::with('bodyFeature', 'product')->find(trim($request->get('id')));
-        $variants = Variants::where('product_id', '=', trim($request->get('product_id')))->get();
+        $sizechart = Sizechart::with('bodyFeature', 'product')->find(trim($request->get('bylt_fit_token')));
+//        $variants = Variants::where('product_id', '=', trim($request->get('product_id')))->get();
+        $variants = Variants::pluck('size');
+        $variants = array_unique($variants->toArray());
 
 
-
-        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['product_id', '=',trim($request->get('product_id')) ], ['status', '>', 0]])->get();
+        $variantsOfAttributes = Attributetypes::with('bodyFeatureOfType')->where([['tag_id', '=',trim($request->get('total_tags')) ], ['status', '>', 0]])->get();
         //$variantsOfAttributes= Bodyfeature::where([['attr_id', '=', $request->get('id')], ['status', '>', 0]])->get();
 
         return view('size-charts.edit', [
             'sizechart' => $sizechart,
-            'current_product_id' => trim($request->get('product_id')),
-            'id' => trim($request->get('id')),
+            'current_product_id' => trim($request->get('total_tags')),
+            'id' => trim($request->get('bylt_fit_token')),
             'variantsOfAttributes' => $variantsOfAttributes,
             'variants' => $variants
 
@@ -163,7 +170,7 @@ class SizeController extends Controller
     public function getAllProducts()
     {
         $shop = Auth::user();
-        
+
         $products = $shop->api()->rest('GET', '/admin/api/2021-01/products.json')['body']['container'];
       return $products;
     }
@@ -217,7 +224,7 @@ class SizeController extends Controller
             $sizeChart->save();
 
             for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
-                
+
                 $b = Bodyfeature::where('sizechart_id', '=', trim($request->get('id')) )->get();
                 $b[$i]['sizechart_id'] = trim($sizeChart->id);
                 $b[$i]['attr_measurement_start'] = $request->get('body_measurement_start')[$i];
@@ -242,7 +249,7 @@ class SizeController extends Controller
      * @param  \App\Models\Size  $size
      * @return \Illuminate\Http\Response
      */
-    public function sizeChartDelete(Request $request)
+    public function oldsizeChartDelete(Request $request)
     {
 
         $sizechart = Sizechart::find(trim($request->get('id')));
@@ -258,10 +265,25 @@ class SizeController extends Controller
         }
         return   redirect()->route('sizechart.home', ['id' => trim($p_id)]);
     }
+    public function sizeChartDelete(Request $request)
+    {
+
+        $sizechart = Sizechart::find(trim($request->get('delete_opt')));
+        $p_id = intval($sizechart->product_id);
+        $sizechart->delete();
+
+        $body = Bodyfeature::where('sizechart_id', '=', trim($request->get('delete_opt')))->get();
+        foreach($body as $b)
+        {
+            $b->delete();
+        }
+
+        return   redirect()->route('sizechart.home', ['id' => trim($p_id)]);
+    }
 
     public function selectProduct(Request $data)
     {
-        
+
         $cart = session()->get('productBox');
           //If cart is totally new or totally empty
           if(!$cart){
@@ -269,7 +291,7 @@ class SizeController extends Controller
                     $data['id'] => [
                             'id'=>$data['id'],
                             'name' => $data['name'],
-                            
+
 
                     ]
 
@@ -281,7 +303,7 @@ class SizeController extends Controller
             //If the selected product already exists in cart
         if(isset($cart[$data['id']])){
 
-         
+
             return back()->with('success','Product already Added Successfully');
 
         }
@@ -289,14 +311,14 @@ class SizeController extends Controller
             $cart[$data['id']] =[
                 'id'=>$data['id'],
                 'name'=>$data['name'],
-               
+
             ];
             session()->put('productBox', $cart);
             return back()->with('success','Product Added Successfully');
     }
     public function removeProductFromBox(Request $request)
     {
-        
+
         if($request->get('productid')) {
 
             $cart = session()->get('productBox');
