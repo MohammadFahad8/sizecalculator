@@ -14,9 +14,9 @@
               <li style="list-style-type: none !important;">
                 <a href="{{ route('sizes.home') }}" class="btn-sidebar"> {{ __('Sizes') }} </a>
             </li> --}}
-             <li style="list-style-type: none !important;">
-                <a href="{{ route('attributes.products') }}" class="btn-sidebar"> {{ __('Products') }} </a>
-            </li>
+{{--             <li style="list-style-type: none !important;">--}}
+{{--                <a href="{{ route('attributes.products') }}" class="btn-sidebar"> {{ __('Products') }} </a>--}}
+{{--            </li>--}}
             <li style="list-style-type: none !important;">
                 <a href="{{ route('attributes.tags') }}" class="btn-sidebar"> {{ __('Tags') }} </a>
             </li>

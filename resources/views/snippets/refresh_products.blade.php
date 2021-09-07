@@ -1,7 +1,7 @@
 <span class="refresh" id="refreshsvg" >
 <svg version="1.1" id="Capa_1"  xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 viewBox="0 0 512 512" style="enable-background:new 0 0 512 512;width:10% !important;float:right;cursor: pointer !important;" xml:space="preserve"
-data-toggle="tooltip"  data-placement="bottom" title="Refresh Products">
+data-toggle="tooltip"  data-placement="bottom" title="Refresh Tags">
 <g>
 <g>
    <path class="tooltip-custom" d="M493.815,70.629c-11.001-1.003-20.73,7.102-21.733,18.102l-2.65,29.069C424.473,47.194,346.429,0,256,0

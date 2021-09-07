@@ -49,7 +49,7 @@
                                                 <button class="dropdown-item" type="button">{{$productOf->name}}</button>
 
                                             @empty
-                                                *No Products with this tag
+                                                <button class="dropdown-item" type="button"> *No Products with this tag</button>
                                             @endforelse
 
                                         </div>
