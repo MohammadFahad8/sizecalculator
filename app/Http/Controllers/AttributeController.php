@@ -354,7 +354,7 @@ class AttributeController extends Controller
 
 
 
-        if ($products->status == 1) {
+        if ($products->status == 1 ) {
 
             if ($setting->clear_logs == 0) {
 

@@ -263,6 +263,7 @@
                             toastr.info(data.empty_msg)
                             $("#"+tag_id).prop("checked", false);
                             $("#"+tag_id).parent().parent().siblings().children(".badge").removeClass("badge-success");
+                            $("#"+tag_id).parent().parent().siblings().children(".badge").addClass("badge-secondary");
 
 
                         }
@@ -288,6 +289,7 @@
 
                             $("#"+tag_id).prop("checked", false);
                             $("#"+tag_id).parent().parent().siblings().children(".badge").removeClass("badge-success");
+                            $("#"+tag_id).parent().parent().siblings().children(".badge").addClass("badge-secondary");
 
                         }
 

@@ -75,7 +75,7 @@
     <tr class="text-center " >
       <td colspan="6">
          <span class="mt-3">*No size added</span> <br>
-         <a href="{{ route('sizechart.create',['id'=>$current_product_id ])}}" class="btn btn-info btn-md button-add border border-light mt-3 "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Add Size</span></a>
+         <a href="{{route('sizechart.create',['total_tags'=>$current_product_id ])}}" class="btn btn-info btn-md button-add border border-light mt-3 "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Add Size</span></a>
         </td>
       </tr>
     @endforelse

@@ -148,9 +148,20 @@ display: inline-block;
                                     :product="product"
                                     :form="form"
                                     :recordsLength="attributes.length"
-                                    :attrscall="attributes"
+                                    :attrscall="attributes.length!=0?attributes:size_descriptions"
                                 ></result-component>
                             </div>
+                            <div v-default>
+                                <placeholder-text  ></placeholder-text>
+                                <dummy-result ></dummy-result>
+                                <div class="x-row x-justify-content-center x-text-center" >
+                                    <div class="x-col-12 x-col-md-12">
+                                        <a href="javascript:void(0)" @click="homeform"  class="continue-btn backbtnattr">Back</a>
+                                    </div>
+                                </div>
+
+                            </div>
+
                         </div>
                         <div style="overflow: auto">
                             <div
@@ -316,6 +327,11 @@ export default {
 
 
         },
+        homeform:function ()
+        {
+
+            EventBus.$emit('hometab',2)
+        },
 
 
         getAttributesToHeightWeight: function(form,num)
@@ -327,36 +343,49 @@ export default {
             axios.post(this.$appUrl+'/api/get-attributes-to-height-weight',form)
             .then((res)=>{
 
-               this.ogLength = res.data.length;
-
-               this.ogArray = res.data.ogArray;
-              // to change screen
-              this.tabnumber =  num
-              //end to change screen
-            this.attributesToShow = res.data;
-
-        EventBus.$emit("resettext",0)
-           if(this.attributesToShow[0].attr_items.length == 0){
-
-               this.shouldSpin = true
-
-               }else{
-                   this.shouldSpin = false
-
-                   }
+                if(res.data.length == 0)
+                {
 
 
 
-
-            var obt = this.attributes.length+parseInt(2);
-            var total = 700;
-            var result=total/obt;
-
-            $('.x-progress-bar').css('width',result+'px');
+                    this.tabnumber = 88
 
 
 
+                }else {
+
+
+
+                    this.ogLength = res.data.length;
+
+                    this.ogArray = res.data.ogArray;
+                    // to change screen
+                    this.tabnumber = num
+                    //end to change screen
+                    this.attributesToShow = res.data;
+
+                    EventBus.$emit("resettext", 0)
+
+                    if (this.attributesToShow[0].attr_items.length == 0) {
+
+                        this.shouldSpin = true
+
+                    } else {
+                        this.shouldSpin = false
+
+                    }
+
+
+                    var obt = this.attributes.length + parseInt(2);
+                    var total = 700;
+                    var result = total / obt;
+
+                    $('.x-progress-bar').css('width', result + 'px');
+
+
+                }
             })
+
         },
 
 

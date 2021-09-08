@@ -222,12 +222,15 @@ class TagsController extends Controller
     }
   }
 }')['body']['container']['data']['shop']['productTags']['edges'];
-
-
+$tagsall = Tags::latest()->get();
+try{if(count($tags)<count($tagsall)){
+    Tags::truncate();
+}}catch (\Exception $e){}
         foreach ($tags as $row)
         {
 
             $tagsall = Tags::where('tagname','=',trim($row['node']))->first();
+
             if($tagsall == null)
             {
                 $tag = new Tags();
