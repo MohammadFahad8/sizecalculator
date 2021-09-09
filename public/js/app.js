@@ -1912,12 +1912,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2323,69 +2317,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2394,11 +2325,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   data: function data() {
     return {
       form: {
-        // heightfoot: localStorage.getItem("foot"),
-        // heightinch: localStorage.getItem("inch"),
-        // heightcm: parseInt(localStorage.getItem("cm")),
-        // weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
-        // age: localStorage.getItem("age"),
         bodyMeasure: [],
         sz: [],
         heightfoot: "",
@@ -2406,16 +2332,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         heightcm: "",
         weight: "",
         age: "",
-        // chest: {
-        // },
-        // stomach: {
-        //   title: "stomach",
-        //   other: localStorage.getItem("stomach"),
-        // },
-        // bottom: {
-        //   title: "bottom",
-        //   other: localStorage.getItem("bottom"),
-        // },
         tags: JSON.parse(localStorage.getItem("tags")),
         convertedMeasurements: false,
         conversionCount: ""
@@ -2674,17 +2590,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         _this4.attributes = res.data;
         _event_bus__WEBPACK_IMPORTED_MODULE_0__.default.$on("mount", function (num) {
           _this4.lastTab = true;
-        }); //following commented part tells us about if screen should be last when size is already calculated
-        // if (localStorage.getItem("recommended_size") != null) {
-        //     if(this.newapp == true)
-        //     {
-        //         this.tabnumber = 1;
-        //     }else
-        //     {
-        //         this.tabnumber = parseInt(this.attributes.length) + 2;
-        //     this.lastTab = true;
-        //     }
-        // }
+        });
       });
     },
     goToHome: function goToHome() {
@@ -2698,12 +2604,11 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   mounted: function mounted() {
     var _this6 = this;
 
+    console.log(this.product);
     this.form.tags = this.product.tags;
     localStorage.setItem("tags", JSON.stringify(this.product.tags));
     var x = document.getElementsByClassName("tab");
-    this.formSubmit(); //   this.setupProduct();
-    // this.responsiveness();
-
+    this.formSubmit();
     this.getLocalData();
     this.showBodyFit();
     this.getAttributes();
@@ -2715,8 +2620,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       _this6.finalsize = size;
     });
     this.goToHome();
-  } //    Took watch from here
-
+  }
 });
 
 /***/ }),
@@ -4072,7 +3976,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://2d27-2400-adc7-91b-8900-fdd3-d28f-bbe4-e6b.ngrok.io';
+Vue.prototype.$appUrl = 'https://5b48-2400-adc7-91b-8900-a1c4-8dcf-e803-c4fe.ngrok.io';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 Vue.use(vue_lazyload__WEBPACK_IMPORTED_MODULE_4__.default);
@@ -46431,7 +46335,7 @@ var render = function() {
             _c("span", { staticClass: "final-size-label" }, [
               _vm._v("Your Fit Size : ")
             ]),
-            _vm._v("\n                " + _vm._s(_vm.finalsize) + " ")
+            _vm._v("   " + _vm._s(_vm.finalsize) + " ")
           ]
         )
       : _vm._e(),

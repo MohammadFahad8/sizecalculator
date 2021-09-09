@@ -56,13 +56,7 @@
             </div>
         </div>
 
-        <div
-            id="steps-mark"
-
-             class="x-text-center x-pt-5"
-        >
-
-
+        <div id="steps-mark" class="x-text-center x-pt-5">
             <span class="step" ></span>
           <span class="step" v-bind:class="tabnum.count==key+2?'active':''" v-for="(row,key) in recordsLength" ></span>
             <span class="step"></span>
@@ -104,8 +98,6 @@ export default {
             showPlaceholder:false,
             attrcountinc:1,
             txt:'',
-
-
 
         };
     },
@@ -189,11 +181,6 @@ computed:{
     this.resetText()
 
         this.checkForData(this.spinit)
-
-
-
-
-
 
     }, watch:{
         'spinit':function(){

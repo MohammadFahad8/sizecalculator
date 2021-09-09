@@ -2,8 +2,9 @@
 @extends('layouts.app')
 @section('content')
     @include('partials_attributes.style')
-
-    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@3/dark.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9/dist/sweetalert2.min.js"></script>
+{{--    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>--}}
     {{-- <a href="{{ route('calculator.start') }}" class="badge badge-pill">Find Fit</a> --}}
     <div class="row mt-5" style="margin-left:10px !important" id="products-all">
         @include('partials_attributes.sidebar')
@@ -61,7 +62,7 @@
 
                                     <label class="switch">
 
-                                        <input data-id="{{$row->tagname}}" id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status!=0) ? 'checked' : '' }}>
+                                        <input data-crrtagname="{{$row->tagname}}" data-id="{{$row->id}}" id="{{$row->id}}" class="toggle-class" type="checkbox" data-onstyle="success" data-offstyle="secondary" data-toggle="toggle" data-on="Active" data-off="InActive" {{ ($row->status!=0) ? 'checked' : '' }}>
                                         <span class="slider round"></span>
 
                                     </label>
@@ -248,6 +249,7 @@
             $('.toggle-class').change(function() {
                 var status = $(this).prop('checked') == true ? 1 : 0;
                 var tagname = $(this).data('id');
+                var crrtagname = $(this).data('crrtagname');
                 var tag_id = $(this).prop('id');
                 $("#"+tag_id).parent().parent().siblings().children(".badge").addClass("badge-success");
 
@@ -295,24 +297,26 @@
 
                         else
                         {
-
+                                if(data.product!=undefined)
+                                {
                             data.product.forEach((row,index)=>{
                              if(row.status==1)
                             {
 
                                 toastr.options.progressBar = true;
 
-                                toastr.success('Widget Permission granted for Product with TAG: '+tagname)
+                                toastr.success('Widget Permission granted for Product with TAG: '+crrtagname)
 
 
                             }
                             else{
 
-                                toastr.warning('Widget removed for Product with TAG: '+tagname)
+                                toastr.warning('Widget removed for Product with TAG: '+crrtagname)
                                  $("#"+tag_id).parent().parent().siblings().children(".badge").removeClass("badge-success");
                                  $("#"+tag_id).parent().parent().siblings().children(".badge").addClass("badge-secondary");
                             }
                         })
+                                    }
 
                         }
 

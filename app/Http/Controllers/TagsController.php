@@ -222,10 +222,12 @@ class TagsController extends Controller
     }
   }
 }')['body']['container']['data']['shop']['productTags']['edges'];
+
 $tagsall = Tags::latest()->get();
 try{if(count($tags)<count($tagsall)){
     Tags::truncate();
 }}catch (\Exception $e){}
+
         foreach ($tags as $row)
         {
 
@@ -262,12 +264,13 @@ try{if(count($tags)<count($tagsall)){
             'error_msg' => 'Configure Product First Make Variants in Admin',
         );
         $emptyContainer = array(
-            'empty_msg' => 'No products attached with this tag',
+            'empty_msg' => 'Attach separately with atleast one product from shopify store ',
         );
         $data = array();
 
 
-        $product = Products::where('tags', 'LIKE', '%' . trim($request['tagname']) . '%')->get();
+//        $product = Products::where('tags', 'LIKE', '%' . trim($request['tagname']) . '%')->get();
+        $product = Products::where('tag_id', '=',trim($request['tagname']))->get();
 
         if($product == null || count($product)==0)
         {

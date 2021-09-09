@@ -3,27 +3,15 @@
 
 
         <link
-            href="https://fonts.googleapis.com/css?family=Karla"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
-            rel="stylesheet"
-        />
+            href="https://fonts.googleapis.com/css?family=Karla" rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"/>
 
 <!-- Button trigger modal -->
 <button  v-if="showBodyFitApp" type="button" @click="fixHeader" class="x-btn x-btn-dark openModalApp" data-toggle="modal" data-target="#exampleModalCenter">
   Find fit
 </button>
-  <span
-                id="finalsize"
-                v-if="finalsize != '' && showBodyFitApp"
-                class="final-size-heading"
-            >
-                <span class="final-size-label">Your Fit Size : </span>
-                {{ finalsize }} </span
-            >
-
+  <span id="finalsize" v-if="finalsize != '' && showBodyFitApp" class="final-size-heading">
+      <span class="final-size-label">Your Fit Size : </span>   {{ finalsize }} </span>
 <!-- Modal -->
 <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" style="background: rgba(0, 0, 0, 0.5); " aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered modal-mdlg" role="document">
@@ -34,60 +22,21 @@
                             <svg
                                 v-if="tabnumber > 1 && lastTab != true"
                                 v-on:click="back(tabnumber)"
-                                viewBox="0 0 512 512"
-                                height="24"
-                                width="24"
-                                aria-hidden="true"
-                                focusable="false"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN"
-                                style="cursor:pointer
+                                viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-5 dcvgeN" style="cursor:pointer
 display: inline-block;
 /* width: 59px; */
-"
-                            >
-                                <polyline
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="48"
-                                    points="328 112 184 256 328 400"
-                                ></polyline>
+">
+                                <polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="48" points="328 112 184 256 328 400"></polyline>
                             </svg>
                             <!-- restart tbn svg -->
                             <svg
                                 style="cursor: pointer"
                                 v-if="lastTab"
                                 v-on:click="restart"
-                                viewBox="0 0 512 512"
-                                height="24"
-                                width="24"
-                                aria-hidden="true"
-                                focusable="false"
-                                fill="currentColor"
-                                xmlns="http://www.w3.org/2000/svg"
-                                class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi"
-                            >
-                                <path
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-miterlimit="10"
-                                    stroke-width="32"
-                                    d="M320 146s24.36-12-64-12a160 160 0 10160 160"
-                                ></path>
-                                <polyline
-                                    fill="none"
-                                    stroke="currentColor"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                    stroke-width="32"
-                                    points="256 58 336 138 256 218"
-                                ></polyline>
+                                viewBox="0 0 512 512" height="24" width="24" aria-hidden="true" focusable="false" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="StyledIconBase-ea9ulj-0 jZGNBW predict__sc-1a4an9n-6 HBqpi">
+                                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M320 146s24.36-12-64-12a160 160 0 10160 160"></path>
+                                <polyline fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="32" points="256 58 336 138 256 218"></polyline>
                             </svg>
-
         </div>
         <button type="button" class="close" data-dismiss="modal" style="color:black !important;background-color:#0f8c5e00 !important;font-size:23px " aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -135,12 +84,7 @@ display: inline-block;
                                     }"
                                     :recordsLength="attributes.length"
                                     :currentRecord="key + 1"
-                                    :spinit="shouldSpin"
-
-
-
-
-                                ></attribute-one-component>
+                                    :spinit="shouldSpin"></attribute-one-component>
                             </div>
 
                             <div v-case="attributes.length + 2">
@@ -164,16 +108,9 @@ display: inline-block;
 
                         </div>
                         <div style="overflow: auto">
-                            <div
-                                class="custom-offset-lg"
-                                style="margin-top: 8% !important; display: none"
-                            >
+                            <div class="custom-offset-lg" style="margin-top: 8% !important; display: none">
                                 <button
-                                    class="fit-advisor-custom_previous_btn"
-                                    type="button"
-                                    id="prevBtn"
-                                    v-on:click="nextPrev(-1)"
-                                >
+                                    class="fit-advisor-custom_previous_btn" type="button" id="prevBtn" v-on:click="nextPrev(-1)">
                                     Previous
                                 </button>
                             </div>
@@ -204,11 +141,6 @@ export default {
     data() {
         return {
             form: {
-                // heightfoot: localStorage.getItem("foot"),
-                // heightinch: localStorage.getItem("inch"),
-                // heightcm: parseInt(localStorage.getItem("cm")),
-                // weight: parseFloat(localStorage.getItem("weight")).toFixed(0),
-                // age: localStorage.getItem("age"),
                 bodyMeasure: [],
                 sz: [],
                 heightfoot: "",
@@ -216,18 +148,6 @@ export default {
                 heightcm: "",
                 weight: "",
                 age: "",
-                // chest: {
-
-                // },
-                // stomach: {
-                //   title: "stomach",
-                //   other: localStorage.getItem("stomach"),
-                // },
-
-                // bottom: {
-                //   title: "bottom",
-                //   other: localStorage.getItem("bottom"),
-                // },
                 tags: JSON.parse(localStorage.getItem("tags")),
                 convertedMeasurements: false,
                 conversionCount: ""
@@ -313,8 +233,6 @@ export default {
             showPlaceholder:false,
             attrcountinc:1,
 
-
-
         };
     },
 
@@ -324,38 +242,22 @@ export default {
 
             $("sticky-header").addClass("bylt-header");
             $("#shopify-section-announcement-bar").addClass("bylt-header");
-
-
         },
         homeform:function ()
         {
 
             EventBus.$emit('hometab',2)
         },
-
-
         getAttributesToHeightWeight: function(form,num)
         {
             form.productkey =  this.product.id
-
-
-
             axios.post(this.$appUrl+'/api/get-attributes-to-height-weight',form)
             .then((res)=>{
 
                 if(res.data.length == 0)
                 {
-
-
-
                     this.tabnumber = 88
-
-
-
                 }else {
-
-
-
                     this.ogLength = res.data.length;
 
                     this.ogArray = res.data.ogArray;
@@ -374,8 +276,6 @@ export default {
                         this.shouldSpin = false
 
                     }
-
-
                     var obt = this.attributes.length + parseInt(2);
                     var total = 700;
                     var result = total / obt;
@@ -387,9 +287,6 @@ export default {
             })
 
         },
-
-
-
         formSubmit: function() {
             EventBus.$on("formsubmit", container => {
                 this.form.heightfoot = container.form.heightfoot;
@@ -422,9 +319,6 @@ export default {
                 this.tabnumber = container.tabnumber;
                 this.n = container.tabnumber;
 
-
-
-
             });
 
             EventBus.$on("resetForm", tabnum => {
@@ -440,8 +334,6 @@ export default {
             EventBus.$emit("hideloader",'ok')
             EventBus.$emit("hidePlaceholder","ok")
             this.tabnumber = num - 1;
-
-
             var obt = this.attributes.length+parseInt(2);
             var total = 700;
             var result=total/obt;
@@ -471,8 +363,6 @@ export default {
             this.lastTab = false;
 
            EventBus.$emit('refreshform',1)
-
-
             this.dev_reset();
             this.nextStep(1);
         },
@@ -482,16 +372,14 @@ export default {
             id.append("id", this.product.id);
             id.append("shop_name", shop_name);
 
-            axios
-                .post(this.$appUrl + "/api/permission-to-show", id)
-                .then(res => {
+            axios.post(this.$appUrl + "/api/permission-to-show", id).then(res => {
                     if (res.data.display == true) {
                         if (res.data.clearLog == true) {
                             this.newapp = true;
                             this.dev_reset();
                         }else
                         {
-                                                        this.newapp = false;
+                            this.newapp = false;
 
                         }
                         for (var k = 0; k <= this.product.options.length; k++) {
@@ -511,10 +399,9 @@ export default {
                         if (res.data.clearLog == true) {
                             this.dev_reset();
                             this.newapp = true;
-
                         }else
                         {
-                                                        this.newapp = false;
+                            this.newapp = false;
 
                         }
                         this.showBodyFitApp = false;
@@ -565,25 +452,6 @@ export default {
                         this.lastTab = true;
                     });
 
-//following commented part tells us about if screen should be last when size is already calculated
-                    // if (localStorage.getItem("recommended_size") != null) {
-
-                    //     if(this.newapp == true)
-                    //     {
-                    //         this.tabnumber = 1;
-
-
-
-                    //     }else
-                    //     {
-
-                    //         this.tabnumber = parseInt(this.attributes.length) + 2;
-
-                    //     this.lastTab = true;
-                    //     }
-
-                    // }
-
                 });
         },
         goToHome:function ()
@@ -595,15 +463,12 @@ export default {
 
     },
     mounted() {
-
-
+        console.log(this.product)
         this.form.tags = this.product.tags;
         localStorage.setItem("tags", JSON.stringify(this.product.tags));
 
         var x = document.getElementsByClassName("tab");
         this.formSubmit();
-        //   this.setupProduct();
-        // this.responsiveness();
         this.getLocalData();
         this.showBodyFit();
         this.getAttributes();
@@ -611,15 +476,11 @@ export default {
         $("sticky-header").removeClass("bylt-header");
         $("#shopify-section-announcement-bar").removeClass("bylt-header");
 })
-
-
-
         EventBus.$on('refreshSize',size=>{
             this.finalsize = size
         })
         this.goToHome();
     },
-    //    Took watch from here
 
 };
 </script>
