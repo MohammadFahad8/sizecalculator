@@ -46980,7 +46980,10 @@ var render = function() {
           ? _c("div", { staticClass: "x-row x-justify-content-center" }, [
               _c(
                 "div",
-                { staticClass: "col-md-5 x-text-lg-left x-text-center" },
+                {
+                  staticClass:
+                    "col-md-5 x-text-lg-left x-text-md-left x-text-sm-left x-text-center"
+                },
                 [
                   _c(
                     "label",
@@ -47027,7 +47030,10 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "div",
-                { staticClass: "col-md-5 x-text-lg-left x-text-center" },
+                {
+                  staticClass:
+                    "col-md-5 x-text-lg-left x-text-md-left x-text-sm-left x-text-center"
+                },
                 [
                   _c(
                     "label",
@@ -47079,7 +47085,10 @@ var render = function() {
           ? _c("div", { staticClass: "x-row" }, [
               _c(
                 "div",
-                { staticClass: "col-md-12  x-text-lg-left x-text-center" },
+                {
+                  staticClass:
+                    "col-md-12  x-text-lg-left x-text-md-left x-text-sm-left x-text-center"
+                },
                 [
                   _c(
                     "label",
@@ -47127,76 +47136,90 @@ var render = function() {
           : _vm._e(),
         _vm._v(" "),
         _c("div", { staticClass: "x-row x-justify-content-center mtf-5" }, [
-          _c("div", { staticClass: "col-md-5 x-text-lg-left x-text-center" }, [
-            _c(
-              "label",
-              {
-                staticClass: " labels-tab1 height_weight ",
-                attrs: { for: "weight" }
-              },
-              [_vm._v("Weight")]
-            ),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.container.form.weight,
-                  expression: "container.form.weight"
-                }
-              ],
+          _c(
+            "div",
+            {
               staticClass:
-                "x-mt-3 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 x-mt-2 text-size-input",
-              attrs: {
-                type: "number",
-                id: "weight",
-                placeholder: "Lbs",
-                name: "weight"
-              },
-              domProps: { value: _vm.container.form.weight },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                "col-md-5 x-text-lg-left x-text-md-left x-text-sm-left x-text-center"
+            },
+            [
+              _c(
+                "label",
+                {
+                  staticClass: " labels-tab1 height_weight ",
+                  attrs: { for: "weight" }
+                },
+                [_vm._v("Weight")]
+              ),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.container.form.weight,
+                    expression: "container.form.weight"
                   }
-                  _vm.$set(_vm.container.form, "weight", $event.target.value)
+                ],
+                staticClass:
+                  "x-mt-3 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 x-mt-2 text-size-input",
+                attrs: {
+                  type: "number",
+                  id: "weight",
+                  placeholder: "Lbs",
+                  name: "weight"
+                },
+                domProps: { value: _vm.container.form.weight },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.container.form, "weight", $event.target.value)
+                  }
                 }
-              }
-            })
-          ]),
+              })
+            ]
+          ),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-5 x-text-lg-left x-text-center" }, [
-            _vm._m(1),
-            _vm._v(" "),
-            _c("input", {
-              directives: [
-                {
-                  name: "model",
-                  rawName: "v-model",
-                  value: _vm.container.form.age,
-                  expression: "container.form.age"
-                }
-              ],
+          _c(
+            "div",
+            {
               staticClass:
-                " x-mt-2 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 mt-n1 text-size-input",
-              attrs: {
-                type: "number",
-                id: "age",
-                placeholder: "Years",
-                name: "Age"
-              },
-              domProps: { value: _vm.container.form.age },
-              on: {
-                input: function($event) {
-                  if ($event.target.composing) {
-                    return
+                "col-md-5 x-text-lg-left x-text-md-left x-text-sm-left x-text-center"
+            },
+            [
+              _vm._m(1),
+              _vm._v(" "),
+              _c("input", {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.container.form.age,
+                    expression: "container.form.age"
                   }
-                  _vm.$set(_vm.container.form, "age", $event.target.value)
+                ],
+                staticClass:
+                  " x-mt-2 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 mt-n1 text-size-input",
+                attrs: {
+                  type: "number",
+                  id: "age",
+                  placeholder: "Years",
+                  name: "Age"
+                },
+                domProps: { value: _vm.container.form.age },
+                on: {
+                  input: function($event) {
+                    if ($event.target.composing) {
+                      return
+                    }
+                    _vm.$set(_vm.container.form, "age", $event.target.value)
+                  }
                 }
-              }
-            })
-          ])
+              })
+            ]
+          )
         ])
       ]
     ),
@@ -47310,7 +47333,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 \n\n99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
+                      "99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826\n\n99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47318,7 +47341,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 \n\n99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
+                      "103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599\n\n99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47326,7 +47349,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 \n\n43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
+                      "47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599\n\n43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47334,7 +47357,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 \n\n54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
+                      "43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991\n\n54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47342,7 +47365,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 \n\n99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
+                      "99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054\n\n99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47350,7 +47373,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 \n\n54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
+                      "43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218\n\n54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47358,7 +47381,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 \n\n156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
+                      "156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826\n\n156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47366,7 +47389,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 \n\n145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
+                      "160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916\n\n145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47374,7 +47397,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 \n\n201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
+                      "216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916\n\n201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47382,7 +47405,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 \n\n212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
+                      "212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826\n\n212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47390,7 +47413,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 \n\n156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
+                      "156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054\n\n156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 \t"
                   }
                 }),
                 _vm._v(" "),
@@ -47398,7 +47421,7 @@ var render = function() {
                   staticStyle: { fill: "#F0F0F0" },
                   attrs: {
                     points:
-                      "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 \n\n212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
+                      "212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054\n\n212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 \t"
                   }
                 })
               ]),

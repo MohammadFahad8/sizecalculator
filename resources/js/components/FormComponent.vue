@@ -8,7 +8,7 @@
         </p>
         <div id="fields" class=" x-justify-content-center  tab x-row form-group ">
             <div class="x-row x-justify-content-center" v-if="!container.countrycheck">
-                <div class="col-md-5 x-text-lg-left x-text-center">
+                <div class="col-md-5 x-text-lg-left x-text-md-left x-text-sm-left x-text-center">
                     <label class=" labels-tab1 height_weight" for="height_ft"
                         >Height</label
                     >
@@ -21,7 +21,7 @@
                         name="heightfoot"
                     />
                 </div>
-                <div class="col-md-5 x-text-lg-left x-text-center">
+                <div class="col-md-5 x-text-lg-left x-text-md-left x-text-sm-left x-text-center">
                     <label
                         class=" labels-tab1 height_weight"
                         for="height_ft"
@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="x-row" v-if="container.countrycheck">
-                <div class="col-md-12  x-text-lg-left x-text-center">
+                <div class="col-md-12  x-text-lg-left x-text-md-left x-text-sm-left x-text-center">
                     <label class=" labels-tab1 height_weight " for="height_ft"
                         >Height</label
                     >
@@ -55,7 +55,7 @@
             </div>
 
             <div class="x-row x-justify-content-center mtf-5">
-                <div class="col-md-5 x-text-lg-left x-text-center">
+                <div class="col-md-5 x-text-lg-left x-text-md-left x-text-sm-left x-text-center">
                     <label class=" labels-tab1 height_weight " for="weight"
                         >Weight</label
                     >
@@ -68,7 +68,7 @@
                         name="weight"
                     />
                 </div>
-                <div class="col-md-5 x-text-lg-left x-text-center">
+                <div class="col-md-5 x-text-lg-left x-text-md-left x-text-sm-left x-text-center">
                     <label for="age"
                         ><span
                             class="text-center labels-tab1 "
@@ -156,73 +156,73 @@
                 <g>
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826 
+                        points="99.822,160.624 95.699,173.308 82.363,173.308 93.154,181.143 89.031,193.826
 
 99.822,185.991 110.606,193.826 106.484,181.143 117.275,173.308 103.938,173.308 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599 
+                        points="103.938,219.08 99.822,206.397 95.699,219.08 82.363,219.08 93.154,226.916 89.031,239.599
 
 99.822,231.763 110.606,239.599 106.484,226.916 117.275,219.08 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599 
+                        points="47.577,219.08 43.46,206.397 39.337,219.08 26.001,219.08 36.792,226.916 32.669,239.599
 
 43.46,231.763 54.245,239.599 50.123,226.916 60.912,219.08 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991 
+                        points="43.46,160.624 39.337,173.308 26.001,173.308 36.792,181.143 32.669,193.826 43.46,185.991
 
 54.245,193.826 50.123,181.143 60.912,173.308 47.577,173.308 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054 
+                        points="99.822,114.85 95.699,127.535 82.363,127.535 93.154,135.371 89.031,148.054
 
 99.822,140.218 110.606,148.054 106.484,135.371 117.275,127.535 103.938,127.535 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218 
+                        points="43.46,114.85 39.337,127.535 26.001,127.535 36.792,135.371 32.669,148.054 43.46,140.218
 
 54.245,148.054 50.123,135.371 60.912,127.535 47.577,127.535 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826 
+                        points="156.183,160.624 152.061,173.308 138.725,173.308 149.515,181.143 145.394,193.826
 
 156.183,185.991 166.969,193.826 162.846,181.143 173.637,173.308 160.301,173.308 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916 
+                        points="160.301,219.08 156.183,206.397 152.061,219.08 138.725,219.08 149.515,226.916
 
 145.394,239.599 156.183,231.763 166.969,239.599 162.846,226.916 173.637,219.08 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916 
+                        points="216.663,219.08 212.546,206.397 208.423,219.08 195.088,219.08 205.877,226.916
 
 201.755,239.599 212.546,231.763 223.331,239.599 219.208,226.916 229.999,219.08 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826 
+                        points="212.546,160.624 208.423,173.308 195.088,173.308 205.877,181.143 201.755,193.826
 
 212.546,185.991 223.331,193.826 219.208,181.143 229.999,173.308 216.663,173.308 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054 
+                        points="156.183,114.85 152.061,127.535 138.725,127.535 149.515,135.371 145.394,148.054
 
 156.183,140.218 166.969,148.054 162.846,135.371 173.637,127.535 160.301,127.535 	"
                     />
                     <polygon
                         style="fill:#F0F0F0;"
-                        points="212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054 
+                        points="212.546,114.85 208.423,127.535 195.088,127.535 205.877,135.371 201.755,148.054
 
 212.546,140.218 223.331,148.054 219.208,135.371 229.999,127.535 216.663,127.535 	"
                     />
@@ -254,7 +254,7 @@
         >
             <span v-if="!submitclicked">Get Started</span>
             <span v-if="submitclicked" class="spinner-border spinner-border text-white" role="status" aria-hidden="true"></span>
-            
+
         </button>
         </div>
         <!-- <button v-if="!showContinueBtn" class="continue-btn" style="position: absolute;right: 32%;width: 33%;bottom: 90px;display:none !important;" type="button" id="cartBtn" v-on:click="addToCart()">Add Size to Cart</button> -->
@@ -281,7 +281,7 @@ export default {
                 is_loading: false,
                 valid: true,
                 firstTab: false,
-               
+
             },
              submitclicked:false,
             disabled:false,
@@ -298,9 +298,9 @@ export default {
             if (this.container.valid == true) {
                 this.container.form.tabnumber = n;
                 this.submitclicked = true;
-                
+
                 EventBus.$emit("formsubmit", this.container);
-                
+
             }
         },
         validateForm: function() {
@@ -347,7 +347,7 @@ export default {
                 $('input[name="countrycheck"]').attr("value", 0);
                 this.container.countrycheck == 0;
                 this.container.form.convertedMeasurements = false;
-                
+
                 this.weightconvert(this.container.form.weight, false);
                 this.heightconvert(
                     localStorage.getItem("foot"),
@@ -373,7 +373,7 @@ export default {
             }
         },
         validateHeight: function(event) {
-            
+
             $("#height_ft").keydown(function(e) {
                 if (e.keyCode === 190 || e.keyCode === 110) {
                     e.preventDefault();
@@ -537,7 +537,7 @@ export default {
     mounted() {
 
         EventBus.$on('refreshform',check=>{
-            
+
                 this.container.form.heightfoot = '';
                 this.container.form.heightinch = '';
                 this.container.form.heightcm = '';
@@ -557,7 +557,7 @@ export default {
                 {
                     $("#weight").attr("placeholder", "Kg");
                 }
-                
+
         })
     },
     watch: {
