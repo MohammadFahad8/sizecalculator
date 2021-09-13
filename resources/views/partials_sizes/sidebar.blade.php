@@ -1,6 +1,6 @@
 <div class="col-md-3">
     <div class="card">
-        <div class="card-header">{{ __('Side Bar') }}</div>
+        <div class="card-header p-3">{{ __('Side Bar') }}</div>
         <div class="card-body">
             <li class="sidebar_icon"  style="list-style-type: none !important;">
                  <a  href="{{ route('attributes.home') }}" class="btn-sidebar">   {{ __('Dashboard') }} </a>

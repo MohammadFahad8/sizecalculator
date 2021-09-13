@@ -164,3 +164,13 @@
         background-color: hsl(200, 20%, 95%);
     }
 }
+.size-name:focus-visible
+{
+    border: none !important;
+    outline: none !important;
+}
+.size-name
+{
+    border: none !important;
+    outline: none !important;
+}

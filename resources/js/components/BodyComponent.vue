@@ -463,7 +463,7 @@ export default {
 
     },
     mounted() {
-        console.log(this.product)
+
         this.form.tags = this.product.tags;
         localStorage.setItem("tags", JSON.stringify(this.product.tags));
 

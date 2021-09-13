@@ -16,7 +16,7 @@
                         type="number"
                         id="height_ft"
                         placeholder="Feet"
-                        class="x-mt-3 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 text-size-input"
+                        class="x-mt-3 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 text-size-input x-text-center  x-text-sm-left  x-text-md-left x-text-lg-left"
                         v-model="container.form.heightfoot"
                         name="heightfoot"
                     />
@@ -32,7 +32,7 @@
                         type="number"
                         id="height_in"
                         placeholder="Inches"
-                        class="x-mt-3  x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 text-size-input"
+                        class="x-mt-3  x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 text-size-input  x-text-center  x-text-sm-left  x-text-md-left x-text-lg-left"
                         v-model="container.form.heightinch"
                         name="heightinch"
                     />
@@ -47,7 +47,7 @@
                         type="number"
                         id="height_cm"
                         placeholder="Cm"
-                        class="x-mt-3 x-form-control x-w-100 input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 text-size-input"
+                        class="x-mt-3 x-form-control x-w-100 input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 text-size-input  x-text-center  x-text-sm-left  x-text-md-left x-text-lg-left"
                         v-model="container.form.heightcm"
                         name="heightcm"
                     />
@@ -63,7 +63,7 @@
                         type="number"
                         id="weight"
                         placeholder="Lbs"
-                        class="x-mt-3 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 x-mt-2 text-size-input"
+                        class="x-mt-3 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 x-mt-2 text-size-input  x-text-center  x-text-sm-left  x-text-md-left x-text-lg-left"
                         v-model="container.form.weight"
                         name="weight"
                     />
@@ -80,7 +80,7 @@
                         type="number"
                         id="age"
                         placeholder="Years"
-                        class=" x-mt-2 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 mt-n1 text-size-input"
+                        class=" x-mt-2 x-form-control  input-border x-border-left-0 x-border-right-0 x-border-top-0 x-rounded-0 mt-n1 text-size-input  x-text-center  x-text-sm-left  x-text-md-left x-text-lg-left"
                         v-model="container.form.age"
                         name="Age"
                     />

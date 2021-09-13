@@ -196,6 +196,10 @@
                 {
                   toastr.info('Create attributes first to proceed');
 
+                }else if(count<3)
+                {
+                    toastr.info('Minimum 3 attributes are required');
+
                 }else{
                   axios.get('/sizechart/home/'+$id).then((res)=>{
                   window.location.href="/sizechart/home/"+$id;

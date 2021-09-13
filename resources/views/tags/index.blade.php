@@ -275,7 +275,7 @@
                             toastr.info(data.error_msg)
 
                             Swal.fire({
-                                title: 'Not Configured!',
+                                title: 'Variants required in shopify admin!',
                                 text: 'Product "'+data.product.name.toUpperCase() +'"'+' needs to be configured.',
                                 imageUrl: data.product.image_link,
                                 imageHeight: 200,
