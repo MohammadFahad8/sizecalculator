@@ -348,13 +348,14 @@ class AttributeController extends Controller
 
 
         $products = Products::where('product_id', '=', trim($request['id']))->first();
+        $variants = Variants::where('product_id','=',trim($request['id']))->get();
 
 
         $setting = Settings::where('name', '=', $request['shop_name'])->first();
 
 
 
-        if ($products->status == 1 ) {
+        if ($products->status == 1 && trim($variants[0]['size'])!='0') {
 
             if ($setting->clear_logs == 0) {
 

@@ -46,8 +46,9 @@
                                             Products
                                         </button>
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
-                                            @forelse($row->tagProducts as $productOf)
+                                            @forelse($row->tagProducts as $key=> $productOf)
                                                 <button class="dropdown-item" type="button">{{$productOf->name}}</button>
+                                                @if($key !=count($row->tagProducts)-1)<hr>@endif
 
                                             @empty
                                                 <button class="dropdown-item" type="button"> *No Products with this tag</button>
