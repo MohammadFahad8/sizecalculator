@@ -286,7 +286,7 @@ try{if(count($tags)<count($tagsall)){
             $checkVariantExists = Variants::where('product_id', '=', trim($p->product_id))->get();
 
 
-            if (count($sizeChartCount) == 0 || count($sizeChartCount) == null || $checkVariantExists[0]['size'] == 0) {
+            if (count($sizeChartCount) == 0 || count($sizeChartCount) == null || trim($checkVariantExists[0]['size']) == '0') {
 
                 $messageContainer['product']=$p;
                 return $messageContainer;
