@@ -45,15 +45,15 @@
                                     <div class="modal fade {{ 'bd-example-modal-sm'.$key }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                         <div class="modal-dialog  {{ (count($row->tagProducts)>1)?'modal-md':'modal-sm' }} modal-dialog-centered">
                                           <div class="modal-content">
-                                            <div class="modal-header " style="background: #F7F7F7">
+                                            <div class="modal-header bg-dark text-white " >
                                                 Products list
                                             </div>
                                               <ul class="list-group">
                                                   
                                                   @forelse($row->tagProducts as $key=> $productOf)
                                                   
-                                                  <li class="list-group-item list-unstyled"> <strong class="float-left">{{ $key+1 }}. </strong><span class="text-center ml-3"> {{$productOf->name}}</span></li>
-                                                  {{-- @if($key !=count($row->tagProducts)-1)<hr>@endif --}}
+                                                <li class="list-group-item list-unstyled"> <strong class="float-left">{{ $key+1 }}. </strong><span class="text-center ml-3"> {{$productOf->name}}</span></li>
+                                                {{-- @if($key !=count($row->tagProducts)-1)<hr>@endif --}}
               
                                               @empty
                                               <li class="list-group-item"> *No Products with this tag</li>    
@@ -99,7 +99,8 @@
 
                         @empty
 
-                            <tr><td colspan="2">
+                            <tr>
+                                <td colspan="2">
                                     <div class="d-flex justify-content-center">
                                         'Nothing here'
                                     </div>
