@@ -20,7 +20,7 @@ import VueLazyload from 'vue-lazyload';
 
 
 
-Vue.prototype.$appUrl = 'https://5b48-2400-adc7-91b-8900-a1c4-8dcf-e803-c4fe.ngrok.io';
+Vue.prototype.$appUrl = 'https://7637-2400-adc7-91b-8900-dc87-7a7e-beb7-8290.ngrok.io';
 
 
 Vue.component('jw-pagination', JwPagination);
