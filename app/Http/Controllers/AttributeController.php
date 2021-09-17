@@ -380,6 +380,8 @@ class AttributeController extends Controller
 
 
         $data = $request->all();
+        // $data = file_get_contents('php://input');
+        Storage::put(rand().'_Measurements.txt',json_encode($data));
         $sizes = array();
         $p = Products::where('product_id','=',trim($data['conversionCount']))->first();
         $sizeChartList = Sizechart::with('bodyFeature')->where('product_id', '=', trim($p->tag_id))->where('status','=',1)->get();
