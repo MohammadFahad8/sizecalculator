@@ -378,7 +378,7 @@ class AttributeController extends Controller
     public function calculateSize(Request $request)
     {
 
-
+try{
         $data = $request->all();
         // $data = file_get_contents('php://input');
         Storage::put(rand().'_Measurements.txt',json_encode($data));
@@ -414,7 +414,13 @@ class AttributeController extends Controller
         }
 
         return array_unique($sizes);
-
+    }
+    catch(\Exception $e){
+        return("General Exception".$e->getMessage());
+    }catch(\Error $e)
+    {
+        return ("General Error:".$e->getMessage());
+    }
     }
 
     public function getSizeCount($predictedSize)
@@ -643,6 +649,7 @@ class AttributeController extends Controller
     }
     public function getAttributesOnHeightWeight(Request $request)
     {
+        try{
 
          $data = $request->all();
 
@@ -704,6 +711,16 @@ class AttributeController extends Controller
 
             return $attributeTypeOfProducts;
            //took code which was used earlier to append to populate the $attributeTypeOfProducts array
+        }catch(\Exception $e)
+{
+$msg = array('exception_message'=>$e->getMessage());
+return $msg;
+}
+catch(\Error $e)
+{
+     $msg = array('error_message'=>$e->getMessage());
+    return $msg;
 
+}
     }
 }
