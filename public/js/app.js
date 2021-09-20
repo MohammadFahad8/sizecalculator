@@ -3482,8 +3482,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -45864,6 +45862,7 @@ var render = function() {
                   return _c(
                     "div",
                     {
+                      key: row.id,
                       staticClass:
                         "x-col-md-4  x-col-12 x-mb-5 x-mb-sm-0 x-mb-md-0 x-mb-lg-0 x-mb-lg-0"
                     },
@@ -45942,6 +45941,7 @@ var render = function() {
           _vm._v(" "),
           _vm._l(_vm.recordsLength, function(row, key) {
             return _c("span", {
+              key: row,
               staticClass: "step",
               class: _vm.tabnum.count == key + 2 ? "active" : ""
             })
@@ -47686,7 +47686,7 @@ var render = function() {
                   _c(
                     "div",
                     { staticClass: "x-col-md-6 x-col-6" },
-                    _vm._l(_vm.product.variants, function(row, key, index) {
+                    _vm._l(_vm.product.variants, function(row) {
                       return _c(
                         "div",
                         {
@@ -47808,7 +47808,7 @@ var render = function() {
               _c(
                 "div",
                 { staticClass: "descriptions-all x-d-none" },
-                _vm._l(_vm.product.variants, function(row, key, index) {
+                _vm._l(_vm.product.variants, function(row) {
                   return _c(
                     "p",
                     {

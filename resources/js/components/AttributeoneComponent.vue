@@ -35,7 +35,7 @@
                 <div
                     class="x-col-md-4  x-col-12 x-mb-5 x-mb-sm-0 x-mb-md-0 x-mb-lg-0 x-mb-lg-0"
                     v-for="row in attritemsarr"
-
+                    :key="row.id"
 
                 >
                     <span v-show="txt=='show'">{{ attributes.id == row.attribute_type_id ?txt="List of available sizes":txt="showerror"}}</span>
@@ -58,7 +58,7 @@
 
         <div id="steps-mark" class="x-text-center x-pt-5">
             <span class="step" ></span>
-          <span class="step" v-bind:class="tabnum.count==key+2?'active':''" v-for="(row,key) in recordsLength" ></span>
+          <span class="step" v-bind:class="tabnum.count==key+2?'active':''" v-for="(row,key) in recordsLength" :key="row" ></span>
             <span class="step"></span>
         </div>
     </div>

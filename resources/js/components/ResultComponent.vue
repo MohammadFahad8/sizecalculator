@@ -52,9 +52,7 @@
                                     <div class="x-col-md-6 x-col-6">
 
 
-                                        <div id="fit-advisor-sizes-slider" font-size="40" v-for="(row,
-                                                key,
-                                                index) in product.variants" :key="row.id" class="fit-advisor-selected-size" style="opacity: 1">
+                                        <div id="fit-advisor-sizes-slider" font-size="40" v-for="row in product.variants" :key="row.id" class="fit-advisor-selected-size" style="opacity: 1">
                                             <span id="fsize">
                                                 <h4 class="result-size" v-if="
                                                             container.showSelectedSizeSlider
@@ -123,7 +121,7 @@
 
                         </div>
                         <div class="descriptions-all x-d-none">
-                        <p class="fit-advisor-header-desc size_descriptions" v-for="(row, key, index) in product.variants" :key="row.id">
+                        <p class="fit-advisor-header-desc size_descriptions" v-for="row in product.variants" :key="row.id">
                             <span v-if="!container.is_loading">Fit Size:<strong>{{
                                         row.desc_title
                                     }}</strong></span>
