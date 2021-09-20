@@ -3482,6 +3482,12 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 //
 //
 //
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -3492,6 +3498,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
   },
   data: function data() {
     return {
+      noVariant: false,
       container: {
         is_loading: false,
         showSelectedSizeSlider: false,
@@ -3574,6 +3581,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
       this.product.variants.forEach(function (el, index) {
         if (sizecheck == true) {
+          if (_this.product.variants.find(function (e) {
+            return e.option1.toUpperCase() === size;
+          }) == undefined) {
+            _this.container.is_loading = true;
+            _this.container.showSelectedSizeSlider = false;
+            _this.noVariant = true;
+          }
+
           if (el.option1.toUpperCase() == size) {
             _this.container.sizeIndex = index;
 
@@ -3681,6 +3696,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
               default:
                 console.log('Recommendations failed');
+                break;
             }
 
             _this.setSlides(_this.container.sizeIndex);
@@ -3688,6 +3704,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
             localStorage.setItem("sizeindex", _this.container.sizeIndex);
           }
         } else if (sizecheck == false) {
+          if (_this.product.variants.find(function (e) {
+            return e.option1.toUpperCase().charAt(0) === size;
+          }) == undefined) {
+            _this.container.is_loading = true;
+            _this.container.showSelectedSizeSlider = false;
+            _this.noVariant = true;
+          }
+
           if (el.option1.toUpperCase().charAt(0) == size) {
             _this.container.sizeIndex = index;
 
@@ -3788,6 +3812,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.container.is_loading = true;
       var a = "";
       this.container.showSelectedSizeSlider = false;
+      this.noVariant = false;
       this.container.conversionCount = this.product.id;
       axios.post(this.$appUrl + "/api/size-recommend", form).then(function (res) {
         if (res.data.length == 1) {
@@ -47565,271 +47590,333 @@ var render = function() {
       _c("div", { staticClass: "x-row" }, [
         _c("div", { staticClass: "col-md-12" }, [
           _c("div", [
-            _c("div", { staticClass: "x-container" }, [
-              _vm.sizeLoaded
-                ? _c(
-                    "div",
-                    {
-                      staticClass:
-                        "x-row x-justify-content-center x-text-center x-p-5"
-                    },
-                    [_vm._m(1)]
-                  )
-                : _vm._e(),
-              _vm._v(" "),
-              _c(
-                "div",
-                {
-                  staticClass:
-                    "x-row x-justify-content-center resultant-all x-d-none"
-                },
-                [
-                  _c("div", { staticClass: "x-col-md-1 x-col-3" }, [
-                    !_vm.container.is_loading
-                      ? _c(
-                          "div",
-                          {
-                            staticClass:
-                              "dfOagu x-float-left x-mt-4 x-mt-sm-6 x-mt-md-6 x-mt-lg-6 x-mt-xl-6",
-                            staticStyle: { "z-index": "30" }
-                          },
-                          [
-                            _c(
-                              "span",
-                              {
-                                staticClass:
-                                  " jjnwUS selected-product-arrow-left-pointer prev",
-                                attrs: { size: "10", id: "arrow-left" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.changesize(0)
-                                  }
-                                }
-                              },
-                              [
-                                _c(
-                                  "svg",
-                                  {
-                                    staticClass:
-                                      "StyledIconBase-ea9ulj-0 jZGNBW",
-                                    attrs: {
-                                      viewBox: "0 0 16 16",
-                                      height: "10",
-                                      width: "10",
-                                      "aria-hidden": "true",
-                                      focusable: "false",
-                                      fill: "currentColor",
-                                      xmlns: "http://www.w3.org/2000/svg"
+            _c(
+              "div",
+              { staticClass: "x-container" },
+              [
+                _vm.sizeLoaded
+                  ? _c(
+                      "div",
+                      {
+                        staticClass:
+                          "x-row x-justify-content-center x-text-center x-p-5"
+                      },
+                      [_vm._m(1)]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  {
+                    staticClass:
+                      "x-row x-justify-content-center resultant-all x-d-none"
+                  },
+                  [
+                    _c("div", { staticClass: "x-col-md-1 x-col-3" }, [
+                      !_vm.container.is_loading
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "dfOagu x-float-left x-mt-4 x-mt-sm-6 x-mt-md-6 x-mt-lg-6 x-mt-xl-6",
+                              staticStyle: { "z-index": "30" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    " jjnwUS selected-product-arrow-left-pointer prev",
+                                  attrs: { size: "10", id: "arrow-left" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.changesize(0)
                                     }
-                                  },
-                                  [
-                                    _c("path", {
-                                      attrs: {
-                                        "fill-rule": "evenodd",
-                                        d:
-                                          "M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"
-                                      }
-                                    })
-                                  ]
-                                )
-                              ]
-                            )
-                          ]
-                        )
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _vm.container.is_loading
-                    ? _c(
-                        "div",
-                        { staticClass: "fit-advisor-custom_row center-force" },
-                        [
-                          _vm._m(2),
-                          _vm._v(" "),
-                          _vm.container.is_loading
-                            ? _c(
-                                "div",
-                                { staticClass: "fit-advisor-custom_row" },
+                                  }
+                                },
                                 [
                                   _c(
-                                    "div",
+                                    "svg",
                                     {
-                                      staticClass: "col",
-                                      staticStyle: { visibility: "hidden" }
+                                      staticClass:
+                                        "StyledIconBase-ea9ulj-0 jZGNBW",
+                                      attrs: {
+                                        viewBox: "0 0 16 16",
+                                        height: "10",
+                                        width: "10",
+                                        "aria-hidden": "true",
+                                        focusable: "false",
+                                        fill: "currentColor",
+                                        xmlns: "http://www.w3.org/2000/svg"
+                                      }
                                     },
                                     [
-                                      _vm._v(
-                                        "\n                                                col\n                                            "
-                                      )
-                                    ]
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    {
-                                      staticClass: "col",
-                                      staticStyle: { visibility: "hidden" }
-                                    },
-                                    [
-                                      _vm._v(
-                                        "\n                                                col\n                                            "
-                                      )
+                                      _c("path", {
+                                        attrs: {
+                                          "fill-rule": "evenodd",
+                                          d:
+                                            "M11.354 1.646a.5.5 0 010 .708L5.707 8l5.647 5.646a.5.5 0 01-.708.708l-6-6a.5.5 0 010-.708l6-6a.5.5 0 01.708 0z"
+                                        }
+                                      })
                                     ]
                                   )
                                 ]
                               )
-                            : _vm._e()
-                        ]
-                      )
-                    : _vm._e(),
-                  _vm._v(" "),
-                  _c(
-                    "div",
-                    { staticClass: "x-col-md-6 x-col-6" },
-                    _vm._l(_vm.product.variants, function(row) {
-                      return _c(
-                        "div",
-                        {
-                          key: row.id,
-                          staticClass: "fit-advisor-selected-size",
-                          staticStyle: { opacity: "1" },
-                          attrs: {
-                            id: "fit-advisor-sizes-slider",
-                            "font-size": "40"
-                          }
-                        },
-                        [
-                          _c("span", { attrs: { id: "fsize" } }, [
-                            _vm.container.showSelectedSizeSlider
-                              ? _c("h4", { staticClass: "result-size" }, [
-                                  _c(
-                                    "span",
-                                    {
-                                      staticClass: "variant_title",
-                                      attrs: { "data-variant": row.id }
-                                    },
-                                    [
-                                      row.option1.toUpperCase() == "XL" ||
-                                      row.option1.toUpperCase() == "XS" ||
-                                      row.option1.toUpperCase() == "XXL" ||
-                                      row.option1.toUpperCase() == "XXXL"
-                                        ? _c("span", [
-                                            _c("span", [
-                                              _vm._v(
-                                                _vm._s(
-                                                  row.option1.toUpperCase()
-                                                )
-                                              )
-                                            ])
-                                          ])
-                                        : _vm._e(),
-                                      _vm._v(" "),
-                                      row.option1.toUpperCase() != "XS" &&
-                                      row.option1.toUpperCase() != "XL" &&
-                                      row.option1.toUpperCase() != "XXL" &&
-                                      row.option1.toUpperCase() != "XXXL"
-                                        ? _c("span", [
-                                            _vm._v(
-                                              _vm._s(
-                                                row.option1
-                                                  .toUpperCase()
-                                                  .charAt(0)
-                                              )
-                                            )
-                                          ])
-                                        : _vm._e()
-                                    ]
-                                  )
-                                ])
-                              : _vm._e()
-                          ])
-                        ]
-                      )
-                    }),
-                    0
-                  ),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "x-col-md-1 x-col-3" }, [
-                    !_vm.container.is_loading
+                            ]
+                          )
+                        : _vm._e()
+                    ]),
+                    _vm._v(" "),
+                    _vm.container.is_loading
                       ? _c(
                           "div",
                           {
                             staticClass:
-                              "dfOagu x-float-right x-mt-4 x-mt-sm-6 x-mt-md-6 x-mt-lg-6 x-mt-xl-6",
-                            staticStyle: { "z-index": "30" }
+                              "fit-advisor-custom_row center-force x-text-center"
                           },
                           [
-                            _c(
-                              "span",
-                              {
-                                staticClass: "jjnwUS hjNiUI arrow-next next",
-                                attrs: { size: "10", id: "arrow-right" },
-                                on: {
-                                  click: function($event) {
-                                    return _vm.changesize(1)
-                                  }
-                                }
-                              },
-                              [
-                                _c(
-                                  "svg",
-                                  {
-                                    staticClass:
-                                      "StyledIconBase-ea9ulj-0 jZGNBW",
-                                    attrs: {
-                                      viewBox: "0 0 16 16",
-                                      height: "10",
-                                      width: "10",
-                                      "aria-hidden": "true",
-                                      focusable: "false",
-                                      fill: "currentColor",
-                                      xmlns: "http://www.w3.org/2000/svg"
-                                    }
-                                  },
+                            _vm._m(2),
+                            _vm._v(" "),
+                            _vm.container.is_loading
+                              ? _c(
+                                  "div",
+                                  { staticClass: "fit-advisor-custom_row" },
                                   [
-                                    _c("path", {
-                                      attrs: {
-                                        "fill-rule": "evenodd",
-                                        d:
-                                          "M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"
-                                      }
-                                    })
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "col",
+                                        staticStyle: { visibility: "hidden" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                col\n                                            "
+                                        )
+                                      ]
+                                    ),
+                                    _vm._v(" "),
+                                    _c(
+                                      "div",
+                                      {
+                                        staticClass: "col",
+                                        staticStyle: { visibility: "hidden" }
+                                      },
+                                      [
+                                        _vm._v(
+                                          "\n                                                col\n                                            "
+                                        )
+                                      ]
+                                    )
                                   ]
                                 )
-                              ]
-                            )
+                              : _vm._e()
                           ]
                         )
-                      : _vm._e()
-                  ])
-                ]
-              ),
-              _vm._v(" "),
-              _c(
-                "div",
-                { staticClass: "descriptions-all x-d-none" },
-                _vm._l(_vm.product.variants, function(row) {
-                  return _c(
-                    "p",
-                    {
-                      key: row.id,
-                      staticClass: "fit-advisor-header-desc size_descriptions"
-                    },
-                    [
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "x-col-md-6 x-col-6" },
+                      _vm._l(_vm.product.variants, function(row) {
+                        return _c(
+                          "div",
+                          {
+                            key: row.id,
+                            staticClass: "fit-advisor-selected-size",
+                            staticStyle: { opacity: "1" },
+                            attrs: {
+                              id: "fit-advisor-sizes-slider",
+                              "font-size": "40"
+                            }
+                          },
+                          [
+                            _c("span", { attrs: { id: "fsize" } }, [
+                              _vm.container.showSelectedSizeSlider
+                                ? _c("h4", { staticClass: "result-size" }, [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass: "variant_title",
+                                        attrs: { "data-variant": row.id }
+                                      },
+                                      [
+                                        row.option1.toUpperCase() == "XL" ||
+                                        row.option1.toUpperCase() == "XS" ||
+                                        row.option1.toUpperCase() == "XXL" ||
+                                        row.option1.toUpperCase() == "XXXL"
+                                          ? _c("span", [
+                                              _c("span", [
+                                                _vm._v(
+                                                  _vm._s(
+                                                    row.option1.toUpperCase()
+                                                  )
+                                                )
+                                              ])
+                                            ])
+                                          : _vm._e(),
+                                        _vm._v(" "),
+                                        row.option1.toUpperCase() != "XS" &&
+                                        row.option1.toUpperCase() != "XL" &&
+                                        row.option1.toUpperCase() != "XXL" &&
+                                        row.option1.toUpperCase() != "XXXL"
+                                          ? _c("span", [
+                                              _vm._v(
+                                                _vm._s(
+                                                  row.option1
+                                                    .toUpperCase()
+                                                    .charAt(0)
+                                                )
+                                              )
+                                            ])
+                                          : _vm._e()
+                                      ]
+                                    )
+                                  ])
+                                : _vm._e()
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "x-col-md-1 x-col-3" }, [
                       !_vm.container.is_loading
-                        ? _c("span", [
-                            _vm._v("Fit Size:"),
-                            _c("strong", [_vm._v(_vm._s(row.desc_title))])
-                          ])
+                        ? _c(
+                            "div",
+                            {
+                              staticClass:
+                                "dfOagu x-float-right x-mt-4 x-mt-sm-6 x-mt-md-6 x-mt-lg-6 x-mt-xl-6",
+                              staticStyle: { "z-index": "30" }
+                            },
+                            [
+                              _c(
+                                "span",
+                                {
+                                  staticClass: "jjnwUS hjNiUI arrow-next next",
+                                  attrs: { size: "10", id: "arrow-right" },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.changesize(1)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "svg",
+                                    {
+                                      staticClass:
+                                        "StyledIconBase-ea9ulj-0 jZGNBW",
+                                      attrs: {
+                                        viewBox: "0 0 16 16",
+                                        height: "10",
+                                        width: "10",
+                                        "aria-hidden": "true",
+                                        focusable: "false",
+                                        fill: "currentColor",
+                                        xmlns: "http://www.w3.org/2000/svg"
+                                      }
+                                    },
+                                    [
+                                      _c("path", {
+                                        attrs: {
+                                          "fill-rule": "evenodd",
+                                          d:
+                                            "M4.646 1.646a.5.5 0 01.708 0l6 6a.5.5 0 010 .708l-6 6a.5.5 0 01-.708-.708L10.293 8 4.646 2.354a.5.5 0 010-.708z"
+                                        }
+                                      })
+                                    ]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
                         : _vm._e()
-                    ]
-                  )
-                }),
-                0
-              ),
-              _vm._v(" "),
-              _vm._m(3)
-            ])
+                    ])
+                  ]
+                ),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "descriptions-all x-d-none" },
+                  _vm._l(_vm.product.variants, function(row) {
+                    return _c(
+                      "p",
+                      {
+                        key: row.id,
+                        staticClass: "fit-advisor-header-desc size_descriptions"
+                      },
+                      [
+                        !_vm.container.is_loading
+                          ? _c("span", [
+                              _vm._v("Fit Size:"),
+                              _c("strong", [_vm._v(_vm._s(row.desc_title))])
+                            ])
+                          : _vm._e()
+                      ]
+                    )
+                  }),
+                  0
+                ),
+                _vm._v(" "),
+                !_vm.noVariant
+                  ? _c(
+                      "p",
+                      { staticClass: "fit-advisor-header-desc fade-in-image" },
+                      [
+                        _vm._v(
+                          "The size we recommend is based on how we intended this item to suit your body. "
+                        ),
+                        _c("br"),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "learn-text",
+                            attrs: {
+                              target: "_blank",
+                              rel: "noopener noreferrer nofollow",
+                              href: "https://byltbasics.com/pages/contact-us"
+                            }
+                          },
+                          [_vm._v("Learn More")]
+                        )
+                      ]
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.noVariant ? _c("dummy-result") : _vm._e(),
+                _vm._v(" "),
+                _vm.noVariant
+                  ? _c(
+                      "p",
+                      {
+                        staticClass:
+                          "fit-advisor-header-desc  x-text-danger fade-in-image",
+                        staticStyle: { "text-decoration": "underline" }
+                      },
+                      [
+                        _vm._v(
+                          "*There is some misconfiguration please contact administration. "
+                        ),
+                        _c("br"),
+                        _c(
+                          "a",
+                          {
+                            staticClass: "learn-text",
+                            attrs: {
+                              target: "_blank",
+                              rel: "noopener noreferrer nofollow",
+                              href: "https://byltbasics.com/pages/contact-us"
+                            }
+                          },
+                          [_vm._v("Learn More")]
+                        )
+                      ]
+                    )
+                  : _vm._e()
+              ],
+              1
+            )
           ])
         ])
       ])
@@ -47841,8 +47928,8 @@ var render = function() {
       [
         _c("span", { staticClass: "step " }),
         _vm._v(" "),
-        _vm._l(_vm.recordsLength, function(row, key) {
-          return _c("span", { staticClass: "step" })
+        _vm._l(_vm.recordsLength, function(row) {
+          return _c("span", { key: row, staticClass: "step" })
         }),
         _vm._v(" "),
         _c("span", { staticClass: "step active" })
@@ -47890,29 +47977,6 @@ var staticRenderFns = [
           attrs: { role: "status" }
         },
         [_c("span", { staticClass: "sr-only" }, [_vm._v("Loading...")])]
-      )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("p", { staticClass: "fit-advisor-header-desc " }, [
-      _vm._v(
-        "The size we recommend is based on how we intended this item to suit your body. "
-      ),
-      _c("br"),
-      _c(
-        "a",
-        {
-          staticClass: "learn-text",
-          attrs: {
-            target: "_blank",
-            rel: "noopener noreferrer nofollow",
-            href: "https://byltbasics.com/pages/contact-us"
-          }
-        },
-        [_vm._v("Learn More")]
       )
     ])
   }

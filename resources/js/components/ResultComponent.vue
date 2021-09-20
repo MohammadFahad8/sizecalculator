@@ -32,13 +32,14 @@
 
                                     <!-- LIST OF ALL VARIANTS -->
 
-                                    <div class="fit-advisor-custom_row center-force" v-if="container.is_loading">
+                                    <div class="fit-advisor-custom_row center-force x-text-center" v-if="container.is_loading">
                                         <div class="col-md-12">
                                             <div class="spinner-border spinner-position" role="status">
                                                 <span class="sr-only">Loading...</span>
                                             </div>
                                         </div>
                                         <div class="fit-advisor-custom_row" v-if="container.is_loading">
+                                            
                                             <div class="col" style="visibility: hidden">
                                                 col
                                             </div>
@@ -47,6 +48,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                 
 
 
                                     <div class="x-col-md-6 x-col-6">
@@ -127,7 +129,11 @@
                                     }}</strong></span>
                         </p>
                         </div>
-                        <p class="fit-advisor-header-desc ">The size we recommend is based on how we intended this item to suit your body. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="https://byltbasics.com/pages/contact-us" class="learn-text">Learn More</a>
+                        <p class="fit-advisor-header-desc fade-in-image"  v-if="!noVariant">The size we recommend is based on how we intended this item to suit your body. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="https://byltbasics.com/pages/contact-us" class="learn-text">Learn More</a>
+                        </p>
+                        
+                        <dummy-result  v-if="noVariant" ></dummy-result>
+                        <p class="fit-advisor-header-desc  x-text-danger fade-in-image" style="text-decoration:underline" v-if="noVariant">*There is some misconfiguration please contact administration. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="https://byltbasics.com/pages/contact-us" class="learn-text">Learn More</a>
                         </p>
                     </div>
                 </div>
@@ -138,7 +144,7 @@
     <div id="steps-mark" class="x-text-center x-mt-5">
 
             <span class="step " ></span>
-          <span class="step" v-for="(row,key) in recordsLength" ></span>
+          <span class="step" v-for="row in recordsLength" :key="row"></span>
             <span class="step active"></span>
 
     </div>
@@ -158,7 +164,9 @@ export default {
     },
     data() {
         return {
+            noVariant:false,
             container: {
+                
                 is_loading: false,
                 showSelectedSizeSlider: false,
                 conversionCount: "",
@@ -274,8 +282,19 @@ export default {
             this.actionDefault = "next";
         },
         setSelectedSizeFromList: function (size, sizecheck) {
+            
+     
             this.product.variants.forEach((el, index) => {
+                
                 if (sizecheck == true) {
+                           if( (this.product.variants.find(e => e.option1.toUpperCase() === size) ) == undefined ){
+                
+                    this.container.is_loading = true
+                    
+                    this.container.showSelectedSizeSlider= false 
+                    this.noVariant = true;
+                }
+                    
                     if (el.option1.toUpperCase() == size) {
 
 
@@ -285,6 +304,7 @@ export default {
                             2,
                             index
                         );
+                        
                         switch(size){
                             case "XS":
                             console.log(size +" " +this.container.sizeIndex)
@@ -436,6 +456,7 @@ export default {
                                 }
                             default:
                             console.log('Recommendations failed')
+                            break;
 
                         }
                         this.setSlides(this.container.sizeIndex);
@@ -447,6 +468,12 @@ export default {
 
                     }
                 } else if (sizecheck == false) {
+                           if( (this.product.variants.find(e => e.option1.toUpperCase().charAt(0) === size) ) == undefined ){
+                
+                    this.container.is_loading= true
+                    this.container.showSelectedSizeSlider= false 
+                    this.noVariant = true;
+                }
                     if (el.option1.toUpperCase().charAt(0) == size) {
 
                         this.container.sizeIndex = index;
@@ -588,6 +615,8 @@ export default {
 
 
             this.container.showSelectedSizeSlider = false;
+            this.noVariant = false;
+             
             this.container.conversionCount = this.product.id;
 
            axios
@@ -618,6 +647,7 @@ export default {
                     this.container.is_loading = false;
 
                     this.container.showSelectedSizeSlider = true;
+                    
 
                     if (
                         res.data == "XL" ||
