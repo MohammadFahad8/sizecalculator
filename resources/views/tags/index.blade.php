@@ -272,7 +272,8 @@
 
 
             $('#Capa_1').on('click',function(){
-                window.location.reload();
+                var str  = "{{ Config::get('constants.SHOPIFY_URL.APP_URL') }}"
+                window.location.href =str+"/refresh/products"
             })
             $('.toggle-class').change(function() {
                 var status = $(this).prop('checked') == true ? 1 : 0;

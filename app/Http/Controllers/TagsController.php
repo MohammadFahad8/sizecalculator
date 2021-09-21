@@ -320,7 +320,8 @@ if( count($tags) == $count)
                 }
 
                 $p->status = $request['status'];
-                $tagg = Tags::where('tagname','=',trim($request['tagname']))->first();
+                
+                $tagg = Tags::where('id','=',trim($request['tagname']))->first();
                 if($tagg != null){
                     $tagg->status = $request['status'];
                     $tagg->save();
@@ -328,7 +329,7 @@ if( count($tags) == $count)
 
                 $p->save();
 
-            }
+            } 
         }
         $data['product'] = $product;
         $data['tagstatus'] = $tagg;
@@ -374,5 +375,25 @@ if( count($tags) == $count)
         
         
                 ]);
+    }
+
+    public function refreshProducts()
+    {
+        $shop = Auth::user();
+
+
+
+        $tags=$shop->api()->graph('{
+  shop{
+    productTags(first: 100){
+      edges{
+        node
+      }
+    }
+  }
+}')['body']['container']['data']['shop']['productTags']['edges'];
+
+$tagsall = Tags::latest()->get();
+        return  $this->tagsCreateOrUpdate($tags,$tagsall);
     }
 }

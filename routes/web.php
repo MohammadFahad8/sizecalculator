@@ -30,6 +30,7 @@ Route::post('/update',[App\Http\Controllers\AttributeController::class,'update']
 Route::get('/add/type',[App\Http\Controllers\AttributeController::class,'create'])->name('attributes.create');
 Route::get('/get/all-products',[App\Http\Controllers\AttributeController::class,'getAllProducts'])->name('attributes.products');
 Route::get('/get/all-tags',[App\Http\Controllers\TagsController::class,'getAllTags'])->name('attributes.tags');
+Route::get('/refresh/products',[App\Http\Controllers\TagsController::class,'refreshProducts'])->name('attributes.refreshTags');
 Route::get('/product/edit/',[App\Http\Controllers\AttributeController::class,'editProduct'])->name('products.edit');
 Route::get('/tags/edit/',[App\Http\Controllers\TagsController::class,'editProductOnTags'])->name('tags.edit');
 //attribute type routes
