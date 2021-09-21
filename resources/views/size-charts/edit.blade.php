@@ -151,8 +151,12 @@
 
                         @foreach($variants as $v)
 
-
+                        @if($v != '0')
+                        {
                             <option value="{{ $v }}" @if(strtolower($v) == strtolower($attr->predicted_size??'n/a')) selected @endif > {{ $v }}</option>
+                        }
+                        @endif
+                            
                             {{-- <option value="{{ $v['size'] }}"  > {{ $v->size }}</option> --}}
                         @endforeach
                     </select>

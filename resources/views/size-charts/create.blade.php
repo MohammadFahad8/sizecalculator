@@ -148,7 +148,12 @@
 
 
                             {{-- <option value="{{ $v['id'] }}" @if($role['id'] == $user->userrole->id) selected @endif > {{ $role->role }}</option> --}}
-                            <option value="{{ $v }}"  > {{ $v }}</option>
+                            @if($v != '0')
+                            {
+                                <option value="{{ $v }}"  > {{ $v }}</option>
+                            }
+                            @endif
+                            
                         @endforeach
                     </select>
 
