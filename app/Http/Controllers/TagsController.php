@@ -224,40 +224,60 @@ class TagsController extends Controller
 }')['body']['container']['data']['shop']['productTags']['edges'];
 
 $tagsall = Tags::latest()->get();
-try{if(count($tags)<count($tagsall)){
-    Tags::truncate();
-}}catch (\Exception $e){}
 
-        foreach ($tags as $row)
+
+//checking if old payload then just refresh page dont update
+$count=0;
+
+if(count($tags) == count($tagsall)){
+foreach ($tags as $key=>$row)
+{
+    
+    foreach($tagsall as $tkey=> $tag)
+    {
+        
+        if($row['node'] == $tag->tagname)
         {
-
-            $tagsall = Tags::where('tagname','=',trim($row['node']))->first();
-
-            if($tagsall == null)
-            {
-                $tag = new Tags();
-                $tag->tagname = $row['node'];
-                $tag->status = 0;
-                $tag->save();
-                $this->getAllProducts(trim($row['node']),$tag->id);
-            }
-            else{
-                $tagsall->tagname = $row['node'];
-
-                $tagsall->save();
-                $this->getAllProducts(trim($row['node']),$tagsall->id);
-            }
+        
+            $count =$count + 1;
+        
         }
-        $tags = Tags::latest()->with('tagProducts')->get();
+    }
+
+}
+
+if( count($tags) == $count)
+{
+    
+    $tags = Tags::latest()->with('tagProducts')->get();
 
         return view('tags.index', [
             'other' => $tags,
 
 
         ]);
+}else
+
+{
+    
+  return  $this->tagsCreateOrUpdate($tags,$tagsall);
+}
+}else
+{
+    
+    return $this->tagsCreateOrUpdate($tags,$tagsall);
+
+}
+
+
+
+
+     
     }
-    public function editProductOnTags(Request $request)
-    {
+    
+    public function editProductOnTags(Request $request){
+
+
         //
         $request['tagname'] = trim($request['tagname']);
         $messageContainer = array(
@@ -319,5 +339,40 @@ try{if(count($tags)<count($tagsall)){
         $product = Tags::with('tagProducts')->find($id);
 
         return $product;
+    }
+    public function tagsCreateOrUpdate($tags,$tagsall)
+    {
+
+        try{if(count($tags)<count($tagsall)){
+            Tags::truncate();
+        }}catch (\Exception $e){}
+        
+                foreach ($tags as $row)
+                {
+        
+                    $tagsall = Tags::where('tagname','=',trim($row['node']))->first();
+        
+                    if($tagsall == null)
+                    {
+                        $tag = new Tags();
+                        $tag->tagname = $row['node'];
+                        $tag->status = 0;
+                        $tag->save();
+                        $this->getAllProducts(trim($row['node']),$tag->id);
+                    }
+                    else{
+                        $tagsall->tagname = $row['node'];
+        
+                        $tagsall->save();
+                        $this->getAllProducts(trim($row['node']),$tagsall->id);
+                    }
+                }
+                $tags = Tags::latest()->with('tagProducts')->get();
+
+                return view('tags.index', [
+                    'other' => $tags,
+        
+        
+                ]);
     }
 }

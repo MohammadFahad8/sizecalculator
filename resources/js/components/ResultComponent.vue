@@ -54,11 +54,11 @@
                                     <div class="x-col-md-6 x-col-6">
 
 
-                                        <div id="fit-advisor-sizes-slider" font-size="40" v-for="row in product.variants" :key="row.id" class="fit-advisor-selected-size" style="opacity: 1">
+                                        <div id="fit-advisor-sizes-slider" font-size="40" v-for="row in product.variants" :key="row.id" class="fit-advisor-selected-size fade-in-image" style="opacity: 1">
                                             <span id="fsize">
                                                 <h4 class="result-size" v-if="
                                                             container.showSelectedSizeSlider
-                                                        ">
+                                                        ">     
                                                     <!-- <span v-if="!showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span> -->
 
                                                     <span class="variant_title" :data-variant="

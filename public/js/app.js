@@ -47722,7 +47722,8 @@ var render = function() {
                           "div",
                           {
                             key: row.id,
-                            staticClass: "fit-advisor-selected-size",
+                            staticClass:
+                              "fit-advisor-selected-size fade-in-image",
                             staticStyle: { opacity: "1" },
                             attrs: {
                               id: "fit-advisor-sizes-slider",
