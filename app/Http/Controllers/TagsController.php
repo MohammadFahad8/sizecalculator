@@ -369,12 +369,15 @@ if( count($tags) == $count)
                     }
                 }
                 $tags = Tags::latest()->with('tagProducts')->get();
-
-                return view('tags.index', [
-                    'other' => $tags,
+                
+                    return redirect()->route('attributes.tags',[
+                        'other' => $tags,
+                    ]);
+                // return view('tags.index', [
+                //     'other' => $tags,
         
         
-                ]);
+                // ]);
     }
 
     public function refreshProducts()
