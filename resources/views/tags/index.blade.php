@@ -49,21 +49,21 @@
                                                 Products list
                                             </div>
                                               <ul class="list-group">
-                                                  
+
                                                   @forelse($row->tagProducts as $key=> $productOf)
-                                                  
+
                                                 <li class="list-group-item list-unstyled"> <strong class="float-left">{{ $key+1 }}. </strong><span class="text-center ml-3"> {{$productOf->name}}</span></li>
                                                 {{-- @if($key !=count($row->tagProducts)-1)<hr>@endif --}}
-              
+
                                               @empty
-                                              <li class="list-group-item"> *No Products with this tag</li>    
-                                              
+                                              <li class="list-group-item"> *No Products with this tag</li>
+
                                               @endforelse
                                                 </ul>
                                           </div>
                                         </div>
                                       </div>
-                                 
+
                                     <div class="dropdown">
                                         {{-- <button class="btn btn-secondary dropdown-toggle btn-sm" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             Products
@@ -79,7 +79,7 @@
 
                                         </div>
                                     </div>
-                                   
+
 
 
                                 </td>
@@ -291,7 +291,7 @@
                     success: function(data){
                         if(data.empty_msg)
                         {
-                            toastr.info(data.empty_msg)
+                            toastr.warning(data.empty_msg)
                             $("#"+tag_id).prop("checked", false);
                             $("#"+tag_id).parent().parent().siblings().children(".badge").removeClass("badge-success");
                             $("#"+tag_id).parent().parent().siblings().children(".badge").addClass("badge-secondary");
