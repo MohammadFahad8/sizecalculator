@@ -126,6 +126,10 @@ class SizeController extends Controller
             Session::flash('error', '*Invalid form missing attribute');
             return back();
         }
+        catch (\Error $error) {
+            Session::flash('error', '*Invalid form missing attribute');
+            return back();
+        }
     }
 
     /**
