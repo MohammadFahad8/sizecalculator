@@ -18,7 +18,8 @@
             <div class="col-md-3"> <span class="custom-card-header-span">@include('snippets.buttonback'){{ __('Attribute Types') }}</span> </div>
 
             <div class="col-md-9">
-                <a  href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
+                {{-- <a  href="{{ route('attributestypes.create',['id'=> $attrTypeOfProducts[0]['product']->product_id??$id ]) }}" v-on:click="checkAttrLimit({{ count($attrTypeOfProducts) }})" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a> --}}
+                <a  href="javascript:void(0)" v-on:click="checkAttrLimit({{ $attrTypeOfProducts[0]['product']->product_id??$id}},{{  count($attrTypeOfProducts) }})" class="btn btn-info btn-md button-add border border-light float-right "> <i class="fas fa-plus"></i><span style="margin-left:10px !important">Attribute Type</span></a>
 
 
                 <a href="javascript:void(0)" v-on:click="viewAttributesOfAttributeTypes({{ $id }},{{ count($attrTypeOfProducts) }})"    class="btn btn-info btn-md button-add border border-light float-right mr-1 ">View Sizes</a>
@@ -188,6 +189,21 @@
 
         },
         methods:{
+            checkAttrLimit:function(id,count)
+            {
+
+if(count ==3)
+{
+    toastr.warning('Maximum 3 attributes are allowed');
+return false;
+}else
+{
+
+    window.location.href="/attributes/create?id="+id;
+}
+
+            },
+
             viewAttributesOfAttributeTypes:function($id,count)
             {
 
