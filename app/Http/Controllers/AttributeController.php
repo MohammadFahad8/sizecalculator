@@ -346,7 +346,7 @@ class AttributeController extends Controller
     public function permissionToShowBodyFit(Request $request)
     {
 
-
+try{
         $products = Products::where('product_id', '=', trim($request['id']))->first();
         $variants = Variants::where('product_id','=',trim($request['id']))->get();
 
@@ -373,6 +373,18 @@ class AttributeController extends Controller
                 return $permission;
             }
         }
+    }catch(\Exception $e)
+    {
+        $permission = array('display' => false, 'clearLog' => true);
+        return $permission;
+
+    }
+catch(\Error $error)
+{
+    $permission = array('display' => false, 'clearLog' => true);
+    return $permission;
+
+}
     }
 
     public function calculateSize(Request $request)
