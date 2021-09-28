@@ -232,15 +232,15 @@ $count=0;
 if(count($tags) == count($tagsall)){
 foreach ($tags as $key=>$row)
 {
-    
+
     foreach($tagsall as $tkey=> $tag)
     {
-        
+
         if($row['node'] == $tag->tagname)
         {
-        
+
             $count =$count + 1;
-        
+
         }
     }
 
@@ -248,7 +248,7 @@ foreach ($tags as $key=>$row)
 
 if( count($tags) == $count)
 {
-    
+
     $tags = Tags::latest()->with('tagProducts')->get();
 
         return view('tags.index', [
@@ -259,12 +259,12 @@ if( count($tags) == $count)
 }else
 
 {
-    
+
   return  $this->tagsCreateOrUpdate($tags,$tagsall);
 }
 }else
 {
-    
+
     return $this->tagsCreateOrUpdate($tags,$tagsall);
 
 }
@@ -272,9 +272,9 @@ if( count($tags) == $count)
 
 
 
-     
+
     }
-    
+
     public function editProductOnTags(Request $request){
 
 
@@ -320,7 +320,7 @@ if( count($tags) == $count)
                 }
 
                 $p->status = $request['status'];
-                
+
                 $tagg = Tags::where('id','=',trim($request['tagname']))->first();
                 if($tagg != null){
                     $tagg->status = $request['status'];
@@ -329,7 +329,7 @@ if( count($tags) == $count)
 
                 $p->save();
 
-            } 
+            }
         }
         $data['product'] = $product;
         $data['tagstatus'] = $tagg;
@@ -337,7 +337,7 @@ if( count($tags) == $count)
     }
     public function getSpecificProducts($id)
     {
-        $product = Tags::with('tagProducts')->find($id);
+        $product = Tags::with('tagProducts')->find(trim($id));
 
         return $product;
     }
@@ -347,36 +347,36 @@ if( count($tags) == $count)
         try{if(count($tags)<count($tagsall)){
             Tags::truncate();
         }}catch (\Exception $e){}
-        
+
                 foreach ($tags as $row)
                 {
-        
+
                     $tagsall = Tags::where('tagname','=',trim($row['node']))->first();
-        
+
                     if($tagsall == null)
                     {
                         $tag = new Tags();
                         $tag->tagname = $row['node'];
                         $tag->status = 0;
                         $tag->save();
-                        $this->getAllProducts(trim($row['node']),$tag->id);
+                        $this->getAllProducts(trim($row['node']),trim($tag->id));
                     }
                     else{
                         $tagsall->tagname = $row['node'];
-        
+
                         $tagsall->save();
-                        $this->getAllProducts(trim($row['node']),$tagsall->id);
+                        $this->getAllProducts(trim($row['node']),trim($tagsall->id));
                     }
                 }
                 $tags = Tags::latest()->with('tagProducts')->get();
-                
+
                     return redirect()->route('attributes.tags',[
                         'other' => $tags,
                     ]);
                 // return view('tags.index', [
                 //     'other' => $tags,
-        
-        
+
+
                 // ]);
     }
 
