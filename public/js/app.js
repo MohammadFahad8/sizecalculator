@@ -46869,7 +46869,7 @@ var staticRenderFns = [
         "div",
         {
           staticClass: "fit-advisor-selected-size",
-          staticStyle: { opacity: "1" },
+          staticStyle: { opacity: "1", "font-size": "30px !important" },
           attrs: { id: "fit-advisor-sizes-slider", "font-size": "40" }
         },
         [

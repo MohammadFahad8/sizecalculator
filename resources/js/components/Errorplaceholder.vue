@@ -19,7 +19,7 @@
         <div class="x-col-md-6 x-col-6">
 
 
-            <div id="fit-advisor-sizes-slider" font-size="40" class="fit-advisor-selected-size" style="opacity: 1">
+            <div id="fit-advisor-sizes-slider" font-size="40" class="fit-advisor-selected-size" style="opacity: 1;font-size:30px !important">
                                             <span id="fsize">
                                                 <h4 class="result-size">
 

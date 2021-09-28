@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <link rel="shortcut icon" href="//cdn.shopify.com/s/files/1/1464/5034/files/favicon_256x256_058c890b-159b-4d54-af13-58d7661ab4f3_32x32.png?v=1603999239" type="image/png">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
