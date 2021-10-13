@@ -82,12 +82,25 @@ class Helpers {
       
       
   }
-   function getThemeData()
+  
+  function getThemeData()
   {
     
     $shop = Auth::user();
     $theme = $shop->api()->rest('GET','/admin/api/2021-07/themes.json')['body']['container'];
-    return  trim($theme['themes'][0]['id']);
+    
+    
+    
+    foreach($theme['themes'] as $key => $row)
+    {
+        
+        if($row['role'] == 'main')
+        {
+            return trim($row['id']);
+        }
+    }
+    // dd($the);
+    // return  trim($theme['themes'][0]['id']);
   }
    function updateAsset()
   {
