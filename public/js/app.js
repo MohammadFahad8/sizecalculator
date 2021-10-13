@@ -3582,14 +3582,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       this.product.variants.forEach(function (el, index) {
         if (sizecheck == true) {
           if (_this.product.variants.find(function (e) {
-            return e.option1.toUpperCase() === size;
+            return e.option2.toUpperCase() === size;
           }) == undefined) {
             _this.container.is_loading = true;
             _this.container.showSelectedSizeSlider = false;
             _this.noVariant = true;
           }
 
-          if (el.option1.toUpperCase() == size) {
+          if (el.option2.toUpperCase() == size) {
             _this.container.sizeIndex = index;
 
             _this.array_move(_this.container.size_descriptions, 2, index);
@@ -3705,14 +3705,14 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
           }
         } else if (sizecheck == false) {
           if (_this.product.variants.find(function (e) {
-            return e.option1.toUpperCase().charAt(0) === size;
+            return e.option2.toUpperCase().charAt(0) === size;
           }) == undefined) {
             _this.container.is_loading = true;
             _this.container.showSelectedSizeSlider = false;
             _this.noVariant = true;
           }
 
-          if (el.option1.toUpperCase().charAt(0) == size) {
+          if (el.option2.toUpperCase().charAt(0) == size) {
             _this.container.sizeIndex = index;
 
             _this.array_move(_this.container.size_descriptions, 2, index);
@@ -47741,29 +47741,29 @@ var render = function() {
                                         attrs: { "data-variant": row.id }
                                       },
                                       [
-                                        row.option1.toUpperCase() == "XL" ||
-                                        row.option1.toUpperCase() == "XS" ||
-                                        row.option1.toUpperCase() == "XXL" ||
-                                        row.option1.toUpperCase() == "XXXL"
+                                        row.option2.toUpperCase() == "XL" ||
+                                        row.option2.toUpperCase() == "XS" ||
+                                        row.option2.toUpperCase() == "XXL" ||
+                                        row.option2.toUpperCase() == "XXXL"
                                           ? _c("span", [
                                               _c("span", [
                                                 _vm._v(
                                                   _vm._s(
-                                                    row.option1.toUpperCase()
+                                                    row.option2.toUpperCase()
                                                   )
                                                 )
                                               ])
                                             ])
                                           : _vm._e(),
                                         _vm._v(" "),
-                                        row.option1.toUpperCase() != "XS" &&
-                                        row.option1.toUpperCase() != "XL" &&
-                                        row.option1.toUpperCase() != "XXL" &&
-                                        row.option1.toUpperCase() != "XXXL"
+                                        row.option2.toUpperCase() != "XS" &&
+                                        row.option2.toUpperCase() != "XL" &&
+                                        row.option2.toUpperCase() != "XXL" &&
+                                        row.option2.toUpperCase() != "XXXL"
                                           ? _c("span", [
                                               _vm._v(
                                                 _vm._s(
-                                                  row.option1
+                                                  row.option2
                                                     .toUpperCase()
                                                     .charAt(0)
                                                 )

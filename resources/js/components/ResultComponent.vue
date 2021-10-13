@@ -39,7 +39,7 @@
                                             </div>
                                         </div>
                                         <div class="fit-advisor-custom_row" v-if="container.is_loading">
-                                            
+
                                             <div class="col" style="visibility: hidden">
                                                 col
                                             </div>
@@ -48,7 +48,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                 
+
 
 
                                     <div class="x-col-md-6 x-col-6">
@@ -58,48 +58,48 @@
                                             <span id="fsize">
                                                 <h4 class="result-size" v-if="
                                                             container.showSelectedSizeSlider
-                                                        ">     
+                                                        ">
                                                     <!-- <span v-if="!showrecommended" class="recommendedbyus big-size-margin-recommend-size">{{recommended_size}}</span> -->
 
                                                     <span class="variant_title" :data-variant="
                                                                 row.id
                                                             ">
                                                         <span v-if="
-                                                                    row.option1
+                                                                    row.option2
                                                                         .toUpperCase()
                                                                         ==
                                                                         'XL' ||
-                                                                        row.option1
+                                                                        row.option2
                                                                             .toUpperCase()
                                                                              ==
                                                                             'XS'
                                                                             ||
-                                                                        row.option1
+                                                                        row.option2
                                                                             .toUpperCase()
                                                                              ==
                                                                             'XXL'
                                                                             ||
-                                                                        row.option1
+                                                                        row.option2
                                                                             .toUpperCase()
                                                                              ==
                                                                             'XXXL'
                                                                 ">
                                                             <span>{{
-                                                                    row.option1.toUpperCase()
+                                                                    row.option2.toUpperCase()
                                                                 }}</span></span>
                                                         <span v-if="
-                                                                    row.option1.toUpperCase() !=
+                                                                    row.option2.toUpperCase() !=
                                                                         'XS' &&
-                                                                        row.option1.toUpperCase() !=
+                                                                        row.option2.toUpperCase() !=
                                                                             'XL'
                                                                             &&
-                                                                        row.option1.toUpperCase() !=
+                                                                        row.option2.toUpperCase() !=
                                                                             'XXL'
                                                                             &&
-                                                                        row.option1.toUpperCase() !=
+                                                                        row.option2.toUpperCase() !=
                                                                             'XXXL'
                                                                 ">{{
-                                                                    row.option1
+                                                                    row.option2
                                                                         .toUpperCase()
                                                                         .charAt(
                                                                             0
@@ -131,7 +131,7 @@
                         </div>
                         <p class="fit-advisor-header-desc fade-in-image"  v-if="!noVariant">The size we recommend is based on how we intended this item to suit your body. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="https://byltbasics.com/pages/contact-us" class="learn-text">Learn More</a>
                         </p>
-                        
+
                         <dummy-result  v-if="noVariant" ></dummy-result>
                         <p class="fit-advisor-header-desc  x-text-danger fade-in-image" style="text-decoration:underline" v-if="noVariant">*There is some misconfiguration please contact administration. <br /><a target="_blank" rel="noopener noreferrer nofollow" href="https://byltbasics.com/pages/contact-us" class="learn-text">Learn More</a>
                         </p>
@@ -166,7 +166,7 @@ export default {
         return {
             noVariant:false,
             container: {
-                
+
                 is_loading: false,
                 showSelectedSizeSlider: false,
                 conversionCount: "",
@@ -282,20 +282,20 @@ export default {
             this.actionDefault = "next";
         },
         setSelectedSizeFromList: function (size, sizecheck) {
-            
-     
+
+
             this.product.variants.forEach((el, index) => {
-                
+
                 if (sizecheck == true) {
-                           if( (this.product.variants.find(e => e.option1.toUpperCase() === size) ) == undefined ){
-                
+                           if( (this.product.variants.find(e => e.option2.toUpperCase() === size) ) == undefined ){
+
                     this.container.is_loading = true
-                    
-                    this.container.showSelectedSizeSlider= false 
+
+                    this.container.showSelectedSizeSlider= false
                     this.noVariant = true;
                 }
-                    
-                    if (el.option1.toUpperCase() == size) {
+
+                    if (el.option2.toUpperCase() == size) {
 
 
                         this.container.sizeIndex = index;
@@ -304,7 +304,7 @@ export default {
                             2,
                             index
                         );
-                        
+
                         switch(size){
                             case "XS":
                             console.log(size +" " +this.container.sizeIndex)
@@ -468,13 +468,13 @@ export default {
 
                     }
                 } else if (sizecheck == false) {
-                           if( (this.product.variants.find(e => e.option1.toUpperCase().charAt(0) === size) ) == undefined ){
-                
+                           if( (this.product.variants.find(e => e.option2.toUpperCase().charAt(0) === size) ) == undefined ){
+
                     this.container.is_loading= true
-                    this.container.showSelectedSizeSlider= false 
+                    this.container.showSelectedSizeSlider= false
                     this.noVariant = true;
                 }
-                    if (el.option1.toUpperCase().charAt(0) == size) {
+                    if (el.option2.toUpperCase().charAt(0) == size) {
 
                         this.container.sizeIndex = index;
 
@@ -616,7 +616,7 @@ export default {
 
             this.container.showSelectedSizeSlider = false;
             this.noVariant = false;
-             
+
             this.container.conversionCount = this.product.id;
 
            axios
@@ -647,7 +647,7 @@ export default {
                     this.container.is_loading = false;
 
                     this.container.showSelectedSizeSlider = true;
-                    
+
 
                     if (
                         res.data == "XL" ||
