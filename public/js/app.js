@@ -3998,7 +3998,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://c14d-2400-adc7-91b-8900-d0a9-4742-6a48-bc82.ngrok.io';
+Vue.prototype.$appUrl = 'https://bylt2fit.ystsol.com';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 Vue.use(vue_lazyload__WEBPACK_IMPORTED_MODULE_4__.default);

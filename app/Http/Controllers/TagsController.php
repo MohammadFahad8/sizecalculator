@@ -167,7 +167,7 @@ class TagsController extends Controller
                     $vari = new Variants();
                     $vari->variant_id = trim($variant['id']);
 
-                    $vari->size = (strtolower($variant['option1']) == 'default title') ? 0 : strtolower($variant['option1']);
+                    $vari->size = (strtolower($variant['option1']) == 'default title') ? 0 : strtolower($variant['option2']);
                     $vari->price = ($variant['price'] == null) ? null : $variant['price'];
                     $vari->product_id = trim($variant['product_id']);
                     $vari->save();
