@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-    
+
 });
 
 Route::post('/size-recommend',[App\Http\Controllers\AttributeController::class,'calculateSize']);
@@ -24,5 +24,6 @@ Route::post('/add-or-update-product',[App\Http\Controllers\AttributeController::
 Route::post('/permission-to-show',[App\Http\Controllers\AttributeController::class,'permissionToShowBodyFit']);
 Route::get('/get-attrbutes/{id}',[App\Http\Controllers\AttributeController::class,'attributeTypeFront']);
 Route::post('/get-attributes-to-height-weight',[App\Http\Controllers\AttributeController::class,'getAttributesOnHeightWeight']);
+Route::get('/post-purchase', [App\Http\Controllers\AttributeController::class, 'postPurchase'])->name('postpurchase');
 
 

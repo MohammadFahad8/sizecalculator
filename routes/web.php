@@ -120,6 +120,6 @@ Route::get('/greeting', function () {
 
 // Auth::routes();
 
-// Route::get('/home', [App\Http\Controllers\AttributeController::class, 'index'])->name('home');
+
 
 

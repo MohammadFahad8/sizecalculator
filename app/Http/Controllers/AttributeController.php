@@ -35,7 +35,18 @@ class AttributeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+// public function
 
+public function postPurchase(Request  $request)
+{
+
+
+$products = Products::all()->random();
+return $products;
+
+}
+
+//
     public function loginshop(Request $request)
     {
         $this->validate($request, [
