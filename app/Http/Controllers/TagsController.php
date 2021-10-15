@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Tags;
+use App\Models\ByltLogs;
 use App\Models\Products;
 use App\Models\Settings;
 use App\Models\Variants;
@@ -10,6 +11,7 @@ use App\Models\Sizechart;
 use Illuminate\Http\Request;
 use App\Services\TagsProduct;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class TagsController extends Controller
 {
@@ -23,7 +25,8 @@ class TagsController extends Controller
         //
 
 
-        if(Auth::user()){
+        if(Auth::user() && count(Products::get())==0){
+            
         $tp = new TagsProduct();
         $tp->getAllTags(Auth::user());
         $tp->getAllProducts(Auth::user());
@@ -103,6 +106,65 @@ class TagsController extends Controller
     {
         //
     }
+    //HOOKS START
+    public function productUpdateHook(Request $request)
+    {
+        $data = $request->all();
+        Storage::put(rand()."updatehook.txt",json_encode($data));
+        ByltLogs::create([
+            'payload'=>json_encode($data),
+            'response_of'=>'Hooks'
+        ]);
+        $webhookUpdated = Products::where('product_id', '=', trim($data['id']))->first();
+     
+        if($webhookUpdated == null)
+        {
+            $p = Products::create([
+                'product_id' => $data['id'],
+                'name' =>   $data['title'],
+                'image_link' => ($data['image'] == null) ? null : $data['image']['src'],
+                'tags' => ($data['tags'] == null) ? null : $data['tags'],
+            ]);
+            if($data['variants']!=null)
+            {
+                foreach($data['variants'] as $dv){
+            Variants::create([
+                'variant_id' => trim($dv['id']),
+
+                'size' => (strtolower($dv['option1']) == 'default title') ? 0 : strtolower($dv['option2']),
+                'price' => ($dv['price'] == null) ? null : $dv['price'],
+                'product_id' => trim($data['id']),
+                
+            ]);
+                }
+            }
+        }
+        $webhookUpdated->product_id =  trim($data['id']);
+        $webhookUpdated->name =   $data['title'];
+        $webhookUpdated->image_link = ($data['image'] == null) ? null : $data['image']['src'];
+        $webhookUpdated->tags = ($data['tags'] == null) ? null : $data['tags'];
+        $webhookUpdated->save();
+        $vars = Variants::where('product_id', '=', $data['id'])->get();
+        foreach($data['variants'] as $hkey =>$hookvar){
+      
+            $vars[$hkey]->variant_id = trim($hookvar['id']);
+
+            $vars[$hkey]->size = (strtolower($hookvar['option1']) == 'default title') ? 0 : strtolower($hookvar['option2']);
+            $vars[$hkey]->price = ($hookvar['price'] == null) ? null : $hookvar['price'];
+            $vars[$hkey]->product_id = trim($hookvar['product_id']);
+            $vars[$hkey]->save();
+        
+    }
+
+
+    }
+
+    public function productDeleteHook(Request $request)
+    {
+        $data = $request->all();
+        Storage::put(date("Y-m-d H:i:s")."Deletehook.txt",json_encode($data));
+        }
+    // HOOKS END
 
     public function attachTagsToProducts($id)
     {

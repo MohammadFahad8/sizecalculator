@@ -15,6 +15,7 @@ class VerifyCsrfToken extends Middleware
         //
         '/script_tags',
         'https://eb48564c30e3.ngrok.io/calculate/new-size',
-        '/post-purchase'
+        '/post-purchase',
+        '/update-hook'
     ];
 }
