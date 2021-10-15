@@ -2,7 +2,6 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Config;
-use App\Models\Products;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,10 +28,11 @@ Route::get('/edit/{id}',[App\Http\Controllers\AttributeController::class,'edit']
 Route::post('/update',[App\Http\Controllers\AttributeController::class,'update'])->name('attributes.update');
 Route::get('/add/type',[App\Http\Controllers\AttributeController::class,'create'])->name('attributes.create');
 Route::get('/get/all-products',[App\Http\Controllers\AttributeController::class,'getAllProducts'])->name('attributes.products');
-Route::get('/get/all-tags',[App\Http\Controllers\TagsController::class,'getAllTags'])->name('attributes.tags');
+Route::get('/get/all-tags',[App\Http\Controllers\TagsController::class,'index'])->name('attributes.tags');
 Route::get('/refresh/products',[App\Http\Controllers\TagsController::class,'refreshProducts'])->name('attributes.refreshTags');
 Route::get('/product/edit/',[App\Http\Controllers\AttributeController::class,'editProduct'])->name('products.edit');
 Route::get('/tags/edit/',[App\Http\Controllers\TagsController::class,'editProductOnTags'])->name('tags.edit');
+Route::get('attach-tags/{id}',[App\Http\Controllers\TagsController::class,'attachTagsToProducts'])->name('tags.attach');
 //attribute type routes
 Route::get('get/attributetypes-all/view/{id}',[App\Http\Controllers\AttributeController::class,'attributeType'])->name('attributetypes.home');
 Route::get('attributes/create',[App\Http\Controllers\AttributeController::class,'attributeTypeCreate'])->name('attributestypes.create');
@@ -40,6 +40,7 @@ Route::post('attributes/type/add',[App\Http\Controllers\AttributeController::cla
 Route::get('attributes/type/edit',[App\Http\Controllers\AttributeController::class,'storeAttributeEdit'])->name('attributesTypes.edit');
 Route::post('attributes/type/update',[App\Http\Controllers\AttributeController::class,'storeAttributeUpdate'])->name('attributesTypes.update');
 Route::get('attributes/type/delete',[App\Http\Controllers\AttributeController::class,'disableAttributeType'])->name('attributesTypes.delete');
+
 //Route::get('/add/type?hmac='.Config::get('constants.SHOPIFY_URL.hmac', 'default').'&host='.Config::get('constants.SHOPIFY_URL.hmac', 'default').'&new_design_language='.Config::get('constants.SHOPIFY_URL.new_design_language', 'default').'&session='.Config::get('constants.SHOPIFY_URL.session','default').'&shop='.Config::get('constants.SHOPIFY_URL.shop','default').'&timestamp='.Config::get('constants.SHOPIFY_URL.timestamp','default'),[App\Http\Controllers\AttributeController::class,'create'])->name('attributes.create');
 
 Route::post('/add',[App\Http\Controllers\AttributeController::class,'store'])->name('attributes.add');

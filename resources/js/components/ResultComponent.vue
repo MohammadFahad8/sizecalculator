@@ -259,7 +259,12 @@ export default {
                 ...v,
                 desc_title: "Recommended"
             }));
-
+this.product.variants  = this.product.variants.reduce(function(res, item){
+var exists = res.some(function(t){ return (t.option2 === item.option2 );});
+     if (!exists){
+        res.push(item);
+     }
+return res; },[]);
             this.getAttributes();
 
             var tabnumber = 1;
@@ -282,7 +287,6 @@ export default {
             this.actionDefault = "next";
         },
         setSelectedSizeFromList: function (size, sizecheck) {
-
 
             this.product.variants.forEach((el, index) => {
 
@@ -468,8 +472,9 @@ export default {
 
                     }
                 } else if (sizecheck == false) {
+console.warn("devSize"+size)
                            if( (this.product.variants.find(e => e.option2.toUpperCase().charAt(0) === size) ) == undefined ){
-
+console.warn("devSize"+size+e.option2.toUpperCase().charAt(0))
                     this.container.is_loading= true
                     this.container.showSelectedSizeSlider= false
                     this.noVariant = true;
@@ -483,6 +488,7 @@ export default {
                             2,
                             index
                         );
+console.log("DEVSIZESUGGESTEDFROMCONTROLLER"+size)
 
                         switch(size){
                                 case "S":

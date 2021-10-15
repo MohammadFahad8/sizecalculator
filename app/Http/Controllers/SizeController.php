@@ -80,7 +80,7 @@ class SizeController extends Controller
                 'height_end' => 'required|min:10|max:999|numeric',
                 // 'body_measurement_start.*'=>'required|array|numeric',
                 // 'body_measurement_end.*'=>'required|array|numeric',
-                'predicted_size' => 'required|min:2|alpha',
+                'predicted_size' => 'required|min:1|alpha',
 
             ], [
                 'weight_start.required' => "Enter Value for Weight Start Range",

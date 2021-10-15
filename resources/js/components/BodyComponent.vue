@@ -241,6 +241,7 @@ export default {
 
 
             $("sticky-header").addClass("bylt-header");
+            $("#shopify-section-header").addClass("bylt-header");
             $("#shopify-section-announcement-bar").addClass("bylt-header");
         },
         homeform:function ()
@@ -475,6 +476,7 @@ export default {
         this.getAttributes();
         $('#exampleModalCenter').on('hidden.bs.modal', function (e) {
         $("sticky-header").removeClass("bylt-header");
+        $("#shopify-section-header").removeClass("bylt-header");
         $("#shopify-section-announcement-bar").removeClass("bylt-header");
 })
         EventBus.$on('refreshSize',size=>{

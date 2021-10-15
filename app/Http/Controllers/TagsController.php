@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tags;
 use App\Models\Products;
 use App\Models\Settings;
-use App\Models\Sizechart;
-use App\Models\Tags;
 use App\Models\Variants;
+use App\Models\Sizechart;
 use Illuminate\Http\Request;
+use App\Services\TagsProduct;
 use Illuminate\Support\Facades\Auth;
 
 class TagsController extends Controller
@@ -20,7 +21,22 @@ class TagsController extends Controller
     public function index()
     {
         //
+
+
+        if(Auth::user()){
+        $tp = new TagsProduct();
+        $tp->getAllTags(Auth::user());
+        $tp->getAllProducts(Auth::user());
+        }
+        $tags = Tags::with('tagProducts')->get();
+
+        return view('tags.index', [
+            'other' => $tags,
+
+
+        ]);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -87,11 +103,29 @@ class TagsController extends Controller
     {
         //
     }
-    public function getAllProducts($tname,$tid)
+
+    public function attachTagsToProducts($id)
+    {
+        
+        $t = Tags::find($id);
+        $matchingProds = Products::where('tags', "LIKE",'%'.$t->tagname.'%')->get();
+        foreach($matchingProds as $mp)
+        {
+            if(strpos($mp->tags,$t->tagname)==0)
+            {
+                $mp->tag_id = $id;
+                $mp->save();
+
+            }
+        }
+        return $response = array('status'=>1) ;
+    }
+    public function getAllProducts($tname,$tid,$shop)
     {
 
 
-        $shop = Auth::user();
+
+        $shop = $shop;
 
 
         $productsall = $shop->api()->rest('GET', '/admin/api/2021-07/products.json')['body']['container'];
@@ -102,7 +136,7 @@ class TagsController extends Controller
 
 
 
-        $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
+        $shop_cfg = $shop->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
 
 
 
@@ -176,24 +210,26 @@ class TagsController extends Controller
                 echo 'no variants';
             }
         }
-        //DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
-        $checkInApiResponse = Products::latest()->get();
 
-        foreach ($checkInApiResponse as $resp) {
+        // DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
+
+        // $checkInApiResponse = Products::latest()->get();
+
+        // foreach ($checkInApiResponse as $resp) {
 
 
-            $productCheckIfDeletedFromStore = Auth::user()->api()->rest('GET', '/admin/api/2021-04/products/' . trim($resp['product_id']) . '.json')['body'];
+        //     $productCheckIfDeletedFromStore = $shop->api()->rest('GET', '/admin/api/2021-04/products/' . trim($resp['product_id']) . '.json')['body'];
 
 
-            if ($productCheckIfDeletedFromStore == "Not Found") {
-                $product = Products::where('product_id', '=', trim($resp['product_id']))->first();
+        //     if ($productCheckIfDeletedFromStore == "Not Found") {
+        //         $product = Products::where('product_id', '=', trim($resp['product_id']))->first();
 
-                $product->is_deleted =  1;
-                $product->save();
-            }
-        }
+        //         $product->is_deleted =  1;
+        //         $product->save();
+        //     }
+        // }
 
-        //END DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
+        // END DELETE PRODUCT FROM DATABASE IF IS DELETED FROM ADMIN STORE
         $products = Products::where([['website_name', '=', trim($shop_config['id'])], ['is_deleted', '=', 0]])->paginate(5);
 
 
@@ -205,17 +241,18 @@ class TagsController extends Controller
 //
 //        ]);
     }
-    public function getAllTags()
+    public function getAllTags($data)
     {
 
 
-        $shop = Auth::user();
+        //OG $shop = Auth::user();
+        $shop = $data;
 
 
 
         $tags=$shop->api()->graph('{
   shop{
-    productTags(first: 100){
+    productTags(first:100){
       edges{
         node
       }
@@ -223,13 +260,16 @@ class TagsController extends Controller
   }
 }')['body']['container']['data']['shop']['productTags']['edges'];
 
+
 $tagsall = Tags::latest()->get();
+
 
 
 //checking if old payload then just refresh page dont update
 $count=0;
 
 if(count($tags) == count($tagsall)){
+
 foreach ($tags as $key=>$row)
 {
 
@@ -260,12 +300,12 @@ if( count($tags) == $count)
 
 {
 
-  return  $this->tagsCreateOrUpdate($tags,$tagsall);
+  return  $this->tagsCreateOrUpdate($tags,$tagsall,$shop);
 }
 }else
 {
 
-    return $this->tagsCreateOrUpdate($tags,$tagsall);
+    return $this->tagsCreateOrUpdate($tags,$tagsall,$shop);
 
 }
 
@@ -341,7 +381,7 @@ if( count($tags) == $count)
 
         return $product;
     }
-    public function tagsCreateOrUpdate($tags,$tagsall)
+    public function tagsCreateOrUpdate($tags,$tagsall,$shop)
     {
 
         try{if(count($tags)<count($tagsall)){
@@ -355,24 +395,27 @@ if( count($tags) == $count)
 
                     if($tagsall == null)
                     {
+
                         $tag = new Tags();
                         $tag->tagname = $row['node'];
                         $tag->status = 0;
                         $tag->save();
-                        $this->getAllProducts(trim($row['node']),trim($tag->id));
+                        // $this->getAllProducts(trim($row['node']),trim($tag->id),$shop);
                     }
                     else{
+
                         $tagsall->tagname = $row['node'];
 
                         $tagsall->save();
-                        $this->getAllProducts(trim($row['node']),trim($tagsall->id));
+
+                        // $this->getAllProducts(trim($row['node']),trim($tagsall->id),$shop);
                     }
                 }
                 $tags = Tags::latest()->with('tagProducts')->get();
 
-                    return redirect()->route('attributes.tags',[
-                        'other' => $tags,
-                    ]);
+                    // return redirect()->route('attributes.tags',[
+                    //     'other' => $tags,
+                    // ]);
                 // return view('tags.index', [
                 //     'other' => $tags,
 

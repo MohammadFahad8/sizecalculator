@@ -3634,6 +3634,10 @@ input:focus {
 {
     display:none;
 }
+.modal-backdrop
+{
+z-index: -1 !important;
+}
 .backbtnattr:hover{
 color:white;
 background-color: #000000;

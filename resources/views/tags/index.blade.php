@@ -9,7 +9,10 @@
     <div class="row mt-5" style="margin-left:10px !important" id="products-all">
         @include('partials_attributes.sidebar')
 
+<div>
+@include('partials_attributes.progress')
 
+</div>
 
         <div class="col-md-8">
             <div class="card">
@@ -206,6 +209,7 @@
                 isLoading:false,
                 product:[],
                 p_id:null,
+                showProgressMessage:false,
 
 
             },
@@ -215,7 +219,21 @@
                 },
                 viewAttributes:function($id)
                 {
-                    window.location.href = "attributetypes-all/view/"+$id;
+                    $('#exampleModalCenter').modal("hide");
+
+                $('#progressModal').modal("show");
+
+                    axios.get("/attach-tags/"+$id).then((res)=>
+                    {
+                        
+                        if(res.data.status == 1)
+                        {
+                         window.location.href = "attributetypes-all/view/"+$id;
+                        }
+                        
+
+                    })
+                 
                 },
                 productFix:function($id)
                 {
@@ -230,8 +248,8 @@
 
                             this.isLoading = false;
                             this.product  = res.data
-
-                            this.variant_count = this.product.variants.length;
+                            
+                            this.variant_count = this.product.variants?this.product.variants.length:0;
 
 
 
