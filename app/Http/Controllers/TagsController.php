@@ -24,8 +24,9 @@ class TagsController extends Controller
     {
         //
 
-
-        if(Auth::user() && count(Products::get())==0){
+        $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
+        dd($shop_cfg);
+        if(Auth::user() && count(Products::where('website_name','=', trim($shop_cfg['id']))->get())==0){
             
         $tp = new TagsProduct();
         $tp->getAllTags(Auth::user());
