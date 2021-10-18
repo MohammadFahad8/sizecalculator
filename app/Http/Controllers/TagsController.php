@@ -350,7 +350,7 @@ class TagsController extends Controller
 
         $tags=$shop->api()->graph('{
   shop{
-    productTags(first:100){
+    productTags(first:200){
       edges{
         node
       }
@@ -531,7 +531,7 @@ if( count($tags) == $count)
 
         $tags=$shop->api()->graph('{
   shop{
-    productTags(first: 100){
+    productTags(first: 200){
       edges{
         node
       }
