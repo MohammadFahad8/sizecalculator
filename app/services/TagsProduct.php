@@ -3,6 +3,7 @@
 use App\Models\Tags;
 use App\Models\Products;
 use App\Models\Variants;
+use Illuminate\Support\Facades\Auth;
 
 class TagsProduct
 {
@@ -28,7 +29,7 @@ class TagsProduct
 }')['body']['container']['data']['shop']['productTags']['edges'];
 
 
-$tagsall = Tags::latest()->get();
+$tagsall = Tags::latest()->where('shop', '=',$shop->id)->get();
 
 
 
@@ -83,7 +84,7 @@ if( count($tags) == $count)
                 foreach ($tags as $row)
                 {
 
-                    $tagsall = Tags::where('tagname','=',trim($row['node']))->first();
+                    $tagsall = Tags::where([['tagname','=',trim($row['node'])],['shop', '=',$shop->id]])->first();
 
                     if($tagsall == null)
                     {
@@ -91,6 +92,7 @@ if( count($tags) == $count)
                         $tag = new Tags();
                         $tag->tagname = $row['node'];
                         $tag->status = 0;
+                        $tag->shop = $shop->id;
                         $tag->save();
                         // $this->getAllProducts(trim($row['node']),trim($tag->id),$shop);
                     }

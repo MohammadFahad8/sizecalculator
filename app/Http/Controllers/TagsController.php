@@ -25,14 +25,35 @@ class TagsController extends Controller
         //
 
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
-        dd($shop_cfg);
-        if(Auth::user() && count(Products::where('website_name','=', trim($shop_cfg['id']))->get())==0){
-            
+        
+        $tags=Auth::user()->api()->graph('{
+            shop{
+              productTags(first:200){
+                edges{
+                  node
+                }
+              }
+            }
+          }')['body']['container']['data']['shop']['productTags']['edges'];
+          
+          
+          if(count($tags)!=count(Tags::where('shop','=',Auth::user()->id)->get()))
+          {
+              
+                  
         $tp = new TagsProduct();
         $tp->getAllTags(Auth::user());
+        
+
+          }
+      
+        //doing to initialize the data
+        if(Auth::user() && count(Products::where('website_name','=', trim($shop_cfg['shop']['id']))->get())==0){
+            
+        $tp = new TagsProduct();
         $tp->getAllProducts(Auth::user());
         }
-        $tags = Tags::with('tagProducts')->get();
+        $tags = Tags::with('tagProducts')->where('shop','=',Auth::user()->id)->get();
 
         return view('tags.index', [
             'other' => $tags,
@@ -111,6 +132,9 @@ class TagsController extends Controller
     public function productUpdateHook(Request $request)
     {
         $data = $request->all();
+        
+    
+
         Storage::put(rand()."updatehook.txt",json_encode($data));
         ByltLogs::create([
             'payload'=>json_encode($data),
@@ -162,15 +186,26 @@ class TagsController extends Controller
 
     public function productDeleteHook(Request $request)
     {
+        $datat =file_get_contents('php://input');
         $data = $request->all();
-        Storage::put(date("Y-m-d H:i:s")."Deletehook.txt",json_encode($data));
+        if($datat == null)
+        {
+            Storage::put(date("Y-m-d H:i:s")."EmptyDeletehook.txt",'$datat');    
         }
+        Storage::put(date("Y-m-d H:i:s")."Deletehook.txt",$datat);
+        $webhookDelete = Products::where('product_id', '=', trim($data['id']))->first();
+        if($webhookDelete != null){
+            $webhookDelete->delete();
+        }
+        
+        }
+        
     // HOOKS END
 
     public function attachTagsToProducts($id)
     {
         
-        $t = Tags::find($id);
+        $t = Tags::where([['shop','=',Auth::user()->id],['id','=',$id]])->first();
         $matchingProds = Products::where('tags', "LIKE",'%'.$t->tagname.'%')->get();
         foreach($matchingProds as $mp)
         {
@@ -324,7 +359,7 @@ class TagsController extends Controller
 }')['body']['container']['data']['shop']['productTags']['edges'];
 
 
-$tagsall = Tags::latest()->get();
+$tagsall = Tags::latest()->where('shop', '=',Auth::user()->id)->get();
 
 
 
@@ -352,7 +387,7 @@ foreach ($tags as $key=>$row)
 if( count($tags) == $count)
 {
 
-    $tags = Tags::latest()->with('tagProducts')->get();
+    $tags = Tags::latest()->with('tagProducts')->where('shop', '=',Auth::user()->id)->get();
 
         return view('tags.index', [
             'other' => $tags,
@@ -424,7 +459,7 @@ if( count($tags) == $count)
 
                 $p->status = $request['status'];
 
-                $tagg = Tags::where('id','=',trim($request['tagname']))->first();
+                $tagg = Tags::where('id','=',trim($request['tagname']))->where('shop', '=',Auth::user()->id)->first();
                 if($tagg != null){
                     $tagg->status = $request['status'];
                     $tagg->save();
@@ -440,7 +475,7 @@ if( count($tags) == $count)
     }
     public function getSpecificProducts($id)
     {
-        $product = Tags::with('tagProducts')->find(trim($id));
+        $product = Tags::with('tagProducts')->where([['shop', '=',Auth::user()->id],['id','=',$id]])->first();
 
         return $product;
     }
@@ -454,7 +489,7 @@ if( count($tags) == $count)
                 foreach ($tags as $row)
                 {
 
-                    $tagsall = Tags::where('tagname','=',trim($row['node']))->first();
+                    $tagsall = Tags::where([['tagname','=',trim($row['node'])],['shop', '=',Auth::user()->id]])->first();
 
                     if($tagsall == null)
                     {
@@ -462,19 +497,21 @@ if( count($tags) == $count)
                         $tag = new Tags();
                         $tag->tagname = $row['node'];
                         $tag->status = 0;
+                        $tag->shop = Auth::user()->id;
+                        
                         $tag->save();
                         // $this->getAllProducts(trim($row['node']),trim($tag->id),$shop);
                     }
                     else{
 
                         $tagsall->tagname = $row['node'];
-
+                        
                         $tagsall->save();
 
                         // $this->getAllProducts(trim($row['node']),trim($tagsall->id),$shop);
                     }
                 }
-                $tags = Tags::latest()->with('tagProducts')->get();
+                $tags = Tags::latest()->with('tagProducts')->where('shop', '=',Auth::user()->id)->get();
 
                     // return redirect()->route('attributes.tags',[
                     //     'other' => $tags,
@@ -502,7 +539,7 @@ if( count($tags) == $count)
   }
 }')['body']['container']['data']['shop']['productTags']['edges'];
 
-$tagsall = Tags::latest()->get();
+$tagsall = Tags::latest()->where('shop', '=',Auth::user()->id)->get();
         return  $this->tagsCreateOrUpdate($tags,$tagsall);
     }
 }

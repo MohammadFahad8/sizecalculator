@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Tags extends Model
 {
     use HasFactory;
-    protected $fillable=['tagname','status'];
+    protected $fillable=['tagname','status','shop'];
 
     public function tagProducts()
     {
@@ -18,5 +19,9 @@ class Tags extends Model
     public function attributetypes(): HasMany
     {
         return $this->hasMany(Attributetypes::class, 'tag_id', 'id');
+    }
+    public function tagUser()
+    {
+        return $this->belongsTo(User::class, 'shop', 'id');
     }
 }
