@@ -4016,7 +4016,7 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js"
 
 
 
-Vue.prototype.$appUrl = 'https://5eb3-2400-adc7-91b-8900-3577-6dc1-a721-2e.ngrok.io';
+Vue.prototype.$appUrl = 'https://bylt2fit.ystsol.com';
 Vue.component('jw-pagination', (jw_vue_pagination__WEBPACK_IMPORTED_MODULE_2___default()));
 Vue.use((v_switch_case__WEBPACK_IMPORTED_MODULE_3___default()));
 Vue.use(vue_lazyload__WEBPACK_IMPORTED_MODULE_4__.default);
