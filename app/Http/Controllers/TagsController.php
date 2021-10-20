@@ -142,6 +142,11 @@ class TagsController extends Controller
         ]);
         $webhookUpdated = Products::where('product_id', '=', trim($data['id']))->first();
 
+$tg = explode(",", $data['tags']);
+$tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();
+$st = Settings::where('name','=',trim($tf->tagUser()->name))->first();
+
+
         if($webhookUpdated == null)
         {
             $p = Products::create([
@@ -149,6 +154,9 @@ class TagsController extends Controller
                 'name' =>   trim($data['title']),
                 'image_link' => ($data['image'] == null) ? null : $data['image']['src'],
                 'tags' => ($data['tags'] == null) ? null : trim($data['tags']),
+                'website_name' => $st->shop_id
+
+
             ]);
             if($data['variants']!=null)
             {
@@ -176,9 +184,11 @@ class TagsController extends Controller
         }else{
 
             $tg = explode(",", $data['tags']);
-            $tf = Tags::where('tagname','=',trim($tg[0]))->first();
+            $tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();
             $webhookUpdated->tag_id = $tf->id;
             $webhookUpdated->status = $tf->status;
+$st = Settings::where('name','=',trim($tf->tagUser()->name))->first();
+            $webhookUpdated->website_name = $st->shop_id;
 
         }
 
