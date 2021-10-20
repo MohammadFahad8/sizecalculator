@@ -38,7 +38,7 @@
                         @endphp
 
                         @forelse($other as $key=> $row)
-                        
+
                             <tr>
                                 <td>
                                     <a href="javascript:void(0)" v-on:click="productFix({{ $row->id }})" style="cursor: pointer" data-toggle="modal" data-target="#exampleModalCenter"  class="badge  p-2 m-1 {{$row->status==1?'badge-success':'badge-secondary'}}" >{{ $row->tagname }}</a>
@@ -48,6 +48,8 @@
                                     <button type="button" class="btn btn-warning btn-sm" v-on:click="viewAttributes({{ $row->id }})">Attach products</button>
                                     @else
                                     <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".{{ 'bd-example-modal-sm'.$key }}">Products</button>
+
+                                    <i class="bi bi-bootstrap-reboot" v-on:click="viewAttributes({{ $row->id }})" style="cursor: pointer"></i>
                                     @endif
                                     <div class="modal fade {{ 'bd-example-modal-sm'.$key }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                         <div class="modal-dialog  {{ (count($row->tagProducts)>1)?'modal-md':'modal-sm' }} modal-dialog-centered">
@@ -229,23 +231,23 @@
 
                     axios.get("/attach-tags/"+$id).then((res)=>
                     {
-                        
+
                         if(res.data.status == 1)
                         {
                          window.location.href = "/get/all-tags";
                         }
-                        
+
 
                     })
-                 
+
                 },
-                
+
                 gotoAttributes:function($id)
                 {
-                   
+
                          window.location.href = "attributetypes-all/view/"+$id;
-                    
-                 
+
+
                 },
 
                 productFix:function($id)
@@ -261,7 +263,7 @@
 
                             this.isLoading = false;
                             this.product  = res.data
-                            
+
                             this.variant_count = this.product.variants?this.product.variants.length:0;
 
 
