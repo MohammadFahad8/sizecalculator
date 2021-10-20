@@ -25,7 +25,7 @@ class TagsController extends Controller
         //
 
         $shop_cfg = Auth::user()->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
-        
+
         $tags=Auth::user()->api()->graph('{
             shop{
               productTags(first:200){
@@ -35,21 +35,21 @@ class TagsController extends Controller
               }
             }
           }')['body']['container']['data']['shop']['productTags']['edges'];
-          
-          
+
+
           if(count($tags)!=count(Tags::where('shop','=',Auth::user()->id)->get()))
           {
-              
-                  
+
+
         $tp = new TagsProduct();
         $tp->getAllTags(Auth::user());
-        
+
 
           }
-      
+
         //doing to initialize the data
         if(Auth::user() && count(Products::where('website_name','=', trim($shop_cfg['shop']['id']))->get())==0){
-            
+
         $tp = new TagsProduct();
         $tp->getAllProducts(Auth::user());
         }
@@ -132,8 +132,8 @@ class TagsController extends Controller
     public function productUpdateHook(Request $request)
     {
         $data = $request->all();
-        
-    
+
+
 
         Storage::put(rand()."updatehook.txt",json_encode($data));
         ByltLogs::create([
@@ -141,7 +141,7 @@ class TagsController extends Controller
             'response_of'=>'Hooks'
         ]);
         $webhookUpdated = Products::where('product_id', '=', trim($data['id']))->first();
-     
+
         if($webhookUpdated == null)
         {
             $p = Products::create([
@@ -159,7 +159,7 @@ class TagsController extends Controller
                 'size' => (strtolower($dv['option1']) == 'default title') ? 0 : strtolower($dv['option2']),
                 'price' => ($dv['price'] == null) ? null : $dv['price'],
                 'product_id' => trim($data['id']),
-                
+
             ]);
                 }
             }
@@ -172,14 +172,14 @@ class TagsController extends Controller
         $webhookUpdated->save();
         $vars = Variants::where('product_id', '=', $data['id'])->get();
         foreach($data['variants'] as $hkey =>$hookvar){
-      
+
             $vars[$hkey]->variant_id = trim($hookvar['id']);
 
             $vars[$hkey]->size = (strtolower($hookvar['option1']) == 'default title') ? 0 : strtolower($hookvar['option2']);
             $vars[$hkey]->price = ($hookvar['price'] == null) ? null : $hookvar['price'];
             $vars[$hkey]->product_id = trim($hookvar['product_id']);
             $vars[$hkey]->save();
-        
+
     }
 
 
@@ -187,25 +187,22 @@ class TagsController extends Controller
 
     public function productDeleteHook(Request $request)
     {
-        $datat =file_get_contents('php://input');
+
         $data = $request->all();
-        if($datat == null)
-        {
-            Storage::put(date("Y-m-d H:i:s")."EmptyDeletehook.txt",'$datat');    
-        }
-        Storage::put(date("Y-m-d H:i:s")."Deletehook.txt",$datat);
+
+        Storage::put(rand()."_deletehook.txt",$data);
         $webhookDelete = Products::where('product_id', '=', trim($data['id']))->first();
         if($webhookDelete != null){
             $webhookDelete->delete();
         }
-        
+
         }
-        
+
     // HOOKS END
 
     public function attachTagsToProducts($id)
     {
-        
+
         $t = Tags::where([['shop','=',Auth::user()->id],['id','=',$id]])->first();
         $matchingProds = Products::where('tags', "LIKE",'%'.$t->tagname.'%')->get();
         foreach($matchingProds as $mp)
@@ -499,14 +496,14 @@ if( count($tags) == $count)
                         $tag->tagname = $row['node'];
                         $tag->status = 0;
                         $tag->shop = Auth::user()->id;
-                        
+
                         $tag->save();
                         // $this->getAllProducts(trim($row['node']),trim($tag->id),$shop);
                     }
                     else{
 
                         $tagsall->tagname = $row['node'];
-                        
+
                         $tagsall->save();
 
                         // $this->getAllProducts(trim($row['node']),trim($tagsall->id),$shop);
