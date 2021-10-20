@@ -49,7 +49,7 @@
                                     @else
                                     <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target=".{{ 'bd-example-modal-sm'.$key }}">Products</button>
 
-                                    <i class="bi bi-bootstrap-reboot" v-on:click="viewAttributes({{ $row->id }})" style="cursor: pointer"></i>
+                                    <i class="bi bi-bootstrap-reboot m-2" v-on:click="viewAttributes({{ $row->id }})" style="cursor: pointer;font-size:large;"></i>
                                     @endif
                                     <div class="modal fade {{ 'bd-example-modal-sm'.$key }}" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                                         <div class="modal-dialog  {{ (count($row->tagProducts)>1)?'modal-md':'modal-sm' }} modal-dialog-centered">
