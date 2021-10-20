@@ -145,10 +145,10 @@ class TagsController extends Controller
         if($webhookUpdated == null)
         {
             $p = Products::create([
-                'product_id' => $data['id'],
-                'name' =>   $data['title'],
+                'product_id' => trim($data['id']),
+                'name' =>   trim($data['title']),
                 'image_link' => ($data['image'] == null) ? null : $data['image']['src'],
-                'tags' => ($data['tags'] == null) ? null : $data['tags'],
+                'tags' => ($data['tags'] == null) ? null : trim($data['tags']),
             ]);
             if($data['variants']!=null)
             {
