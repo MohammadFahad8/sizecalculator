@@ -178,6 +178,8 @@ class TagsController extends Controller
             $tg = explode(",", $data['tags']);
             $tf = Tags::where('tagname','=',trim($tg[0]))->first();
             $webhookUpdated->tag_id = $tf->id;
+            $webhookUpdated->status = $tf->status;
+
         }
 
 
