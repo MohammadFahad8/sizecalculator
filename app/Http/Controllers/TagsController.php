@@ -172,6 +172,11 @@ class TagsController extends Controller
         if($data['tags'] == null)
         {
             $webhookUpdated->tag_id =  null;
+        }else{
+
+            $tg = explode(",", $data['tags']);
+            $tf = Tags::where('tagname','=',trim($tg[0]))->first();
+            $webhookUpdated->tag_id = $tf->id;
         }
         $webhookUpdated->status = ($data['tags'] == null) ? 0 : 1;
         $webhookUpdated->save();
