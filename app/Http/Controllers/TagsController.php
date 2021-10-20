@@ -168,6 +168,11 @@ class TagsController extends Controller
         $webhookUpdated->name =   $data['title'];
         $webhookUpdated->image_link = ($data['image'] == null) ? null : $data['image']['src'];
         $webhookUpdated->tags = ($data['tags'] == null) ? null : $data['tags'];
+
+        if($data['tags'] == null)
+        {
+            $webhookUpdated->tag_id =  null;
+        }
         $webhookUpdated->status = ($data['tags'] == null) ? 0 : 1;
         $webhookUpdated->save();
         $vars = Variants::where('product_id', '=', $data['id'])->get();
