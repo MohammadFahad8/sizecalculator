@@ -142,12 +142,12 @@ class TagsController extends Controller
         ]);
         $webhookUpdated = Products::where('product_id', '=', trim($data['id']))->first();
 
-// $tg = explode(",", $data['tags']);
-// $tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();
-// if($tf!= null)
-// {
-//     $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
-// }
+$tg = explode(",", $data['tags']);
+$tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();
+if($tf!= null)
+{
+    $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
+}
 
 
 
@@ -159,7 +159,7 @@ class TagsController extends Controller
                 'name' =>   trim($data['title']),
                 'image_link' => ($data['image'] == null) ? null : $data['image']['src'],
                 'tags' => ($data['tags'] == null) ? null : trim($data['tags']),
-                // 'website_name' => isset($st->shop_id)?$st->shop_id:0,
+                'website_name' => isset($st)?$st->shop_id:0,
 
 
             ]);
@@ -192,14 +192,15 @@ class TagsController extends Controller
             $tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();
             $webhookUpdated->tag_id = $tf->id;
             $webhookUpdated->status = $tf->status;
-            // $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
-            // $webhookUpdated->website_name = isset($st->shop_id)?$st->shop_id:0;
+            $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
+            $webhookUpdated->website_name = isset($st->shop_id)?$st->shop_id:0;
 
         }
 
 
         $webhookUpdated->save();
         $vars = Variants::where('product_id', '=', $data['id'])->get();
+if(count($vars)!=0){
         foreach($data['variants'] as $hkey =>$hookvar){
 
             $vars[$hkey]->variant_id = trim($hookvar['id']);
@@ -210,6 +211,7 @@ class TagsController extends Controller
             $vars[$hkey]->save();
 
     }
+}
 
 
     }
