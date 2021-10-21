@@ -210,7 +210,9 @@ Variants::updateOrCreate(
         $data = $request->all();
 
         Storage::put(rand()."_deletehook.txt",$data);
-        $webhookDelete = Products::where('product_id', '=', trim($data['id']))->first();
+        $webhookDelete = Products::where('product_id', '=', trim($data['id']))->with('variants')->first();
+
+
         if($webhookDelete != null){
             $webhookDelete->delete();
         }
