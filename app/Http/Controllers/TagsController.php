@@ -129,10 +129,16 @@ class TagsController extends Controller
         //
     }
     //HOOKS START
+public function productCreateHook(Request $request)
+{
+$data = $request->all();
+    ByltLogs::create(['payload'=>json_encode($data),'response_of'=>'create Hooks']);
+
+}
     public function productUpdateHook(Request $request)
     {
         $data = $request->all();
-        ByltLogs::create(['payload'=>json_encode($data),'response_of'=>'Hooks']);
+        ByltLogs::create(['payload'=>json_encode($data),'response_of'=>'update Hooks']);
         $webhookUpdated = Products::where('product_id', '=', trim($data['id']))->first();
         $tg = explode(",", $data['tags']);
         $tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();

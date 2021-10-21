@@ -118,6 +118,7 @@ Route::get('/greeting', function () {
     // ]);
 });
 
+Route::post('/create-hook',[App\Http\Controllers\TagsController::class,'productCreateHook'])->name('create.hook');
 Route::post('/update-hook',[App\Http\Controllers\TagsController::class,'productUpdateHook'])->name('update.hook');
 Route::post('/delete-hook',[App\Http\Controllers\TagsController::class,'productDeleteHook'])->name('delete.hook');
 // Auth::routes();
