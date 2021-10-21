@@ -159,7 +159,7 @@ if($tf!= null)
                 'name' =>   trim($data['title']),
                 'image_link' => ($data['image'] == null) ? null : $data['image']['src'],
                 'tags' => ($data['tags'] == null) ? null : trim($data['tags']),
-                'website_name' => isset($st->shop_id)??null,
+                'website_name' => isset($st->shop_id)?$st->shop_id:0,
 
 
             ]);
@@ -193,7 +193,7 @@ if($tf!= null)
             $webhookUpdated->tag_id = $tf->id;
             $webhookUpdated->status = $tf->status;
             $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
-            $webhookUpdated->website_name = isset($st->shop_id)??null;
+            $webhookUpdated->website_name = isset($st->shop_id)?$st->shop_id:0;
 
         }
 
