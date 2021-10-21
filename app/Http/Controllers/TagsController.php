@@ -134,6 +134,30 @@ public function productCreateHook(Request $request)
 $data = $request->all();
     ByltLogs::create(['payload'=>json_encode($data),'response_of'=>'create Hooks']);
 
+        $p = Products::create([
+            'product_id' => trim($data['id']),
+            'name' =>   trim($data['title']),
+            'image_link' => ($data['image'] == null) ? null : $data['image']['src'],
+            'tags' => ($data['tags'] == null) ? null : trim($data['tags']),
+            'website_name' => isset($st)?$st->shop_id:0,
+
+
+        ]);
+        if($data['variants']!=null)
+        {
+            foreach($data['variants'] as $dv){
+        Variants::create([
+            'variant_id' => trim($dv['id']),
+
+            'size' => (strtolower($dv['option1']) == 'default title') ? 0 : strtolower($dv['option2']),
+            'price' => ($dv['price'] == null) ? null : $dv['price'],
+            'product_id' => trim($data['id']),
+
+        ]);
+            }
+        }
+
+
 }
     public function productUpdateHook(Request $request)
     {
@@ -144,31 +168,7 @@ $data = $request->all();
         $tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();
     ($tf!= null)? $st = Settings::where('name','=',trim($tf->tagUser->name))->first():'';
 
-        if($webhookUpdated == null)
-        {
-            $p = Products::create([
-                'product_id' => trim($data['id']),
-                'name' =>   trim($data['title']),
-                'image_link' => ($data['image'] == null) ? null : $data['image']['src'],
-                'tags' => ($data['tags'] == null) ? null : trim($data['tags']),
-                'website_name' => isset($st)?$st->shop_id:0,
 
-
-            ]);
-            if($data['variants']!=null)
-            {
-                foreach($data['variants'] as $dv){
-            Variants::create([
-                'variant_id' => trim($dv['id']),
-
-                'size' => (strtolower($dv['option1']) == 'default title') ? 0 : strtolower($dv['option2']),
-                'price' => ($dv['price'] == null) ? null : $dv['price'],
-                'product_id' => trim($data['id']),
-
-            ]);
-                }
-            }
-        }
         $webhookUpdated->product_id =  trim($data['id']);
         $webhookUpdated->name =   $data['title'];
         $webhookUpdated->image_link = ($data['image'] == null) ? null : $data['image']['src'];
