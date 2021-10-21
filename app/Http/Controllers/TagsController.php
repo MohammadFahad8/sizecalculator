@@ -199,7 +199,7 @@ if($tf!= null)
 
 
         $webhookUpdated->save();
-        $vars = Variants::where('product_id', '=', $data['id'])->get();
+        $vars = Variants::where('product_id', '=', trim($data['id']))->get();
 if(count($vars)!=0){
         foreach($data['variants'] as $hkey =>$hookvar){
 
