@@ -144,8 +144,12 @@ class TagsController extends Controller
 
 $tg = explode(",", $data['tags']);
 $tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();
+if($tf!= null)
+{
+    $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
+}
 
-$st = Settings::where('name','=',trim($tf->tagUser->name))->first();
+
 
 
         if($webhookUpdated == null)
@@ -155,7 +159,7 @@ $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
                 'name' =>   trim($data['title']),
                 'image_link' => ($data['image'] == null) ? null : $data['image']['src'],
                 'tags' => ($data['tags'] == null) ? null : trim($data['tags']),
-                'website_name' => $st->shop_id
+                'website_name' => $st->shop_id??null,
 
 
             ]);
@@ -189,7 +193,7 @@ $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
             $webhookUpdated->tag_id = $tf->id;
             $webhookUpdated->status = $tf->status;
             $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
-            $webhookUpdated->website_name = $st->shop_id;
+            $webhookUpdated->website_name = $st->shop_id??null;
 
         }
 
