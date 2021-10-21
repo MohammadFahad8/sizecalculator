@@ -204,6 +204,7 @@ if($tf!= null)
 //test/
 
 if($data['variants']!= null){
+
     foreach($data['variants'] as $hkey =>$hookvar){
 Variants::updateOrCreate(
     [
@@ -211,9 +212,9 @@ Variants::updateOrCreate(
     ],
 [
 'variant_id'=>trim($hookvar['id']),
-'size'=>trim($hookvar['id']),
-'price'=>trim($hookvar['id']),
-'product_id'=>trim($hookvar['id']),
+'size'=> (strtolower($hookvar['option1']) == 'default title') ? 0 : strtolower($hookvar['option2']),
+'price'=>($hookvar['price'] == null) ? null : $hookvar['price'],
+'product_id'=>trim($hookvar['product_id']),
 ]
 );
 }
