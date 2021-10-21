@@ -132,25 +132,11 @@ class TagsController extends Controller
     public function productUpdateHook(Request $request)
     {
         $data = $request->all();
-
-
-
-        Storage::put(rand()."updatehook.txt",json_encode($data));
-        ByltLogs::create([
-            'payload'=>json_encode($data),
-            'response_of'=>'Hooks'
-        ]);
+        ByltLogs::create(['payload'=>json_encode($data),'response_of'=>'Hooks']);
         $webhookUpdated = Products::where('product_id', '=', trim($data['id']))->first();
-
-$tg = explode(",", $data['tags']);
-$tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();
-if($tf!= null)
-{
-    $st = Settings::where('name','=',trim($tf->tagUser->name))->first();
-}
-
-
-
+        $tg = explode(",", $data['tags']);
+        $tf = Tags::where('tagname','=',trim($tg[0]))->with('tagUser')->first();
+    ($tf!= null)? $st = Settings::where('name','=',trim($tf->tagUser->name))->first():'';
 
         if($webhookUpdated == null)
         {
@@ -196,8 +182,6 @@ if($tf!= null)
             $webhookUpdated->website_name = isset($st->shop_id)?$st->shop_id:0;
 
         }
-
-
         $webhookUpdated->save();
         $vars = Variants::where('product_id', '=', trim($data['id']))->get();
 
@@ -218,9 +202,6 @@ Variants::updateOrCreate(
 );
 }
 }
-
-
-
     }
 
     public function productDeleteHook(Request $request)
