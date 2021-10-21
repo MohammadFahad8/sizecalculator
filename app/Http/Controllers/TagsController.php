@@ -208,8 +208,9 @@ Variants::updateOrCreate(
     {
 
         $data = $request->all();
+        ByltLogs::create(['payload'=>json_encode($data),'response_of'=>'Deleted Hooks']);
 
-        Storage::put(rand()."_deletehook.txt",$data);
+
         $webhookDelete = Products::where('product_id', '=', trim($data['id']))->with('variants')->first();
 
         if($webhookDelete != null){
