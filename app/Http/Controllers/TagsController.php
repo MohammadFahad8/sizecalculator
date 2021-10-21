@@ -200,18 +200,40 @@ if($tf!= null)
 
         $webhookUpdated->save();
         $vars = Variants::where('product_id', '=', trim($data['id']))->get();
-if(count($vars)!=0){
-        foreach($data['variants'] as $hkey =>$hookvar){
+//zone
+//test/
 
-            $vars[$hkey]->variant_id = trim($hookvar['id']);
-
-            $vars[$hkey]->size = (strtolower($hookvar['option1']) == 'default title') ? 0 : strtolower($hookvar['option2']);
-            $vars[$hkey]->price = ($hookvar['price'] == null) ? null : $hookvar['price'];
-            $vars[$hkey]->product_id = trim($hookvar['product_id']);
-            $vars[$hkey]->save();
-
-    }
+if($data['variants']!= null){
+    foreach($data['variants'] as $hkey =>$hookvar){
+Variants::updateOrCreate(
+    [
+'variant_id'=>trim($hookvar['id'])
+    ],
+[
+'variant_id'=>trim($hookvar['id']),
+'size'=>trim($hookvar['id']),
+'price'=>trim($hookvar['id']),
+'product_id'=>trim($hookvar['id']),
+]
+);
 }
+}
+//testend
+// if(count($vars)!=0){
+// if($data['variants']!= null){
+//         foreach($data['variants'] as $hkey =>$hookvar){
+// if(isset($vars[$hkey])){
+//             $vars[$hkey]->variant_id = trim($hookvar['id']);
+
+//             $vars[$hkey]->size = (strtolower($hookvar['option1']) == 'default title') ? 0 : strtolower($hookvar['option2']);
+//             $vars[$hkey]->price = ($hookvar['price'] == null) ? null : $hookvar['price'];
+//             $vars[$hkey]->product_id = trim($hookvar['product_id']);
+//             $vars[$hkey]->save();
+//         }
+//     }
+// }
+// }
+//zone
 
 
     }
