@@ -208,7 +208,7 @@ if($data['variants']!= null){
     foreach($data['variants'] as $hkey =>$hookvar){
 Variants::updateOrCreate(
     [
-'variant_id'=>trim($hookvar['id'])
+'variant_id'=>trim($hookvar[$hkey]['id'])
     ],
 [
 'variant_id'=>trim($hookvar['id']),
