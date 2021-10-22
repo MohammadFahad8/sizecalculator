@@ -271,7 +271,7 @@ public function getAllProducts($shop,$url=null,$count=null)
     $shop_config = $shop_cfg['shop'];
 
     Variants::truncate();
-    // Products::truncate();
+
 
     foreach ($prod as $row) {
 
@@ -289,9 +289,7 @@ public function getAllProducts($shop,$url=null,$count=null)
             $product->website_name = trim($shop_config['id']);
 
             $product->save();
-            // $tagProduct = Products::where('product_id','=',$product->product_id)->first();
-            // $tagProduct->tag_id = $tid;
-            // $tagProduct->save();
+
 
 
         } else {
@@ -306,18 +304,6 @@ public function getAllProducts($shop,$url=null,$count=null)
 
             $product->save();
 
-            // $tagProduct = Products::where('product_id','=',$product->product_id)->where('tags','=',trim($tname))->first();
-            // if($tagProduct!=null)
-            // {
-
-            //     $tagProduct->tag_id = $tid;
-            //     $tagProduct->save();
-
-            // }
-
-
-
-            // Attributetypes::where('product_id','=',$product->product_id)->get();
         }
 
 
