@@ -241,7 +241,7 @@ public function getAllProducts($shop,$url=null,$count=null)
 
 
     if($count!=null){
-        echo $url."<br>";
+
         $productsall = $shop->api()->rest('GET', "/admin/api/2021-07/products.json", ['page_info' => $url]);
 
 
