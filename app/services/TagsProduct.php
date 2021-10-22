@@ -119,7 +119,7 @@ if( count($tags) == $count)
 
 //getting product and variants
 
-public function getAllProducts($shop)
+public function oldgetAllProducts($shop)
 {
 
     $productsall = $shop->api()->rest('GET', '/admin/api/2021-07/products.json')['body']['container'];
@@ -235,4 +235,133 @@ public function getAllProducts($shop)
 //
 //        ]);
 }
+public function getAllProducts($shop,$url=null,$count=null)
+{
+    $productsall = 0;
+
+
+    if($count!=null){
+        echo $url."<br>";
+        $productsall = $shop->api()->rest('GET', "/admin/api/2021-07/products.json", ['page_info' => $url]);
+
+
+
+
+    }else{
+        $productsall = $shop->api()->rest('GET','/admin/api/2021-07/products.json');
+    }
+
+
+
+
+
+    $nextPageLink = $productsall['link']['container']['next'];
+
+
+
+
+    $prod = $productsall['body']['container']['products'];
+
+
+
+    $shop_cfg = $shop->api()->rest('GET', '/admin/api/2021-07/shop.json')['body']['container'];
+
+
+
+    $shop_config = $shop_cfg['shop'];
+
+    Variants::truncate();
+    // Products::truncate();
+
+    foreach ($prod as $row) {
+
+        $product = Products::where('product_id', '=', trim($row['id']))->first();
+
+
+        if ($product == null) {
+
+            $product = new Products();
+            $product->product_id =  trim($row['id']);
+            $product->name =   $row['title'];
+            $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
+            $product->tags = ($row['tags'] == null) ? null : $row['tags'];
+
+            $product->website_name = trim($shop_config['id']);
+
+            $product->save();
+            // $tagProduct = Products::where('product_id','=',$product->product_id)->first();
+            // $tagProduct->tag_id = $tid;
+            // $tagProduct->save();
+
+
+        } else {
+
+
+            $product->product_id =  trim($row['id']);
+            $product->name =   $row['title'];
+            $product->image_link = ($row['image'] == null) ? null : $row['image']['src'];
+            $product->tags = ($row['tags'] == null) ? null : $row['tags'];
+
+            $product->website_name =  trim($shop_config['id']);
+
+            $product->save();
+
+            // $tagProduct = Products::where('product_id','=',$product->product_id)->where('tags','=',trim($tname))->first();
+            // if($tagProduct!=null)
+            // {
+
+            //     $tagProduct->tag_id = $tid;
+            //     $tagProduct->save();
+
+            // }
+
+
+
+            // Attributetypes::where('product_id','=',$product->product_id)->get();
+        }
+
+
+        if ($row['variants'] != null) {
+
+            foreach ($row['variants'] as $variant) {
+
+
+                $vari = new Variants();
+                $vari->variant_id = trim($variant['id']);
+
+                $vari->size = (strtolower($variant['option1']) == 'default title') ? 0 : strtolower($variant['option2']);
+                $vari->price = ($variant['price'] == null) ? null : $variant['price'];
+                $vari->product_id = trim($variant['product_id']);
+                $vari->save();
+            }
+        } else {
+            echo 'no variants';
+        }
+    }
+      $shopify_product_count = $shop->api()->rest('GET','/admin/api/2021-10/products/count.json')['body']['container'];
+
+    $initcount = 0;
+
+
+    ($count!=null)?$initcount=$count:$initcount = 50;
+
+    if(count(Products::latest()->get())==$initcount){
+
+    if(count(Products::latest()->get())<  $shopify_product_count['count'])
+    {
+        $initcount = $initcount + 50;
+
+
+
+
+        $this->getAllProducts($shop,$nextPageLink,$initcount);
+
+    }
+    }
+
+}
+
+
+
+
 }
