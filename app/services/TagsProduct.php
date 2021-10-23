@@ -270,9 +270,6 @@ public function getAllProducts($shop,$url=null,$count=null)
 
     $shop_config = $shop_cfg['shop'];
 
-
-
-
     foreach ($prod as $row) {
 
         $product = Products::where('product_id', '=', trim($row['id']))->first();
@@ -289,8 +286,6 @@ public function getAllProducts($shop,$url=null,$count=null)
             $product->website_name = trim($shop_config['id']);
 
             $product->save();
-
-
 
         } else {
 
