@@ -270,7 +270,7 @@ public function getAllProducts($shop,$url=null,$count=null)
 
     $shop_config = $shop_cfg['shop'];
 
-    // Variants::truncate();
+
 
 
     foreach ($prod as $row) {
