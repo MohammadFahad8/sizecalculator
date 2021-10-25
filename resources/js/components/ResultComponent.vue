@@ -276,7 +276,8 @@ const sizes = {
 const dict = new Map(Object.entries(sizes));
 
 
-var result = this.product.variants.sort((a, b) => dict.get(a) - dict.get(b));
+var result = this.product.variants.sort((a, b) => dict.get(a.option2) - dict.get(b.option2));
+console.log(result);
 this.product.variants = result
             this.getAttributes();
 
