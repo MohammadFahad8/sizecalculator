@@ -3575,6 +3575,19 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 
         return res;
       }, []);
+      var sizes = {
+        xs: 100,
+        s: 200,
+        m: 300,
+        l: 400,
+        xl: 500,
+        xxl: 600
+      };
+      var dict = new Map(Object.entries(sizes));
+      var result = this.product.variants.sort(function (a, b) {
+        return dict.get(a) - dict.get(b);
+      });
+      this.product.variants = results;
       this.getAttributes();
       var tabnumber = 1; // EventBus.$on('resetSlides',tabnumber=>{
       //     this.restart();

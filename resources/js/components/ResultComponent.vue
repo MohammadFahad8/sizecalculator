@@ -265,6 +265,19 @@ var exists = res.some(function(t){ return (t.option2 === item.option2 );});
         res.push(item);
      }
 return res; },[]);
+const sizes = {
+  xs: 100,
+  s: 200,
+  m: 300,
+  l: 400,
+  xl: 500,
+  xxl: 600,
+};
+const dict = new Map(Object.entries(sizes));
+
+
+var result = this.product.variants.sort((a, b) => dict.get(a) - dict.get(b));
+this.product.variants = results
             this.getAttributes();
 
             var tabnumber = 1;

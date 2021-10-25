@@ -14,7 +14,7 @@
         </div>
        </div>
     <div class="card-body">
-        
+
 <table class="table table-bordered  " style="width:100% !important;">
     <thead>
 <tr>
@@ -30,14 +30,14 @@
             <td>{{ $size->name }}</td>
             <td>{{ $size->alias }}</td>
             <td>{{ $size->variant??'n/a' }}</td>
-            
+
             <td><a href="{{ route('sizes.edit', ['id'=>$size->id]) }}" class="btn btn-info">Edit</a></td>
             <td><a href="{{ route('sizes.delete',['id'=>$size->id]) }}" onclick="return confirm('Are you sure?')" class="btn btn-danger">Delete</a></td>
 
     </tr>
     @empty
     @endforelse
- 
+
 
     </tbody>
 </table>
