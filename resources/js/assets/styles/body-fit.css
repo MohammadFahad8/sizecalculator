@@ -30,10 +30,12 @@
     margin-top: 40px !important;
 }
 
+
 /* .dfOagu {
     margin-left: 50px;
     margin-top: 0px;
 } */
+
 
 /* .dfOagu-second {
     margin-left: 10px;
@@ -106,7 +108,6 @@
 input[type="checkbox"]:checked {
     background: rgb(2, 2, 2);
 }
-
 
 .no-gutters {
     margin-right: 0;
@@ -346,7 +347,6 @@ input::-webkit-inner-spin-button {
 
 .size-position {
     margin-left: -80px !important;
-
 }
 
 body {
@@ -363,8 +363,6 @@ body {
     /* min-width: 300px; */
     /* margin-top: 135px !important; */
 }
-
-
 
 input {
     padding: 10px;
@@ -553,7 +551,7 @@ button:hover {
     border-radius: 2px;
     padding: 8px 15px;
     background-color: #000000;
-    color:white;
+    color: white;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     white-space: normal;
@@ -615,6 +613,8 @@ body *::after,
 body *::before {
     box-sizing: border-box;
 }
+
+
 /*
 h1 {
     font-size: 2rem;
@@ -648,6 +648,7 @@ h1 {
     transition: transform 0.28s ease-in-out, -webkit-transform 0.28s ease-in-out;
     z-index: -1;
 }
+
 
 /* .container:hover::before {
     -webkit-transform: scale(1);
@@ -806,7 +807,7 @@ fieldset {
 .form-group select:focus,
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none;
+    outline: none !im
 }
 
 .form-group select:focus~.control-label,
@@ -1180,7 +1181,7 @@ input:focus {
     width: 150% !important;
     gap: 5px;
     grid-template-columns: 1fr 1fr 1fr;
-    padding: 0px 10px ;
+    padding: 0px 10px;
 }
 
 .fit-advisor-chest-tab-item {
@@ -1250,6 +1251,7 @@ input:focus {
     padding: 10px 20px;
     /* box-shadow: rgb(0 0 0 / 4%) 3px 3px 0px 0px; */
 }
+
 
 /* .next {
     margin-top: -10px !important;
@@ -1431,16 +1433,14 @@ input:focus {
         margin-left: 50px;
          margin-top: 0px  !important  ;
     } */
-    .spinner-position{
+    .spinner-position {
         width: 2rem !important;
         height: 2rem !important;
-        margin-left:0px !important;
-
-      }
+        margin-left: 0px !important;
+    }
     /* smartphones, iPhone, portrait 480x320 phones */
-    .ml-xl-spinner
-    {
-        margin-left:12rem !important;
+    .ml-xl-spinner {
+        margin-left: 12rem !important;
     }
     .result-size {
         width: 100%;
@@ -1451,7 +1451,7 @@ input:focus {
     .m-result {
         text-align: center !important;
         margin-top: 0px !important;
-        visibility: visible ;
+        visibility: visible;
         margin-bottom: 4.5em !important;
         margin-right: 0px !important;
     }
@@ -1618,7 +1618,6 @@ input:focus {
         padding: 8px 15px;
         background-color: #000000;
         color: white;
-
         text-transform: uppercase;
         letter-spacing: 0.08em;
         white-space: normal;
@@ -2183,10 +2182,12 @@ input:focus {
 .my-3 {
     margin-top: 1rem !important;
 }
+
 .mtf-3,
 .myf-3 {
     margin-top: 1.1rem !important;
 }
+
 .mr-3,
 .mx-3 {
     margin-right: 1rem !important;
@@ -2244,8 +2245,6 @@ input:focus {
 .myf-5 {
     margin-top: 2rem !important;
 }
-
-
 
 .mr-5,
 .mx-5 {
@@ -2371,7 +2370,6 @@ input:focus {
 .myf-n6 {
     margin-top: -6.5rem !important;
 }
-
 
 .mt-n6,
 .my-n6 {
@@ -2546,7 +2544,7 @@ input:focus {
     .m-result {
         text-align: center !important;
         margin-top: 0px !important;
-        visibility: visible ;
+        visibility: visible;
         margin-bottom: -5.5em !important;
         margin-right: 50px !important;
     }
@@ -3272,6 +3270,7 @@ input:focus {
 .text-center {
     text-align: center !important;
 }
+
 .text-truncate {
     overflow: hidden;
     text-overflow: ellipsis;
@@ -3285,50 +3284,60 @@ input:focus {
 .text-right {
     text-align: right !important;
 }
+
 .ml-xl-6,
-    .mx-xl-6 {
-        margin-left: 6rem !important;
-    }.ml-xl-11,
-    .mx-xl-11 {
-        margin-left: 11rem !important;
-    }
-    .ml-xl-12,
-    .mx-xl-12 {
-        margin-left: 12rem !important;
-    }
-    .center-force {
-        margin: 0;
-        position: sticky;
-        top: 50%;
-        left: 50%;
-        -ms-transform: translate(-50%, -50%);
-        transform: translate(-50%, -50%);
-      }
-      .spinner-position{
-        width: 3rem;
-        height: 3rem;
-        margin-left: 0px;
-      }
-      /* .dfOagu-411w {
+.mx-xl-6 {
+    margin-left: 6rem !important;
+}
+
+.ml-xl-11,
+.mx-xl-11 {
+    margin-left: 11rem !important;
+}
+
+.ml-xl-12,
+.mx-xl-12 {
+    margin-left: 12rem !important;
+}
+
+.center-force {
+    margin: 0;
+    position: sticky;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.spinner-position {
+    width: 3rem;
+    height: 3rem;
+    margin-left: 0px;
+}
+
+
+/* .dfOagu-411w {
         margin-left: 50px;
         margin-top: 5px;
     } */
-    .someclass {
-        cursor: default
-     }
 
-                                                                                            /* bodyfit-modal */
+.someclass {
+    cursor: default
+}
 
+
+/* bodyfit-modal */
 
 .bodyfit-modal-open {
     overflow: hidden;
-  }
-  .bodyfit-modal-open .bodyfit-modal {
+}
+
+.bodyfit-modal-open .bodyfit-modal {
     overflow-x: hidden;
     overflow-y: auto;
-  }
+}
 
-  .bodyfit-modal {
+.bodyfit-modal {
     position: fixed;
     top: 0;
     left: 0;
@@ -3338,72 +3347,83 @@ input:focus {
     height: 100%;
     overflow: hidden;
     outline: 0;
-  }
+}
 
-  .bodyfit-modal-dialog {
+.bodyfit-modal-dialog {
     position: relative;
     width: auto;
     margin: 0.5rem;
     pointer-events: none;
-  }
-  .bodyfit-modal.fade .bodyfit-modal-dialog {
+}
+
+.bodyfit-modal.fade .bodyfit-modal-dialog {
     transition: transform 0.3s ease-out;
     transform: translate(0, -50px);
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .bodyfit-modal.fade .bodyfit-modal-dialog {
-      transition: none;
-    }
-  }
-  .bodyfit-modal.show .bodyfit-modal-dialog {
-    transform: none;
-  }
-  .bodyfit-modal.bodyfit-modal-static .bodyfit-modal-dialog {
-    transform: scale(1.02);
-  }
+}
 
-  .bodyfit-modal-dialog-scrollable {
+@media (prefers-reduced-motion: reduce) {
+    .bodyfit-modal.fade .bodyfit-modal-dialog {
+        transition: none;
+    }
+}
+
+.bodyfit-modal.show .bodyfit-modal-dialog {
+    transform: none;
+}
+
+.bodyfit-modal.bodyfit-modal-static .bodyfit-modal-dialog {
+    transform: scale(1.02);
+}
+
+.bodyfit-modal-dialog-scrollable {
     display: flex;
     max-height: calc(100% - 1rem);
-  }
-  .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {
+}
+
+.bodyfit-modal-dialog-scrollable .bodyfit-modal-content {
     max-height: calc(100vh - 1rem);
     overflow: hidden;
-  }
-  .bodyfit-modal-dialog-scrollable .bodyfit-modal-header,
-  .bodyfit-modal-dialog-scrollable .bodyfit-modal-footer {
-    flex-shrink: 0;
-  }
-  .bodyfit-modal-dialog-scrollable .bodyfit-modal-body {
-    overflow-y: auto;
-  }
+}
 
-  .bodyfit-modal-dialog-centered {
+.bodyfit-modal-dialog-scrollable .bodyfit-modal-header,
+.bodyfit-modal-dialog-scrollable .bodyfit-modal-footer {
+    flex-shrink: 0;
+}
+
+.bodyfit-modal-dialog-scrollable .bodyfit-modal-body {
+    overflow-y: auto;
+}
+
+.bodyfit-modal-dialog-centered {
     display: flex;
     align-items: center;
     min-height: calc(100% - 1rem);
-  }
-  .bodyfit-modal-dialog-centered::before {
+}
+
+.bodyfit-modal-dialog-centered::before {
     display: block;
     height: calc(100vh - 1rem);
     height: -webkit-min-content;
     height: -moz-min-content;
     height: min-content;
     content: "";
-  }
-  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable {
+}
+
+.bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable {
     flex-direction: column;
     justify-content: center;
     height: 100%;
-  }
-  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable .bodyfit-modal-content {
-    max-height: none;
-  }
-  .bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable::before {
-    content: none;
-  }
+}
 
-  .bodyfit-modal-content {
+.bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable .bodyfit-modal-content {
+    max-height: none;
+}
+
+.bodyfit-modal-dialog-centered.bodyfit-modal-dialog-scrollable::before {
+    content: none;
+}
+
+.bodyfit-modal-content {
     position: relative;
     display: flex;
     flex-direction: column;
@@ -3414,9 +3434,9 @@ input:focus {
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 0.3rem;
     outline: 0;
-  }
+}
 
-  .bodyfit-modal-backdrop {
+.bodyfit-modal-backdrop {
     position: fixed;
     top: 0;
     left: 0;
@@ -3424,15 +3444,17 @@ input:focus {
     width: 100vw;
     height: 100vh;
     background-color: #000;
-  }
-  .bodyfit-modal-backdrop.fade {
-    opacity: 0;
-  }
-  .bodyfit-modal-backdrop.show {
-    opacity: 0.5;
-  }
+}
 
-  .bodyfit-modal-header {
+.bodyfit-modal-backdrop.fade {
+    opacity: 0;
+}
+
+.bodyfit-modal-backdrop.show {
+    opacity: 0.5;
+}
+
+.bodyfit-modal-header {
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
@@ -3440,24 +3462,25 @@ input:focus {
     border-bottom: 1px solid #dee2e6;
     border-top-left-radius: calc(0.3rem - 1px);
     border-top-right-radius: calc(0.3rem - 1px);
-  }
-  .bodyfit-modal-header .close {
+}
+
+.bodyfit-modal-header .close {
     padding: 1rem 1rem;
     margin: -1rem -1rem -1rem auto;
-  }
+}
 
-  .bodyfit-modal-title {
+.bodyfit-modal-title {
     margin-bottom: 0;
     line-height: 1.6;
-  }
+}
 
-  .bodyfit-modal-body {
+.bodyfit-modal-body {
     position: relative;
     flex: 1 1 auto;
     padding: 1rem;
-  }
+}
 
-  .bodyfit-modal-footer {
+.bodyfit-modal-footer {
     display: flex;
     flex-wrap: wrap;
     align-items: center;
@@ -3466,67 +3489,66 @@ input:focus {
     border-top: 1px solid #dee2e6;
     border-bottom-right-radius: calc(0.3rem - 1px);
     border-bottom-left-radius: calc(0.3rem - 1px);
-  }
-  .bodyfit-modal-footer > * {
-    margin: 0.25rem;
-  }
+}
 
-  .bodyfit-modal-scrollbar-measure {
+.bodyfit-modal-footer>* {
+    margin: 0.25rem;
+}
+
+.bodyfit-modal-scrollbar-measure {
     position: absolute;
     top: -9999px;
     width: 50px;
     height: 50px;
     overflow: scroll;
-  }
+}
 
-  @media (min-width: 576px) {
+@media (min-width: 576px) {
     .bodyfit-modal-dialog {
-      max-width: 500px;
-      margin: 1.75rem auto;
+        max-width: 500px;
+        margin: 1.75rem auto;
     }
-
     .bodyfit-modal-dialog-scrollable {
-      max-height: calc(100% - 3.5rem);
+        max-height: calc(100% - 3.5rem);
     }
     .bodyfit-modal-dialog-scrollable .bodyfit-modal-content {
-      max-height: calc(100vh - 3.5rem);
+        max-height: calc(100vh - 3.5rem);
     }
-
     .bodyfit-modal-dialog-centered {
-      min-height: calc(100% - 3.5rem);
+        min-height: calc(100% - 3.5rem);
     }
     .bodyfit-modal-dialog-centered::before {
-      height: calc(100vh - 3.5rem);
-      height: -webkit-min-content;
-      height: -moz-min-content;
-      height: min-content;
+        height: calc(100vh - 3.5rem);
+        height: -webkit-min-content;
+        height: -moz-min-content;
+        height: min-content;
     }
-
     .bodyfit-modal-sm {
-      max-width: 300px;
+        max-width: 300px;
     }
-  }
-  @media (min-width: 992px) {
+}
+
+@media (min-width: 992px) {
     .bodyfit-modal-lg,
-  .bodyfit-modal-xl {
-      max-width: 800px;
-    }
-  }
-  @media (min-width: 1200px) {
     .bodyfit-modal-xl {
-      max-width: 1140px;
+        max-width: 800px;
     }
-  }
-  .text-size-input
-  {
-      font-size:medium !important;
-  }
+}
+
+@media (min-width: 1200px) {
+    .bodyfit-modal-xl {
+        max-width: 1140px;
+    }
+}
+
+.text-size-input {
+    font-size: medium !important;
+}
 
 
- /* This will style any <img> element in .parent div */
+/* This will style any <img> element in .parent div */
 
- .x-custom-container
- {
+.x-custom-container {
     position: relative;
     max-width: 53rem;
     margin-left: -7.5rem !important;
@@ -3534,23 +3556,23 @@ input:focus {
     width: 170%;
     padding: 3rem 5rem 0;
     border-radius: 1px;
- }
-.close-custom
-{
-    color:#000;
+}
+
+.close-custom {
+    color: #000;
     font-size: 2em;
     text-decoration: none;
 }
+
 .close-custom:hover,
-.close-custom:visited
-{
+.close-custom:visited {
     font-size: 2em;
     text-decoration: none;
-    color:#000;
+    color: #000;
 }
+
 
 /* //spinner new */
-
 
 .blueBg {
     background-image: linear-gradient(90deg, #979494, #f3f3f3);
@@ -3594,7 +3616,6 @@ input:focus {
         -webkit-transform: scale(0);
         transform: scale(0)
     }
-
     100% {
         opacity: 0;
         -webkit-transform: scale(1);
@@ -3608,7 +3629,6 @@ input:focus {
         -webkit-transform: scale(0);
         transform: scale(0)
     }
-
     100% {
         opacity: 0;
         -webkit-transform: scale(1);
@@ -3630,28 +3650,31 @@ input:focus {
     animation-delay: .6s;
     -webkit-animation-delay: .6s
 }
-.bylt-header
-{
-    display:none;
+
+.bylt-header {
+    display: none;
 }
-.modal-backdrop
-{
-z-index: -1 !important;
+
+.modal-backdrop {
+    z-index: -1 !important;
 }
-.backbtnattr:hover{
-color:white;
-background-color: #000000;
+
+.backbtnattr:hover {
+    color: white;
+    background-color: #000000;
     text-decoration: none;
-
-}.backbtnattr:focus{
-color:white;
-background-color: #000000;
-     text-decoration: none;
-
 }
- .backbtnattr{
-     text-decoration: none;
- }
+
+.backbtnattr:focus {
+    color: white;
+    background-color: #000000;
+    text-decoration: none;
+}
+
+.backbtnattr {
+    text-decoration: none;
+}
+
 .fade-in-image {
     animation: fadeIn 2s;
     -webkit-animation: fadeIn 2s;
@@ -3659,30 +3682,53 @@ background-color: #000000;
     -o-animation: fadeIn 2s;
     -ms-animation: fadeIn 2s;
 }
+
 @keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-moz-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-webkit-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-o-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
 
 @-ms-keyframes fadeIn {
-    0% {opacity:0;}
-    100% {opacity:1;}
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
 }
+
+
 /* Just add .fade-out class to element */
 
 .fade-out {
@@ -3698,4 +3744,3 @@ background-color: #000000;
         opacity: 0;
     }
 }
-
