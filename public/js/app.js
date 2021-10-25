@@ -3583,9 +3583,8 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
         xl: 500,
         xxl: 600
       };
-      var dict = new Map(Object.entries(sizes));
       var result = this.product.variants.sort(function (a, b) {
-        return dict.get(a.option2.toLowerCase()) - dict.get(b.option2.toLowerCase());
+        return sizes[a.option2.toLowerCase()] - sizes[b.option2.toLowerCase()];
       });
       console.log(result);
       this.product.variants = result;
