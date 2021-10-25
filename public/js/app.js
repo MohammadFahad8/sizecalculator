@@ -3587,7 +3587,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var result = this.product.variants.sort(function (a, b) {
         return dict.get(a) - dict.get(b);
       });
-      this.product.variants = results;
+      this.product.variants = result;
       this.getAttributes();
       var tabnumber = 1; // EventBus.$on('resetSlides',tabnumber=>{
       //     this.restart();

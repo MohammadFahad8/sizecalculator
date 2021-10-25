@@ -277,7 +277,7 @@ const dict = new Map(Object.entries(sizes));
 
 
 var result = this.product.variants.sort((a, b) => dict.get(a) - dict.get(b));
-this.product.variants = results
+this.product.variants = result
             this.getAttributes();
 
             var tabnumber = 1;
