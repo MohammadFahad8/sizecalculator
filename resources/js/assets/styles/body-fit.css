@@ -807,7 +807,7 @@ fieldset {
 .form-group select:focus,
 .form-group input:focus,
 .form-group textarea:focus {
-    outline: none !im
+    outline: none !important;
 }
 
 .form-group select:focus~.control-label,
