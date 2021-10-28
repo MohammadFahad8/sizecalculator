@@ -102,7 +102,8 @@ class SizeController extends Controller
             ]);
 
 
-            $sizeChartLastId = Sizechart::create($request->all());
+            $sizeChartLastId = Sizechart::create($request->only(['weight_start','weight_end','height_start','height_end','product_id']));
+            // $sizeChartLastId = Sizechart::create($request->all());
 
 
             for ($i = 0; $i <= count($request->get('body_measurement_start')) - 1; $i++) {
