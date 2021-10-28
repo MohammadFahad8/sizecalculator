@@ -149,17 +149,6 @@ return $products;
         return $this->create();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Attribute  $attribute
-     * @return \Illuminate\Http\Response
-     */
-    public function show()
-    {
-        //
-
-    }
 
     /**
      * Show the form for editing the specified resource.
