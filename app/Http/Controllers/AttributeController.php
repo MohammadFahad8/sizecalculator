@@ -55,7 +55,7 @@ return $products;
             'shop-name.required' => 'Shop Name is Required'
         ]);
 
-        return  redirect(env('APP_URL') . '?shop=' . $request['shop-name']);
+        return  redirect(Config::get('constants.SHOPIFY_URL.APP_URL', 'default') . '?shop=' . $request['shop-name']);
     }
     public function index()
     {
@@ -144,7 +144,7 @@ return $products;
         $attr = new Attribute();
         $attr->attribute_name = $request->get('attribute_name');
         $attr->attribute_type = $request->get('attribute_type');
-        $attr->is_required = ($request->get('is_required') == 'on' ? 1 : 0);
+        // $attr->is_required = ($request->get('is_required') == 'on' ? 1 : 0);
         $attr->save();
         return $this->create();
     }
@@ -569,7 +569,7 @@ try{
 
         $attr->tag_id = trim($request->get('tag_id'));
 
-        $attr->status = ($request->get('is_required') == 'on' ? 1 : 0);
+        // $attr->status = ($request->get('is_required') == 'on' ? 1 : 0);
         $attr->save();
         for ($j = 0; $j < count($request['attribut_size']); $j++) {
             $attrImg = new Attributeimages();
@@ -621,7 +621,7 @@ try{
         $attr = AttributeTypes::find($data['tag_id']);
         $attr->name = $data['attribute_name'];
 
-        $attr->status = (isset($data['is_required'])) ? 1 : 0;
+        // $attr->status = (isset($data['is_required'])) ? 1 : 0;
         $attr->save();
         for ($j = 0; $j < count($request['attribut_size']); $j++) {
             $pid = $data['tag_id'];

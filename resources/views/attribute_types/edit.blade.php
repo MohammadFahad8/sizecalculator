@@ -97,7 +97,7 @@
             </div>
 
 
-            <div class="form-group row">
+            {{-- <div class="form-group row">
                 <label for="Role"
                        class="col-md-3 col-form-label text-md-right">{{ __('Status') }}</label>
 
@@ -105,7 +105,7 @@
                 <div class="col-md-6">
 
                         <div class="form-check">
-                            <input class="form-check-input" type="checkbox" name="is_required"
+                            <input class="form-check-input d-none" type="checkbox" name="is_required"
                                    id="is_required" {{ ($attrTypeOfProduct->status == 1)?'Checked':'' }}  >
 
 
@@ -116,7 +116,7 @@
 
                 </div>
 
-            </div>
+            </div> --}}
 
 
 
