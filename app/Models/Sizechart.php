@@ -12,7 +12,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 class Sizechart extends Model
 {
     use HasFactory;
-    protected $fillable = ['height_start','height_end','weight_start','weight_end'];
+    protected $fillable = ['height_start','height_end','weight_start','weight_end','product_id'];
 
 
 
