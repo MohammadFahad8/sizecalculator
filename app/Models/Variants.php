@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Variants extends Model
 {
     use HasFactory;
-    protected $fillable = ['variant_id','size','price','product_id'];
+    protected $fillable = ['size','price'];
 
 
     /**

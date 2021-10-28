@@ -9,7 +9,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Attributeimages extends Model
 {
     use HasFactory;
-    protected $fillable = ['attr_size_value','attr_image_src','attribute_size_name','attribute_type_id','product_id','created_at','updated_at'];
+    protected $fillable = ['attr_size_value','attr_image_src','attribute_size_name','created_at','updated_at'];
 
 
     /**
