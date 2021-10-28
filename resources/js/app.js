@@ -20,7 +20,7 @@ import VueLazyload from 'vue-lazyload';
 
 
 
-Vue.prototype.$appUrl = 'https://a5ed-2400-adc7-91b-8900-e528-5a4f-42db-20b.ngrok.io';
+Vue.prototype.$appUrl = 'https://bylt2fit.ystsol.com';
 
 
 Vue.component('jw-pagination', JwPagination);
@@ -46,9 +46,9 @@ Vue.component('attribute-one-component', require('./components/AttributeoneCompo
 Vue.component('attribute-two-component', require('./components/AttributetwoComponent.vue').default);
 Vue.component('attribute-three-component', require('./components/AttributethreeComponent.vue').default);
 Vue.component('result-component', require('./components/ResultComponent.vue').default);
-Vue.component('dummy-result',require('./components/Errorplaceholder').default)
-Vue.component('placeholder-text',require('./components/Errorplaceholdertext').default)
-// Vue.component('sekeleton',require('./components/Sekeleton').default)
+Vue.component('dummy-result', require('./components/Errorplaceholder').default)
+Vue.component('placeholder-text', require('./components/Errorplaceholdertext').default)
+    // Vue.component('sekeleton',require('./components/Sekeleton').default)
 
 
 
