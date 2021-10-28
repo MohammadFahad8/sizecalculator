@@ -11,7 +11,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Attributetypes extends Model
 {
     use HasFactory;
-    protected $fillable = ['name','status'];
+    protected $fillable = ['name','product_id','status'];
 
     public function attribute()
     {

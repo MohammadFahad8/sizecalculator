@@ -10,7 +10,7 @@ class Bodyfeature extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['attr_name','attr_measurement_start','attr_measurement_end','predicted_size','status'];
+    protected $fillable = ['attr_name','attr_measurement_start','attr_measurement_end','sizechart_id','attr_id','predicted_size','status'];
 
 
     /**
